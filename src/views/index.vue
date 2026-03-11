@@ -5,6 +5,7 @@
   <MySkills />
   <SomeProjects />
   <MyProjects />
+  <FloatingActionButton />
 
   <!-- Page Reveal Transition -->
   <PageReveal
@@ -23,6 +24,7 @@ import MySkills from "@/components/MySkills.vue";
 import SomeProjects from "@/components/SomeProjects.vue";
 import MyProjects from "@/components/MyProjects.vue";
 import PageReveal from "@/components/PageReveal.vue";
+import FloatingActionButton from "@/components/FloatingActionButton.vue";
 
 const revealActive = ref(false);
 const revealLabel = ref("");
