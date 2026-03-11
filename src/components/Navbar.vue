@@ -81,11 +81,11 @@ onMounted(() => {
           >Skills</a
         >
         <a
-          href="#experience"
-          @click="handleNav('experience', 'Work', $event)"
+          href="#projects"
+          @click="handleNav('projects', 'Work', $event)"
           class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
           style="--delay: 5"
-          >Work</a
+          >Projects</a
         >
         <a
           href="#contact"

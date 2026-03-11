@@ -1,6 +1,12 @@
 <template>
-  <section id="projects" class="bg-white py-20 px-6 lg:px-40 relative overflow-hidden">
+  <section id="projects" class="bg-white pt-[10rem] pb-[16rem] px-6 lg:px-40 relative overflow-hidden ">
+    <img
+        src="/images/accent_3.png"
+        alt="Accent Shape"
+        class="absolute top-0 right-0 w-32 lg:w-180 pointer-events-none transform  z-0"
+      />
     <div class="container mx-auto relative z-10">
+       
       <!-- Title -->
       <h2
         v-motion
@@ -72,37 +78,14 @@
         </div>
       </div>
 
-      <!-- Bottom accent -->
-      <div
-        v-motion
-        :initial="{ opacity: 0, x: 30 }"
-        :visible="{ opacity: 1, x: 0, transition: { duration: 600, delay: 800, ease: 'easeOut' } }"
-        class="flex justify-end mt-10"
-      >
-        <svg
-          width="60"
-          height="40"
-          viewBox="0 0 60 40"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M5 35L20 5L35 35"
-            stroke="#7c3aed"
-            stroke-width="5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M25 35L40 5L55 35"
-            stroke="#7c3aed"
-            stroke-width="5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      </div>
+      
     </div>
+    <!-- Bottom accent -->
+        <img
+        src="/images/accent_3.png"
+        alt="Accent Shape"
+        class="absolute bottom-0 left-0 w-32 lg:w-180 pointer-events-none transform rotate-180 z-0"
+      />
   </section>
 </template>
 

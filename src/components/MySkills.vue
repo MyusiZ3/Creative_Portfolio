@@ -1,3 +1,11 @@
+<script setup>
+  function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+</script>
 <template>
   <!-- My Skills Section -->
   <section
@@ -226,12 +234,14 @@
         </div>
       </div>
 
+      <!-- Pagination & Arrow Down -->
+
       <!-- Text Subtitle List -->
       <p
         v-motion
         :initial="{ opacity: 0, y: 20 }"
         :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 400, ease: 'easeOut' } }"
-        class="text-[11px] lg:text-[16px] text-[#ffffff] font-['Roboto'] font-medium mb-16 max-w-4xl mx-auto leading-loose lg:leading-loose"
+        class="pt-[2rem] text-[11px] lg:text-[16px] text-[#ffffff] font-['Roboto'] font-medium mb-16 max-w-4xl mx-auto leading-loose lg:leading-loose"
       >
         Unity &bull; Firebase &bull; VS Code &bull; Github &bull; Adobe
         Illustrator &bull; Adobe Photoshop &bull; Adobe XD &bull; Figma &bull;
@@ -241,6 +251,7 @@
 
       <!-- Pagination & Arrow Down -->
       <div
+      @click="scrollToSection('projects')"
         v-motion
         :initial="{ opacity: 0, y: 15 }"
         :visible="{ opacity: 1, y: 0, transition: { duration: 500, delay: 500, ease: 'easeOut' } }"

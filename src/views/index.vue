@@ -4,6 +4,7 @@
   <Experience />
   <MySkills />
   <SomeProjects />
+  <MyProjects />
 
   <!-- Page Reveal Transition -->
   <PageReveal
@@ -20,6 +21,7 @@ import Hero from "@/components/Hero.vue";
 import Experience from "@/components/Experience.vue";
 import MySkills from "@/components/MySkills.vue";
 import SomeProjects from "@/components/SomeProjects.vue";
+import MyProjects from "@/components/MyProjects.vue";
 import PageReveal from "@/components/PageReveal.vue";
 
 const revealActive = ref(false);
