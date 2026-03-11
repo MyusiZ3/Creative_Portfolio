@@ -47,41 +47,55 @@
       </div>
     </div>
 
-    <!-- Main FAB Button -->
-    <button
-      @click="toggle"
-      class="fab-main group w-14 h-14 rounded-full bg-violet-500 text-white flex items-center justify-center shadow-2xl transition-all duration-300 hover:bg-violet-400 active:scale-90"
-      :class="{ 'fab-is-open': isOpen }"
-    >
-      <!-- Plus/Close icon with morph -->
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        class="transition-transform duration-300"
-        :class="isOpen ? 'rotate-[135deg]' : 'rotate-0'"
+    <!-- Main FAB Button Wrapper -->
+    <div class="relative w-14 h-14 z-50">
+      <!-- Particles -->
+      <div
+        v-for="p in particles"
+        :key="p.id"
+        class="absolute left-1/2 top-1/2 bg-violet-400 rounded-full pointer-events-none"
+        :style="p.style"
+      ></div>
+
+      <!-- Main Button -->
+      <button
+        @click="handleToggle"
+        class="fab-main group absolute inset-0 rounded-full text-white flex items-center justify-center transition-all duration-300 active:scale-90 shadow-2xl"
+        :class="{ 'fab-is-open': isOpen, 'idle-blob': !isOpen }"
       >
-        <line
-          x1="12"
-          y1="5"
-          x2="12"
-          y2="19"
-          stroke="currentColor"
-          stroke-width="2.5"
-          stroke-linecap="round"
-        />
-        <line
-          x1="5"
-          y1="12"
-          x2="19"
-          y2="12"
-          stroke="currentColor"
-          stroke-width="2.5"
-          stroke-linecap="round"
-        />
-      </svg>
-    </button>
+        <!-- Fluid blob background -->
+        <span class="fab-bg absolute inset-0 rounded-full bg-violet-500 transition-colors duration-300 group-hover:bg-violet-400 border border-violet-400/30"></span>
+        
+        <!-- Plus/Close icon with morph -->
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          class="relative z-10 transition-transform duration-300"
+          :class="isOpen ? 'rotate-[135deg]' : 'rotate-0'"
+        >
+          <line
+            x1="12"
+            y1="5"
+            x2="12"
+            y2="19"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+          />
+          <line
+            x1="5"
+            y1="12"
+            x2="19"
+            y2="12"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+    </div>
   </div>
 </template>
 
@@ -90,9 +104,51 @@ import { ref } from "vue";
 
 const isOpen = ref(false);
 const menuRef = ref(null);
+const particles = ref([]);
+let pid = 0;
 
-const toggle = () => {
+const spawnParticles = () => {
+  const newGroup = [];
+  const numParticles = 6 + Math.floor(Math.random() * 4); // 6 to 9 particles
+  
+  for (let i = 0; i < numParticles; i++) {
+    const angle = (Math.PI * 2 * i) / numParticles + (Math.random() * 0.5); 
+    const dist = 35 + Math.random() * 25; // How far they shoot out
+    const size = 6 + Math.random() * 8; // Particle size
+    
+    newGroup.push({
+      id: pid++,
+      style: {
+        width: `${size}px`,
+        height: `${size}px`,
+        transform: `translate(-50%, -50%) translate(0px, 0px) scale(0)`,
+        opacity: 1,
+        transition: 'none'
+      },
+      targetTransform: `translate(-50%, -50%) translate(${Math.cos(angle)*dist}px, ${Math.sin(angle)*dist}px) scale(0.5)`
+    });
+  }
+  
+  particles.value.push(...newGroup);
+
+  // Trigger animation next frame
+  setTimeout(() => {
+    newGroup.forEach(p => {
+      p.style.transition = 'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+      p.style.transform = p.targetTransform;
+      p.style.opacity = 0;
+    });
+  }, 20);
+
+  // Clean up
+  setTimeout(() => {
+    particles.value = particles.value.filter(p => !newGroup.includes(p));
+  }, 700);
+};
+
+const handleToggle = () => {
   isOpen.value = !isOpen.value;
+  spawnParticles();
 };
 
 const close = () => {
@@ -167,6 +223,38 @@ const actions = [
   box-shadow:
     0 4px 24px rgba(124, 58, 237, 0.4),
     0 0 30px rgba(124, 58, 237, 0.2);
+}
+
+/* === Liquid Blob Idle Animation === */
+.idle-blob .fab-bg {
+  animation: liquid-blob 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes liquid-blob {
+  0% { 
+    border-radius: 50%; 
+    transform: scale(1); 
+  }
+  10% { 
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; 
+    transform: scale(1.12) rotate(5deg); 
+  }
+  15% { 
+    border-radius: 60% 40% 30% 70% / 50% 60% 40% 40%; 
+    transform: scale(1.15) rotate(-5deg); 
+  }
+  22% { 
+    border-radius: 45% 55% 60% 40% / 55% 45% 50% 50%; 
+    transform: scale(1.08) rotate(3deg); 
+  }
+  28% { 
+    border-radius: 50%; 
+    transform: scale(1) rotate(0deg); 
+  }
+  100% { 
+    border-radius: 50%; 
+    transform: scale(1) rotate(0deg); 
+  }
 }
 
 /* === Action circles subtle glow on hover === */

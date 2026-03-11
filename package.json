@@ -12,6 +12,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.2.1",
     "@vueuse/motion": "^3.0.3",
+    "animejs": "^4.3.6",
     "bootstrap-icons": "^1.13.1",
     "tailwindcss": "^4.2.1",
     "vue": "beta",
