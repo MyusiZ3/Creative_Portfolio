@@ -1,0 +1,230 @@
+<script setup>
+import { ref, onMounted } from "vue";
+
+const isMenuOpen = ref(false);
+const navReady = ref(false);
+
+const emit = defineEmits(["navigate"]);
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value;
+};
+
+const handleNav = (target, label, event) => {
+  event.preventDefault();
+  isMenuOpen.value = false;
+  emit("navigate", { target, label });
+};
+
+onMounted(() => {
+  // Small delay to trigger the morph entrance
+  requestAnimationFrame(() => {
+    navReady.value = true;
+  });
+});
+</script>
+
+<template>
+  <nav
+    class="navbar-morph sticky top-0 z-50"
+    :class="{ 'nav-entered': navReady }"
+  >
+    <!-- Morph background layer -->
+    <div class="navbar-bg"></div>
+
+    <!-- Content layer -->
+    <div
+      class="navbar-content container mx-auto flex justify-between items-center gap-2 px-6 lg:px-38 py-3 relative z-10"
+    >
+      <!-- Logo -->
+      <div
+        class="flex items-center gap-2 relative z-50 nav-item"
+        style="--delay: 0"
+      >
+        <img src="/images/logo.png" alt="logo" class="w-10 lg:w-14" />
+        <a
+          href="#"
+          @click="handleNav('', 'Home', $event)"
+          class="text-white font-semibold text-[13px] lg:text-[15px] font-['Poppins']"
+          >Muhamad<br />Sidik</a
+        >
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden lg:flex items-center gap-14 uppercase">
+        <a
+          href="#"
+          @click="handleNav('', 'Home', $event)"
+          class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
+          style="--delay: 1"
+          >Home</a
+        >
+        <a
+          href="#about"
+          @click="handleNav('about', 'About', $event)"
+          class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
+          style="--delay: 2"
+          >About</a
+        >
+        <a
+          href="#experience"
+          @click="handleNav('experience', 'Experience', $event)"
+          class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
+          style="--delay: 3"
+          >Experience</a
+        >
+        <a
+          href="#skills"
+          @click="handleNav('skills', 'Skills', $event)"
+          class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
+          style="--delay: 4"
+          >Skills</a
+        >
+        <a
+          href="#experience"
+          @click="handleNav('experience', 'Work', $event)"
+          class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
+          style="--delay: 5"
+          >Work</a
+        >
+        <a
+          href="#contact"
+          @click="handleNav('contact', 'Contact', $event)"
+          class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
+          style="--delay: 6"
+          >Contact Me</a
+        >
+        <button
+          class="nav-item w-8 h-8 flex items-center justify-center bg-violet-500 text-white rounded-[10px] hover:bg-violet-600 transition font-bold text-[13px] lg:text-[15px] font-['Roboto']"
+          style="--delay: 7"
+        >
+          ID
+        </button>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button
+        @click="toggleMenu"
+        class="lg:hidden text-white text-3xl hover:text-violet-500 transition relative z-50 nav-item"
+        style="--delay: 1"
+      >
+        <i :class="isMenuOpen ? 'bi bi-x' : 'bi bi-list'"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div
+      class="lg:hidden fixed inset-x-0 top-[60px] bg-[#171717]/95 backdrop-blur-md border-t border-gray-800 transition-all duration-300 ease-in-out shadow-2xl z-40"
+      :class="isMenuOpen ? 'max-h-screen py-6 opacity-100 visible' : 'max-h-0 py-0 opacity-0 invisible'"
+    >
+      <div class="flex flex-col items-center gap-6 uppercase overflow-hidden">
+        <a
+          href="#"
+          @click="handleNav('', 'Home', $event)"
+          class="text-white font-bold text-[14px] font-['Roboto'] hover:text-violet-500 transition"
+          >Home</a
+        >
+        <a
+          href="#about"
+          @click="handleNav('about', 'About', $event)"
+          class="text-white font-bold text-[14px] font-['Roboto'] hover:text-violet-500 transition"
+          >About</a
+        >
+        <a
+          href="#experience"
+          @click="handleNav('experience', 'Experience', $event)"
+          class="text-white font-bold text-[14px] font-['Roboto'] hover:text-violet-500 transition"
+          >Experience</a
+        >
+        <a
+          href="#skills"
+          @click="handleNav('skills', 'Skills', $event)"
+          class="text-white font-bold text-[14px] font-['Roboto'] hover:text-violet-500 transition"
+          >Skills</a
+        >
+        <a
+          href="#experience"
+          @click="handleNav('experience', 'Work', $event)"
+          class="text-white font-bold text-[14px] font-['Roboto'] hover:text-violet-500 transition"
+          >Work</a
+        >
+        <a
+          href="#contact"
+          @click="handleNav('contact', 'Contact', $event)"
+          class="text-white font-bold text-[14px] font-['Roboto'] hover:text-violet-500 transition"
+          >Contact Me</a
+        >
+        <button
+          @click="isMenuOpen = false"
+          class="w-10 h-10 flex items-center justify-center bg-violet-500 text-white rounded-[10px] hover:bg-violet-600 transition font-bold text-[14px] font-['Roboto'] mt-2"
+        >
+          ID
+        </button>
+      </div>
+    </div>
+  </nav>
+</template>
+
+<style scoped>
+/* === Morph Navbar Background === */
+.navbar-morph {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.navbar-bg {
+  position: absolute;
+  inset: 0;
+  background: #171717;
+  clip-path: inset(0 50% 0 50%);
+  transition: clip-path 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.nav-entered .navbar-bg {
+  clip-path: inset(0 0 0 0);
+}
+
+/* === Nav items morph in === */
+.nav-item {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(-8px) scale(0.92);
+  transition:
+    opacity 0.5s cubic-bezier(0.33, 1, 0.68, 1),
+    filter 0.5s cubic-bezier(0.33, 1, 0.68, 1),
+    transform 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+  transition-delay: calc(var(--delay, 0) * 0.07s + 0.35s);
+}
+
+.nav-entered .nav-item {
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateY(0) scale(1);
+}
+
+/* === Nav link hover morph effect === */
+.nav-link {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #7c3aed, #a78bfa);
+  border-radius: 999px;
+  transition:
+    width 0.35s cubic-bezier(0.33, 1, 0.68, 1),
+    left 0.35s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+</style>
