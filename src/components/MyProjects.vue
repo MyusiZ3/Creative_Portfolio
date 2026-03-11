@@ -47,7 +47,7 @@
       <!-- Project Items -->
       <div class="space-y-16 lg:space-y-24">
         <div
-          v-for="(project, index) in projects"
+          v-for="(project, index) in visibleProjects"
           :key="project.name"
           v-motion
           :initial="{ opacity: 0, x: index % 2 === 0 ? -80 : 80, y: 30 }"
@@ -248,6 +248,35 @@
           </div>
         </div>
       </div>
+
+      <!-- View More Button -->
+      <div
+        v-if="projects.length > 4"
+        v-motion
+        :initial="{ opacity: 0, y: 20 }"
+        :visible="{ opacity: 1, y: 0, transition: { delay: 300 } }"
+        class="mt-16 lg:mt-20 text-center"
+      >
+        <button
+          @click="showAll = !showAll"
+          class="group relative inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-violet-500/30 rounded-full text-white font-['Poppins'] font-semibold text-sm tracking-widest hover:border-violet-500 transition-all duration-500 overflow-hidden"
+        >
+          <!-- Background Glow Effect -->
+          <div class="absolute inset-0 bg-violet-600/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+
+          <span class="relative z-10">{{ showAll ? 'SHOW LESS' : 'VIEW ALL PROJECTS' }}</span>
+
+          <div class="relative z-10 flex items-center justify-center w-6 h-6 rounded-full bg-violet-500/20 group-hover:bg-violet-500 transition-colors duration-500">
+            <i
+              class="bi transition-transform duration-500"
+              :class="[
+                showAll ? 'bi-chevron-up' : 'bi-chevron-down',
+                'group-hover:scale-110'
+              ]"
+            ></i>
+          </div>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -341,6 +370,9 @@ import { ref, reactive, computed, onMounted, onUnmounted, watch, nextTick } from
 
 // Track active slide per project
 const activeSlides = reactive({});
+
+const showAll = ref(false);
+const visibleProjects = computed(() => showAll.value ? projects : projects.slice(0, 4));
 // Track direction for each project for transition
 
 // === Lightbox state ===
