@@ -4,8 +4,8 @@
       <!-- Badge -->
       <div
         v-motion
-        :initial="{ opacity: 0, scale: 0.7 }"
-        :visible="{ opacity: 1, scale: 1, transition: { duration: 500, type: 'spring', stiffness: 200, damping: 15 } }"
+        :initial="{ opacity: 0, scale: 0.3, y: -20 }"
+        :visible="{ opacity: 1, scale: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 12, mass: 0.8 } }"
         class="text-center"
       >
         <span
@@ -18,9 +18,9 @@
       <!-- Title -->
       <h2
         v-motion
-        :initial="{ opacity: 0, y: 40 }"
-        :visible="{ opacity: 1, y: 0, transition: { duration: 700, delay: 100, ease: 'easeOut' } }"
-        class="text-3xl lg:text-[48px] font-bold font-['Poppins'] text-white mb-4 text-center"
+        :initial="{ opacity: 0, y: 60, scale: 0.9 }"
+        :visible="{ opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 150, damping: 18, delay: 150 } }"
+        class="text-3xl lg:text-[48px] font-bold font-['Poppins'] text-white mb-4 text-center title-glow"
       >
         What I Did ??
       </h2>
@@ -28,8 +28,8 @@
       <!-- Subtitle -->
       <p
         v-motion
-        :initial="{ opacity: 0, y: 30 }"
-        :visible="{ opacity: 1, y: 0, transition: { duration: 700, delay: 200, ease: 'easeOut' } }"
+        :initial="{ opacity: 0, y: 25 }"
+        :visible="{ opacity: 1, y: 0, transition: { duration: 800, delay: 350, ease: 'easeOut' } }"
         class="text-[#8E949F] font-['Roboto'] font-medium text-[13px] lg:text-[15px] max-w-2xl mx-auto text-center leading-relaxed mb-12"
       >
         A showcase of roles I've taken, problems I've solved, and experiences
@@ -40,8 +40,8 @@
       <div
         v-motion
         :initial="{ opacity: 0, scaleX: 0 }"
-        :visible="{ opacity: 1, scaleX: 1, transition: { duration: 800, delay: 300, ease: 'easeOut' } }"
-        class="h-px w-full bg-gray-700 mb-14 lg:mb-20"
+        :visible="{ opacity: 1, scaleX: 1, transition: { duration: 1000, delay: 450, ease: 'easeOut' } }"
+        class="divider-line h-px w-full bg-gray-700 mb-14 lg:mb-20"
       ></div>
 
       <!-- Project Items -->
@@ -50,17 +50,23 @@
           v-for="(project, index) in projects"
           :key="project.name"
           v-motion
-          :initial="{ opacity: 0, y: 50 }"
+          :initial="{ opacity: 0, x: index % 2 === 0 ? -80 : 80, y: 30 }"
           :visible="{
             opacity: 1,
+            x: 0,
             y: 0,
-            transition: { duration: 700, delay: 100, ease: 'easeOut' },
+            transition: { type: 'spring', stiffness: 100, damping: 20, mass: 1.2 },
           }"
-          class="flex flex-col gap-8 lg:gap-14 items-start"
+          class="project-item flex flex-col gap-8 lg:gap-14 items-start"
           :class="index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'"
         >
           <!-- Project Image Carousel -->
-          <div class="w-full lg:w-5/12 shrink-0">
+          <div
+            v-motion
+            :initial="{ opacity: 0, scale: 0.85, rotate: index % 2 === 0 ? -3 : 3 }"
+            :visible="{ opacity: 1, scale: 1, rotate: 0, transition: { type: 'spring', stiffness: 120, damping: 16, delay: 200 } }"
+            class="w-full lg:w-5/12 shrink-0"
+          >
             <div
               class="project-image-wrapper group relative rounded-2xl overflow-hidden aspect-4/3"
               :style="{ backgroundColor: project.bg }"
@@ -124,9 +130,12 @@
           </div>
 
           <!-- Project Details -->
-          <div class="w-full lg:w-7/12">
+          <div class="w-full lg:w-7/12 project-details">
             <!-- Project Name -->
             <h3
+              v-motion
+              :initial="{ opacity: 0, x: index % 2 === 0 ? 40 : -40 }"
+              :visible="{ opacity: 1, x: 0, transition: { type: 'spring', stiffness: 150, damping: 18, delay: 300 } }"
               class="text-xl lg:text-[26px] font-bold font-['Poppins'] text-white mb-2 leading-tight"
             >
               {{ project.name }}
@@ -134,13 +143,21 @@
 
             <!-- Role -->
             <p
+              v-motion
+              :initial="{ opacity: 0, x: index % 2 === 0 ? 30 : -30 }"
+              :visible="{ opacity: 1, x: 0, transition: { duration: 600, delay: 400, ease: 'easeOut' } }"
               class="text-[#8E949F] font-['Roboto'] text-[13px] lg:text-[14px] mb-5"
             >
               Role: {{ project.role }}
             </p>
 
             <!-- Meta Info -->
-            <div class="space-y-1 mb-5">
+            <div
+              v-motion
+              :initial="{ opacity: 0, y: 15 }"
+              :visible="{ opacity: 1, y: 0, transition: { duration: 500, delay: 500, ease: 'easeOut' } }"
+              class="space-y-1 mb-5"
+            >
               <p
                 class="text-[#8E949F] font-['Roboto'] text-[12px] lg:text-[13px]"
               >
@@ -154,7 +171,12 @@
             </div>
 
             <!-- Project Overview -->
-            <div class="mb-5">
+            <div
+              v-motion
+              :initial="{ opacity: 0, y: 20 }"
+              :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 550, ease: 'easeOut' } }"
+              class="mb-5"
+            >
               <p
                 class="text-violet-400 font-['Roboto'] font-semibold text-[13px] lg:text-[14px] mb-2"
               >
@@ -168,7 +190,12 @@
             </div>
 
             <!-- What I Did -->
-            <div class="mb-6">
+            <div
+              v-motion
+              :initial="{ opacity: 0, y: 20 }"
+              :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 650, ease: 'easeOut' } }"
+              class="mb-6"
+            >
               <p
                 class="text-violet-400 font-['Roboto'] font-semibold text-[13px] lg:text-[14px] mb-3"
               >
@@ -178,7 +205,10 @@
                 <li
                   v-for="(item, i) in project.tasks"
                   :key="i"
-                  class="flex items-start gap-2"
+                  v-motion
+                  :initial="{ opacity: 0, x: -20 }"
+                  :visible="{ opacity: 1, x: 0, transition: { type: 'spring', stiffness: 200, damping: 20, delay: 700 + i * 80 } }"
+                  class="flex items-start gap-2 task-item"
                 >
                   <span class="text-violet-400 mt-1 text-[8px]">
                     <i class="bi bi-circle-fill"></i>
@@ -194,6 +224,9 @@
 
             <!-- Platform Tag -->
             <p
+              v-motion
+              :initial="{ opacity: 0 }"
+              :visible="{ opacity: 1, transition: { duration: 500, delay: 800, ease: 'easeOut' } }"
               class="text-[#8E949F] font-['Roboto'] text-[12px] lg:text-[13px] mb-4"
             >
               {{ project.platform }}
@@ -201,8 +234,11 @@
 
             <!-- View Work Button -->
             <a
+              v-motion
+              :initial="{ opacity: 0, scale: 0.8, y: 10 }"
+              :visible="{ opacity: 1, scale: 1, y: 0, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 900 } }"
               :href="project.link || '#'"
-              class="inline-flex items-center gap-2 border border-gray-600 text-white font-['Roboto'] font-medium text-[13px] lg:text-[14px] px-5 py-2.5 rounded-full hover:border-violet-500 hover:text-violet-400 transition-all duration-300 group/btn"
+              class="view-work-btn inline-flex items-center gap-2 border border-gray-600 text-white font-['Roboto'] font-medium text-[13px] lg:text-[14px] px-5 py-2.5 rounded-full hover:border-violet-500 hover:text-violet-400 transition-all duration-300 group/btn"
             >
               VIEW WORK
               <i
@@ -641,15 +677,92 @@ const projects = reactive([
 </script>
 
 <style scoped>
+/* === Title glow pulse === */
+.title-glow {
+  text-shadow: 0 0 40px rgba(139, 92, 246, 0.15);
+}
+
+/* === Divider shimmer === */
+.divider-line {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #374151 20%,
+    #7c3aed 50%,
+    #374151 80%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 200% 0; }
+  50% { background-position: -200% 0; }
+}
+
+/* === Project Image === */
 .project-image-wrapper {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   transition:
-    transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    box-shadow 0.4s ease;
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.5s ease;
 }
 
 .project-image-wrapper:hover {
-  box-shadow: 0 16px 48px rgba(124, 58, 237, 0.15);
+  transform: translateY(-4px);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(124, 58, 237, 0.12);
+}
+
+/* === Project item separator === */
+.project-item {
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+.project-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.2), transparent);
+}
+
+.project-item:last-child::after {
+  display: none;
+}
+
+/* === Task item hover === */
+.task-item {
+  transition: transform 0.25s ease, padding-left 0.25s ease;
+}
+
+.task-item:hover {
+  transform: translateX(6px);
+  padding-left: 4px;
+}
+
+/* === View Work Button glow === */
+.view-work-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.view-work-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.view-work-btn:hover::before {
+  transform: translateX(100%);
 }
 
 /* === Slide Next Transition (going forward) === */
