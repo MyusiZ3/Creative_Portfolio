@@ -3,6 +3,8 @@
     <img
         src="/images/accent_3.png"
         alt="Accent Shape"
+        loading="lazy"
+        decoding="async"
         class="absolute top-0 right-0 w-32 lg:w-180 pointer-events-none transform  z-0"
       />
     <div class="container mx-auto relative z-10">
@@ -35,6 +37,7 @@
         <div
           v-for="(project, index) in projects"
           :key="project.name"
+          :ref="(el) => { if (el) cardRefs[index] = el }"
           v-motion
           :initial="{ opacity: 0, y: 40, scale: 0.95 }"
           :visible="{
@@ -50,20 +53,40 @@
           class="project-card group relative rounded-2xl lg:rounded-3xl overflow-hidden aspect-4/3 cursor-pointer"
           :style="{ background: project.bg }"
         >
-          <!-- Project Image -->
+          <!-- Blur placeholder background -->
+          <div
+            class="absolute inset-0 z-0"
+            :style="{ backgroundColor: project.bg }"
+          ></div>
+
+          <!-- Project Image (lazy loaded) -->
           <img
+            v-if="visibleCards[index]"
             :src="project.image"
             :alt="project.name"
-            class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+            decoding="async"
+            :fetchpriority="index < 3 ? 'high' : 'low'"
+            class="absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+            :class="loadedCards[index] ? 'opacity-100' : 'opacity-0 scale-105 blur-sm'"
+            @load="onImageLoaded(index)"
           />
+
+          <!-- Loading spinner placeholder -->
+          <div
+            v-if="visibleCards[index] && !loadedCards[index]"
+            class="absolute inset-0 flex items-center justify-center z-5"
+          >
+            <div class="w-8 h-8 border-2 border-white/20 border-t-white/60 rounded-full animate-spin"></div>
+          </div>
 
           <!-- Overlay gradient -->
           <div
-            class="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"
+            class="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300 z-10"
           ></div>
 
           <!-- Text overlay -->
-          <div class="absolute bottom-0 left-0 right-0 p-4 lg:p-6 z-10">
+          <div class="absolute bottom-0 left-0 right-0 p-4 lg:p-6 z-20">
             <h3
               class="text-white font-['Poppins'] font-bold text-base lg:text-xl leading-tight mb-1 drop-shadow-lg"
             >
@@ -84,66 +107,119 @@
         <img
         src="/images/accent_3.png"
         alt="Accent Shape"
+        loading="lazy"
+        decoding="async"
         class="absolute bottom-0 left-0 w-32 lg:w-180 pointer-events-none transform rotate-180 z-0"
       />
   </section>
 </template>
 
 <script setup>
+import { ref, reactive, onMounted, onUnmounted, nextTick } from "vue";
+
+// Track which cards are visible in viewport (for lazy loading)
+const visibleCards = reactive({});
+// Track which images have finished loading (for blur-up effect)
+const loadedCards = reactive({});
+// Refs for each card element
+const cardRefs = reactive({});
+
+let observer = null;
+
+const onImageLoaded = (index) => {
+  loadedCards[index] = true;
+};
+
+onMounted(() => {
+  nextTick(() => {
+    // IntersectionObserver to lazy-load images when cards approach viewport
+    observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = parseInt(entry.target.dataset.index);
+            if (!isNaN(idx)) {
+              visibleCards[idx] = true;
+              observer.unobserve(entry.target);
+            }
+          }
+        });
+      },
+      {
+        rootMargin: "200px 0px", // Start loading 200px before entering viewport
+        threshold: 0,
+      }
+    );
+
+    // Observe all cards
+    Object.keys(cardRefs).forEach((key) => {
+      const el = cardRefs[key];
+      if (el) {
+        el.dataset.index = key;
+        observer.observe(el);
+      }
+    });
+  });
+});
+
+onUnmounted(() => {
+  if (observer) observer.disconnect();
+});
+
 const projects = [
   {
     name: "Luxion RideXP",
     category: "Arcade Game Project",
     bg: "#C0392B",
-    image: "/images/projects/luxion_ridexp.png",
+    image: "/images/projects/luxion_ridexp.webp",
   },
   {
     name: "MindEscape: VR Chamber",
     category: "VR Game Project",
     bg: "#7c3aed",
-    image: "/images/projects/mindescape_vr.png",
+    image: "/images/projects/mindescape_vr.webp",
   },
   {
     name: "MathRift",
     category: "Educational 2D Platformer Game",
     bg: "#1a3a4a",
-    image: "/images/projects/mathrift.png",
+    image: "/images/projects/mathrift.webp",
   },
   {
     name: "Stellar Adventures",
     category: "AR Game Project",
     bg: "#1a2a3a",
-    image: "/images/projects/stellar_adventures.png",
+    image: "/images/projects/stellar_adventures.webp",
   },
   {
     name: "U-Asprak",
     category: "Mobile App Design",
     bg: "#5b6abf",
-    image: "/images/projects/u_asprak.png",
+    image: "/images/projects/u_asprak.webp",
   },
   {
     name: "empEDU",
     category: "Mobile App Design",
     bg: "#2a4a3a",
-    image: "/images/projects/empedu.png",
+    image: "/images/projects/empedu.webp",
   },
   {
     name: "IUDEX",
     category: "Team Portfolio Web Design",
     bg: "#6a5acd",
-    image: "/images/projects/iudex.png",
+    image: "/images/projects/iudex.webp",
   },
   {
     name: "Arch",
     category: "Personal Portfolio Web Design",
     bg: "#7c3aed",
-    image: "/images/projects/arch.png",
+    image: "/images/projects/arch.webp",
   },
   {
     name: "Merch",
     category: "Merch design for Event",
     bg: "#8b5cf6",
-    image: "/images/projects/merch.png",
+    image: "/images/projects/merch.webp",
   },
 ];
 </script>
@@ -154,6 +230,8 @@ const projects = [
     transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
     box-shadow 0.4s ease;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 300px;
 }
 
 .project-card:hover {
