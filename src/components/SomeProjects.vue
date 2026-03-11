@@ -109,7 +109,7 @@
         alt="Accent Shape"
         loading="lazy"
         decoding="async"
-        class="absolute bottom-0 left-0 w-32 lg:w-180 pointer-events-none transform rotate-180 z-0"
+        class="absolute bottom-[-0.2rem] left-0 w-32 lg:w-180 pointer-events-none transform rotate-180 z-0"
       />
   </section>
 </template>

@@ -82,14 +82,14 @@ onMounted(() => {
         >
         <a
           href="#projects"
-          @click="handleNav('projects', 'Work', $event)"
+          @click="handleNav('projects', 'Projects', $event)"
           class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
           style="--delay: 5"
           >Projects</a
         >
         <a
           href="#contact"
-          @click="handleNav('contact', 'Contact', $event)"
+          @click="handleNav('contact', 'Contact Me', $event)"
           class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
           style="--delay: 6"
           >Contact Me</a
