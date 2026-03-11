@@ -3,6 +3,7 @@
   <Hero />
   <Experience />
   <MySkills />
+  <SomeProjects />
 
   <!-- Page Reveal Transition -->
   <PageReveal
@@ -18,6 +19,7 @@ import Navbar from "@/components/Navbar.vue";
 import Hero from "@/components/Hero.vue";
 import Experience from "@/components/Experience.vue";
 import MySkills from "@/components/MySkills.vue";
+import SomeProjects from "@/components/SomeProjects.vue";
 import PageReveal from "@/components/PageReveal.vue";
 
 const revealActive = ref(false);
