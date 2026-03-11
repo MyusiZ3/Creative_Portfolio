@@ -98,7 +98,7 @@
 
       <!-- Icons Grid -->
       <div
-        class="flex flex-col items-center gap-6 lg:gap-8 mb-12 max-w-4xl mx-auto"
+        class="flex flex-col items-center gap-6 lg:gap-8 mb-12 lg:mb-16 max-w-4xl mx-auto scale-110 md:scale-[1.15] lg:scale-[1.2] origin-top"
       >
         <!-- Row 1 -->
         <div class="flex flex-wrap justify-center gap-4 lg:gap-6">
