@@ -1,4 +1,6 @@
 <script setup>
+  import GithubCalendar from "./GithubCalendar.vue";
+
   function scrollToSection(sectionId) {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -241,13 +243,23 @@
         v-motion
         :initial="{ opacity: 0, y: 20 }"
         :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 400, ease: 'easeOut' } }"
-        class="pt-[2rem] text-[11px] lg:text-[16px] text-[#ffffff] font-['Roboto'] font-medium mb-16 max-w-4xl mx-auto leading-loose lg:leading-loose"
+        class="pt-8 text-[11px] lg:text-[16px] text-[#ffffff] font-['Roboto'] font-medium max-w-4xl mx-auto leading-loose lg:leading-loose"
       >
         Unity &bull; Firebase &bull; VS Code &bull; Github &bull; Adobe
         Illustrator &bull; Adobe Photoshop &bull; Adobe XD &bull; Figma &bull;
         Canva &bull; Ibispaint X <br class="hidden lg:block" />
         <span class="lg:hidden"> &bull; </span>and more
       </p>
+
+      <!-- GitHub Contributions -->
+      <div
+        v-motion
+        :initial="{ opacity: 0, y: 20 }"
+        :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 500, ease: 'easeOut' } }"
+        class="mt-12 mb-16 flex flex-col items-center w-full max-w-4xl mx-auto"
+      >
+        <GithubCalendar />
+      </div>
 
       <!-- Pagination & Arrow Down -->
       <div
