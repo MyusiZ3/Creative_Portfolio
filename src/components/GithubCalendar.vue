@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full bg-[#1D1D1D]/60 backdrop-blur-sm rounded-2xl p-6 border border-white/5 shadow-2xl">
+  <div class="w-full bg-[#1D1D1D]/60 backdrop-blur-sm rounded-2xl p-6 border border-white/5 shadow-2xl relative">
     
     <!-- Header: Title and Total -->
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
@@ -10,7 +10,7 @@
         </h3>
       </div>
       
-      <!-- Year Tabs (Scrollable on small screens) -->
+      <!-- Year Tabs -->
       <div class="flex gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 scrollbar-hide">
         <button
           v-for="year in availableYears"
@@ -34,11 +34,11 @@
     </div>
 
     <!-- Calendar Grid -->
-    <div v-else class="w-full overflow-x-auto scrollbar-hide pb-2">
+    <div v-else class="w-full overflow-x-auto scrollbar-hide pb-2 px-1">
       <div class="min-w-[800px] flex gap-2">
         
         <!-- Day Labels -->
-        <div class="flex flex-col gap-[4px] pt-[20px] text-[10px] text-white/40 font-['Roboto'] font-medium pr-2">
+        <div class="flex flex-col gap-[4px] pt-[20px] text-[10px] text-white/40 font-['Roboto'] font-medium pr-2 shrink-0">
           <span class="h-[12px] leading-[12px]"></span>
           <span class="h-[12px] leading-[12px]">Mon</span>
           <span class="h-[12px] leading-[12px]"></span>
@@ -50,7 +50,7 @@
 
         <!-- The Grid -->
         <div class="relative w-full">
-          <!-- Month Labels (Simplified) -->
+          <!-- Month Labels -->
           <div class="absolute -top-5 left-0 right-0 flex justify-between text-[10px] text-white/40 font-['Roboto'] font-medium mb-1 px-1">
             <span>Jan</span>
             <span>Feb</span>
@@ -66,29 +66,22 @@
             <span>Dec</span>
           </div>
 
-          <!-- Heatmap -->
-          <div class="grid grid-flow-col grid-rows-7 gap-[4px]">
-            <!-- Padded empty days -->
+          <!-- Heatmap - One single grid for perfect z-index behavior -->
+          <div class="grid grid-flow-col grid-rows-7 gap-[4px] w-max">
+            <!-- Padded empty days for start of year -->
             <div
               v-for="n in paddingDays"
               :key="'pad-' + n"
               class="w-[12px] h-[12px]"
             ></div>
 
+            <!-- Actual days -->
             <div
-              v-for="(day, index) in currentYearData"
+              v-for="day in currentYearData"
               :key="day.date"
-              class="w-[12px] h-[12px] rounded-[2px] transition-all duration-300 hover:scale-125 hover:z-50 cursor-pointer relative group"
+              class="w-[12px] h-[12px] rounded-[2px] transition-all duration-300 cursor-default relative"
               :style="{ backgroundColor: getIntensityColor(day.intensity) }"
             >
-              <!-- Tooltip -->
-              <div 
-                class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-[#1a1a2e] text-white text-[11px] font-['Roboto'] rounded-md font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 shadow-xl border border-white/10"
-              >
-                {{ day.count }} contributions on {{ formatDate(day.date) }}
-                <!-- Tooltip Arrow -->
-                <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-[#1a1a2e]"></div>
-              </div>
             </div>
           </div>
         </div>
@@ -121,16 +114,16 @@ const selectedYear = ref(new Date().getFullYear().toString());
 
 const fetchGitHubData = async () => {
   try {
-    // We use api.codetabs.com as a CORS proxy since the vercel app doesn't send CORS headers
+    // Reverting to the vercel API with proxy to get multiple years data
     const res = await fetch(`https://api.codetabs.com/v1/proxy?quest=https://github-contributions.vercel.app/api/v1/${username}`);
     if (!res.ok) throw new Error("Failed to fetch Github data");
     
     const data = await res.json();
     githubData.value = data;
     
-    // Default to the most recent year that has data, or current year
+    // Set selected year to the latest available year
     if (data.years && data.years.length > 0) {
-      selectedYear.value = data.years[0].year;
+      selectedYear.value = data.years[0].year.toString();
     }
   } catch (error) {
     console.error("Error fetching GitHub contributions:", error);
@@ -144,42 +137,40 @@ onMounted(() => {
 });
 
 const availableYears = computed(() => {
-  // Only show the last 5 years, older years on the left to newer years on the right
-  return githubData.value.years.slice(0, 5).reverse() || [];
+  // Return years in chronological order (oldest left, newest right)
+  return githubData.value.years ? [...githubData.value.years].slice(0, 5).reverse() : [];
 });
 
 const selectedYearTotal = computed(() => {
-  const yearObj = availableYears.value.find(y => y.year === selectedYear.value);
+  const yearObj = githubData.value.years?.find(y => y.year.toString() === selectedYear.value);
   return yearObj ? yearObj.total : 0;
 });
 
 const currentYearData = computed(() => {
   if (!githubData.value.contributions) return [];
-  // Filter contributions to only those in the selected year
+  // Filter and sort contributions for the selected year only
   return githubData.value.contributions
     .filter(c => c.date.startsWith(selectedYear.value))
-    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    .sort((a, b) => a.date.localeCompare(b.date));
 });
 
 const paddingDays = computed(() => {
   if (currentYearData.value.length === 0) return 0;
-  // Get the day of the week for Jan 1st of the selected year (0 = Sunday, 1 = Monday...)
-  const firstDate = new Date(currentYearData.value[0].date);
-  return firstDate.getDay();
+  // Calculate day of the week for the first contribution date in the selected year
+  return new Date(currentYearData.value[0].date).getDay();
 });
 
 const selectYear = (year) => {
-  selectedYear.value = year;
+  selectedYear.value = year.toString();
 };
 
-// Map GitHub's intensity (0-4) to theme-matched violet colors
 const getIntensityColor = (intensity) => {
   const intensities = {
-    0: 'rgba(255, 255, 255, 0.03)', // Empty / base
-    1: 'rgba(124, 58, 237, 0.3)',   // Light
-    2: 'rgba(124, 58, 237, 0.55)',  // Medium
-    3: 'rgba(124, 58, 237, 0.8)',   // Dark
-    4: 'rgba(124, 58, 237, 1)'      // Very Dark
+    0: 'rgba(255, 255, 255, 0.03)',
+    1: 'rgba(124, 58, 237, 0.3)',
+    2: 'rgba(124, 58, 237, 0.55)',
+    3: 'rgba(124, 58, 237, 0.8)',
+    4: 'rgba(124, 58, 237, 1)'
   };
   return intensities[intensity] || intensities[0];
 };
@@ -194,7 +185,6 @@ const formatDate = (dateString) => {
 </script>
 
 <style scoped>
-/* Hide scrollbar for clean horizontal scrolling */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
