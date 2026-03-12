@@ -68,9 +68,16 @@
               About Me
             </h2>
             <h3
-              class="text-2xl lg:text-[28px] font-medium font-['Poppins'] text-white mb-4 lg:mb-6"
+              class="text-2xl lg:text-[28px] font-medium font-['Poppins'] text-[#FBDF3A] mb-4 lg:mb-6"
             >
-              Hi, I'm Muhamad Sidik
+              <Typewriter
+                :strings="['Hii..', 'I\'m Muhamad Sidik']"
+                :autoStart="true"
+                :loop="true"
+                :delay="75"
+                :deleteSpeed="50"
+                cursorClassName="Typewriter__cursor text-violet-500"
+              />
             </h3>
             <div
               class="text-white space-y-4 text-sm lg:text-[16px] text-justify leading-relaxed font-['Roboto'] font-regular"
@@ -360,3 +367,7 @@
     </section>
   </div>
 </template>
+
+<script setup>
+import Typewriter from 'vue-typewriter-effect'
+</script>
