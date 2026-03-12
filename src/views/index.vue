@@ -1,5 +1,5 @@
 <template>
-  <Navbar @navigate="onNavigate" />
+  <Navbar @navigate="onNavigate" @toggle-lang="onToggleLang" />
   <Hero />
   <Experience />
   <MySkills />
@@ -31,6 +31,9 @@ import ContactMe from "@/components/ContactMe.vue";
 import PageReveal from "@/components/PageReveal.vue";
 import FloatingActionButton from "@/components/FloatingActionButton.vue";
 import CTAPopup from "@/components/CTAPopup.vue";
+import { useLanguage } from "@/composables/useLanguage";
+
+const { lang, toggleLanguage } = useLanguage();
 
 const revealActive = ref(false);
 const revealLabel = ref("");
@@ -52,6 +55,17 @@ const onNavigate = ({ target, label }) => {
       // Home — scroll to top
       window.scrollTo({ top: 0, behavior: "instant" });
     }
+  }, 550);
+};
+
+const onToggleLang = () => {
+  revealLabel.value = lang.value === 'EN' ? 'INDONESIA' : 'ENGLISH';
+  revealActive.value = true;
+  pendingTarget = "";
+
+  // Wait for the curtain to cover the screen before swapping language
+  setTimeout(() => {
+    toggleLanguage();
   }, 550);
 };
 

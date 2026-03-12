@@ -4,7 +4,7 @@ import { ref, onMounted } from "vue";
 const isMenuOpen = ref(false);
 const navReady = ref(false);
 
-const emit = defineEmits(["navigate"]);
+const emit = defineEmits(["navigate", "toggle-lang"]);
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
@@ -14,6 +14,11 @@ const handleNav = (target, label, event) => {
   event.preventDefault();
   isMenuOpen.value = false;
   emit("navigate", { target, label });
+};
+
+const handleToggleLang = () => {
+  isMenuOpen.value = false;
+  emit("toggle-lang");
 };
 
 import { useLanguage } from "@/composables/useLanguage";
@@ -108,7 +113,7 @@ onMounted(() => {
         >
         <div class="flex items-center gap-3">
           <button
-            @click="toggleLanguage"
+            @click="handleToggleLang"
             class="nav-item w-8 h-8 flex items-center justify-center bg-violet-500 text-white rounded-xl hover:bg-violet-600 transition font-bold text-[13px] lg:text-[15px] font-['Roboto'] shadow-lg shadow-violet-500/30"
             style="--delay: 7"
           >
@@ -176,7 +181,7 @@ onMounted(() => {
         >
         <div class="flex gap-4 mt-2">
           <button
-            @click="toggleLanguage"
+            @click="handleToggleLang"
             class="w-10 h-10 flex items-center justify-center bg-violet-500 text-white rounded-xl hover:bg-violet-600 transition font-bold text-[14px] font-['Roboto'] shadow-lg shadow-violet-500/30"
           >
             {{ lang === 'EN' ? 'EN' : 'ID' }}
