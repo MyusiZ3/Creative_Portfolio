@@ -65,7 +65,7 @@
             v-motion
             :initial="{ opacity: 0, scaleX: 0 }"
             :visible="{ opacity: 1, scaleX: 1, transition: { duration: 1000, delay: 100, ease: 'easeOut' } }"
-            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left"
+            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden lg:block"
           ></div>
 
           <div
@@ -83,7 +83,7 @@
               >
                 AUG 2025 - PRESENT
               </p>
-              <div class="h-6 flex items-center mb-4">
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper">
                 <div class="w-3 h-3 bg-[#171717] rounded-full ml-[20%]"></div>
               </div>
               <div>
@@ -116,7 +116,7 @@
               >
                 SEP 2023 - JUL 2025
               </p>
-              <div class="h-6 flex items-center mb-4">
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper">
                 <div class="w-3 h-3 bg-[#171717] rounded-full ml-[20%]"></div>
               </div>
               <div>
@@ -149,7 +149,7 @@
               >
                 SEP 2023 - DEC 2023
               </p>
-              <div class="h-6 flex items-center mb-4">
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper">
                 <div class="w-3 h-3 bg-[#171717] rounded-full ml-[20%]"></div>
               </div>
               <div>
@@ -180,7 +180,7 @@
             v-motion
             :initial="{ opacity: 0, scaleX: 0 }"
             :visible="{ opacity: 1, scaleX: 1, transition: { duration: 1000, delay: 100, ease: 'easeOut' } }"
-            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left"
+            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden lg:block"
           ></div>
 
           <div
@@ -198,7 +198,7 @@
               >
                 DEC 2019 - JUNE 2022
               </p>
-              <div class="h-6 flex items-center mb-4">
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper">
                 <div class="w-3 h-3 bg-[#171717] rounded-full ml-[20%]"></div>
               </div>
               <div>
@@ -231,7 +231,7 @@
               >
                 JAN 2021 - JUNE 2021
               </p>
-              <div class="h-6 flex items-center mb-4">
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper">
                 <div class="w-3 h-3 bg-[#171717] rounded-full ml-[20%]"></div>
               </div>
               <div>
@@ -272,7 +272,7 @@
             v-motion
             :initial="{ opacity: 0, scaleX: 0 }"
             :visible="{ opacity: 1, scaleX: 1, transition: { duration: 1000, delay: 100, ease: 'easeOut' } }"
-            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left"
+            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden lg:block"
           ></div>
 
           <div
@@ -290,7 +290,7 @@
               >
                 JAN 2025 - JUNE 2025
               </p>
-              <div class="h-6 flex items-center mb-4">
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper">
                 <div class="w-3 h-3 bg-[#171717] rounded-full ml-[20%]"></div>
               </div>
               <div>
@@ -323,7 +323,7 @@
               >
                 JAN 2025 - JUNE 2025
               </p>
-              <div class="h-6 flex items-center mb-4">
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper">
                 <div class="w-3 h-3 bg-[#171717] rounded-full ml-[20%]"></div>
               </div>
               <div>
@@ -356,7 +356,7 @@
               >
                 JAN 2025 - JUNE 2025
               </p>
-              <div class="h-6 flex items-center mb-4">
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper">
                 <div class="w-3 h-3 bg-[#171717] rounded-full ml-[20%]"></div>
               </div>
               <div>
@@ -387,7 +387,7 @@
             v-motion
             :initial="{ opacity: 0, scaleX: 0 }"
             :visible="{ opacity: 1, scaleX: 1, transition: { duration: 1000, delay: 100, ease: 'easeOut' } }"
-            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left"
+            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden lg:block"
           ></div>
 
           <div
@@ -405,7 +405,7 @@
               >
                 SEP 2024 - FEB 2025
               </p>
-              <div class="h-6 flex items-center mb-4">
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper">
                 <div class="w-3 h-3 bg-[#171717] rounded-full ml-[20%]"></div>
               </div>
               <div>
@@ -438,7 +438,7 @@
               >
                 JAN 2024 - JUNE 2024
               </p>
-              <div class="h-6 flex items-center mb-4">
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper">
                 <div class="w-3 h-3 bg-[#171717] rounded-full ml-[20%]"></div>
               </div>
               <div>
@@ -471,7 +471,7 @@
               >
                 SEP 2023 - FEB 2024
               </p>
-              <div class="h-6 flex items-center mb-4">
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper">
                 <div class="w-3 h-3 bg-[#171717] rounded-full ml-[20%]"></div>
               </div>
               <div>
@@ -504,3 +504,23 @@ import { useLanguage } from '@/composables/useLanguage';
 
 const { t } = useLanguage();
 </script>
+
+<style scoped>
+.timeline-dot-wrapper::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #D1D5DB; /* bg-gray-300 */
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+@media (min-width: 1024px) {
+  .timeline-dot-wrapper::before {
+    display: none;
+  }
+}
+</style>
