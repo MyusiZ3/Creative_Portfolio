@@ -32,6 +32,14 @@ onMounted(() => {
     <!-- Morph background layer -->
     <div class="navbar-bg"></div>
 
+    <!-- Right-side Custom Slant Accent -->
+    <div class="navbar-accent-shape hidden lg:block overflow-hidden">
+      <!-- Background pattern -->
+      <img src="/images/accent_3.png" alt="" class="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none grayscale blur-[1px]" />
+      
+      <!-- Purple subtle edge glow or border if needed, skipping to keep clean -->
+    </div>
+
     <!-- Content layer -->
     <div
       class="navbar-content container mx-auto flex justify-between items-center gap-2 px-6 lg:px-38 py-3 relative z-10"
@@ -184,6 +192,7 @@ onMounted(() => {
   position: sticky;
   top: 0;
   z-index: 50;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
 }
 
 .navbar-bg {
@@ -196,6 +205,38 @@ onMounted(() => {
 
 .nav-entered .navbar-bg {
   clip-path: inset(0 0 0 0);
+}
+
+/* === NavBar Right Accent Shape === */
+/* Adjust these variables directly to visually tweak the placement & slant curve! */
+.navbar-accent-shape {
+  --shape-width: 420px;
+  --shape-height: 90px;
+  --shape-right: 0px; 
+  --shape-top-offset: 1%; /* Connect seamlessly to the bottom of the nav */
+  --slant-start-point: 25%; /* Left starting point of the bottom slant (25% = steep curve rightwards) */
+  /* --shape-width: 820px;
+  --shape-height: 200px;
+  --shape-right: 0px; 
+  --shape-top-offset: -140%; 
+  --slant-start-point: 25%;  */
+
+  position: absolute;
+  right: var(--shape-right);
+  top: var(--shape-top-offset); 
+  width: var(--shape-width);
+  height: var(--shape-height);
+  background: #171717;
+  z-index: -1;
+
+  /* Polygon structure: top-left (0,0), top-right (100%,0), bot-right (100%,100%), bot-left (starts at start-point) */
+  clip-path: polygon(0 0, 100% 0, 100% 0, var(--slant-start-point) 0);
+  transition: clip-path 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+  transition-delay: 0.1s; 
+}
+
+.nav-entered .navbar-accent-shape {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, var(--slant-start-point) 100%);
 }
 
 /* === Nav items morph in === */
