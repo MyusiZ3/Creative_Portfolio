@@ -7,13 +7,13 @@
           v-motion
           :initial="{ opacity: 0, x: -50 }"
           :visible="{ opacity: 1, x: 0, transition: { duration: 800 } }"
-          class="w-full lg:w-[40%] space-y-8"
+          class="w-full lg:w-[40%] space-y-8 flex flex-col items-center lg:items-start text-center lg:text-left"
         >
           <h2 class="text-4xl lg:text-5xl font-bold font-['Poppins'] text-white leading-tight">
-            <span class="text-[#A754FF]">{{ t('contact_title_1') }}</span> {{ t('contact_title_2') }}<br />{{ t('contact_title_3') }}
+            <span class="text-[#A754FF]">{{ t('contact_title_1') }}</span> {{ t('contact_title_2') }}<br class="hidden lg:block" />{{ t('contact_title_3') }}
           </h2>
 
-          <div class="space-y-5">
+          <div class="space-y-5 w-full">
             <!-- Phone -->
             <div>
               <p class="text-gray-400 text-sm mb-1">{{ t('contact_phone') }}</p>
@@ -38,7 +38,7 @@
           </div>
 
           <!-- Social Media -->
-          <div class="space-y-3">
+          <div class="space-y-3 flex flex-col items-center lg:items-start">
             <p class="text-gray-400 text-sm">{{ t('contact_socmed') }}</p>
             <div class="flex gap-3">
               <a href="https://github.com/MyusiZ3" target="_blank" class="w-8 h-8 rounded-full bg-[#A754FF] flex items-center justify-center text-white hover:opacity-80 transition-all duration-300">
@@ -64,7 +64,7 @@
           <!-- Logo & Name -->
           <div class="pt-4 flex items-center gap-3">
             <img src="/images/logo.png" alt="Logo" class="w-10 h-10 object-contain filter brightness-200" />
-            <div class="text-white font-bold leading-tight text-sm">
+            <div class="text-white font-bold leading-tight text-sm text-left">
               <p>Muhamad</p>
               <p>Sidik</p>
             </div>
@@ -76,12 +76,12 @@
           v-motion
           :initial="{ opacity: 0, scale: 0.9 }"
           :visible="{ opacity: 1, scale: 1, transition: { duration: 1000 } }"
-          class="w-full lg:w-[60%] flex justify-end relative"
+          class="w-full lg:w-[60%] flex justify-center lg:justify-end relative order-first lg:order-last"
         >
           <img 
             src="/images/contactme.png" 
             alt="Contact Image" 
-            class="w-[120%] lg:w-[150%] max-w-none h-auto object-contain transform translate-x-10 lg:translate-x-38 -translate-y-10 lg:-translate-y-24"
+            class="w-full max-w-[400px] lg:max-w-none lg:w-[150%] h-auto object-contain transform translate-x-0 lg:translate-x-38 translate-y-0 lg:-translate-y-24"
           />
         </div>
       </div>

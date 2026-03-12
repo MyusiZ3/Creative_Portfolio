@@ -99,7 +99,7 @@ const translations = {
     // Contact
     contact_title_1: "Contact &",
     contact_title_2: "Connect",
-    contact_title_3: "with Me",
+    contact_title_3: " with Me",
     contact_phone: "Phone",
     contact_email: "Email",
     contact_addr: "Address",
