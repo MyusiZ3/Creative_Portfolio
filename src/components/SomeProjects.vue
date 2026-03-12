@@ -1,5 +1,5 @@
 <template>
-  <section id="projects" class="bg-white pt-40 pb-64  px-6 lg:px-40 relative overflow-hidden ">
+  <section id="projects" class="bg-white py-20 lg:pt-40 lg:pb-64 px-6 lg:px-40 relative overflow-hidden ">
     <img
         src="/images/accent_3.png"
         alt="Accent Shape"
