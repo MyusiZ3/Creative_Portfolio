@@ -83,8 +83,13 @@
               >
                 AUG 2025 - PRESENT
               </p>
-              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper">
-                <div class="w-3 h-3 bg-[#171717] rounded-full ml-[20%]"></div>
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
+                <div 
+                  v-motion
+                  :initial="{ opacity: 0, scale: 0 }"
+                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 200 } }"
+                  class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
+                ></div>
               </div>
               <div>
                 <h4
@@ -116,8 +121,13 @@
               >
                 SEP 2023 - JUL 2025
               </p>
-              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper">
-                <div class="w-3 h-3 bg-[#171717] rounded-full ml-[20%]"></div>
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
+                <div 
+                  v-motion
+                  :initial="{ opacity: 0, scale: 0 }"
+                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 350 } }"
+                  class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
+                ></div>
               </div>
               <div>
                 <h4
@@ -149,8 +159,13 @@
               >
                 SEP 2023 - DEC 2023
               </p>
-              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper">
-                <div class="w-3 h-3 bg-[#171717] rounded-full ml-[20%]"></div>
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
+                <div 
+                  v-motion
+                  :initial="{ opacity: 0, scale: 0 }"
+                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 500 } }"
+                  class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
+                ></div>
               </div>
               <div>
                 <h4
@@ -198,8 +213,13 @@
               >
                 DEC 2019 - JUNE 2022
               </p>
-              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper">
-                <div class="w-3 h-3 bg-[#171717] rounded-full ml-[20%]"></div>
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
+                <div 
+                  v-motion
+                  :initial="{ opacity: 0, scale: 0 }"
+                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 200 } }"
+                  class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
+                ></div>
               </div>
               <div>
                 <h4
@@ -231,8 +251,13 @@
               >
                 JAN 2021 - JUNE 2021
               </p>
-              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper">
-                <div class="w-3 h-3 bg-[#171717] rounded-full ml-[20%]"></div>
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
+                <div 
+                  v-motion
+                  :initial="{ opacity: 0, scale: 0 }"
+                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 350 } }"
+                  class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
+                ></div>
               </div>
               <div>
                 <h4
@@ -290,8 +315,13 @@
               >
                 JAN 2025 - JUNE 2025
               </p>
-              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper">
-                <div class="w-3 h-3 bg-[#171717] rounded-full ml-[20%]"></div>
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
+                <div 
+                  v-motion
+                  :initial="{ opacity: 0, scale: 0 }"
+                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 200 } }"
+                  class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
+                ></div>
               </div>
               <div>
                 <h4
@@ -323,8 +353,13 @@
               >
                 JAN 2025 - JUNE 2025
               </p>
-              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper">
-                <div class="w-3 h-3 bg-[#171717] rounded-full ml-[20%]"></div>
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
+                <div 
+                  v-motion
+                  :initial="{ opacity: 0, scale: 0 }"
+                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 350 } }"
+                  class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
+                ></div>
               </div>
               <div>
                 <h4
@@ -356,8 +391,13 @@
               >
                 JAN 2025 - JUNE 2025
               </p>
-              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper">
-                <div class="w-3 h-3 bg-[#171717] rounded-full ml-[20%]"></div>
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
+                <div 
+                  v-motion
+                  :initial="{ opacity: 0, scale: 0 }"
+                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 500 } }"
+                  class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
+                ></div>
               </div>
               <div>
                 <h4
@@ -405,8 +445,13 @@
               >
                 SEP 2024 - FEB 2025
               </p>
-              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper">
-                <div class="w-3 h-3 bg-[#171717] rounded-full ml-[20%]"></div>
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
+                <div 
+                  v-motion
+                  :initial="{ opacity: 0, scale: 0 }"
+                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 200 } }"
+                  class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
+                ></div>
               </div>
               <div>
                 <h4
@@ -438,8 +483,13 @@
               >
                 JAN 2024 - JUNE 2024
               </p>
-              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper">
-                <div class="w-3 h-3 bg-[#171717] rounded-full ml-[20%]"></div>
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
+                <div 
+                  v-motion
+                  :initial="{ opacity: 0, scale: 0 }"
+                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 350 } }"
+                  class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
+                ></div>
               </div>
               <div>
                 <h4
@@ -471,8 +521,13 @@
               >
                 SEP 2023 - FEB 2024
               </p>
-              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper">
-                <div class="w-3 h-3 bg-[#171717] rounded-full ml-[20%]"></div>
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
+                <div 
+                  v-motion
+                  :initial="{ opacity: 0, scale: 0 }"
+                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 500 } }"
+                  class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
+                ></div>
               </div>
               <div>
                 <h4
