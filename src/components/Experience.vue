@@ -1,5 +1,5 @@
 <template>
-  <section id="experience" class="mb-[-1rem]">
+  <section id="experience" class="-mb-4">
     <div class="bg-white p-8 lg:p-40 relative overflow-hidden shadow-2xl">
       <!-- Accents -->
       <img
@@ -30,7 +30,7 @@
           v-motion
           :initial="{ opacity: 0, y: 40 }"
           :visible="{ opacity: 1, y: 0, transition: { duration: 700, ease: 'easeOut' } }"
-          class="text-4xl lg:text-[48px] font-bold font-['Poppins'] text-[#171717] mb-4 mt-[5rem]"
+          class="text-4xl lg:text-[48px] font-bold font-['Poppins'] text-[#171717] mb-4 mt-20"
         >
           Experience
         </h2>
@@ -64,7 +64,10 @@
         <div class="relative mb-16 px-0">
           <!-- Horizontal Line -->
           <div
-            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0"
+            v-motion
+            :initial="{ opacity: 0, scaleX: 0 }"
+            :visible="{ opacity: 1, scaleX: 1, transition: { duration: 1000, delay: 100, ease: 'easeOut' } }"
+            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left"
           ></div>
 
           <div
@@ -183,7 +186,10 @@
         <div class="relative mb-16 px-0">
           <!-- Horizontal Line -->
           <div
-            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0"
+            v-motion
+            :initial="{ opacity: 0, scaleX: 0 }"
+            :visible="{ opacity: 1, scaleX: 1, transition: { duration: 1000, delay: 100, ease: 'easeOut' } }"
+            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left"
           ></div>
 
           <div
@@ -277,7 +283,10 @@
         <div class="relative mb-16 px-0">
           <!-- Horizontal Line -->
           <div
-            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0"
+            v-motion
+            :initial="{ opacity: 0, scaleX: 0 }"
+            :visible="{ opacity: 1, scaleX: 1, transition: { duration: 1000, delay: 100, ease: 'easeOut' } }"
+            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left"
           ></div>
 
           <div
@@ -396,7 +405,10 @@
         <div class="relative px-0">
           <!-- Horizontal Line -->
           <div
-            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0"
+            v-motion
+            :initial="{ opacity: 0, scaleX: 0 }"
+            :visible="{ opacity: 1, scaleX: 1, transition: { duration: 1000, delay: 100, ease: 'easeOut' } }"
+            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left"
           ></div>
 
           <div

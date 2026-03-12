@@ -8,6 +8,7 @@
   <Achievements />
   <ContactMe />
   <FloatingActionButton />
+  <CTAPopup />
 
   <!-- Page Reveal Transition -->
   <PageReveal
@@ -29,6 +30,7 @@ import Achievements from "@/components/Achievements.vue";
 import ContactMe from "@/components/ContactMe.vue";
 import PageReveal from "@/components/PageReveal.vue";
 import FloatingActionButton from "@/components/FloatingActionButton.vue";
+import CTAPopup from "@/components/CTAPopup.vue";
 
 const revealActive = ref(false);
 const revealLabel = ref("");

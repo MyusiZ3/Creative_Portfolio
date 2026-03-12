@@ -71,7 +71,7 @@
               class="text-2xl lg:text-[28px] font-medium font-['Poppins'] text-[#FBDF3A] mb-4 lg:mb-6"
             >
               <Typewriter
-                :strings="['Hii..', 'I\'m Muhamad Sidik']"
+                :strings="['Hii...', 'I\'m Muhamad Sidik...']"
                 :autoStart="true"
                 :loop="true"
                 :delay="75"

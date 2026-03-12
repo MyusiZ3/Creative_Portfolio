@@ -109,12 +109,25 @@ onMounted(() => {
           style="--delay: 7"
           >Contact Me</a
         >
-        <button
-          class="nav-item w-8 h-8 flex items-center justify-center bg-violet-500 text-white rounded-[10px] hover:bg-violet-600 transition font-bold text-[13px] lg:text-[15px] font-['Roboto']"
-          style="--delay: 7"
-        >
-          ID
-        </button>
+        <div class="flex items-center gap-3">
+          <button
+            class="nav-item w-8 h-8 flex items-center justify-center bg-violet-500 text-white rounded-xl hover:bg-violet-600 transition font-bold text-[13px] lg:text-[15px] font-['Roboto'] shadow-lg shadow-violet-500/30"
+            style="--delay: 7"
+          >
+            ID
+          </button>
+          
+          <button
+            class="nav-item w-8 h-8 flex items-center justify-center bg-white/5 border border-white/10 text-gray-300 rounded-xl hover:bg-violet-500 hover:text-white hover:border-violet-500 transition relative shadow-lg"
+            style="--delay: 8"
+          >
+            <i class="bi bi-bell-fill text-sm"></i>
+            <span class="absolute -top-1 -right-1 flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500 border border-[#171717]"></span>
+            </span>
+          </button>
+        </div>
       </div>
 
       <!-- Mobile Hamburger Button -->
@@ -175,12 +188,24 @@ onMounted(() => {
           class="text-white font-bold text-[14px] font-['Roboto'] hover:text-violet-500 transition"
           >Contact Me</a
         >
-        <button
-          @click="isMenuOpen = false"
-          class="w-10 h-10 flex items-center justify-center bg-violet-500 text-white rounded-[10px] hover:bg-violet-600 transition font-bold text-[14px] font-['Roboto'] mt-2"
-        >
-          ID
-        </button>
+        <div class="flex gap-4 mt-2">
+          <button
+            @click="isMenuOpen = false"
+            class="w-10 h-10 flex items-center justify-center bg-violet-500 text-white rounded-xl hover:bg-violet-600 transition font-bold text-[14px] font-['Roboto'] shadow-lg shadow-violet-500/30"
+          >
+            ID
+          </button>
+          <button
+            @click="isMenuOpen = false"
+            class="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 text-gray-300 rounded-xl hover:bg-violet-500 hover:text-white hover:border-violet-500 transition relative shadow-lg"
+          >
+            <i class="bi bi-bell-fill text-base"></i>
+            <span class="absolute -top-1 -right-1 flex h-3 w-3">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500 border border-[#171717]"></span>
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   </nav>

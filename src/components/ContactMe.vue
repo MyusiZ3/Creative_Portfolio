@@ -17,13 +17,17 @@
             <!-- Phone -->
             <div>
               <p class="text-gray-400 text-sm mb-1">Phone</p>
-              <p class="text-white text-lg font-bold font-['Roboto']">(+62) 822 8242 1322</p>
+              <a href="https://wa.me/6282282421322" target="_blank" class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300">
+                (+62) 822 8242 1322
+              </a>
             </div>
 
             <!-- Email -->
             <div>
               <p class="text-gray-400 text-sm mb-1">Email</p>
-              <p class="text-white text-lg font-bold font-['Roboto']">muhamadsidik.imy@gmail.com</p>
+              <a href="mailto:muhamadsidik.imy@gmail.com" class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300">
+                muhamadsidik.imy@gmail.com
+              </a>
             </div>
 
             <!-- Address -->
@@ -85,7 +89,12 @@
 
       <!-- Footer Info -->
       <div class="w-full mt-8 pt-8 border-t border-white/10 text-center">
-        <p class="text-gray-300 font-['Roboto'] text-sm flex items-center justify-center gap-2">
+        <p 
+          v-motion
+          :initial="{ opacity: 0, y: 20 }"
+          :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 200 } }"
+          class="text-gray-300 font-['Roboto'] text-sm flex items-center justify-center gap-2"
+        >
           &copy; 2025 Muhamad Sidik | All rights reserved.
         </p>
       </div>
