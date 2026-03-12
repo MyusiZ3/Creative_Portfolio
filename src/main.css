@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@theme {
+  --breakpoint-md: 641px;
+  --breakpoint-lg: 641px;
+}
+
+
 html,
 body {
   overflow-x: clip;
