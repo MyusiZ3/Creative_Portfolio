@@ -277,6 +277,9 @@
           </div>
         </button>
       </div>
+
+      <!-- Design Showcase Section -->
+      <DesignShowcase />
     </div>
   </section>
 
@@ -367,6 +370,7 @@
 
 <script setup>
 import { ref, reactive, computed, onMounted, onUnmounted, watch, nextTick } from "vue";
+import DesignShowcase from "./DesignShowcase.vue";
 
 // Track active slide per project
 const activeSlides = reactive({});

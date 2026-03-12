@@ -88,10 +88,17 @@ onMounted(() => {
           >Projects</a
         >
         <a
+          href="#achievements"
+          @click="handleNav('achievements', 'Achievements', $event)"
+          class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
+          style="--delay: 6"
+          >Achievements</a
+        >
+        <a
           href="#contact"
           @click="handleNav('contact', 'Contact Me', $event)"
           class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
-          style="--delay: 6"
+          style="--delay: 7"
           >Contact Me</a
         >
         <button
@@ -143,10 +150,16 @@ onMounted(() => {
           >Skills</a
         >
         <a
-          href="#experience"
-          @click="handleNav('experience', 'Work', $event)"
+          href="#projects"
+          @click="handleNav('projects', 'Projects', $event)"
           class="text-white font-bold text-[14px] font-['Roboto'] hover:text-violet-500 transition"
-          >Work</a
+          >Projects</a
+        >
+        <a
+          href="#achievements"
+          @click="handleNav('achievements', 'Achievements', $event)"
+          class="text-white font-bold text-[14px] font-['Roboto'] hover:text-violet-500 transition"
+          >Achievements</a
         >
         <a
           href="#contact"

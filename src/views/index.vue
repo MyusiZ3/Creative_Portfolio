@@ -5,6 +5,8 @@
   <MySkills />
   <SomeProjects />
   <MyProjects />
+  <Achievements />
+  <ContactMe />
   <FloatingActionButton />
 
   <!-- Page Reveal Transition -->
@@ -23,6 +25,8 @@ import Experience from "@/components/Experience.vue";
 import MySkills from "@/components/MySkills.vue";
 import SomeProjects from "@/components/SomeProjects.vue";
 import MyProjects from "@/components/MyProjects.vue";
+import Achievements from "@/components/Achievements.vue";
+import ContactMe from "@/components/ContactMe.vue";
 import PageReveal from "@/components/PageReveal.vue";
 import FloatingActionButton from "@/components/FloatingActionButton.vue";
 
