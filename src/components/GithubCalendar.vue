@@ -5,7 +5,7 @@
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
       <div class="flex items-center gap-3">
         <i class="bi bi-github text-white text-xl"></i>
-        <h3 class="text-white font-['Poppins'] font-bold text-lg">
+        <h3 class="text-white font-['Poppins'] font-medium text-lg">
           {{ selectedYearTotal }} Contributions in {{ selectedYear }}
         </h3>
       </div>
