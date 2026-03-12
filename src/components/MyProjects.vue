@@ -11,7 +11,7 @@
         <span
           class="inline-block bg-violet-500 text-white font-['Poppins'] font-bold text-[14px] lg:text-[16px] px-6 py-2 rounded-full mb-6"
         >
-          My Projects
+          {{ t('my_proj_badge') }}
         </span>
       </div>
 
@@ -22,7 +22,7 @@
         :visible="{ opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 150, damping: 18, delay: 150 } }"
         class="text-3xl lg:text-[48px] font-bold font-['Poppins'] text-white mb-4 text-center title-glow"
       >
-        What I Did ??
+        {{ t('my_proj_title') }}
       </h2>
 
       <!-- Subtitle -->
@@ -32,8 +32,7 @@
         :visible="{ opacity: 1, y: 0, transition: { duration: 800, delay: 350, ease: 'easeOut' } }"
         class="text-[#8E949F] font-['Roboto'] font-medium text-[13px] lg:text-[15px] max-w-2xl mx-auto text-center leading-relaxed mb-12"
       >
-        A showcase of roles I've taken, problems I've solved, and experiences
-        I've crafted — across design, development, and creative tech.
+        {{ t('my_proj_desc') }}
       </p>
 
       <!-- Divider -->
@@ -148,7 +147,7 @@
               :visible="{ opacity: 1, x: 0, transition: { duration: 600, delay: 400, ease: 'easeOut' } }"
               class="text-[#8E949F] font-['Roboto'] text-[13px] lg:text-[14px] mb-5"
             >
-              Role: {{ project.role }}
+              {{ t('my_proj_role') }} {{ project.role }}
             </p>
 
             <!-- Meta Info -->
@@ -166,7 +165,7 @@
               <p
                 class="text-[#8E949F] font-['Roboto'] text-[12px] lg:text-[13px]"
               >
-                Tools: {{ project.tools }}
+                {{ t('my_proj_tools') }} {{ project.tools }}
               </p>
             </div>
 
@@ -180,7 +179,7 @@
               <p
                 class="text-violet-400 font-['Roboto'] font-semibold text-[13px] lg:text-[14px] mb-2"
               >
-                Project Overview:
+                {{ t('my_proj_overview') }}
               </p>
               <p
                 class="text-[#b0b5bf] font-['Roboto'] text-[12px] lg:text-[14px] leading-relaxed"
@@ -199,7 +198,7 @@
               <p
                 class="text-violet-400 font-['Roboto'] font-semibold text-[13px] lg:text-[14px] mb-3"
               >
-                What I Did:
+                {{ t('my_proj_whatidid') }}
               </p>
               <ul class="space-y-2">
                 <li
@@ -240,7 +239,7 @@
               :href="project.link || '#'"
               class="view-work-btn inline-flex items-center gap-2 border border-gray-600 text-white font-['Roboto'] font-medium text-[13px] lg:text-[14px] px-5 py-2.5 rounded-full hover:border-violet-500 hover:text-violet-400 transition-all duration-300 group/btn"
             >
-              VIEW WORK
+              {{ t('my_proj_view_work') }}
               <i
                 class="bi bi-chevron-right text-[11px] transition-transform duration-300 group-hover/btn:translate-x-1"
               ></i>
@@ -264,7 +263,7 @@
           <!-- Background Glow Effect -->
           <div class="absolute inset-0 bg-violet-600/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
 
-          <span class="relative z-10">{{ showAll ? 'SHOW LESS' : 'VIEW ALL PROJECTS' }}</span>
+          <span class="relative z-10">{{ showAll ? t('my_proj_show_less') : t('my_proj_view_all') }}</span>
 
           <div class="relative z-10 flex items-center justify-center w-6 h-6 rounded-full bg-violet-500/20 group-hover:bg-violet-500 transition-colors duration-500">
             <i
@@ -371,12 +370,15 @@
 <script setup>
 import { ref, reactive, computed, onMounted, onUnmounted, watch, nextTick } from "vue";
 import DesignShowcase from "./DesignShowcase.vue";
+import { useLanguage } from '@/composables/useLanguage';
+
+const { t, lang } = useLanguage();
 
 // Track active slide per project
 const activeSlides = reactive({});
 
 const showAll = ref(false);
-const visibleProjects = computed(() => showAll.value ? projects : projects.slice(0, 4));
+const visibleProjects = computed(() => showAll.value ? projects.value : projects.value.slice(0, 4));
 // Track direction for each project for transition
 
 // === Lightbox state ===
@@ -388,8 +390,8 @@ const lightbox = reactive({
 });
 
 const lightboxImages = computed(() => {
-  if (lightbox.projectIdx >= 0 && lightbox.projectIdx < projects.length) {
-    return projects[lightbox.projectIdx].images;
+  if (lightbox.projectIdx >= 0 && lightbox.projectIdx < projects.value.length) {
+    return projects.value[lightbox.projectIdx].images;
   }
   return [];
 });
@@ -463,21 +465,21 @@ const goToSlide = (projectIdx, slideIdx) => {
   const current = activeSlides[projectIdx] || 0;
   slideDirections[projectIdx] = slideIdx > current ? "next" : "prev";
   // Assign _dir to the project reactively
-  projects[projectIdx]._dir = slideDirections[projectIdx];
+  projects.value[projectIdx]._dir = slideDirections[projectIdx];
   activeSlides[projectIdx] = slideIdx;
 };
 
 const nextSlide = (projectIdx, total) => {
   const current = activeSlides[projectIdx] || 0;
   slideDirections[projectIdx] = "next";
-  projects[projectIdx]._dir = "next";
+  projects.value[projectIdx]._dir = "next";
   activeSlides[projectIdx] = (current + 1) % total;
 };
 
 const prevSlide = (projectIdx, total) => {
   const current = activeSlides[projectIdx] || 0;
   slideDirections[projectIdx] = "prev";
-  projects[projectIdx]._dir = "prev";
+  projects.value[projectIdx]._dir = "prev";
   activeSlides[projectIdx] = (current - 1 + total) % total;
 };
 
@@ -485,10 +487,10 @@ const prevSlide = (projectIdx, total) => {
 let autoPlayInterval = null;
 onMounted(() => {
   autoPlayInterval = setInterval(() => {
-    projects.forEach((project, idx) => {
+    projects.value.forEach((project, idx) => {
       if (project.images.length > 1) {
         const current = activeSlides[idx] || 0;
-        projects[idx]._dir = "next";
+        projects.value[idx]._dir = "next";
         activeSlides[idx] = (current + 1) % project.images.length;
       }
     });
@@ -499,217 +501,276 @@ onUnmounted(() => {
   if (autoPlayInterval) clearInterval(autoPlayInterval);
 });
 
-const projects = reactive([
-  {
-    name: "RideXP - Arcade Game Project",
-    role: "Project Manager, Game Developer, UI/UX Designer",
-    teamInfo: "Team Project | Jan – Jun 2025",
-    tools: "Unity, Figma, ESP32, JSON",
-    overview:
-      "RideXP is an arcade-style cycling game where players control their in-game bike by pedaling a physical stationary bike connected via ESP32. Built in Unity, the game combines IoT, game development, and UI/UX design.",
-    tasks: [
-      "Led team coordination and feature planning",
-      "Designed full UI/UX flow (menu, HUD, result screen) using Figma",
-      "Built local leaderboard system using JSON",
-      "Implemented AI NPC with waypoint-based navigation",
-      "Designed game environments, composited visual assets, and created VFX logic",
-      "Created branding assets & presentation deck for public exhibition",
-    ],
-    platform: "Arcade Desktop App",
-    bg: "#C0392B",
-    images: [
-      "/images/projects/luxion_ridexp.png",
-      "/images/projects/luxion_ridexp_2.png",
-      "/images/projects/luxion_ridexp_3.png",
-    ],
-    link: "#",
-    _dir: "next",
-  },
-  {
-    name: "MindEscape – VR Escape Room Game",
-    role: "VR Developer, Environment Designer",
-    teamInfo: "Team Project | Jan – Jun 2025",
-    tools: "Unity, Oculus SDK",
-    overview:
-      "MindEscape is a virtual reality escape room game focused on exploration and environmental interaction. Built using Unity, the project simulates a full puzzle escape experience using a VR headset.",
-    tasks: [
-      "Designed 3D environment layout and object placement",
-      "Handled VR camera systems and scene transitions",
-      "Implemented user interaction mechanics (grabbing, puzzle triggers)",
-      "Optimized lighting and performance for smooth VR experience",
-    ],
-    platform: "VR Desktop App",
-    bg: "#4A1D8E",
-    images: [
-      "/images/projects/mindescape_vr.png",
-      "/images/projects/mindescape_vr_2.png",
-      "/images/projects/mindescape_vr_3.png",
-    ],
-    link: "#",
-    _dir: "next",
-  },
-  {
-    name: "MathRift – Educational 2D Platformer",
-    role: "Game Developer, UI/UX Designer",
-    teamInfo: "Team Project | Aug – Dec 2024",
-    tools: "Unity, Figma",
-    overview:
-      "MathRift is a 2D educational platformer game designed to make learning math fun through interactive gameplay, puzzles, and progressive difficulty levels.",
-    tasks: [
-      "Developed core game mechanics and player controller",
-      "Designed UI/UX wireframes and final screens in Figma",
-      "Implemented level progression and scoring system",
-      "Created game assets and sprite animations",
-    ],
-    platform: "Desktop Game",
-    bg: "#1a3a4a",
-    images: [
-      "/images/projects/mathrift.png",
-      "/images/projects/mathrift_2.png",
-      "/images/projects/mathrift_3.png",
-    ],
-    link: "#",
-    _dir: "next",
-  },
-  {
-    name: "Stellar Adventures – AR Game Project",
-    role: "AR Developer, Environment Designer",
-    teamInfo: "Team Project | Aug – Dec 2024",
-    tools: "Unity, AR Foundation, Blender",
-    overview:
-      "Stellar Adventures is an augmented reality game that blends the physical and digital world, allowing players to explore space-themed environments through their device camera.",
-    tasks: [
-      "Developed AR plane detection and object placement",
-      "Designed 3D environment models and textures",
-      "Implemented interactive game mechanics in AR space",
-      "Optimized performance for mobile AR devices",
-    ],
-    platform: "AR Mobile App",
-    bg: "#1a2a3a",
-    images: [
-      "/images/projects/stellar_adventures.png",
-      "/images/projects/stellar_adventures_2.png",
-      "/images/projects/stellar_adventures_3.png",
-    ],
-    link: "#",
-    _dir: "next",
-  },
-  {
-    name: "U-Asprak – Mobile App Design",
-    role: "UI/UX Designer",
-    teamInfo: "Team Project | Jan – Jun 2024",
-    tools: "Figma, Adobe XD",
-    overview:
-      "U-Asprak is a mobile application designed to streamline the teaching assistant management process, including scheduling, grading, and communication between lecturers and assistants.",
-    tasks: [
-      "Conducted user research and created user personas",
-      "Designed wireframes and high-fidelity prototypes",
-      "Built interactive prototype for usability testing",
-      "Created design system and component library",
-    ],
-    platform: "Mobile App Design",
-    bg: "#5b6abf",
-    images: [
-      "/images/projects/u_asprak.png",
-      "/images/projects/u_asprak_2.png",
-      "/images/projects/u_asprak_3.png",
-    ],
-    link: "#",
-    _dir: "next",
-  },
-  {
-    name: "empEDU – Mobile App Design",
-    role: "UI/UX Designer",
-    teamInfo: "Team Project | Aug – Dec 2023",
-    tools: "Figma",
-    overview:
-      "empEDU is an educational mobile app designed to empower students with accessible learning materials, progress tracking, and interactive study tools.",
-    tasks: [
-      "Designed end-to-end user flow and information architecture",
-      "Created high-fidelity UI mockups for all screens",
-      "Developed interactive prototypes for user testing",
-      "Iterated designs based on usability feedback",
-    ],
-    platform: "Mobile App Design",
-    bg: "#2a4a3a",
-    images: [
-      "/images/projects/empedu.png",
-      "/images/projects/empedu_2.png",
-      "/images/projects/empedu_3.png",
-    ],
-    link: "#",
-    _dir: "next",
-  },
-  {
-    name: "IUDEX – Team Portfolio Web Design",
-    role: "UI/UX Designer, Frontend Developer",
-    teamInfo: "Team Project | Jan – Jun 2024",
-    tools: "Figma, HTML, CSS, JavaScript",
-    overview:
-      "IUDEX is a team portfolio website designed to showcase the collective works and capabilities of a creative team, featuring a modern and professional layout.",
-    tasks: [
-      "Designed responsive web layout using Figma",
-      "Developed frontend with HTML, CSS, and JavaScript",
-      "Implemented smooth scroll animations and transitions",
-      "Ensured cross-browser compatibility and responsiveness",
-    ],
-    platform: "Web Application",
-    bg: "#6a5acd",
-    images: [
-      "/images/projects/iudex.png",
-      "/images/projects/iudex_2.png",
-      "/images/projects/iudex_3.png",
-    ],
-    link: "#",
-    _dir: "next",
-  },
-  {
-    name: "Arch – Personal Portfolio Web Design",
-    role: "UI/UX Designer, Frontend Developer",
-    teamInfo: "Personal Project | 2024",
-    tools: "Figma, Vue.js, TailwindCSS",
-    overview:
-      "Arch is a personal portfolio web design project focused on creating a visually stunning and interactive personal website to showcase design and development work.",
-    tasks: [
-      "Designed complete portfolio layout and visual identity",
-      "Built responsive frontend with modern web technologies",
-      "Integrated smooth animations and micro-interactions",
-      "Optimized for performance and SEO",
-    ],
-    platform: "Web Application",
-    bg: "#7c3aed",
-    images: [
-      "/images/projects/arch.png",
-      "/images/projects/arch_2.png",
-      "/images/projects/arch_3.png",
-    ],
-    link: "#",
-    _dir: "next",
-  },
-  {
-    name: "Merch – Merch Design for Event",
-    role: "Graphic Designer",
-    teamInfo: "Freelance Project | 2024",
-    tools: "Adobe Illustrator, Adobe Photoshop",
-    overview:
-      "Merch is a merchandise design project creating branded apparel and accessories for an event, including t-shirts, tote bags, and promotional materials.",
-    tasks: [
-      "Created original merchandise designs and illustrations",
-      "Prepared print-ready artwork with proper specifications",
-      "Developed cohesive visual branding across all merchandise",
-      "Collaborated with manufacturing for production quality",
-    ],
-    platform: "Graphic Design",
-    bg: "#8b5cf6",
-    images: [
-      "/images/projects/merch.png",
-      "/images/projects/merch_2.png",
-      "/images/projects/merch_3.png",
-    ],
-    link: "#",
-    _dir: "next",
-  },
-]);
+const projects = computed(() => {
+  const isId = lang.value === 'ID';
+  return [
+    {
+      name: "RideXP - Arcade Game Project",
+      role: isId ? "Manajer Proyek, Pengembang Game, Desainer UI/UX" : "Project Manager, Game Developer, UI/UX Designer",
+      teamInfo: isId ? "Proyek Tim | Jan – Jun 2025" : "Team Project | Jan – Jun 2025",
+      tools: "Unity, Figma, ESP32, JSON",
+      overview: isId 
+        ? "RideXP adalah game balap arkade di mana pemain mengendalikan sepeda dalam game dengan mengayuh sepeda statis fisik yang terhubung via ESP32. Dibangun di Unity, game ini menggabungkan IoT, pengembangan game, dan desain UI/UX."
+        : "RideXP is an arcade-style cycling game where players control their in-game bike by pedaling a physical stationary bike connected via ESP32. Built in Unity, the game combines IoT, game development, and UI/UX design.",
+      tasks: isId ? [
+        "Memimpin koordinasi tim dan perencanaan fitur",
+        "Merancang alur UI/UX (menu, HUD, layar hasil) menggunakan Figma",
+        "Membangun sistem papan peringkat lokal menggunakan JSON",
+        "Mengimplementasikan NPC AI berbasis navigasi waypoint",
+        "Merancang lingkungan game, aset visual, serta efek visual (VFX)",
+        "Membuat identitas karya serta materi presentasi untuk pameran",
+      ] : [
+        "Led team coordination and feature planning",
+        "Designed full UI/UX flow (menu, HUD, result screen) using Figma",
+        "Built local leaderboard system using JSON",
+        "Implemented AI NPC with waypoint-based navigation",
+        "Designed game environments, composited visual assets, and created VFX logic",
+        "Created branding assets & presentation deck for public exhibition",
+      ],
+      platform: isId ? "Aplikasi Desktop Arkade" : "Arcade Desktop App",
+      bg: "#C0392B",
+      images: [
+        "/images/projects/luxion_ridexp.png",
+        "/images/projects/luxion_ridexp_2.png",
+        "/images/projects/luxion_ridexp_3.png",
+      ],
+      link: "#",
+      _dir: "next",
+    },
+    {
+      name: "MindEscape – VR Escape Room Game",
+      role: isId ? "Pengembang VR, Desainer Lingkungan" : "VR Developer, Environment Designer",
+      teamInfo: isId ? "Proyek Tim | Jan – Jun 2025" : "Team Project | Jan – Jun 2025",
+      tools: "Unity, Oculus SDK",
+      overview: isId
+        ? "MindEscape adalah permaianan VR ruang lolos yang berfokus pada eksplorasi dan interaksi lingkungan. Dibuat menggunakan Unity, proyek ini mensimulasikan pengalaman puzzle penuh menggunakan headset VR."
+        : "MindEscape is a virtual reality escape room game focused on exploration and environmental interaction. Built using Unity, the project simulates a full puzzle escape experience using a VR headset.",
+      tasks: isId ? [
+        "Merancang tata letak lingkungan 3D dan penempatan objek",
+        "Menangani sistem kamera VR dan transisi adegan",
+        "Menerapkan mekanisme interaksi alat (mengambil objek, pemicu teka-teki)",
+        "Mengoptimalkan pencahayaan dan performa untuk kelancaran",
+      ] : [
+        "Designed 3D environment layout and object placement",
+        "Handled VR camera systems and scene transitions",
+        "Implemented user interaction mechanics (grabbing, puzzle triggers)",
+        "Optimized lighting and performance for smooth VR experience",
+      ],
+      platform: isId ? "Aplikasi Desktop VR" : "VR Desktop App",
+      bg: "#4A1D8E",
+      images: [
+        "/images/projects/mindescape_vr.png",
+        "/images/projects/mindescape_vr_2.png",
+        "/images/projects/mindescape_vr_3.png",
+      ],
+      link: "#",
+      _dir: "next",
+    },
+    {
+      name: "MathRift – Educational 2D Platformer",
+      role: isId ? "Pengembang Game, Desainer UI/UX" : "Game Developer, UI/UX Designer",
+      teamInfo: isId ? "Proyek Tim | Agt – Des 2024" : "Team Project | Aug – Dec 2024",
+      tools: "Unity, Figma",
+      overview: isId
+        ? "MathRift adalah game platform 2D edukasi yang dirancang agar belajar matematika jadi menyenangkan lewat gameplay interaktif, teka teki, dan level yang menantang secara bertahap."
+        : "MathRift is a 2D educational platformer game designed to make learning math fun through interactive gameplay, puzzles, and progressive difficulty levels.",
+      tasks: isId ? [
+        "Mengembangkan mekanisme inti dan pengontrol pemain",
+        "Merancang wireframe UI/UX hingga hasil akhir dalam Figma",
+        "Mengintegrasikan progres level dan sistem penilaian",
+        "Membuat aset permainan dan animasi sprite",
+      ] : [
+        "Developed core game mechanics and player controller",
+        "Designed UI/UX wireframes and final screens in Figma",
+        "Implemented level progression and scoring system",
+        "Created game assets and sprite animations",
+      ],
+      platform: "Desktop Game",
+      bg: "#1a3a4a",
+      images: [
+        "/images/projects/mathrift.png",
+        "/images/projects/mathrift_2.png",
+        "/images/projects/mathrift_3.png",
+      ],
+      link: "#",
+      _dir: "next",
+    },
+    {
+      name: "Stellar Adventures – AR Game Project",
+      role: isId ? "Pengembang AR, Desainer Lingkungan" : "AR Developer, Environment Designer",
+      teamInfo: isId ? "Proyek Tim | Agt – Des 2024" : "Team Project | Aug – Dec 2024",
+      tools: "Unity, AR Foundation, Blender",
+      overview: isId
+        ? "Stellar Adventures adalah game AR yang menggabungkan dunia maya dan nyata, memungkinkan pemain menavigasi ruang bertema luar angkasa melalui kamera."
+        : "Stellar Adventures is an augmented reality game that blends the physical and digital world, allowing players to explore space-themed environments through their device camera.",
+      tasks: isId ? [
+        "Mengembangkan pendeteksi bidang datar dan kemunculan objek",
+        "Merancang tekstur dan model lingkungan 3D",
+        "Menerapkan mekanika permainan langsung di ruang AR",
+        "Mengoptimalkan AR untuk perangkat mobile",
+      ] : [
+        "Developed AR plane detection and object placement",
+        "Designed 3D environment models and textures",
+        "Implemented interactive game mechanics in AR space",
+        "Optimized performance for mobile AR devices",
+      ],
+      platform: isId ? "Aplikasi AR Mobile" : "AR Mobile App",
+      bg: "#1a2a3a",
+      images: [
+        "/images/projects/stellar_adventures.png",
+        "/images/projects/stellar_adventures_2.png",
+        "/images/projects/stellar_adventures_3.png",
+      ],
+      link: "#",
+      _dir: "next",
+    },
+    {
+      name: "U-Asprak – Mobile App Design",
+      role: "UI/UX Designer",
+      teamInfo: isId ? "Studi Kasus Tim | Jan – Jun 2024" : "Team Project | Jan – Jun 2024",
+      tools: "Figma, Adobe XD",
+      overview: isId
+        ? "U-Asprak merupakan desain aplikasi seluler untuk memperbaiki proses manajemen asisten praktikum, mencakup penjadwalan, nilai, serta media komunikasi."
+        : "U-Asprak is a mobile application designed to streamline the teaching assistant management process, including scheduling, grading, and communication between lecturers and assistants.",
+      tasks: isId ? [
+        "Melakukan riset terhadap pengguna",
+        "Merancang alur wireframe ber-resolusi tinggi",
+        "Membangun protipe interaktif untuk dipakai dalam user testing",
+        "Mendefinisikan bahasa desain dan library komponen",
+      ] : [
+        "Conducted user research and created user personas",
+        "Designed wireframes and high-fidelity prototypes",
+        "Built interactive prototype for usability testing",
+        "Created design system and component library",
+      ],
+      platform: isId ? "Desain Aplikasi Mobile" : "Mobile App Design",
+      bg: "#5b6abf",
+      images: [
+        "/images/projects/u_asprak.png",
+        "/images/projects/u_asprak_2.png",
+        "/images/projects/u_asprak_3.png",
+      ],
+      link: "#",
+      _dir: "next",
+    },
+    {
+      name: "empEDU – Mobile App Design",
+      role: "UI/UX Designer",
+      teamInfo: isId ? "Proyek Tim | Agt – Des 2023" : "Team Project | Aug – Dec 2023",
+      tools: "Figma",
+      overview: isId
+        ? "empEDU merupakan desain aplikasi edukasi yang diciptakan agar siswa lebih leluasa belajar dan memeriksa kemajuan akademik dengan peranti yang interaktif."
+        : "empEDU is an educational mobile app designed to empower students with accessible learning materials, progress tracking, and interactive study tools.",
+      tasks: isId ? [
+        "Merancang alur pengguna dari awal hingga akhir",
+        "Merancang mockup resolusi tinggi di semua antarmuka layar",
+        "Mengembangkan prototipe untuk pengujian interaksi",
+        "Revisi hasil riset dan percobaan",
+      ] : [
+        "Designed end-to-end user flow and information architecture",
+        "Created high-fidelity UI mockups for all screens",
+        "Developed interactive prototypes for user testing",
+        "Iterated designs based on usability feedback",
+      ],
+      platform: isId ? "Desain Aplikasi Mobile" : "Mobile App Design",
+      bg: "#2a4a3a",
+      images: [
+        "/images/projects/empedu.png",
+        "/images/projects/empedu_2.png",
+        "/images/projects/empedu_3.png",
+      ],
+      link: "#",
+      _dir: "next",
+    },
+    {
+      name: "IUDEX – Team Portfolio Web Design",
+      role: isId ? "Desainer UI/UX, Pengembang Frontend" : "UI/UX Designer, Frontend Developer",
+      teamInfo: isId ? "Proyek Tim | Jan – Jun 2024" : "Team Project | Jan – Jun 2024",
+      tools: "Figma, HTML, CSS, JavaScript",
+      overview: isId
+        ? "IUDEX adalah situs web portofolio tim yang menampilkan kapabilitas, identitas visual sebuah tim pada desain tata letak kekinian bercorak profesional."
+        : "IUDEX is a team portfolio website designed to showcase the collective works and capabilities of a creative team, featuring a modern and professional layout.",
+      tasks: isId ? [
+        "Merancang prototipe tata letak lewat Figma yang disesuaikan dalam web",
+        "Mengimplementasikan frontend menggunakan susunan HTML, CSS, JavaScript",
+        "Memberikan pemanis tampilan transisi scrolling interaktif yang nyaman",
+        "Menguji fungsional dan tingkat ketanggapsegeraannya",
+      ] : [
+        "Designed responsive web layout using Figma",
+        "Developed frontend with HTML, CSS, and JavaScript",
+        "Implemented smooth scroll animations and transitions",
+        "Ensured cross-browser compatibility and responsiveness",
+      ],
+      platform: "Web Application",
+      bg: "#6a5acd",
+      images: [
+        "/images/projects/iudex.png",
+        "/images/projects/iudex_2.png",
+        "/images/projects/iudex_3.png",
+      ],
+      link: "#",
+      _dir: "next",
+    },
+    {
+      name: "Arch – Personal Portfolio Web Design",
+      role: isId ? "Desainer UI/UX, Pengembang Frontend" : "UI/UX Designer, Frontend Developer",
+      teamInfo: isId ? "Proyek Pribadi | 2024" : "Personal Project | 2024",
+      tools: "Figma, Vue.js, TailwindCSS",
+      overview: isId
+        ? "Arch adalah nama portofolio pengutamaan desain nan apik, dan ditunjang portofolio perupa berbasis laman untuk disajikan memperindah desain serta kebolehan penulisan."
+        : "Arch is a personal portfolio web design project focused on creating a visually stunning and interactive personal website to showcase design and development work.",
+      tasks: isId ? [
+        "Merancang seluruh tata letak web dan identitas merek portofolionya",
+        "Menulis koding dan menyesuaikan fronted website responsif",
+        "Memasukkan seluruh gaya animatif mikro interaksi nan halus",
+        "Mengoptimalkan kemudahan temu sistem cari (SEO)",
+      ] : [
+        "Designed complete portfolio layout and visual identity",
+        "Built responsive frontend with modern web technologies",
+        "Integrated smooth animations and micro-interactions",
+        "Optimized for performance and SEO",
+      ],
+      platform: "Web Application",
+      bg: "#7c3aed",
+      images: [
+        "/images/projects/arch.png",
+        "/images/projects/arch_2.png",
+        "/images/projects/arch_3.png",
+      ],
+      link: "#",
+      _dir: "next",
+    },
+    {
+      name: "Merch – Merch Design for Event",
+      role: isId ? "Desainer Grafis" : "Graphic Designer",
+      teamInfo: isId ? "Pengerjaan Bebas | 2024" : "Freelance Project | 2024",
+      tools: "Adobe Illustrator, Adobe Photoshop",
+      overview: isId
+        ? "Merch merupakan hasil komoditas rancangan pada barang berupa kaos sablon, kemasan, atau stiker acara dan materi promosi guna pemanfaatan tertentu pemasaran yang menarik."
+        : "Merch is a merchandise design project creating branded apparel and accessories for an event, including t-shirts, tote bags, and promotional materials.",
+      tasks: isId ? [
+        "Berkreasi membuat susunan ilustrasi grafis",
+        "Merilis format sesuai patokan industri pencetakan massal",
+        "Mengembangkan kemewahan branding dari keseluruhan barang",
+        "Bergabung berkongsi dalam hal kerja dan standar produksinya",
+      ] : [
+        "Created original merchandise designs and illustrations",
+        "Prepared print-ready artwork with proper specifications",
+        "Developed cohesive visual branding across all merchandise",
+        "Collaborated with manufacturing for production quality",
+      ],
+      platform: "Graphic Design",
+      bg: "#8b5cf6",
+      images: [
+        "/images/projects/merch.png",
+        "/images/projects/merch_2.png",
+        "/images/projects/merch_3.png",
+      ],
+      link: "#",
+      _dir: "next",
+    },
+  ];
+});
 </script>
 
 <style scoped>

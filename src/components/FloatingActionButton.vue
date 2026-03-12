@@ -73,7 +73,7 @@
           viewBox="0 0 24 24"
           fill="none"
           class="relative z-10 transition-transform duration-300"
-          :class="isOpen ? 'rotate-[135deg]' : 'rotate-0'"
+          :class="isOpen ? 'rotate-135' : 'rotate-0'"
         >
           <line
             x1="12"
@@ -100,7 +100,10 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useLanguage } from '@/composables/useLanguage';
+
+const { t, lang } = useLanguage();
 
 const isOpen = ref(false);
 const menuRef = ref(null);
@@ -165,44 +168,47 @@ const scrollToTop = (e) => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
-const actions = [
-  {
-    id: "top",
-    label: "Back to Top",
-    icon: "bi bi-arrow-up",
-    href: "#",
-    external: false,
-    action: scrollToTop,
-  },
-  {
-    id: "resume",
-    label: "Download CV",
-    icon: "bi bi-file-earmark-arrow-down",
-    href: "/resume.pdf",
-    external: true,
-  },
-  {
-    id: "email",
-    label: "Email",
-    icon: "bi bi-envelope",
-    href: "mailto:muhamadsidik@student.telkomuniversity.ac.id",
-    external: false,
-  },
-  {
-    id: "linkedin",
-    label: "LinkedIn",
-    icon: "bi bi-linkedin",
-    href: "https://linkedin.com/in/",
-    external: true,
-  },
-  {
-    id: "github",
-    label: "GitHub",
-    icon: "bi bi-github",
-    href: "https://github.com/MyusiZ3",
-    external: true,
-  },
-];
+const actions = computed(() => {
+  const isId = lang.value === 'ID';
+  return [
+    {
+      id: "top",
+      label: t('fab_top'),
+      icon: "bi bi-arrow-up",
+      href: "#",
+      external: false,
+      action: scrollToTop,
+    },
+    {
+      id: "resume",
+      label: t('fab_cv'),
+      icon: "bi bi-file-earmark-arrow-down",
+      href: "/resume.pdf",
+      external: true,
+    },
+    {
+      id: "email",
+      label: "Email",
+      icon: "bi bi-envelope",
+      href: "mailto:muhamadsidik@student.telkomuniversity.ac.id",
+      external: false,
+    },
+    {
+      id: "linkedin",
+      label: "LinkedIn",
+      icon: "bi bi-linkedin",
+      href: "https://linkedin.com/in/",
+      external: true,
+    },
+    {
+      id: "github",
+      label: "GitHub",
+      icon: "bi bi-github",
+      href: "https://github.com/MyusiZ3",
+      external: true,
+    },
+  ];
+});
 </script>
 
 <style scoped>

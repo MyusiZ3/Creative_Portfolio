@@ -10,13 +10,13 @@
           class="w-full lg:w-[40%] space-y-8"
         >
           <h2 class="text-4xl lg:text-5xl font-bold font-['Poppins'] text-white leading-tight">
-            <span class="text-[#A754FF]">Contact &</span> Connect<br />with Me
+            <span class="text-[#A754FF]">{{ t('contact_title_1') }}</span> {{ t('contact_title_2') }}<br />{{ t('contact_title_3') }}
           </h2>
 
           <div class="space-y-5">
             <!-- Phone -->
             <div>
-              <p class="text-gray-400 text-sm mb-1">Phone</p>
+              <p class="text-gray-400 text-sm mb-1">{{ t('contact_phone') }}</p>
               <a href="https://wa.me/6282282421322" target="_blank" class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300">
                 (+62) 822 8242 1322
               </a>
@@ -24,7 +24,7 @@
 
             <!-- Email -->
             <div>
-              <p class="text-gray-400 text-sm mb-1">Email</p>
+              <p class="text-gray-400 text-sm mb-1">{{ t('contact_email') }}</p>
               <a href="mailto:muhamadsidik.imy@gmail.com" class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300">
                 muhamadsidik.imy@gmail.com
               </a>
@@ -32,14 +32,14 @@
 
             <!-- Address -->
             <div>
-              <p class="text-gray-400 text-sm mb-1">Address</p>
+              <p class="text-gray-400 text-sm mb-1">{{ t('contact_addr') }}</p>
               <p class="text-white text-lg font-bold font-['Roboto']">Bandung, Indonesia</p>
             </div>
           </div>
 
           <!-- Social Media -->
           <div class="space-y-3">
-            <p class="text-gray-400 text-sm">Social Media</p>
+            <p class="text-gray-400 text-sm">{{ t('contact_socmed') }}</p>
             <div class="flex gap-3">
               <a href="https://github.com/MyusiZ3" target="_blank" class="w-8 h-8 rounded-full bg-[#A754FF] flex items-center justify-center text-white hover:opacity-80 transition-all duration-300">
                 <i class="bi bi-github text-sm"></i>
@@ -56,7 +56,7 @@
           <!-- Download Button -->
           <div class="pt-2">
             <button class="flex items-center gap-2 px-6 py-2 rounded-full border border-gray-400 text-white text-sm font-medium hover:bg-white hover:text-black transition-all duration-300 group">
-              DOWNLOAD
+              {{ t('contact_btn') }}
               <i class="bi bi-chevron-right text-xs transition-transform group-hover:translate-x-1"></i>
             </button>
           </div>
@@ -95,7 +95,7 @@
           :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 200 } }"
           class="text-gray-300 font-['Roboto'] text-sm flex items-center justify-center gap-2"
         >
-          &copy; 2025 Muhamad Sidik | All rights reserved.
+          &copy; 2025 Muhamad Sidik | {{ t('contact_footer') }}
         </p>
       </div>
     </div>
@@ -104,7 +104,9 @@
 </template>
 
 <script setup>
-// No specific logic needed for now
+import { useLanguage } from '@/composables/useLanguage';
+
+const { t } = useLanguage();
 </script>
 
 <style scoped>

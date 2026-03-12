@@ -17,10 +17,10 @@
         class="mb-12"
       >
         <h2 class="text-4xl lg:text-[56px] font-bold font-['Poppins'] text-gray-900 leading-tight mb-6">
-          <span class="text-violet-600">Achievements</span> &<br />Certificates
+          <span class="text-violet-600">{{ t('ach_title_1') }}<br></span> {{ t('ach_title_2') }}
         </h2>
         <p class="text-gray-600 font-['Roboto'] text-sm lg:text-base max-w-2xl leading-relaxed">
-          Achievements and certifications that reflect my creative journey — this section highlights a few selected milestones that shaped my skills in multimedia and digital design.
+          {{ t('ach_desc') }}
         </p>
         <div class="h-px w-full bg-gray-200 mt-8"></div>
       </div>
@@ -89,61 +89,85 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { useLanguage } from '@/composables/useLanguage';
 
+const { t, lang } = useLanguage();
 const selectedImg = ref(null);
 
-const achievements = [
-  {
-    title: 'Teaching Assistant (Asisten Praktikum)',
-    year: '2023-2025',
-    image: '/images/certificates/certificate_telkom_ta_1773251189179.png',
-    description: 'Appointed as a Teaching Assistant for 5 different multimedia courses across 4 semesters.',
-    points: [
-      'Supported lecturers in preparing materials, demos, and final project assessments',
-      'Reviewed student projects and provided feedback'
-    ],
-    linkText: 'More'
-  },
-  {
-    title: 'BNSP Multimedia – Certified (KKNI Level II)',
-    year: '2022',
-    image: '/images/certificates/certificate_bnsp_multimedia_1773251217060.png',
-    description: "National certification by BNSP (Indonesia's Professional Certification Authority) validating proficiency in:",
-    points: [
-      'Graphic Design / 2D Animation',
-      'Print Graphic Design / Audio-Video Editing'
-    ],
-    footer: 'Total: 14 verified skill units'
-  },
-  {
-    title: 'Vocational School Internship Completion',
-    year: '2021',
-    image: '/images/certificates/certificate_internship_production_1773251239968.png',
-    description: 'Completed a 6-month internship as Team Leader and Designer in Multimedia Production Unit.',
-    points: [
-      'Designed and produced printed merchandise',
-      'Final evaluation: "Sangat Baik" (Excellent)'
+const achievements = computed(() => {
+  if (lang.value === 'ID') {
+    return [
+      {
+        title: 'Asisten Praktikum (Teaching Assistant)',
+        year: '2023-2025',
+        image: '/images/certificates/certificate_telkom_ta_1773251189179.png',
+        description: 'Telah mengabdi sebagai Asisten Praktikum untuk 5 mata kuliah multimedia dalam 4 semester.',
+        linkText: 'Selengkapnya'
+      },
+      {
+        title: 'Sertifikasi BNSP Multimedia (KKNI Level II)',
+        year: '2022',
+        image: '/images/certificates/certificate_bnsp_multimedia_1773251217060.png',
+        description: 'Sertifikasi kompetensi nasional BNSP dalam bidang Desain Grafis, Animasi 2D, dan Audio-Video.',
+      },
+      {
+        title: 'Sertifikat Penyelesaian Magang/PKL',
+        year: '2021',
+        image: '/images/certificates/certificate_internship_production_1773251239968.png',
+        description: 'Penyelesaian magang 6 bulan sebagai Ketua Tim dan Desainer di Unit Produksi Multimedia, dengan evaluasi akhir "Sangat Baik".',
+      },
+      {
+        title: 'Finalis – LKS Desain Grafis Provinsi',
+        year: '2021',
+        image: '/images/projects/mathrift.webp', 
+        description: 'Mewakili OKU Timur di lomba LKS SMK tingkat Provinsi Sumsel, menyelesaikan pembuatan logo, mockup kemasan, serta presentasi dengan nilai 80.13.',
+      },
+      {
+        title: 'Web Development Path – Progate',
+        year: '2021',
+        image: '/images/projects/iudex.webp', 
+        description: 'Penyelesaian kursus modul dari dasar HTML & CSS.',
+        linkText: 'LIHAT'
+      }
     ]
-  },
-  {
-    title: 'Finalist – Graphic Design Technology',
-    year: '2021',
-    image: '/images/projects/mathrift.webp', // Using existing as placeholder for 4th if no gen
-    description: 'Represented OKU Timur in the provincial-level vocational student competition.',
-    points: [
-      'Completed modules in manual/digital logo design, digital packaging mockup, and creative ideation.',
-      'Achieved a final score of 80.13 out of 100'
-    ]
-  },
-  {
-    title: 'Web Development Path – Progate',
-    year: '2021',
-    image: '/images/projects/iudex.webp', // Using existing as placeholder for 5th
-    description: 'Completed 4 study sections and 3 exercises covering HTML & CSS fundamentals.',
-    linkText: 'VIEW'
   }
-];
+
+  return [
+    {
+      title: 'Teaching Assistant (Asisten Praktikum)',
+      year: '2023-2025',
+      image: '/images/certificates/certificate_telkom_ta_1773251189179.png',
+      description: 'Appointed as a Teaching Assistant for 5 different multimedia courses across 4 semesters.',
+      linkText: 'More'
+    },
+    {
+      title: 'BNSP Multimedia – Certified (KKNI Level II)',
+      year: '2022',
+      image: '/images/certificates/certificate_bnsp_multimedia_1773251217060.png',
+      description: "National certification by BNSP validating proficiency in Graphic Design / 2D Animation and Audio-Video Editing.",
+    },
+    {
+      title: 'Vocational School Internship Completion',
+      year: '2021',
+      image: '/images/certificates/certificate_internship_production_1773251239968.png',
+      description: 'Completed a 6-month internship as Team Leader and Designer in Multimedia Production Unit with "Excellent" grade.',
+    },
+    {
+      title: 'Finalist – Graphic Design Technology',
+      year: '2021',
+      image: '/images/projects/mathrift.webp', 
+      description: 'Represented OKU Timur in the provincial-level vocational student competition, completed packaging and logo design with a score of 80.13.',
+    },
+    {
+      title: 'Web Development Path – Progate',
+      year: '2021',
+      image: '/images/projects/iudex.webp', 
+      description: 'Completed study sections and exercises covering HTML & CSS fundamentals.',
+      linkText: 'VIEW'
+    }
+  ];
+});
 </script>
 
 <style scoped>

@@ -16,6 +16,10 @@ const handleNav = (target, label, event) => {
   emit("navigate", { target, label });
 };
 
+import { useLanguage } from "@/composables/useLanguage";
+
+const { lang, toggleLanguage, t } = useLanguage();
+
 onMounted(() => {
   // Small delay to trigger the morph entrance
   requestAnimationFrame(() => {
@@ -62,17 +66,17 @@ onMounted(() => {
       <div class="hidden lg:flex items-center gap-14 uppercase">
         <a
           href="#"
-          @click="handleNav('', 'Home', $event)"
+          @click="handleNav('', t('nav_home'), $event)"
           class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
           style="--delay: 1"
-          >Home</a
+          >{{ t('nav_home') }}</a
         >
         <a
           href="#about"
-          @click="handleNav('about', 'About', $event)"
+          @click="handleNav('about', t('nav_about'), $event)"
           class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
           style="--delay: 2"
-          >About</a
+          >{{ t('nav_about') }}</a
         >
         <!-- <a
           href="#experience"
@@ -83,38 +87,32 @@ onMounted(() => {
         > -->
         <a
           href="#skills"
-          @click="handleNav('skills', 'Skills', $event)"
+          @click="handleNav('skills', t('nav_skills'), $event)"
           class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
           style="--delay: 4"
-          >Skills</a
+          >{{ t('nav_skills') }}</a
         >
         <a
           href="#projects"
-          @click="handleNav('projects', 'Projects', $event)"
+          @click="handleNav('projects', t('nav_projects'), $event)"
           class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
           style="--delay: 5"
-          >Projects</a
+          >{{ t('nav_projects') }}</a
         >
-        <!-- <a
-          href="#achievements"
-          @click="handleNav('achievements', 'Achievements', $event)"
-          class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
-          style="--delay: 6"
-          >Achievements</a
-        > -->
         <a
           href="#contact"
-          @click="handleNav('contact', 'Contact Me', $event)"
+          @click="handleNav('contact', t('nav_contact'), $event)"
           class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
           style="--delay: 7"
-          >Contact Me</a
+          >{{ t('nav_contact') }}</a
         >
         <div class="flex items-center gap-3">
           <button
+            @click="toggleLanguage"
             class="nav-item w-8 h-8 flex items-center justify-center bg-violet-500 text-white rounded-xl hover:bg-violet-600 transition font-bold text-[13px] lg:text-[15px] font-['Roboto'] shadow-lg shadow-violet-500/30"
             style="--delay: 7"
           >
-            ID
+            {{ lang === 'EN' ? 'EN' : 'ID' }}
           </button>
           
           <button
@@ -148,52 +146,40 @@ onMounted(() => {
       <div class="flex flex-col items-center gap-6 uppercase overflow-hidden">
         <a
           href="#"
-          @click="handleNav('', 'Home', $event)"
+          @click="handleNav('', t('nav_home'), $event)"
           class="text-white font-bold text-[14px] font-['Roboto'] hover:text-violet-500 transition"
-          >Home</a
+          >{{ t('nav_home') }}</a
         >
         <a
           href="#about"
-          @click="handleNav('about', 'About', $event)"
+          @click="handleNav('about', t('nav_about'), $event)"
           class="text-white font-bold text-[14px] font-['Roboto'] hover:text-violet-500 transition"
-          >About</a
-        >
-        <a
-          href="#experience"
-          @click="handleNav('experience', 'Experience', $event)"
-          class="text-white font-bold text-[14px] font-['Roboto'] hover:text-violet-500 transition"
-          >Experience</a
+          >{{ t('nav_about') }}</a
         >
         <a
           href="#skills"
-          @click="handleNav('skills', 'Skills', $event)"
+          @click="handleNav('skills', t('nav_skills'), $event)"
           class="text-white font-bold text-[14px] font-['Roboto'] hover:text-violet-500 transition"
-          >Skills</a
+          >{{ t('nav_skills') }}</a
         >
         <a
           href="#projects"
-          @click="handleNav('projects', 'Projects', $event)"
+          @click="handleNav('projects', t('nav_projects'), $event)"
           class="text-white font-bold text-[14px] font-['Roboto'] hover:text-violet-500 transition"
-          >Projects</a
-        >
-        <a
-          href="#achievements"
-          @click="handleNav('achievements', 'Achievements', $event)"
-          class="text-white font-bold text-[14px] font-['Roboto'] hover:text-violet-500 transition"
-          >Achievements</a
+          >{{ t('nav_projects') }}</a
         >
         <a
           href="#contact"
-          @click="handleNav('contact', 'Contact', $event)"
+          @click="handleNav('contact', t('nav_contact'), $event)"
           class="text-white font-bold text-[14px] font-['Roboto'] hover:text-violet-500 transition"
-          >Contact Me</a
+          >{{ t('nav_contact') }}</a
         >
         <div class="flex gap-4 mt-2">
           <button
-            @click="isMenuOpen = false"
+            @click="toggleLanguage"
             class="w-10 h-10 flex items-center justify-center bg-violet-500 text-white rounded-xl hover:bg-violet-600 transition font-bold text-[14px] font-['Roboto'] shadow-lg shadow-violet-500/30"
           >
-            ID
+            {{ lang === 'EN' ? 'EN' : 'ID' }}
           </button>
           <button
             @click="isMenuOpen = false"

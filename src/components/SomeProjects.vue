@@ -1,5 +1,5 @@
 <template>
-  <section id="projects" class="bg-white pt-[10rem] pb-[16rem] px-6 lg:px-40 relative overflow-hidden ">
+  <section id="projects" class="bg-white pt-40 pb-64 px-6 lg:px-40 relative overflow-hidden ">
     <img
         src="/images/accent_3.png"
         alt="Accent Shape"
@@ -16,8 +16,8 @@
         :visible="{ opacity: 1, y: 0, transition: { duration: 700, ease: 'easeOut' } }"
         class="text-3xl lg:text-[48px] font-extrabold font-['Poppins'] text-[#1a1a2e] leading-tight mb-4"
       >
-        Some Projects I've Designed &amp;<br />
-        Developed
+        {{ t('some_proj_title_1') }}<br />
+        {{ t('some_proj_title_2') }}
       </h2>
 
       <!-- Subtitle -->
@@ -27,9 +27,7 @@
         :visible="{ opacity: 1, y: 0, transition: { duration: 700, delay: 150, ease: 'easeOut' } }"
         class="text-[#555] font-['Roboto'] text-[13px] lg:text-[15px] max-w-xl leading-relaxed mb-12 lg:mb-16"
       >
-        A selection of works spanning UI/UX design, game development, AR/VR,
-        and web-based platforms — built during academic and collaborative
-        projects.
+        {{ t('some_proj_desc') }}
       </p>
 
       <!-- Projects Grid -->
@@ -115,7 +113,10 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, onUnmounted, nextTick } from "vue";
+import { ref, reactive, onMounted, onUnmounted, nextTick, computed } from "vue";
+import { useLanguage } from '@/composables/useLanguage';
+
+const { t, lang } = useLanguage();
 
 // Track which cards are visible in viewport (for lazy loading)
 const visibleCards = reactive({});
@@ -166,62 +167,65 @@ onUnmounted(() => {
   if (observer) observer.disconnect();
 });
 
-const projects = [
-  {
-    name: "Luxion RideXP",
-    category: "Arcade Game Project",
-    bg: "#C0392B",
-    image: "/images/projects/luxion_ridexp.webp",
-  },
-  {
-    name: "MindEscape: VR Chamber",
-    category: "VR Game Project",
-    bg: "#7c3aed",
-    image: "/images/projects/mindescape_vr.webp",
-  },
-  {
-    name: "MathRift",
-    category: "Educational 2D Platformer Game",
-    bg: "#1a3a4a",
-    image: "/images/projects/mathrift.webp",
-  },
-  {
-    name: "Stellar Adventures",
-    category: "AR Game Project",
-    bg: "#1a2a3a",
-    image: "/images/projects/stellar_adventures.webp",
-  },
-  {
-    name: "U-Asprak",
-    category: "Mobile App Design",
-    bg: "#5b6abf",
-    image: "/images/projects/u_asprak.webp",
-  },
-  {
-    name: "empEDU",
-    category: "Mobile App Design",
-    bg: "#2a4a3a",
-    image: "/images/projects/empedu.webp",
-  },
-  {
-    name: "IUDEX",
-    category: "Team Portfolio Web Design",
-    bg: "#6a5acd",
-    image: "/images/projects/iudex.webp",
-  },
-  {
-    name: "Arch",
-    category: "Personal Portfolio Web Design",
-    bg: "#7c3aed",
-    image: "/images/projects/arch.webp",
-  },
-  {
-    name: "Merch",
-    category: "Merch design for Event",
-    bg: "#8b5cf6",
-    image: "/images/projects/merch.webp",
-  },
-];
+const projects = computed(() => {
+  const isId = lang.value === 'ID';
+  return [
+    {
+      name: "Luxion RideXP",
+      category: isId ? "Proyek Game Arkade" : "Arcade Game Project",
+      bg: "#C0392B",
+      image: "/images/projects/luxion_ridexp.webp",
+    },
+    {
+      name: "MindEscape: VR Chamber",
+      category: isId ? "Proyek Game VR" : "VR Game Project",
+      bg: "#7c3aed",
+      image: "/images/projects/mindescape_vr.webp",
+    },
+    {
+      name: "MathRift",
+      category: isId ? "Game Edukasi Platformer 2D" : "Educational 2D Platformer Game",
+      bg: "#1a3a4a",
+      image: "/images/projects/mathrift.webp",
+    },
+    {
+      name: "Stellar Adventures",
+      category: isId ? "Proyek Game AR" : "AR Game Project",
+      bg: "#1a2a3a",
+      image: "/images/projects/stellar_adventures.webp",
+    },
+    {
+      name: "U-Asprak",
+      category: isId ? "Desain Aplikasi Mobile" : "Mobile App Design",
+      bg: "#5b6abf",
+      image: "/images/projects/u_asprak.webp",
+    },
+    {
+      name: "empEDU",
+      category: isId ? "Desain Aplikasi Mobile" : "Mobile App Design",
+      bg: "#2a4a3a",
+      image: "/images/projects/empedu.webp",
+    },
+    {
+      name: "IUDEX",
+      category: isId ? "Desain Web Portofolio Tim" : "Team Portfolio Web Design",
+      bg: "#6a5acd",
+      image: "/images/projects/iudex.webp",
+    },
+    {
+      name: "Arch",
+      category: isId ? "Desain Web Portofolio Pribadi" : "Personal Portfolio Web Design",
+      bg: "#7c3aed",
+      image: "/images/projects/arch.webp",
+    },
+    {
+      name: "Merch",
+      category: isId ? "Desain Merchandise untuk Acara" : "Merch design for Event",
+      bg: "#8b5cf6",
+      image: "/images/projects/merch.webp",
+    },
+  ];
+});
 </script>
 
 <style scoped>

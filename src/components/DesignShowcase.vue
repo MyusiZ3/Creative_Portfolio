@@ -9,19 +9,19 @@
     >
       <div class="max-w-2xl text-left">
         <div class="inline-block bg-violet-500/10 text-violet-400 font-['Poppins'] font-bold text-[12px] lg:text-[14px] px-4 py-1.5 rounded-full mb-4 border border-violet-500/20">
-          Design Showcase
+          {{ t('ds_badge') }}
         </div>
         <h3 class="text-3xl lg:text-[40px] font-bold font-['Poppins'] text-white title-glow">
-          Visual Explorations
+          {{ t('ds_title') }}
         </h3>
         <p class="text-[#8E949F] font-['Roboto'] text-sm lg:text-[15px] mt-4 leading-relaxed">
-          A curated collection of my creative works, ranging from digital illustration, UI/UX conceptualization, to brand identity.
+          {{ t('ds_desc') }}
         </p>
       </div>
       
       <!-- Optional static desktop arrows replacement or just simple text -->
       <div class="hidden md:flex items-center gap-2 text-[#8E949F] font-['Roboto'] text-sm">
-        <span>Scroll</span>
+        <span>{{ t('ds_scroll') }}</span>
         <i class="bi bi-arrow-right"></i>
       </div>
     </div>
@@ -124,18 +124,18 @@
               
               <div class="space-y-5 mb-8">
                 <div>
-                  <p class="text-xs text-violet-400 font-semibold uppercase tracking-wider mb-1">Tools</p>
+                  <p class="text-xs text-violet-400 font-semibold uppercase tracking-wider mb-1">{{ t('ds_tools') }}</p>
                   <p class="text-sm text-gray-200 font-medium">{{ selectedDesign.tools }}</p>
                 </div>
                 <div>
-                  <p class="text-xs text-violet-400 font-semibold uppercase tracking-wider mb-1">Date</p>
+                  <p class="text-xs text-violet-400 font-semibold uppercase tracking-wider mb-1">{{ t('ds_date') }}</p>
                   <p class="text-sm text-gray-200 font-medium">{{ selectedDesign.date }}</p>
                 </div>
               </div>
 
               <div class="mt-auto">
                 <button @click="closeDesign" class="group relative flex items-center justify-center gap-2 w-full py-3.5 bg-white text-[#171717] font-semibold rounded-xl hover:bg-gray-200 transition-colors duration-300">
-                  <span>Close Detail</span>
+                  <span>{{ t('ds_close') }}</span>
                   <i class="bi bi-x text-lg transition-transform duration-300 group-hover:scale-110"></i>
                 </button>
               </div>
@@ -148,7 +148,10 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive, computed } from 'vue';
+import { useLanguage } from '@/composables/useLanguage';
+
+const { t, lang } = useLanguage();
 
 const selectedDesign = ref(null);
 const scrollContainer = ref(null);
@@ -165,53 +168,66 @@ const scroll = (direction) => {
   }
 };
 
-const designs = [
-  {
-    id: 1,
-    title: 'Perempuan & Ekonomi Berkelanjutan',
-    category: 'Infographic Design',
-    image: '/images/designs/design_women_empowerment_1773250246918.png',
-    description: 'A detailed infographic design highlighting the importance of women in sustainable economic growth. This project involved deep research into economic data and translating complex statistics into visual storytelling.',
-    tools: 'Adobe Illustrator, Figma',
-    date: 'February 2024'
-  },
-  {
-    id: 2,
-    title: 'Mental Health is Health',
-    category: 'Digital Illustration',
-    image: '/images/designs/design_mental_health_1773250268763.png',
-    description: 'A creative conceptual art piece focused on mental health awareness. The illustration represents the beauty and complexity of the human mind through vibrant colors and organic shapes.',
-    tools: 'Procreate, Adobe Photoshop',
-    date: 'January 2024'
-  },
-  {
-    id: 3,
-    title: 'Munchy Munch Branding',
-    category: 'Brand Identity',
-    image: '/images/designs/design_munchy_munch_1773250287724.png',
-    description: 'Full branding project for a modern snacks company. This included logo design, color palette selection, and toy-like food illustrations to appeal to a younger audience.',
-    tools: 'Figma, Illustrator',
-    date: 'December 2023'
-  },
-  {
-    id: 4,
-    title: 'Creative Art Showcase',
-    category: 'Digital Art',
-    image: '/images/projects/iudex.webp',
-    description: 'A collection of digital art experiments exploring lighting, texture, and composition.',
-    tools: 'Photoshop, Blender',
-    date: 'November 2023'
-  },
-  {
-    id: 5,
-    title: 'App UI Exploration',
-    category: 'UI/UX Design',
-    image: '/images/projects/empedu.webp',
-    description: 'A modern, clean mobile application interface conceptualizing new ways to display interactive educational content with smooth micro-interactions.',
-    tools: 'Figma, After Effects',
-    date: 'October 2023'
-  }
-];
+const designs = computed(() => {
+  const isId = lang.value === 'ID';
+  return [
+    {
+      id: 1,
+      title: 'Perempuan & Ekonomi Berkelanjutan',
+      category: isId ? 'Desain Infografis' : 'Infographic Design',
+      image: '/images/designs/design_women_empowerment_1773250246918.png',
+      description: isId 
+        ? 'Sebuah desain infografis yang menyoroti peranan wanita dalam pertumbuhan ekonomi berkelanjutan. Proyek ini memuat riset mendalam terhadap data ekonomi, mengubah statistik ke dalam penceritaan visual.'
+        : 'A detailed infographic design highlighting the importance of women in sustainable economic growth. This project involved deep research into economic data and translating complex statistics into visual storytelling.',
+      tools: 'Adobe Illustrator, Figma',
+      date: isId ? 'Februari 2024' : 'February 2024'
+    },
+    {
+      id: 2,
+      title: 'Mental Health is Health',
+      category: isId ? 'Ilustrasi Digital' : 'Digital Illustration',
+      image: '/images/designs/design_mental_health_1773250268763.png',
+      description: isId 
+        ? 'Sebuah ciptaan seni berkonsep yang memusatkan wawasannya perihal kesehatan mental. Ilustrasi ini menggambarkan keindahan dan kerumitan budi manusia pada palet warnanya.'
+        : 'A creative conceptual art piece focused on mental health awareness. The illustration represents the beauty and complexity of the human mind through vibrant colors and organic shapes.',
+      tools: 'Procreate, Adobe Photoshop',
+      date: isId ? 'Januari 2024' : 'January 2024'
+    },
+    {
+      id: 3,
+      title: 'Munchy Munch Branding',
+      category: isId ? 'Identitas Merek' : 'Brand Identity',
+      image: '/images/designs/design_munchy_munch_1773250287724.png',
+      description: isId 
+        ? 'Proyek pengembangan profil merek untuk sebuah jajaran makanan kekinian. Ini termasuk mendesain logo, susunan warna dan pemakaian corak grafis seperti yang tergambar.'
+        : 'Full branding project for a modern snacks company. This included logo design, color palette selection, and toy-like food illustrations to appeal to a younger audience.',
+      tools: 'Figma, Illustrator',
+      date: isId ? 'Desember 2023' : 'December 2023'
+    },
+    {
+      id: 4,
+      title: 'Creative Art Showcase',
+      category: isId ? 'Seni Digital' : 'Digital Art',
+      image: '/images/projects/iudex.webp',
+      description: isId 
+        ? 'Kumpulan latihan seni digital untuk menyelisik batas penguasaan rona, ketajaman bayang dan tata letak dalam menimba pencerapan cipta estetik secara utuh.'
+        : 'A collection of digital art experiments exploring lighting, texture, and composition.',
+      tools: 'Photoshop, Blender',
+      date: isId ? 'November 2023' : 'November 2023'
+    },
+    {
+      id: 5,
+      title: 'App UI Exploration',
+      category: isId ? 'Desain UI/UX' : 'UI/UX Design',
+      image: '/images/projects/empedu.webp',
+      description: isId 
+        ? 'Menyuguhkan tatap muka aplikasi minimalis modern guna menghantarkan rancangan terkini sebagai wadah memandu pencerapan materi secara efektif dan menghibur melalui ragam animasi mikro halus.'
+        : 'A modern, clean mobile application interface conceptualizing new ways to display interactive educational content with smooth micro-interactions.',
+      tools: 'Figma, After Effects',
+      date: isId ? 'Oktober 2023' : 'October 2023'
+    }
+  ];
+});
 
 const openDesign = (design) => {
   selectedDesign.value = design;

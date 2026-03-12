@@ -13,7 +13,7 @@
             <span
               class="text-transparent"
               style="-webkit-text-stroke: 2px #ffffff"
-              >Designer</span
+              >{{ t('hero_designer') }}</span
             >
           </h1>
           <p
@@ -22,9 +22,7 @@
             :visible="{ opacity: 1, y: 0, transition: { duration: 700, delay: 200, ease: 'easeOut' } }"
             class="text-white text-base lg:text-[16px] w-full lg:w-140 lg:ml-2 text-justify font-['Roboto']"
           >
-            Combine creative vision with technical skills to produce engaging
-            visual content across platforms — from graphic design and UI/UX to
-            interactive game experiences.
+            {{ t('hero_desc') }}
           </p>
           <div
             v-motion
@@ -35,7 +33,7 @@
             <button
               class="bg-violet-500 text-white rounded-full hover:bg-violet-600 transition text-lg lg:text-2xl font-medium px-6 py-3 lg:px-8 lg:py-4"
             >
-              Get In Touch <i class="bi bi-arrow-right"></i>
+              {{ t('hero_contact') }} <i class="bi bi-arrow-right"></i>
             </button>
           </div>
         </div>
@@ -65,13 +63,14 @@
             <h2
               class="text-4xl lg:text-[48px] font-bold font-['Poppins'] text-violet-500 mb-4 lg:mb-6"
             >
-              About Me
+              {{ t('about_title') }}
             </h2>
             <h3
               class="text-2xl lg:text-[28px] font-medium font-['Poppins'] text-[#FBDF3A] mb-4 lg:mb-6"
             >
               <Typewriter
-                :strings="['Hii...', 'I\'m Muhamad Sidik...']"
+                :key="lang"
+                :strings="[t('typewriter_1'), t('typewriter_2')]"
                 :autoStart="true"
                 :loop="true"
                 :delay="75"
@@ -83,17 +82,13 @@
               class="text-white space-y-4 text-sm lg:text-[16px] text-justify leading-relaxed font-['Roboto'] font-regular"
             >
               <p>
-                A passionate Multimedia Designer with a strong foundation in
-                visual design, game development, and user-focused interfaces.
+                {{ t('about_intro_1') }}
               </p>
               <p>
-                With experience as a Teaching Assistant and creative lead in
-                team projects, I blend design thinking and technical skills to
-                craft interactive experiences.
+                {{ t('about_intro_2') }}
               </p>
               <p>
-                Certified in multimedia production (BNSP - KKNI Level 2) and
-                driven by curiosity and creativity.
+                {{ t('about_intro_3') }}
               </p>
             </div>
           </div>
@@ -106,7 +101,7 @@
             <h3
               class="text-2xl lg:text-[28px] font-bold font-['Poppins'] text-violet-500 mb-4 lg:mb-6"
             >
-              Education
+              {{ t('education_title') }}
             </h3>
             <ul class="space-y-4 lg:space-y-6">
               <li
@@ -127,8 +122,7 @@
                   <p
                     class="text-white text-sm lg:text-[16px] font-['Roboto'] font-regular"
                   >
-                    Undergraduate in Applied Sciences, Multimedia Engineering
-                    Technology
+                    {{ t('edu_1_desc') }}
                   </p>
                   <p
                     class="text-white italic text-sm font-['Roboto'] font-light"
@@ -155,7 +149,7 @@
                   <p
                     class="text-white text-sm lg:text-[16px] font-['Roboto'] font-regular"
                   >
-                    Multimedia
+                    {{ t('edu_2_desc') }}
                   </p>
                   <p
                     class="text-white italic text-sm font-['Roboto'] font-light"
@@ -175,7 +169,7 @@
             <h3
               class="text-2xl lg:text-[28px] font-bold font-['Poppins'] text-violet-500 mb-4 lg:mb-6"
             >
-              Skills
+              {{ t('skills_title') }}
             </h3>
             <ul class="space-y-4 lg:space-y-6">
               <li
@@ -191,13 +185,12 @@
                   <h4
                     class="text-white text-sm lg:text-[18px] font-['Roboto'] font-extrabold"
                   >
-                    Hard Skills
+                    {{ t('hard_skills') }}
                   </h4>
                   <p
                     class="text-white text-sm lg:text-[16px] leading-relaxed font-['Roboto'] font-regular"
                   >
-                    UI/UX Design • Graphic Design • Layout Design • Game
-                    Development • Asset Compositing & AR/VR
+                    {{ t('hard_skills_desc') }}
                   </p>
                 </div>
               </li>
@@ -214,13 +207,12 @@
                   <h4
                     class="text-white text-sm lg:text-[18px] font-['Roboto'] font-extrabold"
                   >
-                    Soft Skills
+                    {{ t('soft_skills') }}
                   </h4>
                   <p
                     class="text-white text-sm lg:text-[16px] leading-relaxed font-['Roboto'] font-regular"
                   >
-                    Creative Thinking • Team Collaboration • Problem Solving •
-                    Attention to Detail • Time Management • Adaptability
+                    {{ t('soft_skills_desc') }}
                   </p>
                 </div>
               </li>
@@ -249,7 +241,7 @@
               <p
                 class="text-white text-[14px] lg:text-[16px] font-['Roboto'] font-regular"
               >
-                Years of Practical Experience
+                {{ t('stat_years') }}
               </p>
             </div>
             <div
@@ -271,7 +263,7 @@
               <p
                 class="text-white text-[14px] lg:text-[16px] font-['Roboto'] font-regular"
               >
-                Completed Personal & Team Projects
+                {{ t('stat_projects') }}
               </p>
             </div>
           </div>
@@ -298,7 +290,7 @@
             <h3
               class="text-2xl lg:text-[28px] font-bold font-['Poppins'] text-violet-500 mb-4 lg:mb-6"
             >
-              Languages
+              {{ t('lang_title') }}
             </h3>
             <ul class="space-y-4 lg:space-y-6 relative z-20">
               <li
@@ -319,7 +311,7 @@
                   <p
                     class="text-white text-sm lg:text-[16px] font-['Roboto'] font-medium"
                   >
-                    Native
+                    {{ t('lang_native') }}
                   </p>
                   <p
                     class="text-white text-sm italic lg:text-[16px] font-['Roboto'] font-light"
@@ -370,4 +362,7 @@
 
 <script setup>
 import Typewriter from 'vue-typewriter-effect'
+import { useLanguage } from "@/composables/useLanguage"
+
+const { t, lang } = useLanguage()
 </script>

@@ -1,5 +1,8 @@
 <script setup>
   import GithubCalendar from "./GithubCalendar.vue";
+  import { useLanguage } from '@/composables/useLanguage';
+
+  const { t } = useLanguage();
 
   function scrollToSection(sectionId) {
     const section = document.getElementById(sectionId);
@@ -34,7 +37,7 @@
         :visible="{ opacity: 1, scale: 1, transition: { duration: 500, type: 'spring', stiffness: 200, damping: 15 } }"
         class="inline-block bg-violet-500 text-white font-['Poppins'] font-bold text-[14px] lg:text-[16px] px-6 py-2 rounded-full mb-6 mt-10"
       >
-        MY SKILLS
+        {{ t('skills_badge') }}
       </div>
 
       <!-- Title -->
@@ -44,7 +47,7 @@
         :visible="{ opacity: 1, y: 0, transition: { duration: 700, delay: 100, ease: 'easeOut' } }"
         class="text-3xl lg:text-[48px] font-bold font-['Poppins'] text-white mb-6 uppercase tracking-wider"
       >
-        Some Software That I Use
+        {{ t('skills_heading') }}
       </h2>
 
       <!-- Subtitle -->
@@ -54,9 +57,7 @@
         :visible="{ opacity: 1, y: 0, transition: { duration: 700, delay: 200, ease: 'easeOut' } }"
         class="text-[#8E949F] font-['Roboto'] font-medium text-[14px] lg:text-[16px] max-w-3xl mx-auto leading-relaxed mb-16"
       >
-        A versatile toolkit that supports my workflow across UI/UX, game
-        development, and interactive media &mdash; from wireframes and design
-        assets to real-time prototypes and immersive experiences.
+        {{ t('skills_sub') }}
       </p>
 
       <!-- Divider with Dot Matrices -->

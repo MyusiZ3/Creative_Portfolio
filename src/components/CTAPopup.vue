@@ -16,22 +16,22 @@
 
         <!-- Content -->
         <div class="flex-1">
-          <h4 class="text-white font-['Poppins'] font-bold text-sm lg:text-base mb-1">Are you interested?</h4>
+          <h4 class="text-white font-['Poppins'] font-bold text-sm lg:text-base mb-1">{{ t('cta_title') }}</h4>
           <p class="text-gray-300 font-['Roboto'] text-xs lg:text-sm leading-relaxed mb-4">
-            I'm currently available for work. Let's create something amazing together! ✨
+            {{ t('cta_desc') }}
           </p>
           <div class="flex items-center gap-3">
             <button
               @click="goToContact"
               class="inline-flex items-center gap-2 bg-violet-500 text-white text-[11px] lg:text-xs font-bold px-4 py-2 rounded-lg hover:bg-violet-600 transition-colors shadow-lg shadow-violet-500/30"
             >
-              Contact Me <i class="bi bi-send-fill text-[10px]"></i>
+              {{ t('cta_contact') }} <i class="bi bi-send-fill text-[10px]"></i>
             </button>
             <button
               @click="closePopup"
               class="text-gray-400 text-[11px] lg:text-xs font-medium hover:text-white transition-colors"
             >
-              Not now
+              {{ t('cta_dismiss') }}
             </button>
           </div>
         </div>
@@ -50,7 +50,9 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useLanguage } from '@/composables/useLanguage';
 
+const { t } = useLanguage();
 const isVisible = ref(false);
 const isClosed = ref(false);
 

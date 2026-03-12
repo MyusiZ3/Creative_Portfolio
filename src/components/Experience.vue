@@ -32,7 +32,7 @@
           :visible="{ opacity: 1, y: 0, transition: { duration: 700, ease: 'easeOut' } }"
           class="text-4xl lg:text-[48px] font-bold font-['Poppins'] text-[#171717] mb-4 mt-20"
         >
-          Experience
+          {{ t('exp_title') }}
         </h2>
         <p
           v-motion
@@ -44,9 +44,7 @@
             >✦</span
           >
           <span
-            >Experienced in designing and developing interactive solutions
-            across education, design, games, AR/VR, and UI/UX platforms — from
-            lab teaching to full product prototyping.</span
+            >{{ t('exp_desc') }}</span
           >
         </p>
 
@@ -57,7 +55,7 @@
           :visible="{ opacity: 1, x: 0, transition: { duration: 600, ease: 'easeOut' } }"
           class="text-2xl lg:text-[24px] font-bold font-['Poppins'] text-violet-500 mb-8"
         >
-          Work & Organizational Experience
+          {{ t('exp_work_org') }}
         </h3>
 
         <!-- Continuous Timeline Row 1 -->
@@ -92,20 +90,17 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  Information Technology
+                  {{ t('exp_w1_title') }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  Internship | PT. Jasa & Kepariwisataan Jabar
+                  {{ t('exp_w1_sub') }}
                 </p>
                 <p
                   class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
                 >
-                  Supported IT infrastructure by troubleshooting devices,
-                  maintaining company hardware, contributing to UI design and
-                  web development, handling documentation, and collaborating
-                  with mentors for project delivery.
+                  {{ t('exp_w1_desc') }}
                 </p>
               </div>
             </div>
@@ -128,19 +123,17 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  Teaching Assistant
+                  {{ t('exp_w2_title') }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  School of Applied Science | Telkom University
+                  {{ t('exp_w2_sub') }}
                 </p>
                 <p
                   class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
                 >
-                  Assisted practical sessions across 5 courses, supporting
-                  students with technical tasks, evaluating their work, managing
-                  lab resources, and coordinating with lecturers.
+                  {{ t('exp_w2_desc') }}
                 </p>
               </div>
             </div>
@@ -163,19 +156,17 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  Publication & Media Designer
+                  {{ t('exp_w3_title') }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  MAPS 2023 Event | Telkom University
+                  {{ t('exp_w3_sub') }}
                 </p>
                 <p
                   class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
                 >
-                  Designed event merchandise and digital assets for promotion;
-                  collaborated with the documentation team on content coverage
-                  and visual output.
+                  {{ t('exp_w3_desc') }}
                 </p>
               </div>
             </div>
@@ -214,19 +205,17 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  Multimedia Project Crew
+                  {{ t('exp_w4_title') }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  SMKN 1 Belitang III
+                  {{ t('exp_w4_sub') }}
                 </p>
                 <p
                   class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
                 >
-                  Contributed to school multimedia organization by filming
-                  documentation, creating cover music videos, and supporting
-                  video production tasks for events and school activities.
+                  {{ t('exp_w4_desc') }}
                 </p>
               </div>
             </div>
@@ -249,20 +238,17 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  Team Leader - Intern Project
+                  {{ t('exp_w5_title') }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  Production Unit of SMKN 1 Belitang III
+                  {{ t('exp_w5_sub') }}
                 </p>
                 <p
                   class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
                 >
-                  Led a design-production project during vocational internship
-                  (PKL Based On Project), producing custom printed mugs in a
-                  multimedia lab. Managed design, printing, and coordination
-                  with other divisions. Rated "Excellent".
+                  {{ t('exp_w5_desc') }}
                 </p>
               </div>
             </div>
@@ -276,7 +262,7 @@
           :visible="{ opacity: 1, x: 0, transition: { duration: 600, ease: 'easeOut' } }"
           class="text-2xl lg:text-[24px] font-bold font-['Poppins'] text-violet-500 mb-8 mt-4"
         >
-          Projects Experience
+          {{ t('exp_proj_title') }}
         </h3>
 
         <!-- Continuous Timeline Project Row 1 -->
@@ -311,20 +297,17 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  Project Manager & Game Dev
+                  {{ t('exp_p1_title') }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  RideXP | Arcade Game Project
+                  {{ t('exp_p1_sub') }}
                 </p>
                 <p
                   class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
                 >
-                  Led a team to develop a Unity-based arcade game with ESP32
-                  input, JSON leaderboard, dynamic AI NPCs, and fully custom
-                  UI/UX. Also handled project planning, branding, and
-                  presentation for public exhibition.
+                  {{ t('exp_p1_desc') }}
                 </p>
               </div>
             </div>
@@ -347,19 +330,17 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  Game Dev & UI/UX Designer
+                  {{ t('exp_p2_title') }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  MathRift | Educational 2D Platformer Game
+                  {{ t('exp_p2_sub') }}
                 </p>
                 <p
                   class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
                 >
-                  Built a Unity-based educational platformer with Firebase
-                  integration, focused on math-physics gameplay, complete UI/UX
-                  flow, and optimized performance.
+                  {{ t('exp_p2_desc') }}
                 </p>
               </div>
             </div>
@@ -382,19 +363,17 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  VR Dev & ENV Designer
+                  {{ t('exp_p3_title') }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  MindEscape: VR Chamber - VR Game
+                  {{ t('exp_p3_sub') }}
                 </p>
                 <p
                   class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
                 >
-                  Developed an immersive VR escape room in Unity, designing
-                  environments, mechanics integration, user navigation, and
-                  optimizing headset performance.
+                  {{ t('exp_p3_desc') }}
                 </p>
               </div>
             </div>
@@ -433,19 +412,17 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  AR Developer & Designer
+                  {{ t('exp_p4_title') }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  Stellar Adventures | AR Game Project
+                  {{ t('exp_p4_sub') }}
                 </p>
                 <p
                   class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
                 >
-                  Created an AR space adventure in Unity with Vuforia, combining
-                  interactive markers, animated assets, and user-friendly
-                  interface.
+                  {{ t('exp_p4_desc') }}
                 </p>
               </div>
             </div>
@@ -468,19 +445,17 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  UI/UX Designer
+                  {{ t('exp_p5_title') }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  U-Asprak Project | Team Case Study
+                  {{ t('exp_p5_sub') }}
                 </p>
                 <p
                   class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
                 >
-                  Created high-fidelity mockups in Figma based on the team's
-                  wireframes. Defined visual style through early sketches, color
-                  palettes, and typography choices.
+                  {{ t('exp_p5_desc') }}
                 </p>
               </div>
             </div>
@@ -503,19 +478,17 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  Frontend & Backend Dev
+                  {{ t('exp_p6_title') }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  IUDEX Web Portfolio | Team Project
+                  {{ t('exp_p6_sub') }}
                 </p>
                 <p
                   class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
                 >
-                  Developed a portfolio website using PHP, SQL (CRUD), and
-                  JavaScript animation templates. Handled both frontend layout
-                  and backend logic.
+                  {{ t('exp_p6_desc') }}
                 </p>
               </div>
             </div>
@@ -525,3 +498,9 @@
     </div>
   </section>
 </template>
+
+<script setup>
+import { useLanguage } from '@/composables/useLanguage';
+
+const { t } = useLanguage();
+</script>
