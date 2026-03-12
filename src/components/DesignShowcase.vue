@@ -36,14 +36,14 @@
       <!-- Navigation Arrows -->
       <button 
         @click.stop="scroll('left')"
-        class="absolute -left-4 lg:-left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#171717] border border-white/10 text-white flex items-center justify-center opacity-0 md:group-hover/container:opacity-100 hover:border-violet-500 hover:text-violet-400 transition-all duration-300 shadow-xl ring-4 ring-[#171717]"
+        class="absolute -left-4 lg:-left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-[#1e1e2e] border border-white/10 text-white/60 flex items-center justify-center hover:border-violet-500 hover:text-violet-400 hover:bg-violet-500/10 transition-all duration-300 shadow-xl"
       >
         <i class="bi bi-chevron-left text-lg"></i>
       </button>
 
       <button 
         @click.stop="scroll('right')"
-        class="absolute -right-4 lg:-right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#171717] border border-white/10 text-white flex items-center justify-center opacity-0 md:group-hover/container:opacity-100 hover:border-violet-500 hover:text-violet-400 transition-all duration-300 shadow-xl ring-4 ring-[#171717]"
+        class="absolute -right-4 lg:-right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-[#1e1e2e] border border-white/10 text-white/60 flex items-center justify-center hover:border-violet-500 hover:text-violet-400 hover:bg-violet-500/10 transition-all duration-300 shadow-xl"
       >
         <i class="bi bi-chevron-right text-lg"></i>
       </button>
@@ -131,13 +131,6 @@
                   <p class="text-xs text-violet-400 font-semibold uppercase tracking-wider mb-1">{{ t('ds_date') }}</p>
                   <p class="text-sm text-gray-200 font-medium">{{ selectedDesign.date }}</p>
                 </div>
-              </div>
-
-              <div class="mt-auto">
-                <button @click="closeDesign" class="group relative flex items-center justify-center gap-2 w-full py-3.5 bg-white text-[#171717] font-semibold rounded-xl hover:bg-gray-200 transition-colors duration-300">
-                  <span>{{ t('ds_close') }}</span>
-                  <i class="bi bi-x text-lg transition-transform duration-300 group-hover:scale-110"></i>
-                </button>
               </div>
             </div>
           </div>

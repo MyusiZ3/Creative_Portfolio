@@ -17,7 +17,7 @@
         class="mb-12"
       >
         <h2 class="text-4xl lg:text-[56px] font-bold font-['Poppins'] text-gray-900 leading-tight mb-6">
-          <span class="text-violet-600">{{ t('ach_title_1') }}<br></span> {{ t('ach_title_2') }}
+          <span class="text-gray-900">{{ t('ach_title_1') }}<br></span> {{ t('ach_title_2') }}
         </h2>
         <p class="text-gray-600 font-['Roboto'] text-sm lg:text-base max-w-2xl leading-relaxed">
           {{ t('ach_desc') }}

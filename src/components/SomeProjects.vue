@@ -31,13 +31,13 @@
       </p>
 
       <!-- Projects Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
         <div
           v-for="(project, index) in projects"
           :key="project.name"
           :ref="(el) => { if (el) cardRefs[index] = el }"
           v-motion
-          :initial="{ opacity: 0, y: 40, scale: 0.95 }"
+          :initial="{ opacity: 0, y: 40, scale: 0.97 }"
           :visible="{
             opacity: 1,
             y: 0,
@@ -48,53 +48,52 @@
               ease: 'easeOut',
             },
           }"
-          class="project-card group relative rounded-2xl lg:rounded-3xl overflow-hidden aspect-4/3 cursor-pointer"
-          :style="{ background: project.bg }"
+          class="project-card group cursor-pointer"
         >
-          <!-- Blur placeholder background -->
+          <!-- Image Container -->
           <div
-            class="absolute inset-0 z-0"
+            class="relative rounded-2xl overflow-hidden aspect-4/3 mb-4"
             :style="{ backgroundColor: project.bg }"
-          ></div>
-
-          <!-- Project Image (lazy loaded) -->
-          <img
-            v-if="visibleCards[index]"
-            :src="project.image"
-            :alt="project.name"
-            loading="lazy"
-            decoding="async"
-            :fetchpriority="index < 3 ? 'high' : 'low'"
-            class="absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
-            :class="loadedCards[index] ? 'opacity-100' : 'opacity-0 scale-105 blur-sm'"
-            @load="onImageLoaded(index)"
-          />
-
-          <!-- Loading spinner placeholder -->
-          <div
-            v-if="visibleCards[index] && !loadedCards[index]"
-            class="absolute inset-0 flex items-center justify-center z-5"
           >
-            <div class="w-8 h-8 border-2 border-white/20 border-t-white/60 rounded-full animate-spin"></div>
+            <!-- Project Image (lazy loaded) -->
+            <img
+              v-if="visibleCards[index]"
+              :src="project.image"
+              :alt="project.name"
+              loading="lazy"
+              decoding="async"
+              :fetchpriority="index < 3 ? 'high' : 'low'"
+              class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-[1.04]"
+              :class="loadedCards[index] ? 'opacity-100' : 'opacity-0 scale-105 blur-sm'"
+              @load="onImageLoaded(index)"
+            />
+
+            <!-- Loading spinner placeholder -->
+            <div
+              v-if="visibleCards[index] && !loadedCards[index]"
+              class="absolute inset-0 flex items-center justify-center"
+            >
+              <div class="w-7 h-7 border-2 border-white/20 border-t-white/60 rounded-full animate-spin"></div>
+            </div>
+
+            <!-- Subtle hover overlay -->
+            <div
+              class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500"
+            ></div>
           </div>
 
-          <!-- Overlay gradient -->
-          <div
-            class="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300 z-10"
-          ></div>
-
-          <!-- Text overlay -->
-          <div class="absolute bottom-0 left-0 right-0 p-4 lg:p-6 z-20">
-            <h3
-              class="text-white font-['Poppins'] font-bold text-base lg:text-xl leading-tight mb-1 drop-shadow-lg"
-            >
-              {{ project.name }}
-            </h3>
+          <!-- Text Below Image -->
+          <div class="px-1">
             <p
-              class="text-white/80 font-['Roboto'] text-xs lg:text-sm font-medium drop-shadow-md"
+              class="text-violet-500 font-['Roboto'] text-[11px] lg:text-xs font-semibold uppercase tracking-wider mb-1.5"
             >
               {{ project.category }}
             </p>
+            <h3
+              class="text-[#1a1a2e] font-['Poppins'] font-semibold text-[15px] lg:text-[17px] leading-snug group-hover:text-violet-600 transition-colors duration-300"
+            >
+              {{ project.name }}
+            </h3>
           </div>
         </div>
       </div>
@@ -147,7 +146,7 @@ onMounted(() => {
         });
       },
       {
-        rootMargin: "200px 0px", // Start loading 200px before entering viewport
+        rootMargin: "200px 0px",
         threshold: 0,
       }
     );
@@ -230,16 +229,12 @@ const projects = computed(() => {
 
 <style scoped>
 .project-card {
-  transition:
-    transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    box-shadow 0.4s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   content-visibility: auto;
   contain-intrinsic-size: auto 300px;
 }
 
 .project-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
 }
 </style>
