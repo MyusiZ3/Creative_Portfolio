@@ -9,6 +9,7 @@
   <ContactMe />
   <FloatingActionButton />
   <CTAPopup />
+  <CursorMultiFollow />
 
   <!-- Page Reveal Transition -->
   <PageReveal
@@ -31,6 +32,7 @@ import ContactMe from "@/components/ContactMe.vue";
 import PageReveal from "@/components/PageReveal.vue";
 import FloatingActionButton from "@/components/FloatingActionButton.vue";
 import CTAPopup from "@/components/CTAPopup.vue";
+import CursorMultiFollow from "@/components/CursorMultiFollow.vue";
 import { useLanguage } from "@/composables/useLanguage";
 
 const { lang, toggleLanguage } = useLanguage();

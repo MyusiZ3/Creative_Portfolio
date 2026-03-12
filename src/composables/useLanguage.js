@@ -47,6 +47,7 @@ const translations = {
     stat_years: "Years of Practical Experience",
     stat_projects: "Completed Personal & Team Projects",
     lang_native: "Native",
+    lang_title: "Language",
 
     // Experience
     exp_title: "Experience",
@@ -178,6 +179,7 @@ const translations = {
     stat_years: "Tahun Pengalaman Praktis",
     stat_projects: "Proyek Pribadi & Tim Terselesaikan",
     lang_native: "Asli",
+    lang_title: "Bahasa",
 
     // Experience
     exp_title: "Pengalaman",
