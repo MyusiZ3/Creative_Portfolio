@@ -58,7 +58,7 @@ onMounted(() => {
         class="flex items-center gap-2 relative z-50 nav-item"
         style="--delay: 0"
       >
-        <img src="/images/logo.png" alt="logo" class="w-10 lg:w-14" />
+        <img src="/images/logo.png" alt="logo" class="w-10 lg:w-14 aspect-square object-contain" />
         <a
           href="#"
           @click="handleNav('', 'Home', $event)"
