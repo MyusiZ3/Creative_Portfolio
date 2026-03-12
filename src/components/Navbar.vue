@@ -66,13 +66,13 @@ onMounted(() => {
           style="--delay: 2"
           >About</a
         >
-        <a
+        <!-- <a
           href="#experience"
           @click="handleNav('experience', 'Experience', $event)"
           class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
           style="--delay: 3"
           >Experience</a
-        >
+        > -->
         <a
           href="#skills"
           @click="handleNav('skills', 'Skills', $event)"
@@ -87,13 +87,13 @@ onMounted(() => {
           style="--delay: 5"
           >Projects</a
         >
-        <a
+        <!-- <a
           href="#achievements"
           @click="handleNav('achievements', 'Achievements', $event)"
           class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
           style="--delay: 6"
           >Achievements</a
-        >
+        > -->
         <a
           href="#contact"
           @click="handleNav('contact', 'Contact Me', $event)"
