@@ -1,15 +1,15 @@
 <template>
   <div class="bg-[#171717]">
-    <section class="pt-12 lg:py-16 px-6 lg:px-40 overflow-hidden">
-      <div class="container mx-auto space-y-8 lg:space-y-10 relative">
+    <section class="pt-12 xl:py-16 px-6 xl:px-40 overflow-hidden">
+      <div class="container mx-auto space-y-8 xl:space-y-10 relative">
         <div class="relative z-20">
           <h1
             v-motion
             :initial="{ opacity: 0, y: 50 }"
             :visible="{ opacity: 1, y: 0, transition: { duration: 800, ease: 'easeOut' } }"
-            class="text-6xl sm:text-7xl lg:text-[110px] font-bold text-white mb-4 font-['Poppins']"
+            class="text-6xl sm:text-7xl xl:text-[110px] font-bold text-white mb-4 font-['Poppins']"
           >
-            Multimedia <br class="block lg:hidden" />
+            Multimedia <br class="block xl:hidden" />
             <span
               class="text-transparent"
               style="-webkit-text-stroke: 2px #ffffff"
@@ -20,7 +20,7 @@
             v-motion
             :initial="{ opacity: 0, y: 30 }"
             :visible="{ opacity: 1, y: 0, transition: { duration: 700, delay: 200, ease: 'easeOut' } }"
-            class="text-white text-base lg:text-[16px] w-full lg:w-140 lg:ml-2 text-justify font-['Roboto']"
+            class="text-white text-base xl:text-[16px] w-full xl:w-140 xl:ml-2 text-justify font-['Roboto']"
           >
             {{ t('hero_desc') }}
           </p>
@@ -28,10 +28,10 @@
             v-motion
             :initial="{ opacity: 0, y: 20 }"
             :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 400, ease: 'easeOut' } }"
-            class="mt-6 lg:mt-8"
+            class="mt-6 xl:mt-8"
           >
             <button
-              class="bg-violet-500 text-white rounded-full hover:bg-violet-600 transition text-lg lg:text-2xl font-medium px-6 py-3 lg:px-8 lg:py-4"
+              class="bg-violet-500 text-white rounded-full hover:bg-violet-600 transition text-lg xl:text-2xl font-medium px-6 py-3 xl:px-8 xl:py-4"
             >
               {{ t('hero_contact') }} <i class="bi bi-arrow-right"></i>
             </button>
@@ -39,15 +39,62 @@
         </div>
       </div>
     </section>
-    <div class="flex justify-end">
-      <img
-        v-motion
-        :initial="{ opacity: 0, x: 80 }"
-        :visible="{ opacity: 1, x: 0, transition: { duration: 900, delay: 300, ease: 'easeOut' } }"
-        src="/images/Hero_Dsg.png"
-        alt="hero"
-        class="w-160 lg:w-340 sm:w-3/4 mt-1 lg:-mt-86 relative z-12 lg:mx-0 lg:mr-0"
-      />
+    <!-- Hero Image Composition -->
+    <div class="relative w-full mt-1 lg:-mt-60 z-40 pointer-events-none">
+      <div class="flex justify-end">
+        <div class="relative w-[85%] lg:w-[78%] mt-[-7rem]">
+          <!-- Main Hero Photo -->
+          <img
+            v-motion
+            :initial="{ opacity: 0, scale: 0.9, y: 40 }"
+            :visible="{ opacity: 1, scale: 1, y: 0, transition: { duration: 900, delay: 200, ease: 'easeOut' } }"
+            src="/images/hero/hero_main.png"
+            alt="Hero Main"
+            class="w-full h-auto relative z-10"
+          />
+          
+
+          <!-- VISUALZZ* -->
+          <img
+            v-motion
+            :initial="{ opacity: 0, x: 60, rotate: 10 }"
+            :visible="{ opacity: 1, x: 0, rotate: 0, transition: { type: 'spring', stiffness: 120, damping: 14, delay: 500 } }"
+            src="/images/hero/visual.png"
+            alt="Visualzz"
+            class="absolute -top-[0%] right-[-5%] lg:right-[8%] w-[35%] lg:w-[30%] lg:-top-[-5%] z-20 pointer-events-none"
+          />
+
+          <!-- UI/UX + Branding & Identity Badge -->
+          <img
+            v-motion
+            :initial="{ opacity: 0, x: -50, rotate: -15 }"
+            :visible="{ opacity: 1, x: 0, rotate: 0, transition: { type: 'spring', stiffness: 130, damping: 14, delay: 600 } }"
+            src="/images/hero/branding.png"
+            alt="Branding & Identity"
+            class="absolute top-[50%] left-[-8%] lg:left-[-14%] w-[30%] lg:w-[25%] z-20 pointer-events-none"
+          />
+
+          <!-- User Experience Design -->
+          <img
+            v-motion
+            :initial="{ opacity: 0, y: 40, scale: 0.8 }"
+            :visible="{ opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 140, damping: 16, delay: 700 } }"
+            src="/images/hero/ux_design.png"
+            alt="User Experience Design"
+            class="absolute bottom-[5%] lg:bottom-[0%] lg:left-[1%] w-[40%] lg:w-[31%] z-20 pointer-events-none"
+          />
+
+          <!-- Hire Me Badge -->
+          <img
+            v-motion
+            :initial="{ opacity: 0, scale: 0, rotate: -90 }"
+            :visible="{ opacity: 1, scale: 1, rotate: 0, transition: { type: 'spring', stiffness: 200, damping: 12, delay: 800 } }"
+            src="/images/hero/hire_me.png"
+            alt="Hire Me"
+            class="absolute bottom-[10%] lg:bottom-[4%] right-[2%] lg:right-[10%] w-[13%] lg:w-[18%] z-20 pointer-events-none"
+          />
+        </div>
+      </div>
     </div>
 
     <section id="about" class="py-10 lg:py-40 px-6 lg:px-23">
@@ -366,3 +413,14 @@ import { useLanguage } from "@/composables/useLanguage"
 
 const { t, lang } = useLanguage()
 </script>
+
+<style scoped>
+.hero-hire-spin {
+  animation: slowSpin 12s linear infinite;
+}
+
+@keyframes slowSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+</style>
