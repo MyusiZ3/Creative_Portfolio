@@ -49,10 +49,11 @@
             },
           }"
           class="project-card group cursor-pointer"
+          @click="scrollToDetailedProject(index)"
         >
           <!-- Image Container -->
           <div
-            class="relative rounded-2xl overflow-hidden aspect-4/3 mb-4"
+            class="relative rounded-2xl overflow-hidden aspect-4/3 mb-4 shadow-sm group-hover:shadow-xl group-hover:shadow-violet-900/10 transition-all duration-500"
             :style="{ backgroundColor: project.bg }"
           >
             <!-- Project Image (lazy loaded) -->
@@ -63,7 +64,7 @@
               loading="lazy"
               decoding="async"
               :fetchpriority="index < 3 ? 'high' : 'low'"
-              class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-[1.04]"
+              class="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-110"
               :class="loadedCards[index] ? 'opacity-100' : 'opacity-0 scale-105 blur-sm'"
               @load="onImageLoaded(index)"
             />
@@ -76,21 +77,27 @@
               <div class="w-7 h-7 border-2 border-white/20 border-t-white/60 rounded-full animate-spin"></div>
             </div>
 
-            <!-- Subtle hover overlay -->
-            <div
-              class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500"
-            ></div>
+            <!-- Elegant gradient overlay -->
+            <div class="absolute inset-0 bg-linear-to-t from-[#1a1a2e]/70 via-[#1a1a2e]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+            <!-- Glassmorphic View Icon -->
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]">
+              <div class="w-10 h-10 lg:w-16 lg:h-16 bg-white/20 backdrop-blur-md text-white rounded-full flex items-center justify-center shadow-lg border border-white/30 hover:bg-white/30 transition-colors">
+                <i class="bi bi-arrow-up-right text-lg lg:text-xl"></i>
+              </div>
+            </div>
           </div>
 
           <!-- Text Below Image -->
-          <div class="px-1">
+          <div class="px-1 transform transition-transform duration-500 group-hover:translate-x-1 lg:group-hover:translate-x-1.5">
             <p
-              class="text-violet-500 font-['Roboto'] text-[11px] lg:text-xs font-semibold uppercase tracking-wider mb-1.5"
+              class="text-violet-500 font-['Roboto'] text-[10px] lg:text-[11px] font-bold uppercase tracking-widest mb-1.5 flex items-center gap-2"
             >
+              <span class="w-1.5 h-1.5 bg-violet-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(139,92,246,0.8)]"></span>
               {{ project.category }}
             </p>
             <h3
-              class="text-[#1a1a2e] font-['Poppins'] font-semibold text-[15px] lg:text-[17px] leading-snug group-hover:text-violet-600 transition-colors duration-300"
+              class="text-[#1a1a2e] font-['Poppins'] font-semibold text-[13px] lg:text-[17px] leading-snug group-hover:text-violet-600 transition-colors duration-300"
             >
               {{ project.name }}
             </h3>
@@ -116,6 +123,10 @@ import { ref, reactive, onMounted, onUnmounted, nextTick, computed } from "vue";
 import { useLanguage } from '@/composables/useLanguage';
 
 const { t, lang } = useLanguage();
+
+const scrollToDetailedProject = (index) => {
+  window.dispatchEvent(new CustomEvent('scrollToProject', { detail: index }));
+};
 
 // Track which cards are visible in viewport (for lazy loading)
 const visibleCards = reactive({});

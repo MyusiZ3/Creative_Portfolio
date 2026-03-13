@@ -48,6 +48,7 @@
         <div
           v-for="(project, index) in visibleProjects"
           :key="project.name"
+          :id="'my-project-' + index"
           v-motion
           :initial="{ opacity: 0, x: index % 2 === 0 ? -80 : 80, y: 30 }"
           :visible="{
@@ -485,7 +486,23 @@ const prevSlide = (projectIdx, total) => {
 
 // Auto-play carousel
 let autoPlayInterval = null;
+
+const handleScrollToProject = (e) => {
+  const idx = e.detail;
+  if (idx >= 4 && !showAll.value) {
+    showAll.value = true;
+  }
+  nextTick(() => {
+    const el = document.getElementById('my-project-' + idx);
+    if (el) {
+      const y = el.getBoundingClientRect().top + window.scrollY - 100;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  });
+};
+
 onMounted(() => {
+  window.addEventListener('scrollToProject', handleScrollToProject);
   autoPlayInterval = setInterval(() => {
     projects.value.forEach((project, idx) => {
       if (project.images.length > 1) {
@@ -498,6 +515,7 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
+  window.removeEventListener('scrollToProject', handleScrollToProject);
   if (autoPlayInterval) clearInterval(autoPlayInterval);
 });
 
