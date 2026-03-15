@@ -31,7 +31,8 @@
             class="mt-6 xl:mt-8"
           >
             <button
-              class="bg-violet-500 text-white rounded-full hover:bg-violet-600 transition text-lg xl:text-2xl font-medium px-6 py-3 xl:px-8 xl:py-4"
+              @click="scrollToContact"
+              class="bg-violet-500 text-white rounded-full hover:bg-violet-600 transition text-lg xl:text-2xl font-medium px-6 py-3 xl:px-8 xl:py-4 pointer-events-auto"
             >
               {{ t('hero_contact') }} <i class="bi bi-arrow-right"></i>
             </button>
@@ -40,9 +41,9 @@
       </div>
     </section>
     <!-- Hero Image Composition -->
-    <div class="relative w-full mt-1 lg:-mt-60 z-40 pointer-events-none">
+    <div class="relative w-full mt-1 lg:-mt-60 z-10 pointer-events-none">
       <div class="flex justify-end">
-        <div class="relative w-[85%] lg:w-[78%] mt-[-7rem]">
+        <div class="relative w-[85%] lg:w-[78%] -mt-16 lg:-mt-28">
           <!-- Main Hero Photo -->
           <img
             v-motion
@@ -412,6 +413,13 @@ import Typewriter from 'vue-typewriter-effect'
 import { useLanguage } from "@/composables/useLanguage"
 
 const { t, lang } = useLanguage()
+
+const scrollToContact = () => {
+  const el = document.getElementById('contact');
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth' });
+  }
+};
 </script>
 
 <style scoped>

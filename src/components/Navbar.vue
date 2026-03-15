@@ -21,6 +21,11 @@ const handleToggleLang = () => {
   emit("toggle-lang");
 };
 
+const handleMobileNotification = () => {
+  isMenuOpen.value = false;
+  emit("show-notification");
+};
+
 import { useLanguage } from "@/composables/useLanguage";
 
 const { lang, toggleLanguage, t } = useLanguage();
@@ -188,8 +193,8 @@ onMounted(() => {
             {{ lang === 'EN' ? 'EN' : 'ID' }}
           </button>
           <button
-            @click="isMenuOpen = false; $emit('show-notification')"
-            class="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 text-gray-300 rounded-xl hover:bg-violet-500 hover:text-white hover:border-violet-500 transition relative shadow-lg"
+            @click="handleMobileNotification"
+            class="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 text-gray-300 rounded-xl hover:bg-violet-500 hover:text-white hover:border-violet-500 transition relative shadow-lg pointer-events-auto"
           >
             <i class="bi bi-bell-fill text-base"></i>
             <span class="absolute -top-1 -right-1 flex h-3 w-3">
