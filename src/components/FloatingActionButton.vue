@@ -12,43 +12,45 @@
   <div class="fixed bottom-6 right-6 z-9999 flex flex-col items-end gap-0">
     <!-- Action Items -->
     <div class="flex flex-col items-end mb-4" ref="menuRef">
-      <div
-        v-for="(item, index) in actions"
-        :key="item.id"
-        class="flex items-center gap-3 mb-3"
-        :style="{
-          opacity: isOpen ? 1 : 0,
-          transform: isOpen
-            ? 'translateY(0) scale(1)'
-            : `translateY(${(actions.length - index) * 12}px) scale(0.6)`,
-          transition: isOpen
-            ? `all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) ${index * 60}ms`
-            : `all 0.25s cubic-bezier(0.55, 0, 1, 0.45) ${(actions.length - 1 - index) * 40}ms`,
-          pointerEvents: isOpen ? 'auto' : 'none',
-        }"
-      >
-        <!-- Tooltip Label -->
-        <span
-          class="px-3.5 py-1.5 bg-[#1e1e2e]/90 text-white/80 text-[13px] font-['Roboto'] font-medium rounded-lg border border-white/10 backdrop-blur-sm shadow-lg whitespace-nowrap"
+      <transition-group name="fab-list">
+        <div
+          v-for="(item, index) in actions"
+          :key="item.id"
+          class="flex items-center gap-3 mb-3"
+          :style="{
+            opacity: isOpen ? 1 : 0,
+            transform: isOpen
+              ? 'translateY(0) scale(1)'
+              : `translateY(${(actions.length - index) * 12}px) scale(0.6)`,
+            transition: isOpen
+              ? `all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) ${index * 60}ms`
+              : `all 0.25s cubic-bezier(0.55, 0, 1, 0.45) ${(actions.length - 1 - index) * 40}ms`,
+            pointerEvents: isOpen ? 'auto' : 'none',
+          }"
         >
-          {{ item.label }}
-        </span>
+          <!-- Tooltip Label -->
+          <span
+            class="px-3.5 py-1.5 bg-[#1e1e2e]/90 text-white/80 text-[13px] font-['Roboto'] font-medium rounded-lg border border-white/10 backdrop-blur-sm shadow-lg whitespace-nowrap"
+          >
+            {{ item.label }}
+          </span>
 
-        <!-- Action Circle -->
-        <a
-          :href="item.href"
-          :target="item.external ? '_blank' : undefined"
-          :rel="item.external ? 'noopener noreferrer' : undefined"
-          @click="item.action ? item.action($event) : handleItemClick()"
-          class="fab-circle w-12 h-12 rounded-full border flex items-center justify-center text-white transition-all duration-200 hover:scale-110 active:scale-95"
-          :class="[
-            item.bg ? item.bg : 'bg-[#1e1e2e]/60 backdrop-blur-sm',
-            item.border ? item.border : 'border-white/20'
-          ]"
-        >
-          <i :class="item.icon" class="text-lg"></i>
-        </a>
-      </div>
+          <!-- Action Circle -->
+          <a
+            :href="item.href"
+            :target="item.external ? '_blank' : undefined"
+            :rel="item.external ? 'noopener noreferrer' : undefined"
+            @click="item.action ? item.action($event) : handleItemClick()"
+            class="fab-circle w-12 h-12 rounded-full border flex items-center justify-center text-white transition-all duration-200 hover:scale-110 active:scale-95"
+            :class="[
+              item.bg ? item.bg : 'bg-[#1e1e2e]/60 backdrop-blur-sm',
+              item.border ? item.border : 'border-white/20'
+            ]"
+          >
+            <i :class="item.icon" class="text-lg"></i>
+          </a>
+        </div>
+      </transition-group>
     </div>
 
     <!-- Main FAB Button Wrapper -->
@@ -178,7 +180,7 @@ const showCVSub = ref(false);
 
 const actions = computed(() => {
   const isId = lang.value === 'ID';
-  const baseActions = [
+  const allActions = [
     {
       id: "top",
       label: t('fab_top'),
@@ -189,41 +191,52 @@ const actions = computed(() => {
     },
   ];
 
-  if (!showCVSub.value) {
-    baseActions.push({
-      id: "resume_toggle",
-      label: t('fab_cv'),
-      icon: "bi bi-file-earmark-arrow-down",
-      href: "javascript:void(0)",
-      external: false,
-      action: (e) => {
-        e.preventDefault();
-        showCVSub.value = true;
+  // CV Toggle Button
+  allActions.push({
+    id: "resume_toggle",
+    label: t('fab_cv'),
+    icon: showCVSub.value ? "bi bi-chevron-down" : "bi bi-file-earmark-arrow-down",
+    href: "javascript:void(0)",
+    external: false,
+    bg: showCVSub.value ? "bg-yellow-500 shadow-[0_0_15px_rgba(255,215,0,0.4)]" : undefined,
+    border: showCVSub.value ? "border-yellow-400" : "border-white/20",
+    action: (e) => {
+      e.preventDefault();
+      showCVSub.value = !showCVSub.value;
+    }
+  });
+
+  // Conditionally add sub-items if toggle is active
+  if (showCVSub.value) {
+    // Insert sub-items AFTER the toggle so they appear "inside" or "near" it in the stack
+    // Actually, in the vertical stack, to be "above" the toggle, they should be BEFORE it in the array
+    // Since Top is index 0 (top-most), adding Designer/Dev between Top and Toggle
+    allActions.splice(1, 0, 
+      {
+        id: "resume_designer",
+        label: "CV Designer",
+        icon: "bi bi-palette",
+        href: "/doc/CV_Muhamad Sidik_Graphic Designer_Intern_2025.pdf",
+        external: true,
+        bg: "bg-violet-600/90",
+        border: "border-violet-400/50",
+        action: handleItemClick
+      },
+      {
+        id: "resume_developer",
+        label: "CV Developer",
+        icon: "bi bi-code-slash",
+        href: "/doc/CV_Muhamad Sidik_IT_Intern.pdf",
+        external: true,
+        bg: "bg-blue-600/90",
+        border: "border-blue-400/50",
+        action: handleItemClick
       }
-    });
-  } else {
-    baseActions.push({
-      id: "resume_designer",
-      label: "CV Designer",
-      icon: "bi bi-palette",
-      href: "/doc/CV_Muhamad Sidik_Graphic Designer_Intern_2025.pdf",
-      external: true,
-      bg: "bg-violet-600/90",
-      border: "border-violet-400/50"
-    });
-    baseActions.push({
-      id: "resume_developer",
-      label: "CV Developer",
-      icon: "bi bi-code-slash",
-      href: "/doc/CV_Muhamad Sidik_IT_Intern.pdf",
-      external: true,
-      bg: "bg-blue-600/90",
-      border: "border-blue-400/50"
-    });
+    );
   }
 
   return [
-    ...baseActions,
+    ...allActions,
     {
       id: "email",
       label: "Email",
@@ -303,7 +316,6 @@ const actions = computed(() => {
 
 /* === Action circles subtle glow on hover === */
 .fab-circle {
-  background: rgba(30, 30, 46, 0.6);
   backdrop-filter: blur(8px);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
 }
@@ -326,5 +338,31 @@ const actions = computed(() => {
 .backdrop-enter-from,
 .backdrop-leave-to {
   opacity: 0;
+}
+
+/* === FAB List transition === */
+.fab-list-enter-active,
+.fab-list-leave-active {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.fab-list-enter-from {
+  opacity: 0;
+  transform: scale(0.3) translateY(20px) !important;
+}
+
+.fab-list-leave-active {
+  position: absolute;
+  right: 0;
+  pointer-events: none;
+}
+
+.fab-list-leave-to {
+  opacity: 0;
+  transform: scale(0.3) translateY(20px) !important;
+}
+
+.fab-list-move {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 </style>
