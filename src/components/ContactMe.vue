@@ -54,11 +54,40 @@
           </div>
 
           <!-- Download Button -->
-          <div class="pt-2">
-            <button class="flex items-center gap-2 px-6 py-2 rounded-full border border-gray-400 text-white text-sm font-medium hover:bg-white hover:text-black transition-all duration-300 group">
+          <div class="pt-2 flex flex-col sm:flex-row items-center gap-4">
+            <button 
+              @click="showCVOptions = !showCVOptions"
+              class="flex items-center gap-2 px-6 py-2 rounded-full border border-gray-400 text-sm font-medium transition-all duration-300 group"
+              :class="showCVOptions ? 'bg-white text-black border-white' : 'text-white hover:bg-white hover:text-black'"
+            >
               {{ t('contact_btn') }}
-              <i class="bi bi-chevron-right text-xs transition-transform group-hover:translate-x-1"></i>
+              <i class="bi bi-chevron-right text-xs transition-transform" :class="showCVOptions ? 'rotate-90' : 'group-hover:translate-x-1'"></i>
             </button>
+
+            <!-- CV Options -->
+            <div v-if="showCVOptions" 
+              v-motion
+              :initial="{ opacity: 0, x: -20 }"
+              :enter="{ opacity: 1, x: 0 }"
+              class="flex flex-col sm:flex-row gap-2"
+            >
+              <a 
+                href="/doc/CV_Muhamad Sidik_Graphic Designer_Intern_2025.pdf" 
+                download
+                class="flex items-center gap-2 px-5 py-2 rounded-full bg-violet-600 text-white text-xs font-bold hover:bg-violet-700 transition-all duration-300"
+              >
+                <i class="bi bi-palette"></i>
+                Designer
+              </a>
+              <a 
+                href="/doc/CV_Muhamad Sidik_IT_Intern.pdf" 
+                download
+                class="flex items-center gap-2 px-5 py-2 rounded-full bg-blue-600 text-white text-xs font-bold hover:bg-blue-700 transition-all duration-300"
+              >
+                <i class="bi bi-code-slash"></i>
+                Developer
+              </a>
+            </div>
           </div>
 
           <!-- Logo & Name -->
@@ -152,6 +181,8 @@ import { ref } from 'vue';
 import { useLanguage } from '@/composables/useLanguage';
 
 const { t, lang } = useLanguage();
+
+const showCVOptions = ref(false);
 
 // Heart Particles Logic
 const heartIconRef = ref(null);

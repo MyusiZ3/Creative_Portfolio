@@ -40,7 +40,11 @@
           :target="item.external ? '_blank' : undefined"
           :rel="item.external ? 'noopener noreferrer' : undefined"
           @click="item.action ? item.action($event) : handleItemClick()"
-          class="fab-circle w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/80 hover:border-violet-400 hover:text-violet-400 hover:bg-violet-500/10 transition-all duration-200 hover:scale-110 active:scale-95"
+          class="fab-circle w-12 h-12 rounded-full border flex items-center justify-center text-white transition-all duration-200 hover:scale-110 active:scale-95"
+          :class="[
+            item.bg ? item.bg : 'bg-[#1e1e2e]/60 backdrop-blur-sm',
+            item.border ? item.border : 'border-white/20'
+          ]"
         >
           <i :class="item.icon" class="text-lg"></i>
         </a>
@@ -156,10 +160,12 @@ const handleToggle = () => {
 
 const close = () => {
   isOpen.value = false;
+  showCVSub.value = false;
 };
 
 const handleItemClick = () => {
   isOpen.value = false;
+  showCVSub.value = false;
 };
 
 const scrollToTop = (e) => {
@@ -168,9 +174,11 @@ const scrollToTop = (e) => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
+const showCVSub = ref(false);
+
 const actions = computed(() => {
   const isId = lang.value === 'ID';
-  return [
+  const baseActions = [
     {
       id: "top",
       label: t('fab_top'),
@@ -179,13 +187,43 @@ const actions = computed(() => {
       external: false,
       action: scrollToTop,
     },
-    {
-      id: "resume",
+  ];
+
+  if (!showCVSub.value) {
+    baseActions.push({
+      id: "resume_toggle",
       label: t('fab_cv'),
       icon: "bi bi-file-earmark-arrow-down",
-      href: "/resume.pdf",
+      href: "javascript:void(0)",
+      external: false,
+      action: (e) => {
+        e.preventDefault();
+        showCVSub.value = true;
+      }
+    });
+  } else {
+    baseActions.push({
+      id: "resume_designer",
+      label: "CV Designer",
+      icon: "bi bi-palette",
+      href: "/doc/CV_Muhamad Sidik_Graphic Designer_Intern_2025.pdf",
       external: true,
-    },
+      bg: "bg-violet-600/90",
+      border: "border-violet-400/50"
+    });
+    baseActions.push({
+      id: "resume_developer",
+      label: "CV Developer",
+      icon: "bi bi-code-slash",
+      href: "/doc/CV_Muhamad Sidik_IT_Intern.pdf",
+      external: true,
+      bg: "bg-blue-600/90",
+      border: "border-blue-400/50"
+    });
+  }
+
+  return [
+    ...baseActions,
     {
       id: "email",
       label: "Email",
