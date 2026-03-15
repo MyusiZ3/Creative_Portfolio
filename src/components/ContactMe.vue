@@ -88,27 +88,157 @@
       
 
       <!-- Footer Info -->
-      <div class="w-full mt-8 pt-8 border-t border-white/10 text-center">
-        <p 
-          v-motion
-          :initial="{ opacity: 0, y: 20 }"
-          :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 200 } }"
-          class="text-gray-300 font-['Roboto'] text-sm flex items-center justify-center gap-2"
-        >
-          &copy; 2025 Muhamad Sidik | {{ t('contact_footer') }}
-        </p>
+      <div class="w-full mt-16 relative">
+        <!-- Floating Aura Background -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none -z-10 opacity-20">
+          <div class="absolute top-1/2 left-1/4 w-64 h-64 bg-violet-600/30 blur-[100px] animate-blob"></div>
+          <div class="absolute top-1/2 right-1/4 w-64 h-64 bg-[#FBDF3A]/10 blur-[100px] animate-blob animation-delay-2000"></div>
+        </div>
+
+        <!-- Animated Border Line -->
+        <div class="h-px w-full bg-linear-to-r from-transparent via-white/20 to-transparent relative overflow-hidden">
+          <div class="absolute inset-0 bg-linear-to-r from-transparent via-violet-500/50 to-transparent animate-shimmer"></div>
+        </div>
+
+        <!-- Infinite Marquee -->
+        <div class="py-10 overflow-hidden whitespace-nowrap opacity-10 select-none group/marquee">
+          <div class="inline-block animate-marquee-slow font-['Poppins'] font-bold text-3xl lg:text-5xl uppercase text-white transition-colors duration-700 group-hover/marquee:text-violet-500/50">
+            CREATIVE DESIGNER • MULTIMEDIA ENGINEER • UI/UX ENTHUSIAST • CREATIVE DESIGNER • MULTIMEDIA ENGINEER • UI/UX ENTHUSIAST •&nbsp;
+          </div>
+          <div class="inline-block animate-marquee-slow font-['Poppins'] font-bold text-3xl lg:text-5xl uppercase text-white transition-colors duration-700 group-hover/marquee:text-violet-500/50">
+            CREATIVE DESIGNER • MULTIMEDIA ENGINEER • UI/UX ENTHUSIAST • CREATIVE DESIGNER • MULTIMEDIA ENGINEER • UI/UX ENTHUSIAST •&nbsp;
+          </div>
+        </div>
+
+        <div class="pt-8 text-center relative z-10">
+          <p 
+            v-motion
+            :initial="{ opacity: 0, scale: 0.9 }"
+            :visible="{ opacity: 1, scale: 1, transition: { duration: 800, delay: 200 } }"
+            class="text-gray-300 font-['Roboto'] text-sm flex items-center justify-center gap-2 group cursor-default"
+          >
+            <span 
+              @click="spawnHeartParticles"
+              class="inline-block animate-bounce-slow text-violet-500 cursor-pointer active:scale-125 transition-transform"
+              ref="heartIconRef"
+            >
+              <i class="bi bi-heart-fill"></i>
+            </span>
+            &copy; 2025 Muhamad Sidik | 
+            <span class="hover:text-violet-400 transition-colors duration-300">{{ t('contact_footer') }}</span>
+          </p>
+        </div>
       </div>
     </div>
     
+    <!-- Heart Particles Container -->
+    <div v-for="p in heartParticles" :key="p.id" 
+      class="fixed pointer-events-none z-9999 text-violet-500"
+      :style="{
+        left: p.x + 'px',
+        top: p.y + 'px',
+        opacity: p.opacity,
+        transform: `translate(-50%, -50%) scale(${p.scale}) rotate(${p.rotate}deg)`,
+        transition: 'all 0.8s ease-out'
+      }"
+    >
+      <i class="bi bi-heart-fill"></i>
+    </div>
   </section>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { useLanguage } from '@/composables/useLanguage';
 
 const { t } = useLanguage();
+
+const heartIconRef = ref(null);
+const heartParticles = ref([]);
+let heartPid = 0;
+
+const spawnHeartParticles = () => {
+  if (!heartIconRef.value) return;
+  const rect = heartIconRef.value.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
+  const count = 8;
+  const newParticles = [];
+
+  for (let i = 0; i < count; i++) {
+    const id = heartPid++;
+    const angle = (Math.PI * 2 * i) / count + (Math.random() * 0.5);
+    const velocity = 50 + Math.random() * 50;
+    
+    const p = {
+      id,
+      x: centerX,
+      y: centerY,
+      opacity: 1,
+      scale: 0.5 + Math.random(),
+      rotate: Math.random() * 360,
+    };
+    newParticles.push(p);
+    heartParticles.value.push(p);
+
+    // Animate
+    setTimeout(() => {
+      p.x += Math.cos(angle) * velocity;
+      p.y += Math.sin(angle) * velocity - 20; // Float upwards slightly
+      p.opacity = 0;
+      p.scale = 0;
+      p.rotate += 90;
+    }, 50);
+  }
+
+  // Cleanup
+  setTimeout(() => {
+    heartParticles.value = heartParticles.value.filter(p => !newParticles.includes(p));
+  }, 1000);
+};
 </script>
 
 <style scoped>
-/* Specific animations or styles if needed */
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes marquee-slow {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animate-shimmer {
+  animation: shimmer 3s infinite linear;
+}
+
+.animate-marquee-slow {
+  animation: marquee-slow 30s linear infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounce 3s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
 </style>
