@@ -43,7 +43,7 @@
     <!-- Hero Image Composition -->
     <div class="relative w-full mt-1 lg:-mt-20 xl:-mt-60 z-10 pointer-events-none">
       <div class="flex justify-end">
-        <div class="relative w-[85%] lg:w-[78%] -mt-16 lg:-mt-20 xl:-mt-28">
+        <div class="relative w-[95%] lg:w-[78%] -mt-5 lg:-mt-20 xl:-mt-28">
           <!-- Main Hero Photo -->
           <img
             v-motion
@@ -62,7 +62,7 @@
             :visible="{ opacity: 1, x: 0, rotate: 0, transition: { type: 'spring', stiffness: 120, damping: 14, delay: 500 } }"
             src="/images/hero/visual.png"
             alt="Visualzz"
-            class="absolute -top-[0%] right-[-5%] lg:right-[8%] w-[35%] lg:w-[30%] lg:-top-[-5%] z-20 pointer-events-none"
+            class="absolute -top-[0%] right-[2%] lg:right-[8%] w-[38%] lg:w-[30%] lg:-top-[-5%] z-20 pointer-events-none"
           />
 
           <!-- UI/UX + Branding & Identity Badge -->
@@ -72,7 +72,7 @@
             :visible="{ opacity: 1, x: 0, rotate: 0, transition: { type: 'spring', stiffness: 130, damping: 14, delay: 600 } }"
             src="/images/hero/branding.png"
             alt="Branding & Identity"
-            class="absolute top-[50%] left-[-8%] lg:left-[-14%] w-[30%] lg:w-[25%] z-20 pointer-events-none"
+            class="absolute top-[30%] left-[-4%] lg:left-[-14%] w-[36%] lg:w-[25%] z-20 pointer-events-none"
           />
 
           <!-- User Experience Design -->
@@ -82,7 +82,7 @@
             :visible="{ opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 140, damping: 16, delay: 700 } }"
             src="/images/hero/ux_design.png"
             alt="User Experience Design"
-            class="absolute bottom-[5%] lg:bottom-[0%] lg:left-[1%] w-[40%] lg:w-[31%] z-20 pointer-events-none"
+            class="absolute bottom-[-7%] lg:bottom-[0%] lg:left-[1%] w-[40%] lg:w-[31%] z-20 pointer-events-none"
           />
 
           <!-- Hire Me Badge -->
@@ -92,7 +92,7 @@
             :visible="{ opacity: 1, scale: 1, rotate: 0, transition: { type: 'spring', stiffness: 200, damping: 12, delay: 800 } }"
             src="/images/hero/hire_me.png"
             alt="Hire Me"
-            class="absolute bottom-[10%] lg:bottom-[4%] right-[2%] lg:right-[10%] w-[13%] lg:w-[18%] z-20 pointer-events-none"
+            class="absolute bottom-[1.5%] lg:bottom-[4%] right-[10%] lg:right-[10%] w-[20%] lg:w-[18%] z-20 pointer-events-none"
           />
         </div>
       </div>
