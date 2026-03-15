@@ -241,7 +241,7 @@ const actions = computed(() => {
       id: "email",
       label: "Email",
       icon: "bi bi-envelope",
-      href: "mailto:muhamadsidik@student.telkomuniversity.ac.id",
+      href: "mailto:muhamadsidik.imy@gmail.com",
       external: false,
     },
     {
