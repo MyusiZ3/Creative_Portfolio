@@ -72,7 +72,7 @@
             :visible="{ opacity: 1, x: 0, rotate: 0, transition: { type: 'spring', stiffness: 130, damping: 14, delay: 600 } }"
             src="/images/hero/branding.png"
             alt="Branding & Identity"
-            class="absolute top-[30%] left-[-4%] lg:left-[-14%] w-[36%] lg:w-[25%] z-20 pointer-events-none"
+            class="absolute top-[50%] left-[-4%] lg:left-[-14%] w-[36%] lg:w-[30%] mt-[-10%] lg:mt-[1.5%] z-20 pointer-events-none"
           />
 
           <!-- User Experience Design -->
