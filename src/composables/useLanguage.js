@@ -106,6 +106,7 @@ const translations = {
     contact_socmed: "Social Media",
     contact_btn: "DOWNLOAD",
     contact_footer: "All rights reserved.",
+    contact_views: "Total Views",
 
     // CTA Popup
     cta_title: "Are you interested?",
@@ -238,6 +239,7 @@ const translations = {
     contact_socmed: "Media Sosial",
     contact_btn: "UNDUH",
     contact_footer: "Hak cipta dilindungi undang-undang.",
+    contact_views: "Total Kunjungan",
 
     // CTA Popup
     cta_title: "Tertarik?",

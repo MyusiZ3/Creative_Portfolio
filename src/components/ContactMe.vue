@@ -2,7 +2,6 @@
   <section id="contact" class="bg-[#141414] py-20 px-6 lg:px-16 xl:px-40 relative overflow-hidden">
     <div class="container mx-auto relative z-10">
       <div class="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
-        <!-- Left Side: Contact Info -->
         <div 
           v-motion
           :initial="{ opacity: 0, x: -50 }"
@@ -14,7 +13,6 @@
           </h2>
 
           <div class="space-y-5 w-full">
-            <!-- Phone -->
             <div>
               <p class="text-gray-400 text-sm mb-1">{{ t('contact_phone') }}</p>
               <a href="https://wa.me/6282282421322" target="_blank" class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300">
@@ -22,7 +20,6 @@
               </a>
             </div>
 
-            <!-- Email -->
             <div>
               <p class="text-gray-400 text-sm mb-1">{{ t('contact_email') }}</p>
               <a href="mailto:muhamadsidik.imy@gmail.com" class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300">
@@ -30,14 +27,12 @@
               </a>
             </div>
 
-            <!-- Address -->
             <div>
               <p class="text-gray-400 text-sm mb-1">{{ t('contact_addr') }}</p>
               <p class="text-white text-lg font-bold font-['Roboto']">Bandung, Indonesia</p>
             </div>
           </div>
 
-          <!-- Social Media -->
           <div class="space-y-3 flex flex-col items-center lg:items-start">
             <p class="text-gray-400 text-sm">{{ t('contact_socmed') }}</p>
             <div class="flex gap-3">
@@ -53,7 +48,6 @@
             </div>
           </div>
 
-          <!-- Download Button -->
           <div class="pt-2 flex flex-col sm:flex-row items-center gap-4">
             <button 
               @click="showCVOptions = !showCVOptions"
@@ -64,7 +58,6 @@
               <i class="bi bi-chevron-right text-xs transition-transform" :class="showCVOptions ? 'rotate-90' : 'group-hover:translate-x-1'"></i>
             </button>
 
-            <!-- CV Options -->
             <div v-if="showCVOptions" 
               v-motion
               :initial="{ opacity: 0, x: -20 }"
@@ -90,17 +83,36 @@
             </div>
           </div>
 
-          <!-- Logo & Name -->
-          <div class="pt-4 flex items-center gap-3">
-            <img src="/images/logo.png" alt="Logo" class="w-10 h-10 object-contain filter brightness-200" />
-            <div class="text-white font-bold leading-tight text-sm text-left">
-              <p>Muhamad</p>
-              <p>Sidik</p>
+          <div class="pt-6 flex flex-wrap items-center justify-center lg:justify-start gap-6 w-full">
+            <div class="flex items-center gap-3">
+              <img src="/images/logo.png" alt="Logo" class="w-10 h-10 object-contain filter brightness-200" />
+              <div class="text-white font-bold leading-tight text-sm text-left">
+                <p>Muhamad</p>
+                <p>Sidik</p>
+              </div>
+            </div>
+
+            <!-- Enhanced View Counter -->
+            <div 
+              v-motion
+              :initial="{ opacity: 0, scale: 0.9, y: 10 }"
+              :visible="{ opacity: 1, scale: 1, y: 0, transition: { duration: 600, delay: 400 } }"
+              class="flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-white/10 px-4 py-2 rounded-2xl group hover:border-[#A754FF]/50 hover:bg-white/10 transition-all duration-500 shadow-2xl"
+            >
+              <div class="relative">
+                <div class="absolute inset-0 bg-[#A754FF] blur-md opacity-20 group-hover:opacity-40 transition-opacity animate-pulse"></div>
+                <div class="relative w-8 h-8 rounded-lg bg-[#A754FF]/20 flex items-center justify-center text-[#A754FF] border border-[#A754FF]/30 group-hover:bg-[#A754FF] group-hover:text-white transition-all duration-500 overflow-hidden">
+                  <i class="bi bi-eye-fill text-lg animate-eye-blink"></i>
+                </div>
+              </div>
+              <div class="flex flex-col">
+                <p class="text-[9px] text-gray-400 uppercase tracking-[2px] font-black leading-none">{{ t('contact_views') }}</p>
+                <p class="text-white font-['Poppins'] font-bold text-base leading-none mt-1">{{ viewCount }}</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Right Side: Image -->
         <div 
           v-motion
           :initial="{ opacity: 0, scale: 0.9 }"
@@ -116,20 +128,16 @@
       </div>
       
 
-      <!-- Footer Info -->
       <div class="w-full mt-16 relative">
-        <!-- Floating Aura Background -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none -z-10 opacity-20">
           <div class="absolute top-1/2 left-1/4 w-64 h-64 bg-violet-600/30 blur-[100px] animate-blob"></div>
           <div class="absolute top-1/2 right-1/4 w-64 h-64 bg-[#FBDF3A]/10 blur-[100px] animate-blob animation-delay-2000"></div>
         </div>
 
-        <!-- Animated Border Line -->
         <div class="h-px w-full bg-linear-to-r from-transparent via-white/20 to-transparent relative overflow-hidden">
           <div class="absolute inset-0 bg-linear-to-r from-transparent via-violet-500/50 to-transparent animate-shimmer"></div>
         </div>
 
-        <!-- Simplified Infinite Marquee -->
         <div class="py-10 overflow-hidden whitespace-nowrap opacity-10 select-none cursor-default relative marquee-section">
           <div class="inline-block animate-marquee-slow font-['Poppins'] font-bold text-3xl lg:text-5xl uppercase pr-4 text-white hover:text-violet-500 transition-colors duration-500">
             CREATIVE DESIGNER • MULTIMEDIA ENGINEER • UI/UX ENTHUSIAST • CREATIVE DESIGNER • MULTIMEDIA ENGINEER • UI/UX ENTHUSIAST •&nbsp;
@@ -139,7 +147,7 @@
           </div>
         </div>
 
-        <div class="pt-8 text-center relative z-10">
+        <div class="pt-8 text-center relative z-30">
           <p 
             v-motion
             :initial="{ opacity: 0, scale: 0.9 }"
@@ -160,7 +168,6 @@
       </div>
     </div>
     
-    <!-- Heart Particles Container -->
     <div v-for="heart in heartParticles" :key="heart.id" 
       class="fixed pointer-events-none z-9999 text-violet-500"
       :style="{
@@ -173,16 +180,35 @@
     >
       <i class="bi bi-heart-fill text-lg"></i>
     </div>
+
   </section>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useLanguage } from '@/composables/useLanguage';
 
 const { t, lang } = useLanguage();
 
 const showCVOptions = ref(false);
+const viewCount = ref('...');
+
+// Fetch and increment view count
+onMounted(async () => {
+  try {
+    const response = await fetch('https://api.counterapi.dev/v1/muhamadsidik-porto/visits/up');
+    
+    if (!response.ok) {
+        throw new Error('API-nya lagi bermasalah nih');
+    }
+    
+    const data = await response.json();
+    viewCount.value = data?.count ? data.count.toLocaleString() : '1';
+  } catch (error) {
+    console.error('Error fetching view count:', error);
+    viewCount.value = '1';
+  }
+});
 
 // Heart Particles Logic
 const heartIconRef = ref(null);
@@ -280,5 +306,14 @@ const spawnHeartParticles = () => {
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-5px); }
+}
+
+@keyframes eye-blink {
+  0%, 45%, 55%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0); }
+}
+
+.animate-eye-blink {
+  animation: eye-blink 3s infinite;
 }
 </style>
