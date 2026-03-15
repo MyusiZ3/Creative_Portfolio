@@ -56,70 +56,63 @@ onMounted(() => {
 
     <!-- Content layer -->
     <div
-      class="navbar-content container mx-auto flex justify-between items-center gap-2 px-6 lg:px-38 py-3 relative z-10"
+      class="navbar-content container mx-auto flex justify-between items-center gap-2 px-6 lg:px-12 xl:px-38 py-3 relative z-10"
     >
       <!-- Logo -->
       <div
         class="flex items-center gap-2 relative z-50 nav-item"
         style="--delay: 0"
       >
-        <img src="/images/logo.png" alt="logo" class="w-10 lg:w-14 aspect-square object-contain" />
+        <img src="/images/logo.png" alt="logo" class="w-10 lg:w-11 xl:w-14 aspect-square object-contain" />
         <a
           href="#"
           @click="handleNav('', 'Home', $event)"
-          class="text-white font-semibold text-[13px] lg:text-[15px] font-['Poppins']"
+          class="text-white font-semibold text-[11px] lg:text-[12px] xl:text-[15px] font-['Poppins']"
           >Muhamad<br />Sidik</a
         >
       </div>
 
       <!-- Desktop Menu -->
-      <div class="hidden lg:flex items-center gap-14 uppercase">
+      <div class="hidden lg:flex items-center lg:gap-4 xl:gap-14 uppercase">
         <a
           href="#"
           @click="handleNav('', t('nav_home'), $event)"
-          class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
+          class="nav-item nav-link text-white font-bold text-[11px] lg:text-[12px] xl:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
           style="--delay: 1"
           >{{ t('nav_home') }}</a
         >
         <a
           href="#about"
           @click="handleNav('about', t('nav_about'), $event)"
-          class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
+          class="nav-item nav-link text-white font-bold text-[11px] lg:text-[12px] xl:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
           style="--delay: 2"
           >{{ t('nav_about') }}</a
         >
-        <!-- <a
-          href="#experience"
-          @click="handleNav('experience', 'Experience', $event)"
-          class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
-          style="--delay: 3"
-          >Experience</a
-        > -->
         <a
           href="#skills"
           @click="handleNav('skills', t('nav_skills'), $event)"
-          class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
+          class="nav-item nav-link text-white font-bold text-[11px] lg:text-[12px] xl:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
           style="--delay: 4"
           >{{ t('nav_skills') }}</a
         >
         <a
           href="#projects"
           @click="handleNav('projects', t('nav_projects'), $event)"
-          class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
+          class="nav-item nav-link text-white font-bold text-[11px] lg:text-[12px] xl:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
           style="--delay: 5"
           >{{ t('nav_projects') }}</a
         >
         <a
           href="#contact"
           @click="handleNav('contact', t('nav_contact'), $event)"
-          class="nav-item nav-link text-white font-bold text-[13px] lg:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
+          class="nav-item nav-link text-white font-bold text-[11px] lg:text-[12px] xl:text-[15px] font-['Roboto'] hover:text-violet-500 transition-colors"
           style="--delay: 7"
           >{{ t('nav_contact') }}</a
         >
-        <div class="flex items-center gap-3">
+        <div class="flex items-center lg:gap-2 xl:gap-3">
           <button
             @click="handleToggleLang"
-            class="nav-item w-8 h-8 flex items-center justify-center bg-violet-500 text-white rounded-xl hover:bg-violet-600 transition font-bold text-[13px] lg:text-[15px] font-['Roboto'] shadow-lg shadow-violet-500/30"
+            class="nav-item w-8 h-8 flex items-center justify-center bg-violet-500 text-white rounded-xl hover:bg-violet-600 transition font-bold text-[11px] lg:text-[12px] xl:text-[15px] font-['Roboto'] shadow-lg shadow-violet-500/30"
             style="--delay: 7"
           >
             {{ lang === 'EN' ? 'EN' : 'ID' }}

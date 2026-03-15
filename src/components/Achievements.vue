@@ -1,5 +1,5 @@
 <template>
-  <section id="achievements" class="bg-white py-20 px-6 lg:px-40 relative overflow-hidden">
+  <section id="achievements" class="bg-white py-20 px-6 lg:px-16 xl:px-40 relative overflow-hidden">
     <!-- Top Accent (Matching the screenshot style) -->
       <img
         src="/images/accent_3.png"

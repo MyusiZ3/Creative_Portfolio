@@ -1,6 +1,6 @@
 <template>
   <section id="experience" class="-mb-4">
-    <div class="bg-white p-8 lg:p-40 relative overflow-hidden shadow-2xl">
+    <div class="bg-white p-8 lg:p-20 xl:p-40 relative overflow-hidden shadow-2xl">
       <!-- Accents -->
       <img
         src="/images/accent_2.png"
@@ -69,7 +69,7 @@
           ></div>
 
           <div
-            class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-12 relative z-10"
+            class="grid grid-cols-1 md:grid-cols-3 gap-x-6 xl:gap-x-12 gap-y-12 relative z-10"
           >
             <!-- Item 1 -->
             <div

@@ -1,5 +1,5 @@
 <template>
-  <section id="my-projects" class="bg-[#171717] py-20 px-6 lg:px-40 relative overflow-x-clip">
+  <section id="my-projects" class="bg-[#171717] py-20 px-6 lg:px-16 xl:px-40 relative overflow-x-clip">
     <div class="container mx-auto relative z-10">
       <!-- Badge -->
       <div

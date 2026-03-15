@@ -41,9 +41,9 @@
       </div>
     </section>
     <!-- Hero Image Composition -->
-    <div class="relative w-full mt-1 lg:-mt-60 z-10 pointer-events-none">
+    <div class="relative w-full mt-1 lg:-mt-20 xl:-mt-60 z-10 pointer-events-none">
       <div class="flex justify-end">
-        <div class="relative w-[85%] lg:w-[78%] -mt-16 lg:-mt-28">
+        <div class="relative w-[85%] lg:w-[78%] -mt-16 lg:-mt-20 xl:-mt-28">
           <!-- Main Hero Photo -->
           <img
             v-motion
@@ -98,11 +98,11 @@
       </div>
     </div>
 
-    <section id="about" class="py-10 lg:py-40 px-6 lg:px-23">
+    <section id="about" class="py-10 lg:py-20 xl:py-40 px-6 lg:px-10 xl:px-23">
       <div
-        class="container mx-auto grid grid-cols-1 ml-0 lg:ml-18 lg:grid-cols-5 gap-12 lg:gap-32 items-start"
+        class="container mx-auto grid grid-cols-1 ml-0 lg:ml-0 xl:ml-18 xl:grid-cols-5 gap-12 lg:gap-20 xl:gap-32 items-start"
       >
-        <div class="space-y-12 lg:col-span-2">
+        <div class="space-y-12 xl:col-span-2">
           <div
             v-motion
             :initial="{ opacity: 0, x: -50 }"
@@ -268,8 +268,8 @@
           </div>
         </div>
 
-        <div class="col-span-1 lg:col-span-3 space-y-12 lg:space-y-16 lg:pl-10">
-          <div class="flex flex-row gap-8 lg:gap-20">
+        <div class="col-span-1 xl:col-span-3 space-y-12 lg:space-y-16 lg:pl-0 xl:pl-10">
+          <div class="flex flex-row gap-8 lg:gap-10 xl:gap-20">
             <div
               v-motion
               :initial="{ opacity: 0, scale: 0.8 }"

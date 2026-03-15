@@ -1,5 +1,5 @@
 <template>
-  <section id="contact" class="bg-[#141414] py-20 px-6 lg:px-40 relative overflow-hidden">
+  <section id="contact" class="bg-[#141414] py-20 px-6 lg:px-16 xl:px-40 relative overflow-hidden">
     <div class="container mx-auto relative z-10">
       <div class="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
         <!-- Left Side: Contact Info -->

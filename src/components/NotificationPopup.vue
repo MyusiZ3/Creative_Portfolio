@@ -3,7 +3,7 @@
     <Transition name="notification-slide">
       <div 
         v-if="isVisible" 
-        class="fixed top-24 right-4 lg:right-10 z-[10000] w-[300px] lg:w-[340px] bg-[#1a1a24]/95 backdrop-blur-xl border border-amber-500/30 rounded-2xl shadow-[0_10px_40px_rgba(245,158,11,0.25)] p-5 flex gap-4 items-start"
+        class="fixed top-24 right-4 lg:right-10 z-10000 w-[300px] lg:w-[340px] bg-[#1a1a24]/95 backdrop-blur-xl border border-amber-500/30 rounded-2xl shadow-[0_10px_40px_rgba(245,158,11,0.25)] p-5 flex gap-4 items-start"
       >
         <!-- Icon -->
         <div class="relative shrink-0 w-12 h-12 rounded-full bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400 mt-1">
