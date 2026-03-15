@@ -4,7 +4,7 @@ import { ref, onMounted } from "vue";
 const isMenuOpen = ref(false);
 const navReady = ref(false);
 
-const emit = defineEmits(["navigate", "toggle-lang"]);
+const emit = defineEmits(["navigate", "toggle-lang", "show-notification"]);
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
@@ -121,6 +121,7 @@ onMounted(() => {
           </button>
           
           <button
+            @click="$emit('show-notification')"
             class="nav-item w-8 h-8 flex items-center justify-center bg-white/5 border border-white/10 text-gray-300 rounded-xl hover:bg-violet-500 hover:text-white hover:border-violet-500 transition relative shadow-lg"
             style="--delay: 8"
           >
@@ -187,7 +188,7 @@ onMounted(() => {
             {{ lang === 'EN' ? 'EN' : 'ID' }}
           </button>
           <button
-            @click="isMenuOpen = false"
+            @click="isMenuOpen = false; $emit('show-notification')"
             class="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 text-gray-300 rounded-xl hover:bg-violet-500 hover:text-white hover:border-violet-500 transition relative shadow-lg"
           >
             <i class="bi bi-bell-fill text-base"></i>
