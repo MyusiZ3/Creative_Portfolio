@@ -100,12 +100,12 @@
           <div class="absolute inset-0 bg-linear-to-r from-transparent via-violet-500/50 to-transparent animate-shimmer"></div>
         </div>
 
-        <!-- Infinite Marquee -->
-        <div class="py-10 overflow-hidden whitespace-nowrap opacity-10 select-none group/marquee">
-          <div class="inline-block animate-marquee-slow font-['Poppins'] font-bold text-3xl lg:text-5xl uppercase text-white transition-colors duration-700 group-hover/marquee:text-violet-500/50">
+        <!-- Simplified Infinite Marquee -->
+        <div class="py-10 overflow-hidden whitespace-nowrap opacity-10 select-none cursor-default relative marquee-section">
+          <div class="inline-block animate-marquee-slow font-['Poppins'] font-bold text-3xl lg:text-5xl uppercase pr-4 text-white hover:text-violet-500 transition-colors duration-500">
             CREATIVE DESIGNER • MULTIMEDIA ENGINEER • UI/UX ENTHUSIAST • CREATIVE DESIGNER • MULTIMEDIA ENGINEER • UI/UX ENTHUSIAST •&nbsp;
           </div>
-          <div class="inline-block animate-marquee-slow font-['Poppins'] font-bold text-3xl lg:text-5xl uppercase text-white transition-colors duration-700 group-hover/marquee:text-violet-500/50">
+          <div class="inline-block animate-marquee-slow font-['Poppins'] font-bold text-3xl lg:text-5xl uppercase pr-4 text-white hover:text-violet-500 transition-colors duration-500">
             CREATIVE DESIGNER • MULTIMEDIA ENGINEER • UI/UX ENTHUSIAST • CREATIVE DESIGNER • MULTIMEDIA ENGINEER • UI/UX ENTHUSIAST •&nbsp;
           </div>
         </div>
@@ -125,24 +125,24 @@
               <i class="bi bi-heart-fill"></i>
             </span>
             &copy; 2025 Muhamad Sidik | 
-            <span class="hover:text-violet-400 transition-colors duration-300">{{ t('contact_footer') }}</span>
+            <span class="hover:text-violet-400 transition-colors duration-300 cursor-help" :title="lang === 'EN' ? 'Click the heart for a surprise!' : 'Klik hati untuk kejutan!'">{{ t('contact_footer') }}</span>
           </p>
         </div>
       </div>
     </div>
     
     <!-- Heart Particles Container -->
-    <div v-for="p in heartParticles" :key="p.id" 
+    <div v-for="heart in heartParticles" :key="heart.id" 
       class="fixed pointer-events-none z-9999 text-violet-500"
       :style="{
-        left: p.x + 'px',
-        top: p.y + 'px',
-        opacity: p.opacity,
-        transform: `translate(-50%, -50%) scale(${p.scale}) rotate(${p.rotate}deg)`,
+        left: heart.x + 'px',
+        top: heart.y + 'px',
+        opacity: heart.opacity,
+        transform: `translate(-50%, -50%) scale(${heart.scale}) rotate(${heart.rotate}deg)`,
         transition: 'all 0.8s ease-out'
       }"
     >
-      <i class="bi bi-heart-fill"></i>
+      <i class="bi bi-heart-fill text-lg"></i>
     </div>
   </section>
 </template>
@@ -151,8 +151,9 @@
 import { ref } from 'vue';
 import { useLanguage } from '@/composables/useLanguage';
 
-const { t } = useLanguage();
+const { t, lang } = useLanguage();
 
+// Heart Particles Logic
 const heartIconRef = ref(null);
 const heartParticles = ref([]);
 let heartPid = 0;
@@ -163,36 +164,34 @@ const spawnHeartParticles = () => {
   const centerX = rect.left + rect.width / 2;
   const centerY = rect.top + rect.height / 2;
 
-  const count = 8;
+  const count = 12;
   const newParticles = [];
 
   for (let i = 0; i < count; i++) {
     const id = heartPid++;
     const angle = (Math.PI * 2 * i) / count + (Math.random() * 0.5);
-    const velocity = 50 + Math.random() * 50;
+    const velocity = 80 + Math.random() * 100;
     
     const p = {
       id,
       x: centerX,
       y: centerY,
       opacity: 1,
-      scale: 0.5 + Math.random(),
+      scale: 0.5 + Math.random() * 1.5,
       rotate: Math.random() * 360,
     };
     newParticles.push(p);
     heartParticles.value.push(p);
 
-    // Animate
     setTimeout(() => {
       p.x += Math.cos(angle) * velocity;
-      p.y += Math.sin(angle) * velocity - 20; // Float upwards slightly
+      p.y += Math.sin(angle) * velocity - 40;
       p.opacity = 0;
       p.scale = 0;
-      p.rotate += 90;
+      p.rotate += 180;
     }, 50);
   }
 
-  // Cleanup
   setTimeout(() => {
     heartParticles.value = heartParticles.value.filter(p => !newParticles.includes(p));
   }, 1000);
@@ -200,6 +199,16 @@ const spawnHeartParticles = () => {
 </script>
 
 <style scoped>
+.marquee-section {
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.marquee-wrapper {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 @keyframes blob {
   0% { transform: translate(0px, 0px) scale(1); }
   33% { transform: translate(30px, -50px) scale(1.1); }
