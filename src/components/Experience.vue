@@ -65,11 +65,11 @@
             v-motion
             :initial="{ opacity: 0, scaleX: 0 }"
             :visible="{ opacity: 1, scaleX: 1, transition: { duration: 1000, delay: 100, ease: 'easeOut' } }"
-            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden lg:block"
+            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
           ></div>
 
           <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12 relative z-10"
+            class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-12 relative z-10"
           >
             <!-- Item 1 -->
             <div
@@ -195,11 +195,11 @@
             v-motion
             :initial="{ opacity: 0, scaleX: 0 }"
             :visible="{ opacity: 1, scaleX: 1, transition: { duration: 1000, delay: 100, ease: 'easeOut' } }"
-            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden lg:block"
+            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
           ></div>
 
           <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12 relative z-10"
+            class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-12 relative z-10"
           >
             <!-- Item 4 -->
             <div
@@ -297,11 +297,11 @@
             v-motion
             :initial="{ opacity: 0, scaleX: 0 }"
             :visible="{ opacity: 1, scaleX: 1, transition: { duration: 1000, delay: 100, ease: 'easeOut' } }"
-            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden lg:block"
+            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
           ></div>
 
           <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12 relative z-10"
+            class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-12 relative z-10"
           >
             <!-- Project 1 -->
             <div
@@ -427,11 +427,11 @@
             v-motion
             :initial="{ opacity: 0, scaleX: 0 }"
             :visible="{ opacity: 1, scaleX: 1, transition: { duration: 1000, delay: 100, ease: 'easeOut' } }"
-            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden lg:block"
+            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
           ></div>
 
           <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12 relative z-10"
+            class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-12 relative z-10"
           >
             <!-- Project 4 -->
             <div
@@ -573,7 +573,7 @@ const { t } = useLanguage();
   z-index: 0;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .timeline-dot-wrapper::before {
     display: none;
   }
