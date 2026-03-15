@@ -88,18 +88,17 @@
             </div>
           </div>
 
-          <!-- Text Below Image -->
-          <div class="px-1 transform transition-transform duration-500 group-hover:translate-x-1 lg:group-hover:translate-x-1.5">
+          <div class="px-1 transform transition-transform duration-500 group-hover:translate-x-1 lg:group-hover:translate-x-1.5 overflow-hidden">
             <p
-              class="text-violet-500 font-['Roboto'] text-[10px] lg:text-[11px] font-bold uppercase tracking-widest mb-1.5 flex items-center gap-2"
+              class="text-violet-500 font-['Roboto'] text-[9px] lg:text-[11px] font-bold uppercase tracking-widest mb-1 lg:mb-1.5 flex items-center gap-1.5 lg:gap-2 whitespace-nowrap overflow-hidden"
             >
-              <span class="w-1.5 h-1.5 bg-violet-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(139,92,246,0.8)]"></span>
-              {{ project.category }}
+              <span class="shrink-0 w-1.5 h-1.5 bg-violet-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(139,92,246,0.8)]"></span>
+              <span class="category-text">{{ project.category }}</span>
             </p>
             <h3
-              class="text-[#1a1a2e] font-['Poppins'] font-semibold text-[13px] lg:text-[17px] leading-snug group-hover:text-violet-600 transition-colors duration-300"
+              class="text-[#1a1a2e] font-['Poppins'] font-semibold text-[11px] lg:text-[17px] leading-snug group-hover:text-violet-600 transition-colors duration-300 whitespace-nowrap overflow-hidden relative"
             >
-              {{ project.name }}
+              <span class="title-text inline-block">{{ project.name }}</span>
             </h3>
           </div>
         </div>
@@ -247,5 +246,29 @@ const projects = computed(() => {
 
 .project-card:hover {
   transform: translateY(-6px);
+}
+
+/* Marquee/Trail Effect for Mobile */
+@media (max-width: 1023px) {
+  .title-text {
+    display: inline-block;
+    padding-right: 2rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .project-card:hover .title-text {
+    animation: marquee 8s linear infinite;
+  }
+  
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+
+  /* Add a mask to fade the text at edges */
+  h3.whitespace-nowrap {
+    mask-image: linear-gradient(to right, black calc(100% - 20px), transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black calc(100% - 20px), transparent 100%);
+  }
 }
 </style>
