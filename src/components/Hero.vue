@@ -397,7 +397,7 @@
                 <img
                   src="/images/accent_1.png"
                   alt="Accent"
-                  class="w-24 lg:w-40 absolute lg:relative bottom-0 right-0 lg:float-end opacity-40 lg:opacity-100 z-10 pointer-events-none"
+                  class="w-24 lg:w-40 absolute lg:relative bottom-[-4rem] right-0 lg:bottom-[0rem] lg:float-end opacity-100 lg:opacity-100 z-10 pointer-events-none"
                 />
               </li>
             </ul>
