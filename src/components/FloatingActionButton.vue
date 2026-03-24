@@ -353,7 +353,7 @@ const actions = computed(() => {
 
 .fab-list-leave-active {
   position: absolute;
-  right: 0;
+  right: -230px;
   pointer-events: none;
 }
 
