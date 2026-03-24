@@ -20,7 +20,7 @@
       <img
         src="/images/accent_3.png"
         alt="Accent Shape"
-        class="absolute bottom-0 py-[-0.1rem] left-0 w-32 lg:w-180 pointer-events-none transform rotate-180 z-0"
+        class="absolute bottom-[0.9rem] lg:bottom-[0rem] py-[-0.1rem] left-0 w-32 lg:w-180 pointer-events-none transform rotate-180 z-0"
       />
 
       <!-- Content -->
