@@ -9,7 +9,7 @@
   </transition>
 
   <!-- FAB Container -->
-  <div class="fixed bottom-6 right-6 z-9999 flex flex-col items-end gap-0">
+  <div class="fixed bottom-6 right-6 z-9999 flex flex-col items-end gap-0 pointer-events-none">
     <!-- Action Items -->
     <div class="flex flex-col items-end mb-4" ref="menuRef">
       <transition-group name="fab-list">
@@ -66,7 +66,7 @@
       <!-- Main Button -->
       <button
         @click="handleToggle"
-        class="fab-main group absolute inset-0 rounded-full text-white flex items-center justify-center transition-all duration-300 active:scale-90 shadow-2xl"
+        class="fab-main group absolute inset-0 rounded-full text-white flex items-center justify-center transition-all duration-300 active:scale-90 shadow-2xl pointer-events-auto"
         :class="{ 'fab-is-open': isOpen, 'idle-blob': !isOpen }"
       >
         <!-- Fluid blob background -->
