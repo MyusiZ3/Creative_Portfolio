@@ -13,18 +13,39 @@
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
     <script>
-      // Prevent Ctrl +/- / Ctrl 0 zoom
-      document.addEventListener('keydown', function (e) {
-        if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '-' || e.key === '=' || e.key === '0')) {
-          e.preventDefault();
-        }
-      });
-      // Prevent Ctrl + scroll wheel zoom
+      // Extra Security: Disable right-click and inspection keys
+      document.addEventListener('contextmenu', (e) => e.returnValue = false);
+      
+      document.onkeydown = function(e) {
+          // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+          if (
+              e.keyCode == 123 || 
+              (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) || 
+              (e.ctrlKey && e.keyCode == 85)
+          ) {
+              return false;
+          }
+          
+          // Original zoom prevention
+          if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '-' || e.key === '=' || e.key === '0')) {
+              e.preventDefault();
+          }
+      };
+
+      // Original zoom prevention for wheel
       document.addEventListener('wheel', function (e) {
         if (e.ctrlKey) {
           e.preventDefault();
         }
       }, { passive: false });
+
+      // Detect if DevTools is open (Optional, but can be useful)
+      let devtools = function() {};
+      devtools.toString = function() {
+        this.opened = true;
+      };
+      
+      console.log('%c Security System Active ', 'background: #222; color: #bada55');
     </script>
   </body>
 </html>

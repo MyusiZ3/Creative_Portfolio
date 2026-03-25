@@ -15,16 +15,16 @@
           <div class="space-y-5 w-full">
             <div>
               <p class="text-gray-400 text-sm mb-1">{{ t('contact_phone') }}</p>
-              <a href="https://wa.me/6282282421322" target="_blank" class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300">
-                (+62) 822 8242 1322
-              </a>
+              <button @click="openSecureContact('phone')" class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300">
+                {{ isPhoneVisible ? '(+62) 822 8242 1322' : 'Click to show phone' }}
+              </button>
             </div>
 
             <div>
               <p class="text-gray-400 text-sm mb-1">{{ t('contact_email') }}</p>
-              <a href="mailto:muhamadsidik.imy@gmail.com" class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300">
-                muhamadsidik.imy@gmail.com
-              </a>
+              <button @click="openSecureContact('email')" class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300">
+                {{ isEmailVisible ? 'muhamadsidik.imy@gmail.com' : 'Click to show email' }}
+              </button>
             </div>
 
             <div>
@@ -110,6 +110,25 @@
                 <p class="text-white font-['Poppins'] font-bold text-base leading-none mt-1">{{ viewCount }}</p>
               </div>
             </div>
+
+            <!-- Security Badge -->
+            <div 
+              v-motion
+              :initial="{ opacity: 0, scale: 0.9, y: 10 }"
+              :visible="{ opacity: 1, scale: 1, y: 0, transition: { duration: 600, delay: 500 } }"
+              class="flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-white/10 px-4 py-2 rounded-2xl group hover:border-green-500/50 hover:bg-white/10 transition-all duration-500 shadow-2xl"
+            >
+              <div class="relative">
+                <div class="absolute inset-0 bg-green-500 blur-md opacity-20 group-hover:opacity-40 transition-opacity animate-pulse"></div>
+                <div class="relative w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center text-green-500 border border-green-500/30 group-hover:bg-green-500 group-hover:text-white transition-all duration-500">
+                  <i class="bi bi-shield-lock-fill text-lg"></i>
+                </div>
+              </div>
+              <div class="flex flex-col">
+                <p class="text-[9px] text-gray-400 uppercase tracking-[2px] font-black leading-none">SECURITY</p>
+                <p class="text-white font-['Poppins'] font-bold text-base leading-none mt-1">SSL ENCRYPTED</p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -192,6 +211,24 @@ const { t, lang } = useLanguage();
 
 const showCVOptions = ref(false);
 const viewCount = ref('...');
+const isPhoneVisible = ref(false);
+const isEmailVisible = ref(false);
+
+const openSecureContact = (type) => {
+  if (type === 'phone') {
+    if (!isPhoneVisible.value) {
+      isPhoneVisible.value = true;
+    } else {
+      window.open('https://wa.me/6282282421322', '_blank');
+    }
+  } else if (type === 'email') {
+    if (!isEmailVisible.value) {
+      isEmailVisible.value = true;
+    } else {
+      window.location.href = 'mailto:muhamadsidik.imy@gmail.com';
+    }
+  }
+};
 
 // Fetch and increment view count
 onMounted(async () => {
