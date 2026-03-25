@@ -57,10 +57,10 @@
               <a href="https://github.com/MyusiZ3" target="_blank" class="w-8 h-8 rounded-full bg-[#A754FF] flex items-center justify-center text-white hover:opacity-80 transition-all duration-300">
                 <i class="bi bi-github text-sm"></i>
               </a>
-              <a href="#" target="_blank" class="w-8 h-8 rounded-full bg-[#E1306C] flex items-center justify-center text-white hover:opacity-80 transition-all duration-300">
+              <a href="https://www.instagram.com/imyusi_" target="_blank" class="w-8 h-8 rounded-full bg-[#E1306C] flex items-center justify-center text-white hover:opacity-80 transition-all duration-300">
                 <i class="bi bi-instagram text-sm"></i>
               </a>
-              <a href="#" target="_blank" class="w-8 h-8 rounded-full bg-[#0077B5] flex items-center justify-center text-white hover:opacity-80 transition-all duration-300">
+              <a href="https://www.linkedin.com/in/muhamad-sidik-a6757b25b" target="_blank" class="w-8 h-8 rounded-full bg-[#0077B5] flex items-center justify-center text-white hover:opacity-80 transition-all duration-300">
                 <i class="bi bi-linkedin text-sm"></i>
               </a>
             </div>
