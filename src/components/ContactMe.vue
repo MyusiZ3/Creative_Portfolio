@@ -16,11 +16,11 @@
             <div class="flex flex-col items-center md:items-start">
               <p class="text-gray-400 text-sm mb-1">{{ t('contact_phone') }}</p>
               <div class="flex items-center gap-2 group/item">
-                <a href="https://wa.me/6282282421322" target="_blank" class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300">
-                  (+62) 822 8242 1322
+                <a href="https://wa.me/6289646347327" target="_blank" class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300">
+                  (+62) 896 4634 7327
                 </a>
                 <button 
-                  @click="copyToClipboard('082282421322', 'phone')"
+                  @click="copyToClipboard('089646347327', 'phone')"
                   class="p-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 opacity-100 md:opacity-0 group-hover/item:opacity-100 transition-all flex items-center gap-1.5"
                 >
                   <i class="bi" :class="copyStatus.phone ? 'bi-check-lg text-green-400' : 'bi-copy'"></i>
@@ -63,6 +63,14 @@
               <a href="https://www.linkedin.com/in/muhamad-sidik-a6757b25b" target="_blank" class="w-8 h-8 rounded-full bg-[#0077B5] flex items-center justify-center text-white hover:opacity-80 transition-all duration-300">
                 <i class="bi bi-linkedin text-sm"></i>
               </a>
+              <!-- Universal Share Button -->
+              <button 
+                @click="sharePortfolio"
+                class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:border-violet-500 hover:text-violet-400 transition-all duration-300 relative group/share"
+              >
+                <i class="bi bi-share-fill text-[10px]"></i>
+                <span v-if="copyStatus.share" class="absolute -top-10 left-1/2 -translate-x-1/2 bg-violet-600 text-[10px] px-2 py-1 rounded-md whitespace-nowrap">Link Copied!</span>
+              </button>
             </div>
           </div>
 
@@ -234,8 +242,29 @@ const { t, lang } = useLanguage();
 
 const showCVOptions = ref(false);
 const viewCount = ref('...');
-const copyStatus = ref({ phone: false, email: false });
+const copyStatus = ref({ phone: false, email: false, share: false });
 const downloading = ref({ designer: false, developer: false });
+
+const sharePortfolio = async () => {
+  const shareData = {
+    title: 'Muhamad Sidik | Creative Multimedia Designer',
+    text: 'Check out this amazing creative portfolio by Muhamad Sidik!',
+    url: window.location.href
+  };
+
+  try {
+    if (navigator.share) {
+      await navigator.share(shareData);
+    } else {
+      // Fallback: Copy Link
+      await navigator.clipboard.writeText(window.location.href);
+      copyStatus.value.share = true;
+      setTimeout(() => copyStatus.value.share = false, 2000);
+    }
+  } catch (err) {
+    console.error('Sharing failed:', err);
+  }
+};
 
 const copyToClipboard = (text, type) => {
   navigator.clipboard.writeText(text);
