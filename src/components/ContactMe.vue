@@ -15,16 +15,34 @@
           <div class="space-y-5 w-full">
             <div>
               <p class="text-gray-400 text-sm mb-1">{{ t('contact_phone') }}</p>
-              <a href="https://wa.me/6282282421322" target="_blank" class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300">
-                (+62) 822 8242 1322
-              </a>
+              <div class="flex items-center gap-2 group/item">
+                <a href="https://wa.me/6282282421322" target="_blank" class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300">
+                  (+62) 822 8242 1322
+                </a>
+                <button 
+                  @click="copyToClipboard('082282421322', 'phone')"
+                  class="p-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 opacity-0 group-hover/item:opacity-100 transition-all flex items-center gap-1.5"
+                >
+                  <i class="bi" :class="copyStatus.phone ? 'bi-check-lg text-green-400' : 'bi-copy'"></i>
+                  <span v-if="copyStatus.phone" class="text-[10px] font-bold text-green-400 uppercase tracking-tighter">Copied</span>
+                </button>
+              </div>
             </div>
 
             <div>
               <p class="text-gray-400 text-sm mb-1">{{ t('contact_email') }}</p>
-              <a href="mailto:muhamadsidik.imy@gmail.com" class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300">
-                muhamadsidik.imy@gmail.com
-              </a>
+              <div class="flex items-center gap-2 group/item">
+                <a href="mailto:muhamadsidik.imy@gmail.com" class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300">
+                  muhamadsidik.imy@gmail.com
+                </a>
+                <button 
+                   @click="copyToClipboard('muhamadsidik.imy@gmail.com', 'email')"
+                  class="p-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 opacity-0 group-hover/item:opacity-100 transition-all flex items-center gap-1.5"
+                >
+                  <i class="bi" :class="copyStatus.email ? 'bi-check-lg text-green-400' : 'bi-copy'"></i>
+                  <span v-if="copyStatus.email" class="text-[10px] font-bold text-green-400 uppercase tracking-tighter">Copied</span>
+                </button>
+              </div>
             </div>
 
             <div>
@@ -67,18 +85,22 @@
               <a 
                 href="/doc/CV_Muhamad Sidik_Graphic Designer_Intern_2025.pdf" 
                 download
-                class="flex items-center gap-2 px-5 py-2 rounded-full bg-violet-600 text-white text-xs font-bold hover:bg-violet-700 transition-all duration-300"
+                @click="trackDownload('designer')"
+                class="flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold transition-all duration-300"
+                :class="downloading.designer ? 'bg-green-500 text-white animate-pulse' : 'bg-violet-600 text-white hover:bg-violet-700'"
               >
-                <i class="bi bi-palette"></i>
-                Designer
+                <i class="bi" :class="downloading.designer ? 'bi-check2-all' : 'bi-palette'"></i>
+                {{ downloading.designer ? (lang === 'ID' ? 'Mengunduh...' : 'Downloading...') : 'Designer' }}
               </a>
               <a 
                 href="/doc/CV_Muhamad Sidik_IT_Intern.pdf" 
                 download
-                class="flex items-center gap-2 px-5 py-2 rounded-full bg-blue-600 text-white text-xs font-bold hover:bg-blue-700 transition-all duration-300"
+                @click="trackDownload('developer')"
+                class="flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold transition-all duration-300"
+                :class="downloading.developer ? 'bg-green-500 text-white animate-pulse' : 'bg-blue-600 text-white hover:bg-blue-700'"
               >
-                <i class="bi bi-code-slash"></i>
-                Developer
+                <i class="bi" :class="downloading.developer ? 'bi-check2-all' : 'bi-code-slash'"></i>
+                {{ downloading.developer ? (lang === 'ID' ? 'Mengunduh...' : 'Downloading...') : 'Developer' }}
               </a>
             </div>
           </div>
@@ -212,6 +234,23 @@ const { t, lang } = useLanguage();
 
 const showCVOptions = ref(false);
 const viewCount = ref('...');
+const copyStatus = ref({ phone: false, email: false });
+const downloading = ref({ designer: false, developer: false });
+
+const copyToClipboard = (text, type) => {
+  navigator.clipboard.writeText(text);
+  copyStatus.value[type] = true;
+  setTimeout(() => {
+    copyStatus.value[type] = false;
+  }, 2000);
+};
+
+const trackDownload = (type) => {
+  downloading.value[type] = true;
+  setTimeout(() => {
+    downloading.value[type] = false;
+  }, 3000);
+};
 
 // Fetch and increment view count
 onMounted(async () => {
