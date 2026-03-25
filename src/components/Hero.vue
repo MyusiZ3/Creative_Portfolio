@@ -98,11 +98,11 @@
       </div>
     </div>
 
-    <section id="about" class="py-10 lg:py-20 xl:py-40 px-6 lg:px-10 xl:px-23">
+    <section id="about" class="py-10 md:py-16 lg:py-20 xl:py-40 px-6 md:px-16 lg:px-20 xl:px-23">
       <div
-        class="container mx-auto grid grid-cols-1 ml-0 lg:ml-0 xl:ml-18 xl:grid-cols-5 gap-12 lg:gap-20 xl:gap-32 items-start"
+        class="container mx-auto grid grid-cols-1 md:grid-cols-1 lg:grid-cols-5 ml-0 lg:ml-0 xl:ml-18 gap-12 lg:gap-16 xl:gap-32 items-start"
       >
-        <div class="space-y-12 xl:col-span-2">
+        <div class="space-y-12 lg:col-span-2">
           <div
             v-motion
             :initial="{ opacity: 0, x: -50 }"
@@ -268,7 +268,7 @@
           </div>
         </div>
 
-        <div class="col-span-1 xl:col-span-3 space-y-12 lg:space-y-16 lg:pl-0 xl:pl-10">
+        <div class="col-span-1 lg:col-span-3 space-y-12 lg:space-y-16 lg:pl-0 xl:pl-10">
           <div class="flex flex-row gap-8 lg:gap-10 xl:gap-20">
             <div
               v-motion

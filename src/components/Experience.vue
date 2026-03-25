@@ -1,31 +1,31 @@
 <template>
   <section id="experience" class="-mb-4">
-    <div class="bg-white p-8 lg:p-20 xl:p-40 relative overflow-hidden shadow-2xl">
+    <div class="bg-white p-8 md:p-14 lg:p-20 xl:p-40 relative overflow-hidden shadow-2xl">
       <!-- Accents -->
       <img
         src="/images/accent_2.png"
         alt="Accent Shape"
-        class="absolute top-0 left-0 w-32 lg:w-150 pointer-events-none z-0"
+        class="absolute top-0 left-0 w-24 md:w-32 lg:w-48 xl:w-150 pointer-events-none z-0"
       />
       <img
         src="/images/accent_4.png"
         alt="Accent Shape"
-        class="absolute top-0 right-0 w-50 lg:w-260 pointer-events-none  z-0 "
+        class="absolute top-0 right-0 w-32 md:w-48 lg:w-64 xl:w-260 pointer-events-none  z-0 "
       />
       <img
         src="/images/accent_2.png"
         alt="Accent Shape"
-        class="absolute bottom-0 right-0 w-32 lg:w-150 pointer-events-none transform rotate-180 z-0"
+        class="absolute bottom-0 right-0 w-24 md:w-32 lg:w-48 xl:w-150 pointer-events-none transform rotate-180 z-0"
       />
       <img
         src="/images/accent_3.png"
         alt="Accent Shape"
-        class="absolute bottom-[0.9rem] lg:bottom-[0rem] py-[-0.1rem] left-0 w-32 lg:w-180 pointer-events-none transform rotate-180 z-0"
+        class="absolute bottom-[0.9rem] lg:bottom-0 py-[-0.1rem] left-0 w-24 md:w-40 lg:w-56 xl:w-180 pointer-events-none transform rotate-180 z-0"
       />
 
       <!-- Content -->
 
-      <div class="relative z-10 w-full lg:w-11/12 mx-auto mb-20">
+      <div class="relative z-10 w-full md:w-11/12 lg:w-11/12 mx-auto mb-20">
         <h2
           v-motion
           :initial="{ opacity: 0, y: 40 }"

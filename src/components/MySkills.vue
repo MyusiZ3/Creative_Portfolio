@@ -15,7 +15,7 @@
   <!-- My Skills Section -->
   <section
     id="skills"
-    class="bg-[#171717] py-20 px-6 lg:px-40 relative overflow-hidden"
+    class="bg-[#171717] py-20 px-6 md:px-16 lg:px-40 relative overflow-hidden"
   >
     <!-- Decorative Side Tabs -->
     <img
@@ -45,7 +45,7 @@
         v-motion
         :initial="{ opacity: 0, y: 40 }"
         :visible="{ opacity: 1, y: 0, transition: { duration: 700, delay: 100, ease: 'easeOut' } }"
-        class="text-3xl lg:text-[48px] font-bold font-['Poppins'] text-white mb-6 uppercase tracking-wider"
+        class="text-3xl md:text-4xl lg:text-[48px] font-bold font-['Poppins'] text-white mb-6 uppercase tracking-wider"
       >
         {{ t('skills_heading') }}
       </h2>

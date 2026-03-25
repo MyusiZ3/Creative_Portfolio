@@ -6,7 +6,7 @@
         alt="Accent Shape"
         loading="lazy"
         decoding="async"
-        class="absolute top-0 right-0 w-32 lg:w-180 pointer-events-none transform  z-0"
+        class="absolute top-0 right-0 w-24 md:w-40 lg:w-56 xl:w-180 pointer-events-none transform  z-0"
       />
     <div class="container mx-auto relative z-10">
       <!-- Title Section -->
@@ -83,7 +83,7 @@
     <img
         src="/images/accent_3.png"
         alt="Accent Shape"
-        class=" absolute bottom-[-0.2rem] lg:bottom-[-0.2rem] py-[0.1rem] left-0 w-32 lg:w-180 pointer-events-none transform rotate-180 z-0"
+        class=" absolute bottom-[-0.2rem] lg:bottom-[-0.2rem] py-[0.1rem] left-0 w-24 md:w-40 lg:w-56 xl:w-180 pointer-events-none transform rotate-180 z-0"
       />
   </section>
 </template>

@@ -1,30 +1,30 @@
 <template>
-  <section id="contact" class="bg-[#141414] py-20 px-6 lg:px-16 xl:px-40 relative overflow-hidden">
+  <section id="contact" class="bg-[#141414] py-20 px-6 md:px-10 lg:px-16 xl:px-40 relative overflow-hidden">
     <div class="container mx-auto relative z-10">
-      <div class="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-8">
         <div 
           v-motion
           :initial="{ opacity: 0, x: -50 }"
           :visible="{ opacity: 1, x: 0, transition: { duration: 800 } }"
-          class="w-full lg:w-[40%] space-y-8 flex flex-col items-center lg:items-start text-center lg:text-left"
+          class="w-full md:w-[60%] lg:w-[40%] space-y-8 flex flex-col items-center md:items-start text-center md:text-left"
         >
-          <h2 class="text-4xl lg:text-5xl font-bold font-['Poppins'] text-white leading-tight">
+          <h2 class="text-3xl lg:text-5xl font-bold font-['Poppins'] text-white leading-tight">
             <span class="text-[#A754FF]">{{ t('contact_title_1') }}</span> {{ t('contact_title_2') }}<br class="hidden lg:block" />{{ t('contact_title_3') }}
           </h2>
 
           <div class="space-y-5 w-full">
             <div>
               <p class="text-gray-400 text-sm mb-1">{{ t('contact_phone') }}</p>
-              <button @click="openSecureContact('phone')" class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300">
-                {{ isPhoneVisible ? '(+62) 822 8242 1322' : 'Click to show phone' }}
-              </button>
+              <a href="https://wa.me/6282282421322" target="_blank" class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300">
+                (+62) 822 8242 1322
+              </a>
             </div>
 
             <div>
               <p class="text-gray-400 text-sm mb-1">{{ t('contact_email') }}</p>
-              <button @click="openSecureContact('email')" class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300">
-                {{ isEmailVisible ? 'muhamadsidik.imy@gmail.com' : 'Click to show email' }}
-              </button>
+              <a href="mailto:muhamadsidik.imy@gmail.com" class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300">
+                muhamadsidik.imy@gmail.com
+              </a>
             </div>
 
             <div>
@@ -136,14 +136,15 @@
           v-motion
           :initial="{ opacity: 0, scale: 0.9 }"
           :visible="{ opacity: 1, scale: 1, transition: { duration: 1000 } }"
-          class="w-full lg:w-[60%] flex justify-center lg:justify-end relative order-first lg:order-last"
+          class="w-full md:w-[40%] lg:w-[60%] flex justify-center md:justify-end relative order-first md:order-last"
         >
           <img 
             src="/images/contactme.png" 
             alt="Contact Image" 
-            class="w-full max-w-[400px] lg:max-w-none lg:w-[150%] h-auto object-contain transform translate-x-0 lg:translate-x-38 translate-y-0 lg:-translate-y-24"
+            class="w-full max-w-[280px] md:max-w-none md:w-[130%] lg:w-[130%] h-auto object-contain transform translate-x-0 md:translate-x-12 lg:translate-x-38 translate-y-0 md:-translate-y-10 lg:-translate-y-24"
           />
         </div>
+        
       </div>
       
 
@@ -211,24 +212,6 @@ const { t, lang } = useLanguage();
 
 const showCVOptions = ref(false);
 const viewCount = ref('...');
-const isPhoneVisible = ref(false);
-const isEmailVisible = ref(false);
-
-const openSecureContact = (type) => {
-  if (type === 'phone') {
-    if (!isPhoneVisible.value) {
-      isPhoneVisible.value = true;
-    } else {
-      window.open('https://wa.me/6282282421322', '_blank');
-    }
-  } else if (type === 'email') {
-    if (!isEmailVisible.value) {
-      isEmailVisible.value = true;
-    } else {
-      window.location.href = 'mailto:muhamadsidik.imy@gmail.com';
-    }
-  }
-};
 
 // Fetch and increment view count
 onMounted(async () => {
