@@ -75,11 +75,11 @@
             class="relative rounded-3xl overflow-hidden aspect-4/3 mb-4 shadow-sm group-hover:shadow-2xl group-hover:shadow-violet-900/10 transition-all duration-500"
             :style="{ backgroundColor: project.bg }"
           >
-            <img
-              :src="project.image"
-              :alt="project.name"
-              loading="lazy"
-              class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+            <!-- Project Image Component -->
+            <ProjectImage 
+              :src="project.image" 
+              :alt="project.name" 
+              cssClass="transition-transform duration-700 ease-out group-hover:scale-110" 
             />
             
             <!-- Interaction Overlay -->
@@ -134,7 +134,11 @@
 
             <!-- Left side: Visual -->
             <div class="w-full lg:w-1/2 h-64 lg:h-auto overflow-hidden relative group">
-              <img :src="selectedProject.image" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <ProjectImage 
+                :src="selectedProject.image" 
+                :alt="selectedProject.name" 
+                cssClass="transition-transform duration-700 group-hover:scale-105" 
+              />
               <div class="absolute inset-0 bg-linear-to-t from-[#14141d] to-transparent opacity-60"></div>
               <div class="absolute bottom-6 left-6 flex flex-col gap-1">
                 <span class="text-violet-400 text-xs font-bold uppercase tracking-widest">{{ selectedProject.category }}</span>
@@ -211,6 +215,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { useLanguage } from '@/composables/useLanguage';
+import ProjectImage from './common/ProjectImage.vue';
 
 const { t, lang } = useLanguage();
 

@@ -59,10 +59,10 @@
           @click="openDesign(design)"
           class="flex-none w-[85%] md:w-[45%] lg:w-[calc(33.333%-1rem)] aspect-4/3 lg:aspect-video rounded-2xl overflow-hidden cursor-pointer snap-start transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(124,58,237,0.2)] shadow-xl relative group border border-white/5"
         >
-          <img 
+          <ProjectImage 
             :src="design.image" 
             :alt="design.title"
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            cssClass="transition-transform duration-700 group-hover:scale-110"
           />
           <!-- Minimalist Hover Overlay -->
           <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
@@ -102,10 +102,10 @@
 
             <!-- Image Section -->
             <div class="w-full lg:w-3/5 h-[300px] lg:h-[600px] bg-[#111] overflow-hidden relative flex items-center justify-center">
-              <img 
+              <ProjectImage 
                 :src="selectedDesign.image" 
                 :alt="selectedDesign.title"
-                class="w-full h-full object-contain p-4 lg:p-8"
+                cssClass="p-4 lg:p-8 !object-contain"
               />
               <div class="absolute inset-0 bg-linear-to-t from-[#171717] to-transparent lg:hidden"></div>
             </div>
@@ -143,6 +143,7 @@
 <script setup>
 import { ref, reactive, computed } from 'vue';
 import { useLanguage } from '@/composables/useLanguage';
+import ProjectImage from './common/ProjectImage.vue';
 
 const { t, lang } = useLanguage();
 

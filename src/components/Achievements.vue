@@ -37,10 +37,10 @@
         >
           <!-- Small Thumbnail -->
           <div class="w-24 h-24 lg:w-32 lg:h-32 shrink-0 rounded-xl overflow-hidden cursor-zoom-in relative grayscale group-hover:grayscale-0 transition-all duration-500 border border-gray-200 shadow-sm" @click="selectedImg = item.image">
-            <img 
+            <ProjectImage 
               :src="item.image" 
               :alt="item.title"
-              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+              cssClass="transform group-hover:scale-110 transition-transform duration-700"
             />
             <div class="absolute inset-0 bg-violet-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
           </div>
@@ -73,7 +73,7 @@
     <Teleport to="body">
       <transition name="fade">
         <div v-if="selectedImg" class="fixed inset-0 z-10000 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md" @click="selectedImg = null">
-          <img :src="selectedImg" class="max-w-full max-h-full rounded-lg shadow-2xl" />
+          <ProjectImage :src="selectedImg" cssClass="max-w-full max-h-full rounded-lg shadow-2xl !object-contain" />
           <button class="absolute top-6 right-6 text-white text-3xl hover:text-violet-400">
             <i class="bi bi-x-lg"></i>
           </button>
@@ -91,6 +91,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { useLanguage } from '@/composables/useLanguage';
+import ProjectImage from './common/ProjectImage.vue';
 
 const { t, lang } = useLanguage();
 const selectedImg = ref(null);
