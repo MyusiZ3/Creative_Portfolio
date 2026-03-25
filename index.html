@@ -17,11 +17,11 @@
       document.addEventListener('contextmenu', (e) => e.returnValue = false);
       
       document.onkeydown = function(e) {
-          // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+          // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+C (Copy), Ctrl+X (Cut)
           if (
               e.keyCode == 123 || 
               (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) || 
-              (e.ctrlKey && e.keyCode == 85)
+              (e.ctrlKey && (e.keyCode == 85 || e.keyCode == 67 || e.keyCode == 88))
           ) {
               return false;
           }
@@ -31,6 +31,11 @@
               e.preventDefault();
           }
       };
+
+      // Prevent Copying Actions
+      document.addEventListener('copy', (e) => e.preventDefault());
+      document.addEventListener('cut', (e) => e.preventDefault());
+      document.addEventListener('dragstart', (e) => e.preventDefault());
 
       // Original zoom prevention for wheel
       document.addEventListener('wheel', function (e) {

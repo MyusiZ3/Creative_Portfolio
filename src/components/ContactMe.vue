@@ -13,7 +13,7 @@
           </h2>
 
           <div class="space-y-5 w-full">
-            <div>
+            <div class="flex flex-col items-center md:items-start">
               <p class="text-gray-400 text-sm mb-1">{{ t('contact_phone') }}</p>
               <div class="flex items-center gap-2 group/item">
                 <a href="https://wa.me/6282282421322" target="_blank" class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300">
@@ -21,7 +21,7 @@
                 </a>
                 <button 
                   @click="copyToClipboard('082282421322', 'phone')"
-                  class="p-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 opacity-0 group-hover/item:opacity-100 transition-all flex items-center gap-1.5"
+                  class="p-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 opacity-100 md:opacity-0 group-hover/item:opacity-100 transition-all flex items-center gap-1.5"
                 >
                   <i class="bi" :class="copyStatus.phone ? 'bi-check-lg text-green-400' : 'bi-copy'"></i>
                   <span v-if="copyStatus.phone" class="text-[10px] font-bold text-green-400 uppercase tracking-tighter">Copied</span>
@@ -29,7 +29,7 @@
               </div>
             </div>
 
-            <div>
+            <div class="flex flex-col items-center md:items-start">
               <p class="text-gray-400 text-sm mb-1">{{ t('contact_email') }}</p>
               <div class="flex items-center gap-2 group/item">
                 <a href="mailto:muhamadsidik.imy@gmail.com" class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300">
@@ -37,7 +37,7 @@
                 </a>
                 <button 
                    @click="copyToClipboard('muhamadsidik.imy@gmail.com', 'email')"
-                  class="p-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 opacity-0 group-hover/item:opacity-100 transition-all flex items-center gap-1.5"
+                  class="p-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 opacity-100 md:opacity-0 group-hover/item:opacity-100 transition-all flex items-center gap-1.5"
                 >
                   <i class="bi" :class="copyStatus.email ? 'bi-check-lg text-green-400' : 'bi-copy'"></i>
                   <span v-if="copyStatus.email" class="text-[10px] font-bold text-green-400 uppercase tracking-tighter">Copied</span>
@@ -45,9 +45,9 @@
               </div>
             </div>
 
-            <div>
+            <div class="flex flex-col items-center md:items-start">
               <p class="text-gray-400 text-sm mb-1">{{ t('contact_addr') }}</p>
-              <p class="text-white text-lg font-bold font-['Roboto']">Bandung, Indonesia</p>
+              <p class="text-white text-lg font-bold font-['Roboto'] text-center md:text-left">Bandung, Indonesia</p>
             </div>
           </div>
 
