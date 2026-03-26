@@ -25,45 +25,44 @@
         <div class="h-px w-full bg-gray-200 mt-8"></div>
       </div>
 
-      <!-- Achievements List (Minimalist Version) -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 mt-10 mb-[5rem]">
+      <!-- Achievements Grid (New Professional Layout) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-10 mb-[5rem]">
         <div
           v-for="(item, index) in achievements"
           :key="index"
           v-motion
-          :initial="{ opacity: 0, scale: 0.95 }"
-          :visible="{ opacity: 1, scale: 1, transition: { duration: 600, delay: index * 100 } }"
-          class="group relative flex items-start gap-6 border-b border-gray-200 pb-8 hover:border-violet-500 transition-colors duration-500"
+          :initial="{ opacity: 0, y: 30 }"
+          :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: index * 100 } }"
+          class="group bg-gray-50/50 rounded-3xl p-5 border border-gray-100 hover:border-violet-500/30 hover:bg-white hover:shadow-xl hover:shadow-violet-900/5 transition-all duration-500 cursor-pointer"
+          @click="selectedImg = item.image"
         >
-          <!-- Small Thumbnail -->
-          <div class="w-24 h-24 lg:w-32 lg:h-32 shrink-0 rounded-xl overflow-hidden cursor-zoom-in relative grayscale group-hover:grayscale-0 transition-all duration-500 border border-gray-200 shadow-sm" @click="selectedImg = item.image">
+          <!-- Certificate Thumbnail -->
+          <div class="relative w-full aspect-video rounded-2xl overflow-hidden mb-6 border border-gray-100 shadow-sm">
             <ProjectImage 
               :src="item.image" 
               :alt="item.title"
-              cssClass="transform group-hover:scale-110 transition-transform duration-700"
+              cssClass="transform group-hover:scale-105 transition-transform duration-1000"
             />
-            <div class="absolute inset-0 bg-violet-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-          </div>
-
-          <!-- Minimal Text Content -->
-          <div class="flex-1 space-y-2">
-            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 mb-1">
-              <h3 class="text-gray-900 text-lg font-bold font-['Poppins'] leading-tight group-hover:text-violet-600 transition-colors duration-300 pr-4">
-                {{ item.title }}
-              </h3>
-              <p class="text-gray-500 text-sm font-['Roboto'] shrink-0 font-medium tracking-wide">
-                {{ item.year }}
-              </p>
+            <!-- Overlay with Zoom Icon -->
+            <div class="absolute inset-0 bg-violet-600/40 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center backdrop-blur-[2px]">
+              <div class="w-12 h-12 rounded-full bg-white/20 border border-white/50 flex items-center justify-center text-white text-xl transform scale-50 group-hover:scale-100 transition-transform duration-500">
+                <i class="bi bi-zoom-in"></i>
+              </div>
             </div>
-            
-            <p class="text-sm font-['Roboto'] text-gray-600 leading-snug line-clamp-2">
+            <!-- Year Badge -->
+            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full shadow-sm">
+               <p class="text-gray-900 text-[10px] font-bold tracking-wider">{{ item.year }}</p>
+            </div>
+          </div>
+          
+          <!-- Content -->
+          <div class="space-y-3 px-1">
+            <h3 class="text-gray-900 text-lg font-bold font-['Poppins'] leading-tight group-hover:text-violet-600 transition-colors duration-300">
+              {{ item.title }}
+            </h3>
+            <p class="text-[13px] font-['Roboto'] text-gray-500 leading-relaxed line-clamp-3">
               {{ item.description }}
             </p>
-
-            <button v-if="item.linkText" class="mt-3 text-violet-600 hover:text-violet-800 font-bold text-xs tracking-wider uppercase transition-colors flex items-center gap-2 group/btn">
-              {{ item.linkText }}
-              <i class="bi bi-arrow-right transition-transform group-hover/btn:translate-x-1"></i>
-            </button>
           </div>
         </div>
       </div>
@@ -104,7 +103,6 @@ const achievements = computed(() => {
         year: '2023-2025',
         image: '/images/certificates/certificate_telkom_ta_1773251189179.png',
         description: 'Telah mengabdi sebagai Asisten Praktikum untuk 5 mata kuliah multimedia dalam 4 semester.',
-        linkText: 'Selengkapnya'
       },
       {
         title: 'Sertifikasi BNSP Multimedia (KKNI Level II)',
@@ -129,7 +127,6 @@ const achievements = computed(() => {
         year: '2021',
         image: '/images/projects/iudex.webp', 
         description: 'Penyelesaian kursus modul dari dasar HTML & CSS.',
-        linkText: 'LIHAT'
       }
     ]
   }
@@ -140,7 +137,6 @@ const achievements = computed(() => {
       year: '2023-2025',
       image: '/images/certificates/certificate_telkom_ta_1773251189179.png',
       description: 'Appointed as a Teaching Assistant for 5 different multimedia courses across 4 semesters.',
-      linkText: 'More'
     },
     {
       title: 'BNSP Multimedia – Certified (KKNI Level II)',
@@ -165,7 +161,6 @@ const achievements = computed(() => {
       year: '2021',
       image: '/images/projects/iudex.webp', 
       description: 'Completed study sections and exercises covering HTML & CSS fundamentals.',
-      linkText: 'VIEW'
     }
   ];
 });
@@ -183,10 +178,10 @@ const achievements = computed(() => {
   opacity: 0;
 }
 
-.line-clamp-2 {
+.line-clamp-3 {
   display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;  
   overflow: hidden;
 }
