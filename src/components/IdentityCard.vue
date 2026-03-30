@@ -218,7 +218,7 @@ const shadowStyle = computed(() => ({
 .main-card {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%);
+  background: linear-gradient(135deg, rgba(35, 35, 45, 0.85) 0%, rgba(20, 20, 25, 0.95) 100%);
   border-radius: 36px;
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 20px 50px rgba(0,0,0,0.6);

@@ -6,10 +6,14 @@
           v-motion
           :initial="{ opacity: 0, x: -50 }"
           :visible="{ opacity: 1, x: 0, transition: { duration: 800 } }"
-          class="w-full md:w-[60%] lg:w-[40%] space-y-8 flex flex-col items-center md:items-start text-center md:text-left"
+          class="w-full md:w-[70%] lg:w-[65%] xl:w-[50%] space-y-8 flex flex-col items-center md:items-start text-center md:text-left"
         >
           <h2 class="text-3xl lg:text-5xl font-bold font-['Poppins'] text-white leading-tight">
-            <span class="text-[#A754FF]">{{ t('contact_title_1') }}</span> {{ t('contact_title_2') }}<br class="hidden lg:block" />{{ t('contact_title_3') }}
+            <span class="inline-block whitespace-nowrap">
+              <span class="text-[#A754FF]">{{ t('contact_title_1') }}</span> {{ t('contact_title_2') }}
+            </span>
+            <br class="hidden md:block" />
+            {{ t('contact_title_3') }}
           </h2>
 
           <div class="space-y-5 w-full">
@@ -169,12 +173,7 @@
             :visible="{ opacity: 1, y: 0, transition: { duration: 800, delay: 200 } }"
             class="hidden lg:flex flex-col items-center justify-center gap-6 relative px-4 xl:px-8 border-x border-white/5"
           >
-             <!-- 3D Abstract Decor Orbs -->
-             <div class="absolute inset-x-0 -top-20 -bottom-20 pointer-events-none -z-10">
-                <div class="absolute top-[20%] right-[-10%] w-24 h-24 bg-violet-600/10 blur-2xl rounded-full animate-bounce-slow"></div>
-                <div class="absolute bottom-[30%] left-[-15%] w-16 h-16 bg-blue-600/10 blur-[30px] rounded-full animate-bounce-slow animation-delay-2000"></div>
-                <div class="absolute top-[50%] left-[10%] w-12 h-12 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full animate-pulse shadow-2xl"></div>
-             </div>
+             <!-- 3D Abstract Decor Orbs Removed for Cleaner Look -->
 
              <!-- Availability Card -->
              <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 w-full max-w-[240px] hover:border-violet-500/50 hover:bg-white/10 transition-all duration-500 group/status">
@@ -209,8 +208,43 @@
           :visible="{ opacity: 1, scale: 1, transition: { duration: 1000 } }"
           class="w-full md:w-[45%] lg:w-[40%] flex justify-center md:justify-end relative order-first md:order-last mb-12 md:mb-0"
         >
+          <!-- 3D Space Decor (Interactive Environment) -->
+          <div class="absolute inset-x-0 -top-24 -bottom-12 pointer-events-none z-0">
+             <!-- Animated Stars -->
+             <div class="absolute top-0 right-[20%] w-1 h-1 bg-white rounded-full animate-pulse shadow-[0_0_8px_white]"></div>
+             <div class="absolute top-[20%] left-[10%] w-0.5 h-0.5 bg-violet-400 rounded-full animate-ping"></div>
+             <div class="absolute bottom-[40%] right-[5%] w-1 h-1 bg-blue-400 rounded-full animate-pulse shadow-[0_0_8px_#60a5fa]"></div>
+             
+             <!-- Floating Spaceship -->
+             <div 
+               v-motion
+               :initial="{ y: 0, x: 0, rotate: 15 }"
+               :enter="{ 
+                 y: [0, -15, 0], 
+                 x: [0, 5, 0],
+                 rotate: [15, 12, 15],
+                 transition: { duration: 5000, repeat: Infinity, ease: 'easeInOut' } 
+               }"
+               class="absolute -top-16 right-[10%] opacity-80 group-hover:opacity-100 transition-opacity"
+             >
+                <div class="relative">
+                  <!-- Engine Glow -->
+                  <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-8 bg-linear-to-b from-orange-500 to-transparent blur-md animate-pulse"></div>
+                  <!-- Sleek Spacecraft SVG -->
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" class="filter drop-shadow-[0_0_10px_rgba(139,92,246,0.5)]">
+                    <path d="M12 2C12 2 9 6 9 12C9 18 12 22 12 22C12 22 15 18 15 12C15 6 12 2 12 2Z" fill="white" fill-opacity="0.9"/>
+                    <path d="M9 12H15L17 14V17L15 16L12 17L9 16L7 17V14L9 12Z" fill="#A754FF"/>
+                    <circle cx="12" cy="9" r="1.5" fill="#1e1e1e"/>
+                  </svg>
+                </div>
+             </div>
+             
+             <!-- Subtle Nebula Glow -->
+             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-violet-600/5 blur-[100px] rounded-full"></div>
+          </div>
+
           <!-- 3D Identity Card -->
-          <div class="w-full flex justify-center md:justify-end">
+          <div class="w-full flex justify-center md:justify-end relative z-10">
             <IdentityCard />
           </div>
         </div>
