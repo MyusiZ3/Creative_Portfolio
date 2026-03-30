@@ -162,17 +162,57 @@
           </div>
         </div>
 
+          <!-- Middle: Availability & Status (Fills the gap) -->
+          <div 
+            v-motion
+            :initial="{ opacity: 0, y: 20 }"
+            :visible="{ opacity: 1, y: 0, transition: { duration: 800, delay: 200 } }"
+            class="hidden lg:flex flex-col items-center justify-center gap-6 relative px-4 xl:px-8 border-x border-white/5"
+          >
+             <!-- 3D Abstract Decor Orbs -->
+             <div class="absolute inset-x-0 -top-20 -bottom-20 pointer-events-none -z-10">
+                <div class="absolute top-[20%] right-[-10%] w-24 h-24 bg-violet-600/10 blur-2xl rounded-full animate-bounce-slow"></div>
+                <div class="absolute bottom-[30%] left-[-15%] w-16 h-16 bg-blue-600/10 blur-[30px] rounded-full animate-bounce-slow animation-delay-2000"></div>
+                <div class="absolute top-[50%] left-[10%] w-12 h-12 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full animate-pulse shadow-2xl"></div>
+             </div>
+
+             <!-- Availability Card -->
+             <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 w-full max-w-[240px] hover:border-violet-500/50 hover:bg-white/10 transition-all duration-500 group/status">
+                <div class="flex items-center gap-3 mb-4">
+                   <div class="w-3 h-3 rounded-full bg-green-500 shadow-[0_0_12px_rgba(34,197,94,0.6)] animate-pulse"></div>
+                   <p class="text-white font-black text-[11px] uppercase tracking-widest">{{ lang === 'ID' ? 'Tersedia Sekarang' : 'Available for Work' }}</p>
+                </div>
+                
+                <div class="space-y-4">
+                   <div>
+                      <p class="text-[9px] text-gray-500 font-black uppercase tracking-widest mb-1">{{ lang === 'ID' ? 'JAM KERJA' : 'WORKING HOURS' }}</p>
+                      <p class="text-white text-xs font-bold font-mono">09:00 — 17:00 (WIB)</p>
+                   </div>
+                   <div>
+                      <p class="text-[9px] text-gray-500 font-black uppercase tracking-widest mb-1">{{ lang === 'ID' ? 'WAKTU LOKAL' : 'LOCAL TIME' }}</p>
+                      <p class="text-white text-xl font-black font-['Poppins'] tracking-tighter">{{ localTime }}</p>
+                      <p class="text-gray-500 text-[10px]">{{ lang === 'ID' ? 'Bandung, Indonesia' : 'Bandung, ID' }}</p>
+                   </div>
+                </div>
+             </div>
+
+             <!-- Interaction Cue -->
+             <div class="flex flex-col items-center gap-2 slide-up-indicator">
+                <div class="w-px h-12 bg-linear-to-b from-transparent via-violet-500 to-transparent"></div>
+                <p class="text-[8px] text-gray-400 font-black tracking-[0.2em] uppercase">Connect-Hub</p>
+             </div>
+          </div>
+
         <div 
           v-motion
           :initial="{ opacity: 0, scale: 0.9 }"
           :visible="{ opacity: 1, scale: 1, transition: { duration: 1000 } }"
-          class="w-full md:w-[40%] lg:w-[60%] flex justify-center md:justify-end relative order-first md:order-last"
+          class="w-full md:w-[45%] lg:w-[40%] flex justify-center md:justify-end relative order-first md:order-last mb-12 md:mb-0"
         >
-          <img 
-            src="/images/contactme.png" 
-            alt="Contact Image" 
-            class="w-full max-w-[280px] md:max-w-none md:w-[130%] lg:w-[130%] h-auto object-contain transform translate-x-0 md:translate-x-12 lg:translate-x-38 translate-y-0 md:-translate-y-10 lg:-translate-y-24"
-          />
+          <!-- 3D Identity Card -->
+          <div class="w-full flex justify-center md:justify-end">
+            <IdentityCard />
+          </div>
         </div>
         
       </div>
@@ -235,10 +275,34 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { useLanguage } from '@/composables/useLanguage';
+import IdentityCard from './IdentityCard.vue';
 
 const { t, lang } = useLanguage();
+
+const localTime = ref("");
+let timeInterval = null;
+
+const updateLocalTime = () => {
+  const options = { 
+    timeZone: 'Asia/Jakarta', 
+    hour: '2-digit', 
+    minute: '2-digit', 
+    second: '2-digit',
+    hour12: false 
+  };
+  localTime.value = new Intl.DateTimeFormat('en-US', options).format(new Date());
+};
+
+onMounted(() => {
+  updateLocalTime();
+  timeInterval = setInterval(updateLocalTime, 1000);
+});
+
+onUnmounted(() => {
+  if (timeInterval) clearInterval(timeInterval);
+});
 
 const showCVOptions = ref(false);
 const viewCount = ref('...');
