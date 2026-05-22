@@ -44,207 +44,163 @@
       ></div>
 
       <!-- Project Items -->
-      <div class="space-y-16 lg:space-y-24">
+      <div class="space-y-10 lg:space-y-14">
         <div
           v-for="(project, index) in visibleProjects"
           :key="project.name"
           :id="'my-project-' + index"
           v-motion
-          :initial="{ opacity: 0, x: index % 2 === 0 ? -80 : 80, y: 30 }"
+          :initial="{ opacity: 0, y: 50 }"
           :visible="{
             opacity: 1,
-            x: 0,
             y: 0,
-            transition: { type: 'spring', stiffness: 100, damping: 20, mass: 1.2 },
+            transition: { type: 'spring', stiffness: 80, damping: 18, mass: 1 },
           }"
-          class="project-item flex flex-col gap-8 lg:gap-14 items-start"
-          :class="index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'"
+          class="project-card bg-[#1c1c1e]/70 border border-[#2c2c2e] rounded-3xl p-6 lg:p-10 shadow-2xl relative overflow-hidden transition-all duration-500 hover:border-violet-500/20 backdrop-blur-xl"
         >
-          <!-- Project Image Carousel -->
-          <div
-            v-motion
-            :initial="{ opacity: 0, scale: 0.85, rotate: index % 2 === 0 ? -3 : 3 }"
-            :visible="{ opacity: 1, scale: 1, rotate: 0, transition: { type: 'spring', stiffness: 120, damping: 16, delay: 200 } }"
-            class="w-full lg:w-5/12 shrink-0"
-          >
+          <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
+            <!-- Project Image Carousel (Visual Column) -->
             <div
-              class="project-image-wrapper group relative rounded-2xl overflow-hidden aspect-4/3"
-              :style="{ backgroundColor: project.bg }"
+              class="w-full lg:w-[45%] shrink-0 flex flex-col justify-center"
             >
-              <!-- Carousel Images -->
-              <div class="relative w-full h-full cursor-pointer" @click="openLightbox(index, activeSlides[index] || 0)">
-                <transition :name="getTransitionName(project._dir)" mode="out-in">
-                  <img
-                    :key="project.images[activeSlides[index] || 0]"
-                    :src="project.images[activeSlides[index] || 0]"
-                    :alt="`${project.name} - ${(activeSlides[index] || 0) + 1}`"
-                    class="absolute inset-0 w-full h-full object-cover rounded-2xl"
-                  />
-                </transition>
-                <!-- Zoom hint icon -->
-                <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none">
-                  <i class="bi bi-arrows-fullscreen text-xs"></i>
+              <div
+                class="project-image-wrapper group relative rounded-2xl overflow-hidden aspect-4/3 border border-white/10"
+                :style="{ backgroundColor: project.bg }"
+              >
+                <!-- Carousel Images -->
+                <div class="relative w-full h-full cursor-pointer" @click="openLightbox(index, activeSlides[index] || 0)">
+                  <transition :name="getTransitionName(project._dir)" mode="out-in">
+                    <img
+                      :key="project.images[activeSlides[index] || 0]"
+                      :src="project.images[activeSlides[index] || 0]"
+                      :alt="`${project.name} - ${(activeSlides[index] || 0) + 1}`"
+                      class="absolute inset-0 w-full h-full object-cover"
+                    />
+                  </transition>
+                  <!-- Zoom hint icon -->
+                  <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none">
+                    <i class="bi bi-arrows-fullscreen text-xs"></i>
+                  </div>
+                </div>
+
+                <!-- Carousel Dots -->
+                <div
+                  v-if="project.images.length > 1"
+                  class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20"
+                >
+                  <button
+                    v-for="(img, imgIdx) in project.images"
+                    :key="imgIdx"
+                    @click="goToSlide(index, imgIdx)"
+                    class="w-1.5 h-1.5 rounded-full transition-all duration-300"
+                    :class="
+                      (activeSlides[index] || 0) === imgIdx
+                        ? 'bg-violet-400 w-4'
+                        : 'bg-white/40 hover:bg-white/70'
+                    "
+                  ></button>
+                </div>
+
+                <!-- Carousel Arrows -->
+                <button
+                  v-if="project.images.length > 1"
+                  @click="prevSlide(index, project.images.length)"
+                  class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-violet-500/70 z-20"
+                >
+                  <i class="bi bi-chevron-left text-sm"></i>
+                </button>
+                <button
+                  v-if="project.images.length > 1"
+                  @click="nextSlide(index, project.images.length)"
+                  class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-violet-500/70 z-20"
+                >
+                  <i class="bi bi-chevron-right text-sm"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Project Details (Info Column) -->
+            <div class="flex-1 flex flex-col justify-between text-left">
+              <div>
+                <!-- App Icon & Title Header -->
+                <div class="flex items-center gap-4 mb-4">
+                  <!-- iOS Squircle Icon Wrapper -->
+                  <div class="w-12 h-12 rounded-[22%] bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 text-xl shadow-inner shrink-0">
+                    <i :class="project.icon || 'bi bi-app'"></i>
+                  </div>
+                  
+                  <div class="flex-1 min-w-0">
+                    <!-- Project Name -->
+                    <h3 class="text-lg lg:text-xl font-bold font-['Poppins'] text-white leading-tight truncate">
+                      {{ project.name }}
+                    </h3>
+                    
+                    <!-- Platform & Timeline Info (iOS secondary text format) -->
+                    <p class="text-[10px] lg:text-xs text-gray-500 font-medium font-mono uppercase tracking-wide mt-0.5">
+                      {{ project.platform }} • {{ project.teamInfo }}
+                    </p>
+                  </div>
+                </div>
+
+                <!-- iOS system details information bar (App Store style specs) -->
+                <div class="grid grid-cols-2 sm:flex sm:items-center gap-3 sm:gap-6 bg-white/5 border border-white/5 rounded-2xl p-3 sm:px-5 sm:py-3 mb-6 text-xs">
+                  <div>
+                    <span class="text-gray-500 font-bold font-mono text-[9px] uppercase tracking-widest block mb-0.5">{{ t('my_proj_role') }}</span>
+                    <span class="text-gray-200 font-medium font-['Poppins']">{{ project.role }}</span>
+                  </div>
+                  <div class="hidden sm:block w-px h-8 bg-white/10 shrink-0"></div>
+                  <div>
+                    <span class="text-gray-500 font-bold font-mono text-[9px] uppercase tracking-widest block mb-0.5">{{ t('my_proj_tools') }}</span>
+                    <span class="text-gray-200 font-medium font-['Poppins']">{{ project.tools }}</span>
+                  </div>
+                </div>
+
+                <!-- Editorial Content Split Grid -->
+                <div class="border-t border-white/5 pt-5 grid grid-cols-1 md:grid-cols-12 gap-6">
+                  <!-- Project Overview Column -->
+                  <div class="md:col-span-6">
+                    <h4 class="text-[10px] text-gray-500 font-bold tracking-widest uppercase font-mono mb-2">
+                      {{ t('my_proj_overview') }}
+                    </h4>
+                    <p class="text-gray-300 text-xs lg:text-[13px] font-['Roboto'] leading-relaxed font-light">
+                      {{ project.overview }}
+                    </p>
+                  </div>
+
+                  <!-- What I Did / Key Contributions Column -->
+                  <div class="md:col-span-6">
+                    <h4 class="text-[10px] text-gray-500 font-bold tracking-widest uppercase font-mono mb-2.5">
+                      {{ t('my_proj_whatidid') }}
+                    </h4>
+                    <ul class="space-y-2">
+                      <li
+                        v-for="(item, i) in project.tasks"
+                        :key="i"
+                        class="flex items-start gap-2.5"
+                      >
+                        <span class="text-violet-500 mt-1.5 text-[5px] shrink-0">
+                          <i class="bi bi-circle-fill"></i>
+                        </span>
+                        <span class="text-gray-300 font-['Roboto'] text-xs lg:text-[13px] leading-relaxed font-light">
+                          {{ item }}
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
 
-              <!-- Carousel Dots -->
-              <div
-                v-if="project.images.length > 1"
-                class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-20"
-              >
-                <button
-                  v-for="(img, imgIdx) in project.images"
-                  :key="imgIdx"
-                  @click="goToSlide(index, imgIdx)"
-                  class="w-2 h-2 rounded-full transition-all duration-300"
-                  :class="
-                    (activeSlides[index] || 0) === imgIdx
-                      ? 'bg-violet-400 w-5'
-                      : 'bg-white/40 hover:bg-white/70'
-                  "
-                ></button>
-              </div>
-
-              <!-- Carousel Arrows -->
-              <button
-                v-if="project.images.length > 1"
-                @click="prevSlide(index, project.images.length)"
-                class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-violet-500/70 z-20"
-              >
-                <i class="bi bi-chevron-left text-sm"></i>
-              </button>
-              <button
-                v-if="project.images.length > 1"
-                @click="nextSlide(index, project.images.length)"
-                class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-violet-500/70 z-20"
-              >
-                <i class="bi bi-chevron-right text-sm"></i>
-              </button>
-
-              <!-- Subtle glow on hover -->
-              <div
-                class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style="box-shadow: inset 0 0 60px rgba(124, 58, 237, 0.15)"
-              ></div>
-            </div>
-          </div>
-
-          <!-- Project Details -->
-          <div class="w-full lg:w-7/12 project-details">
-            <!-- Project Name -->
-            <h3
-              v-motion
-              :initial="{ opacity: 0, x: index % 2 === 0 ? 40 : -40 }"
-              :visible="{ opacity: 1, x: 0, transition: { type: 'spring', stiffness: 150, damping: 18, delay: 300 } }"
-              class="text-xl lg:text-[26px] font-bold font-['Poppins'] text-white mb-2 leading-tight"
-            >
-              {{ project.name }}
-            </h3>
-
-            <!-- Role -->
-            <p
-              v-motion
-              :initial="{ opacity: 0, x: index % 2 === 0 ? 30 : -30 }"
-              :visible="{ opacity: 1, x: 0, transition: { duration: 600, delay: 400, ease: 'easeOut' } }"
-              class="text-[#8E949F] font-['Roboto'] text-[13px] lg:text-[14px] mb-5"
-            >
-              {{ t('my_proj_role') }} {{ project.role }}
-            </p>
-
-            <!-- Meta Info -->
-            <div
-              v-motion
-              :initial="{ opacity: 0, y: 15 }"
-              :visible="{ opacity: 1, y: 0, transition: { duration: 500, delay: 500, ease: 'easeOut' } }"
-              class="space-y-1 mb-5"
-            >
-              <p
-                class="text-[#8E949F] font-['Roboto'] text-[12px] lg:text-[13px]"
-              >
-                {{ project.teamInfo }}
-              </p>
-              <p
-                class="text-[#8E949F] font-['Roboto'] text-[12px] lg:text-[13px]"
-              >
-                {{ t('my_proj_tools') }} {{ project.tools }}
-              </p>
-            </div>
-
-            <!-- Project Overview -->
-            <div
-              v-motion
-              :initial="{ opacity: 0, y: 20 }"
-              :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 550, ease: 'easeOut' } }"
-              class="mb-5"
-            >
-              <p
-                class="text-violet-400 font-['Roboto'] font-semibold text-[13px] lg:text-[14px] mb-2"
-              >
-                {{ t('my_proj_overview') }}
-              </p>
-              <p
-                class="text-[#b0b5bf] font-['Roboto'] text-[12px] lg:text-[14px] leading-relaxed"
-              >
-                {{ project.overview }}
-              </p>
-            </div>
-
-            <!-- What I Did -->
-            <div
-              v-motion
-              :initial="{ opacity: 0, y: 20 }"
-              :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 650, ease: 'easeOut' } }"
-              class="mb-6"
-            >
-              <p
-                class="text-violet-400 font-['Roboto'] font-semibold text-[13px] lg:text-[14px] mb-3"
-              >
-                {{ t('my_proj_whatidid') }}
-              </p>
-              <ul class="space-y-2">
-                <li
-                  v-for="(item, i) in project.tasks"
-                  :key="i"
-                  v-motion
-                  :initial="{ opacity: 0, x: -20 }"
-                  :visible="{ opacity: 1, x: 0, transition: { type: 'spring', stiffness: 200, damping: 20, delay: 700 + i * 80 } }"
-                  class="flex items-start gap-2 task-item"
+              <!-- iOS App Store GET-style Capsule Button -->
+              <div class="border-t border-white/5 mt-6 pt-5 flex justify-end">
+                <a
+                  :href="project.link || '#'"
+                  class="inline-flex items-center gap-2 bg-[#2c2c2e] hover:bg-[#3a3a3c] active:scale-95 text-violet-400 hover:text-violet-300 font-['Poppins'] font-bold text-xs px-5 py-2 rounded-full transition-all duration-300 tracking-wider shadow-md border border-white/5 cursor-pointer"
                 >
-                  <span class="text-violet-400 mt-1 text-[8px]">
-                    <i class="bi bi-circle-fill"></i>
-                  </span>
-                  <span
-                    class="text-[#b0b5bf] font-['Roboto'] text-[12px] lg:text-[13px] leading-relaxed"
-                  >
-                    {{ item }}
-                  </span>
-                </li>
-              </ul>
+                  <span>{{ t('my_proj_view_work') }}</span>
+                  <i class="bi bi-chevron-right text-[10px]"></i>
+                </a>
+              </div>
             </div>
-
-            <!-- Platform Tag -->
-            <p
-              v-motion
-              :initial="{ opacity: 0 }"
-              :visible="{ opacity: 1, transition: { duration: 500, delay: 800, ease: 'easeOut' } }"
-              class="text-[#8E949F] font-['Roboto'] text-[12px] lg:text-[13px] mb-4"
-            >
-              {{ project.platform }}
-            </p>
-
-            <!-- View Work Button -->
-            <a
-              v-motion
-              :initial="{ opacity: 0, scale: 0.8, y: 10 }"
-              :visible="{ opacity: 1, scale: 1, y: 0, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 900 } }"
-              :href="project.link || '#'"
-              class="view-work-btn inline-flex items-center gap-2 border border-gray-600 text-white font-['Roboto'] font-medium text-[13px] lg:text-[14px] px-5 py-2.5 rounded-full hover:border-violet-500 hover:text-violet-400 transition-all duration-300 group/btn"
-            >
-              {{ t('my_proj_view_work') }}
-              <i
-                class="bi bi-chevron-right text-[11px] transition-transform duration-300 group-hover/btn:translate-x-1"
-              ></i>
-            </a>
           </div>
         </div>
       </div>
@@ -524,6 +480,7 @@ const projects = computed(() => {
   return [
     {
       name: "RideXP - Arcade Game Project",
+      icon: "bi-bicycle",
       role: isId ? "Manajer Proyek, Pengembang Game, Desainer UI/UX" : "Project Manager, Game Developer, UI/UX Designer",
       teamInfo: isId ? "Proyek Tim | Jan – Jun 2025" : "Team Project | Jan – Jun 2025",
       tools: "Unity, Figma, ESP32, JSON",
@@ -557,6 +514,7 @@ const projects = computed(() => {
     },
     {
       name: "MindEscape – VR Escape Room Game",
+      icon: "bi-headset",
       role: isId ? "Pengembang VR, Desainer Lingkungan" : "VR Developer, Environment Designer",
       teamInfo: isId ? "Proyek Tim | Jan – Jun 2025" : "Team Project | Jan – Jun 2025",
       tools: "Unity, Oculus SDK",
@@ -586,6 +544,7 @@ const projects = computed(() => {
     },
     {
       name: "MathRift – Educational 2D Platformer",
+      icon: "bi-calculator",
       role: isId ? "Pengembang Game, Desainer UI/UX" : "Game Developer, UI/UX Designer",
       teamInfo: isId ? "Proyek Tim | Agt – Des 2024" : "Team Project | Aug – Dec 2024",
       tools: "Unity, Figma",
@@ -615,6 +574,7 @@ const projects = computed(() => {
     },
     {
       name: "Stellar Adventures – AR Game Project",
+      icon: "bi-stars",
       role: isId ? "Pengembang AR, Desainer Lingkungan" : "AR Developer, Environment Designer",
       teamInfo: isId ? "Proyek Tim | Agt – Des 2024" : "Team Project | Aug – Dec 2024",
       tools: "Unity, AR Foundation, Blender",
@@ -644,6 +604,7 @@ const projects = computed(() => {
     },
     {
       name: "U-Asprak – Mobile App Design",
+      icon: "bi-people",
       role: "UI/UX Designer",
       teamInfo: isId ? "Studi Kasus Tim | Jan – Jun 2024" : "Team Project | Jan – Jun 2024",
       tools: "Figma, Adobe XD",
@@ -673,6 +634,7 @@ const projects = computed(() => {
     },
     {
       name: "empEDU – Mobile App Design",
+      icon: "bi-book",
       role: "UI/UX Designer",
       teamInfo: isId ? "Proyek Tim | Agt – Des 2023" : "Team Project | Aug – Dec 2023",
       tools: "Figma",
@@ -702,6 +664,7 @@ const projects = computed(() => {
     },
     {
       name: "IUDEX – Team Portfolio Web Design",
+      icon: "bi-display",
       role: isId ? "Desainer UI/UX, Pengembang Frontend" : "UI/UX Designer, Frontend Developer",
       teamInfo: isId ? "Proyek Tim | Jan – Jun 2024" : "Team Project | Jan – Jun 2024",
       tools: "Figma, HTML, CSS, JavaScript",
@@ -731,6 +694,7 @@ const projects = computed(() => {
     },
     {
       name: "Arch – Personal Portfolio Web Design",
+      icon: "bi-laptop",
       role: isId ? "Desainer UI/UX, Pengembang Frontend" : "UI/UX Designer, Frontend Developer",
       teamInfo: isId ? "Proyek Pribadi | 2024" : "Personal Project | 2024",
       tools: "Figma, Vue.js, TailwindCSS",
@@ -760,6 +724,7 @@ const projects = computed(() => {
     },
     {
       name: "Merch – Merch Design for Event",
+      icon: "bi-gift",
       role: isId ? "Desainer Grafis" : "Graphic Designer",
       teamInfo: isId ? "Pengerjaan Bebas | 2024" : "Freelance Project | 2024",
       tools: "Adobe Illustrator, Adobe Photoshop",

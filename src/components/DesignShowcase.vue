@@ -1,76 +1,138 @@
 <template>
-  <div class="mt-24 lg:mt-32">
-    <!-- Section Title -->
-    <div
+  <div class="mt-24 lg:mt-36">
+    <div 
       v-motion
-      :initial="{ opacity: 0, y: 30 }"
+      :initial="{ opacity: 0, y: 40 }"
       :visible="{ opacity: 1, y: 0, transition: { duration: 800 } }"
-      class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 border-b border-white/10 pb-6"
+      class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center"
     >
-      <div class="max-w-2xl text-left">
-        <div class="inline-block bg-violet-500/10 text-violet-400 font-['Poppins'] font-bold text-[12px] lg:text-[14px] px-4 py-1.5 rounded-full mb-4 border border-violet-500/20">
+      <!-- Left Column: Editorial Info & Balanced Grid -->
+      <div class="lg:col-span-5 text-left flex flex-col justify-center">
+        <div class="inline-block w-max bg-violet-500/10 text-violet-400 font-['Poppins'] font-bold text-[11px] lg:text-[12px] px-4 py-1.5 rounded-full mb-6 border border-violet-500/20">
           {{ t('ds_badge') }}
         </div>
-        <h3 class="text-3xl lg:text-[40px] font-bold font-['Poppins'] text-white title-glow">
+        <h3 class="text-3xl lg:text-[44px] font-bold font-['Poppins'] text-white leading-tight mb-6">
           {{ t('ds_title') }}
         </h3>
-        <p class="text-[#8E949F] font-['Roboto'] text-sm lg:text-[15px] mt-4 leading-relaxed">
+        <p class="text-[#8E949F] font-['Roboto'] text-sm lg:text-[16px] leading-relaxed mb-8">
           {{ t('ds_desc') }}
         </p>
+
+        <!-- Design Explorations Index (Extremely clean, authentic & interactive) -->
+        <div class="border-t border-white/10 pt-8 space-y-3">
+          <p class="text-[10px] lg:text-xs text-gray-500 font-bold uppercase tracking-wider mb-4">
+            {{ lang === 'ID' ? 'Daftar Eksplorasi' : 'Exploration Index' }}
+          </p>
+          <div 
+            v-for="(design, index) in designs" 
+            :key="'index-' + design.id"
+            @click="goToCard(index)"
+            class="flex items-center justify-between py-2.5 border-b border-white/5 cursor-pointer group/item transition-all duration-300"
+            :class="index === activeIndex ? 'text-violet-400 border-violet-500/20' : 'text-gray-400 hover:text-white border-white/5'"
+          >
+            <div class="flex items-center gap-3">
+              <span 
+                class="font-mono text-xs transition-colors duration-300"
+                :class="index === activeIndex ? 'text-violet-400' : 'text-gray-600 group-hover/item:text-violet-400'"
+              >
+                0{{ index + 1 }}
+              </span>
+              <span 
+                class="text-xs lg:text-[13px] font-medium font-['Poppins'] transition-all duration-300"
+                :class="index === activeIndex ? 'translate-x-1 font-semibold' : 'group-hover/item:translate-x-1'"
+              >
+                {{ design.title }}
+              </span>
+            </div>
+            <span 
+              class="font-mono text-[10px] transition-colors duration-300"
+              :class="index === activeIndex ? 'text-violet-400/80' : 'text-gray-600 group-hover/item:text-gray-400'"
+            >
+              {{ design.date }}
+            </span>
+          </div>
+        </div>
       </div>
-      
-      <!-- Optional static desktop arrows replacement or just simple text -->
-      <div class="hidden md:flex items-center gap-2 text-[#8E949F] font-['Roboto'] text-sm">
-        <span>{{ t('ds_scroll') }}</span>
-        <i class="bi bi-arrow-right"></i>
-      </div>
-    </div>
 
-    <!-- Showcase Container -->
-    <div
-      v-motion
-      :initial="{ opacity: 0, y: 30 }"
-      :visible="{ opacity: 1, y: 0, transition: { duration: 1000, delay: 200 } }"
-      class="relative w-full group/container"
-    >
-      <!-- Navigation Arrows -->
-      <button 
-        @click.stop="scroll('left')"
-        class="absolute -left-4 lg:-left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-[#1e1e2e] border border-white/10 text-white/60 flex items-center justify-center hover:border-violet-500 hover:text-violet-400 hover:bg-violet-500/10 transition-all duration-300 shadow-xl"
-      >
-        <i class="bi bi-chevron-left text-lg"></i>
-      </button>
-
-      <button 
-        @click.stop="scroll('right')"
-        class="absolute -right-4 lg:-right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-[#1e1e2e] border border-white/10 text-white/60 flex items-center justify-center hover:border-violet-500 hover:text-violet-400 hover:bg-violet-500/10 transition-all duration-300 shadow-xl"
-      >
-        <i class="bi bi-chevron-right text-lg"></i>
-      </button>
-
-      <!-- Horizontal Scroll Area -->
-      <div 
-        ref="scrollContainer"
-        class="flex gap-4 lg:gap-6 overflow-x-auto pb-6 pt-2 snap-x no-scrollbar mask-fade scroll-smooth relative z-10"
-      >
-        <div
-          v-for="(design, index) in designs"
-          :key="design.id"
-          @click="openDesign(design)"
-          class="flex-none w-[85%] md:w-[45%] lg:w-[calc(33.333%-1rem)] aspect-4/3 lg:aspect-video rounded-2xl overflow-hidden cursor-pointer snap-start transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(124,58,237,0.2)] shadow-xl relative group border border-white/5"
+      <!-- Right Column: iOS Stacked Cards -->
+      <div class="lg:col-span-7 flex flex-col items-center select-none overflow-visible">
+        <!-- Deck Wrapper with hover listener -->
+        <div 
+          class="card-stack-container"
+          @mouseenter="isHovered = true"
+          @mouseleave="isHovered = false"
         >
-          <ProjectImage 
-            :src="design.image" 
-            :alt="design.title"
-            cssClass="transition-transform duration-700 group-hover:scale-110"
-          />
-          <!-- Minimalist Hover Overlay -->
-          <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-            <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-              <p class="text-violet-400 text-xs font-bold uppercase tracking-wider mb-1">{{ design.category }}</p>
-              <h4 class="text-white text-lg font-['Poppins'] font-semibold">{{ design.title }}</h4>
+          <!-- Stacked Cards Loop -->
+          <div
+            v-for="(design, index) in designs"
+            :key="design.id"
+            class="stacked-card group"
+            :style="getCardStyle(index)"
+            @click="handleCardClick(index)"
+          >
+            <!-- Elegant Glass Header Inside Card (iOS-style window controls) -->
+            <div class="p-3 bg-zinc-900 border-b border-white/5 flex justify-between items-center z-20">
+              <div class="flex items-center gap-1.5">
+                <div class="w-2 h-2 rounded-full bg-[#ff5f56]"></div>
+                <div class="w-2 h-2 rounded-full bg-[#ffbd2e]"></div>
+                <div class="w-2 h-2 rounded-full bg-[#27c93f]"></div>
+              </div>
+              <span class="text-[8px] font-mono text-white/30 tracking-widest uppercase font-semibold">PREVIEW MOCKUP</span>
+            </div>
+
+            <!-- Card Content / Image -->
+            <div class="relative flex-1 overflow-hidden bg-black/40">
+              <ProjectImage 
+                :src="design.image" 
+                :alt="design.title"
+                cssClass="transition-transform duration-700 ease-out group-hover:scale-102"
+              />
+            </div>
+
+            <!-- Premium Solid Card Footer (Replaces AI Gradient Fade) -->
+            <div class="bg-zinc-950 p-5 border-t border-white/5 text-left z-10">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-violet-400 text-[10px] font-mono font-bold tracking-widest uppercase">{{ design.category }}</span>
+                <span class="text-gray-500 text-[9px] font-mono font-semibold">{{ design.date }}</span>
+              </div>
+              <h4 class="text-white text-base lg:text-lg font-bold font-['Poppins'] mb-1.5">{{ design.title }}</h4>
+              <p class="text-gray-400 text-xs font-['Roboto'] line-clamp-2 leading-relaxed font-light">{{ design.description }}</p>
             </div>
           </div>
+        </div>
+
+        <!-- Navigation & Pagination Indicators Below Stack -->
+        <div class="flex items-center gap-6 mt-12 z-30">
+          <!-- Prev Button -->
+          <button 
+            @click="prevCard"
+            class="w-10 h-10 rounded-full bg-white/5 border border-white/10 text-white/70 flex items-center justify-center hover:bg-violet-600 hover:text-white hover:border-violet-600 transition-all duration-300 shadow-lg active:scale-90 cursor-pointer"
+            title="Previous"
+          >
+            <i class="bi bi-chevron-left text-sm"></i>
+          </button>
+
+          <!-- Dynamic Dots (iOS Style Page Indicator) -->
+          <div class="flex items-center gap-2.5">
+            <button 
+              v-for="(design, index) in designs" 
+              :key="'dot-' + design.id"
+              @click="goToCard(index)"
+              class="h-1.5 rounded-full transition-all duration-500 cursor-pointer"
+              :class="index === activeIndex 
+                ? 'w-6 bg-violet-600' 
+                : 'w-1.5 bg-white/20 hover:bg-white/40'"
+            ></button>
+          </div>
+
+          <!-- Next Button -->
+          <button 
+            @click="nextCard"
+            class="w-10 h-10 rounded-full bg-white/5 border border-white/10 text-white/70 flex items-center justify-center hover:bg-violet-600 hover:text-white hover:border-violet-600 transition-all duration-300 shadow-lg active:scale-90 cursor-pointer"
+            title="Next"
+          >
+            <i class="bi bi-chevron-right text-sm"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -90,12 +152,12 @@
 
           <!-- Content Card Minimalist -->
           <div 
-            class="relative w-full max-w-4xl max-h-[90vh] bg-[#171717] border border-white/10 rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row"
+            class="relative w-full max-w-4xl max-h-[90vh] bg-[#171717] border border-white/10 rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row shadow-violet-500/10"
           >
             <!-- Close Button -->
             <button 
               @click="closeDesign"
-              class="absolute top-4 right-4 lg:top-6 lg:right-6 z-50 w-10 h-10 rounded-full bg-black/40 lg:bg-white/5 backdrop-blur-md border border-white/10 text-white hover:bg-white/10 flex items-center justify-center transition-all duration-300"
+              class="absolute top-4 right-4 lg:top-6 lg:right-6 z-50 w-10 h-10 rounded-full bg-black/40 lg:bg-white/5 backdrop-blur-md border border-white/10 text-white hover:bg-white/10 flex items-center justify-center transition-all duration-300 cursor-pointer"
             >
               <i class="bi bi-x-lg text-lg"></i>
             </button>
@@ -107,11 +169,11 @@
                 :alt="selectedDesign.title"
                 cssClass="p-4 lg:p-8 !object-contain"
               />
-              <div class="absolute inset-0 bg-linear-to-t from-[#171717] to-transparent lg:hidden"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-[#171717] to-transparent lg:hidden"></div>
             </div>
 
             <!-- Text Section -->
-            <div class="w-full lg:w-2/5 p-6 lg:p-10 overflow-y-auto custom-scrollbar flex flex-col justify-center">
+            <div class="w-full lg:w-2/5 p-6 lg:p-10 overflow-y-auto custom-scrollbar flex flex-col justify-center bg-zinc-900/40">
               <span class="inline-block px-3 py-1 bg-white/5 border border-white/10 text-gray-300 text-xs font-medium rounded-md mb-4 w-max">
                 {{ selectedDesign.category }}
               </span>
@@ -141,25 +203,86 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed } from 'vue';
+import { ref, computed } from 'vue';
 import { useLanguage } from '@/composables/useLanguage';
 import ProjectImage from './common/ProjectImage.vue';
 
 const { t, lang } = useLanguage();
 
 const selectedDesign = ref(null);
-const scrollContainer = ref(null);
+const activeIndex = ref(0);
+const isHovered = ref(false);
 
-const scroll = (direction) => {
-  if (scrollContainer.value) {
-    const firstItem = scrollContainer.value.firstElementChild;
-    const scrollAmount = firstItem ? firstItem.offsetWidth + 20 : 300; // width + gap
-    if (direction === 'left') {
-      scrollContainer.value.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    } else {
-      scrollContainer.value.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+const nextCard = () => {
+  activeIndex.value = (activeIndex.value + 1) % designs.value.length;
+};
+
+const prevCard = () => {
+  activeIndex.value = (activeIndex.value - 1 + designs.value.length) % designs.value.length;
+};
+
+const goToCard = (index) => {
+  activeIndex.value = index;
+};
+
+const handleCardClick = (index) => {
+  const total = designs.value.length;
+  let diff = index - activeIndex.value;
+  if (diff < 0) diff += total;
+
+  if (diff === 0) {
+    openDesign(designs.value[index]);
+  } else {
+    activeIndex.value = index;
+  }
+};
+
+const getCardStyle = (index) => {
+  const total = designs.value.length;
+  let diff = index - activeIndex.value;
+  
+  if (diff < 0) {
+    diff += total;
+  }
+  
+  // We only show the top 3 cards in the visible stack
+  if (diff >= 3) {
+    return {
+      opacity: 0,
+      transform: 'scale(0.8) translateY(30px) rotate(0deg)',
+      pointerEvents: 'none',
+      zIndex: 0,
+      transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+    };
+  }
+
+  // iOS Stack parameters
+  let scale = 1 - diff * 0.05;
+  let translateY = diff * 15; // Shift down
+  let rotate = diff === 1 ? 2 : diff === 2 ? -2.5 : 0; // Natural slightly messy stack look
+  let opacity = 1 - diff * 0.35;
+  let zIndex = 30 - diff;
+
+  // On hover, fan out slightly for extra premium tactile feedback
+  if (isHovered.value) {
+    if (diff === 1) {
+      translateY = 32;
+      rotate = 4;
+      scale = 0.96;
+    } else if (diff === 2) {
+      translateY = 64;
+      rotate = -5;
+      scale = 0.92;
     }
   }
+
+  return {
+    transform: `translate3d(0, ${translateY}px, 0) scale(${scale}) rotate(${rotate}deg)`,
+    opacity: opacity,
+    zIndex: zIndex,
+    transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+    pointerEvents: diff === 0 || isHovered.value ? 'auto' : 'none',
+  };
 };
 
 const designs = computed(() => {
@@ -167,58 +290,58 @@ const designs = computed(() => {
   return [
     {
       id: 1,
-      title: 'Perempuan & Ekonomi Berkelanjutan',
-      category: isId ? 'Desain Infografis' : 'Infographic Design',
-      image: '/images/designs/design_women_empowerment_1773250246918.png',
+      title: 'iOS Weather App Concept',
+      category: isId ? 'Desain UI/UX' : 'UI/UX Design',
+      image: '/images/projects/u_asprak.webp',
       description: isId 
-        ? 'Sebuah desain infografis yang menyoroti peranan wanita dalam pertumbuhan ekonomi berkelanjutan. Proyek ini memuat riset mendalam terhadap data ekonomi, mengubah statistik ke dalam penceritaan visual.'
-        : 'A detailed infographic design highlighting the importance of women in sustainable economic growth. This project involved deep research into economic data and translating complex statistics into visual storytelling.',
-      tools: 'Adobe Illustrator, Figma',
-      date: isId ? 'Februari 2024' : 'February 2024'
+        ? 'Rancangan aplikasi cuaca minimalis ala iOS dengan tipografi kontras tinggi, visualisasi data berbasis bento-grid yang bersih, dan efek glassmorphism modern untuk kemudahan navigasi.'
+        : 'A minimalist iOS weather application design featuring high-contrast typography, clean bento-grid-based data visualization, and modern glassmorphic panels for seamless navigation.',
+      tools: 'Figma, Sketch',
+      date: isId ? 'Maret 2025' : 'March 2025'
     },
     {
       id: 2,
-      title: 'Mental Health is Health',
-      category: isId ? 'Ilustrasi Digital' : 'Digital Illustration',
-      image: '/images/designs/design_mental_health_1773250268763.png',
+      title: 'Productivity Bento Dashboard',
+      category: isId ? 'Desain Web' : 'Web Design',
+      image: '/images/projects/iudex.webp',
       description: isId 
-        ? 'Sebuah ciptaan seni berkonsep yang memusatkan wawasannya perihal kesehatan mental. Ilustrasi ini menggambarkan keindahan dan kerumitan budi manusia pada palet warnanya.'
-        : 'A creative conceptual art piece focused on mental health awareness. The illustration represents the beauty and complexity of the human mind through vibrant colors and organic shapes.',
-      tools: 'Procreate, Adobe Photoshop',
-      date: isId ? 'Januari 2024' : 'January 2024'
+        ? 'Eksplorasi bento grid untuk dasbor produktivitas pribadi. Menyajikan widget modular, visualisasi grafik interaktif, dan palet warna monokromatik yang menenangkan mata saat bekerja.'
+        : 'A bento grid layout exploration for a personal productivity dashboard. Features modular widgets, interactive chart visualizations, and a dark monochromatic color palette designed for high-focus sessions.',
+      tools: 'Figma, Illustrator',
+      date: isId ? 'Januari 2025' : 'January 2025'
     },
     {
       id: 3,
-      title: 'Munchy Munch Branding',
-      category: isId ? 'Identitas Merek' : 'Brand Identity',
-      image: '/images/designs/design_munchy_munch_1773250287724.png',
-      description: isId 
-        ? 'Proyek pengembangan profil merek untuk sebuah jajaran makanan kekinian. Ini termasuk mendesain logo, susunan warna dan pemakaian corak grafis seperti yang tergambar.'
-        : 'Full branding project for a modern snacks company. This included logo design, color palette selection, and toy-like food illustrations to appeal to a younger audience.',
-      tools: 'Figma, Illustrator',
-      date: isId ? 'Desember 2023' : 'December 2023'
-    },
-    {
-      id: 4,
-      title: 'Creative Art Showcase',
-      category: isId ? 'Seni Digital' : 'Digital Art',
-      image: '/images/projects/iudex.webp',
-      description: isId 
-        ? 'Kumpulan latihan seni digital untuk menyelisik batas penguasaan rona, ketajaman bayang dan tata letak dalam menimba pencerapan cipta estetik secara utuh.'
-        : 'A collection of digital art experiments exploring lighting, texture, and composition.',
-      tools: 'Photoshop, Blender',
-      date: isId ? 'November 2023' : 'November 2023'
-    },
-    {
-      id: 5,
-      title: 'App UI Exploration',
+      title: 'Apple Music Player Redesign',
       category: isId ? 'Desain UI/UX' : 'UI/UX Design',
       image: '/images/projects/empedu.webp',
       description: isId 
-        ? 'Menyuguhkan tatap muka aplikasi minimalis modern guna menghantarkan rancangan terkini sebagai wadah memandu pencerapan materi secara efektif dan menghibur melalui ragam animasi mikro halus.'
-        : 'A modern, clean mobile application interface conceptualizing new ways to display interactive educational content with smooth micro-interactions.',
+        ? 'Redesain konseptual pemutar musik Apple dengan fokus pada kemudahan aksesibilitas satu tangan, transisi mikro yang mulus, dan tipografi judul yang tebal serta ekspresif.'
+        : 'A conceptual redesign of the Apple Music player focused on one-handed reachability, smooth micro-interactions, and bold, expressive editorial title layouts.',
       tools: 'Figma, After Effects',
-      date: isId ? 'Oktober 2023' : 'October 2023'
+      date: isId ? 'Desember 2024' : 'December 2024'
+    },
+    {
+      id: 4,
+      title: 'Minimal Travel Planner App',
+      category: isId ? 'Desain Mobile' : 'Mobile Design',
+      image: '/images/projects/mathrift.webp',
+      description: isId 
+        ? 'Aplikasi perencana perjalanan minimalis yang menggunakan kartu frosted glass, navigasi berbasis gestur gesek yang intuitif, serta kurasi fotografi kota yang bernilai estetika tinggi.'
+        : 'A minimalist travel planner app featuring frosted glass cards, intuitive swipe-gesture-based navigation, and highly aesthetic urban photography curation.',
+      tools: 'Figma, Photoshop',
+      date: isId ? 'Oktober 2024' : 'October 2024'
+    },
+    {
+      id: 5,
+      title: 'Smart Home Control Hub',
+      category: isId ? 'Desain Smart UI' : 'Smart UI Design',
+      image: '/images/projects/arch.webp',
+      description: isId 
+        ? 'Pusat kendali rumah pintar berbasis grid modular dengan kendali cepat, persentase daya baterai terintegrasi, dan ikon kustom yang rapi guna memaksimalkan aksesibilitas pengguna.'
+        : 'A modular grid-based smart home control center featuring rapid toggles, integrated battery life percentages, and clean custom icons to maximize user accessibility.',
+      tools: 'Figma, Blender',
+      date: isId ? 'September 2024' : 'September 2024'
     }
   ];
 });
@@ -235,16 +358,49 @@ const closeDesign = () => {
 </script>
 
 <style scoped>
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+.card-stack-container {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  height: 420px;
+  margin: 0 auto;
+  perspective: 1000px;
 }
 
-.mask-fade {
-  mask-image: linear-gradient(to right, black 85%, transparent 100%);
+@media (max-width: 480px) {
+  .card-stack-container {
+    max-width: 320px;
+    height: 380px;
+  }
+}
+
+.stacked-card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 24px;
+  background: #18181b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transform-origin: center bottom;
+  will-change: transform, opacity;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 10px;
 }
 
 /* App Store Style Expansion Transition */
@@ -256,7 +412,7 @@ const closeDesign = () => {
 .app-store-expand-enter-from,
 .app-store-expand-leave-to {
   opacity: 0;
-  transform: scale(0.9);
+  transform: scale(0.95);
 }
 
 .app-store-expand-enter-to,
