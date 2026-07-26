@@ -45,7 +45,7 @@
         v-motion
         :initial="{ opacity: 0, y: 40 }"
         :visible="{ opacity: 1, y: 0, transition: { duration: 700, delay: 100, ease: 'easeOut' } }"
-        class="text-3xl md:text-4xl lg:text-[48px] font-bold font-['Poppins'] text-white mb-6 uppercase tracking-wider"
+        class="text-3xl md:text-4xl lg:text-[48px] font-bold font-['Poppins'] text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-indigo-400 mb-6 uppercase tracking-wider"
       >
         {{ t('skills_heading') }}
       </h2>
