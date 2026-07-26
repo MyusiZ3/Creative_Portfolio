@@ -3,73 +3,93 @@
     <div class="max-w-6xl mx-auto px-4">
       
       <!-- Section Title Marquee -->
-      <div class="mb-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b-4 border-black pb-6">
+      <div 
+        v-motion
+        :initial="{ opacity: 0, y: -20 }"
+        :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, ease: 'easeOut' } }"
+        class="mb-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b-4 border-black pb-6"
+      >
         <div>
-          <span class="text-xs font-bold text-[#ffd700] uppercase tracking-widest bg-[#161b22] px-3 py-1 border border-[#ffd700] shadow-[2px_2px_0px_#000]">
+          <span class="text-xs font-bold text-[#ffd700] uppercase tracking-widest bg-[#161b22] px-3 py-1 border border-[#ffd700] shadow-[2px_2px_0px_#000] font-silkscreen">
             ✦ KEY METRICS & MILESTONES
           </span>
-          <h2 class="text-2xl sm:text-4xl font-extrabold uppercase mt-2 text-[#f0f6fc]">
+          <h2 class="text-2xl sm:text-4xl font-extrabold uppercase mt-2 text-[#f0f6fc] font-pixel leading-tight">
             IMPACT <span class="text-[#00f0ff]">& STATS</span>
           </h2>
         </div>
         <div class="text-xs text-[#8b949e] font-mono bg-[#161b22] p-2 border-2 border-black">
-          STATUS: <span class="text-[#00ff66] font-bold">RECORD HIGH</span>
+          STATUS: <span class="text-[#00ff66] font-bold font-silkscreen">RECORD HIGH</span>
         </div>
       </div>
 
       <!-- Top Row: Bento Metrics Grid (High-Contrast Bold Colors) -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
         
-        <!-- Box 1: Yellow - 500K Products -->
-        <div class="bg-[#ffd700] text-black border-4 border-black p-6 sm:p-8 shadow-[6px_6px_0px_#000000] relative overflow-hidden flex flex-col justify-between">
+        <!-- Box 1: Yellow - 15+ Projects -->
+        <div 
+          v-motion
+          :initial="{ opacity: 0, scale: 0.9, y: 30 }"
+          :visible-once="{ opacity: 1, scale: 1, y: 0, transition: { duration: 500, delay: 100, ease: 'easeOut' } }"
+          class="bg-[#ffd700] text-black border-4 border-black p-6 sm:p-8 shadow-[6px_6px_0px_#000000] relative overflow-hidden flex flex-col justify-between"
+        >
           <div class="flex items-center justify-between mb-4">
-            <span class="px-2.5 py-1 bg-black text-[#ffd700] text-[10px] font-extrabold uppercase tracking-wider rounded-full">
-              PRODUCTS
+            <span class="px-2.5 py-1 bg-black text-[#ffd700] text-[10px] font-extrabold uppercase tracking-wider font-silkscreen border border-black">
+              PROJECTS
             </span>
-            <span class="text-2xl">📦</span>
+            <i class="bi bi-controller text-3xl text-black"></i>
           </div>
           <div>
-            <div class="text-4xl sm:text-6xl font-black tracking-tighter leading-none mb-1">
-              500K+
+            <div class="text-3xl sm:text-5xl font-black tracking-tighter leading-none mb-2 font-pixel">
+              15+
             </div>
-            <div class="text-xs font-extrabold uppercase tracking-wide opacity-90">
-              {{ isId ? "Produk & Aset Terdistribusi" : "Products & Assets Delivered" }}
+            <div class="text-xs font-extrabold uppercase tracking-wide opacity-90 font-mono">
+              {{ isId ? "Proyek & Gim Diberdayakan" : "Projects & Games Delivered" }}
             </div>
           </div>
         </div>
 
-        <!-- Box 2: Lavender/Purple - 20% Growth -->
-        <div class="bg-[#a78bfa] text-black border-4 border-black p-6 sm:p-8 shadow-[6px_6px_0px_#000000] relative overflow-hidden flex flex-col justify-between">
+        <!-- Box 2: Lavender/Purple - 3+ Years Exp -->
+        <div 
+          v-motion
+          :initial="{ opacity: 0, scale: 0.9, y: 30 }"
+          :visible-once="{ opacity: 1, scale: 1, y: 0, transition: { duration: 500, delay: 220, ease: 'easeOut' } }"
+          class="bg-[#a78bfa] text-black border-4 border-black p-6 sm:p-8 shadow-[6px_6px_0px_#000000] relative overflow-hidden flex flex-col justify-between"
+        >
           <div class="flex items-center justify-between mb-4">
-            <span class="px-2.5 py-1 bg-black text-[#a78bfa] text-[10px] font-extrabold uppercase tracking-wider rounded-full">
-              GROWTH
+            <span class="px-2.5 py-1 bg-black text-[#a78bfa] text-[10px] font-extrabold uppercase tracking-wider font-silkscreen border border-black">
+              EXPERIENCE
             </span>
-            <span class="text-2xl">📈</span>
+            <i class="bi bi-award-fill text-3xl text-black"></i>
           </div>
           <div>
-            <div class="text-4xl sm:text-6xl font-black tracking-tighter leading-none mb-1">
-              20%+
+            <div class="text-3xl sm:text-5xl font-black tracking-tighter leading-none mb-2 font-pixel">
+              3+ YRS
             </div>
-            <div class="text-xs font-extrabold uppercase tracking-wide opacity-90">
-              {{ isId ? "Pertumbuhan Basis Pengguna" : "Growth in Customer Base" }}
+            <div class="text-xs font-extrabold uppercase tracking-wide opacity-90 font-mono">
+              {{ isId ? "Pengalaman Desain & Dev" : "Years Multimedia & Dev Exp." }}
             </div>
           </div>
         </div>
 
-        <!-- Box 3: Salmon Pink - 1M+ Visitors -->
-        <div class="bg-[#ff6b81] text-black border-4 border-black p-6 sm:p-8 shadow-[6px_6px_0px_#000000] relative overflow-hidden flex flex-col justify-between">
+        <!-- Box 3: Salmon Pink - 100% Satisfaction -->
+        <div 
+          v-motion
+          :initial="{ opacity: 0, scale: 0.9, y: 30 }"
+          :visible-once="{ opacity: 1, scale: 1, y: 0, transition: { duration: 500, delay: 340, ease: 'easeOut' } }"
+          class="bg-[#ff6b81] text-black border-4 border-black p-6 sm:p-8 shadow-[6px_6px_0px_#000000] relative overflow-hidden flex flex-col justify-between"
+        >
           <div class="flex items-center justify-between mb-4">
-            <span class="px-2.5 py-1 bg-black text-[#ff6b81] text-[10px] font-extrabold uppercase tracking-wider rounded-full">
-              VISITORS
+            <span class="px-2.5 py-1 bg-black text-[#ff6b81] text-[10px] font-extrabold uppercase tracking-wider font-silkscreen border border-black">
+              QUALITY
             </span>
-            <span class="text-2xl">🌐</span>
+            <i class="bi bi-shield-check text-3xl text-black"></i>
           </div>
           <div>
-            <div class="text-4xl sm:text-6xl font-black tracking-tighter leading-none mb-1">
-              1M+
+            <div class="text-3xl sm:text-5xl font-black tracking-tighter leading-none mb-2 font-pixel">
+              100%
             </div>
-            <div class="text-xs font-extrabold uppercase tracking-wide opacity-90">
-              {{ isId ? "Impresi & Pengunjung Web" : "Total Platform Impressions" }}
+            <div class="text-xs font-extrabold uppercase tracking-wide opacity-90 font-mono">
+              {{ isId ? "Komitmen & Kepuasan Klien" : "Client & Project Satisfaction" }}
             </div>
           </div>
         </div>
@@ -77,7 +97,12 @@
       </div>
 
       <!-- Bottom Row: Interactive Month Pills & Timeline Grid -->
-      <div class="bg-[#161b22] border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_#000000]">
+      <div 
+        v-motion
+        :initial="{ opacity: 0, y: 40 }"
+        :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 400, ease: 'easeOut' } }"
+        class="bg-[#161b22] border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_#000000]"
+      >
         
         <!-- Month Navigation Pills -->
         <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-[#30363d] pb-6 mb-6">

@@ -6,14 +6,19 @@
     <div class="max-w-6xl mx-auto px-4 relative z-10">
       
       <!-- Arcade Banner Header -->
-      <div class="mb-8 border-4 border-[#00f0ff] bg-[#161b22] p-4 shadow-[6px_6px_0px_#000000] flex flex-wrap items-center justify-between gap-4">
+      <div 
+        v-motion
+        :initial="{ opacity: 0, y: -30 }"
+        :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, ease: 'easeOut' } }"
+        class="mb-8 border-4 border-[#00f0ff] bg-[#161b22] p-4 shadow-[6px_6px_0px_#000000] flex flex-wrap items-center justify-between gap-4"
+      >
         <div class="flex items-center gap-3">
           <span class="w-3 h-3 bg-[#00ff66] animate-ping inline-block"></span>
-          <span class="text-xs sm:text-sm font-bold text-[#00ff66] tracking-widest uppercase">
+          <span class="text-xs sm:text-sm font-bold text-[#00ff66] tracking-widest uppercase font-silkscreen">
             SYSTEM ONLINE • PLAYER 1 READY
           </span>
         </div>
-        <div class="flex items-center gap-2 text-xs text-[#8b949e]">
+        <div class="flex items-center gap-2 text-xs text-[#8b949e] font-silkscreen">
           <span class="px-2 py-1 bg-[#0d1117] border border-[#30363d] text-[#00f0ff] font-bold">MODE: 16-BIT ARCADE</span>
           <span class="px-2 py-1 bg-[#0d1117] border border-[#30363d] text-[#ffd700] font-bold">FPS: 60</span>
         </div>
@@ -23,10 +28,15 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
         
         <!-- Left Pane: Player Portrait & Title -->
-        <div class="lg:col-span-7 bg-[#161b22] border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_#000000] flex flex-col justify-between relative group">
+        <div 
+          v-motion
+          :initial="{ opacity: 0, x: -50 }"
+          :visible-once="{ opacity: 1, x: 0, transition: { duration: 700, delay: 150, ease: 'easeOut' } }"
+          class="lg:col-span-7 bg-[#161b22] border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_#000000] flex flex-col justify-between relative group"
+        >
           <div class="space-y-4">
             <!-- Level & Class Tag -->
-            <div class="flex flex-wrap items-center gap-2">
+            <div class="flex flex-wrap items-center gap-2 font-silkscreen">
               <span class="px-3 py-1 bg-[#ffd700] text-black font-bold text-xs uppercase shadow-[2px_2px_0px_#000000]">
                 LVL 99 DESIGNER
               </span>
@@ -39,11 +49,11 @@
             </div>
 
             <!-- Big Pixel Title -->
-            <h1 class="text-3xl sm:text-5xl font-extrabold text-[#f0f6fc] tracking-tight leading-none uppercase">
+            <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#f0f6fc] tracking-tight leading-tight uppercase font-pixel py-2">
               MUHAMAD <span class="text-[#00ff66]">SIDIK</span>
             </h1>
 
-            <p class="text-sm sm:text-base text-[#8b949e] leading-relaxed pt-2">
+            <p class="text-sm sm:text-base text-[#8b949e] leading-relaxed pt-2 font-mono">
               {{ isId 
                 ? "Creative Multimedia Designer & Game Developer yang berfokus menciptakan pengalaman interaktif imersif (Arcade, VR/AR, dan UI/UX modern)."
                 : "Creative Multimedia Designer & Game Developer crafting immersive interactive experiences spanning Arcade Games, VR/AR, and modern UI/UX."
@@ -55,7 +65,7 @@
           <div class="mt-8 pt-6 border-t-2 border-[#30363d] space-y-3">
             <!-- HP Bar -->
             <div>
-              <div class="flex justify-between text-xs font-bold mb-1">
+              <div class="flex justify-between text-xs font-bold mb-1 font-silkscreen">
                 <span class="text-[#00ff66]">CREATIVE ENERGY (HP)</span>
                 <span class="text-[#00ff66]">100 / 100</span>
               </div>
@@ -66,7 +76,7 @@
 
             <!-- MP Bar -->
             <div>
-              <div class="flex justify-between text-xs font-bold mb-1">
+              <div class="flex justify-between text-xs font-bold mb-1 font-silkscreen">
                 <span class="text-[#00f0ff]">3D & XR SKILL (MP)</span>
                 <span class="text-[#00f0ff]">95 / 100</span>
               </div>
@@ -77,46 +87,53 @@
           </div>
 
           <!-- CTA Buttons -->
-          <div class="mt-8 flex flex-wrap gap-4">
+          <div class="mt-8 flex flex-wrap gap-4 font-silkscreen">
             <a
               href="#projects"
-              class="px-6 py-3 bg-[#00ff66] text-black font-extrabold text-sm uppercase border-2 border-black shadow-[4px_4px_0px_#000000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#000000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all flex items-center gap-2"
+              class="px-6 py-3 bg-[#00ff66] text-black font-extrabold text-xs uppercase border-2 border-black shadow-[4px_4px_0px_#000000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#000000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all flex items-center gap-2"
             >
-              <span>🕹️</span>
+              <i class="bi bi-controller text-base"></i>
               <span>{{ isId ? "MAIN KAN PROYEK" : "START PLAYING" }}</span>
             </a>
 
             <a
               href="#contact"
-              class="px-6 py-3 bg-[#161b22] text-[#00f0ff] font-extrabold text-sm uppercase border-2 border-[#00f0ff] shadow-[4px_4px_0px_#000000] hover:bg-[#00f0ff]/10 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#000000] transition-all flex items-center gap-2"
+              class="px-6 py-3 bg-[#161b22] text-[#00f0ff] font-extrabold text-xs uppercase border-2 border-[#00f0ff] shadow-[4px_4px_0px_#000000] hover:bg-[#00f0ff]/10 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#000000] transition-all flex items-center gap-2"
             >
-              <span>📩</span>
+              <i class="bi bi-send-fill text-base"></i>
               <span>{{ isId ? "KIRIM HIGH SCORE" : "SEND TRANSMISSION" }}</span>
             </a>
           </div>
         </div>
 
         <!-- Right Pane: Skill Attributes Grid -->
-        <div class="lg:col-span-5 bg-[#161b22] border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_#000000] flex flex-col justify-between">
+        <div 
+          v-motion
+          :initial="{ opacity: 0, x: 50 }"
+          :visible-once="{ opacity: 1, x: 0, transition: { duration: 700, delay: 300, ease: 'easeOut' } }"
+          class="lg:col-span-5 bg-[#161b22] border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_#000000] flex flex-col justify-between"
+        >
           <div>
-            <div class="flex items-center justify-between border-b-2 border-[#30363d] pb-3 mb-4">
-              <h3 class="text-sm font-bold text-[#ffd700] uppercase tracking-wider flex items-center gap-2">
-                <span>⚔️</span>
+            <div class="flex items-center justify-between border-b-2 border-[#30363d] pb-3 mb-4 font-silkscreen">
+              <h3 class="text-xs font-bold text-[#ffd700] uppercase tracking-wider flex items-center gap-2">
+                <i class="bi bi-shield-lock-fill text-sm"></i>
                 <span>ATTRIBUTES & STATS</span>
               </h3>
-              <span class="text-xs text-[#8b949e]">EQUIPPED</span>
+              <span class="text-[10px] text-[#8b949e]">EQUIPPED</span>
             </div>
 
             <div class="space-y-3">
               <div v-for="stat in stats" :key="stat.name" class="p-3 bg-[#0d1117] border-2 border-black flex items-center justify-between hover:border-[#00f0ff] transition-colors">
                 <div class="flex items-center gap-3">
-                  <span class="text-lg">{{ stat.icon }}</span>
+                  <span class="text-xl flex items-center justify-center w-8 h-8 bg-[#161b22] border border-black">
+                    <i :class="stat.icon"></i>
+                  </span>
                   <div>
-                    <div class="text-xs font-bold text-[#f0f6fc]">{{ stat.name }}</div>
-                    <div class="text-[10px] text-[#8b949e]">{{ stat.desc }}</div>
+                    <div class="text-xs font-bold text-[#f0f6fc] font-mono">{{ stat.name }}</div>
+                    <div class="text-[10px] text-[#8b949e] font-mono">{{ stat.desc }}</div>
                   </div>
                 </div>
-                <div class="text-right">
+                <div class="text-right font-silkscreen">
                   <div class="text-xs font-bold text-[#00ff66]">+{{ stat.val }}</div>
                   <div class="text-[9px] text-[#ffd700] uppercase">{{ stat.tier }}</div>
                 </div>
@@ -125,8 +142,8 @@
           </div>
 
           <!-- Insert Coin Footer Prompt -->
-          <div class="mt-6 pt-4 border-t-2 border-[#30363d] text-center">
-            <div class="text-xs font-bold text-[#ff0055] animate-pulse tracking-widest uppercase">
+          <div class="mt-6 pt-4 border-t-2 border-[#30363d] text-center font-pixel">
+            <div class="text-[10px] sm:text-xs text-[#ff0055] animate-pulse tracking-widest uppercase">
               ▲ INSERT COIN TO EXPLORE PORTFOLIO ▲
             </div>
           </div>
@@ -145,9 +162,9 @@ const { lang } = useLanguage();
 const isId = computed(() => lang.value === 'ID');
 
 const stats = computed(() => [
-  { icon: '🎮', name: 'GAME DEVELOPMENT', desc: 'Unity 3D / C# / 2D Platformer', val: 95, tier: 'MASTER' },
-  { icon: '🥽', name: 'VR / AR EXPERIENCE', desc: 'XR Locomotion & Spatial Design', val: 92, tier: 'EXPERT' },
-  { icon: '🎨', name: 'UI / UX DESIGN', desc: 'Figma & Design Systems', val: 94, tier: 'EXPERT' },
-  { icon: '💻', name: 'FRONTEND CODE', desc: 'Vue.js & Web Interactive', val: 90, tier: 'ADVANCED' }
+  { icon: 'bi bi-controller text-[#00ff66]', name: 'GAME DEVELOPMENT', desc: 'Unity 3D / C# / 2D Platformer', val: 95, tier: 'MASTER' },
+  { icon: 'bi bi-headset text-[#00f0ff]', name: 'VR / AR EXPERIENCE', desc: 'XR Locomotion & Spatial Design', val: 92, tier: 'EXPERT' },
+  { icon: 'bi bi-palette-fill text-[#ff0055]', name: 'UI / UX DESIGN', desc: 'Figma & Design Systems', val: 94, tier: 'EXPERT' },
+  { icon: 'bi bi-code-slash text-[#ffd700]', name: 'FRONTEND CODE', desc: 'Vue.js & Web Interactive', val: 90, tier: 'ADVANCED' }
 ]);
 </script>
