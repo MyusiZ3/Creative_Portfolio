@@ -62,6 +62,94 @@
         </div>
       </div>
 
+      <!-- Education & Language STATS HUD -->
+      <div 
+        v-motion
+        :initial="{ opacity: 0, y: 20 }"
+        :visible-once="{ opacity: 1, y: 0, transition: { duration: 500, delay: 150, ease: 'easeOut' } }"
+        class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10"
+      >
+        <!-- Education Box -->
+        <div class="bg-[#161b22] border-4 border-black p-5 shadow-[6px_6px_0px_#000000] relative group hover:border-[#ffd700] transition-colors flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between border-b border-[#30363d] pb-2 mb-4">
+              <div class="flex items-center gap-2 font-silkscreen text-[#ffd700] text-xs font-bold uppercase">
+                <i class="bi bi-mortarboard-fill text-sm"></i>
+                <span>[ACADEMIC GUILD // {{ t('education_title') }}]</span>
+              </div>
+              <span class="text-[9px] font-silkscreen text-[#ffd700] bg-[#ffd700]/10 px-2 py-0.5 border border-[#ffd700]/30">GPA: 3.81 / 4.00</span>
+            </div>
+
+            <div class="space-y-4 font-mono">
+              <!-- Item 1: Telkom University -->
+              <div class="border-l-2 border-[#ffd700] pl-3">
+                <div class="flex flex-wrap items-center justify-between gap-1">
+                  <h4 class="text-xs font-bold text-[#f0f6fc] font-silkscreen">TELKOM UNIVERSITY</h4>
+                  <span class="text-[9px] text-[#8b949e] font-silkscreen">2022 - PRESENT</span>
+                </div>
+                <p class="text-xs text-[#c9d1d9] mt-1 leading-relaxed">
+                  {{ t('edu_1_desc') }}
+                </p>
+                <div class="mt-1 text-[10px] text-[#ffd700] font-silkscreen flex items-center gap-1">
+                  <i class="bi bi-star-fill text-[8px]"></i> [HONORS ROLL] GPA 3.81 / 4.00
+                </div>
+              </div>
+
+              <!-- Item 2: SMKN 1 Belitang III -->
+              <div class="border-l-2 border-[#30363d] pl-3 group-hover:border-[#ffd700]/50 transition-colors">
+                <div class="flex flex-wrap items-center justify-between gap-1">
+                  <h4 class="text-xs font-bold text-[#f0f6fc] font-silkscreen">SMKN 1 BELITANG III</h4>
+                  <span class="text-[9px] text-[#8b949e] font-silkscreen">2019 - 2022</span>
+                </div>
+                <p class="text-xs text-[#c9d1d9] mt-1">
+                  {{ t('edu_2_desc') }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Language Box -->
+        <div class="bg-[#161b22] border-4 border-black p-5 shadow-[6px_6px_0px_#000000] relative group hover:border-[#00f0ff] transition-colors flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between border-b border-[#30363d] pb-2 mb-4">
+              <div class="flex items-center gap-2 font-silkscreen text-[#00f0ff] text-xs font-bold uppercase">
+                <i class="bi bi-translate text-sm"></i>
+                <span>[COMMUNICATION BUFFS // {{ t('lang_title') }}]</span>
+              </div>
+              <span class="text-[9px] font-silkscreen text-[#00f0ff] bg-[#00f0ff]/10 px-2 py-0.5 border border-[#00f0ff]/30">CEFR B1 READY</span>
+            </div>
+
+            <div class="space-y-4 font-mono">
+              <!-- Item 1: Indonesian -->
+              <div class="border-l-2 border-[#00f0ff] pl-3">
+                <div class="flex flex-wrap items-center justify-between gap-1">
+                  <h4 class="text-xs font-bold text-[#f0f6fc] font-silkscreen">INDONESIAN</h4>
+                  <span class="text-[9px] text-[#00ff66] font-silkscreen font-bold">[NATIVE / MAX]</span>
+                </div>
+                <p class="text-xs text-[#c9d1d9] mt-1">
+                  {{ t('lang_native') }} (Penutur Asli)
+                </p>
+              </div>
+
+              <!-- Item 2: English -->
+              <div class="border-l-2 border-[#00f0ff] pl-3">
+                <div class="flex flex-wrap items-center justify-between gap-1">
+                  <h4 class="text-xs font-bold text-[#f0f6fc] font-silkscreen">ENGLISH</h4>
+                  <span class="text-[9px] text-[#00f0ff] font-silkscreen font-bold">[INTERMEDIATE]</span>
+                </div>
+                <p class="text-xs text-[#c9d1d9] mt-1">
+                  Intermediate Level (CEFR B1)
+                </p>
+                <div class="mt-1 text-[10px] text-[#00f0ff] font-silkscreen flex items-center gap-1">
+                  <i class="bi bi-award-fill text-[9px]"></i> [OFFICIAL SCORE] EPRT: 483
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Software Equipment Inventory Grid (10 Items from MySkills.vue) -->
       <div 
         v-motion
