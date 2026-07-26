@@ -39,7 +39,7 @@
             <i class="bi bi-controller text-3xl text-black"></i>
           </div>
           <div>
-            <div class="text-3xl sm:text-5xl font-black tracking-tighter leading-none mb-2 font-pixel">
+            <div class="text-3xl sm:text-5xl font-black tracking-tighter leading-none mb-2 font-pixel whitespace-nowrap">
               15+
             </div>
             <div class="text-xs font-extrabold uppercase tracking-wide opacity-90 font-mono">
@@ -62,7 +62,7 @@
             <i class="bi bi-award-fill text-3xl text-black"></i>
           </div>
           <div>
-            <div class="text-3xl sm:text-5xl font-black tracking-tighter leading-none mb-2 font-pixel">
+            <div class="text-3xl sm:text-5xl font-black tracking-tighter leading-none mb-2 font-pixel whitespace-nowrap">
               3+ YRS
             </div>
             <div class="text-xs font-extrabold uppercase tracking-wide opacity-90 font-mono">
@@ -85,7 +85,7 @@
             <i class="bi bi-shield-check text-3xl text-black"></i>
           </div>
           <div>
-            <div class="text-3xl sm:text-5xl font-black tracking-tighter leading-none mb-2 font-pixel">
+            <div class="text-3xl sm:text-5xl font-black tracking-tighter leading-none mb-2 font-pixel whitespace-nowrap">
               100%
             </div>
             <div class="text-xs font-extrabold uppercase tracking-wide opacity-90 font-mono">
