@@ -139,6 +139,43 @@
                 </div>
               </div>
             </div>
+
+            <!-- Education & Language Hero Highlights -->
+            <div class="mt-4 pt-4 border-t-2 border-[#30363d] space-y-2.5 font-mono">
+              <!-- Education Highlight -->
+              <div class="p-2.5 bg-[#0d1117] border-2 border-black flex items-center justify-between hover:border-[#ffd700] transition-colors">
+                <div class="flex items-center gap-2.5">
+                  <span class="text-base text-[#ffd700] flex items-center justify-center w-7 h-7 bg-[#161b22] border border-black shrink-0">
+                    <i class="bi bi-mortarboard-fill"></i>
+                  </span>
+                  <div>
+                    <div class="text-[11px] font-bold text-[#f0f6fc] font-silkscreen">TELKOM UNIVERSITY</div>
+                    <div class="text-[9px] text-[#8b949e]">Sarjana Terapan Rekayasa Multimedia</div>
+                  </div>
+                </div>
+                <div class="text-right font-silkscreen shrink-0">
+                  <div class="text-[10px] font-bold text-[#ffd700]">GPA 3.81</div>
+                  <div class="text-[8px] text-[#00ff66] uppercase">2022-NOW</div>
+                </div>
+              </div>
+
+              <!-- Language Highlight -->
+              <div class="p-2.5 bg-[#0d1117] border-2 border-black flex items-center justify-between hover:border-[#00f0ff] transition-colors">
+                <div class="flex items-center gap-2.5">
+                  <span class="text-base text-[#00f0ff] flex items-center justify-center w-7 h-7 bg-[#161b22] border border-black shrink-0">
+                    <i class="bi bi-translate"></i>
+                  </span>
+                  <div>
+                    <div class="text-[11px] font-bold text-[#f0f6fc] font-silkscreen">LANGUAGE SKILLS</div>
+                    <div class="text-[9px] text-[#8b949e]">ID: Native • EN: B1 (EPRT 483)</div>
+                  </div>
+                </div>
+                <div class="text-right font-silkscreen shrink-0">
+                  <div class="text-[10px] font-bold text-[#00f0ff]">B1 READY</div>
+                  <div class="text-[8px] text-[#00ff66] uppercase">BILINGUAL</div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- Insert Coin Footer Prompt -->
