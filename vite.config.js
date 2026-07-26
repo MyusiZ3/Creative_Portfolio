@@ -16,9 +16,13 @@ export default defineConfig({
     chunkSizeWarningLimit: 600,
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vue-vendor': ['vue', 'vue-router'],
-          'animation': ['gsap', 'animejs', '@vueuse/motion'],
+        manualChunks(id) {
+          if (id.includes('node_modules/vue') || id.includes('node_modules/vue-router')) {
+            return 'vue-vendor';
+          }
+          if (id.includes('node_modules/gsap') || id.includes('node_modules/animejs') || id.includes('node_modules/@vueuse/motion')) {
+            return 'animation';
+          }
         }
       }
     }
