@@ -66,7 +66,7 @@
             <!-- HP Bar -->
             <div>
               <div class="flex justify-between text-xs font-bold mb-1 font-silkscreen">
-                <span class="text-[#00ff66]">CREATIVE ENERGY (HP)</span>
+                <span class="text-[#00ff66]">CREATIVE STAMINA (HP)</span>
                 <span class="text-[#00ff66]">100 / 100</span>
               </div>
               <div class="h-3 w-full bg-[#0d1117] border-2 border-black p-0.5">
@@ -77,7 +77,7 @@
             <!-- MP Bar -->
             <div>
               <div class="flex justify-between text-xs font-bold mb-1 font-silkscreen">
-                <span class="text-[#00f0ff]">3D & XR SKILL (MP)</span>
+                <span class="text-[#00f0ff]">TECH & XR MANA (MP)</span>
                 <span class="text-[#00f0ff]">95 / 100</span>
               </div>
               <div class="h-3 w-full bg-[#0d1117] border-2 border-black p-0.5">
