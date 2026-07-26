@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen&family=VT323&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -6,6 +7,18 @@
   --breakpoint-lg: 850px;
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
+}
+
+.font-pixel {
+  font-family: 'Press Start 2P', cursive, monospace;
+}
+
+.font-silkscreen {
+  font-family: 'Silkscreen', cursive, monospace;
+}
+
+.font-vt323 {
+  font-family: 'VT323', monospace;
 }
 
 

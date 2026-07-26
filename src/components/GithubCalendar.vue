@@ -114,8 +114,13 @@ const selectedYear = ref(new Date().getFullYear().toString());
 
 const fetchGitHubData = async () => {
   try {
-    // Reverting to the vercel API with proxy to get multiple years data
-    const res = await fetch(`https://api.codetabs.com/v1/proxy?quest=https://github-contributions.vercel.app/api/v1/${username}`);
+    let res;
+    try {
+      res = await fetch(`https://api.codetabs.com/v1/proxy?quest=https://github-contributions.vercel.app/api/v1/${username}`);
+      if (!res.ok) throw new Error("Proxy failed");
+    } catch {
+      res = await fetch(`https://github-contributions.vercel.app/api/v1/${username}`);
+    }
     if (!res.ok) throw new Error("Failed to fetch Github data");
     
     const data = await res.json();

@@ -2,7 +2,7 @@
   <Navbar
     @navigate="onNavigate"
     @toggle-lang="onToggleLang"
-    @show-notification="showNotification = true"
+    @show-notification="showNotification = !showNotification"
     @toggle-theme="handleThemeSwitch"
   />
   

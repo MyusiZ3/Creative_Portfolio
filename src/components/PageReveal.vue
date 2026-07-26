@@ -2,6 +2,8 @@
 import { ref, watch, computed } from "vue";
 import { useTheme } from "@/composables/useTheme";
 
+const { currentTheme } = useTheme();
+
 const props = defineProps({
   active: Boolean,
   label: {
@@ -11,8 +13,6 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["done"]);
-
-const { currentTheme } = useTheme();
 
 const phase = ref("idle"); // idle -> enter -> hold -> exit -> idle
 
@@ -50,13 +50,13 @@ watch(
   <Teleport to="body">
     <div
       class="page-reveal-container"
-      :class="{ active: phase !== 'idle', 'is-pixel-theme': currentTheme === 'pixel' }"
+      :class="{ active: phase !== 'idle' }"
       aria-hidden="true"
     >
       <!-- Single Solid Curtain Slab -->
       <div
         class="page-reveal-slab"
-        :class="[`slab-${phase}`]"
+        :class="[`slab-${phase}`, currentTheme === 'pixel' ? 'pixel-slab' : 'editorial-slab']"
       >
         <!-- Label Content -->
         <div
@@ -64,9 +64,22 @@ watch(
           :class="{ visible: phase === 'enter' || phase === 'hold' }"
         >
           <div class="reveal-content">
-            <span class="reveal-tag">{{ currentTheme === 'pixel' ? '⚡ LEVEL TRANSITION' : '✦ PORTFOLIO' }}</span>
-            <h2 class="reveal-title">{{ formattedLabel }}</h2>
-            <div class="reveal-accent-line"></div>
+            <span
+              class="reveal-tag"
+              :class="currentTheme === 'pixel' ? 'text-[#00ff66] font-mono tracking-widest' : 'text-zinc-400'"
+            >
+              {{ currentTheme === 'pixel' ? '⚡ GAME_SYS' : '✦ PORTFOLIO' }}
+            </span>
+            <h2
+              class="reveal-title"
+              :class="currentTheme === 'pixel' ? 'font-mono text-[#00ff66] drop-shadow-[0_0_10px_rgba(0,255,102,0.8)]' : 'font-sans text-white'"
+            >
+              {{ formattedLabel }}
+            </h2>
+            <div
+              class="reveal-accent-line"
+              :class="currentTheme === 'pixel' ? 'bg-[#00ff66] shadow-[0_0_10px_#00ff66]' : 'bg-violet-500 shadow-[0_0_10px_rgba(139,92,246,0.6)]'"
+            ></div>
           </div>
         </div>
       </div>
@@ -87,18 +100,27 @@ watch(
   pointer-events: all;
 }
 
-/* --- Editorial Slab --- */
+/* --- Curtain Slab --- */
 .page-reveal-slab {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  background-color: #171717;
   will-change: transform;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+}
+
+.editorial-slab {
+  background-color: #171717;
+}
+
+.pixel-slab {
+  background-color: #050b07;
+  border-top: 3px solid #00ff66;
+  border-bottom: 3px solid #00ff66;
 }
 
 /* Base transform state */
@@ -146,19 +168,15 @@ watch(
 }
 
 .reveal-tag {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.75rem;
   letter-spacing: 0.3em;
-  color: #a1a1aa;
   text-transform: uppercase;
 }
 
 .reveal-title {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: clamp(1.75rem, 4vw, 3rem);
   font-weight: 600;
   letter-spacing: 0.2em;
-  color: #ffffff;
   text-transform: uppercase;
   margin: 0;
   padding: 0;
@@ -166,8 +184,7 @@ watch(
 
 .reveal-accent-line {
   width: 40px;
-  height: 2px;
-  background-color: rgba(255, 255, 255, 0.25);
+  height: 3px;
   margin-top: 0.75rem;
   border-radius: 9999px;
   transition: width 0.4s ease 0.15s;
@@ -175,39 +192,5 @@ watch(
 
 .reveal-content-wrapper.visible .reveal-accent-line {
   width: 60px;
-  background-color: #7c3aed;
-}
-
-/* --- Pixel Theme Overrides --- */
-.is-pixel-theme .page-reveal-slab {
-  background-color: #0a0f0d;
-  border-top: 4px solid #00ff66;
-  border-bottom: 4px solid #00ff66;
-}
-
-.is-pixel-theme .reveal-tag {
-  font-family: 'Press Start 2P', monospace;
-  color: #00ff66;
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-}
-
-.is-pixel-theme .reveal-title {
-  font-family: 'Press Start 2P', monospace;
-  color: #00ff66;
-  font-size: clamp(1.1rem, 3vw, 2rem);
-  text-shadow: 3px 3px 0px #000;
-}
-
-.is-pixel-theme .reveal-accent-line {
-  background-color: #00ff66;
-  box-shadow: 0 0 10px #00ff66;
-  border-radius: 0;
-}
-
-.is-pixel-theme .reveal-content-wrapper.visible .reveal-accent-line {
-  width: 80px;
-  background-color: #00ff66;
-  box-shadow: 0 0 14px #00ff66;
 }
 </style>

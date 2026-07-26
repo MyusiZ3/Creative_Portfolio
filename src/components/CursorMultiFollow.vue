@@ -1,37 +1,41 @@
 <template>
   <Teleport to="body">
     <div v-if="isPointerFine" class="cursor-multifollow" aria-hidden="true">
-      <!-- Large outer circle (slowest) -->
+      <!-- Large outer ring (slowest) -->
       <div
         class="cursor-ring"
         :style="{
           width: '32px',
           height: '32px',
-          borderColor: '#7c3aed',
+          borderColor: currentTheme === 'pixel' ? '#00ff66' : '#7c3aed',
+          borderRadius: currentTheme === 'pixel' ? '0px' : '50%',
+          boxShadow: currentTheme === 'pixel' ? '0 0 8px rgba(0, 255, 102, 0.4)' : 'none',
           transform: `translate3d(${circles[0].x - 16}px, ${circles[0].y - 16}px, 0) scale(${circles[0].scale})`,
           opacity: circles[0].opacity,
         }"
       ></div>
 
-      <!-- Medium circle -->
+      <!-- Medium ring -->
       <div
         class="cursor-ring"
         :style="{
           width: '20px',
           height: '20px',
-          borderColor: '#a78bfa',
+          borderColor: currentTheme === 'pixel' ? '#33ff88' : '#a78bfa',
+          borderRadius: currentTheme === 'pixel' ? '0px' : '50%',
           transform: `translate3d(${circles[1].x - 10}px, ${circles[1].y - 10}px, 0) scale(${circles[1].scale})`,
           opacity: circles[1].opacity,
         }"
       ></div>
 
-      <!-- Small circle -->
+      <!-- Small ring -->
       <div
         class="cursor-ring"
         :style="{
           width: '12px',
           height: '12px',
-          borderColor: '#e879f9',
+          borderColor: currentTheme === 'pixel' ? '#00cc55' : '#e879f9',
+          borderRadius: currentTheme === 'pixel' ? '0px' : '50%',
           transform: `translate3d(${circles[2].x - 6}px, ${circles[2].y - 6}px, 0) scale(${circles[2].scale})`,
           opacity: circles[2].opacity,
         }"
@@ -41,6 +45,9 @@
       <div
         class="cursor-dot"
         :style="{
+          background: currentTheme === 'pixel' ? '#00ff66' : 'white',
+          borderRadius: currentTheme === 'pixel' ? '0px' : '50%',
+          boxShadow: currentTheme === 'pixel' ? '0 0 10px #00ff66' : 'none',
           transform: `translate3d(${mouse.x - 3}px, ${mouse.y - 3}px, 0) scale(${dotScale})`,
           opacity: dotOpacity,
         }"
@@ -51,7 +58,11 @@
         v-for="ripple in ripples"
         :key="ripple.id"
         class="click-ripple"
-        :style="ripple.style"
+        :style="{
+          ...ripple.style,
+          borderColor: currentTheme === 'pixel' ? '#00ff66' : '#a78bfa',
+          borderRadius: currentTheme === 'pixel' ? '0px' : '50%',
+        }"
       ></div>
     </div>
   </Teleport>
@@ -59,7 +70,9 @@
 
 <script setup>
 import { ref, reactive, onMounted, onUnmounted } from 'vue';
+import { useTheme } from '@/composables/useTheme';
 
+const { currentTheme } = useTheme();
 const isPointerFine = ref(false);
 const mouse = reactive({ x: -100, y: -100 });
 const dotScale = ref(1);
@@ -129,7 +142,7 @@ const spawnRipple = (cx, cy) => {
       width: '8px',
       height: '8px',
       opacity: 0.7,
-      borderColor: '#a78bfa',
+      borderColor: currentTheme.value === 'pixel' ? '#00ff66' : '#a78bfa',
       transform: 'translate(-50%, -50%) scale(1)',
       transition: 'none',
     },
@@ -212,12 +225,11 @@ onUnmounted(() => {
   position: fixed;
   top: 0;
   left: 0;
-  border-radius: 50%;
   border: 2px solid;
   pointer-events: none;
   will-change: transform, opacity;
   backface-visibility: hidden;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, border-radius 0.3s ease, border-color 0.3s ease;
 }
 
 .cursor-dot {
@@ -226,17 +238,14 @@ onUnmounted(() => {
   left: 0;
   width: 6px;
   height: 6px;
-  border-radius: 50%;
-  background: white;
   pointer-events: none;
   will-change: transform, opacity;
   backface-visibility: hidden;
-  transition: transform 0.15s ease, opacity 0.3s ease;
+  transition: transform 0.15s ease, opacity 0.3s ease, background-color 0.3s ease, border-radius 0.3s ease;
 }
 
 .click-ripple {
   position: fixed;
-  border-radius: 50%;
   border: 2px solid;
   pointer-events: none;
   will-change: transform, opacity, width, height;
