@@ -1,5 +1,5 @@
 <template>
-  <section id="home" class="relative min-h-screen pt-24 pb-16 bg-[#0d1117] text-[#f0f6fc] font-mono selection:bg-[#00ff66] selection:text-black overflow-hidden">
+  <section id="home" class="relative pt-24 pb-12 sm:pb-16 bg-[#0d1117] text-[#f0f6fc] font-mono selection:bg-[#00ff66] selection:text-black overflow-hidden">
     <!-- Subtle CRT Grid Background -->
     <div class="absolute inset-0 bg-[linear-gradient(to_right,#161b22_1px,transparent_1px),linear-gradient(to_bottom,#161b22_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-40 pointer-events-none"></div>
 
@@ -87,21 +87,21 @@
           </div>
 
           <!-- CTA Buttons -->
-          <div class="mt-8 flex flex-wrap gap-4 font-silkscreen">
+          <div class="mt-8 flex flex-row items-center gap-2 sm:gap-4 font-silkscreen">
             <a
               href="#projects"
-              class="px-6 py-3 bg-[#00ff66] text-black font-extrabold text-xs uppercase border-2 border-black shadow-[4px_4px_0px_#000000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#000000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all flex items-center gap-2"
+              class="flex-1 justify-center px-2 sm:px-6 py-2.5 sm:py-3 bg-[#00ff66] text-black font-extrabold text-[9px] min-[360px]:text-[10px] sm:text-xs uppercase border-2 border-black shadow-[3px_3px_0px_#000000] sm:shadow-[4px_4px_0px_#000000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#000000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all flex items-center gap-1 sm:gap-2 text-center whitespace-nowrap"
             >
-              <i class="bi bi-controller text-base"></i>
-              <span>{{ isId ? "MAIN KAN PROYEK" : "START PLAYING" }}</span>
+              <i class="bi bi-controller text-xs sm:text-base shrink-0"></i>
+              <span class="whitespace-nowrap">{{ isId ? "MAIN KAN PROYEK" : "START PLAYING" }}</span>
             </a>
 
             <a
               href="#contact"
-              class="px-6 py-3 bg-[#161b22] text-[#00f0ff] font-extrabold text-xs uppercase border-2 border-[#00f0ff] shadow-[4px_4px_0px_#000000] hover:bg-[#00f0ff]/10 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#000000] transition-all flex items-center gap-2"
+              class="flex-1 justify-center px-2 sm:px-6 py-2.5 sm:py-3 bg-[#161b22] text-[#00f0ff] font-extrabold text-[9px] min-[360px]:text-[10px] sm:text-xs uppercase border-2 border-[#00f0ff] shadow-[3px_3px_0px_#000000] sm:shadow-[4px_4px_0px_#000000] hover:bg-[#00f0ff]/10 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#000000] transition-all flex items-center gap-1 sm:gap-2 text-center whitespace-nowrap"
             >
-              <i class="bi bi-send-fill text-base"></i>
-              <span>{{ isId ? "KIRIM HIGH SCORE" : "SEND TRANSMISSION" }}</span>
+              <i class="bi bi-send-fill text-xs sm:text-base shrink-0"></i>
+              <span class="whitespace-nowrap">{{ isId ? "KIRIM HIGH SCORE" : "SEND TRANSMISSION" }}</span>
             </a>
           </div>
         </div>
