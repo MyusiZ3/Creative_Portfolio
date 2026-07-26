@@ -80,12 +80,11 @@
               <span class="text-[9px] font-silkscreen text-[#ffd700] bg-[#ffd700]/10 px-2 py-0.5 border border-[#ffd700]/30">GPA: 3.81 / 4.00</span>
             </div>
 
-            <div class="space-y-4 font-mono">
-              <!-- Item 1: Telkom University -->
+            <div class="space-y-4 font-mono"              <!-- Item 1: Telkom University -->
               <div class="border-l-2 border-[#ffd700] pl-3">
                 <div class="flex flex-wrap items-center justify-between gap-1">
                   <h4 class="text-xs font-bold text-[#f0f6fc] font-silkscreen">TELKOM UNIVERSITY</h4>
-                  <span class="text-[9px] text-[#8b949e] font-silkscreen">2022 - PRESENT</span>
+                  <span class="text-[9px] text-[#8b949e] font-silkscreen">{{ isId ? '2022 - SEKARANG' : '2022 - PRESENT' }}</span>
                 </div>
                 <p class="text-xs text-[#c9d1d9] mt-1 leading-relaxed">
                   {{ t('edu_1_desc') }}
@@ -124,27 +123,27 @@
               <!-- Item 1: Indonesian -->
               <div class="border-l-2 border-[#00f0ff] pl-3">
                 <div class="flex flex-wrap items-center justify-between gap-1">
-                  <h4 class="text-xs font-bold text-[#f0f6fc] font-silkscreen">INDONESIAN</h4>
+                  <h4 class="text-xs font-bold text-[#f0f6fc] font-silkscreen">{{ isId ? 'BAHASA INDONESIA' : 'INDONESIAN' }}</h4>
                   <span class="text-[9px] text-[#00ff66] font-silkscreen font-bold">[NATIVE / MAX]</span>
                 </div>
                 <p class="text-xs text-[#c9d1d9] mt-1">
-                  {{ t('lang_native') }} (Penutur Asli)
+                  {{ isId ? 'Penutur Asli (Native Speaker)' : 'Native Speaker' }}
                 </p>
               </div>
 
               <!-- Item 2: English -->
               <div class="border-l-2 border-[#00f0ff] pl-3">
                 <div class="flex flex-wrap items-center justify-between gap-1">
-                  <h4 class="text-xs font-bold text-[#f0f6fc] font-silkscreen">ENGLISH</h4>
+                  <h4 class="text-xs font-bold text-[#f0f6fc] font-silkscreen">{{ isId ? 'BAHASA INGGRIS' : 'ENGLISH' }}</h4>
                   <span class="text-[9px] text-[#00f0ff] font-silkscreen font-bold">[INTERMEDIATE]</span>
                 </div>
                 <p class="text-xs text-[#c9d1d9] mt-1">
-                  Intermediate Level (CEFR B1)
+                  {{ isId ? 'Tingkat Menengah (CEFR B1)' : 'Intermediate Level (CEFR B1)' }}
                 </p>
                 <div class="mt-1 text-[10px] text-[#00f0ff] font-silkscreen flex items-center gap-1">
                   <i class="bi bi-award-fill text-[9px]"></i> [OFFICIAL SCORE] EPRT: 483
                 </div>
-              </div>
+              </div>v>
             </div>
           </div>
         </div>
@@ -312,10 +311,12 @@
 </template>
 
 <script setup>
+import { computed } from 'vue';
 import { useLanguage } from '@/composables/useLanguage';
 import GithubCalendar from "@/components/GithubCalendar.vue";
 
-const { t } = useLanguage();
+const { t, lang } = useLanguage();
+const isId = computed(() => lang.value === 'ID');
 
 function scrollToSection(sectionId) {
   const section = document.getElementById(sectionId);

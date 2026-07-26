@@ -150,12 +150,12 @@
                   </span>
                   <div>
                     <div class="text-[11px] font-bold text-[#f0f6fc] font-silkscreen">TELKOM UNIVERSITY</div>
-                    <div class="text-[9px] text-[#8b949e]">Sarjana Terapan Rekayasa Multimedia</div>
+                    <div class="text-[9px] text-[#8b949e]">{{ t('edu_1_desc') }}</div>
                   </div>
                 </div>
                 <div class="text-right font-silkscreen shrink-0">
                   <div class="text-[10px] font-bold text-[#ffd700]">GPA 3.81</div>
-                  <div class="text-[8px] text-[#00ff66] uppercase">2022-NOW</div>
+                  <div class="text-[8px] text-[#00ff66] uppercase">{{ isId ? "2022-SEKARANG" : "2022-PRESENT" }}</div>
                 </div>
               </div>
 
@@ -166,8 +166,8 @@
                     <i class="bi bi-translate"></i>
                   </span>
                   <div>
-                    <div class="text-[11px] font-bold text-[#f0f6fc] font-silkscreen">LANGUAGE SKILLS</div>
-                    <div class="text-[9px] text-[#8b949e]">ID: Native • EN: B1 (EPRT 483)</div>
+                    <div class="text-[11px] font-bold text-[#f0f6fc] font-silkscreen">{{ t('lang_title') }}</div>
+                    <div class="text-[9px] text-[#8b949e]">{{ isId ? "ID: Penutur Asli • EN: Menengah (B1)" : "ID: Native • EN: Intermediate (B1)" }}</div>
                   </div>
                 </div>
                 <div class="text-right font-silkscreen shrink-0">
