@@ -1,48 +1,48 @@
 <template>
   <Teleport to="body">
-    <Transition name="cta-slide">
+    <Transition name="cta-toast">
       <div 
         v-if="isVisible && !isClosed" 
-        class="fixed top-24 right-4 lg:right-10 z-100 w-[300px] lg:w-[340px] bg-[#1a1a24]/95 backdrop-blur-xl border border-violet-500/30 rounded-2xl shadow-[0_10px_40px_rgba(124,58,237,0.25)] p-5 flex gap-4 items-start"
+        class="fixed top-24 right-4 sm:right-6 lg:right-10 z-[9990] w-[310px] sm:w-[340px] bg-[#171717] border border-white/10 rounded-2xl shadow-2xl p-5 flex flex-col gap-3 backdrop-blur-md"
       >
-        <!-- Icon / Avatar -->
-        <div class="relative shrink-0 w-12 h-12 rounded-full bg-violet-500/20 border border-violet-500/30 flex items-center justify-center text-violet-400 mt-1">
-          <i class="bi bi-emoji-smile-fill text-xl animate-bounce"></i>
-          <span class="absolute -top-1 -right-1 flex h-3 w-3">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-3 w-3 bg-violet-500 border border-[#1a1a24]"></span>
-          </span>
+        <!-- Header Tag & Close Button -->
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-violet-500"></span>
+            <span class="font-mono text-[10px] text-zinc-400 tracking-widest uppercase font-medium">✦ INTERESTED?</span>
+          </div>
+          <button 
+            @click="closePopup"
+            class="text-zinc-400 hover:text-white transition-colors p-1 rounded-lg hover:bg-white/5"
+            aria-label="Close"
+          >
+            <i class="bi bi-x-lg text-xs"></i>
+          </button>
         </div>
 
         <!-- Content -->
-        <div class="flex-1">
-          <h4 class="text-white font-['Poppins'] font-bold text-sm lg:text-base mb-1">{{ t('cta_title') }}</h4>
-          <p class="text-gray-300 font-['Roboto'] text-xs lg:text-sm leading-relaxed mb-4">
+        <div class="flex flex-col gap-1">
+          <h4 class="text-white font-['Poppins'] font-semibold text-sm sm:text-base leading-snug">{{ t('cta_title') }}</h4>
+          <p class="text-zinc-400 font-['Roboto'] text-xs leading-relaxed">
             {{ t('cta_desc') }}
           </p>
-          <div class="flex items-center gap-3">
-            <button
-              @click="goToContact"
-              class="inline-flex items-center gap-2 bg-violet-500 text-white text-[11px] lg:text-xs font-bold px-4 py-2 rounded-lg hover:bg-violet-600 transition-colors shadow-lg shadow-violet-500/30"
-            >
-              {{ t('cta_contact') }} <i class="bi bi-send-fill text-[10px]"></i>
-            </button>
-            <button
-              @click="closePopup"
-              class="text-gray-400 text-[11px] lg:text-xs font-medium hover:text-white transition-colors"
-            >
-              {{ t('cta_dismiss') }}
-            </button>
-          </div>
         </div>
 
-        <!-- Close button (X) -->
-        <button 
-          @click="closePopup"
-          class="absolute top-3 right-3 w-6 h-6 rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white flex items-center justify-center transition-colors"
-        >
-          <i class="bi bi-x text-sm"></i>
-        </button>
+        <!-- Actions -->
+        <div class="flex items-center gap-2 pt-1">
+          <button
+            @click="goToContact"
+            class="flex-1 inline-flex items-center justify-center gap-2 bg-violet-600 hover:bg-violet-500 text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition-all shadow-md shadow-violet-600/20 active:scale-95"
+          >
+            {{ t('cta_contact') }} <i class="bi bi-arrow-right text-xs"></i>
+          </button>
+          <button
+            @click="closePopup"
+            class="px-3 py-2.5 text-zinc-400 hover:text-white text-xs font-medium transition-colors hover:bg-white/5 rounded-xl"
+          >
+            {{ t('cta_dismiss') }}
+          </button>
+        </div>
       </div>
     </Transition>
   </Teleport>
@@ -70,7 +70,6 @@ const goToContact = () => {
 
 onMounted(() => {
   // Show popup after 10 seconds of staying on the page
-  // Adjust this timer as needed (e.g. 10000 = 10s)
   setTimeout(() => {
     isVisible.value = true;
   }, 10000); 
@@ -78,20 +77,20 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.cta-slide-enter-active,
-.cta-slide-leave-active {
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+.cta-toast-enter-active,
+.cta-toast-leave-active {
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.cta-slide-enter-from,
-.cta-slide-leave-to {
+.cta-toast-enter-from,
+.cta-toast-leave-to {
   opacity: 0;
-  transform: translateX(100px) translateY(-20px) scale(0.9);
+  transform: translateY(-20px) scale(0.95);
 }
 
-.cta-slide-enter-to,
-.cta-slide-leave-from {
+.cta-toast-enter-to,
+.cta-toast-leave-from {
   opacity: 1;
-  transform: translateX(0) translateY(0) scale(1);
+  transform: translateY(0) scale(1);
 }
 </style>
