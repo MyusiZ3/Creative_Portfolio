@@ -56,19 +56,14 @@
             y: 0,
             transition: { type: 'spring', stiffness: 80, damping: 18, mass: 1 },
           }"
-          class="project-card bg-[#1c1c1e]/70 border border-[#2c2c2e] rounded-3xl p-6 lg:p-10 shadow-2xl relative overflow-hidden transition-all duration-500 hover:border-violet-500/20 backdrop-blur-xl"
+          class="project-card bg-[#171717] border border-white/10 rounded-3xl p-6 lg:p-9 shadow-2xl relative overflow-hidden transition-all duration-500 hover:border-violet-500/30"
         >
-          <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
+          <div class="flex flex-col lg:flex-row gap-8 lg:gap-10 items-stretch">
             <!-- Project Image Carousel (Visual Column) -->
-            <div
-              class="w-full lg:w-[45%] shrink-0 flex flex-col justify-center"
-            >
-              <div
-                class="project-image-wrapper group relative rounded-2xl overflow-hidden aspect-4/3 border border-white/10"
-                :style="{ backgroundColor: project.bg }"
-              >
+            <div class="w-full lg:w-[48%] shrink-0 flex flex-col justify-center">
+              <div class="project-image-wrapper group relative rounded-2xl overflow-hidden aspect-4/3 border border-white/10 bg-[#121214]">
                 <!-- Carousel Images -->
-                <div class="relative w-full h-full cursor-pointer" @click="openLightbox(index, activeSlides[index] || 0)">
+                <div class="relative w-full h-full cursor-pointer flex items-center justify-center" @click="openLightbox(index, activeSlides[index] || 0)">
                   <transition :name="getTransitionName(project._dir)" mode="out-in">
                     <img
                       :key="project.images[activeSlides[index] || 0]"
@@ -78,7 +73,7 @@
                     />
                   </transition>
                   <!-- Zoom hint icon -->
-                  <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none">
+                  <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none">
                     <i class="bi bi-arrows-fullscreen text-xs"></i>
                   </div>
                 </div>
@@ -86,7 +81,7 @@
                 <!-- Carousel Dots -->
                 <div
                   v-if="project.images.length > 1"
-                  class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20"
+                  class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10"
                 >
                   <button
                     v-for="(img, imgIdx) in project.images"
@@ -98,6 +93,7 @@
                         ? 'bg-violet-400 w-4'
                         : 'bg-white/40 hover:bg-white/70'
                     "
+                    :aria-label="`Slide ${imgIdx + 1}`"
                   ></button>
                 </div>
 
@@ -105,16 +101,18 @@
                 <button
                   v-if="project.images.length > 1"
                   @click="prevSlide(index, project.images.length)"
-                  class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-violet-500/70 z-20"
+                  class="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-violet-600/80 z-20"
+                  aria-label="Previous slide"
                 >
-                  <i class="bi bi-chevron-left text-sm"></i>
+                  <i class="bi bi-chevron-left text-xs"></i>
                 </button>
                 <button
                   v-if="project.images.length > 1"
                   @click="nextSlide(index, project.images.length)"
-                  class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-violet-500/70 z-20"
+                  class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-violet-600/80 z-20"
+                  aria-label="Next slide"
                 >
-                  <i class="bi bi-chevron-right text-sm"></i>
+                  <i class="bi bi-chevron-right text-xs"></i>
                 </button>
               </div>
             </div>
@@ -123,53 +121,52 @@
             <div class="flex-1 flex flex-col justify-between text-left">
               <div>
                 <!-- App Icon & Title Header -->
-                <div class="flex items-center gap-4 mb-4">
-                  <!-- iOS Squircle Icon Wrapper -->
-                  <div class="w-12 h-12 rounded-[22%] bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 text-xl shadow-inner shrink-0">
+                <div class="flex items-center gap-3.5 mb-5 pb-4 border-b border-white/5">
+                  <div class="w-11 h-11 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 text-lg shadow-inner shrink-0">
                     <i :class="project.icon || 'bi bi-app'"></i>
                   </div>
                   
                   <div class="flex-1 min-w-0">
-                    <!-- Project Name -->
-                    <h3 class="text-lg lg:text-xl font-bold font-['Poppins'] text-white leading-tight truncate">
+                    <h3 class="text-xl lg:text-2xl font-bold font-['Poppins'] text-white leading-snug">
                       {{ project.name }}
                     </h3>
-                    
-                    <!-- Platform & Timeline Info (iOS secondary text format) -->
-                    <p class="text-[10px] lg:text-xs text-gray-500 font-medium font-mono uppercase tracking-wide mt-0.5">
-                      {{ project.platform }} • {{ project.teamInfo }}
+                    <p class="text-xs text-zinc-400 font-mono mt-0.5 flex flex-wrap items-center gap-2">
+                      <span class="text-violet-400 font-semibold">{{ project.platform }}</span>
+                      <span class="text-zinc-600">•</span>
+                      <span>{{ project.teamInfo }}</span>
                     </p>
                   </div>
                 </div>
 
-                <!-- iOS system details information bar (App Store style specs) -->
-                <div class="grid grid-cols-2 sm:flex sm:items-center gap-3 sm:gap-6 bg-white/5 border border-white/5 rounded-2xl p-3 sm:px-5 sm:py-3 mb-6 text-xs">
+                <!-- Editorial Metadata Specs Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 p-4 rounded-2xl bg-white/[0.02] border border-white/5">
                   <div>
-                    <span class="text-gray-500 font-bold font-mono text-[9px] uppercase tracking-widest block mb-0.5">{{ t('my_proj_role') }}</span>
-                    <span class="text-gray-200 font-medium font-['Poppins']">{{ project.role }}</span>
+                    <span class="text-zinc-500 font-mono text-[10px] uppercase tracking-wider block mb-1 font-semibold">{{ t('my_proj_role') }}</span>
+                    <span class="text-zinc-200 text-xs font-medium font-['Poppins'] leading-relaxed block">{{ project.role }}</span>
                   </div>
-                  <div class="hidden sm:block w-px h-8 bg-white/10 shrink-0"></div>
                   <div>
-                    <span class="text-gray-500 font-bold font-mono text-[9px] uppercase tracking-widest block mb-0.5">{{ t('my_proj_tools') }}</span>
-                    <span class="text-gray-200 font-medium font-['Poppins']">{{ project.tools }}</span>
+                    <span class="text-zinc-500 font-mono text-[10px] uppercase tracking-wider block mb-1 font-semibold">{{ t('my_proj_tools') }}</span>
+                    <span class="text-zinc-200 text-xs font-medium font-['Poppins'] leading-relaxed block">{{ project.tools }}</span>
                   </div>
                 </div>
 
                 <!-- Editorial Content Split Grid -->
-                <div class="border-t border-white/5 pt-5 grid grid-cols-1 md:grid-cols-12 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <!-- Project Overview Column -->
-                  <div class="md:col-span-6">
-                    <h4 class="text-[10px] text-gray-500 font-bold tracking-widest uppercase font-mono mb-2">
+                  <div>
+                    <h4 class="text-[11px] text-zinc-400 font-mono font-semibold tracking-wider uppercase mb-2 flex items-center gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
                       {{ t('my_proj_overview') }}
                     </h4>
-                    <p class="text-gray-300 text-xs lg:text-[13px] font-['Roboto'] leading-relaxed font-light">
+                    <p class="text-zinc-300 text-xs lg:text-[13px] font-['Roboto'] leading-relaxed font-normal">
                       {{ project.overview }}
                     </p>
                   </div>
 
                   <!-- What I Did / Key Contributions Column -->
-                  <div class="md:col-span-6">
-                    <h4 class="text-[10px] text-gray-500 font-bold tracking-widest uppercase font-mono mb-2.5">
+                  <div>
+                    <h4 class="text-[11px] text-zinc-400 font-mono font-semibold tracking-wider uppercase mb-2.5 flex items-center gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
                       {{ t('my_proj_whatidid') }}
                     </h4>
                     <ul class="space-y-2">
@@ -178,10 +175,8 @@
                         :key="i"
                         class="flex items-start gap-2.5"
                       >
-                        <span class="text-violet-500 mt-1.5 text-[5px] shrink-0">
-                          <i class="bi bi-circle-fill"></i>
-                        </span>
-                        <span class="text-gray-300 font-['Roboto'] text-xs lg:text-[13px] leading-relaxed font-light">
+                        <span class="text-violet-400 mt-1 text-[10px] shrink-0">✦</span>
+                        <span class="text-zinc-300 font-['Roboto'] text-xs lg:text-[13px] leading-relaxed font-normal">
                           {{ item }}
                         </span>
                       </li>
@@ -190,14 +185,14 @@
                 </div>
               </div>
 
-              <!-- iOS App Store GET-style Capsule Button -->
-              <div class="border-t border-white/5 mt-6 pt-5 flex justify-end">
+              <!-- Action Button -->
+              <div class="border-t border-white/5 pt-4 flex justify-end">
                 <a
                   :href="project.link || '#'"
-                  class="inline-flex items-center gap-2 bg-[#2c2c2e] hover:bg-[#3a3a3c] active:scale-95 text-violet-400 hover:text-violet-300 font-['Poppins'] font-bold text-xs px-5 py-2 rounded-full transition-all duration-300 tracking-wider shadow-md border border-white/5 cursor-pointer"
+                  class="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 active:scale-95 text-white font-['Poppins'] font-semibold text-xs px-5 py-2.5 rounded-xl transition-all duration-300 tracking-wider shadow-md shadow-violet-600/20 cursor-pointer"
                 >
                   <span>{{ t('my_proj_view_work') }}</span>
-                  <i class="bi bi-chevron-right text-[10px]"></i>
+                  <i class="bi bi-arrow-right text-xs"></i>
                 </a>
               </div>
             </div>

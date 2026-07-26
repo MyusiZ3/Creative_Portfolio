@@ -72,36 +72,35 @@
         >
           <!-- Image Container -->
           <div
-            class="relative rounded-3xl overflow-hidden aspect-4/3 mb-4 shadow-sm group-hover:shadow-2xl group-hover:shadow-violet-900/10 transition-all duration-500"
-            :style="{ backgroundColor: project.bg }"
+            class="relative rounded-3xl overflow-hidden aspect-4/3 mb-4 border border-gray-200/10 bg-[#121214] shadow-sm group-hover:shadow-xl transition-all duration-500"
           >
             <!-- Project Image Component -->
             <ProjectImage 
               :src="project.image" 
               :alt="project.name" 
-              cssClass="transition-transform duration-700 ease-out group-hover:scale-110" 
+              cssClass="transition-transform duration-700 ease-out group-hover:scale-105" 
             />
             
             <!-- Interaction Overlay -->
-            <div class="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
-              <div class="flex items-center gap-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                <button class="px-5 py-2.5 bg-white text-black rounded-xl text-xs font-bold flex items-center gap-2 hover:bg-violet-600 hover:text-white transition-all shadow-xl">
-                  <i class="bi bi-eye-fill"></i> {{ lang === 'ID' ? 'Lihat Detail' : 'Case Study' }}
+            <div class="absolute inset-0 bg-black/50 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+              <div class="flex items-center gap-3 transform translate-y-3 group-hover:translate-y-0 transition-transform duration-300">
+                <button class="px-4 py-2 bg-white text-black rounded-xl text-xs font-semibold flex items-center gap-2 hover:bg-zinc-200 transition-all shadow-md">
+                  <i class="bi bi-eye"></i> {{ lang === 'ID' ? 'Lihat Detail' : 'Case Study' }}
                 </button>
-                <a v-if="project.liveLink" :href="project.liveLink" target="_blank" @click.stop class="w-10 h-10 bg-white/20 backdrop-blur-md border border-white/30 text-white rounded-xl flex items-center justify-center hover:bg-white/40 transition-all shadow-xl">
-                  <i class="bi bi-box-arrow-up-right"></i>
+                <a v-if="project.liveLink" :href="project.liveLink" target="_blank" @click.stop class="w-9 h-9 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-xl flex items-center justify-center hover:bg-white/20 transition-all shadow-md">
+                  <i class="bi bi-box-arrow-up-right text-xs"></i>
                 </a>
               </div>
             </div>
           </div>
 
           <!-- Info -->
-          <div class="px-1 transform transition-transform duration-500 group-hover:translate-x-1 overflow-hidden">
-            <p class="text-violet-500 font-['Roboto'] text-[10px] lg:text-[11px] font-bold uppercase tracking-widest mb-1 lg:mb-1.5 flex items-center gap-2">
-              <span class="shrink-0 w-1.5 h-1.5 bg-violet-500 rounded-full animate-pulse"></span>
+          <div class="px-1 text-left">
+            <p class="text-violet-500 font-mono text-[10px] font-semibold uppercase tracking-widest mb-1 flex items-center gap-1.5">
+              <span>✦</span>
               {{ project.category }}
             </p>
-            <h3 class="text-[#1a1a2e] font-['Poppins'] font-semibold text-lg lg:text-xl leading-snug group-hover:text-violet-600 transition-colors duration-300">
+            <h3 class="text-[#1a1a2e] font-['Poppins'] font-semibold text-base lg:text-lg leading-snug group-hover:text-violet-600 transition-colors duration-300">
               {{ project.name }}
             </h3>
           </div>
@@ -121,88 +120,101 @@
     <!-- Project Detail Modal (Case Study) -->
     <Teleport to="body">
       <transition name="case-study-fade">
-        <div v-if="selectedProject" class="fixed inset-0 z-10000 flex items-center justify-center p-4 lg:p-8">
+        <div v-if="selectedProject" class="fixed inset-0 z-[9995] flex items-center justify-center p-4 lg:p-6">
           <!-- Backdrop -->
-          <div class="absolute inset-0 bg-[#0a0a0f]/95 backdrop-blur-xl" @click="closeCaseStudy"></div>
+          <div class="absolute inset-0 bg-black/80 backdrop-blur-md" @click="closeCaseStudy"></div>
           
           <!-- Modal Content -->
-          <div class="relative w-full max-w-5xl max-h-[90vh] bg-[#14141d] border border-white/10 rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row shadow-violet-500/10">
+          <div class="relative w-full max-w-4xl max-h-[85vh] bg-[#171717] border border-white/10 rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row">
             <!-- Close Button -->
-            <button @click="closeCaseStudy" class="absolute top-5 right-5 z-50 w-10 h-10 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 flex items-center justify-center transition-all">
-              <i class="bi bi-x-lg"></i>
+            <button @click="closeCaseStudy" class="absolute top-4 right-4 z-50 w-9 h-9 rounded-full bg-white/5 border border-white/10 text-zinc-300 hover:text-white hover:bg-white/10 flex items-center justify-center transition-all cursor-pointer">
+              <i class="bi bi-x-lg text-xs"></i>
             </button>
 
             <!-- Left side: Visual -->
-            <div class="w-full lg:w-1/2 h-64 lg:h-auto overflow-hidden relative group">
-              <ProjectImage 
-                :src="selectedProject.image" 
-                :alt="selectedProject.name" 
-                cssClass="transition-transform duration-700 group-hover:scale-105" 
-              />
-              <div class="absolute inset-0 bg-linear-to-t from-[#14141d] to-transparent opacity-60"></div>
-              <div class="absolute bottom-6 left-6 flex flex-col gap-1">
-                <span class="text-violet-400 text-xs font-bold uppercase tracking-widest">{{ selectedProject.category }}</span>
-                <h3 class="text-white text-2xl lg:text-3xl font-bold font-['Poppins']">{{ selectedProject.name }}</h3>
+            <div class="w-full lg:w-1/2 min-h-[240px] lg:min-h-full bg-[#121214] p-6 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 relative overflow-hidden group">
+              <div class="relative z-10 w-full h-full flex items-center justify-center">
+                <ProjectImage 
+                  :src="selectedProject.image" 
+                  :alt="selectedProject.name" 
+                  cssClass="max-h-[320px] object-contain rounded-xl transition-transform duration-700 group-hover:scale-105" 
+                />
+              </div>
+              <div class="absolute bottom-4 left-4 z-20">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-violet-400 font-mono text-[10px] uppercase font-semibold">
+                  ✦ {{ selectedProject.category }}
+                </span>
               </div>
             </div>
 
             <!-- Right side: Content -->
-            <div class="w-full lg:w-1/2 p-8 lg:p-12 overflow-y-auto custom-scrollbar bg-linear-to-br from-white/5 to-transparent">
-              <div class="space-y-10">
+            <div class="w-full lg:w-1/2 p-6 lg:p-8 overflow-y-auto custom-scrollbar text-left flex flex-col justify-between">
+              <div class="space-y-6">
+                <!-- Header -->
+                <div class="pb-4 border-b border-white/5 pr-8">
+                  <h3 class="text-white text-xl lg:text-2xl font-bold font-['Poppins']">
+                    {{ selectedProject.name }}
+                  </h3>
+                </div>
+
                 <!-- Section: Challenge -->
                 <div>
-                  <div class="flex items-center gap-3 mb-4">
-                    <div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center text-red-500 border border-red-500/20">
-                      <i class="bi bi-puzzle-fill"></i>
-                    </div>
-                    <h4 class="text-white font-bold font-['Poppins'] uppercase tracking-wider text-sm">
-                      {{ lang === 'ID' ? 'TANTANGAN' : 'THE CHALLENGE' }}
-                    </h4>
-                  </div>
-                  <p class="text-gray-400 font-['Roboto'] text-sm lg:text-[15px] leading-relaxed">
+                  <h4 class="text-[11px] text-zinc-400 font-mono font-semibold tracking-wider uppercase mb-2 flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
+                    {{ lang === 'ID' ? 'TANTANGAN' : 'THE CHALLENGE' }}
+                  </h4>
+                  <p class="text-zinc-300 font-['Roboto'] text-xs lg:text-[13px] leading-relaxed">
                     {{ selectedProject.caseStudy.challenge }}
                   </p>
                 </div>
 
                 <!-- Section: Solution -->
                 <div>
-                  <div class="flex items-center gap-3 mb-4">
-                    <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center text-green-500 border border-green-500/20">
-                      <i class="bi bi-lightbulb-fill"></i>
-                    </div>
-                    <h4 class="text-white font-bold font-['Poppins'] uppercase tracking-wider text-sm">
-                      {{ lang === 'ID' ? 'SOLUSI' : 'THE SOLUTION' }}
-                    </h4>
-                  </div>
-                  <p class="text-gray-400 font-['Roboto'] text-sm lg:text-[15px] leading-relaxed">
+                  <h4 class="text-[11px] text-zinc-400 font-mono font-semibold tracking-wider uppercase mb-2 flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
+                    {{ lang === 'ID' ? 'SOLUSI' : 'THE SOLUTION' }}
+                  </h4>
+                  <p class="text-zinc-300 font-['Roboto'] text-xs lg:text-[13px] leading-relaxed">
                     {{ selectedProject.caseStudy.solution }}
                   </p>
                 </div>
 
-                <!-- Results/Tech -->
-                <div class="pt-6 border-t border-white/5 flex flex-wrap gap-x-12 gap-y-6">
+                <!-- Results/Tech Specs Bar -->
+                <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 flex flex-wrap items-center justify-between gap-4 text-xs font-mono">
                   <div>
-                    <p class="text-gray-500 text-[10px] uppercase tracking-widest font-bold mb-2">STATUS</p>
-                    <span class="text-green-400 text-sm font-bold flex items-center gap-2">
-                      <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>
+                    <span class="text-zinc-500 text-[10px] uppercase tracking-wider block font-semibold">STATUS</span>
+                    <span class="text-emerald-400 text-xs font-medium flex items-center gap-1.5 mt-0.5">
+                      <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span>
                       COMPLETED
                     </span>
                   </div>
-                   <div>
-                    <p class="text-gray-500 text-[10px] uppercase tracking-widest font-bold mb-2">DURATION</p>
-                    <span class="text-white text-sm font-bold">5 - 8 MONTHS</span>
+                  <div>
+                    <span class="text-zinc-500 text-[10px] uppercase tracking-wider block font-semibold">DURATION</span>
+                    <span class="text-zinc-200 text-xs font-medium mt-0.5 block">5 - 8 MONTHS</span>
                   </div>
                 </div>
+              </div>
 
-                <!-- Action Buttons -->
-                <div class="flex items-center gap-4 pt-4">
-                  <a v-if="selectedProject.liveLink" :href="selectedProject.liveLink" target="_blank" class="px-6 py-3 rounded-xl bg-violet-600 text-white font-bold text-sm flex items-center gap-2 hover:bg-violet-700 hover:shadow-lg hover:shadow-violet-500/20 transition-all">
-                    <i class="bi bi-box-arrow-up-right"></i> {{ lang === 'ID' ? 'Lihat Live Demo' : 'Live Demo' }}
-                  </a>
-                  <a v-if="selectedProject.githubLink" :href="selectedProject.githubLink" target="_blank" class="p-3 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all">
-                    <i class="bi bi-github text-xl"></i>
-                  </a>
-                </div>
+              <!-- Action Buttons -->
+              <div class="flex items-center gap-3 pt-6 mt-6 border-t border-white/5">
+                <a 
+                  v-if="selectedProject.liveLink" 
+                  :href="selectedProject.liveLink" 
+                  target="_blank" 
+                  class="flex-1 px-5 py-2.5 rounded-xl bg-violet-600 text-white font-['Poppins'] font-semibold text-xs flex items-center justify-center gap-2 hover:bg-violet-500 transition-all shadow-md shadow-violet-600/20"
+                >
+                  <span>{{ lang === 'ID' ? 'Lihat Live Demo' : 'Live Demo' }}</span>
+                  <i class="bi bi-arrow-right text-xs"></i>
+                </a>
+                <a 
+                  v-if="selectedProject.githubLink" 
+                  :href="selectedProject.githubLink" 
+                  target="_blank" 
+                  class="px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all text-xs"
+                  aria-label="GitHub Repository"
+                >
+                  <i class="bi bi-github text-sm"></i>
+                </a>
               </div>
             </div>
           </div>
