@@ -6,12 +6,12 @@
       <div class="flex items-center gap-3">
         <i class="bi bi-github text-white text-xl"></i>
         <h3 class="text-white font-['Poppins'] font-medium text-lg">
-          {{ selectedYearTotal }} Contributions in {{ selectedYear }}
+          {{ selectedYearTotal.toLocaleString() }} Contributions in {{ selectedYear }}
         </h3>
       </div>
       
       <!-- Year Tabs -->
-      <div class="flex gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 scrollbar-hide">
+      <div v-if="availableYears.length > 0" class="flex gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 scrollbar-hide">
         <button
           v-for="year in availableYears"
           :key="year.year"
@@ -34,7 +34,7 @@
     </div>
 
     <!-- Calendar Grid -->
-    <div v-else class="w-full overflow-x-auto scrollbar-hide pb-2 px-1">
+    <div v-else-if="currentYearData.length > 0" class="w-full overflow-x-auto scrollbar-hide pb-2 px-1">
       <div class="min-w-[800px] flex gap-2">
         
         <!-- Day Labels -->
@@ -66,7 +66,7 @@
             <span>Dec</span>
           </div>
 
-          <!-- Heatmap - One single grid for perfect z-index behavior -->
+          <!-- Heatmap -->
           <div class="grid grid-flow-col grid-rows-7 gap-[4px] w-max">
             <!-- Padded empty days for start of year -->
             <div
@@ -79,8 +79,9 @@
             <div
               v-for="day in currentYearData"
               :key="day.date"
-              class="w-[12px] h-[12px] rounded-[2px] transition-all duration-300 cursor-default relative"
+              class="w-[12px] h-[12px] rounded-[2px] transition-all duration-300 cursor-default relative group"
               :style="{ backgroundColor: getIntensityColor(day.intensity) }"
+              :title="`${day.count} contribution${day.count === 1 ? '' : 's'} on ${formatDate(day.date)}`"
             >
             </div>
           </div>
@@ -88,8 +89,20 @@
       </div>
     </div>
 
+    <!-- Error / Empty State Fallback -->
+    <div v-else class="w-full h-[140px] flex flex-col items-center justify-center gap-2 text-white/50 text-xs">
+      <i class="bi bi-exclamation-triangle-fill text-amber-400 text-2xl"></i>
+      <span>Gagal memuat data kontribusi GitHub (Network Timeout/CORS).</span>
+      <button 
+        @click="fetchGitHubData" 
+        class="px-4 py-1.5 bg-violet-600 hover:bg-violet-500 text-white font-medium rounded-lg text-xs transition-colors mt-2 flex items-center gap-2"
+      >
+        <i class="bi bi-arrow-clockwise"></i> Coba Lagi
+      </button>
+    </div>
+
     <!-- Legend -->
-    <div v-if="!loading" class="mt-4 flex justify-end items-center gap-2 text-[11px] text-white/40 font-['Roboto'] font-medium">
+    <div v-if="!loading && currentYearData.length > 0" class="mt-4 flex justify-end items-center gap-2 text-[11px] text-white/40 font-['Roboto'] font-medium">
       <span>Less</span>
       <div class="flex gap-[4px]">
         <div class="w-[12px] h-[12px] rounded-[2px]" :style="{ backgroundColor: getIntensityColor(0) }"></div>
@@ -112,29 +125,71 @@ const loading = ref(true);
 const githubData = ref({ years: [], contributions: [] });
 const selectedYear = ref(new Date().getFullYear().toString());
 
-const fetchGitHubData = async () => {
-  try {
-    let res;
-    try {
-      res = await fetch(`https://api.codetabs.com/v1/proxy?quest=https://github-contributions.vercel.app/api/v1/${username}`);
-      if (!res.ok) throw new Error("Proxy failed");
-    } catch {
-      res = await fetch(`https://github-contributions.vercel.app/api/v1/${username}`);
-    }
-    if (!res.ok) throw new Error("Failed to fetch Github data");
-    
-    const data = await res.json();
-    githubData.value = data;
-    
-    // Set selected year to the latest available year
-    if (data.years && data.years.length > 0) {
-      selectedYear.value = data.years[0].year.toString();
-    }
-  } catch (error) {
-    console.error("Error fetching GitHub contributions:", error);
-  } finally {
-    loading.value = false;
+const parseResponse = (data) => {
+  let normalizedYears = [];
+  let normalizedContribs = [];
+
+  if (data.total && typeof data.total === 'object') {
+    // Format from jogruber API v4
+    const yearsList = Object.keys(data.total).sort((a, b) => b - a);
+    normalizedYears = yearsList.map(y => ({
+      year: y.toString(),
+      total: data.total[y]
+    }));
+    normalizedContribs = (data.contributions || []).map(c => ({
+      date: c.date,
+      count: c.count || 0,
+      intensity: c.level !== undefined ? c.level : (c.intensity || 0)
+    }));
+  } else if (data.years && Array.isArray(data.years)) {
+    // Format from vercel api v1
+    normalizedYears = data.years.map(y => ({
+      year: y.year.toString(),
+      total: y.total
+    }));
+    normalizedContribs = (data.contributions || []).map(c => ({
+      date: c.date,
+      count: c.count || 0,
+      intensity: c.intensity !== undefined ? c.intensity : (c.level || 0)
+    }));
   }
+
+  return { years: normalizedYears, contributions: normalizedContribs };
+};
+
+const fetchGitHubData = async () => {
+  loading.value = true;
+  const endpoints = [
+    `https://github-contributions-api.jogruber.de/v4/${username}`,
+    `https://github-contributions.vercel.app/api/v1/${username}`,
+    `https://api.codetabs.com/v1/proxy?quest=https://github-contributions.vercel.app/api/v1/${username}`
+  ];
+
+  for (const url of endpoints) {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 4000);
+
+      const res = await fetch(url, { signal: controller.signal });
+      clearTimeout(timeoutId);
+
+      if (!res.ok) continue;
+      const data = await res.json();
+      const normalized = parseResponse(data);
+
+      if (normalized.years.length > 0) {
+        githubData.value = normalized;
+        // Set selected year to the latest available year
+        selectedYear.value = normalized.years[0].year;
+        loading.value = false;
+        return;
+      }
+    } catch {
+      // Continue to next endpoint if failed or timed out
+    }
+  }
+
+  loading.value = false;
 };
 
 onMounted(() => {
@@ -198,3 +253,4 @@ const formatDate = (dateString) => {
   scrollbar-width: none;
 }
 </style>
+
