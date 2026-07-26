@@ -1,5 +1,6 @@
 <script setup>
 import { ref, watch, computed } from "vue";
+import { useTheme } from "@/composables/useTheme";
 
 const props = defineProps({
   active: Boolean,
@@ -10,6 +11,8 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["done"]);
+
+const { currentTheme } = useTheme();
 
 const phase = ref("idle"); // idle -> enter -> hold -> exit -> idle
 
@@ -47,21 +50,21 @@ watch(
   <Teleport to="body">
     <div
       class="page-reveal-container"
-      :class="{ active: phase !== 'idle' }"
+      :class="{ active: phase !== 'idle', 'is-pixel-theme': currentTheme === 'pixel' }"
       aria-hidden="true"
     >
-      <!-- Single Solid Editorial Curtain Slab -->
+      <!-- Single Solid Curtain Slab -->
       <div
         class="page-reveal-slab"
         :class="[`slab-${phase}`]"
       >
-        <!-- Editorial Label Content -->
+        <!-- Label Content -->
         <div
           class="reveal-content-wrapper"
           :class="{ visible: phase === 'enter' || phase === 'hold' }"
         >
           <div class="reveal-content">
-            <span class="reveal-tag">✦ PORTFOLIO</span>
+            <span class="reveal-tag">{{ currentTheme === 'pixel' ? '⚡ LEVEL TRANSITION' : '✦ PORTFOLIO' }}</span>
             <h2 class="reveal-title">{{ formattedLabel }}</h2>
             <div class="reveal-accent-line"></div>
           </div>
@@ -173,5 +176,38 @@ watch(
 .reveal-content-wrapper.visible .reveal-accent-line {
   width: 60px;
   background-color: #7c3aed;
+}
+
+/* --- Pixel Theme Overrides --- */
+.is-pixel-theme .page-reveal-slab {
+  background-color: #0a0f0d;
+  border-top: 4px solid #00ff66;
+  border-bottom: 4px solid #00ff66;
+}
+
+.is-pixel-theme .reveal-tag {
+  font-family: 'Press Start 2P', monospace;
+  color: #00ff66;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+}
+
+.is-pixel-theme .reveal-title {
+  font-family: 'Press Start 2P', monospace;
+  color: #00ff66;
+  font-size: clamp(1.1rem, 3vw, 2rem);
+  text-shadow: 3px 3px 0px #000;
+}
+
+.is-pixel-theme .reveal-accent-line {
+  background-color: #00ff66;
+  box-shadow: 0 0 10px #00ff66;
+  border-radius: 0;
+}
+
+.is-pixel-theme .reveal-content-wrapper.visible .reveal-accent-line {
+  width: 80px;
+  background-color: #00ff66;
+  box-shadow: 0 0 14px #00ff66;
 }
 </style>

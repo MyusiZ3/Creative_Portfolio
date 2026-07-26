@@ -30,7 +30,8 @@
         >
           <!-- Tooltip Label -->
           <span
-            class="px-3.5 py-1.5 bg-[#1e1e2e]/90 text-white/80 text-[13px] font-['Roboto'] font-medium rounded-lg border border-white/10 backdrop-blur-sm shadow-lg whitespace-nowrap"
+            class="px-3.5 py-1.5 text-[13px] whitespace-nowrap transition-all"
+            :class="currentTheme === 'pixel' ? 'bg-[#0a0f0d] text-[#00ff66] font-[\'Press_Start_2P\',_monospace] text-[9px] border-2 border-[#00ff66] shadow-[3px_3px_0px_#000]' : 'bg-[#1e1e2e]/90 text-white/80 font-[\'Roboto\'] font-medium rounded-lg border border-white/10 backdrop-blur-sm shadow-lg'"
           >
             {{ item.label }}
           </span>
@@ -41,10 +42,9 @@
             :target="item.external ? '_blank' : undefined"
             :rel="item.external ? 'noopener noreferrer' : undefined"
             @click="item.action ? item.action($event) : handleItemClick()"
-            class="fab-circle w-12 h-12 rounded-full border flex items-center justify-center text-white transition-all duration-200 hover:scale-110 active:scale-95"
+            class="fab-circle w-12 h-12 flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95"
             :class="[
-              item.bg ? item.bg : 'bg-[#1e1e2e]/60 backdrop-blur-sm',
-              item.border ? item.border : 'border-white/20'
+              currentTheme === 'pixel' ? 'rounded-none border-2 border-[#00ff66] bg-[#0a0f0d] text-[#00ff66] hover:bg-[#00ff66] hover:text-black shadow-[3px_3px_0px_#000]' : (item.bg ? item.bg : 'bg-[#1e1e2e]/60 backdrop-blur-sm text-white rounded-full border border-white/20')
             ]"
           >
             <i :class="item.icon" class="text-lg"></i>
@@ -59,18 +59,25 @@
       <div
         v-for="p in particles"
         :key="p.id"
-        class="absolute left-1/2 top-1/2 bg-violet-400 rounded-full pointer-events-none"
+        class="absolute left-1/2 top-1/2 rounded-full pointer-events-none"
+        :class="currentTheme === 'pixel' ? 'bg-[#00ff66]' : 'bg-violet-400'"
         :style="p.style"
       ></div>
 
       <!-- Main Button -->
       <button
         @click="handleToggle"
-        class="fab-main group absolute inset-0 rounded-full text-white flex items-center justify-center transition-all duration-300 active:scale-90 shadow-2xl pointer-events-auto"
-        :class="{ 'fab-is-open': isOpen, 'idle-blob': !isOpen }"
+        class="fab-main group absolute inset-0 text-white flex items-center justify-center transition-all duration-300 active:scale-90 shadow-2xl pointer-events-auto"
+        :class="[
+          { 'fab-is-open': isOpen, 'idle-blob': !isOpen && currentTheme !== 'pixel' },
+          currentTheme === 'pixel' ? 'rounded-none border-2 border-black shadow-[4px_4px_0px_#000]' : 'rounded-full'
+        ]"
       >
-        <!-- Fluid blob background -->
-        <span class="fab-bg absolute inset-0 rounded-full bg-violet-500 transition-colors duration-300 group-hover:bg-violet-400 border border-violet-400/30"></span>
+        <!-- Fluid background -->
+        <span
+          class="fab-bg absolute inset-0 transition-colors duration-300"
+          :class="currentTheme === 'pixel' ? 'bg-[#00ff66] text-black group-hover:bg-[#00e5ff] border-2 border-black' : 'rounded-full bg-violet-500 group-hover:bg-violet-400 border border-violet-400/30'"
+        ></span>
         
         <!-- Plus/Close icon with morph -->
         <svg
@@ -79,7 +86,10 @@
           viewBox="0 0 24 24"
           fill="none"
           class="relative z-10 transition-transform duration-300"
-          :class="isOpen ? 'rotate-135' : 'rotate-0'"
+          :class="[
+            isOpen ? 'rotate-135' : 'rotate-0',
+            currentTheme === 'pixel' ? 'text-black' : 'text-white'
+          ]"
         >
           <line
             x1="12"
@@ -108,8 +118,10 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useLanguage } from '@/composables/useLanguage';
+import { useTheme } from '@/composables/useTheme';
 
 const { t, lang } = useLanguage();
+const { currentTheme } = useTheme();
 
 const isOpen = ref(false);
 const menuRef = ref(null);
