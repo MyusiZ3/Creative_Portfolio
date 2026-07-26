@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed bottom-6 right-6 z-50 flex items-center gap-3">
+  <div class="fixed bottom-6 left-6 md:left-8 z-50 flex items-center gap-3">
     <!-- Floating Theme Switcher Button -->
     <button
       @click="handleToggle"
