@@ -1,11 +1,29 @@
 <template>
   <Teleport to="body">
+    <!-- Backdrop overlay for mobile to dismiss on click outside -->
+    <Transition name="fade">
+      <div 
+        v-if="isVisible" 
+        class="fixed inset-0 z-[9999] bg-black/40 backdrop-blur-xs lg:hidden" 
+        @click="closePopup"
+      ></div>
+    </Transition>
+
     <Transition name="notification-slide">
-      <div v-if="isVisible" class="fixed top-24 right-4 lg:right-10 z-10000 flex flex-col gap-4">
+      <div v-if="isVisible" class="fixed top-20 right-4 left-4 sm:left-auto sm:right-6 lg:right-10 z-[10000] flex flex-col gap-4 max-w-[340px] mx-auto sm:mx-0">
         <!-- Main: Under Development -->
         <div 
-          class="w-[300px] lg:w-[340px] bg-[#1a1a24]/95 backdrop-blur-xl border border-amber-500/30 rounded-2xl shadow-[0_10px_40px_rgba(245,158,11,0.25)] p-5 flex gap-4 items-start relative overflow-hidden"
+          class="w-full bg-[#1a1a24]/95 backdrop-blur-xl border border-amber-500/30 rounded-2xl shadow-[0_10px_40px_rgba(245,158,11,0.25)] p-5 flex gap-4 items-start relative overflow-hidden"
         >
+          <!-- Close X button -->
+          <button 
+            @click="closePopup"
+            class="absolute top-3 right-3 text-gray-400 hover:text-white transition-colors p-1 rounded-lg hover:bg-white/10"
+            aria-label="Close notification"
+          >
+            <i class="bi bi-x-lg text-xs"></i>
+          </button>
+
           <!-- Icon -->
           <div class="relative shrink-0 w-12 h-12 rounded-full bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400 mt-1">
             <i class="bi bi-tools text-xl animate-pulse"></i>
@@ -16,7 +34,7 @@
           </div>
 
           <!-- Content -->
-          <div class="flex-1">
+          <div class="flex-1 pr-4">
             <h4 class="text-white font-['Poppins'] font-bold text-sm lg:text-base mb-1">
               {{ lang === 'EN' ? 'Under Development' : 'Dalam Pengembangan' }}
             </h4>
@@ -42,7 +60,7 @@
 
         <!-- Secondary: Work Status -->
         <div 
-          class="w-[300px] lg:w-[340px] bg-[#1a1a24]/95 backdrop-blur-xl border border-green-500/30 rounded-2xl shadow-2xl p-4 flex gap-4 items-start relative group hover:border-green-500/60 transition-all duration-500"
+          class="w-full bg-[#1a1a24]/95 backdrop-blur-xl border border-green-500/30 rounded-2xl shadow-2xl p-4 flex gap-4 items-start relative group hover:border-green-500/60 transition-all duration-500"
         >
           <!-- Status Icon -->
           <div class="relative shrink-0 w-10 h-10 rounded-xl bg-green-500/20 border border-green-500/30 flex items-center justify-center text-green-400 mt-1">

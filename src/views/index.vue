@@ -45,6 +45,7 @@ const showNotification = ref(false);
 let pendingTarget = "";
 
 const onNavigate = ({ target, label }) => {
+  showNotification.value = false;
   revealLabel.value = label;
   revealActive.value = true;
   pendingTarget = target;
@@ -64,6 +65,7 @@ const onNavigate = ({ target, label }) => {
 };
 
 const onToggleLang = () => {
+  showNotification.value = false;
   revealLabel.value = lang.value === 'EN' ? 'INDONESIA' : 'ENGLISH';
   revealActive.value = true;
   pendingTarget = "";
