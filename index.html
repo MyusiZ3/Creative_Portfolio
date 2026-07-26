@@ -53,7 +53,7 @@
       document.addEventListener('cut', (e) => e.preventDefault());
       document.addEventListener('dragstart', (e) => e.preventDefault());
 
-      // Original zoom prevention for wheel
+      // Prevent pinch-zoom on trackpad/mouse
       document.addEventListener('wheel', function (e) {
         if (e.ctrlKey) {
           e.preventDefault();
