@@ -2,11 +2,16 @@
 import { ref, onMounted } from "vue";
 
 import ThemeToggle from "@/components/ThemeToggle.vue";
+import { useLanguage } from "@/composables/useLanguage";
+import { useTheme } from "@/composables/useTheme";
 
 const isMenuOpen = ref(false);
 const navReady = ref(false);
 
 const emit = defineEmits(["navigate", "toggle-lang", "show-notification", "toggle-theme"]);
+
+const { lang, toggleLanguage, t } = useLanguage();
+const { currentTheme } = useTheme();
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
@@ -32,11 +37,6 @@ const handleToggleTheme = (newTheme) => {
   emit("toggle-theme", newTheme);
 };
 
-import { useTheme } from "@/composables/useTheme";
-
-const { currentTheme } = useTheme();
-const { lang, toggleLanguage, t } = useLanguage();
-
 onMounted(() => {
   // Small delay to trigger the morph entrance
   requestAnimationFrame(() => {
@@ -48,13 +48,16 @@ onMounted(() => {
 <template>
   <nav
     class="navbar-morph sticky top-0 z-50"
-    :class="{ 'nav-entered': navReady, 'is-pixel-theme': currentTheme === 'pixel' }"
+    :class="{ 'nav-entered': navReady, 'pixel-theme': currentTheme === 'pixel' }"
   >
     <!-- Morph background layer -->
     <div class="navbar-bg"></div>
 
+    <!-- Pixel theme bottom border (scanline effect) -->
+    <div v-if="currentTheme === 'pixel'" class="pixel-bottom-border"></div>
+
     <!-- Right-side Custom Slant Accent -->
-    <div class="navbar-accent-shape hidden lg:block overflow-hidden">
+    <div class="navbar-accent-shape hidden lg:block overflow-hidden" :class="{ 'opacity-0': currentTheme === 'pixel' }">
       <!-- Background pattern -->
       <img src="/images/accent_3.png" alt="" class="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none grayscale blur-[1px]" />
     </div>
@@ -68,13 +71,13 @@ onMounted(() => {
         class="flex items-center gap-2 relative z-50 nav-item"
         style="--delay: 0"
       >
-        <img src="/images/logo.png" alt="logo" class="w-10 lg:w-11 xl:w-14 aspect-square object-contain" />
+        <img src="/images/logo.webp" alt="logo" class="w-10 lg:w-11 xl:w-14 aspect-square object-contain" />
         <a
           href="#"
           @click="handleNav('', 'Home', $event)"
-          class="text-white font-semibold text-[11px] lg:text-[12px] xl:text-[15px]"
-          :class="currentTheme === 'pixel' ? 'font-[\'Press_Start_2P\',_monospace] text-[9px] text-[#00ff66] tracking-tighter' : 'font-[\'Poppins\']'"
-          >Muhamad<br />Sidik</a
+          class="font-semibold text-[11px] lg:text-[12px] xl:text-[15px] transition-colors"
+          :class="currentTheme === 'pixel' ? 'font-silkscreen text-[#00ff66] hover:text-[#33ff88] tracking-wide' : 'font-[\'Poppins\'] text-white'"
+          >{{ currentTheme === 'pixel' ? 'M.SIDIK' : 'Muhamad' }}<br />{{ currentTheme === 'pixel' ? '&lt;DEV/&gt;' : 'Sidik' }}</a
         >
       </div>
 
@@ -83,40 +86,40 @@ onMounted(() => {
         <a
           href="#"
           @click="handleNav('', t('nav_home'), $event)"
-          class="nav-item nav-link text-white font-bold transition-colors"
-          :class="currentTheme === 'pixel' ? 'text-[10px] font-[\'Press_Start_2P\',_monospace] hover:text-[#00ff66]' : 'text-[11px] lg:text-[12px] xl:text-[15px] font-[\'Roboto\'] hover:text-violet-500'"
+          class="nav-item nav-link text-white font-bold text-[11px] lg:text-[12px] xl:text-[15px] transition-colors"
+          :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
           style="--delay: 1"
           >{{ t('nav_home') }}</a
         >
         <a
           href="#about"
           @click="handleNav('about', t('nav_about'), $event)"
-          class="nav-item nav-link text-white font-bold transition-colors"
-          :class="currentTheme === 'pixel' ? 'text-[10px] font-[\'Press_Start_2P\',_monospace] hover:text-[#00ff66]' : 'text-[11px] lg:text-[12px] xl:text-[15px] font-[\'Roboto\'] hover:text-violet-500'"
+          class="nav-item nav-link text-white font-bold text-[11px] lg:text-[12px] xl:text-[15px] transition-colors"
+          :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
           style="--delay: 2"
           >{{ t('nav_about') }}</a
         >
         <a
           href="#skills"
           @click="handleNav('skills', t('nav_skills'), $event)"
-          class="nav-item nav-link text-white font-bold transition-colors"
-          :class="currentTheme === 'pixel' ? 'text-[10px] font-[\'Press_Start_2P\',_monospace] hover:text-[#00ff66]' : 'text-[11px] lg:text-[12px] xl:text-[15px] font-[\'Roboto\'] hover:text-violet-500'"
+          class="nav-item nav-link text-white font-bold text-[11px] lg:text-[12px] xl:text-[15px] transition-colors"
+          :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
           style="--delay: 4"
           >{{ t('nav_skills') }}</a
         >
         <a
           href="#projects"
           @click="handleNav('projects', t('nav_projects'), $event)"
-          class="nav-item nav-link text-white font-bold transition-colors"
-          :class="currentTheme === 'pixel' ? 'text-[10px] font-[\'Press_Start_2P\',_monospace] hover:text-[#00ff66]' : 'text-[11px] lg:text-[12px] xl:text-[15px] font-[\'Roboto\'] hover:text-violet-500'"
+          class="nav-item nav-link text-white font-bold text-[11px] lg:text-[12px] xl:text-[15px] transition-colors"
+          :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
           style="--delay: 5"
           >{{ t('nav_projects') }}</a
         >
         <a
           href="#contact"
           @click="handleNav('contact', t('nav_contact'), $event)"
-          class="nav-item nav-link text-white font-bold transition-colors"
-          :class="currentTheme === 'pixel' ? 'text-[10px] font-[\'Press_Start_2P\',_monospace] hover:text-[#00ff66]' : 'text-[11px] lg:text-[12px] xl:text-[15px] font-[\'Roboto\'] hover:text-violet-500'"
+          class="nav-item nav-link text-white font-bold text-[11px] lg:text-[12px] xl:text-[15px] transition-colors"
+          :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
           style="--delay: 7"
           >{{ t('nav_contact') }}</a
         >
@@ -129,8 +132,12 @@ onMounted(() => {
 
           <button
             @click="handleToggleLang"
-            class="nav-item w-8 h-8 flex items-center justify-center font-bold transition shadow-lg"
-            :class="currentTheme === 'pixel' ? 'bg-[#00ff66] text-black font-[\'Press_Start_2P\',_monospace] text-[9px] border-2 border-black hover:bg-[#00e5ff] shadow-[2px_2px_0px_#000]' : 'bg-violet-500 text-white rounded-xl hover:bg-violet-600 text-[11px] lg:text-[12px] xl:text-[15px] font-[\'Roboto\'] shadow-violet-500/30'"
+            class="nav-item w-8 h-8 flex items-center justify-center font-bold text-[11px] lg:text-[12px] xl:text-[15px] transition"
+            :class="
+              currentTheme === 'pixel'
+                ? 'bg-[#00ff66] text-black font-mono border-2 border-black shadow-[2px_2px_0px_#000] hover:bg-[#33ff88] rounded-none'
+                : 'bg-violet-500 text-white rounded-xl hover:bg-violet-600 font-[\'Roboto\'] shadow-lg shadow-violet-500/30'
+            "
             style="--delay: 8"
           >
             {{ lang === 'EN' ? 'EN' : 'ID' }}
@@ -138,14 +145,18 @@ onMounted(() => {
           
           <button
             @click="$emit('show-notification')"
-            class="nav-item w-8 h-8 flex items-center justify-center transition relative shadow-lg"
-            :class="currentTheme === 'pixel' ? 'bg-[#0a0f0d] border-2 border-[#00ff66] text-[#00ff66] hover:bg-[#00ff66] hover:text-black shadow-[2px_2px_0px_#000]' : 'bg-white/5 border border-white/10 text-gray-300 rounded-xl hover:bg-violet-500 hover:text-white hover:border-violet-500'"
+            class="nav-item w-8 h-8 flex items-center justify-center transition relative"
+            :class="
+              currentTheme === 'pixel'
+                ? 'bg-[#0a120d] border-2 border-[#00ff66]/50 text-[#00ff66] hover:bg-[#00ff66] hover:text-black rounded-none shadow-[2px_2px_0px_#000]'
+                : 'bg-white/5 border border-white/10 text-gray-300 hover:bg-violet-500 hover:text-white hover:border-violet-500 rounded-xl shadow-lg'
+            "
             style="--delay: 9"
           >
             <i class="bi bi-bell-fill text-sm"></i>
             <span class="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500 border border-[#171717]"></span>
+              <span class="animate-ping absolute inline-flex h-full w-full opacity-75" :class="currentTheme === 'pixel' ? 'bg-[#00ff66]' : 'rounded-full bg-red-400'"></span>
+              <span class="relative inline-flex h-2.5 w-2.5" :class="currentTheme === 'pixel' ? 'bg-[#00ff66] border border-black shadow-[1px_1px_0px_#000]' : 'rounded-full bg-red-500 border border-[#171717]'"></span>
             </span>
           </button>
         </div>
@@ -154,8 +165,8 @@ onMounted(() => {
       <!-- Mobile Hamburger Button -->
       <button
         @click="toggleMenu"
-        class="lg:hidden text-3xl transition relative z-50 nav-item"
-        :class="currentTheme === 'pixel' ? 'text-[#00ff66] hover:text-[#00e5ff]' : 'text-white hover:text-violet-500'"
+        class="lg:hidden text-white text-3xl transition relative z-50 nav-item"
+        :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66]' : 'hover:text-violet-500'"
         style="--delay: 1"
       >
         <i :class="isMenuOpen ? 'bi bi-x' : 'bi bi-list'"></i>
@@ -167,63 +178,71 @@ onMounted(() => {
       class="lg:hidden fixed inset-x-0 top-[60px] backdrop-blur-md transition-all duration-300 ease-in-out shadow-2xl z-40"
       :class="[
         isMenuOpen ? 'max-h-screen py-6 opacity-100 visible' : 'max-h-0 py-0 opacity-0 invisible',
-        currentTheme === 'pixel' ? 'bg-[#0a0f0d]/95 border-t-2 border-b-2 border-[#00ff66]' : 'bg-[#171717]/95 border-t border-gray-800'
+        currentTheme === 'pixel' ? 'bg-[#0d1117]/98 border-b-2 border-[#00ff66]/60' : 'bg-[#171717]/95 border-t border-gray-800'
       ]"
     >
       <div class="flex flex-col items-center gap-6 uppercase overflow-hidden">
         <a
           href="#"
           @click="handleNav('', t('nav_home'), $event)"
-          class="font-bold transition"
-          :class="currentTheme === 'pixel' ? 'text-[11px] font-[\'Press_Start_2P\',_monospace] text-white hover:text-[#00ff66]' : 'text-[14px] font-[\'Roboto\'] text-white hover:text-violet-500'"
+          class="text-white font-bold text-[14px] transition"
+          :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
           >{{ t('nav_home') }}</a
         >
         <a
           href="#about"
           @click="handleNav('about', t('nav_about'), $event)"
-          class="font-bold transition"
-          :class="currentTheme === 'pixel' ? 'text-[11px] font-[\'Press_Start_2P\',_monospace] text-white hover:text-[#00ff66]' : 'text-[14px] font-[\'Roboto\'] text-white hover:text-violet-500'"
+          class="text-white font-bold text-[14px] transition"
+          :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
           >{{ t('nav_about') }}</a
         >
         <a
           href="#skills"
           @click="handleNav('skills', t('nav_skills'), $event)"
-          class="font-bold transition"
-          :class="currentTheme === 'pixel' ? 'text-[11px] font-[\'Press_Start_2P\',_monospace] text-white hover:text-[#00ff66]' : 'text-[14px] font-[\'Roboto\'] text-white hover:text-violet-500'"
+          class="text-white font-bold text-[14px] transition"
+          :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
           >{{ t('nav_skills') }}</a
         >
         <a
           href="#projects"
           @click="handleNav('projects', t('nav_projects'), $event)"
-          class="font-bold transition"
-          :class="currentTheme === 'pixel' ? 'text-[11px] font-[\'Press_Start_2P\',_monospace] text-white hover:text-[#00ff66]' : 'text-[14px] font-[\'Roboto\'] text-white hover:text-violet-500'"
+          class="text-white font-bold text-[14px] transition"
+          :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
           >{{ t('nav_projects') }}</a
         >
         <a
           href="#contact"
           @click="handleNav('contact', t('nav_contact'), $event)"
-          class="font-bold transition"
-          :class="currentTheme === 'pixel' ? 'text-[11px] font-[\'Press_Start_2P\',_monospace] text-white hover:text-[#00ff66]' : 'text-[14px] font-[\'Roboto\'] text-white hover:text-violet-500'"
+          class="text-white font-bold text-[14px] transition"
+          :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
           >{{ t('nav_contact') }}</a
         >
         <div class="flex items-center gap-4 mt-2">
           <ThemeToggle @toggle-theme="handleToggleTheme" />
           <button
             @click="handleToggleLang"
-            class="w-10 h-10 flex items-center justify-center font-bold transition shadow-lg"
-            :class="currentTheme === 'pixel' ? 'bg-[#00ff66] text-black font-[\'Press_Start_2P\',_monospace] text-[10px] border-2 border-black hover:bg-[#00e5ff]' : 'bg-violet-500 text-white rounded-xl hover:bg-violet-600 text-[14px] font-[\'Roboto\'] shadow-violet-500/30'"
+            class="w-10 h-10 flex items-center justify-center font-bold text-[14px] transition"
+            :class="
+              currentTheme === 'pixel'
+                ? 'bg-[#00ff66] text-black font-mono border-2 border-black shadow-[2px_2px_0px_#000] hover:bg-[#33ff88] rounded-none'
+                : 'bg-violet-500 text-white rounded-xl hover:bg-violet-600 font-[\'Roboto\'] shadow-lg shadow-violet-500/30'
+            "
           >
             {{ lang === 'EN' ? 'EN' : 'ID' }}
           </button>
           <button
             @click="handleMobileNotification"
-            class="w-10 h-10 flex items-center justify-center transition relative shadow-lg pointer-events-auto"
-            :class="currentTheme === 'pixel' ? 'bg-[#0a0f0d] border-2 border-[#00ff66] text-[#00ff66] hover:bg-[#00ff66] hover:text-black' : 'bg-white/5 border border-white/10 text-gray-300 rounded-xl hover:bg-violet-500 hover:text-white hover:border-violet-500'"
+            class="w-10 h-10 flex items-center justify-center transition relative pointer-events-auto"
+            :class="
+              currentTheme === 'pixel'
+                ? 'bg-[#0a120d] border-2 border-[#00ff66]/50 text-[#00ff66] hover:bg-[#00ff66] hover:text-black rounded-none shadow-[2px_2px_0px_#000]'
+                : 'bg-white/5 border border-white/10 text-gray-300 hover:bg-violet-500 hover:text-white hover:border-violet-500 rounded-xl shadow-lg'
+            "
           >
             <i class="bi bi-bell-fill text-base"></i>
             <span class="absolute -top-1 -right-1 flex h-3 w-3">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500 border border-[#171717]"></span>
+              <span class="animate-ping absolute inline-flex h-full w-full opacity-75" :class="currentTheme === 'pixel' ? 'bg-[#00ff66]' : 'rounded-full bg-red-400'"></span>
+              <span class="relative inline-flex h-3 w-3" :class="currentTheme === 'pixel' ? 'bg-[#00ff66] border border-black shadow-[1px_1px_0px_#000]' : 'rounded-full bg-red-500 border border-[#171717]'"></span>
             </span>
           </button>
         </div>
@@ -246,11 +265,30 @@ onMounted(() => {
   inset: 0;
   background: #171717;
   clip-path: inset(0 50% 0 50%);
-  transition: clip-path 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+  transition:
+    clip-path 0.7s cubic-bezier(0.65, 0, 0.35, 1),
+    background 0.3s ease;
 }
 
 .nav-entered .navbar-bg {
   clip-path: inset(0 0 0 0);
+}
+
+/* Pixel theme overrides the navbar bg color */
+.pixel-theme .navbar-bg {
+  background: #0d1117;
+}
+
+/* Pixel theme bottom scanline border */
+.pixel-bottom-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ff66, #00f0ff, #00ff66, transparent);
+  box-shadow: 0 0 8px rgba(0, 255, 102, 0.6);
+  z-index: 1;
 }
 
 /* === NavBar Right Accent Shape === */
@@ -273,6 +311,7 @@ onMounted(() => {
   width: var(--shape-width);
   height: var(--shape-height);
   background: #171717;
+  transition: background 0.3s ease;
   z-index: -1;
 
   /* Polygon structure: top-left (0,0), top-right (100%,0), bot-right (100%,100%), bot-left (starts at start-point) */
@@ -328,16 +367,15 @@ onMounted(() => {
   left: 0;
 }
 
-/* === Pixel Theme Overrides === */
-.is-pixel-theme .navbar-bg,
-.is-pixel-theme .navbar-accent-shape {
-  background: #0a0f0d;
-  border-bottom: 2px solid #00ff66;
+.pixel-theme .nav-link::after {
+  background: #00ff66;
+  border-radius: 0px;
+  box-shadow: 0 0 8px rgba(0, 255, 102, 0.6);
+  height: 2px;
 }
 
-.is-pixel-theme .nav-link::after {
-  background: #00ff66;
-  box-shadow: 0 0 8px #00ff66;
-  border-radius: 0;
+/* Pixel theme accent shape color sync */
+.pixel-theme .navbar-accent-shape {
+  background: #0d1117;
 }
 </style>

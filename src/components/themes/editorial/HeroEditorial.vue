@@ -49,7 +49,7 @@
             v-motion
             :initial="{ opacity: 0, scale: 0.9, y: 40 }"
             :visible="{ opacity: 1, scale: 1, y: 0, transition: { duration: 900, delay: 200, ease: 'easeOut' } }"
-            src="/images/hero/hero_main.png"
+            src="/images/hero/hero_main.webp"
             alt="Hero Main"
             class="w-full h-auto relative z-10"
           />
@@ -60,7 +60,7 @@
             v-motion
             :initial="{ opacity: 0, x: 60, rotate: 10 }"
             :visible="{ opacity: 1, x: 0, rotate: 0, transition: { type: 'spring', stiffness: 120, damping: 14, delay: 500 } }"
-            src="/images/hero/visual.png"
+            src="/images/hero/visual.webp"
             alt="Visualzz"
             class="absolute -top-[0%] right-[2%] lg:right-[8%] w-[38%] lg:w-[30%] lg:-top-[-5%] z-20 pointer-events-none"
           />
@@ -70,7 +70,7 @@
             v-motion
             :initial="{ opacity: 0, x: -50, rotate: -15 }"
             :visible="{ opacity: 1, x: 0, rotate: 0, transition: { type: 'spring', stiffness: 130, damping: 14, delay: 600 } }"
-            src="/images/hero/branding.png"
+            src="/images/hero/branding.webp"
             alt="Branding & Identity"
             class="absolute top-[50%] left-[-4%] lg:left-[-14%] w-[36%] lg:w-[30%] mt-[-10%] lg:mt-[1.5%] z-20 pointer-events-none"
           />
@@ -80,7 +80,7 @@
             v-motion
             :initial="{ opacity: 0, y: 40, scale: 0.8 }"
             :visible="{ opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 140, damping: 16, delay: 700 } }"
-            src="/images/hero/ux_design.png"
+            src="/images/hero/ux_design.webp"
             alt="User Experience Design"
             class="absolute bottom-[-7%] lg:bottom-[0%] lg:left-[1%] w-[40%] lg:w-[31%] z-20 pointer-events-none"
           />
@@ -90,7 +90,7 @@
             v-motion
             :initial="{ opacity: 0, scale: 0, rotate: -90 }"
             :visible="{ opacity: 1, scale: 1, rotate: 0, transition: { type: 'spring', stiffness: 200, damping: 12, delay: 800 } }"
-            src="/images/hero/hire_me.png"
+            src="/images/hero/hire_me.webp"
             alt="Hire Me"
             class="absolute bottom-[1.5%] lg:bottom-[4%] right-[10%] lg:right-[10%] w-[20%] lg:w-[18%] z-20 pointer-events-none"
           />
@@ -323,7 +323,7 @@
             class="relative mt-10 lg:mt-22 pb-10 lg:pb-0"
           >
             <img
-              src="/images/about_me.png"
+              src="/images/about_me.webp"
               alt="About Me Graphic"
               class="w-full lg:w-xl"
             />

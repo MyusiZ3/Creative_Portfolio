@@ -219,7 +219,7 @@
           >
             <div class="flex items-center gap-3">
               <img
-                src="/images/logo.png"
+                src="/images/logo.webp"
                 alt="Logo"
                 class="w-10 h-10 object-contain filter brightness-200"
               />
@@ -310,7 +310,7 @@
           class="w-full md:w-7/12 lg:w-8/12 flex justify-center md:justify-end items-start md:self-start relative order-first md:order-last mb-8 md:mb-0 md:-mt-6 lg:-mt-12 xl:-mt-26 -mr-6 md:-mr-10 lg:-mr-16 xl:-mr-24 overflow-hidden"
         >
           <img
-            src="/images/contactme.png"
+            src="/images/contactme.webp"
             alt="Contact Me"
             class="w-full max-w-sm sm:max-w-md md:max-w-xl lg:max-w-2xl xl:max-w-3xl h-auto object-contain md:object-right transition-transform duration-500"
           />
