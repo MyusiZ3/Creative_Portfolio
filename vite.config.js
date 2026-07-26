@@ -17,7 +17,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          if (id.includes('node_modules/vue') || id.includes('node_modules/vue-router')) {
+          if (id.includes('node_modules/vue/') || id.includes('node_modules/vue-router/')) {
             return 'vue-vendor';
           }
           if (id.includes('node_modules/gsap') || id.includes('node_modules/animejs') || id.includes('node_modules/@vueuse/motion')) {
