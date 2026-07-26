@@ -1,18 +1,36 @@
 <template>
   <Navbar @navigate="onNavigate" @toggle-lang="onToggleLang" @show-notification="showNotification = true" />
-  <Hero />
-  <Experience />
-  <MySkills />
-  <SomeProjects />
-  <MyProjects />
-  <Achievements />
-  <ContactMe />
+  
+  <!-- Editorial Minimalist Theme (Theme 1) -->
+  <template v-if="currentTheme === 'editorial'">
+    <HeroEditorial />
+    <ExperienceEditorial />
+    <MySkillsEditorial />
+    <SomeProjectsEditorial />
+    <MyProjectsEditorial />
+    <AchievementsEditorial />
+    <ContactMeEditorial />
+  </template>
+
+  <!-- Pixelated Cyber-Arcade Theme (Theme 2) -->
+  <template v-else>
+    <HeroPixel />
+    <ImpactBentoPixel />
+    <ProjectsPixel />
+    <SkillsPixel />
+    <ExperiencePixel />
+    <ContactPixel />
+  </template>
+
+  <!-- Floating Theme Toggle Control -->
+  <ThemeToggle @toggle-theme="handleThemeSwitch" />
+
   <FloatingActionButton />
   <CTAPopup />
   <NotificationPopup :show="showNotification" @close="showNotification = false" />
   <CursorMultiFollow />
 
-  <!-- Page Reveal Transition -->
+  <!-- Page Reveal Transition Curtain -->
   <PageReveal
     :active="revealActive"
     :label="revealLabel"
@@ -21,28 +39,51 @@
 </template>
 
 <script setup>
-import { ref, nextTick } from "vue";
+import { ref } from "vue";
 import Navbar from "@/components/Navbar.vue";
-import Hero from "@/components/Hero.vue";
-import Experience from "@/components/Experience.vue";
-import MySkills from "@/components/MySkills.vue";
-import SomeProjects from "@/components/SomeProjects.vue";
-import MyProjects from "@/components/MyProjects.vue";
-import Achievements from "@/components/Achievements.vue";
-import ContactMe from "@/components/ContactMe.vue";
+import ThemeToggle from "@/components/ThemeToggle.vue";
+
+// Editorial Theme Components
+import HeroEditorial from "@/components/themes/editorial/HeroEditorial.vue";
+import ExperienceEditorial from "@/components/themes/editorial/ExperienceEditorial.vue";
+import MySkillsEditorial from "@/components/themes/editorial/MySkillsEditorial.vue";
+import SomeProjectsEditorial from "@/components/themes/editorial/SomeProjectsEditorial.vue";
+import MyProjectsEditorial from "@/components/themes/editorial/MyProjectsEditorial.vue";
+import AchievementsEditorial from "@/components/themes/editorial/AchievementsEditorial.vue";
+import ContactMeEditorial from "@/components/themes/editorial/ContactMeEditorial.vue";
+
+// Pixel Arcade Theme Components
+import HeroPixel from "@/components/themes/pixel/HeroPixel.vue";
+import ImpactBentoPixel from "@/components/themes/pixel/ImpactBentoPixel.vue";
+import ProjectsPixel from "@/components/themes/pixel/ProjectsPixel.vue";
+import SkillsPixel from "@/components/themes/pixel/SkillsPixel.vue";
+import ExperiencePixel from "@/components/themes/pixel/ExperiencePixel.vue";
+import ContactPixel from "@/components/themes/pixel/ContactPixel.vue";
+
 import PageReveal from "@/components/PageReveal.vue";
 import FloatingActionButton from "@/components/FloatingActionButton.vue";
 import CTAPopup from "@/components/CTAPopup.vue";
 import NotificationPopup from "@/components/NotificationPopup.vue";
 import CursorMultiFollow from "@/components/CursorMultiFollow.vue";
 import { useLanguage } from "@/composables/useLanguage";
+import { useTheme } from "@/composables/useTheme";
 
 const { lang, toggleLanguage } = useLanguage();
+const { currentTheme } = useTheme();
 
 const revealActive = ref(false);
 const revealLabel = ref("");
 const showNotification = ref(false);
 let pendingTarget = "";
+
+const handleThemeSwitch = (nextTheme) => {
+  revealLabel.value = nextTheme === 'pixel' ? 'LEVEL 2: PIXEL ARCADE' : 'EDITORIAL MINIMALIST';
+  revealActive.value = true;
+  
+  setTimeout(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, 550);
+};
 
 const onNavigate = ({ target, label }) => {
   showNotification.value = false;
@@ -50,7 +91,6 @@ const onNavigate = ({ target, label }) => {
   revealActive.value = true;
   pendingTarget = target;
 
-  // Scroll to target during the "hold" phase (when screen is fully covered)
   setTimeout(() => {
     if (pendingTarget) {
       const el = document.getElementById(pendingTarget);
@@ -58,7 +98,6 @@ const onNavigate = ({ target, label }) => {
         el.scrollIntoView({ behavior: "instant" });
       }
     } else {
-      // Home — scroll to top
       window.scrollTo({ top: 0, behavior: "instant" });
     }
   }, 550);
@@ -70,7 +109,6 @@ const onToggleLang = () => {
   revealActive.value = true;
   pendingTarget = "";
 
-  // Wait for the curtain to cover the screen before swapping language
   setTimeout(() => {
     toggleLanguage();
   }, 550);
@@ -82,3 +120,4 @@ const onRevealDone = () => {
   pendingTarget = "";
 };
 </script>
+
