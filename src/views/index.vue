@@ -1,5 +1,10 @@
 <template>
-  <Navbar @navigate="onNavigate" @toggle-lang="onToggleLang" @show-notification="showNotification = true" />
+  <Navbar
+    @navigate="onNavigate"
+    @toggle-lang="onToggleLang"
+    @show-notification="showNotification = true"
+    @toggle-theme="handleThemeSwitch"
+  />
   
   <!-- Editorial Minimalist Theme (Theme 1) -->
   <template v-if="currentTheme === 'editorial'">
@@ -22,9 +27,6 @@
     <ContactPixel />
   </template>
 
-  <!-- Floating Theme Toggle Control -->
-  <ThemeToggle @toggle-theme="handleThemeSwitch" />
-
   <FloatingActionButton />
   <CTAPopup />
   <NotificationPopup :show="showNotification" @close="showNotification = false" />
@@ -41,7 +43,6 @@
 <script setup>
 import { ref } from "vue";
 import Navbar from "@/components/Navbar.vue";
-import ThemeToggle from "@/components/ThemeToggle.vue";
 
 // Editorial Theme Components
 import HeroEditorial from "@/components/themes/editorial/HeroEditorial.vue";

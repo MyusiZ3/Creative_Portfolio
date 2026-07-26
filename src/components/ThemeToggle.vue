@@ -1,43 +1,28 @@
 <template>
-  <div class="fixed bottom-6 left-6 md:left-8 z-50 flex items-center gap-3">
-    <!-- Floating Theme Switcher Button -->
-    <button
-      @click="handleToggle"
-      class="group relative inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full transition-all duration-300 select-none shadow-2xl cursor-pointer"
+  <button
+    @click="handleToggle"
+    class="relative inline-flex items-center w-11 h-6 rounded-full transition-all duration-300 p-0.5 cursor-pointer select-none"
+    :class="[
+      currentTheme === 'editorial'
+        ? 'bg-zinc-800 border border-white/20 hover:border-violet-400'
+        : 'bg-[#121c16] border-2 border-[#00ff66] shadow-[0_0_8px_rgba(0,255,102,0.3)]'
+    ]"
+    :title="currentTheme === 'editorial' ? 'Switch to Pixel Arcade Theme' : 'Switch to Editorial Theme'"
+    aria-label="Toggle Theme"
+  >
+    <!-- Thumb Circle -->
+    <span
+      class="w-5 h-5 rounded-full flex items-center justify-center text-[10px] transition-transform duration-300 font-bold shadow-md"
       :class="[
         currentTheme === 'editorial'
-          ? 'bg-[#18181b] hover:bg-[#27272a] text-zinc-100 border border-white/15 hover:border-violet-500/50 shadow-violet-950/20'
-          : 'bg-[#161b22] text-[#00ff66] border-2 border-[#00ff66] shadow-[4px_4px_0px_#000000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_#000000]'
+          ? 'translate-x-0 bg-violet-500 text-white'
+          : 'translate-x-5 bg-[#00ff66] text-black'
       ]"
-      title="Switch Theme Style"
     >
-      <!-- Mode Icon -->
-      <span class="text-sm font-semibold flex items-center justify-center">
-        <template v-if="currentTheme === 'editorial'">
-          <span class="text-violet-400 group-hover:rotate-12 transition-transform duration-300">✦</span>
-        </template>
-        <template v-else>
-          <span class="text-[#00ff66] animate-pulse">⚡</span>
-        </template>
-      </span>
-
-      <!-- Label text -->
-      <div class="flex items-center gap-1.5 text-xs font-mono tracking-wider font-semibold">
-        <span class="opacity-60 text-[10px] uppercase">THEME:</span>
-        <span class="uppercase tracking-widest" :class="currentTheme === 'editorial' ? 'text-violet-300' : 'text-[#00f0ff]'">
-          {{ currentTheme === 'editorial' ? 'EDITORIAL' : 'PIXEL ARCADE' }}
-        </span>
-      </div>
-
-      <!-- Hover Indicator Badge -->
-      <span
-        class="text-[9px] px-1.5 py-0.5 rounded font-mono font-bold uppercase transition-colors"
-        :class="currentTheme === 'editorial' ? 'bg-violet-500/20 text-violet-300 border border-violet-500/30' : 'bg-[#00ff66]/20 text-[#00ff66] border border-[#00ff66]/40'"
-      >
-        TOGGLE
-      </span>
-    </button>
-  </div>
+      <template v-if="currentTheme === 'editorial'">✦</template>
+      <template v-else>⚡</template>
+    </span>
+  </button>
 </template>
 
 <script setup>

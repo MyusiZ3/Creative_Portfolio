@@ -1,10 +1,12 @@
 <script setup>
 import { ref, onMounted } from "vue";
 
+import ThemeToggle from "@/components/ThemeToggle.vue";
+
 const isMenuOpen = ref(false);
 const navReady = ref(false);
 
-const emit = defineEmits(["navigate", "toggle-lang", "show-notification"]);
+const emit = defineEmits(["navigate", "toggle-lang", "show-notification", "toggle-theme"]);
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
@@ -24,6 +26,10 @@ const handleToggleLang = () => {
 const handleMobileNotification = () => {
   isMenuOpen.value = false;
   emit("show-notification");
+};
+
+const handleToggleTheme = (newTheme) => {
+  emit("toggle-theme", newTheme);
 };
 
 import { useLanguage } from "@/composables/useLanguage";
@@ -110,10 +116,16 @@ onMounted(() => {
           >{{ t('nav_contact') }}</a
         >
         <div class="flex items-center lg:gap-2 xl:gap-3">
+          <ThemeToggle
+            @toggle-theme="handleToggleTheme"
+            class="nav-item"
+            style="--delay: 7"
+          />
+
           <button
             @click="handleToggleLang"
             class="nav-item w-8 h-8 flex items-center justify-center bg-violet-500 text-white rounded-xl hover:bg-violet-600 transition font-bold text-[11px] lg:text-[12px] xl:text-[15px] font-['Roboto'] shadow-lg shadow-violet-500/30"
-            style="--delay: 7"
+            style="--delay: 8"
           >
             {{ lang === 'EN' ? 'EN' : 'ID' }}
           </button>
@@ -121,7 +133,7 @@ onMounted(() => {
           <button
             @click="$emit('show-notification')"
             class="nav-item w-8 h-8 flex items-center justify-center bg-white/5 border border-white/10 text-gray-300 rounded-xl hover:bg-violet-500 hover:text-white hover:border-violet-500 transition relative shadow-lg"
-            style="--delay: 8"
+            style="--delay: 9"
           >
             <i class="bi bi-bell-fill text-sm"></i>
             <span class="absolute -top-1 -right-1 flex h-2.5 w-2.5">
@@ -178,7 +190,8 @@ onMounted(() => {
           class="text-white font-bold text-[14px] font-['Roboto'] hover:text-violet-500 transition"
           >{{ t('nav_contact') }}</a
         >
-        <div class="flex gap-4 mt-2">
+        <div class="flex items-center gap-4 mt-2">
+          <ThemeToggle @toggle-theme="handleToggleTheme" />
           <button
             @click="handleToggleLang"
             class="w-10 h-10 flex items-center justify-center bg-violet-500 text-white rounded-xl hover:bg-violet-600 transition font-bold text-[14px] font-['Roboto'] shadow-lg shadow-violet-500/30"
