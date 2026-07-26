@@ -155,7 +155,7 @@
                 </div>
                 <div class="text-right font-silkscreen shrink-0">
                   <div class="text-[10px] font-bold text-[#ffd700]">GPA 3.81</div>
-                  <div class="text-[8px] text-[#00ff66] uppercase">{{ isId ? "2022-SEKARANG" : "2022-PRESENT" }}</div>
+                  <div class="text-[8px] text-[#00ff66] uppercase">{{ isId ? "2022 - SEKARANG" : "2022 - PRESENT" }}</div>
                 </div>
               </div>
 
@@ -166,13 +166,15 @@
                     <i class="bi bi-translate"></i>
                   </span>
                   <div>
-                    <div class="text-[11px] font-bold text-[#f0f6fc] font-silkscreen">{{ t('lang_title') }}</div>
-                    <div class="text-[9px] text-[#8b949e]">{{ isId ? "ID: Penutur Asli • EN: Menengah (B1)" : "ID: Native • EN: Intermediate (B1)" }}</div>
+                    <div class="text-[11px] font-bold text-[#f0f6fc] font-silkscreen">{{ isId ? "KEMAMPUAN BAHASA" : "LANGUAGE SKILLS" }}</div>
+                    <div class="text-[9px] text-[#8b949e]">
+                      {{ isId ? "ID: Asli (Native) • EN: Menengah (B1 - EPRT 483)" : "ID: Native • EN: Intermediate (B1 - EPRT 483)" }}
+                    </div>
                   </div>
                 </div>
                 <div class="text-right font-silkscreen shrink-0">
                   <div class="text-[10px] font-bold text-[#00f0ff]">B1 READY</div>
-                  <div class="text-[8px] text-[#00ff66] uppercase">BILINGUAL</div>
+                  <div class="text-[8px] text-[#00ff66] uppercase">{{ isId ? "DWIBAHASA" : "BILINGUAL" }}</div>
                 </div>
               </div>
             </div>
@@ -195,7 +197,7 @@
 import { computed } from 'vue';
 import { useLanguage } from '@/composables/useLanguage';
 
-const { lang } = useLanguage();
+const { t, lang } = useLanguage();
 const isId = computed(() => lang.value === 'ID');
 
 const stats = computed(() => [
