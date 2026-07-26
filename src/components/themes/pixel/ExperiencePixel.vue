@@ -24,21 +24,21 @@
         <!-- Quest Filter Tabs -->
         <div class="flex flex-wrap items-center gap-2 font-silkscreen">
           <button
-            @click="activeCategory = 'all'"
+            @click="setCategory('all')"
             class="px-3 py-1.5 text-xs font-bold uppercase transition border-2 shadow-[2px_2px_0px_#000]"
             :class="activeCategory === 'all' ? 'bg-[#ffd700] text-black border-black' : 'bg-[#161b22] text-[#8b949e] border-black hover:text-white'"
           >
             ALL ({{ workQuests.length + projectQuests.length }})
           </button>
           <button
-            @click="activeCategory = 'work'"
+            @click="setCategory('work')"
             class="px-3 py-1.5 text-xs font-bold uppercase transition border-2 shadow-[2px_2px_0px_#000]"
             :class="activeCategory === 'work' ? 'bg-[#00f0ff] text-black border-black' : 'bg-[#161b22] text-[#8b949e] border-black hover:text-white'"
           >
             WORK & ORG ({{ workQuests.length }})
           </button>
           <button
-            @click="activeCategory = 'project'"
+            @click="setCategory('project')"
             class="px-3 py-1.5 text-xs font-bold uppercase transition border-2 shadow-[2px_2px_0px_#000]"
             :class="activeCategory === 'project' ? 'bg-[#00ff66] text-black border-black' : 'bg-[#161b22] text-[#8b949e] border-black hover:text-white'"
           >
@@ -67,7 +67,7 @@
             <div class="flex flex-wrap items-center justify-between gap-3 border-b-2 border-[#30363d] pb-4 mb-4 font-silkscreen">
               <div class="flex items-center gap-3">
                 <span class="px-2.5 py-1 bg-[#00f0ff] text-black font-extrabold text-xs uppercase shadow-[2px_2px_0px_#000]">
-                  WORK 0{{ idx + 1 }}
+                  WORK 0{{ (workPage - 1) * workPerPage + idx + 1 }}
                 </span>
                 <span class="text-xs font-bold text-[#00ff66] uppercase border border-[#00ff66] px-2 py-0.5">
                   {{ quest.status }}
@@ -95,14 +95,37 @@
           </div>
         </div>
 
-        <!-- Show More / Collapse Button for Work Quests -->
-        <div v-if="workQuests.length > initialWorkLimit" class="mt-6 text-center">
+        <!-- Pagination for Work Quests -->
+        <div v-if="totalWorkPages > 1" class="mt-8 flex items-center justify-center gap-3 font-silkscreen">
           <button
-            @click="isExpandedWork = !isExpandedWork"
-            class="px-6 py-3 bg-[#161b22] text-[#00f0ff] hover:bg-[#00f0ff] hover:text-black border-2 border-black font-silkscreen text-xs font-bold uppercase shadow-[4px_4px_0px_#000000] active:translate-x-[2px] active:translate-y-[2px] transition-all flex items-center justify-center gap-2 mx-auto group"
+            @click="workPage > 1 && workPage--"
+            :disabled="workPage === 1"
+            class="px-4 py-2 bg-[#161b22] text-xs font-bold uppercase border-2 border-black shadow-[3px_3px_0px_#000000] transition-all flex items-center gap-2"
+            :class="[
+              workPage === 1 
+                ? 'opacity-40 cursor-not-allowed text-[#8b949e]' 
+                : 'text-[#00f0ff] hover:bg-[#00f0ff] hover:text-black active:translate-y-0.5'
+            ]"
           >
-            <i :class="isExpandedWork ? 'bi bi-chevron-up' : 'bi bi-chevron-down'" class="group-hover:scale-125 transition-transform"></i>
-            <span>{{ isExpandedWork ? 'COLLAPSE WORK QUEST LOG' : `UNLOCK ALL WORK QUESTS (+${workQuests.length - initialWorkLimit} MORE)` }}</span>
+            <span v-if="workPage > 1" class="w-2 h-2 bg-[#00ff66] inline-block shadow-[0_0_5px_#00ff66]"></span>
+            <span>PREVIOUS</span>
+          </button>
+
+          <div class="text-xs font-bold text-[#f0f6fc] bg-[#161b22] px-4 py-2 border-2 border-[#30363d] shadow-[3px_3px_0px_#000000]">
+            PAGE <span class="text-[#00ff66]">{{ workPage }}</span> OF <span class="text-[#00ff66]">{{ totalWorkPages }}</span>
+          </div>
+
+          <button
+            @click="workPage < totalWorkPages && workPage++"
+            :disabled="workPage === totalWorkPages"
+            class="px-4 py-2 bg-[#161b22] text-xs font-bold uppercase border-2 border-black shadow-[3px_3px_0px_#000000] transition-all flex items-center gap-2"
+            :class="[
+              workPage === totalWorkPages 
+                ? 'opacity-40 cursor-not-allowed text-[#8b949e]' 
+                : 'text-[#00f0ff] hover:bg-[#00f0ff] hover:text-black active:translate-y-0.5'
+            ]"
+          >
+            <span>NEXT ›</span>
           </button>
         </div>
       </div>
@@ -128,7 +151,7 @@
               <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-[#30363d] pb-3 mb-4 font-silkscreen">
                 <div class="flex items-center gap-2">
                   <span class="px-2 py-0.5 bg-[#00ff66] text-black font-extrabold text-[10px] uppercase shadow-[2px_2px_0px_#000]">
-                    PROJ 0{{ idx + 1 }}
+                    PROJ 0{{ (projectPage - 1) * projectPerPage + idx + 1 }}
                   </span>
                   <span class="text-[10px] font-bold text-[#ffd700] uppercase border border-[#ffd700] px-1.5 py-0.5">
                     CLEARED
@@ -159,14 +182,37 @@
           </div>
         </div>
 
-        <!-- Show More / Collapse Button for Project Quests -->
-        <div v-if="projectQuests.length > initialProjectLimit" class="mt-6 text-center">
+        <!-- Pagination for Project Quests -->
+        <div v-if="totalProjectPages > 1" class="mt-8 flex items-center justify-center gap-3 font-silkscreen">
           <button
-            @click="isExpandedProject = !isExpandedProject"
-            class="px-6 py-3 bg-[#161b22] text-[#00ff66] hover:bg-[#00ff66] hover:text-black border-2 border-black font-silkscreen text-xs font-bold uppercase shadow-[4px_4px_0px_#000000] active:translate-x-[2px] active:translate-y-[2px] transition-all flex items-center justify-center gap-2 mx-auto group"
+            @click="projectPage > 1 && projectPage--"
+            :disabled="projectPage === 1"
+            class="px-4 py-2 bg-[#161b22] text-xs font-bold uppercase border-2 border-black shadow-[3px_3px_0px_#000000] transition-all flex items-center gap-2"
+            :class="[
+              projectPage === 1 
+                ? 'opacity-40 cursor-not-allowed text-[#8b949e]' 
+                : 'text-[#00ff66] hover:bg-[#00ff66] hover:text-black active:translate-y-0.5'
+            ]"
           >
-            <i :class="isExpandedProject ? 'bi bi-chevron-up' : 'bi bi-chevron-down'" class="group-hover:scale-125 transition-transform"></i>
-            <span>{{ isExpandedProject ? 'COLLAPSE PROJECT QUEST LOG' : `UNLOCK ALL PROJECT QUESTS (+${projectQuests.length - initialProjectLimit} MORE)` }}</span>
+            <span v-if="projectPage > 1" class="w-2 h-2 bg-[#00ff66] inline-block shadow-[0_0_5px_#00ff66]"></span>
+            <span>PREVIOUS</span>
+          </button>
+
+          <div class="text-xs font-bold text-[#f0f6fc] bg-[#161b22] px-4 py-2 border-2 border-[#30363d] shadow-[3px_3px_0px_#000000]">
+            PAGE <span class="text-[#00ff66]">{{ projectPage }}</span> OF <span class="text-[#00ff66]">{{ totalProjectPages }}</span>
+          </div>
+
+          <button
+            @click="projectPage < totalProjectPages && projectPage++"
+            :disabled="projectPage === totalProjectPages"
+            class="px-4 py-2 bg-[#161b22] text-xs font-bold uppercase border-2 border-black shadow-[3px_3px_0px_#000000] transition-all flex items-center gap-2"
+            :class="[
+              projectPage === totalProjectPages 
+                ? 'opacity-40 cursor-not-allowed text-[#8b949e]' 
+                : 'text-[#00ff66] hover:bg-[#00ff66] hover:text-black active:translate-y-0.5'
+            ]"
+          >
+            <span>NEXT ›</span>
           </button>
         </div>
       </div>
@@ -182,11 +228,17 @@ import { useLanguage } from '@/composables/useLanguage';
 const { t } = useLanguage();
 const activeCategory = ref('all');
 
-const initialWorkLimit = 3;
-const initialProjectLimit = 4;
+const workPage = ref(1);
+const workPerPage = ref(3);
 
-const isExpandedWork = ref(false);
-const isExpandedProject = ref(false);
+const projectPage = ref(1);
+const projectPerPage = ref(4);
+
+const setCategory = (cat) => {
+  activeCategory.value = cat;
+  workPage.value = 1;
+  projectPage.value = 1;
+};
 
 const workQuests = computed(() => [
   {
@@ -287,17 +339,16 @@ const projectQuests = computed(() => [
   }
 ]);
 
+const totalWorkPages = computed(() => Math.ceil(workQuests.value.length / workPerPage.value) || 1);
+const totalProjectPages = computed(() => Math.ceil(projectQuests.value.length / projectPerPage.value) || 1);
+
 const displayedWorkQuests = computed(() => {
-  if (isExpandedWork.value) {
-    return workQuests.value;
-  }
-  return workQuests.value.slice(0, initialWorkLimit);
+  const start = (workPage.value - 1) * workPerPage.value;
+  return workQuests.value.slice(start, start + workPerPage.value);
 });
 
 const displayedProjectQuests = computed(() => {
-  if (isExpandedProject.value) {
-    return projectQuests.value;
-  }
-  return projectQuests.value.slice(0, initialProjectLimit);
+  const start = (projectPage.value - 1) * projectPerPage.value;
+  return projectQuests.value.slice(start, start + projectPerPage.value);
 });
 </script>
