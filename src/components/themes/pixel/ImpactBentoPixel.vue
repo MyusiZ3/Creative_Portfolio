@@ -151,6 +151,14 @@
         </div>
       </div>
 
+      <!-- Live Spotify / Arcade Sound Vibes Widget -->
+      <div class="mb-12">
+        <SpotifyWidget 
+          themeOverride="pixel" 
+          spotifyEmbedUrl="https://open.spotify.com/embed/playlist/0YSzquUNB6qYW9ukvaPZ66"
+        />
+      </div>
+
       <!-- Bottom Row: Interactive Month Pills & Timeline Grid -->
       <div
         v-motion
@@ -169,8 +177,9 @@
           <button
             v-for="(month, idx) in months"
             :key="month"
-            @click="activeQuarter = Math.floor(idx / 3)"
-            class="px-3 py-1.5 text-xs font-bold uppercase transition-all border-2"
+            @click="selectQuarter(Math.floor(idx / 3))"
+            @mouseenter="playBlipSfx"
+            class="px-3 py-1.5 text-xs font-bold uppercase transition-all border-2 cursor-pointer"
             :class="[
               Math.floor(idx / 3) === activeQuarter
                 ? 'bg-black text-[#00ff66] border-[#00ff66] shadow-[2px_2px_0px_#00ff66]'
@@ -186,11 +195,13 @@
           <div
             v-for="(q, index) in quarters"
             :key="q.title"
-            class="p-5 border-2 border-black transition-all flex flex-col justify-between"
+            @click="selectQuarter(index)"
+            @mouseenter="playBlipSfx"
+            class="p-5 border-2 border-black transition-all flex flex-col justify-between cursor-pointer hover:border-[#00ff66]"
             :class="[
               activeQuarter === index
                 ? 'bg-[#0d1117] border-[#00f0ff] shadow-[4px_4px_0px_#00f0ff]'
-                : 'bg-[#0d1117]/60 opacity-60',
+                : 'bg-[#0d1117]/60 opacity-60 hover:opacity-100',
             ]"
           >
             <div>
@@ -227,11 +238,19 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useLanguage } from "@/composables/useLanguage";
+import { usePixelAudio } from "@/composables/usePixelAudio";
+import SpotifyWidget from "@/components/common/SpotifyWidget.vue";
 
 const { lang } = useLanguage();
+const { playBlipSfx } = usePixelAudio();
 const isId = computed(() => lang.value === "ID");
 
 const activeQuarter = ref(0);
+
+const selectQuarter = (quarterIdx) => {
+  playBlipSfx();
+  activeQuarter.value = quarterIdx;
+};
 
 const months = [
   "January",
