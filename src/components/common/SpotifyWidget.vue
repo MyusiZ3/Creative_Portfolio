@@ -10,6 +10,7 @@
     <!-- Hidden HTML5 Audio Element for Real Audio Playback -->
     <audio 
       ref="audioPlayer" 
+      :key="activeTrack.audioUrl"
       :src="activeTrack.audioUrl" 
       @ended="autoShuffleTrack"
       @play="isPlaying = true"
@@ -29,49 +30,57 @@
 
     <!-- Top Retro Arcade Header Bar -->
     <div 
-      class="flex items-center justify-between gap-2 mb-3 pb-2.5 border-b relative z-10"
-      :class="theme === 'pixel' ? 'border-black/80 bg-black/30 p-2 border-2 shadow-[2px_2px_0px_#000]' : 'border-white/10'"
+      class="flex flex-wrap items-center justify-between gap-2 mb-3 pb-2.5 border-b relative z-10"
+      :class="theme === 'pixel' ? 'border-black/80 bg-black/40 p-2 sm:p-2.5 border-2 shadow-[2px_2px_0px_#000]' : 'border-white/10'"
     >
       <div class="flex items-center gap-2 min-w-0">
         <!-- Blinking LED Dot & Sound Chip Icon -->
         <div class="flex items-center gap-1.5 shrink-0">
           <span 
-            class="w-2.5 h-2.5 rounded-full inline-block shadow-[0_0_8px]"
+            class="w-3 h-3 rounded-full inline-block shadow-[0_0_8px]"
             :class="[
               isPlaying 
                 ? (theme === 'pixel' ? 'bg-[#00ff66] shadow-[#00ff66] animate-pulse' : 'bg-emerald-400 shadow-emerald-400 animate-pulse') 
                 : 'bg-gray-500 shadow-transparent'
             ]"
           ></span>
-          <i class="bi bi-disc-fill text-lg animate-spin-slow" :class="theme === 'pixel' ? 'text-[#00f0ff]' : 'text-[#1db954]'"></i>
+          <i class="bi bi-disc-fill text-xl animate-spin-slow" :class="theme === 'pixel' ? 'text-[#00f0ff]' : 'text-[#1db954]'"></i>
         </div>
 
         <span 
-          class="text-[10px] sm:text-xs font-bold uppercase tracking-wider truncate"
+          class="text-xs sm:text-sm font-bold uppercase tracking-wider truncate"
           :class="theme === 'pixel' ? 'font-silkscreen text-[#00ff66] text-shadow-pixel' : 'text-gray-200'"
         >
-          {{ isListening ? (isId ? '▶ LIVE SPOTIFY SESSION' : '▶ LIVE SPOTIFY SESSION') : (isId ? '8-BIT SPOTIFY TAPE DECK' : '8-BIT SPOTIFY TAPE DECK') }}
+          {{ isListening ? '▶ LIVE SPOTIFY SESSION' : (theme === 'pixel' ? '8-BIT SPOTIFY TAPE DECK' : '♫ SPOTIFY PLAYER') }}
         </span>
       </div>
 
-      <!-- Header Controls: Mode Toggle & Visualizer -->
-      <div class="flex items-center gap-2 shrink-0">
+      <!-- Prominent Spotify Switch Toggle & Visualizer -->
+      <div class="flex items-center gap-2 shrink-0 ml-auto">
+        <!-- Big Prominent Spotify Switch Button -->
         <button
           @click="showEmbed = !showEmbed"
-          class="px-2 py-0.5 text-[9px] font-bold uppercase transition-all duration-150 border cursor-pointer"
+          class="px-3 py-1.5 sm:px-4 sm:py-2 text-xs font-bold uppercase transition-all duration-200 border-2 cursor-pointer flex items-center gap-2 shadow-md active:translate-x-0.5 active:translate-y-0.5"
           :class="[
-            theme === 'pixel' 
-              ? 'bg-[#161b22] text-[#ffd700] border-black hover:border-[#00ff66] hover:bg-[#00ff66] hover:text-black font-silkscreen shadow-[1.5px_1.5px_0px_#000]' 
-              : 'bg-white/10 text-gray-200 border-white/20 hover:bg-white/20 hover:text-white rounded-lg'
+            showEmbed
+              ? (theme === 'pixel' 
+                  ? 'bg-[#00ff66] text-black border-black font-silkscreen shadow-[3px_3px_0px_#000]' 
+                  : 'bg-emerald-500 text-white border-emerald-400 rounded-xl')
+              : (theme === 'pixel' 
+                  ? 'bg-[#1db954] text-black border-black hover:bg-[#00ff66] font-silkscreen shadow-[3px_3px_0px_#000]' 
+                  : 'bg-[#1db954] text-white border-[#1db954] hover:bg-emerald-500 rounded-xl')
           ]"
-          :title="showEmbed ? 'Hide Spotify Embed' : 'Show Live Spotify Embed'"
+          :title="showEmbed ? 'Kembali ke Pemutar 8-Bit Tape' : 'Buka Live Spotify Player'"
         >
-          {{ showEmbed ? (isId ? '📼 TAPE CARD' : '📼 TAPE CARD') : (isId ? '🎵 EMBED SPOTIFY' : '🎵 EMBED SPOTIFY') }}
+          <i class="bi bi-spotify text-base sm:text-lg animate-bounce-slow"></i>
+          <span class="tracking-wide">
+            {{ showEmbed ? '📼 8-BIT DECK' : '🎵 SPOTIFY PLAYER' }}
+          </span>
         </button>
 
         <!-- 8-Bit Multi-Bar Visualizer / VU Equalizer -->
         <div 
-          class="flex items-end gap-0.5 h-4 px-1.5 py-0.5 rounded border"
+          class="hidden xs:flex items-end gap-0.5 h-6 px-2 py-1 rounded border"
           :class="theme === 'pixel' ? 'bg-black border-black/80 shadow-[inset_0_0_4px_rgba(0,255,102,0.3)]' : 'bg-black/40 border-white/10'"
         >
           <span 
@@ -91,7 +100,25 @@
     </div>
 
     <!-- Live Spotify Embed (If toggled by user for streaming full Spotify playlist) -->
-    <div v-if="showEmbed" class="relative z-10 my-2">
+    <div v-if="showEmbed" class="relative z-10 my-2 space-y-2">
+      <!-- Spotify Playlist Quick Selector Bar -->
+      <div class="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+        <span class="text-[9px] font-silkscreen text-[#00ff66] mr-1 shrink-0">PLAYLISTS:</span>
+        <button
+          v-for="pl in embedPlaylists"
+          :key="pl.url"
+          @click="selectedEmbedUrl = pl.url"
+          class="px-2.5 py-1 text-[9px] font-bold uppercase transition-all whitespace-nowrap cursor-pointer border active:translate-x-0.5 active:translate-y-0.5"
+          :class="[
+            (selectedEmbedUrl || props.spotifyEmbedUrl) === pl.url
+              ? (theme === 'pixel' ? 'bg-[#00ff66] text-black border-black font-silkscreen shadow-[2px_2px_0px_#000]' : 'bg-emerald-500 text-white border-emerald-400 rounded-lg')
+              : (theme === 'pixel' ? 'bg-black/60 text-gray-300 border-black hover:border-[#00ff66] font-silkscreen' : 'bg-white/10 text-gray-300 border-white/10 hover:bg-white/20 rounded-lg')
+          ]"
+        >
+          {{ pl.name }}
+        </button>
+      </div>
+
       <iframe 
         :src="formattedEmbedUrl" 
         width="100%" 
@@ -283,41 +310,79 @@ const audioPlayer = ref(null);
 const isListening = ref(false);
 const isPlaying = ref(false);
 const showEmbed = ref(false);
+const selectedEmbedUrl = ref('');
 const progressPercent = ref(0);
 let progressInterval = null;
+
+// Selectable Spotify Playlists for Embed Mode
+const embedPlaylists = [
+  { name: '🕹️ 8-BIT RETRO', url: 'https://open.spotify.com/embed/playlist/0YSzquUNB6qYW9ukvaPZ66' },
+  { name: '🎧 LO-FI CODING', url: 'https://open.spotify.com/embed/playlist/37i9dQZF1DXdLENIlSioyF' },
+  { name: '🌃 CYBERPUNK', url: 'https://open.spotify.com/embed/playlist/37i9dQZF1DXd4WYj2dssEX' },
+  { name: '☕ CHILL BEATS', url: 'https://open.spotify.com/embed/playlist/37i9dQZF1DX8Ueb2CJPWES' }
+];
 
 // Web Audio API Synthesizer Fallback for 8-Bit Chiptune Melody
 let audioCtx = null;
 let synthTimer = null;
 
 const formattedEmbedUrl = computed(() => {
-  if (!props.spotifyEmbedUrl) return 'https://open.spotify.com/embed/playlist/0YSzquUNB6qYW9ukvaPZ66';
-  if (props.spotifyEmbedUrl.includes('/embed/')) return props.spotifyEmbedUrl;
-  return props.spotifyEmbedUrl.replace('open.spotify.com/', 'open.spotify.com/embed/');
+  const url = selectedEmbedUrl.value || props.spotifyEmbedUrl || 'https://open.spotify.com/embed/playlist/0YSzquUNB6qYW9ukvaPZ66';
+  if (url.includes('/embed/')) return url;
+  return url.replace('open.spotify.com/', 'open.spotify.com/embed/');
 });
 
-// Curated 8-Bit / Synth Playlist Tracks with Audio URLs
+// Curated 8-Bit / Synth Playlist Tracks with Distinct Audio URLs & Unique Synth Melodies
 const defaultTracks = [
   {
     title: '8-Bit Cyberpunk Theme',
-    artist: 'Retro Chiptune Soundtrack',
+    artist: 'Retro Chiptune Orchestra',
     albumArt: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=300&auto=format&fit=crop&q=80',
-    audioUrl: 'https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=8-bit-arcade-138828.mp3',
-    spotifyUrl: 'https://open.spotify.com/playlist/0YSzquUNB6qYW9ukvaPZ66'
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+    spotifyUrl: 'https://open.spotify.com/playlist/0YSzquUNB6qYW9ukvaPZ66',
+    waveform: 'square',
+    tempo: 160,
+    synthMelody: [261.63, 329.63, 392.00, 523.25, 659.25, 783.99, 1046.50, 783.99, 659.25, 523.25, 392.00, 329.63, 261.63, 392.00, 523.25, 659.25]
   },
   {
     title: 'Midnight Synthwave Drive',
     artist: 'Neon Pixel Chiptune',
     albumArt: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300&auto=format&fit=crop&q=80',
-    audioUrl: 'https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=cyberpunk-2099-10701.mp3',
-    spotifyUrl: 'https://open.spotify.com/playlist/0YSzquUNB6qYW9ukvaPZ66'
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+    spotifyUrl: 'https://open.spotify.com/playlist/37i9dQZF1DXd4WYj2dssEX',
+    waveform: 'sawtooth',
+    tempo: 240,
+    synthMelody: [146.83, 164.81, 174.61, 220.00, 293.66, 329.63, 349.23, 440.00, 293.66, 220.00, 174.61, 164.81, 146.83, 220.00, 293.66, 349.23]
   },
   {
     title: 'Arcade Level Boss Vibe',
-    artist: 'Retro Arcade Orchestra',
+    artist: 'Retro Game Arcade',
     albumArt: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=300&auto=format&fit=crop&q=80',
-    audioUrl: 'https://cdn.pixabay.com/download/audio/2021/09/06/audio_8b86d94df0.mp3?filename=8-bit-retro-game-music-23214.mp3',
-    spotifyUrl: 'https://open.spotify.com/playlist/0YSzquUNB6qYW9ukvaPZ66'
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+    spotifyUrl: 'https://open.spotify.com/playlist/0YSzquUNB6qYW9ukvaPZ66',
+    waveform: 'triangle',
+    tempo: 130,
+    synthMelody: [440.00, 466.16, 523.25, 587.33, 659.25, 698.46, 783.99, 880.00, 783.99, 698.46, 659.25, 587.33, 523.25, 466.16, 440.00, 349.23]
+  },
+  {
+    title: 'Pixel Dungeon Odyssey',
+    artist: 'Chiptune Adventure Beats',
+    albumArt: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=300&auto=format&fit=crop&q=80',
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
+    spotifyUrl: 'https://open.spotify.com/playlist/37i9dQZF1DXdLENIlSioyF',
+    waveform: 'square',
+    tempo: 190,
+    synthMelody: [329.63, 392.00, 440.00, 523.25, 587.33, 659.25, 523.25, 440.00, 392.00, 440.00, 523.25, 659.25, 783.99, 659.25, 523.25, 392.00]
+  },
+  {
+    title: 'Neo Tokyo Chiptune Jam',
+    artist: 'Future Pixel Sound System',
+    albumArt: 'https://images.unsplash.com/photo-1563089145-599997674d42?w=300&auto=format&fit=crop&q=80',
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3',
+    spotifyUrl: 'https://open.spotify.com/playlist/37i9dQZF1DX8Ueb2CJPWES',
+    waveform: 'square',
+    tempo: 170,
+    synthMelody: [587.33, 659.25, 783.99, 880.00, 1046.50, 1174.66, 1046.50, 880.00, 783.99, 659.25, 587.33, 783.99, 880.00, 1046.50, 1174.66, 1318.51]
   }
 ];
 
@@ -332,8 +397,8 @@ const activeTrack = computed(() => {
   return defaultTracks[trackIndex.value % defaultTracks.length];
 });
 
-// Web Audio API 8-Bit Sound Generator
-const playChiptuneNote = (freq, duration = 0.15) => {
+// Web Audio API 8-Bit Sound Generator with custom waveforms
+const playChiptuneNote = (freq, duration = 0.15, waveform = 'square') => {
   try {
     if (!audioCtx) {
       const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -345,7 +410,7 @@ const playChiptuneNote = (freq, duration = 0.15) => {
     const osc = audioCtx.createOscillator();
     const gain = audioCtx.createGain();
     
-    osc.type = 'square'; // Classic 8-Bit Square Wave
+    osc.type = waveform;
     osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
     
     gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
@@ -361,17 +426,21 @@ const playChiptuneNote = (freq, duration = 0.15) => {
   }
 };
 
-const notesMelody = [261.63, 329.63, 392.00, 523.25, 392.00, 329.63, 440.00, 587.33];
 let noteIdx = 0;
 
 const startChiptuneSynth = () => {
   stopChiptuneSynth();
+  const track = activeTrack.value || defaultTracks[0];
+  const melody = track.synthMelody || defaultTracks[0].synthMelody;
+  const waveform = track.waveform || 'square';
+  const tempo = track.tempo || 200;
+
   synthTimer = setInterval(() => {
     if (isPlaying.value) {
-      playChiptuneNote(notesMelody[noteIdx % notesMelody.length]);
+      playChiptuneNote(melody[noteIdx % melody.length], 0.16, waveform);
       noteIdx++;
     }
-  }, 220);
+  }, tempo);
 };
 
 const stopChiptuneSynth = () => {
@@ -389,27 +458,33 @@ const toggleAudioPlay = () => {
 
 const playAudio = async () => {
   isPlaying.value = true;
+  let mp3Success = false;
 
-  try {
-    if (!audioCtx) {
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      audioCtx = new AudioContext();
-    }
-    if (audioCtx.state === 'suspended') {
-      await audioCtx.resume();
-    }
-  } catch (e) {
-    // Ignore audio context errors
-  }
-
-  startChiptuneSynth();
-
-  if (audioPlayer.value) {
+  if (audioPlayer.value && activeTrack.value?.audioUrl) {
     try {
       await audioPlayer.value.play();
+      mp3Success = true;
+      stopChiptuneSynth(); // Stop synth so it doesn't collide with MP3 audio!
     } catch (e) {
-      // Browsers may block mp3 autoplay until user interaction, fallback to Web Audio
+      // Browsers may block MP3 autoplay until user interaction, fallback to Web Audio
     }
+  }
+
+  // Fallback to Web Audio synthetic chiptune ONLY if MP3 failed or isn't available
+  if (!mp3Success && theme.value === 'pixel') {
+    try {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+      }
+      if (audioCtx.state === 'suspended') {
+        await audioCtx.resume();
+      }
+    } catch (e) {
+      // Ignore audio context errors
+    }
+
+    startChiptuneSynth();
   }
 };
 

@@ -332,14 +332,14 @@
           <div
             class="inline-block animate-marquee-slow font-['Poppins'] font-bold text-3xl lg:text-5xl uppercase pr-4 text-white hover:text-violet-500 transition-colors duration-500"
           >
-            CREATIVE DESIGNER • MULTIMEDIA ENGINEER • UI/UX ENTHUSIAST •
-            CREATIVE DESIGNER • MULTIMEDIA ENGINEER • UI/UX ENTHUSIAST •&nbsp;
+            CREATIVE DEVELOPER • MULTIMEDIA ENGINEER • UI/UX ENTHUSIAST •
+            CREATIVE DEVELOPER • MULTIMEDIA ENGINEER • UI/UX ENTHUSIAST •&nbsp;
           </div>
           <div
             class="inline-block animate-marquee-slow font-['Poppins'] font-bold text-3xl lg:text-5xl uppercase pr-4 text-white hover:text-violet-500 transition-colors duration-500"
           >
-            CREATIVE DESIGNER • MULTIMEDIA ENGINEER • UI/UX ENTHUSIAST •
-            CREATIVE DESIGNER • MULTIMEDIA ENGINEER • UI/UX ENTHUSIAST •&nbsp;
+            CREATIVE DEVELOPER • MULTIMEDIA ENGINEER • UI/UX ENTHUSIAST •
+            CREATIVE DEVELOPER • MULTIMEDIA ENGINEER • UI/UX ENTHUSIAST •&nbsp;
           </div>
         </div>
 
