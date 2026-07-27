@@ -19,14 +19,17 @@
         <h2 class="text-4xl lg:text-[56px] font-bold font-['Poppins'] text-gray-900 leading-tight mb-6">
           <span class="text-gray-900">{{ t('ach_title_1') }}<br></span> {{ t('ach_title_2') }}
         </h2>
-        <p class="text-gray-600 font-['Roboto'] text-sm lg:text-base max-w-2xl leading-relaxed">
-          {{ t('ach_desc') }}
-        </p>
+        <div class="flex flex-wrap items-center justify-between gap-4 mt-6">
+          <p class="text-gray-600 font-['Roboto'] text-sm lg:text-base max-w-2xl leading-relaxed">
+            {{ t('ach_desc') }}
+          </p>
+          <VisitorCounter themeOverride="editorial" />
+        </div>
         <div class="h-px w-full bg-gray-200 mt-8"></div>
       </div>
 
       <!-- Achievements Grid (New Professional Layout) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-10 mb-[5rem]">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-10 mb-12">
         <div
           v-for="(item, index) in achievements"
           :key="index"
@@ -66,6 +69,14 @@
           </div>
         </div>
       </div>
+
+      <!-- Spotify Live Music Widget -->
+      <div class="mb-16">
+        <SpotifyWidget 
+          themeOverride="editorial" 
+          spotifyEmbedUrl="https://open.spotify.com/embed/playlist/0YSzquUNB6qYW9ukvaPZ66"
+        />
+      </div>
     </div>
 
     <!-- Image Modal -->
@@ -91,6 +102,8 @@
 import { ref, computed } from 'vue';
 import { useLanguage } from '@/composables/useLanguage';
 import ProjectImage from '@/components/common/ProjectImage.vue';
+import VisitorCounter from '@/components/common/VisitorCounter.vue';
+import SpotifyWidget from '@/components/common/SpotifyWidget.vue';
 
 const { t, lang } = useLanguage();
 const selectedImg = ref(null);
