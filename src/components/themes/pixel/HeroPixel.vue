@@ -18,9 +18,18 @@
             SYSTEM ONLINE • PLAYER 1 READY
           </span>
         </div>
-        <div class="flex items-center gap-2 text-xs text-[#8b949e] font-silkscreen">
-          <span class="px-2 py-1 bg-[#0d1117] border border-[#30363d] text-[#00f0ff] font-bold">MODE: 16-BIT ARCADE</span>
-          <span class="px-2 py-1 bg-[#0d1117] border border-[#30363d] text-[#ffd700] font-bold">FPS: 60</span>
+        <div class="flex flex-wrap items-center gap-2 text-xs text-[#8b949e] font-silkscreen">
+          <VisitorCounter themeOverride="pixel" />
+          <button 
+            @click="insertCoin" 
+            @mouseenter="playBlipSfx"
+            class="px-2 py-1 bg-[#ff0055] border-2 border-black text-white font-bold hover:bg-[#ff2a70] active:translate-y-0.5 shadow-[2px_2px_0px_#000] cursor-pointer flex items-center gap-1.5 transition-all"
+            title="Click to Insert Coin!"
+          >
+            <i class="bi bi-coin text-[#ffd700] animate-bounce"></i>
+            <span>CREDITS: {{ creditsCount.toString().padStart(2, '0') }}</span>
+          </button>
+          <span class="px-2 py-1 bg-[#0d1117] border border-[#30363d] text-[#ffd700] font-bold">SCORE: {{ currentScore.toLocaleString() }}</span>
         </div>
       </div>
 
@@ -33,12 +42,16 @@
           :initial="{ opacity: 0, x: -50 }"
           :visible-once="{ opacity: 1, x: 0, transition: { duration: 700, delay: 150, ease: 'easeOut' } }"
           class="lg:col-span-7 bg-[#161b22] border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_#000000] flex flex-col justify-between relative group"
+          :class="{ 'border-[#ffd700] shadow-[0_0_25px_#ffd700]': isCheatActive }"
         >
           <div class="space-y-4">
             <!-- Level & Class Tag -->
             <div class="flex flex-wrap items-center gap-2 font-silkscreen">
-              <span class="px-3 py-1 bg-[#ffd700] text-black font-bold text-xs uppercase shadow-[2px_2px_0px_#000000]">
-                LVL 99 DESIGNER
+              <span 
+                class="px-3 py-1 font-bold text-xs uppercase shadow-[2px_2px_0px_#000000] transition-all"
+                :class="isCheatActive ? 'bg-[#ff0055] text-white animate-pulse' : 'bg-[#ffd700] text-black'"
+              >
+                {{ isCheatActive ? 'LVL 999 GOD MODE' : 'LVL 99 DESIGNER' }}
               </span>
               <span class="px-3 py-1 bg-[#00ff66] text-black font-bold text-xs uppercase shadow-[2px_2px_0px_#000000]">
                 GAME DEV & XR
@@ -50,7 +63,7 @@
 
             <!-- Big Pixel Title -->
             <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#f0f6fc] tracking-tight leading-tight uppercase font-pixel py-2">
-              MUHAMAD <span class="text-[#00ff66]">SIDIK</span>
+              MUHAMAD <span :class="isCheatActive ? 'text-[#ffd700]' : 'text-[#00ff66]'">SIDIK</span>
             </h1>
 
             <p class="text-sm sm:text-base text-[#8b949e] leading-relaxed pt-2 font-mono">
@@ -67,7 +80,7 @@
             <div>
               <div class="flex justify-between text-xs font-bold mb-1 font-silkscreen">
                 <span class="text-[#00ff66]">CREATIVE STAMINA (HP)</span>
-                <span class="text-[#00ff66]">100 / 100</span>
+                <span class="text-[#00ff66]">{{ isCheatActive ? '9999 / 9999' : '100 / 100' }}</span>
               </div>
               <div class="h-3 w-full bg-[#0d1117] border-2 border-black p-0.5">
                 <div class="h-full bg-[#00ff66] w-full transition-all duration-500"></div>
@@ -78,7 +91,7 @@
             <div>
               <div class="flex justify-between text-xs font-bold mb-1 font-silkscreen">
                 <span class="text-[#00f0ff]">TECH & XR MANA (MP)</span>
-                <span class="text-[#00f0ff]">95 / 100</span>
+                <span class="text-[#00f0ff]">{{ isCheatActive ? '9999 / 9999' : '95 / 100' }}</span>
               </div>
               <div class="h-3 w-full bg-[#0d1117] border-2 border-black p-0.5">
                 <div class="h-full bg-[#00f0ff] w-[95%] transition-all duration-500"></div>
@@ -90,6 +103,7 @@
           <div class="mt-8 flex flex-row items-center gap-2 sm:gap-4 font-silkscreen">
             <a
               href="#projects"
+              @mouseenter="playBlipSfx"
               class="flex-1 justify-center px-2 sm:px-6 py-2.5 sm:py-3 bg-[#00ff66] text-black font-extrabold text-[9px] min-[360px]:text-[10px] sm:text-xs uppercase border-2 border-black shadow-[3px_3px_0px_#000000] sm:shadow-[4px_4px_0px_#000000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#000000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all flex items-center gap-1 sm:gap-2 text-center whitespace-nowrap"
             >
               <i class="bi bi-controller text-xs sm:text-base shrink-0"></i>
@@ -98,6 +112,7 @@
 
             <a
               href="#contact"
+              @mouseenter="playBlipSfx"
               class="flex-1 justify-center px-2 sm:px-6 py-2.5 sm:py-3 bg-[#161b22] text-[#00f0ff] font-extrabold text-[9px] min-[360px]:text-[10px] sm:text-xs uppercase border-2 border-[#00f0ff] shadow-[3px_3px_0px_#000000] sm:shadow-[4px_4px_0px_#000000] hover:bg-[#00f0ff]/10 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#000000] transition-all flex items-center gap-1 sm:gap-2 text-center whitespace-nowrap"
             >
               <i class="bi bi-send-fill text-xs sm:text-base shrink-0"></i>
@@ -123,7 +138,12 @@
             </div>
 
             <div class="space-y-3">
-              <div v-for="stat in stats" :key="stat.name" class="p-3 bg-[#0d1117] border-2 border-black flex items-center justify-between hover:border-[#00f0ff] transition-colors">
+              <div 
+                v-for="stat in stats" 
+                :key="stat.name" 
+                @mouseenter="playBlipSfx"
+                class="p-3 bg-[#0d1117] border-2 border-black flex items-center justify-between hover:border-[#00f0ff] transition-colors cursor-pointer"
+              >
                 <div class="flex items-center gap-3">
                   <span class="text-xl flex items-center justify-center w-8 h-8 bg-[#161b22] border border-black">
                     <i :class="stat.icon"></i>
@@ -181,24 +201,145 @@
           </div>
 
           <!-- Insert Coin Footer Prompt -->
-          <div class="mt-6 pt-4 border-t-2 border-[#30363d] text-center font-pixel">
-            <div class="text-[10px] sm:text-xs text-[#ff0055] animate-pulse tracking-widest uppercase">
-              ▲ INSERT COIN TO EXPLORE PORTFOLIO ▲
-            </div>
+          <div class="mt-6 pt-4 border-t-2 border-[#30363d] text-center font-pixel relative">
+            <button 
+              @click="insertCoin" 
+              @mouseenter="playBlipSfx"
+              class="w-full py-2 bg-[#ff0055] hover:bg-[#ff2a70] text-white border-2 border-black font-silkscreen text-[10px] sm:text-xs uppercase tracking-widest shadow-[3px_3px_0px_#000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all cursor-pointer flex items-center justify-center gap-2"
+            >
+              <i class="bi bi-coin text-[#ffd700] animate-bounce"></i>
+              <span>▲ INSERT COIN TO EXPLORE (+100 PTS) ▲</span>
+            </button>
+            
+            <!-- Floating Popups for Coins -->
+            <transition-group name="coin-float">
+              <span 
+                v-for="popup in coinPopups" 
+                :key="popup.id"
+                class="absolute left-1/2 -top-6 -translate-x-1/2 text-xs font-silkscreen text-[#ffd700] font-extrabold pointer-events-none drop-shadow-[2px_2px_0px_#000]"
+              >
+                +100 PTS 🪙
+              </span>
+            </transition-group>
           </div>
         </div>
 
       </div>
     </div>
+
+    <!-- Konami Code Easter Egg Modal Notification -->
+    <Teleport to="body">
+      <div 
+        v-if="showCheatModal" 
+        class="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn"
+      >
+        <div class="bg-[#0a0d14] text-white border-4 border-[#ffd700] p-6 sm:p-8 max-w-md w-full shadow-[8px_8px_0px_#ffd700] font-silkscreen relative text-center">
+          <div class="text-4xl mb-3 text-[#ffd700] animate-bounce">🎮</div>
+          <h3 class="text-lg sm:text-xl font-bold text-[#00ff66] uppercase mb-2">
+            SECRET CHEAT UNLOCKED!
+          </h3>
+          <p class="text-xs text-[#8b949e] font-mono mb-4 leading-relaxed">
+            KONAMI CODE DETECTED: <br/>
+            <span class="text-[#ffd700] font-bold">↑ ↑ ↓ ↓ ← → ← → B A</span>
+          </p>
+          
+          <div class="bg-[#161b22] border-2 border-black p-4 text-left text-xs font-mono space-y-2 mb-6 text-[#f0f6fc]">
+            <div class="flex justify-between text-[#00ff66]">
+              <span>✦ GOD MODE:</span>
+              <span>ACTIVATED</span>
+            </div>
+            <div class="flex justify-between text-[#00f0ff]">
+              <span>✦ CREDITS:</span>
+              <span>99 COINS</span>
+            </div>
+            <div class="flex justify-between text-[#ffd700]">
+              <span>✦ STAMINA & MANA:</span>
+              <span>9999 / 9999</span>
+            </div>
+            <div class="flex justify-between text-[#ff0055]">
+              <span>✦ CHEAT STATUS:</span>
+              <span>INVINCIBLE</span>
+            </div>
+          </div>
+
+          <button 
+            @click="closeCheatModal"
+            class="w-full py-3 bg-[#00ff66] text-black font-extrabold border-2 border-black shadow-[4px_4px_0px_#000] hover:bg-[#00e055] cursor-pointer text-xs uppercase"
+          >
+            CONTINUE WITH GOD MODE ★
+          </button>
+        </div>
+      </div>
+    </Teleport>
   </section>
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useLanguage } from '@/composables/useLanguage';
+import { usePixelAudio } from '@/composables/usePixelAudio';
+import VisitorCounter from '@/components/common/VisitorCounter.vue';
 
 const { t, lang } = useLanguage();
 const isId = computed(() => lang.value === 'ID');
+const { playCoinSfx, playBlipSfx, playFanfareSfx } = usePixelAudio();
+
+const creditsCount = ref(0);
+const currentScore = ref(12500);
+const coinPopups = ref([]);
+const isCheatActive = ref(false);
+const showCheatModal = ref(false);
+
+const insertCoin = () => {
+  playCoinSfx();
+  creditsCount.value += 1;
+  currentScore.value += 100;
+  
+  const id = Date.now();
+  coinPopups.value.push({ id });
+  setTimeout(() => {
+    coinPopups.value = coinPopups.value.filter(p => p.id !== id);
+  }, 1000);
+};
+
+// Konami Code Detection
+const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+let konamiIndex = 0;
+
+const handleKeyDown = (e) => {
+  const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+  const expectedKey = konamiCode[konamiIndex].length === 1 ? konamiCode[konamiIndex].toLowerCase() : konamiCode[konamiIndex];
+
+  if (key === expectedKey) {
+    konamiIndex++;
+    if (konamiIndex === konamiCode.length) {
+      triggerKonamiCheat();
+      konamiIndex = 0;
+    }
+  } else {
+    konamiIndex = 0;
+  }
+};
+
+const triggerKonamiCheat = () => {
+  isCheatActive.value = true;
+  showCheatModal.value = true;
+  creditsCount.value = 99;
+  currentScore.value += 99900;
+  playFanfareSfx();
+};
+
+const closeCheatModal = () => {
+  showCheatModal.value = false;
+};
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeyDown);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeyDown);
+});
 
 const stats = computed(() => [
   { icon: 'bi bi-controller text-[#00ff66]', name: 'GAME DEVELOPMENT', desc: 'Unity 3D / C# / 2D Platformer', val: 95, tier: 'MASTER' },
@@ -207,3 +348,20 @@ const stats = computed(() => [
   { icon: 'bi bi-code-slash text-[#ffd700]', name: 'FRONTEND CODE', desc: 'Vue.js & Web Interactive', val: 90, tier: 'ADVANCED' }
 ]);
 </script>
+
+<style scoped>
+.coin-float-enter-active {
+  transition: all 0.6s ease-out;
+}
+.coin-float-leave-active {
+  transition: all 0.4s ease-in;
+}
+.coin-float-enter-from {
+  opacity: 0;
+  transform: translate(-50%, 10px);
+}
+.coin-float-leave-to {
+  opacity: 0;
+  transform: translate(-50%, -30px);
+}
+</style>
