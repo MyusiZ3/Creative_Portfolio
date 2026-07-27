@@ -14,11 +14,26 @@
       >
         <div class="flex items-center gap-3">
           <span class="w-3 h-3 bg-[#00ff66] animate-ping inline-block"></span>
-          <span class="text-xs sm:text-sm font-bold text-[#00ff66] tracking-widest uppercase font-silkscreen">
+          <span 
+            @click="handleSystemOnlineClick" 
+            class="text-xs sm:text-sm font-bold text-[#00ff66] tracking-widest uppercase font-silkscreen cursor-pointer hover:underline transition-all"
+            title="Click 3x or press ↑↑↓↓←→←→BA to unlock God Mode!"
+          >
             SYSTEM ONLINE • PLAYER 1 READY
           </span>
         </div>
         <div class="flex flex-wrap items-center gap-2 text-xs text-[#8b949e] font-silkscreen">
+          <!-- Clickable Cheat Code Badge -->
+          <button
+            @click="triggerKonamiCheat"
+            @mouseenter="playBlipSfx"
+            class="px-2 py-1 bg-[#161b22] border border-[#ffd700] text-[#ffd700] text-[10px] font-bold hover:bg-[#ffd700] hover:text-black transition-colors cursor-pointer flex items-center gap-1"
+            title="Konami Code Cheat: Click or type on keyboard!"
+          >
+            <i class="bi bi-controller"></i>
+            <span>CHEAT: ↑↑↓↓←→←→BA</span>
+          </button>
+
           <VisitorCounter themeOverride="pixel" />
           <button 
             @click="insertCoin" 
@@ -305,19 +320,49 @@ const insertCoin = () => {
 // Konami Code Detection
 const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
 let konamiIndex = 0;
+const systemOnlineClicks = ref(0);
+
+const normalizeKey = (e) => {
+  if (e.key === 'ArrowUp' || e.code === 'ArrowUp') return 'ArrowUp';
+  if (e.key === 'ArrowDown' || e.code === 'ArrowDown') return 'ArrowDown';
+  if (e.key === 'ArrowLeft' || e.code === 'ArrowLeft') return 'ArrowLeft';
+  if (e.key === 'ArrowRight' || e.code === 'ArrowRight') return 'ArrowRight';
+  if (e.key && e.key.toLowerCase() === 'b' || e.code === 'KeyB') return 'b';
+  if (e.key && e.key.toLowerCase() === 'a' || e.code === 'KeyA') return 'a';
+  return e.key;
+};
 
 const handleKeyDown = (e) => {
-  const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
-  const expectedKey = konamiCode[konamiIndex].length === 1 ? konamiCode[konamiIndex].toLowerCase() : konamiCode[konamiIndex];
+  // Prevent page scroll when typing arrow keys for Konami code
+  if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+    // Only prevent default if focus is not in an input/textarea
+    if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+      e.preventDefault();
+    }
+  }
 
-  if (key === expectedKey) {
+  const inputKey = normalizeKey(e);
+  const expectedKey = konamiCode[konamiIndex];
+
+  if (inputKey === expectedKey) {
     konamiIndex++;
+    playBlipSfx();
+    console.log(`[🎮 KONAMI CODE] Progress: (${konamiIndex}/${konamiCode.length}) -> Matched '${inputKey}'`);
     if (konamiIndex === konamiCode.length) {
       triggerKonamiCheat();
       konamiIndex = 0;
     }
   } else {
-    konamiIndex = 0;
+    if (inputKey === konamiCode[0]) {
+      konamiIndex = 1;
+      playBlipSfx();
+      console.log(`[🎮 KONAMI CODE] Restarted: (1/${konamiCode.length}) -> Matched '${inputKey}'`);
+    } else {
+      if (konamiIndex > 0) {
+        console.log(`[🎮 KONAMI CODE] Reset. Received '${inputKey}', expected '${expectedKey}'`);
+      }
+      konamiIndex = 0;
+    }
   }
 };
 
@@ -327,6 +372,16 @@ const triggerKonamiCheat = () => {
   creditsCount.value = 99;
   currentScore.value += 99900;
   playFanfareSfx();
+  console.log('[🎮 GOD MODE ACTIVATED] Welcome, Player 1!');
+};
+
+const handleSystemOnlineClick = () => {
+  playBlipSfx();
+  systemOnlineClicks.value++;
+  if (systemOnlineClicks.value >= 3) {
+    triggerKonamiCheat();
+    systemOnlineClicks.value = 0;
+  }
 };
 
 const closeCheatModal = () => {
