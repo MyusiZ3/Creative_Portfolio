@@ -245,8 +245,8 @@ const workQuests = computed(() => [
     id: 'w1',
     title: t('exp_w1_title'),
     sub: t('exp_w1_sub'),
-    period: "AUG 2025 - PRESENT",
-    status: "ACTIVE QUEST",
+    period: "FEB 2026 - JUL 2026",
+    status: "QUEST CLEARED",
     xp: "+10,000 XP",
     desc: t('exp_w1_desc')
   },

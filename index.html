@@ -1,28 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="">
   <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/images/icon.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/images/icon.png" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Muhamad Sidik | Creative Multimedia Designer</title>
-    <meta name="description" content="Explore the creative portfolio of Muhamad Sidik, a specialized Multimedia Designer focusing on UI/UX, Game Design, and Interactive Visuals.">
-    
+    <meta
+      name="description"
+      content="Explore the creative portfolio of Muhamad Sidik, a specialized Multimedia Designer focusing on UI/UX, Game Design, and Interactive Visuals."
+    />
+
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://muhamadsidik.id/">
-    <meta property="og:title" content="Muhamad Sidik | Creative Multimedia Designer">
-    <meta property="og:description" content="Explore my creative portfolio featuring Multimedia Design, UI/UX, and Interactive Projects.">
-    <meta property="og:image" content="/images/hero/og.png">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://muhamadsidik.id/" />
+    <meta
+      property="og:title"
+      content="Muhamad Sidik | Creative Multimedia Designer"
+    />
+    <meta
+      property="og:description"
+      content="Explore my creative portfolio featuring Multimedia Design, UI/UX, and Interactive Projects."
+    />
+    <meta property="og:image" content="/images/hero/og.png" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://muhamadsidik.id/">
-    <meta property="twitter:title" content="Muhamad Sidik | Creative Multimedia Designer">
-    <meta property="twitter:description" content="Explore my creative portfolio featuring Multimedia Design, UI/UX, and Interactive Projects.">
-    <meta property="twitter:image" content="/images/hero/og.png">
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://muhamadsidik.id/" />
+    <meta
+      property="twitter:title"
+      content="Muhamad Sidik | Creative Multimedia Designer"
+    />
+    <meta
+      property="twitter:description"
+      content="Explore my creative portfolio featuring Multimedia Design, UI/UX, and Interactive Projects."
+    />
+    <meta property="twitter:image" content="/images/hero/og.png" />
 
     <style>
-      html { touch-action: manipulation; }
+      html {
+        touch-action: manipulation;
+      }
     </style>
   </head>
   <body>
@@ -30,43 +50,50 @@
     <script type="module" src="/src/main.js"></script>
     <script>
       // Extra Security: Disable right-click and inspection keys
-      document.addEventListener('contextmenu', (e) => e.returnValue = false);
-      
-      document.onkeydown = function(e) {
-          // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+C (Copy), Ctrl+X (Cut)
-          if (
-              e.keyCode == 123 || 
-              (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) || 
-              (e.ctrlKey && (e.keyCode == 85 || e.keyCode == 67 || e.keyCode == 88))
-          ) {
-              return false;
-          }
-          
-          // Original zoom prevention
-          if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '-' || e.key === '=' || e.key === '0')) {
-              e.preventDefault();
-          }
-      };
+      document.addEventListener("contextmenu", (e) => (e.returnValue = false));
 
-      // Prevent Copying Actions
-      document.addEventListener('copy', (e) => e.preventDefault());
-      document.addEventListener('cut', (e) => e.preventDefault());
-      document.addEventListener('dragstart', (e) => e.preventDefault());
+      document.onkeydown = function (e) {
+        // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+        if (
+          e.keyCode == 123 ||
+          (e.ctrlKey &&
+            e.shiftKey &&
+            (e.keyCode == 73 || e.keyCode == 74)) ||
+          (e.ctrlKey && e.keyCode == 85)
+        ) {
+          return false;
+        }
 
-      // Prevent pinch-zoom on trackpad/mouse
-      document.addEventListener('wheel', function (e) {
-        if (e.ctrlKey) {
+        // Original zoom prevention
+        if (
+          (e.ctrlKey || e.metaKey) &&
+          (e.key === "+" || e.key === "-" || e.key === "=" || e.key === "0")
+        ) {
           e.preventDefault();
         }
-      }, { passive: false });
+      };
+
+      // Prevent pinch-zoom on trackpad/mouse
+      document.addEventListener(
+        "wheel",
+        function (e) {
+          if (e.ctrlKey) {
+            e.preventDefault();
+          }
+        },
+        { passive: false },
+      );
 
       // Detect if DevTools is open (Optional, but can be useful)
-      let devtools = function() {};
-      devtools.toString = function() {
+      let devtools = function () {};
+      devtools.toString = function () {
         this.opened = true;
       };
-      
-      console.log('%c Security System Active ', 'background: #222; color: #bada55');
+
+      console.log(
+        "%c Security System Active ",
+        "background: #222; color: #bada55",
+      );
     </script>
   </body>
 </html>

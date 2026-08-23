@@ -9,8 +9,9 @@
         class="text-center"
       >
         <span
-          class="inline-block bg-violet-500 text-white font-['Poppins'] font-bold text-[14px] lg:text-[16px] px-6 py-2 rounded-full mb-6"
+          class="inline-flex items-center gap-2 text-violet-400 font-mono text-xs uppercase tracking-widest font-semibold px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 mb-6"
         >
+          <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
           {{ t('my_proj_badge') }}
         </span>
       </div>
@@ -20,7 +21,7 @@
         v-motion
         :initial="{ opacity: 0, y: 60, scale: 0.9 }"
         :visible="{ opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 150, damping: 18, delay: 150 } }"
-        class="text-3xl lg:text-[48px] font-bold font-['Poppins'] text-white mb-4 text-center title-glow"
+        class="text-3xl md:text-4xl lg:text-[48px] font-bold font-['Poppins'] text-white mb-4 tracking-wider text-center"
       >
         {{ t('my_proj_title') }}
       </h2>
@@ -228,9 +229,6 @@
           </div>
         </button>
       </div>
-
-      <!-- Design Showcase Section -->
-      <DesignShowcase />
     </div>
   </section>
 
@@ -321,7 +319,6 @@
 
 <script setup>
 import { ref, reactive, computed, onMounted, onUnmounted, watch, nextTick } from "vue";
-import DesignShowcase from "./DesignShowcase.vue";
 import { useLanguage } from '@/composables/useLanguage';
 
 const { t, lang } = useLanguage();
@@ -473,6 +470,92 @@ onUnmounted(() => {
 const projects = computed(() => {
   const isId = lang.value === 'ID';
   return [
+    {
+      name: isId ? "Djaswita AR – Dynamic AR & Web CMS (Tugas Akhir)" : "Djaswita AR – Dynamic AR & Web CMS (Thesis)",
+      icon: "bi-box-seam",
+      role: isId ? "Pengembang AR & Web Fullstack (Tugas Akhir)" : "Fullstack AR & Web Developer (Thesis)",
+      teamInfo: isId ? "Proyek Tugas Akhir Kelulusan | 2025" : "Final Thesis Graduation Project | 2025",
+      tools: "Unity, AR Foundation, Supabase DB, Vite, JavaScript",
+      overview: isId 
+        ? "Satu sistem terintegrasi yang menggabungkan aplikasi Dynamic Augmented Reality (AR) dan Web Admin Dashboard (CMS) berbasis Vite & Supabase DB sebagai topik Tugas Akhir kelulusan. Konten 3D dan informasi dalam aplikasi AR dapat di-CRUD secara real-time melalui web admin tanpa perlu rebuild aplikasi."
+        : "A unified system combining a dynamic Augmented Reality (AR) app and a Vite & Supabase DB Web Admin Dashboard (CMS) built for Final Graduation Thesis. Enables real-time remote 3D content CRUD operations directly from the web admin without rebuilding application binaries.",
+      tasks: isId ? [
+        "Membangun arsitektur AR dinamis yang memuat aset 3D & data dari Supabase DB",
+        "Mengembangkan Web Admin Dashboard (CMS) menggunakan Vite untuk manajemen CRUD konten AR",
+        "Mengeliminasi kebutuhan rebuild aplikasi AR saat ada perubahan atau penambahan materi 3D",
+        "Mengintegrasikan autentikasi database, manajemen storage, dan endpoint API real-time",
+      ] : [
+        "Architected dynamic AR remote asset loading pipeline connected to Supabase DB",
+        "Developed Web Admin Dashboard (CMS) using Vite for full AR content CRUD management",
+        "Eliminated application binary rebuilds when 3D models or informational content are modified",
+        "Integrated database authentication, cloud storage management, and real-time APIs",
+      ],
+      platform: isId ? "Aplikasi AR Mobile & Web CMS (Satu Sistem)" : "Unified AR App & Web CMS System",
+      bg: "#7c3aed",
+      images: [
+        "/images/projects/dynamic_ar_cms.png",
+      ],
+      link: "https://github.com/MyusiZ3/DjaswitaAR-Fix",
+      _dir: "next",
+    },
+    {
+      name: isId ? "Mathmagic – App Edukasi Matematika (HKI)" : "Mathmagic – Math Educational App (HKI)",
+      icon: "bi-award",
+      role: isId ? "Desainer UI Utama, Pengembang Unity & Web" : "Main UI Designer, Lead Unity & Web Developer",
+      teamInfo: isId ? "Hak Kekayaan Intelektual | SD Lab Univ Pattimura" : "Intellectual Property (HKI) | SD Lab Pattimura Univ",
+      tools: "Unity 2D, C#, Figma, Vite, Database Analytics",
+      overview: isId 
+        ? "Aplikasi pembelajaran matematika interaktif berlisensi HKI untuk siswa kelas 4 SD Laboratorium Universitas Pattimura. Dilengkapi Web Admin Dashboard untuk mengelola pengguna, mengonfigurasi parameter gim (global time, HP, skor), dan menganalisis performa belajar."
+        : "Intellectual Property (HKI) certified educational math application for 4th Grade SD Laboratorium Universitas Pattimura. Features Unity gameplay backed by a Web Admin Dashboard for user management, game config tuning (global time, HP, score), and user analytics.",
+      tasks: isId ? [
+        "Merancang seluruh antarmuka (Main UI Designer) dan alur UX gim anak di Figma",
+        "Mengembangkan logika permainan (Unity C#) mencakup kuis, HP, dan timer",
+        "Membangun Web Admin Dashboard untuk manajemen akun pengguna, siswa & guru",
+        "Membuat sistem konfigurasi gim dinamis (global time, HP, score) & panel analisis user",
+        "Pendaftaran Hak Kekayaan Intelektual (HKI) resmi aplikasi",
+      ] : [
+        "Designed full user interface and child-friendly UX flow in Figma as Main UI Designer",
+        "Programmed interactive math game mechanics in Unity C# (quiz, HP, timer)",
+        "Built Web Admin Dashboard for user, student, and teacher account management",
+        "Created dynamic game configuration panel (global time, HP, score) & user analytics",
+        "Registered and secured official Intellectual Property Rights (HKI) certification",
+      ],
+      platform: isId ? "Gim Edukasi Unity & Web Admin" : "Unity Game & Web Admin Dashboard",
+      bg: "#059669",
+      images: [
+        "/images/projects/mathmagic_hki.png",
+      ],
+      link: "#",
+      _dir: "next",
+    },
+    {
+      name: isId ? "DJourney Jaswita Jabar – Tourism Web" : "DJourney Jaswita Jabar – Tourism Web",
+      icon: "bi-globe-americas",
+      role: isId ? "Pengembang Frontend Web & IT Intern" : "Frontend Web Developer & IT Intern",
+      teamInfo: isId ? "Magang | PT. Jasa & Kepariwisataan Jabar" : "Internship | PT. Jasa & Kepariwisataan Jabar",
+      tools: "HTML, CSS, JavaScript, i18n, Responsive Web Design",
+      overview: isId 
+        ? "Pengembangan platform pariwisata DJourney milik PT. Jasa & Kepariwisataan Jabar (Perseroda). Berfokus pada implementasi sistem multi-language (i18n), optimasi tampilan responsif mobile, serta bug fix pada filter pencarian dan tata letak antarmuka."
+        : "Development of DJourney tourism website for PT. Jasa & Kepariwisataan Jabar. Focused on building multi-language (i18n) localization, mobile responsive layouts, and bug fixes for destination search filters and UI display issues.",
+      tasks: isId ? [
+        "Mengimplementasikan fitur multi-language (i18n) untuk wisatawan domestik & mancanegara",
+        "Merancang & mengoptimalkan tampilan responsif mobile untuk aksesibilitas lintas perangkat",
+        "Melakukan pengujian & bug fixing pada fitur filter pencarian destinasi pariwisata",
+        "Memperbaiki bug inkonsistensi tata letak visual dan responsivitas antarmuka web",
+      ] : [
+        "Implemented multi-language (i18n) localization for domestic & international tourists",
+        "Designed and optimized mobile-responsive layouts for cross-device compatibility",
+        "Fixed and refactored destination search filter features and logic",
+        "Resolved visual display inconsistencies and responsive UI layout bugs",
+      ],
+      platform: "Web Application",
+      bg: "#2563eb",
+      images: [
+        "/images/projects/djourney_jaswita.png",
+      ],
+      link: "#",
+      _dir: "next",
+    },
     {
       name: "RideXP - Arcade Game Project",
       icon: "bi-bicycle",

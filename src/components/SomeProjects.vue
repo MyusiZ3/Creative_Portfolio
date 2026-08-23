@@ -17,7 +17,8 @@
           :visible="{ opacity: 1, x: 0, transition: { duration: 800 } }"
           class="text-left"
         >
-          <div class="inline-block bg-violet-500/10 text-violet-400 font-['Poppins'] font-bold text-[12px] lg:text-[14px] px-4 py-1.5 rounded-full mb-4 border border-violet-500/20">
+          <div class="inline-flex items-center gap-2 text-violet-600 font-mono text-xs uppercase tracking-widest font-semibold mb-3 px-3.5 py-1.5 rounded-full bg-violet-50 border border-violet-200">
+            <span class="w-1.5 h-1.5 rounded-full bg-violet-600"></span>
             {{ t('project_tag') }}
           </div>
           <h2 class="text-3xl lg:text-[40px] xl:text-[48px] font-extrabold font-['Poppins'] text-[#1a1a2e] leading-tight mb-4">
@@ -34,16 +35,16 @@
           v-motion
           :initial="{ opacity: 0, x: 30 }"
           :visible="{ opacity: 1, x: 0, transition: { duration: 600, delay: 200 } }"
-          class="flex flex-wrap items-center gap-2 lg:gap-3"
+          class="flex flex-wrap items-center gap-2 lg:gap-2.5"
         >
           <button 
             v-for="cat in filterCategories" 
             :key="cat.id"
             @click="activeFilter = cat.id"
-            class="px-4 py-1.5 rounded-full text-[10px] lg:text-xs font-bold transition-all duration-300 border uppercase tracking-wider"
+            class="px-4 py-2 rounded-xl text-xs font-semibold font-['Poppins'] transition-all duration-300 uppercase tracking-wider"
             :class="activeFilter === cat.id 
-              ? 'bg-violet-600 border-violet-600 text-white shadow-lg shadow-violet-600/30' 
-              : 'border-gray-200 text-gray-500 hover:border-violet-500 hover:text-white bg-white'"
+              ? 'bg-[#1a1a2e] text-white shadow-md' 
+              : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-black'"
           >
             {{ lang === 'ID' ? cat.nameId : cat.nameEn }}
           </button>
@@ -72,7 +73,7 @@
         >
           <!-- Image Container -->
           <div
-            class="relative rounded-3xl overflow-hidden aspect-4/3 mb-4 border border-gray-200/10 bg-[#121214] shadow-sm group-hover:shadow-xl transition-all duration-500"
+            class="relative rounded-2xl overflow-hidden aspect-4/3 mb-4 border border-gray-200/80 bg-[#121214] shadow-sm group-hover:shadow-xl transition-all duration-500"
           >
             <!-- Project Image Component -->
             <ProjectImage 
@@ -96,8 +97,8 @@
 
           <!-- Info -->
           <div class="px-1 text-left">
-            <p class="text-violet-500 font-mono text-[10px] font-semibold uppercase tracking-widest mb-1 flex items-center gap-1.5">
-              <span>✦</span>
+            <p class="text-violet-600 font-mono text-[11px] font-semibold uppercase tracking-wider mb-1 flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-violet-600 inline-block"></span>
               {{ project.category }}
             </p>
             <h3 class="text-[#1a1a2e] font-['Poppins'] font-semibold text-base lg:text-lg leading-snug group-hover:text-violet-600 transition-colors duration-300">
@@ -259,6 +260,52 @@ const closeCaseStudy = () => {
 const projects = computed(() => {
   const isId = lang.value === 'ID';
   return [
+    {
+      name: isId ? "Djaswita AR (Tugas Akhir)" : "Djaswita AR (Thesis)",
+      category: isId ? "Aplikasi AR & Web CMS (Unified)" : "Unified AR & Web CMS App",
+      bg: "#7c3aed",
+      image: "/images/projects/dynamic_ar_cms.png",
+      filterType: 'game',
+      githubLink: "https://github.com/MyusiZ3/DjaswitaAR-Fix",
+      caseStudy: {
+        challenge: isId 
+          ? "Aplikasi AR konvensional mengharuskan build ulang APK setiap kali terjadi perubahan konten 3D atau informasi."
+          : "Conventional AR apps require complete binary rebuilds whenever 3D assets or information are updated.",
+        solution: isId
+          ? "Membangun satu sistem terintegrasi antara aplikasi AR dinamis dan Web Admin Dashboard (Vite + Supabase) untuk manajemen CRUD konten real-time."
+          : "Built a unified system combining dynamic AR app and a Vite & Supabase Web Admin Dashboard for real-time remote CRUD content management."
+      }
+    },
+    {
+      name: "Mathmagic (HKI)",
+      category: isId ? "Gim Edukasi & Web Admin" : "Educational Game & Web Admin",
+      bg: "#059669",
+      image: "/images/projects/mathmagic_hki.png",
+      filterType: 'game',
+      caseStudy: {
+        challenge: isId 
+          ? "Menyediakan gim pembelajaran matematika SD kelas 4 yang fleksibel parameternya serta memuat analitik siswa bagi guru."
+          : "Providing a 4th grade elementary math game with configurable game rules and comprehensive student learning analytics for teachers.",
+        solution: isId
+          ? "Merancang UI gim ceria Unity, memprogram sistem HP/Timer, serta membangun Web Admin Dashboard terpusat (HKI Certified)."
+          : "Designed colorful Unity UI, programmed HP/timer mechanics, and built a centralized Web Admin Dashboard (HKI Certified)."
+      }
+    },
+    {
+      name: "DJourney Jaswita Jabar",
+      category: isId ? "Portal Web Pariwisata" : "Tourism Web Portal",
+      bg: "#2563eb",
+      image: "/images/projects/djourney_jaswita.png",
+      filterType: 'web',
+      caseStudy: {
+        challenge: isId 
+          ? "Meningkatkan jangkauan wisatawan mancanegara serta memperbaiki masalah responsivitas mobile dan bug filter pencarian."
+          : "Expanding international tourist reach while resolving mobile responsiveness issues and search filter bugs on the DJourney platform.",
+        solution: isId
+          ? "Mengimplementasikan lokalisasi multi-bahasa (i18n), menyelaraskan CSS responsive layout, dan merefaktor logika filter JS."
+          : "Implemented multi-language (i18n) localization, aligned responsive mobile CSS rules, and refactored JavaScript filter logic."
+      }
+    },
     {
       name: "Luxion RideXP",
       category: isId ? "Proyek Game Arkade" : "Arcade Game Project",

@@ -73,9 +73,9 @@
       <!-- Main Button -->
       <button
         @click="handleToggle"
-        class="fab-main group absolute inset-0 flex items-center justify-center transition-all duration-300 active:scale-90 shadow-2xl pointer-events-auto"
+        class="fab-main group absolute inset-0 flex items-center justify-center transition-all duration-300 active:scale-90 shadow-lg pointer-events-auto"
         :class="[
-          { 'fab-is-open': isOpen, 'idle-blob': !isOpen && currentTheme !== 'pixel' },
+          { 'fab-is-open': isOpen },
           currentTheme === 'pixel' ? 'rounded-none' : 'rounded-full'
         ]"
       >

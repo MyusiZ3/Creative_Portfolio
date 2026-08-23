@@ -283,6 +283,52 @@ const categories = [
 
 const projects = [
   {
+    id: 'dynamic_ar',
+    title: 'Djaswita AR – Dynamic AR & CMS',
+    category: 'game',
+    shortDesc: 'Satu sistem terintegrasi aplikasi AR dinamis dan Web Admin Dashboard (Vite & Supabase) tanpa rebuild.',
+    images: [
+      '/images/projects/dynamic_ar_cms.png'
+    ],
+    platform: 'AR Mobile App & Web CMS',
+    role: 'Fullstack AR & Web Dev',
+    timeline: '2025',
+    techStack: ['Unity', 'AR Foundation', 'Supabase', 'Vite', 'JS'],
+    githubUrl: 'https://github.com/MyusiZ3/DjaswitaAR-Fix',
+    challenge: 'Menciptakan aplikasi AR yang konten 3D dan informasinya dapat di-CRUD via Web CMS tanpa perlu build ulang APK.',
+    solution: 'Membangun satu arsitektur terpadu antara Unity AR Foundation, Supabase DB remote storage, dan Web Admin Dashboard berbasis Vite.'
+  },
+  {
+    id: 'mathmagic',
+    title: 'Mathmagic – HKI App',
+    category: 'game',
+    shortDesc: 'Aplikasi HKI pembelajaran matematika SD dengan Unity game & Web Admin Dashboard (analisis user & config).',
+    images: [
+      '/images/projects/mathmagic_hki.png'
+    ],
+    platform: 'Unity Game & Web Admin',
+    role: 'Main UI Designer & Lead Dev',
+    timeline: '2024 – 2025',
+    techStack: ['Unity 2D', 'C#', 'Figma', 'Vite', 'Analytics'],
+    challenge: 'Mendesain UI/UX gim anak yang ramah sekaligus menyediakan dashboard admin untuk konfigurasi parameter & analisis performa.',
+    solution: 'Merancang UI gim ceria di Figma, memprogram logika Unity C#, serta membangun Web Admin Dashboard terpusat.'
+  },
+  {
+    id: 'jaswita_djourney',
+    title: 'DJourney Jaswita Jabar',
+    category: 'web',
+    shortDesc: 'Fitur multi-language (i18n), optimasi responsif mobile, dan perbaikan bug filter pencarian portal pariwisata.',
+    images: [
+      '/images/projects/djourney_jaswita.png'
+    ],
+    platform: 'Web Application',
+    role: 'Frontend Dev & IT Intern',
+    timeline: 'Magang 2024',
+    techStack: ['HTML', 'CSS', 'JavaScript', 'i18n', 'Responsive'],
+    challenge: 'Mengakomodasi wisatawan mancanegara serta memperbaiki kelemahan responsivitas mobile & filter pencarian.',
+    solution: 'Mengimplementasikan sistem i18n multi-bahasa, menyelaraskan CSS responsive mobile, dan merefaktor filter JS.'
+  },
+  {
     id: 'luxion',
     title: 'RideXP - Arcade Game',
     category: 'game',

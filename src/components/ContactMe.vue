@@ -229,69 +229,20 @@
               </div>
             </div>
 
-            <!-- Enhanced View Counter -->
+            <!-- Total Views Counter (Minimalist Editorial Layout) -->
             <div
               v-motion
-              :initial="{ opacity: 0, scale: 0.9, y: 10 }"
+              :initial="{ opacity: 0, y: 10 }"
               :visible="{
                 opacity: 1,
-                scale: 1,
                 y: 0,
                 transition: { duration: 600, delay: 400 },
               }"
-              class="flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-white/10 px-4 py-2 rounded-2xl group hover:border-[#A754FF]/50 hover:bg-white/10 transition-all duration-500 shadow-2xl"
+              class="pt-2"
             >
-              <div class="relative">
-                <div
-                  class="relative w-8 h-8 rounded-lg bg-[#A754FF]/20 flex items-center justify-center text-[#A754FF] border border-[#A754FF]/30 group-hover:bg-[#A754FF] group-hover:text-white transition-all duration-500 overflow-hidden"
-                >
-                  <i class="bi bi-eye-fill text-lg animate-eye-blink"></i>
-                </div>
-              </div>
-              <div class="flex flex-col">
-                <p
-                  class="text-[9px] text-gray-400 uppercase tracking-[2px] font-black leading-none"
-                >
-                  {{ t("contact_views") }}
-                </p>
-                <p
-                  class="text-white font-['Poppins'] font-bold text-base leading-none mt-1"
-                >
-                  {{ viewCount }}
-                </p>
-              </div>
-            </div>
-
-            <!-- Security Badge -->
-            <div
-              v-motion
-              :initial="{ opacity: 0, scale: 0.9, y: 10 }"
-              :visible="{
-                opacity: 1,
-                scale: 1,
-                y: 0,
-                transition: { duration: 600, delay: 500 },
-              }"
-              class="flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-white/10 px-4 py-2 rounded-2xl group hover:border-green-500/50 hover:bg-white/10 transition-all duration-500 shadow-2xl"
-            >
-              <div class="relative">
-                <div
-                  class="relative w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center text-green-500 border border-green-500/30 group-hover:bg-green-500 group-hover:text-white transition-all duration-500"
-                >
-                  <i class="bi bi-shield-lock-fill text-lg"></i>
-                </div>
-              </div>
-              <div class="flex flex-col">
-                <p
-                  class="text-[9px] text-gray-400 uppercase tracking-[2px] font-black leading-none"
-                >
-                  SECURITY
-                </p>
-                <p
-                  class="text-white font-['Poppins'] font-bold text-base leading-none mt-1"
-                >
-                  SSL ENCRYPTED
-                </p>
+              <div class="inline-flex items-baseline gap-2 font-mono text-xs text-zinc-400">
+                <span class="text-zinc-500 uppercase tracking-widest">// {{ t("contact_views") }}:</span>
+                <span class="text-white font-bold tracking-wider">{{ viewCount }}</span>
               </div>
             </div>
           </div>
@@ -354,23 +305,8 @@
             }"
             class="text-gray-300 font-['Roboto'] text-sm flex items-center justify-center gap-2 group cursor-default"
           >
-            <span
-              @click="spawnHeartParticles"
-              class="inline-block animate-bounce-slow text-violet-500 cursor-pointer active:scale-125 transition-transform"
-              ref="heartIconRef"
-            >
-              <i class="bi bi-heart-fill"></i>
-            </span>
-            &copy; 2025 Muhamad Sidik |
-            <span
-              class="hover:text-violet-400 transition-colors duration-300 cursor-help"
-              :title="
-                lang === 'EN'
-                  ? 'Click the heart for a surprise!'
-                  : 'Klik hati untuk kejutan!'
-              "
-              >{{ t("contact_footer") }}</span
-            >
+            &copy; 2026 Muhamad Sidik |
+            <span>{{ t("contact_footer") }}</span>
           </p>
         </div>
       </div>
@@ -441,21 +377,36 @@ const sharePortfolio = async () => {
       await navigator.share(shareData);
     } else {
       // Fallback: Copy Link
-      await navigator.clipboard.writeText(window.location.href);
-      copyStatus.value.share = true;
-      setTimeout(() => (copyStatus.value.share = false), 2000);
+      await copyToClipboard(window.location.href, 'share');
     }
   } catch (err) {
     console.error("Sharing failed:", err);
   }
 };
 
-const copyToClipboard = (text, type) => {
-  navigator.clipboard.writeText(text);
-  copyStatus.value[type] = true;
-  setTimeout(() => {
-    copyStatus.value[type] = false;
-  }, 2000);
+const copyToClipboard = async (text, type) => {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+    } else {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.position = "fixed";
+      textArea.style.left = "-999999px";
+      textArea.style.top = "-999999px";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      document.execCommand("copy");
+      textArea.remove();
+    }
+    copyStatus.value[type] = true;
+    setTimeout(() => {
+      copyStatus.value[type] = false;
+    }, 2000);
+  } catch (err) {
+    console.error("Failed to copy text: ", err);
+  }
 };
 
 const trackDownload = (type) => {
@@ -465,22 +416,48 @@ const trackDownload = (type) => {
   }, 3000);
 };
 
-// Fetch and increment view count
+// Fetch and increment view count with 258+ base count
+const BASE_VIEW_COUNT = 258;
+
 onMounted(async () => {
+  const STORAGE_KEY = "porto_editorial_total_views";
+  const LAST_VISIT_KEY = "porto_editorial_last_visit";
+  const now = Date.now();
+  const ONE_HOUR = 3600 * 1000;
+
+  let localCount = parseInt(localStorage.getItem(STORAGE_KEY) || "0", 10);
+  if (!localCount || localCount < BASE_VIEW_COUNT) {
+    localCount = BASE_VIEW_COUNT;
+  }
+
+  const lastVisit = localStorage.getItem(LAST_VISIT_KEY);
+  if (!lastVisit || now - parseInt(lastVisit, 10) > ONE_HOUR) {
+    localCount += 1;
+    localStorage.setItem(STORAGE_KEY, localCount.toString());
+    localStorage.setItem(LAST_VISIT_KEY, now.toString());
+  }
+
+  viewCount.value = localCount.toLocaleString();
+
   try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 3000);
     const response = await fetch(
       "https://api.counterapi.dev/v1/muhamadsidik-porto/visits/up",
+      { signal: controller.signal }
     );
+    clearTimeout(timeoutId);
 
-    if (!response.ok) {
-      throw new Error("API-nya lagi bermasalah nih");
+    if (response.ok) {
+      const data = await response.json();
+      if (data && typeof data.count === "number" && data.count > 0) {
+        const finalCount = Math.max(localCount, data.count + BASE_VIEW_COUNT);
+        viewCount.value = finalCount.toLocaleString();
+        localStorage.setItem(STORAGE_KEY, finalCount.toString());
+      }
     }
-
-    const data = await response.json();
-    viewCount.value = data?.count ? data.count.toLocaleString() : "1";
   } catch (error) {
-    console.error("Error fetching view count:", error);
-    viewCount.value = "1";
+    // Keep local stored count (minimum 258+)
   }
 });
 

@@ -54,9 +54,9 @@ const translations = {
     exp_desc: "Experienced in designing and developing interactive solutions across education, design, games, AR/VR, and UI/UX platforms — from lab teaching to full product prototyping.",
     exp_work_org: "Work & Organizational Experience",
     // Work items
-    exp_w1_title: "Information Technology",
+    exp_w1_title: "Information Technology & Web Dev",
     exp_w1_sub: "Internship | PT. Jasa & Kepariwisataan Jabar",
-    exp_w1_desc: "Supported IT infrastructure by troubleshooting devices, maintaining company hardware, contributing to UI design and web development, handling documentation, and collaborating with mentors for project delivery.",
+    exp_w1_desc: "Developed multi-language (i18n) features for the DJourney website, built mobile responsive layouts, and performed bug fixes on destination search filters and UI display issues.",
     exp_w2_title: "Teaching Assistant",
     exp_w2_sub: "School of Applied Science | Telkom University",
     exp_w2_desc: "Assisted practical sessions across 5 courses, supporting students with technical tasks, evaluating their work, managing lab resources, and coordinating with lecturers.",
@@ -116,18 +116,19 @@ const translations = {
 
     // Skills Section
     skills_badge: "MY SKILLS",
-    skills_heading: "Some Software That I Use",
+    skills_heading: "SOME SOFTWARE THAT I USE",
     skills_sub: "A versatile toolkit that supports my workflow across UI/UX, game development, and interactive media — from wireframes and design assets to real-time prototypes and immersive experiences.",
 
     // Some Projects
+    project_tag: "Selected Works",
     some_proj_title_1: "Some Projects I've Designed &",
     some_proj_title_2: "Developed",
     some_proj_desc: "A selection of works spanning UI/UX design, game development, AR/VR, and web-based platforms — built during academic and collaborative projects.",
 
     // My Projects
-    my_proj_badge: "Works",
-    my_proj_title: "Selected Projects",
-    my_proj_desc: "A showcase of key roles, user problems solved, and immersive experiences crafted across design, development, and creative technology.",
+    my_proj_badge: "PROJECT CONTRIBUTIONS",
+    my_proj_title: "What I Did",
+    my_proj_desc: "A showcase of roles I've taken, problems I've solved, and experiences I've crafted — across design, development, and creative tech.",
     my_proj_role: "Role",
     my_proj_tools: "Stack",
     my_proj_overview: "Overview",
@@ -187,9 +188,9 @@ const translations = {
     exp_desc: "Punya pengalaman bikin berbagai solusi interaktif — dari jadi asisten lab, desain game, AR/VR, sampai bikin prototipe produk dari nol.",
     exp_work_org: "Pengalaman Kerja & Organisasi",
     // Work items
-    exp_w1_title: "Teknologi Informasi",
+    exp_w1_title: "Teknologi Informasi & Web Dev",
     exp_w1_sub: "Magang | PT. Jasa & Kepariwisataan Jabar",
-    exp_w1_desc: "Bantu tim IT dalam troubleshooting perangkat, maintenance hardware, desain UI, pengembangan web, dan dokumentasi — semua bareng mentor.",
+    exp_w1_desc: "Mengembangkan fitur multi-language (i18n) pada website DJourney milik PT. Jaswita Jabar, membangun tampilan responsif mobile, serta melakukan perbaikan bug (bug fix) pada filter pencarian destinasi dan antarmuka web.",
     exp_w2_title: "Asisten Praktikum",
     exp_w2_sub: "Fakultas Ilmu Terapan | Universitas Telkom",
     exp_w2_desc: "Jadi asisten untuk 5 mata kuliah — bantu mahasiswa di sesi praktikum, nilai tugas, kelola lab, dan koordinasi sama dosen.",
@@ -248,19 +249,20 @@ const translations = {
     cta_dismiss: "Nanti dulu",
 
     // Skills Section
-    skills_badge: "KEAHLIAN",
-    skills_heading: "Some Software That I Use",
+    skills_badge: "MY SKILLS",
+    skills_heading: "SOME SOFTWARE THAT I USE",
     skills_sub: "Tools yang saya pakai sehari-hari untuk desain UI/UX, game dev, dan konten digital — dari wireframe dan aset visual sampai prototipe interaktif.",
 
     // Some Projects
+    project_tag: "Portofolio Terpilih",
     some_proj_title_1: "Beberapa Proyek yang Pernah Saya Rancang &",
     some_proj_title_2: "Kembangkan",
     some_proj_desc: "Kumpulan karya dari berbagai bidang — desain UI/UX, game dev, AR/VR, dan web — yang dibuat selama kuliah maupun proyek bareng tim.",
 
     // My Projects
-    my_proj_badge: "Karya",
-    my_proj_title: "Proyek Pilihan",
-    my_proj_desc: "Sorotan proyek-proyek terpilih: peran yang saya jalani, masalah yang dipecahkan, dan pengalaman yang saya rancang di bidang desain, dev, dan teknologi kreatif.",
+    my_proj_badge: "KONTRIBUSI PROYEK",
+    my_proj_title: "What I Did",
+    my_proj_desc: "Showcase peran yang saya jalani, masalah yang dipecahkan, dan pengalaman yang saya rancang di bidang desain, dev, dan teknologi kreatif.",
     my_proj_role: "Peran",
     my_proj_tools: "Stack",
     my_proj_overview: "Ringkasan",

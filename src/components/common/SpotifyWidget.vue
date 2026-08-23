@@ -565,46 +565,23 @@ watch(trackIndex, async () => {
 
 // Auto play on return to Tape Card mode or theme change (Pixel theme only)
 watch(showEmbed, (isEmbed) => {
-  if (isEmbed || theme.value !== 'pixel') {
+  if (isEmbed) {
     pauseAudio();
-  } else {
-    playAudio();
   }
 });
 
 watch(theme, (newTheme) => {
-  if (newTheme === 'pixel' && !showEmbed.value) {
-    playAudio();
-  } else {
-    pauseAudio();
-  }
+  // Always pause audio when switching themes to prevent autoplay
+  pauseAudio();
 }, { immediate: true });
-
-const handleFirstInteraction = () => {
-  if (!isPlaying.value && !showEmbed.value && theme.value === 'pixel') {
-    playAudio();
-  }
-  window.removeEventListener('click', handleFirstInteraction);
-  window.removeEventListener('keydown', handleFirstInteraction);
-  window.removeEventListener('touchstart', handleFirstInteraction);
-};
 
 onMounted(() => {
   if (props.discordId) {
     fetchLanyardStatus();
   }
 
-  // Auto play when entering pixel theme
-  if (theme.value === 'pixel' && !showEmbed.value) {
-    playAudio();
-  } else {
-    pauseAudio();
-  }
-
-  // Attach interaction fallback for browsers with strict autoplay policies
-  window.addEventListener('click', handleFirstInteraction, { once: true });
-  window.addEventListener('keydown', handleFirstInteraction, { once: true });
-  window.addEventListener('touchstart', handleFirstInteraction, { once: true });
+  // Ensure audio is paused by default when mounted
+  pauseAudio();
 
   // Progress Bar update & Automatic track shuffle on completion
   progressInterval = setInterval(() => {
@@ -620,9 +597,6 @@ onMounted(() => {
 onUnmounted(() => {
   pauseAudio();
   if (progressInterval) clearInterval(progressInterval);
-  window.removeEventListener('click', handleFirstInteraction);
-  window.removeEventListener('keydown', handleFirstInteraction);
-  window.removeEventListener('touchstart', handleFirstInteraction);
 });
 </script>
 

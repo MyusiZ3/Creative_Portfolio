@@ -6,60 +6,88 @@
           <h1
             v-motion
             :initial="{ opacity: 0, y: 50 }"
-            :visible="{ opacity: 1, y: 0, transition: { duration: 800, ease: 'easeOut' } }"
+            :visible="{
+              opacity: 1,
+              y: 0,
+              transition: { duration: 800, ease: 'easeOut' },
+            }"
             class="text-6xl sm:text-7xl xl:text-[110px] font-bold text-white mb-4 font-['Poppins']"
           >
             Multimedia <br class="block xl:hidden" />
             <span
               class="text-transparent"
               style="-webkit-text-stroke: 2px #ffffff"
-              >{{ t('hero_designer') }}</span
+              >{{ t("hero_designer") }}</span
             >
           </h1>
           <p
             v-motion
             :initial="{ opacity: 0, y: 30 }"
-            :visible="{ opacity: 1, y: 0, transition: { duration: 700, delay: 200, ease: 'easeOut' } }"
+            :visible="{
+              opacity: 1,
+              y: 0,
+              transition: { duration: 700, delay: 200, ease: 'easeOut' },
+            }"
             class="text-white text-base xl:text-[16px] w-full xl:w-140 xl:ml-2 text-justify font-['Roboto']"
           >
-            {{ t('hero_desc') }}
+            {{ t("hero_desc") }}
           </p>
           <div
             v-motion
             :initial="{ opacity: 0, y: 20 }"
-            :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 400, ease: 'easeOut' } }"
+            :visible="{
+              opacity: 1,
+              y: 0,
+              transition: { duration: 600, delay: 400, ease: 'easeOut' },
+            }"
             class="mt-6 xl:mt-8"
           >
             <button
               @click="scrollToContact"
               class="bg-violet-500 text-white rounded-full hover:bg-violet-600 transition text-lg xl:text-2xl font-medium px-6 py-3 xl:px-8 xl:py-4 pointer-events-auto"
             >
-              {{ t('hero_contact') }} <i class="bi bi-arrow-right"></i>
+              {{ t("hero_contact") }} <i class="bi bi-arrow-right"></i>
             </button>
           </div>
         </div>
       </div>
     </section>
     <!-- Hero Image Composition -->
-    <div class="relative w-full mt-1 lg:-mt-20 xl:-mt-60 z-10 pointer-events-none">
+    <div
+      class="relative w-full mt-1 lg:-mt-20 xl:-mt-60 z-10 pointer-events-none"
+    >
       <div class="flex justify-end">
         <div class="relative w-[95%] lg:w-[78%] -mt-5 lg:-mt-20 xl:-mt-28">
           <!-- Main Hero Photo -->
           <img
             v-motion
             :initial="{ opacity: 0, scale: 0.9, y: 40 }"
-            :visible="{ opacity: 1, scale: 1, y: 0, transition: { duration: 900, delay: 200, ease: 'easeOut' } }"
+            :visible="{
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              transition: { duration: 900, delay: 200, ease: 'easeOut' },
+            }"
             src="/images/hero/hero_main.webp"
             alt="Hero Main"
             class="w-full h-auto relative z-10"
           />
-          
 
           <!-- VISUALZZ* -->
           <img
             v-motion
             :initial="{ opacity: 0, x: 60, rotate: 10 }"
-            :visible="{ opacity: 1, x: 0, rotate: 0, transition: { type: 'spring', stiffness: 120, damping: 14, delay: 500 } }"
+            :visible="{
+              opacity: 1,
+              x: 0,
+              rotate: 0,
+              transition: {
+                type: 'spring',
+                stiffness: 120,
+                damping: 14,
+                delay: 500,
+              },
+            }"
             src="/images/hero/visual.webp"
             alt="Visualzz"
             class="absolute -top-[0%] right-[2%] lg:right-[8%] w-[38%] lg:w-[30%] lg:-top-[-5%] z-20 pointer-events-none"
@@ -69,7 +97,17 @@
           <img
             v-motion
             :initial="{ opacity: 0, x: -50, rotate: -15 }"
-            :visible="{ opacity: 1, x: 0, rotate: 0, transition: { type: 'spring', stiffness: 130, damping: 14, delay: 600 } }"
+            :visible="{
+              opacity: 1,
+              x: 0,
+              rotate: 0,
+              transition: {
+                type: 'spring',
+                stiffness: 130,
+                damping: 14,
+                delay: 600,
+              },
+            }"
             src="/images/hero/branding.webp"
             alt="Branding & Identity"
             class="absolute top-[50%] left-[-4%] lg:left-[-14%] w-[36%] lg:w-[30%] mt-[-10%] lg:mt-[1.5%] z-20 pointer-events-none"
@@ -79,7 +117,17 @@
           <img
             v-motion
             :initial="{ opacity: 0, y: 40, scale: 0.8 }"
-            :visible="{ opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 140, damping: 16, delay: 700 } }"
+            :visible="{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              transition: {
+                type: 'spring',
+                stiffness: 140,
+                damping: 16,
+                delay: 700,
+              },
+            }"
             src="/images/hero/ux_design.webp"
             alt="User Experience Design"
             class="absolute bottom-[-7%] lg:bottom-[0%] lg:left-[1%] w-[40%] lg:w-[31%] z-20 pointer-events-none"
@@ -89,7 +137,17 @@
           <img
             v-motion
             :initial="{ opacity: 0, scale: 0, rotate: -90 }"
-            :visible="{ opacity: 1, scale: 1, rotate: 0, transition: { type: 'spring', stiffness: 200, damping: 12, delay: 800 } }"
+            :visible="{
+              opacity: 1,
+              scale: 1,
+              rotate: 0,
+              transition: {
+                type: 'spring',
+                stiffness: 200,
+                damping: 12,
+                delay: 800,
+              },
+            }"
             src="/images/hero/hire_me.webp"
             alt="Hire Me"
             class="absolute bottom-[1.5%] lg:bottom-[4%] right-[10%] lg:right-[10%] w-[20%] lg:w-[18%] z-20 pointer-events-none"
@@ -98,7 +156,10 @@
       </div>
     </div>
 
-    <section id="about" class="py-10 md:py-16 lg:py-20 xl:py-40 px-6 md:px-16 lg:px-20 xl:px-23">
+    <section
+      id="about"
+      class="py-10 md:py-16 lg:py-20 xl:py-40 px-6 md:px-16 lg:px-20 xl:px-23"
+    >
       <div
         class="container mx-auto grid grid-cols-1 md:grid-cols-1 lg:grid-cols-5 ml-0 lg:ml-0 xl:ml-18 gap-12 lg:gap-16 xl:gap-32 items-start"
       >
@@ -106,12 +167,16 @@
           <div
             v-motion
             :initial="{ opacity: 0, x: -50 }"
-            :visible="{ opacity: 1, x: 0, transition: { duration: 700, ease: 'easeOut' } }"
+            :visible="{
+              opacity: 1,
+              x: 0,
+              transition: { duration: 700, ease: 'easeOut' },
+            }"
           >
             <h2
               class="text-4xl lg:text-[48px] font-bold font-['Poppins'] text-violet-500 mb-4 lg:mb-6"
             >
-              {{ t('about_title') }}
+              {{ t("about_title") }}
             </h2>
             <h3
               class="text-2xl lg:text-[28px] font-medium font-['Poppins'] text-[#FBDF3A] mb-4 lg:mb-6"
@@ -130,13 +195,13 @@
               class="text-white space-y-4 text-sm lg:text-[16px] text-justify leading-relaxed font-['Roboto'] font-regular"
             >
               <p>
-                {{ t('about_intro_1') }}
+                {{ t("about_intro_1") }}
               </p>
               <p>
-                {{ t('about_intro_2') }}
+                {{ t("about_intro_2") }}
               </p>
               <p>
-                {{ t('about_intro_3') }}
+                {{ t("about_intro_3") }}
               </p>
             </div>
           </div>
@@ -144,18 +209,26 @@
           <div
             v-motion
             :initial="{ opacity: 0, x: -50 }"
-            :visible="{ opacity: 1, x: 0, transition: { duration: 700, delay: 150, ease: 'easeOut' } }"
+            :visible="{
+              opacity: 1,
+              x: 0,
+              transition: { duration: 700, delay: 150, ease: 'easeOut' },
+            }"
           >
             <h3
               class="text-2xl lg:text-[28px] font-bold font-['Poppins'] text-violet-500 mb-4 lg:mb-6"
             >
-              {{ t('education_title') }}
+              {{ t("education_title") }}
             </h3>
             <ul class="space-y-4 lg:space-y-6">
               <li
                 v-motion
                 :initial="{ opacity: 0, y: 20 }"
-                :visible="{ opacity: 1, y: 0, transition: { duration: 500, delay: 200, ease: 'easeOut' } }"
+                :visible="{
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 500, delay: 200, ease: 'easeOut' },
+                }"
                 class="flex gap-4"
               >
                 <span class="text-white mt-1.5"
@@ -170,7 +243,7 @@
                   <p
                     class="text-white text-sm lg:text-[16px] font-['Roboto'] font-regular"
                   >
-                    {{ t('edu_1_desc') }}
+                    {{ t("edu_1_desc") }}
                   </p>
                   <p
                     class="text-white italic text-sm font-['Roboto'] font-light"
@@ -182,7 +255,11 @@
               <li
                 v-motion
                 :initial="{ opacity: 0, y: 20 }"
-                :visible="{ opacity: 1, y: 0, transition: { duration: 500, delay: 350, ease: 'easeOut' } }"
+                :visible="{
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 500, delay: 350, ease: 'easeOut' },
+                }"
                 class="flex gap-4"
               >
                 <span class="text-white mt-1.5"
@@ -197,7 +274,7 @@
                   <p
                     class="text-white text-sm lg:text-[16px] font-['Roboto'] font-regular"
                   >
-                    {{ t('edu_2_desc') }}
+                    {{ t("edu_2_desc") }}
                   </p>
                   <p
                     class="text-white italic text-sm font-['Roboto'] font-light"
@@ -212,18 +289,26 @@
           <div
             v-motion
             :initial="{ opacity: 0, x: -50 }"
-            :visible="{ opacity: 1, x: 0, transition: { duration: 700, delay: 300, ease: 'easeOut' } }"
+            :visible="{
+              opacity: 1,
+              x: 0,
+              transition: { duration: 700, delay: 300, ease: 'easeOut' },
+            }"
           >
             <h3
               class="text-2xl lg:text-[28px] font-bold font-['Poppins'] text-violet-500 mb-4 lg:mb-6"
             >
-              {{ t('skills_title') }}
+              {{ t("skills_title") }}
             </h3>
             <ul class="space-y-4 lg:space-y-6">
               <li
                 v-motion
                 :initial="{ opacity: 0, y: 20 }"
-                :visible="{ opacity: 1, y: 0, transition: { duration: 500, delay: 350, ease: 'easeOut' } }"
+                :visible="{
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 500, delay: 350, ease: 'easeOut' },
+                }"
                 class="flex gap-4"
               >
                 <span class="text-white mt-1.5"
@@ -233,19 +318,23 @@
                   <h4
                     class="text-white text-sm lg:text-[18px] font-['Roboto'] font-extrabold"
                   >
-                    {{ t('hard_skills') }}
+                    {{ t("hard_skills") }}
                   </h4>
                   <p
                     class="text-white text-sm lg:text-[16px] leading-relaxed font-['Roboto'] font-regular"
                   >
-                    {{ t('hard_skills_desc') }}
+                    {{ t("hard_skills_desc") }}
                   </p>
                 </div>
               </li>
               <li
                 v-motion
                 :initial="{ opacity: 0, y: 20 }"
-                :visible="{ opacity: 1, y: 0, transition: { duration: 500, delay: 500, ease: 'easeOut' } }"
+                :visible="{
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 500, delay: 500, ease: 'easeOut' },
+                }"
                 class="flex gap-4"
               >
                 <span class="text-white mt-1.5"
@@ -255,12 +344,12 @@
                   <h4
                     class="text-white text-sm lg:text-[18px] font-['Roboto'] font-extrabold"
                   >
-                    {{ t('soft_skills') }}
+                    {{ t("soft_skills") }}
                   </h4>
                   <p
                     class="text-white text-sm lg:text-[16px] leading-relaxed font-['Roboto'] font-regular"
                   >
-                    {{ t('soft_skills_desc') }}
+                    {{ t("soft_skills_desc") }}
                   </p>
                 </div>
               </li>
@@ -268,12 +357,18 @@
           </div>
         </div>
 
-        <div class="col-span-1 lg:col-span-3 space-y-12 lg:space-y-16 lg:pl-0 xl:pl-10">
+        <div
+          class="col-span-1 lg:col-span-3 space-y-12 lg:space-y-16 lg:pl-0 xl:pl-10"
+        >
           <div class="flex flex-row gap-8 lg:gap-10 xl:gap-20">
             <div
               v-motion
               :initial="{ opacity: 0, scale: 0.8 }"
-              :visible="{ opacity: 1, scale: 1, transition: { duration: 600, ease: 'easeOut' } }"
+              :visible="{
+                opacity: 1,
+                scale: 1,
+                transition: { duration: 600, ease: 'easeOut' },
+              }"
               class="flex flex-col items-start w-1/2 lg:w-auto"
             >
               <img
@@ -289,13 +384,17 @@
               <p
                 class="text-white text-[14px] lg:text-[16px] font-['Roboto'] font-regular"
               >
-                {{ t('stat_years') }}
+                {{ t("stat_years") }}
               </p>
             </div>
             <div
               v-motion
               :initial="{ opacity: 0, scale: 0.8 }"
-              :visible="{ opacity: 1, scale: 1, transition: { duration: 600, delay: 200, ease: 'easeOut' } }"
+              :visible="{
+                opacity: 1,
+                scale: 1,
+                transition: { duration: 600, delay: 200, ease: 'easeOut' },
+              }"
               class="flex flex-col items-start w-1/2 lg:w-auto"
             >
               <img
@@ -311,7 +410,7 @@
               <p
                 class="text-white text-[14px] lg:text-[16px] font-['Roboto'] font-regular"
               >
-                {{ t('stat_projects') }}
+                {{ t("stat_projects") }}
               </p>
             </div>
           </div>
@@ -319,7 +418,11 @@
           <div
             v-motion
             :initial="{ opacity: 0, y: 40 }"
-            :visible="{ opacity: 1, y: 0, transition: { duration: 800, delay: 100, ease: 'easeOut' } }"
+            :visible="{
+              opacity: 1,
+              y: 0,
+              transition: { duration: 800, delay: 100, ease: 'easeOut' },
+            }"
             class="relative mt-10 lg:mt-22 pb-10 lg:pb-0"
           >
             <img
@@ -332,19 +435,27 @@
           <div
             v-motion
             :initial="{ opacity: 0, x: 50 }"
-            :visible="{ opacity: 1, x: 0, transition: { duration: 700, delay: 100, ease: 'easeOut' } }"
+            :visible="{
+              opacity: 1,
+              x: 0,
+              transition: { duration: 700, delay: 100, ease: 'easeOut' },
+            }"
             class="relative mt-10 lg:mt-25 pb-10 lg:pb-0"
           >
             <h3
               class="text-2xl lg:text-[28px] font-bold font-['Poppins'] text-violet-500 mb-4 lg:mb-6"
             >
-              {{ t('lang_title') }}
+              {{ t("lang_title") }}
             </h3>
             <ul class="space-y-4 lg:space-y-6 relative z-20">
               <li
                 v-motion
                 :initial="{ opacity: 0, y: 20 }"
-                :visible="{ opacity: 1, y: 0, transition: { duration: 500, delay: 200, ease: 'easeOut' } }"
+                :visible="{
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 500, delay: 200, ease: 'easeOut' },
+                }"
                 class="flex gap-4"
               >
                 <span class="text-white mt-0"
@@ -359,7 +470,7 @@
                   <p
                     class="text-white text-sm lg:text-[16px] font-['Roboto'] font-medium"
                   >
-                    {{ t('lang_native') }}
+                    {{ t("lang_native") }}
                   </p>
                   <p
                     class="text-white text-sm italic lg:text-[16px] font-['Roboto'] font-light"
@@ -371,7 +482,11 @@
               <li
                 v-motion
                 :initial="{ opacity: 0, y: 20 }"
-                :visible="{ opacity: 1, y: 0, transition: { duration: 500, delay: 350, ease: 'easeOut' } }"
+                :visible="{
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 500, delay: 350, ease: 'easeOut' },
+                }"
                 class="flex gap-4"
               >
                 <span class="text-white mt-1.5"
@@ -409,15 +524,15 @@
 </template>
 
 <script setup>
-import Typewriter from 'vue-typewriter-effect'
-import { useLanguage } from "@/composables/useLanguage"
+import Typewriter from "vue-typewriter-effect";
+import { useLanguage } from "@/composables/useLanguage";
 
-const { t, lang } = useLanguage()
+const { t, lang } = useLanguage();
 
 const scrollToContact = () => {
-  const el = document.getElementById('contact');
+  const el = document.getElementById("contact");
   if (el) {
-    el.scrollIntoView({ behavior: 'smooth' });
+    el.scrollIntoView({ behavior: "smooth" });
   }
 };
 </script>
@@ -428,7 +543,11 @@ const scrollToContact = () => {
 }
 
 @keyframes slowSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>

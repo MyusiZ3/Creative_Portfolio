@@ -5,13 +5,13 @@
     @show-notification="showNotification = !showNotification"
     @toggle-theme="handleThemeSwitch"
   />
-  
+
   <!-- Editorial Minimalist Theme (Theme 1) -->
   <template v-if="currentTheme === 'editorial'">
     <HeroEditorial />
     <ExperienceEditorial />
     <MySkillsEditorial />
-    <SomeProjectsEditorial />
+    <CreativeProcessEditorial />
     <MyProjectsEditorial />
     <AchievementsEditorial />
     <ContactMeEditorial />
@@ -29,7 +29,10 @@
 
   <FloatingActionButton />
   <CTAPopup />
-  <NotificationPopup :show="showNotification" @close="showNotification = false" />
+  <NotificationPopup
+    :show="showNotification"
+    @close="showNotification = false"
+  />
   <CursorMultiFollow />
 
   <!-- Page Reveal Transition Curtain -->
@@ -48,7 +51,7 @@ import Navbar from "@/components/Navbar.vue";
 import HeroEditorial from "@/components/themes/editorial/HeroEditorial.vue";
 import ExperienceEditorial from "@/components/themes/editorial/ExperienceEditorial.vue";
 import MySkillsEditorial from "@/components/themes/editorial/MySkillsEditorial.vue";
-import SomeProjectsEditorial from "@/components/themes/editorial/SomeProjectsEditorial.vue";
+import CreativeProcessEditorial from "@/components/themes/editorial/CreativeProcessEditorial.vue";
 import MyProjectsEditorial from "@/components/themes/editorial/MyProjectsEditorial.vue";
 import AchievementsEditorial from "@/components/themes/editorial/AchievementsEditorial.vue";
 import ContactMeEditorial from "@/components/themes/editorial/ContactMeEditorial.vue";
@@ -78,11 +81,11 @@ const showNotification = ref(false);
 let pendingTarget = "";
 
 const handleThemeSwitch = (nextTheme) => {
-  revealLabel.value = nextTheme === 'pixel' ? 'LEVEL 2: PIXEL ARCADE' : 'EDITORIAL MINIMALIST';
+  revealLabel.value = nextTheme === "pixel" ? "ARCADE MODE" : "CREATIVE MODE";
   revealActive.value = true;
-  
+
   setTimeout(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    window.scrollTo({ top: 0, behavior: "instant" });
   }, 550);
 };
 
@@ -106,7 +109,7 @@ const onNavigate = ({ target, label }) => {
 
 const onToggleLang = () => {
   showNotification.value = false;
-  revealLabel.value = lang.value === 'EN' ? 'INDONESIA' : 'ENGLISH';
+  revealLabel.value = lang.value === "EN" ? "INDONESIA" : "ENGLISH";
   revealActive.value = true;
   pendingTarget = "";
 
@@ -121,4 +124,3 @@ const onRevealDone = () => {
   pendingTarget = "";
 };
 </script>
-

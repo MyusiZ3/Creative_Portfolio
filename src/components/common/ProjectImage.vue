@@ -14,31 +14,20 @@
       @error="onError"
     />
 
-    <!-- Fallback / Loading State -->
+    <!-- Fallback / Loading State (Minimalist Editorial Dark Placeholder) -->
     <div 
       v-if="!src || hasError || isLoading" 
-      class="absolute inset-0 flex flex-col items-center justify-center text-center transition-opacity duration-500 bg-linear-to-br from-[#1E1B4B] via-[#4C1D95] to-[#1E1B4B]"
+      class="absolute inset-0 flex flex-col items-center justify-center text-center transition-opacity duration-500 bg-[#141416] border border-white/5"
       :class="isLoading && !hasError ? 'opacity-100 z-10' : 'z-20'"
     >
-      <!-- Purple Glow Animation -->
-      <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,white_0%,transparent_70%)] animate-pulse"></div>
-      
-      <div class="relative scale-90 lg:scale-100">
-        <div class="w-16 h-16 lg:w-20 lg:h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-4 backdrop-blur-sm group-hover/img:border-violet-500/50 transition-colors">
-          <i 
-            class="bi text-white/30 text-3xl lg:text-4xl"
-            :class="isLoading && !hasError ? 'bi-arrow-repeat animate-spin' : 'bi-image-fill'"
-          ></i>
-        </div>
-      </div>
-      
-      <div class="px-4">
-        <h4 class="text-white/40 font-['Poppins'] font-bold uppercase tracking-[0.3em] text-[8px] lg:text-[10px] mb-1">
-          {{ hasError || !src ? 'Visual Under Development' : 'Loading Assets...' }}
-        </h4>
-        <div class="w-12 h-0.5 bg-violet-500/30 mx-auto rounded-full overflow-hidden">
-          <div class="w-full h-full bg-violet-500/60 animate-shimmer" v-if="isLoading"></div>
-        </div>
+      <div class="flex flex-col items-center gap-2">
+        <i 
+          class="bi text-zinc-600 text-xl"
+          :class="isLoading && !hasError ? 'bi-arrow-repeat animate-spin' : 'bi-image'"
+        ></i>
+        <span class="text-zinc-500 font-mono text-[10px] uppercase tracking-widest font-medium">
+          {{ isLoading && !hasError ? 'Loading' : 'No Preview' }}
+        </span>
       </div>
     </div>
   </div>

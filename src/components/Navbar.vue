@@ -108,8 +108,8 @@ onMounted(() => {
           >{{ t('nav_skills') }}</a
         >
         <a
-          href="#projects"
-          @click="handleNav('projects', t('nav_projects'), $event)"
+          :href="currentTheme === 'pixel' ? '#projects' : '#my-projects'"
+          @click="handleNav(currentTheme === 'pixel' ? 'projects' : 'my-projects', t('nav_projects'), $event)"
           class="nav-item nav-link text-white font-bold text-[11px] lg:text-[12px] xl:text-[15px] transition-colors"
           :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
           style="--delay: 5"
@@ -204,8 +204,8 @@ onMounted(() => {
           >{{ t('nav_skills') }}</a
         >
         <a
-          href="#projects"
-          @click="handleNav('projects', t('nav_projects'), $event)"
+          :href="currentTheme === 'pixel' ? '#projects' : '#my-projects'"
+          @click="handleNav(currentTheme === 'pixel' ? 'projects' : 'my-projects', t('nav_projects'), $event)"
           class="text-white font-bold text-[14px] transition"
           :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
           >{{ t('nav_projects') }}</a

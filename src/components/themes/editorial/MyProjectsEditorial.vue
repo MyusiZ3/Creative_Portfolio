@@ -1,236 +1,400 @@
 <template>
-  <section id="my-projects" class="bg-[#171717] py-20 px-6 lg:px-16 xl:px-40 relative overflow-x-clip">
-    <div class="container mx-auto relative z-10">
-      <!-- Badge -->
+  <section
+    id="my-projects"
+    class="bg-[#171717] py-24 px-6 md:px-12 lg:px-20 xl:px-32 relative overflow-x-hidden font-['Roboto']"
+  >
+    <div class="max-w-[1600px] mx-auto relative z-10">
+      <!-- Minimalist Editorial Section Header -->
       <div
         v-motion
-        :initial="{ opacity: 0, scale: 0.3, y: -20 }"
-        :visible="{ opacity: 1, scale: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 12, mass: 0.8 } }"
-        class="text-center"
+        :initial="{ opacity: 0, y: -20 }"
+        :visible="{ opacity: 1, y: 0, transition: { duration: 600 } }"
+        class="text-center mb-16 lg:mb-24"
       >
-        <span
-          class="inline-block bg-violet-500 text-white font-['Poppins'] font-bold text-[14px] lg:text-[16px] px-6 py-2 rounded-full mb-6"
+        <div class="flex justify-center mb-4">
+          <span
+            class="inline-block bg-[#8B5CF6] text-white font-['Poppins'] font-bold text-xs sm:text-sm uppercase tracking-wider px-6 py-2 rounded-full shadow-lg shadow-violet-500/20"
+          >
+            Projects
+          </span>
+        </div>
+        <h2
+          class="text-3xl md:text-4xl lg:text-[48px] font-bold font-['Poppins'] text-white tracking-wider mb-4"
         >
-          {{ t('my_proj_badge') }}
-        </span>
+          {{ t("my_proj_title") }}
+        </h2>
+        <p
+          class="text-zinc-400 font-['Roboto'] text-sm lg:text-base max-w-2xl mx-auto leading-relaxed"
+        >
+          {{ t("my_proj_desc") }}
+        </p>
+
+        <!-- Hairline Divider -->
+        <div class="w-full h-px bg-white/10 mt-12 mb-4"></div>
       </div>
 
-      <!-- Title -->
-      <h2
-        v-motion
-        :initial="{ opacity: 0, y: 60, scale: 0.9 }"
-        :visible="{ opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 150, damping: 18, delay: 150 } }"
-        class="text-3xl lg:text-[48px] font-bold font-['Poppins'] text-white mb-4 text-center title-glow"
-      >
-        {{ t('my_proj_title') }}
-      </h2>
-
-      <!-- Subtitle -->
-      <p
-        v-motion
-        :initial="{ opacity: 0, y: 25 }"
-        :visible="{ opacity: 1, y: 0, transition: { duration: 800, delay: 350, ease: 'easeOut' } }"
-        class="text-[#8E949F] font-['Roboto'] font-medium text-[13px] lg:text-[15px] max-w-2xl mx-auto text-center leading-relaxed mb-12"
-      >
-        {{ t('my_proj_desc') }}
-      </p>
-
-      <!-- Divider -->
-      <div
-        v-motion
-        :initial="{ opacity: 0, scaleX: 0 }"
-        :visible="{ opacity: 1, scaleX: 1, transition: { duration: 1000, delay: 450, ease: 'easeOut' } }"
-        class="divider-line h-px w-full bg-gray-700 mb-14 lg:mb-20"
-      ></div>
-
-      <!-- Project Items -->
-      <div class="space-y-10 lg:space-y-14">
-        <div
+      <!-- Project Editorial Spreads Loop -->
+      <div class="space-y-28 lg:space-y-40">
+        <article
           v-for="(project, index) in visibleProjects"
           :key="project.name"
           :id="'my-project-' + index"
           v-motion
-          :initial="{ opacity: 0, y: 50 }"
+          :initial="{ opacity: 0, y: 60 }"
           :visible="{
             opacity: 1,
             y: 0,
-            transition: { type: 'spring', stiffness: 80, damping: 18, mass: 1 },
+            transition: { duration: 800, delay: 100 },
           }"
-          class="project-card bg-[#171717] border border-white/10 rounded-3xl p-6 lg:p-9 shadow-2xl relative overflow-hidden transition-all duration-500 hover:border-violet-500/30"
+          class="project-spread"
         >
-          <div class="flex flex-col lg:flex-row gap-8 lg:gap-10 items-stretch">
-            <!-- Project Image Carousel (Visual Column) -->
-            <div class="w-full lg:w-[48%] shrink-0 flex flex-col justify-center">
-              <div class="project-image-wrapper group relative rounded-2xl overflow-hidden aspect-4/3 border border-white/10 bg-[#121214]">
-                <!-- Carousel Images -->
-                <div class="relative w-full h-full cursor-pointer flex items-center justify-center" @click="openLightbox(index, activeSlides[index] || 0)">
-                  <transition :name="getTransitionName(project._dir)" mode="out-in">
+          <!-- Side-by-Side Grid Layout (Zig-Zag Left/Right) -->
+          <div
+            class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center"
+          >
+            <!-- Media Column (Left when index is even, Right when index is odd) -->
+            <div
+              class="lg:col-span-6 w-full"
+              :class="index % 2 === 1 ? 'lg:order-2' : 'lg:order-1'"
+            >
+              <div class="project-media-showcase relative py-4">
+                <!-- LAYOUT 1 (Index % 4 === 0): SunMonster 3D Overlapping Stack Collage -->
+                <div
+                  v-if="index % 4 === 0"
+                  class="relative w-full min-h-[320px] sm:min-h-[400px] md:min-h-[440px] flex items-center justify-center select-none"
+                >
+                  <!-- Main Hero Central Card -->
+                  <div
+                    class="relative z-20 w-[82%] sm:w-[72%] aspect-16/10 rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.85)] border border-white/20 transition-all duration-500 hover:scale-[1.03] hover:z-40 cursor-pointer group/hero"
+                    @click="openLightbox(index, 0)"
+                  >
                     <img
-                      :key="project.images[activeSlides[index] || 0]"
-                      :src="project.images[activeSlides[index] || 0]"
-                      :alt="`${project.name} - ${(activeSlides[index] || 0) + 1}`"
-                      class="absolute inset-0 w-full h-full object-cover"
+                      :src="project.images[0]"
+                      :alt="`${project.name} main view`"
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover/hero:scale-105"
                     />
-                  </transition>
-                  <!-- Zoom hint icon -->
-                  <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none">
-                    <i class="bi bi-arrows-fullscreen text-xs"></i>
+                    <div
+                      class="absolute inset-0 bg-black/10 group-hover/hero:bg-transparent transition-colors"
+                    ></div>
+                    <div
+                      class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/70 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover/hero:opacity-100 transition-opacity"
+                    >
+                      <i class="bi bi-arrows-fullscreen text-xs"></i>
+                    </div>
+                  </div>
+
+                  <!-- Top-Right Angled Card -->
+                  <div
+                    class="absolute top-[2%] right-[0%] z-30 w-[46%] sm:w-[40%] aspect-4/5 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.9)] border border-white/20 transition-all duration-500 transform rotate-[6deg] hover:rotate-0 hover:scale-108 hover:z-50 cursor-pointer group/card2 bg-[#18181c]"
+                    @click="
+                      openLightbox(index, project.images.length > 1 ? 1 : 0)
+                    "
+                  >
+                    <img
+                      :src="project.images[1] || project.images[0]"
+                      :alt="`${project.name} stack 2`"
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover/card2:scale-110"
+                    />
+                    <div
+                      class="absolute inset-0 bg-black/20 group-hover/card2:bg-transparent transition-colors"
+                    ></div>
+                  </div>
+
+                  <!-- Bottom-Left Angled Card -->
+                  <div
+                    class="absolute bottom-[0%] left-[0%] z-30 w-[42%] sm:w-[36%] aspect-square rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.9)] border border-white/20 transition-all duration-500 transform -rotate-[7deg] hover:rotate-0 hover:scale-108 hover:z-50 cursor-pointer group/card3 bg-[#1a1a22]"
+                    @click="
+                      openLightbox(
+                        index,
+                        project.images.length > 2
+                          ? 2
+                          : project.images.length > 1
+                            ? 1
+                            : 0,
+                      )
+                    "
+                  >
+                    <img
+                      :src="
+                        project.images[2] ||
+                        project.images[project.images.length - 1]
+                      "
+                      :alt="`${project.name} stack 3`"
+                      class="w-full h-full object-cover rounded-xl transition-transform duration-700 group-hover/card3:scale-110"
+                    />
+                    <div
+                      class="absolute inset-0 bg-black/20 group-hover/card3:bg-transparent transition-colors rounded-xl"
+                    ></div>
                   </div>
                 </div>
 
-                <!-- Carousel Dots -->
+                <!-- LAYOUT 2 (Index % 4 === 1): Overlapping Horizontal Landscape Stack (2-3 Cards) -->
                 <div
-                  v-if="project.images.length > 1"
-                  class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10"
+                  v-else-if="index % 4 === 1"
+                  class="relative w-full min-h-[320px] sm:min-h-[400px] md:min-h-[440px] flex items-center justify-center select-none"
                 >
-                  <button
-                    v-for="(img, imgIdx) in project.images"
-                    :key="imgIdx"
-                    @click="goToSlide(index, imgIdx)"
-                    class="w-1.5 h-1.5 rounded-full transition-all duration-300"
-                    :class="
-                      (activeSlides[index] || 0) === imgIdx
-                        ? 'bg-violet-400 w-4'
-                        : 'bg-white/40 hover:bg-white/70'
+                  <!-- Main Hero Central Card (Landscape 16:10) -->
+                  <div
+                    class="relative z-20 w-[84%] sm:w-[78%] aspect-16/10 rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.85)] border border-white/20 transition-all duration-500 hover:scale-[1.03] hover:z-40 cursor-pointer group/hero"
+                    @click="openLightbox(index, 0)"
+                  >
+                    <img
+                      :src="project.images[0]"
+                      :alt="`${project.name} main view`"
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover/hero:scale-105"
+                    />
+                    <div
+                      class="absolute inset-0 bg-black/10 group-hover/hero:bg-transparent transition-colors"
+                    ></div>
+                    <div
+                      class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/70 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover/hero:opacity-100 transition-opacity"
+                    >
+                      <i class="bi bi-arrows-fullscreen text-xs"></i>
+                    </div>
+                  </div>
+
+                  <!-- Top Right Overlapping Card (Landscape 16:9) -->
+                  <div
+                    class="absolute top-[2%] right-[0%] z-30 w-[48%] sm:w-[42%] aspect-16/9 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.9)] border border-white/20 transition-all duration-500 transform rotate-[4deg] hover:rotate-0 hover:scale-108 hover:z-50 cursor-pointer group/card2 bg-[#18181c]"
+                    @click="
+                      openLightbox(index, project.images.length > 1 ? 1 : 0)
                     "
-                    :aria-label="`Slide ${imgIdx + 1}`"
-                  ></button>
+                  >
+                    <img
+                      :src="project.images[1] || project.images[0]"
+                      :alt="`${project.name} stack 2`"
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover/card2:scale-110"
+                    />
+                    <div
+                      class="absolute inset-0 bg-black/20 group-hover/card2:bg-transparent transition-colors"
+                    ></div>
+                  </div>
+
+                  <!-- Bottom Left Overlapping Card (Landscape 16:9) -->
+                  <div
+                    v-if="project.images.length > 2"
+                    class="absolute bottom-[0%] left-[0%] z-30 w-[44%] sm:w-[38%] aspect-16/9 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.9)] border border-white/20 transition-all duration-500 transform -rotate-[5deg] hover:rotate-0 hover:scale-108 hover:z-50 cursor-pointer group/card3 bg-[#1a1a22]"
+                    @click="openLightbox(index, 2)"
+                  >
+                    <img
+                      :src="project.images[2]"
+                      :alt="`${project.name} stack 3`"
+                      class="w-full h-full object-cover rounded-xl transition-transform duration-700 group-hover/card3:scale-110"
+                    />
+                    <div
+                      class="absolute inset-0 bg-black/20 group-hover/card3:bg-transparent transition-colors rounded-xl"
+                    ></div>
+                  </div>
                 </div>
 
-                <!-- Carousel Arrows -->
-                <button
-                  v-if="project.images.length > 1"
-                  @click="prevSlide(index, project.images.length)"
-                  class="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-violet-600/80 z-20"
-                  aria-label="Previous slide"
+                <!-- LAYOUT 3 (Index % 4 === 2): Multi-Column Fashion Grid -->
+                <div
+                  v-else-if="index % 4 === 2"
+                  class="relative w-full min-h-[320px] sm:min-h-[400px] md:min-h-[440px] grid grid-cols-12 gap-3 items-center select-none"
                 >
-                  <i class="bi bi-chevron-left text-xs"></i>
-                </button>
-                <button
-                  v-if="project.images.length > 1"
-                  @click="nextSlide(index, project.images.length)"
-                  class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-violet-600/80 z-20"
-                  aria-label="Next slide"
+                  <!-- Column 1: Left Portrait Card -->
+                  <div
+                    class="col-span-5 relative aspect-9/16 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/20 transition-all duration-500 hover:scale-[1.04] hover:z-40 cursor-pointer group/c1"
+                    @click="openLightbox(index, 0)"
+                  >
+                    <img
+                      :src="project.images[0]"
+                      :alt="`${project.name} column 1`"
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover/c1:scale-105"
+                    />
+                    <div
+                      class="absolute inset-0 bg-black/15 group-hover/c1:bg-transparent transition-colors"
+                    ></div>
+                  </div>
+
+                  <!-- Column 2: Right Stack (2 Cards) -->
+                  <div class="col-span-7 flex flex-col gap-3">
+                    <div
+                      class="relative aspect-16/10 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/20 transition-all duration-500 hover:scale-[1.04] hover:z-40 cursor-pointer group/c2a"
+                      @click="
+                        openLightbox(index, project.images.length > 1 ? 1 : 0)
+                      "
+                    >
+                      <img
+                        :src="project.images[1] || project.images[0]"
+                        :alt="`${project.name} column 2 top`"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover/c2a:scale-105"
+                      />
+                      <div
+                        class="absolute inset-0 bg-black/15 group-hover/c2a:bg-transparent transition-colors"
+                      ></div>
+                    </div>
+
+                    <div
+                      class="relative aspect-16/9 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/20 transition-all duration-500 hover:scale-[1.04] hover:z-40 cursor-pointer group/c2b"
+                      @click="
+                        openLightbox(index, project.images.length > 2 ? 2 : 0)
+                      "
+                    >
+                      <img
+                        :src="project.images[2] || project.images[0]"
+                        :alt="`${project.name} column 2 bottom`"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover/c2b:scale-105"
+                      />
+                      <div
+                        class="absolute inset-0 bg-black/15 group-hover/c2b:bg-transparent transition-colors"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- LAYOUT 4 (Index % 4 === 3): Wide Banner + Corner Overlap -->
+                <div
+                  v-else
+                  class="relative w-full min-h-[320px] sm:min-h-[400px] md:min-h-[440px] flex items-center justify-center select-none"
                 >
-                  <i class="bi bi-chevron-right text-xs"></i>
-                </button>
+                  <!-- Center Hero Wide Banner -->
+                  <div
+                    class="relative z-10 w-[88%] aspect-16/10 rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.85)] border border-white/20 transition-all duration-500 hover:scale-[1.02] hover:z-30 cursor-pointer group/banner"
+                    @click="openLightbox(index, 0)"
+                  >
+                    <img
+                      :src="project.images[0]"
+                      :alt="`${project.name} wide banner`"
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover/banner:scale-105"
+                    />
+                    <div
+                      class="absolute inset-0 bg-black/10 group-hover/banner:bg-transparent transition-colors"
+                    ></div>
+                  </div>
+
+                  <!-- Bottom-Right Corner Card -->
+                  <div
+                    class="absolute right-[0%] bottom-[0%] z-20 w-[42%] aspect-4/3 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.9)] border border-white/25 transition-all duration-500 hover:scale-108 hover:z-40 cursor-pointer group/corner2 bg-[#18181d]"
+                    @click="
+                      openLightbox(index, project.images.length > 1 ? 1 : 0)
+                    "
+                  >
+                    <img
+                      :src="project.images[1] || project.images[0]"
+                      :alt="`${project.name} right overlay`"
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover/corner2:scale-110"
+                    />
+                    <div
+                      class="absolute inset-0 bg-black/20 group-hover/corner2:bg-transparent transition-colors"
+                    ></div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <!-- Project Details (Info Column) -->
-            <div class="flex-1 flex flex-col justify-between text-left">
-              <div>
-                <!-- App Icon & Title Header -->
-                <div class="flex items-center gap-3.5 mb-5 pb-4 border-b border-white/5">
-                  <div class="w-11 h-11 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 text-lg shadow-inner shrink-0">
-                    <i :class="project.icon || 'bi bi-app'"></i>
-                  </div>
-                  
-                  <div class="flex-1 min-w-0">
-                    <h3 class="text-xl lg:text-2xl font-bold font-['Poppins'] text-white leading-snug">
-                      {{ project.name }}
-                    </h3>
-                    <p class="text-xs text-zinc-400 font-mono mt-0.5 flex flex-wrap items-center gap-2">
-                      <span class="text-violet-400 font-semibold">{{ project.platform }}</span>
-                      <span class="text-zinc-600">•</span>
-                      <span>{{ project.teamInfo }}</span>
-                    </p>
-                  </div>
-                </div>
-
-                <!-- Editorial Metadata Specs Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 p-4 rounded-2xl bg-white/[0.02] border border-white/5">
-                  <div>
-                    <span class="text-zinc-500 font-mono text-[10px] uppercase tracking-wider block mb-1 font-semibold">{{ t('my_proj_role') }}</span>
-                    <span class="text-zinc-200 text-xs font-medium font-['Poppins'] leading-relaxed block">{{ project.role }}</span>
-                  </div>
-                  <div>
-                    <span class="text-zinc-500 font-mono text-[10px] uppercase tracking-wider block mb-1 font-semibold">{{ t('my_proj_tools') }}</span>
-                    <span class="text-zinc-200 text-xs font-medium font-['Poppins'] leading-relaxed block">{{ project.tools }}</span>
-                  </div>
-                </div>
-
-                <!-- Editorial Content Split Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                  <!-- Project Overview Column -->
-                  <div>
-                    <h4 class="text-[11px] text-zinc-400 font-mono font-semibold tracking-wider uppercase mb-2 flex items-center gap-2">
-                      <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
-                      {{ t('my_proj_overview') }}
-                    </h4>
-                    <p class="text-zinc-300 text-xs lg:text-[13px] font-['Roboto'] leading-relaxed font-normal">
-                      {{ project.overview }}
-                    </p>
-                  </div>
-
-                  <!-- What I Did / Key Contributions Column -->
-                  <div>
-                    <h4 class="text-[11px] text-zinc-400 font-mono font-semibold tracking-wider uppercase mb-2.5 flex items-center gap-2">
-                      <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
-                      {{ t('my_proj_whatidid') }}
-                    </h4>
-                    <ul class="space-y-2">
-                      <li
-                        v-for="(item, i) in project.tasks"
-                        :key="i"
-                        class="flex items-start gap-2.5"
-                      >
-                        <span class="text-violet-400 mt-1 text-[10px] shrink-0">✦</span>
-                        <span class="text-zinc-300 font-['Roboto'] text-xs lg:text-[13px] leading-relaxed font-normal">
-                          {{ item }}
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+            <!-- Content Details Column (Right when index is even, Left when index is odd) -->
+            <div
+              class="lg:col-span-6 w-full space-y-6 text-left"
+              :class="index % 2 === 1 ? 'lg:order-1' : 'lg:order-2'"
+            >
+              <!-- Project Title & Subtitle Info -->
+              <div class="space-y-2">
+                <h3
+                  class="text-2xl lg:text-3xl xl:text-4xl font-bold font-['Poppins'] text-white tracking-tight leading-snug cursor-pointer hover:text-violet-300 transition-colors"
+                  @click="openLightbox(index, 0)"
+                >
+                  {{ project.name }}
+                </h3>
+                <p class="text-xs text-zinc-400 font-['Roboto'] font-normal">
+                  Role: <span class="text-zinc-200">{{ project.role }}</span>
+                </p>
               </div>
 
-              <!-- Action Button -->
-              <div class="border-t border-white/5 pt-4 flex justify-end">
+              <!-- Metadata Specs (Team/Duration, Tools) -->
+              <div class="space-y-1.5 text-xs text-zinc-400 font-['Roboto']">
+                <p v-if="project.teamInfo">
+                  <span class="text-zinc-500">Tim Proyek |</span>
+                  {{ project.teamInfo }}
+                </p>
+                <p v-if="project.tools">
+                  <span class="text-zinc-500">Tools:</span> {{ project.tools }}
+                </p>
+              </div>
+
+              <!-- Overview Description -->
+              <div class="space-y-1">
+                <p
+                  class="text-zinc-400 text-xs uppercase tracking-wider font-semibold"
+                >
+                  Deskripsi Singkat:
+                </p>
+                <p
+                  class="text-zinc-300 text-xs lg:text-sm font-['Roboto'] leading-relaxed"
+                >
+                  {{ project.overview }}
+                </p>
+              </div>
+
+              <!-- What I Did Bullet Points -->
+              <div class="space-y-2 pt-2">
+                <h4
+                  class="text-xs font-bold text-white uppercase tracking-wider"
+                >
+                  What I Did:
+                </h4>
+                <ul class="space-y-1.5 pl-1">
+                  <li
+                    v-for="(task, tIdx) in project.tasks"
+                    :key="tIdx"
+                    class="flex items-start gap-2 text-zinc-300 text-xs lg:text-sm leading-relaxed"
+                  >
+                    <span
+                      class="text-zinc-400 text-base leading-none select-none"
+                      >•</span
+                    >
+                    <span>{{ task }}</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Platform tag & Action Button -->
+              <div class="pt-4 flex flex-col gap-4 items-start">
+                <p class="text-xs text-zinc-400 font-['Roboto']">
+                  {{ project.platform }}
+                </p>
+
                 <a
                   :href="project.link || '#'"
-                  class="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 active:scale-95 text-white font-['Poppins'] font-semibold text-xs px-5 py-2.5 rounded-xl transition-all duration-300 tracking-wider shadow-md shadow-violet-600/20 cursor-pointer"
+                  @click="project.link === '#' ? openLightbox(index, 0) : null"
+                  class="inline-flex items-center justify-between gap-3 px-6 py-2.5 rounded-full border border-white/30 text-white hover:bg-white hover:text-black font-['Poppins'] font-medium text-xs tracking-wider uppercase transition-all duration-300 group cursor-pointer"
                 >
-                  <span>{{ t('my_proj_view_work') }}</span>
-                  <i class="bi bi-arrow-right text-xs"></i>
+                  <span>{{ t("my_proj_view_work") }}</span>
+                  <i
+                    class="bi bi-chevron-right text-xs group-hover:translate-x-1 transition-transform"
+                  ></i>
                 </a>
               </div>
             </div>
           </div>
-        </div>
+
+          <!-- Divider between spreads -->
+          <div
+            v-if="index < visibleProjects.length - 1"
+            class="pt-20 lg:pt-28 flex items-center justify-center gap-4 text-zinc-600 font-mono text-xs tracking-widest select-none"
+          >
+            <span class="w-16 h-px bg-white/10"></span>
+            <span>— 0{{ index + 1 }} / 0{{ visibleProjects.length }} —</span>
+            <span class="w-16 h-px bg-white/10"></span>
+          </div>
+        </article>
       </div>
 
-      <!-- View More Button -->
+      <!-- View All Projects Toggle Button -->
       <div
         v-if="projects.length > 4"
         v-motion
         :initial="{ opacity: 0, y: 20 }"
         :visible="{ opacity: 1, y: 0, transition: { delay: 300 } }"
-        class="mt-16 lg:mt-20 text-center"
+        class="mt-24 text-center"
       >
         <button
           @click="showAll = !showAll"
-          class="group relative inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-violet-500/30 rounded-full text-white font-['Poppins'] font-semibold text-sm tracking-widest hover:border-violet-500 transition-all duration-500 overflow-hidden"
+          class="font-mono text-xs uppercase tracking-widest px-8 py-4 bg-transparent border border-white/20 hover:border-violet-500 text-white rounded-full transition-all duration-300 hover:bg-violet-500/10 cursor-pointer"
         >
-          <!-- Background Glow Effect -->
-          <div class="absolute inset-0 bg-violet-600/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-
-          <span class="relative z-10">{{ showAll ? t('my_proj_show_less') : t('my_proj_view_all') }}</span>
-
-          <div class="relative z-10 flex items-center justify-center w-6 h-6 rounded-full bg-violet-500/20 group-hover:bg-violet-500 transition-colors duration-500">
-            <i
-              class="bi transition-transform duration-500"
-              :class="[
-                showAll ? 'bi-chevron-up' : 'bi-chevron-down',
-                'group-hover:scale-110'
-              ]"
-            ></i>
-          </div>
+          [ {{ showAll ? t("my_proj_show_less") : t("my_proj_view_all") }} ]
         </button>
       </div>
-
-      <!-- Design Showcase Section -->
-      <DesignShowcase />
     </div>
   </section>
 
@@ -272,7 +436,10 @@
           @touchmove="onTouchMove"
           @touchend="onTouchEnd"
         >
-          <transition :name="lightbox.dir === 'prev' ? 'lb-slide-prev' : 'lb-slide-next'" mode="out-in">
+          <transition
+            :name="lightbox.dir === 'prev' ? 'lb-slide-prev' : 'lb-slide-next'"
+            mode="out-in"
+          >
             <img
               :key="lightboxImages[lightbox.slideIdx]"
               :src="lightboxImages[lightbox.slideIdx]"
@@ -311,7 +478,11 @@
             :key="i"
             @click="lightboxGoTo(i)"
             class="w-2.5 h-2.5 rounded-full transition-all duration-300"
-            :class="lightbox.slideIdx === i ? 'bg-violet-400 w-6' : 'bg-white/30 hover:bg-white/60'"
+            :class="
+              lightbox.slideIdx === i
+                ? 'bg-violet-400 w-6'
+                : 'bg-white/30 hover:bg-white/60'
+            "
           ></button>
         </div>
       </div>
@@ -320,9 +491,16 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, onMounted, onUnmounted, watch, nextTick } from "vue";
-import DesignShowcase from "@/components/DesignShowcase.vue";
-import { useLanguage } from '@/composables/useLanguage';
+import {
+  ref,
+  reactive,
+  computed,
+  onMounted,
+  onUnmounted,
+  watch,
+  nextTick,
+} from "vue";
+import { useLanguage } from "@/composables/useLanguage";
 
 const { t, lang } = useLanguage();
 
@@ -330,7 +508,9 @@ const { t, lang } = useLanguage();
 const activeSlides = reactive({});
 
 const showAll = ref(false);
-const visibleProjects = computed(() => showAll.value ? projects.value : projects.value.slice(0, 4));
+const visibleProjects = computed(() =>
+  showAll.value ? projects.value : projects.value.slice(0, 4),
+);
 // Track direction for each project for transition
 
 // === Lightbox state ===
@@ -372,7 +552,9 @@ const lightboxNext = () => {
 
 const lightboxPrev = () => {
   lightbox.dir = "prev";
-  lightbox.slideIdx = (lightbox.slideIdx - 1 + lightboxImages.value.length) % lightboxImages.value.length;
+  lightbox.slideIdx =
+    (lightbox.slideIdx - 1 + lightboxImages.value.length) %
+    lightboxImages.value.length;
 };
 
 const lightboxGoTo = (i) => {
@@ -444,16 +626,16 @@ const handleScrollToProject = (e) => {
     showAll.value = true;
   }
   nextTick(() => {
-    const el = document.getElementById('my-project-' + idx);
+    const el = document.getElementById("my-project-" + idx);
     if (el) {
       const y = el.getBoundingClientRect().top + window.scrollY - 100;
-      window.scrollTo({ top: y, behavior: 'smooth' });
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
   });
 };
 
 onMounted(() => {
-  window.addEventListener('scrollToProject', handleScrollToProject);
+  window.addEventListener("scrollToProject", handleScrollToProject);
   autoPlayInterval = setInterval(() => {
     projects.value.forEach((project, idx) => {
       if (project.images.length > 1) {
@@ -466,37 +648,163 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  window.removeEventListener('scrollToProject', handleScrollToProject);
+  window.removeEventListener("scrollToProject", handleScrollToProject);
   if (autoPlayInterval) clearInterval(autoPlayInterval);
 });
 
 const projects = computed(() => {
-  const isId = lang.value === 'ID';
+  const isId = lang.value === "ID";
   return [
+    {
+      name: isId
+        ? "Djaswita AR – Dynamic AR & Web CMS (Tugas Akhir)"
+        : "Djaswita AR – Dynamic AR & Web CMS (Thesis)",
+      icon: "bi-box-seam",
+      role: isId
+        ? "Pengembang AR & Web Fullstack (Tugas Akhir)"
+        : "Fullstack AR & Web Developer (Thesis)",
+      teamInfo: isId
+        ? "Proyek Tugas Akhir Kelulusan | 2025"
+        : "Final Thesis Graduation Project | 2025",
+      tools: "Unity, AR Foundation, Supabase DB, Vite, JavaScript",
+      overview: isId
+        ? "Satu sistem terintegrasi yang menggabungkan aplikasi Dynamic Augmented Reality (AR) dan Web Admin Dashboard (CMS) berbasis Vite & Supabase DB sebagai topik Tugas Akhir kelulusan. Konten 3D dan informasi dalam aplikasi AR dapat di-CRUD secara real-time melalui web admin tanpa perlu rebuild aplikasi."
+        : "A unified system combining a dynamic Augmented Reality (AR) app and a Vite & Supabase DB Web Admin Dashboard (CMS) built for Final Graduation Thesis. Enables real-time remote 3D content CRUD operations directly from the web admin without rebuilding application binaries.",
+      tasks: isId
+        ? [
+            "Membangun arsitektur AR dinamis yang memuat aset 3D & data dari Supabase DB",
+            "Mengembangkan Web Admin Dashboard (CMS) menggunakan Vite untuk manajemen CRUD konten AR",
+            "Mengeliminasi kebutuhan rebuild aplikasi AR saat ada perubahan atau penambahan materi 3D",
+            "Mengintegrasikan autentikasi database, manajemen storage, dan endpoint API real-time",
+          ]
+        : [
+            "Architected dynamic AR remote asset loading pipeline connected to Supabase DB",
+            "Developed Web Admin Dashboard (CMS) using Vite for full AR content CRUD management",
+            "Eliminated application binary rebuilds when 3D models or informational content are modified",
+            "Integrated database authentication, cloud storage management, and real-time APIs",
+          ],
+      platform: isId
+        ? "Aplikasi AR Mobile & Web CMS (Satu Sistem)"
+        : "Unified AR App & Web CMS System",
+      bg: "#7c3aed",
+      images: [
+        "/images/projects/arch.png",
+        "/images/projects/arch_2.webp",
+        "/images/projects/arch_3.webp",
+      ],
+      link: "https://github.com/MyusiZ3/DjaswitaAR-Fix",
+      _dir: "next",
+    },
+    {
+      name: isId
+        ? "Mathmagic – App Edukasi Matematika (HKI)"
+        : "Mathmagic – Math Educational App (HKI)",
+      icon: "bi-award",
+      role: isId
+        ? "Desainer UI Utama, Pengembang Unity & Web"
+        : "Main UI Designer, Lead Unity & Web Developer",
+      teamInfo: isId
+        ? "Hak Kekayaan Intelektual | SD Lab Univ Pattimura"
+        : "Intellectual Property (HKI) | SD Lab Pattimura Univ",
+      tools: "Unity 2D, C#, Figma, Vite, Database Analytics",
+      overview: isId
+        ? "Aplikasi pembelajaran matematika interaktif berlisensi HKI untuk siswa kelas 4 SD Laboratorium Universitas Pattimura. Dilengkapi Web Admin Dashboard untuk mengelola pengguna, mengonfigurasi parameter gim (global time, HP, skor), dan menganalisis performa belajar."
+        : "Intellectual Property (HKI) certified educational math application for 4th Grade SD Laboratorium Universitas Pattimura. Features Unity gameplay backed by a Web Admin Dashboard for user management, game config tuning (global time, HP, score), and user analytics.",
+      tasks: isId
+        ? [
+            "Merancang seluruh antarmuka (Main UI Designer) dan alur UX gim anak di Figma",
+            "Mengembangkan logika permainan (Unity C#) mencakup kuis, HP, dan timer",
+            "Membangun Web Admin Dashboard untuk manajemen akun pengguna, siswa & guru",
+            "Membuat sistem konfigurasi gim dinamis (global time, HP, score) & panel analisis user",
+            "Pendaftaran Hak Kekayaan Intelektual (HKI) resmi aplikasi",
+          ]
+        : [
+            "Designed full user interface and child-friendly UX flow in Figma as Main UI Designer",
+            "Programmed interactive math game mechanics in Unity C# (quiz, HP, timer)",
+            "Built Web Admin Dashboard for user, student, and teacher account management",
+            "Created dynamic game configuration panel (global time, HP, score) & user analytics",
+            "Registered and secured official Intellectual Property Rights (HKI) certification",
+          ],
+      platform: isId
+        ? "Gim Edukasi Unity & Web Admin"
+        : "Unity Game & Web Admin Dashboard",
+      bg: "#059669",
+      images: [
+        "/images/projects/mathrift.png",
+        "/images/projects/mathrift_2.webp",
+        "/images/projects/mathrift_3.webp",
+      ],
+      link: "#",
+      _dir: "next",
+    },
+    {
+      name: isId
+        ? "DJourney Jaswita Jabar – Tourism Web"
+        : "DJourney Jaswita Jabar – Tourism Web",
+      icon: "bi-globe-americas",
+      role: isId
+        ? "Pengembang Frontend Web & IT Intern"
+        : "Frontend Web Developer & IT Intern",
+      teamInfo: isId
+        ? "Magang | PT. Jasa & Kepariwisataan Jabar"
+        : "Internship | PT. Jasa & Kepariwisataan Jabar",
+      tools: "HTML, CSS, JavaScript, i18n, Responsive Web Design",
+      overview: isId
+        ? "Pengembangan platform pariwisata DJourney milik PT. Jasa & Kepariwisataan Jabar (Perseroda). Berfokus pada implementasi sistem multi-language (i18n), optimasi tampilan responsif mobile, serta bug fix pada filter pencarian dan tata letak antarmuka."
+        : "Development of DJourney tourism website for PT. Jasa & Kepariwisataan Jabar. Focused on building multi-language (i18n) localization, mobile responsive layouts, and bug fixes for destination search filters and UI display issues.",
+      tasks: isId
+        ? [
+            "Mengimplementasikan fitur multi-language (i18n) untuk wisatawan domestik & mancanegara",
+            "Merancang & mengoptimalkan tampilan responsif mobile untuk aksesibilitas lintas perangkat",
+            "Melakukan pengujian & bug fixing pada fitur filter pencarian destinasi pariwisata",
+            "Memperbaiki bug inkonsistensi tata letak visual dan responsivitas antarmuka web",
+          ]
+        : [
+            "Implemented multi-language (i18n) localization for domestic & international tourists",
+            "Designed and optimized mobile-responsive layouts for cross-device compatibility",
+            "Fixed and refactored destination search filter features and logic",
+            "Resolved visual display inconsistencies and responsive UI layout bugs",
+          ],
+      platform: "Web Application",
+      bg: "#2563eb",
+      images: [
+        "/images/projects/iudex.png",
+        "/images/projects/iudex_2.webp",
+        "/images/projects/iudex_3.webp",
+      ],
+      link: "#",
+      _dir: "next",
+    },
     {
       name: "RideXP - Arcade Game Project",
       icon: "bi-bicycle",
-      role: isId ? "Manajer Proyek, Pengembang Game, Desainer UI/UX" : "Project Manager, Game Developer, UI/UX Designer",
-      teamInfo: isId ? "Proyek Tim | Jan – Jun 2025" : "Team Project | Jan – Jun 2025",
+      role: isId
+        ? "Manajer Proyek, Pengembang Game, Desainer UI/UX"
+        : "Project Manager, Game Developer, UI/UX Designer",
+      teamInfo: isId
+        ? "Proyek Tim | Jan – Jun 2025"
+        : "Team Project | Jan – Jun 2025",
       tools: "Unity, Figma, ESP32, JSON",
-      overview: isId 
+      overview: isId
         ? "RideXP adalah game balap arkade di mana pemain mengendalikan sepeda dalam game dengan mengayuh sepeda statis fisik yang terhubung via ESP32. Dibangun di Unity, game ini menggabungkan IoT, pengembangan game, dan desain UI/UX."
         : "RideXP is an arcade-style cycling game where players control their in-game bike by pedaling a physical stationary bike connected via ESP32. Built in Unity, the game combines IoT, game development, and UI/UX design.",
-      tasks: isId ? [
-        "Memimpin koordinasi tim dan perencanaan fitur",
-        "Merancang alur UI/UX (menu, HUD, layar hasil) menggunakan Figma",
-        "Membangun sistem papan peringkat lokal menggunakan JSON",
-        "Mengimplementasikan NPC AI berbasis navigasi waypoint",
-        "Merancang lingkungan game, aset visual, serta efek visual (VFX)",
-        "Membuat identitas karya serta materi presentasi untuk pameran",
-      ] : [
-        "Led team coordination and feature planning",
-        "Designed full UI/UX flow (menu, HUD, result screen) using Figma",
-        "Built local leaderboard system using JSON",
-        "Implemented AI NPC with waypoint-based navigation",
-        "Designed game environments, composited visual assets, and created VFX logic",
-        "Created branding assets & presentation deck for public exhibition",
-      ],
+      tasks: isId
+        ? [
+            "Memimpin koordinasi tim dan perencanaan fitur",
+            "Merancang alur UI/UX (menu, HUD, layar hasil) menggunakan Figma",
+            "Membangun sistem papan peringkat lokal menggunakan JSON",
+            "Mengimplementasikan NPC AI berbasis navigasi waypoint",
+            "Merancang lingkungan game, aset visual, serta efek visual (VFX)",
+            "Membuat identitas karya serta materi presentasi untuk pameran",
+          ]
+        : [
+            "Led team coordination and feature planning",
+            "Designed full UI/UX flow (menu, HUD, result screen) using Figma",
+            "Built local leaderboard system using JSON",
+            "Implemented AI NPC with waypoint-based navigation",
+            "Designed game environments, composited visual assets, and created VFX logic",
+            "Created branding assets & presentation deck for public exhibition",
+          ],
       platform: isId ? "Aplikasi Desktop Arkade" : "Arcade Desktop App",
       bg: "#C0392B",
       images: [
@@ -510,23 +818,29 @@ const projects = computed(() => {
     {
       name: "MindEscape – VR Escape Room Game",
       icon: "bi-headset",
-      role: isId ? "Pengembang VR, Desainer Lingkungan" : "VR Developer, Environment Designer",
-      teamInfo: isId ? "Proyek Tim | Jan – Jun 2025" : "Team Project | Jan – Jun 2025",
+      role: isId
+        ? "Pengembang VR, Desainer Lingkungan"
+        : "VR Developer, Environment Designer",
+      teamInfo: isId
+        ? "Proyek Tim | Jan – Jun 2025"
+        : "Team Project | Jan – Jun 2025",
       tools: "Unity, Oculus SDK",
       overview: isId
         ? "MindEscape adalah permaianan VR ruang lolos yang berfokus pada eksplorasi dan interaksi lingkungan. Dibuat menggunakan Unity, proyek ini mensimulasikan pengalaman puzzle penuh menggunakan headset VR."
         : "MindEscape is a virtual reality escape room game focused on exploration and environmental interaction. Built using Unity, the project simulates a full puzzle escape experience using a VR headset.",
-      tasks: isId ? [
-        "Merancang tata letak lingkungan 3D dan penempatan objek",
-        "Menangani sistem kamera VR dan transisi adegan",
-        "Menerapkan mekanisme interaksi alat (mengambil objek, pemicu teka-teki)",
-        "Mengoptimalkan pencahayaan dan performa untuk kelancaran",
-      ] : [
-        "Designed 3D environment layout and object placement",
-        "Handled VR camera systems and scene transitions",
-        "Implemented user interaction mechanics (grabbing, puzzle triggers)",
-        "Optimized lighting and performance for smooth VR experience",
-      ],
+      tasks: isId
+        ? [
+            "Merancang tata letak lingkungan 3D dan penempatan objek",
+            "Menangani sistem kamera VR dan transisi adegan",
+            "Menerapkan mekanisme interaksi alat (mengambil objek, pemicu teka-teki)",
+            "Mengoptimalkan pencahayaan dan performa untuk kelancaran",
+          ]
+        : [
+            "Designed 3D environment layout and object placement",
+            "Handled VR camera systems and scene transitions",
+            "Implemented user interaction mechanics (grabbing, puzzle triggers)",
+            "Optimized lighting and performance for smooth VR experience",
+          ],
       platform: isId ? "Aplikasi Desktop VR" : "VR Desktop App",
       bg: "#4A1D8E",
       images: [
@@ -540,23 +854,29 @@ const projects = computed(() => {
     {
       name: "MathRift – Educational 2D Platformer",
       icon: "bi-calculator",
-      role: isId ? "Pengembang Game, Desainer UI/UX" : "Game Developer, UI/UX Designer",
-      teamInfo: isId ? "Proyek Tim | Agt – Des 2024" : "Team Project | Aug – Dec 2024",
+      role: isId
+        ? "Pengembang Game, Desainer UI/UX"
+        : "Game Developer, UI/UX Designer",
+      teamInfo: isId
+        ? "Proyek Tim | Agt – Des 2024"
+        : "Team Project | Aug – Dec 2024",
       tools: "Unity, Figma",
       overview: isId
         ? "MathRift adalah game platform 2D edukasi yang dirancang agar belajar matematika jadi menyenangkan lewat gameplay interaktif, teka teki, dan level yang menantang secara bertahap."
         : "MathRift is a 2D educational platformer game designed to make learning math fun through interactive gameplay, puzzles, and progressive difficulty levels.",
-      tasks: isId ? [
-        "Mengembangkan mekanisme inti dan pengontrol pemain",
-        "Merancang wireframe UI/UX hingga hasil akhir dalam Figma",
-        "Mengintegrasikan progres level dan sistem penilaian",
-        "Membuat aset permainan dan animasi sprite",
-      ] : [
-        "Developed core game mechanics and player controller",
-        "Designed UI/UX wireframes and final screens in Figma",
-        "Implemented level progression and scoring system",
-        "Created game assets and sprite animations",
-      ],
+      tasks: isId
+        ? [
+            "Mengembangkan mekanisme inti dan pengontrol pemain",
+            "Merancang wireframe UI/UX hingga hasil akhir dalam Figma",
+            "Mengintegrasikan progres level dan sistem penilaian",
+            "Membuat aset permainan dan animasi sprite",
+          ]
+        : [
+            "Developed core game mechanics and player controller",
+            "Designed UI/UX wireframes and final screens in Figma",
+            "Implemented level progression and scoring system",
+            "Created game assets and sprite animations",
+          ],
       platform: "Desktop Game",
       bg: "#1a3a4a",
       images: [
@@ -570,23 +890,29 @@ const projects = computed(() => {
     {
       name: "Stellar Adventures – AR Game Project",
       icon: "bi-stars",
-      role: isId ? "Pengembang AR, Desainer Lingkungan" : "AR Developer, Environment Designer",
-      teamInfo: isId ? "Proyek Tim | Agt – Des 2024" : "Team Project | Aug – Dec 2024",
+      role: isId
+        ? "Pengembang AR, Desainer Lingkungan"
+        : "AR Developer, Environment Designer",
+      teamInfo: isId
+        ? "Proyek Tim | Agt – Des 2024"
+        : "Team Project | Aug – Dec 2024",
       tools: "Unity, AR Foundation, Blender",
       overview: isId
         ? "Stellar Adventures adalah game AR yang menggabungkan dunia maya dan nyata, memungkinkan pemain menavigasi ruang bertema luar angkasa melalui kamera."
         : "Stellar Adventures is an augmented reality game that blends the physical and digital world, allowing players to explore space-themed environments through their device camera.",
-      tasks: isId ? [
-        "Mengembangkan pendeteksi bidang datar dan kemunculan objek",
-        "Merancang tekstur dan model lingkungan 3D",
-        "Menerapkan mekanika permainan langsung di ruang AR",
-        "Mengoptimalkan AR untuk perangkat mobile",
-      ] : [
-        "Developed AR plane detection and object placement",
-        "Designed 3D environment models and textures",
-        "Implemented interactive game mechanics in AR space",
-        "Optimized performance for mobile AR devices",
-      ],
+      tasks: isId
+        ? [
+            "Mengembangkan pendeteksi bidang datar dan kemunculan objek",
+            "Merancang tekstur dan model lingkungan 3D",
+            "Menerapkan mekanika permainan langsung di ruang AR",
+            "Mengoptimalkan AR untuk perangkat mobile",
+          ]
+        : [
+            "Developed AR plane detection and object placement",
+            "Designed 3D environment models and textures",
+            "Implemented interactive game mechanics in AR space",
+            "Optimized performance for mobile AR devices",
+          ],
       platform: isId ? "Aplikasi AR Mobile" : "AR Mobile App",
       bg: "#1a2a3a",
       images: [
@@ -601,22 +927,26 @@ const projects = computed(() => {
       name: "U-Asprak – Mobile App Design",
       icon: "bi-people",
       role: "UI/UX Designer",
-      teamInfo: isId ? "Studi Kasus Tim | Jan – Jun 2024" : "Team Project | Jan – Jun 2024",
+      teamInfo: isId
+        ? "Studi Kasus Tim | Jan – Jun 2024"
+        : "Team Project | Jan – Jun 2024",
       tools: "Figma, Adobe XD",
       overview: isId
         ? "U-Asprak merupakan desain aplikasi seluler untuk memperbaiki proses manajemen asisten praktikum, mencakup penjadwalan, nilai, serta media komunikasi."
         : "U-Asprak is a mobile application designed to streamline the teaching assistant management process, including scheduling, grading, and communication between lecturers and assistants.",
-      tasks: isId ? [
-        "Melakukan riset terhadap pengguna",
-        "Merancang alur wireframe ber-resolusi tinggi",
-        "Membangun protipe interaktif untuk dipakai dalam user testing",
-        "Mendefinisikan bahasa desain dan library komponen",
-      ] : [
-        "Conducted user research and created user personas",
-        "Designed wireframes and high-fidelity prototypes",
-        "Built interactive prototype for usability testing",
-        "Created design system and component library",
-      ],
+      tasks: isId
+        ? [
+            "Melakukan riset terhadap pengguna",
+            "Merancang alur wireframe ber-resolusi tinggi",
+            "Membangun protipe interaktif untuk dipakai dalam user testing",
+            "Mendefinisikan bahasa desain dan library komponen",
+          ]
+        : [
+            "Conducted user research and created user personas",
+            "Designed wireframes and high-fidelity prototypes",
+            "Built interactive prototype for usability testing",
+            "Created design system and component library",
+          ],
       platform: isId ? "Desain Aplikasi Mobile" : "Mobile App Design",
       bg: "#5b6abf",
       images: [
@@ -631,22 +961,26 @@ const projects = computed(() => {
       name: "empEDU – Mobile App Design",
       icon: "bi-book",
       role: "UI/UX Designer",
-      teamInfo: isId ? "Proyek Tim | Agt – Des 2023" : "Team Project | Aug – Dec 2023",
+      teamInfo: isId
+        ? "Proyek Tim | Agt – Des 2023"
+        : "Team Project | Aug – Dec 2023",
       tools: "Figma",
       overview: isId
         ? "empEDU merupakan desain aplikasi edukasi yang diciptakan agar siswa lebih leluasa belajar dan memeriksa kemajuan akademik dengan peranti yang interaktif."
         : "empEDU is an educational mobile app designed to empower students with accessible learning materials, progress tracking, and interactive study tools.",
-      tasks: isId ? [
-        "Merancang alur pengguna dari awal hingga akhir",
-        "Merancang mockup resolusi tinggi di semua antarmuka layar",
-        "Mengembangkan prototipe untuk pengujian interaksi",
-        "Revisi hasil riset dan percobaan",
-      ] : [
-        "Designed end-to-end user flow and information architecture",
-        "Created high-fidelity UI mockups for all screens",
-        "Developed interactive prototypes for user testing",
-        "Iterated designs based on usability feedback",
-      ],
+      tasks: isId
+        ? [
+            "Merancang alur pengguna dari awal hingga akhir",
+            "Merancang mockup resolusi tinggi di semua antarmuka layar",
+            "Mengembangkan prototipe untuk pengujian interaksi",
+            "Revisi hasil riset dan percobaan",
+          ]
+        : [
+            "Designed end-to-end user flow and information architecture",
+            "Created high-fidelity UI mockups for all screens",
+            "Developed interactive prototypes for user testing",
+            "Iterated designs based on usability feedback",
+          ],
       platform: isId ? "Desain Aplikasi Mobile" : "Mobile App Design",
       bg: "#2a4a3a",
       images: [
@@ -660,23 +994,29 @@ const projects = computed(() => {
     {
       name: "IUDEX – Team Portfolio Web Design",
       icon: "bi-display",
-      role: isId ? "Desainer UI/UX, Pengembang Frontend" : "UI/UX Designer, Frontend Developer",
-      teamInfo: isId ? "Proyek Tim | Jan – Jun 2024" : "Team Project | Jan – Jun 2024",
+      role: isId
+        ? "Desainer UI/UX, Pengembang Frontend"
+        : "UI/UX Designer, Frontend Developer",
+      teamInfo: isId
+        ? "Proyek Tim | Jan – Jun 2024"
+        : "Team Project | Jan – Jun 2024",
       tools: "Figma, HTML, CSS, JavaScript",
       overview: isId
         ? "IUDEX adalah situs web portofolio tim yang menampilkan kapabilitas, identitas visual sebuah tim pada desain tata letak kekinian bercorak profesional."
         : "IUDEX is a team portfolio website designed to showcase the collective works and capabilities of a creative team, featuring a modern and professional layout.",
-      tasks: isId ? [
-        "Merancang prototipe tata letak lewat Figma yang disesuaikan dalam web",
-        "Mengimplementasikan frontend menggunakan susunan HTML, CSS, JavaScript",
-        "Memberikan pemanis tampilan transisi scrolling interaktif yang nyaman",
-        "Menguji fungsional dan tingkat ketanggapsegeraannya",
-      ] : [
-        "Designed responsive web layout using Figma",
-        "Developed frontend with HTML, CSS, and JavaScript",
-        "Implemented smooth scroll animations and transitions",
-        "Ensured cross-browser compatibility and responsiveness",
-      ],
+      tasks: isId
+        ? [
+            "Merancang prototipe tata letak lewat Figma yang disesuaikan dalam web",
+            "Mengimplementasikan frontend menggunakan susunan HTML, CSS, JavaScript",
+            "Memberikan pemanis tampilan transisi scrolling interaktif yang nyaman",
+            "Menguji fungsional dan tingkat ketanggapsegeraannya",
+          ]
+        : [
+            "Designed responsive web layout using Figma",
+            "Developed frontend with HTML, CSS, and JavaScript",
+            "Implemented smooth scroll animations and transitions",
+            "Ensured cross-browser compatibility and responsiveness",
+          ],
       platform: "Web Application",
       bg: "#6a5acd",
       images: [
@@ -690,23 +1030,27 @@ const projects = computed(() => {
     {
       name: "Arch – Personal Portfolio Web Design",
       icon: "bi-laptop",
-      role: isId ? "Desainer UI/UX, Pengembang Frontend" : "UI/UX Designer, Frontend Developer",
+      role: isId
+        ? "Desainer UI/UX, Pengembang Frontend"
+        : "UI/UX Designer, Frontend Developer",
       teamInfo: isId ? "Proyek Pribadi | 2024" : "Personal Project | 2024",
       tools: "Figma, Vue.js, TailwindCSS",
       overview: isId
         ? "Arch adalah nama portofolio pengutamaan desain nan apik, dan ditunjang portofolio perupa berbasis laman untuk disajikan memperindah desain serta kebolehan penulisan."
         : "Arch is a personal portfolio web design project focused on creating a visually stunning and interactive personal website to showcase design and development work.",
-      tasks: isId ? [
-        "Merancang seluruh tata letak web dan identitas merek portofolionya",
-        "Menulis koding dan menyesuaikan fronted website responsif",
-        "Memasukkan seluruh gaya animatif mikro interaksi nan halus",
-        "Mengoptimalkan kemudahan temu sistem cari (SEO)",
-      ] : [
-        "Designed complete portfolio layout and visual identity",
-        "Built responsive frontend with modern web technologies",
-        "Integrated smooth animations and micro-interactions",
-        "Optimized for performance and SEO",
-      ],
+      tasks: isId
+        ? [
+            "Merancang seluruh tata letak web dan identitas merek portofolionya",
+            "Menulis koding dan menyesuaikan fronted website responsif",
+            "Memasukkan seluruh gaya animatif mikro interaksi nan halus",
+            "Mengoptimalkan kemudahan temu sistem cari (SEO)",
+          ]
+        : [
+            "Designed complete portfolio layout and visual identity",
+            "Built responsive frontend with modern web technologies",
+            "Integrated smooth animations and micro-interactions",
+            "Optimized for performance and SEO",
+          ],
       platform: "Web Application",
       bg: "#7c3aed",
       images: [
@@ -726,17 +1070,19 @@ const projects = computed(() => {
       overview: isId
         ? "Merch merupakan hasil komoditas rancangan pada barang berupa kaos sablon, kemasan, atau stiker acara dan materi promosi guna pemanfaatan tertentu pemasaran yang menarik."
         : "Merch is a merchandise design project creating branded apparel and accessories for an event, including t-shirts, tote bags, and promotional materials.",
-      tasks: isId ? [
-        "Berkreasi membuat susunan ilustrasi grafis",
-        "Merilis format sesuai patokan industri pencetakan massal",
-        "Mengembangkan kemewahan branding dari keseluruhan barang",
-        "Bergabung berkongsi dalam hal kerja dan standar produksinya",
-      ] : [
-        "Created original merchandise designs and illustrations",
-        "Prepared print-ready artwork with proper specifications",
-        "Developed cohesive visual branding across all merchandise",
-        "Collaborated with manufacturing for production quality",
-      ],
+      tasks: isId
+        ? [
+            "Berkreasi membuat susunan ilustrasi grafis",
+            "Merilis format sesuai patokan industri pencetakan massal",
+            "Mengembangkan kemewahan branding dari keseluruhan barang",
+            "Bergabung berkongsi dalam hal kerja dan standar produksinya",
+          ]
+        : [
+            "Created original merchandise designs and illustrations",
+            "Prepared print-ready artwork with proper specifications",
+            "Developed cohesive visual branding across all merchandise",
+            "Collaborated with manufacturing for production quality",
+          ],
       platform: "Graphic Design",
       bg: "#8b5cf6",
       images: [
@@ -772,8 +1118,13 @@ const projects = computed(() => {
 }
 
 @keyframes shimmer {
-  0%, 100% { background-position: 200% 0; }
-  50% { background-position: -200% 0; }
+  0%,
+  100% {
+    background-position: 200% 0;
+  }
+  50% {
+    background-position: -200% 0;
+  }
 }
 
 /* === Project Image === */
@@ -798,13 +1149,18 @@ const projects = computed(() => {
 }
 
 .project-item::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 10%;
   width: 80%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.2), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(124, 58, 237, 0.2),
+    transparent
+  );
 }
 
 .project-item:last-child::after {
@@ -813,7 +1169,9 @@ const projects = computed(() => {
 
 /* === Task item hover === */
 .task-item {
-  transition: transform 0.25s ease, padding-left 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    padding-left 0.25s ease;
 }
 
 .task-item:hover {
@@ -828,10 +1186,15 @@ const projects = computed(() => {
 }
 
 .view-work-btn::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.1), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(124, 58, 237, 0.1),
+    transparent
+  );
   transform: translateX(-100%);
   transition: transform 0.5s ease;
 }

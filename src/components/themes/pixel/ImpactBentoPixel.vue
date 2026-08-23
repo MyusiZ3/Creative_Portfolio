@@ -112,7 +112,7 @@
           </div>
         </div>
 
-        <!-- Box 3: Salmon Pink - 100% Satisfaction -->
+        <!-- Box 3: Salmon Pink - Teaching Assistant / 5 Lab Courses -->
         <div
           v-motion
           :initial="{ opacity: 0, scale: 0.9, y: 30 }"
@@ -128,23 +128,23 @@
             <span
               class="px-2.5 py-1 bg-black text-[#ff6b81] text-[10px] font-extrabold uppercase tracking-wider font-silkscreen border border-black"
             >
-              QUALITY
+              TEACHING
             </span>
-            <i class="bi bi-shield-check text-3xl text-black"></i>
+            <i class="bi bi-mortarboard-fill text-3xl text-black"></i>
           </div>
           <div>
             <div
               class="text-3xl sm:text-5xl font-black tracking-tighter leading-none mb-2 font-pixel whitespace-nowrap"
             >
-              100%
+              100+
             </div>
             <div
               class="text-xs font-extrabold uppercase tracking-wide opacity-90 font-mono"
             >
               {{
                 isId
-                  ? "Komitmen & Kepuasan Klien"
-                  : "Client & Project Satisfaction"
+                  ? "Mahasiswa Diajar (5 Mata Kuliah)"
+                  : "Students Mentored (5 Lab Courses)"
               }}
             </div>
           </div>
