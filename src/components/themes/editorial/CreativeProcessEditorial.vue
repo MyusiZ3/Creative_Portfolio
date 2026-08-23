@@ -1,7 +1,7 @@
 <template>
   <section
     id="process"
-    class="bg-white pt-14 pb-36 lg:pt-20 lg:pb-48 px-6 lg:px-16 xl:px-40 relative overflow-hidden -mb-1"
+    class="bg-[#F8FAFC] pt-16 pb-36 lg:pt-24 lg:pb-48 px-6 lg:px-12 xl:px-32 relative overflow-hidden -mb-1"
   >
     <!-- Top Right Accent Shape (accent_3.png) -->
     <img
@@ -9,7 +9,7 @@
       alt="Accent Shape"
       loading="lazy"
       decoding="async"
-      class="absolute top-0 right-0 w-24 md:w-40 lg:w-56 xl:w-180 pointer-events-none transform z-0"
+      class="absolute top-0 right-0 w-24 md:w-40 lg:w-56 xl:w-180 pointer-events-none transform z-0 opacity-40"
     />
     <!-- Bottom Left Accent Shape (accent_3.png) -->
     <img
@@ -17,7 +17,7 @@
       alt="Accent Shape"
       loading="lazy"
       decoding="async"
-      class="absolute -bottom-1 left-0 w-32 md:w-52 lg:w-72 xl:w-200 pointer-events-none transform rotate-180 z-0"
+      class="absolute -bottom-1 left-0 w-32 md:w-52 lg:w-72 xl:w-200 pointer-events-none transform rotate-180 z-0 opacity-40"
     />
 
     <div class="container mx-auto relative z-10">
@@ -26,12 +26,12 @@
         <h2
           v-motion
           :initial="{ opacity: 0, y: 30 }"
-          :visible="{
+          :visible-once="{
             opacity: 1,
             y: 0,
             transition: { duration: 700, delay: 100 },
           }"
-          class="text-3xl lg:text-[44px] font-extrabold font-['Poppins'] text-[#1a1a2e] leading-tight mb-5"
+          class="text-3xl lg:text-[44px] font-extrabold font-['Poppins'] text-[#1e293b] leading-tight mb-5"
         >
           {{
             lang === "ID"
@@ -43,12 +43,12 @@
         <p
           v-motion
           :initial="{ opacity: 0, y: 30 }"
-          :visible="{
+          :visible-once="{
             opacity: 1,
             y: 0,
             transition: { duration: 700, delay: 200 },
           }"
-          class="text-[#555] font-['Roboto'] text-sm lg:text-[16px] leading-relaxed max-w-2xl"
+          class="text-[#475569] font-['Roboto'] text-sm lg:text-[16px] leading-relaxed max-w-2xl"
         >
           {{
             lang === "ID"
@@ -58,75 +58,376 @@
         </p>
       </div>
 
-      <!-- Process Steps Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-        <div
-          v-for="(step, index) in steps"
-          :key="step.number"
-          v-motion
-          :initial="{ opacity: 0, y: 40 }"
-          :visible="{
-            opacity: 1,
-            y: 0,
-            transition: {
-              duration: 600,
-              delay: index * 120,
-              ease: 'easeOut',
-            },
-          }"
-          class="process-card group bg-gray-50/70 hover:bg-white border border-gray-200/80 hover:border-violet-500/40 rounded-3xl p-8 lg:p-10 transition-all duration-500 hover:shadow-xl hover:shadow-violet-500/5 relative overflow-hidden flex flex-col justify-between"
-        >
-          <!-- Top Row: Number & Highlight Tag -->
-          <div>
-            <div class="flex items-center justify-between mb-6">
-              <span
-                class="font-mono text-3xl lg:text-4xl font-extrabold text-violet-600/30 group-hover:text-violet-600 transition-colors duration-500"
-              >
-                {{ step.number }}
-              </span>
-              <span
-                class="text-[10px] lg:text-xs font-mono font-semibold uppercase tracking-wider px-3 py-1 rounded-lg bg-violet-100/70 text-violet-700 group-hover:bg-violet-600 group-hover:text-white transition-all duration-300"
-              >
-                {{ step.tag }}
+      <!-- Node Graph Layout Container -->
+      <div class="w-full overflow-x-auto pb-6 scrollbar-thin">
+        <div class="min-w-[1000px] lg:min-w-0 flex lg:grid lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] gap-0 items-stretch">
+          
+          <!-- LANE 1: DESIGN & SPEC -->
+          <div class="flex-1 bg-slate-50/40 rounded-[24px] p-5 border border-slate-200/50 flex flex-col gap-6">
+            <div class="flex items-center gap-2 px-2 py-1 mb-2">
+              <i class="bi bi-bezier2 text-violet-500 text-sm"></i>
+              <span class="text-[11px] font-extrabold tracking-wider font-['Poppins'] text-slate-500 uppercase">
+                {{ lang === 'ID' ? '01. SPESIFIKASI & RISET' : '01. SPEC & RESEARCH' }}
               </span>
             </div>
 
-            <!-- Title & Subtitle -->
-            <h3
-              class="text-xl lg:text-2xl font-bold font-['Poppins'] text-[#1a1a2e] mb-2 group-hover:text-violet-700 transition-colors duration-300"
+            <!-- Card 1 -->
+            <div 
+              class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs hover:border-violet-400 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 relative group cursor-pointer"
+              @mouseenter="hoveredLink = 'link1'"
+              @mouseleave="hoveredLink = null"
             >
-              {{ step.title }}
-            </h3>
+              <!-- Absolute top tag -->
+              <span class="absolute -top-2.5 left-4 px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-sky-50 text-sky-600 border border-sky-100 shadow-2xs">
+                {{ lang === 'ID' ? 'Riset' : 'Research' }}
+              </span>
+              <div class="flex justify-between items-start mt-1">
+                <div>
+                  <h4 class="font-bold text-slate-800 text-sm font-['Poppins']">
+                    {{ lang === 'ID' ? 'Wireframe & Alur UX' : 'UX Wireframe & Flows' }}
+                  </h4>
+                  <p class="text-[10px] font-mono text-slate-400">ux.figma.layout_01</p>
+                </div>
+                <i class="bi bi-chevron-down text-slate-400 text-xs"></i>
+              </div>
 
-            <p class="text-xs font-mono font-medium text-violet-500 mb-4">
-              {{ step.subtitle }}
-            </p>
+              <!-- Metadata Table -->
+              <div class="space-y-1.5 text-[11px] font-mono text-slate-600 mt-4 pt-3 border-t border-slate-100">
+                <div class="flex justify-between">
+                  <span class="text-slate-400">Status</span>
+                  <span class="font-bold text-emerald-600">{{ lang === 'ID' ? 'Selesai' : 'Done' }}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-slate-400">Method</span>
+                  <span class="text-slate-700">User Interviews</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-slate-400">Output</span>
+                  <span class="text-slate-700">Journey Map</span>
+                </div>
+              </div>
 
-            <!-- Description -->
-            <p
-              class="text-gray-600 font-['Roboto'] text-sm leading-relaxed mb-8"
+              <!-- Mini Progress Bar Visual -->
+              <div class="mt-4 p-2 bg-slate-50 rounded-lg border border-slate-100/80">
+                <div class="space-y-2">
+                  <div>
+                    <div class="flex justify-between text-[9px] font-mono text-slate-400 mb-0.5">
+                      <span>User Flow</span>
+                      <span>85%</span>
+                    </div>
+                    <div class="h-1 bg-slate-200 rounded-full overflow-hidden">
+                      <div class="h-full bg-sky-500 rounded-full" style="width: 85%"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex justify-between text-[9px] font-mono text-slate-400 mb-0.5">
+                      <span>Persona Mapping</span>
+                      <span>90%</span>
+                    </div>
+                    <div class="h-1 bg-slate-200 rounded-full overflow-hidden">
+                      <div class="h-full bg-sky-400 rounded-full" style="width: 90%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div 
+              class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs hover:border-violet-400 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 relative group cursor-pointer"
+              @mouseenter="hoveredLink = 'link1'"
+              @mouseleave="hoveredLink = null"
             >
-              {{ step.description }}
-            </p>
+              <span class="absolute -top-2.5 left-4 px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-amber-50 text-amber-600 border border-amber-100 shadow-2xs">
+                UI Design
+              </span>
+              <div class="flex justify-between items-start mt-1">
+                <div>
+                  <h4 class="font-bold text-slate-800 text-sm font-['Poppins']">
+                    {{ lang === 'ID' ? 'Spesifikasi Sistem Visual' : 'Visual System Specs' }}
+                  </h4>
+                  <p class="text-[10px] font-mono text-slate-400">ui.design_system.spec</p>
+                </div>
+                <i class="bi bi-chevron-up text-slate-400 text-xs"></i>
+              </div>
+
+              <div class="space-y-1.5 text-[11px] font-mono text-slate-600 mt-4 pt-3 border-t border-slate-100">
+                <div class="flex justify-between">
+                  <span class="text-slate-400">Status</span>
+                  <span class="font-bold text-emerald-600">{{ lang === 'ID' ? 'Selesai' : 'Done' }}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-slate-400">Typography</span>
+                  <span class="text-slate-700">Poppins & Roboto</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-slate-400">Colors</span>
+                  <span class="text-slate-700">Minimalist HSL</span>
+                </div>
+              </div>
+
+              <!-- SVG Line Chart Visual -->
+              <div class="mt-4">
+                <span class="text-[9px] font-mono text-slate-400 block mb-1">Consistency Index</span>
+                <svg class="w-full h-10 bg-slate-50 rounded-lg p-1 border border-slate-100" viewBox="0 0 100 30" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="chart-grad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.2"/>
+                      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M0,25 Q15,5 35,18 T75,8 T100,15" fill="none" stroke="#f59e0b" stroke-width="1.5" />
+                  <path d="M0,25 Q15,5 35,18 T75,8 T100,15 L100,30 L0,30 Z" fill="url(#chart-grad)" />
+                </svg>
+              </div>
+            </div>
           </div>
 
-          <!-- Bottom Row: Tools Badges -->
-          <div
-            class="pt-6 border-t border-gray-200/60 flex flex-wrap gap-2 items-center"
-          >
-            <span
-              class="text-[10px] font-mono text-gray-400 uppercase tracking-wider mr-2 font-semibold"
+          <!-- CONNECTOR 1 -->
+          <div class="w-16 flex items-center justify-center relative">
+            <svg 
+              class="absolute inset-0 w-full h-full transition-colors duration-300" 
+              :class="hoveredLink === 'link1' ? 'text-violet-500' : 'text-slate-200'"
+              viewBox="0 0 100 100" 
+              preserveAspectRatio="none"
             >
-              {{ lang === "ID" ? "Tools & Focus:" : "Tools & Focus:" }}
-            </span>
-            <span
-              v-for="tool in step.tools"
-              :key="tool"
-              class="px-2.5 py-1 rounded-md text-[11px] font-medium font-['Poppins'] bg-white border border-gray-200 text-gray-700 group-hover:border-violet-300 group-hover:text-violet-900 transition-colors duration-300"
+              <!-- Branching merge connector from lane 1 (two outputs) to lane 2 (one input) -->
+              <path d="M 0 25 C 50 25, 50 50, 100 50" fill="none" stroke="currentColor" stroke-width="2" />
+              <path d="M 0 75 C 50 75, 50 50, 100 50" fill="none" stroke="currentColor" stroke-width="2" />
+            </svg>
+            <div 
+              class="absolute z-20 font-mono text-[9px] font-bold px-2 py-0.5 rounded-md shadow-xs transition-colors duration-300 uppercase tracking-tighter"
+              :class="hoveredLink === 'link1' ? 'bg-violet-600 text-white' : 'bg-slate-900 text-white/90'"
             >
-              {{ tool }}
-            </span>
+              Link 1
+            </div>
           </div>
+
+          <!-- LANE 2: INTERACTIVE DEV -->
+          <div class="flex-1 bg-slate-50/40 rounded-[24px] p-5 border border-slate-200/50 flex flex-col justify-center gap-6">
+            <div class="flex items-center gap-2 px-2 py-1 mb-2">
+              <i class="bi bi-controller text-violet-500 text-sm"></i>
+              <span class="text-[11px] font-extrabold tracking-wider font-['Poppins'] text-slate-500 uppercase">
+                {{ lang === 'ID' ? '02. INTERAKSI & AR' : '02. INTERACTION & AR' }}
+              </span>
+            </div>
+
+            <!-- Card 3 -->
+            <div 
+              class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs hover:border-violet-400 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 relative group cursor-pointer"
+              @mouseenter="hoveredLink = 'link2'"
+              @mouseleave="hoveredLink = null"
+            >
+              <span class="absolute -top-2.5 left-4 px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-violet-50 text-violet-600 border border-violet-100 shadow-2xs">
+                Unity Engine
+              </span>
+              <div class="flex justify-between items-start mt-1">
+                <div>
+                  <h4 class="font-bold text-slate-800 text-sm font-['Poppins']">
+                    {{ lang === 'ID' ? 'Prototipe AR & Game' : 'AR & Engine Prototype' }}
+                  </h4>
+                  <p class="text-[10px] font-mono text-slate-400">dev.unity.gameplay_v2</p>
+                </div>
+                <i class="bi bi-chevron-down text-slate-400 text-xs"></i>
+              </div>
+
+              <div class="space-y-1.5 text-[11px] font-mono text-slate-600 mt-4 pt-3 border-t border-slate-100">
+                <div class="flex justify-between">
+                  <span class="text-slate-400">Status</span>
+                  <span class="font-bold text-amber-600">{{ lang === 'ID' ? 'Aktif' : 'Active' }}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-slate-400">Language</span>
+                  <span class="text-slate-700">C# Scripting</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-slate-400">AR target</span>
+                  <span class="text-slate-700">Vuforia Image Target</span>
+                </div>
+              </div>
+
+              <!-- Framerate Curve Visual -->
+              <div class="mt-4">
+                <div class="flex justify-between items-center mb-1">
+                  <span class="text-[9px] font-mono text-slate-400">FPS Stability</span>
+                  <span class="text-[9px] font-mono text-emerald-600 font-bold">60.0 FPS</span>
+                </div>
+                <svg class="w-full h-10 bg-slate-50 rounded-lg p-1 border border-slate-100" viewBox="0 0 100 30" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="unity-grad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.2"/>
+                      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M0,15 L20,15 L40,12 L60,18 L80,10 L100,10" fill="none" stroke="#8B5CF6" stroke-width="1.5" />
+                  <path d="M0,15 L20,15 L40,12 L60,18 L80,10 L100,10 L100,30 L0,30 Z" fill="url(#unity-grad)" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- CONNECTOR 2 -->
+          <div class="w-16 flex items-center justify-center relative">
+            <svg 
+              class="absolute inset-0 w-full h-full transition-colors duration-300" 
+              :class="hoveredLink === 'link2' ? 'text-violet-500' : 'text-slate-200'"
+              viewBox="0 0 100 100" 
+              preserveAspectRatio="none"
+            >
+              <!-- Straight line connector -->
+              <path d="M 0 50 L 100 50" fill="none" stroke="currentColor" stroke-width="2" />
+            </svg>
+            <div 
+              class="absolute z-20 font-mono text-[9px] font-bold px-2 py-0.5 rounded-md shadow-xs transition-colors duration-300 uppercase tracking-tighter"
+              :class="hoveredLink === 'link2' ? 'bg-violet-600 text-white' : 'bg-slate-900 text-white/90'"
+            >
+              Link 2
+            </div>
+          </div>
+
+          <!-- LANE 3: FULLSTACK PIPELINE -->
+          <div class="flex-1 bg-slate-50/40 rounded-[24px] p-5 border border-slate-200/50 flex flex-col justify-center gap-6">
+            <div class="flex items-center gap-2 px-2 py-1 mb-2">
+              <i class="bi bi-globe text-violet-500 text-sm"></i>
+              <span class="text-[11px] font-extrabold tracking-wider font-['Poppins'] text-slate-500 uppercase">
+                {{ lang === 'ID' ? '03. PIPELINE FULLSTACK' : '03. FULLSTACK PIPELINE' }}
+              </span>
+            </div>
+
+            <!-- Card 4 -->
+            <div 
+              class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs hover:border-violet-400 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 relative group cursor-pointer"
+              @mouseenter="hoveredLink = 'link4'"
+              @mouseleave="hoveredLink = null"
+            >
+              <span class="absolute -top-2.5 left-4 px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-600 border border-emerald-100 shadow-2xs">
+                Vue / Supabase
+              </span>
+              <div class="flex justify-between items-start mt-1">
+                <div>
+                  <h4 class="font-bold text-slate-800 text-sm font-['Poppins']">
+                    {{ lang === 'ID' ? 'Aplikasi Vue 3 & CMS Web' : 'Vue 3 App & Web CMS' }}
+                  </h4>
+                  <p class="text-[10px] font-mono text-slate-400">web.application.core</p>
+                </div>
+                <i class="bi bi-chevron-down text-slate-400 text-xs"></i>
+              </div>
+
+              <div class="space-y-1.5 text-[11px] font-mono text-slate-600 mt-4 pt-3 border-t border-slate-100">
+                <div class="flex justify-between">
+                  <span class="text-slate-400">Status</span>
+                  <span class="font-bold text-emerald-600">{{ lang === 'ID' ? 'Sukses' : 'Success' }}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-slate-400">Bundler</span>
+                  <span class="text-slate-700">Vite + Vanilla CSS</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-slate-400">Database</span>
+                  <span class="text-slate-700">Supabase API</span>
+                </div>
+              </div>
+
+              <!-- Database Response Metrics (Progress bars) -->
+              <div class="mt-4 p-2 bg-slate-50 rounded-lg border border-slate-100">
+                <div class="space-y-1.5">
+                  <div class="flex items-center justify-between gap-2 text-[9px] font-mono text-slate-500">
+                    <span class="w-12 truncate">Query Time</span>
+                    <div class="h-1 flex-1 bg-slate-200 rounded-full overflow-hidden">
+                      <div class="h-full bg-emerald-500" style="width: 25%"></div>
+                    </div>
+                    <span>42ms</span>
+                  </div>
+                  <div class="flex items-center justify-between gap-2 text-[9px] font-mono text-slate-500">
+                    <span class="w-12 truncate">Auth Load</span>
+                    <div class="h-1 flex-1 bg-slate-200 rounded-full overflow-hidden">
+                      <div class="h-full bg-emerald-400" style="width: 15%"></div>
+                    </div>
+                    <span>18ms</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CONNECTOR 3 -->
+          <div class="w-16 flex items-center justify-center relative">
+            <svg 
+              class="absolute inset-0 w-full h-full transition-colors duration-300" 
+              :class="hoveredLink === 'link4' ? 'text-violet-500' : 'text-slate-200'"
+              viewBox="0 0 100 100" 
+              preserveAspectRatio="none"
+            >
+              <path d="M 0 50 L 100 50" fill="none" stroke="currentColor" stroke-width="2" />
+            </svg>
+            <div 
+              class="absolute z-20 font-mono text-[9px] font-bold px-2 py-0.5 rounded-md shadow-xs transition-colors duration-300 uppercase tracking-tighter"
+              :class="hoveredLink === 'link4' ? 'bg-violet-600 text-white' : 'bg-slate-900 text-white/90'"
+            >
+              Link 4
+            </div>
+          </div>
+
+          <!-- LANE 4: QUALITY & COMPLIANCE -->
+          <div class="flex-1 bg-slate-50/40 rounded-[24px] p-5 border border-slate-200/50 flex flex-col justify-center gap-6">
+            <div class="flex items-center gap-2 px-2 py-1 mb-2">
+              <i class="bi bi-patch-check text-violet-500 text-sm"></i>
+              <span class="text-[11px] font-extrabold tracking-wider font-['Poppins'] text-slate-500 uppercase">
+                {{ lang === 'ID' ? '04. RILIS & KUALITAS' : '04. RELEASE & QUALITY' }}
+              </span>
+            </div>
+
+            <!-- Card 5 -->
+            <div 
+              class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs hover:border-violet-400 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 relative group cursor-pointer"
+              @mouseenter="hoveredLink = 'link4'"
+              @mouseleave="hoveredLink = null"
+            >
+              <span class="absolute -top-2.5 left-4 px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-rose-50 text-rose-600 border border-rose-100 shadow-2xs">
+                Launch
+              </span>
+              <div class="flex justify-between items-start mt-1">
+                <div>
+                  <h4 class="font-bold text-slate-800 text-sm font-['Poppins']">
+                    {{ lang === 'ID' ? 'Optimasi & Lisensi HKI' : 'Optimization & HKI License' }}
+                  </h4>
+                  <p class="text-[10px] font-mono text-slate-400">build.production.hki</p>
+                </div>
+                <i class="bi bi-chevron-down text-slate-400 text-xs"></i>
+              </div>
+
+              <div class="space-y-1.5 text-[11px] font-mono text-slate-600 mt-4 pt-3 border-t border-slate-100">
+                <div class="flex justify-between">
+                  <span class="text-slate-400">Status</span>
+                  <span class="font-bold text-emerald-600">{{ lang === 'ID' ? 'Terverifikasi' : 'Verified' }}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-slate-400">Optimization</span>
+                  <span class="text-slate-700">Vite Code Splitting</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-slate-400">License</span>
+                  <span class="text-slate-700">HKI Registered</span>
+                </div>
+              </div>
+
+              <!-- HKI Optimization Curve -->
+              <div class="mt-4">
+                <span class="text-[9px] font-mono text-slate-400 block mb-1">Bundle Size Reduction</span>
+                <svg class="w-full h-10 bg-slate-50 rounded-lg p-1 border border-slate-100" viewBox="0 0 100 30" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="rose-grad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#f43f5e" stop-opacity="0.2"/>
+                      <stop offset="100%" stop-color="#f43f5e" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M0,5 L30,10 L60,18 L100,25" fill="none" stroke="#f43f5e" stroke-width="1.5" />
+                  <path d="M0,5 L30,10 L60,18 L100,25 L100,30 L0,30 Z" fill="url(#rose-grad)" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -134,77 +435,27 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { ref } from "vue";
 import { useLanguage } from "@/composables/useLanguage";
 
 const { lang } = useLanguage();
-
-const steps = computed(() => {
-  const isId = lang.value === "ID";
-  return [
-    {
-      number: "01",
-      tag: isId ? "Riset & Visual" : "Research & Visuals",
-      title: isId ? "Arsitektur & Desain UI/UX" : "UI/UX & Visual Architecture",
-      subtitle: isId
-        ? "Wireframing, Hierarki Visual & Design System"
-        : "Wireframing, Visual Hierarchy & Design Systems",
-      description: isId
-        ? "Memahami kebutuhan pengguna dan memetakan alur interaksi. Membuat wireframe presisi, menentukan skema warna, serta membangun design system konsisten di Figma sebelum penulisan kode."
-        : "Understanding core user requirements and mapping interaction flows. Crafting precise wireframes, defining color schemes, and establishing a unified design system in Figma before code implementation.",
-      tools: ["Figma", "User Flow", "Design System", "Wireframing"],
-    },
-    {
-      number: "02",
-      tag: isId ? "Interaktif & AR" : "Interactive & AR",
-      title: isId ? "Pengembangan Game & AR" : "AR & Game Engine Prototyping",
-      subtitle: isId
-        ? "Logika Permainan, Vuforia AR & Lingkungan 3D"
-        : "Gameplay Logic, Vuforia AR & 3D Environments",
-      description: isId
-        ? "Merancang logika aplikasi interaktif dan augmented reality (AR) di Unity engine. Mengintegrasikan target penanda Vuforia, animasi 3D, serta mekanik game yang responsif."
-        : "Building real-time interactive applications and augmented reality (AR) mechanics in Unity. Integrating Vuforia marker tracking, 3D animated assets, and responsive gameplay logic.",
-      tools: ["Unity 3D", "Vuforia AR", "C#", "3D Asset Compositing"],
-    },
-    {
-      number: "03",
-      tag: isId ? "Full-Stack & Data" : "Full-Stack & Data",
-      title: isId
-        ? "Integrasi Full-Stack & Web CMS"
-        : "Full-Stack & Dynamic Web CMS",
-      subtitle: isId
-        ? "Arsitektur Web, Supabase & Dashboard Admin"
-        : "Web Architecture, Supabase & Admin Dashboards",
-      description: isId
-        ? "Membangun aplikasi web modern berbasis Vue.js/Vite dan menghubungkannya dengan database Supabase/Firebase. Mengembangkan dashboard CMS untuk manajemen konten dinamis (CRUD)."
-        : "Constructing modern web applications with Vue.js and Vite, powered by Supabase/Firebase. Developing intuitive admin dashboards for dynamic content management (CRUD) without app rebuilds.",
-      tools: ["Vue.js", "Vite", "Supabase", "Firebase", "REST API"],
-    },
-    {
-      number: "04",
-      tag: isId ? "Pengujian & HKI" : "Quality & Deployment",
-      title: isId
-        ? "Optimasi, HKI & Deployment"
-        : "Optimization, HKI & Deployment",
-      subtitle: isId
-        ? "Pengujian Performa, Hak Cipta (HKI) & Production"
-        : "Performance Tuning, Copyright (HKI) & Production",
-      description: isId
-        ? "Melakukan pengujian performa di berbagai perangkat, optimasi framerate, pendaftaran Hak Kekayaan Intelektual (HKI) untuk aplikasi edukasi, serta rilis versi produksi yang stabil."
-        : "Conducting rigorous cross-device testing, optimizing frame rates and memory usage, securing Intellectual Property Rights (HKI), and deploying production-ready builds.",
-      tools: [
-        "Performance Tuning",
-        "Mobile Responsive",
-        "HKI Certified",
-        "Vite Build",
-      ],
-    },
-  ];
-});
+const hoveredLink = ref(null);
 </script>
 
 <style scoped>
-.process-card {
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
+/* Custom tiny scrollbar for node layout */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 9999px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }
 </style>
