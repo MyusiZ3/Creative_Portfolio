@@ -90,30 +90,32 @@ const translations = {
 
     // Projects Exp
     exp_proj_title: "Projects Experience",
+    earlier_experience_title: "Earlier Experience",
+    additional_projects_title: "Additional Projects",
     exp_p1_title: "Project Manager & Game Dev",
-    exp_p1_sub: "RideXP | Arcade Game Project",
-    exp_p1_desc:
-      "Led a team to develop a Unity-based arcade game with ESP32 input, JSON leaderboard, dynamic AI NPCs, and fully custom UI/UX. Also handled project planning, branding, and presentation for public exhibition.",
+    exp_p1_sub: "RideXP",
+    exp_p1_desc: "Led a team in developing a Unity-based arcade game, handling project planning, game development, UI design, branding, and exhibition preparation.",
+    exp_p1_tech: "Unity · ESP32 · JSON",
     exp_p2_title: "Game Dev & UI/UX Designer",
-    exp_p2_sub: "MathRift | Educational 2D Platformer Game",
-    exp_p2_desc:
-      "Built a Unity-based educational platformer with Firebase integration, focused on math-physics gameplay, complete UI/UX flow, and optimized performance.",
+    exp_p2_sub: "MathRift",
+    exp_p2_desc: "Built a Unity-based educational platformer with Firebase integration, focused on math-physics gameplay, complete UI/UX flow, and optimized performance.",
+    exp_p2_tech: "Unity · Firebase",
     exp_p3_title: "VR Dev & ENV Designer",
-    exp_p3_sub: "MindEscape: VR Chamber - VR Game",
-    exp_p3_desc:
-      "Developed an immersive VR escape room in Unity, designing environments, mechanics integration, user navigation, and optimizing headset performance.",
+    exp_p3_sub: "MindEscape: VR Chamber",
+    exp_p3_desc: "Developed an immersive VR escape room in Unity, designing environments, mechanics integration, user navigation, and optimizing headset performance.",
+    exp_p3_tech: "Unity · SteamVR",
     exp_p4_title: "AR Developer & Designer",
-    exp_p4_sub: "Stellar Adventures | AR Game Project",
-    exp_p4_desc:
-      "Created an AR space adventure in Unity with Vuforia, combining interactive markers, animated assets, and user-friendly interface.",
+    exp_p4_sub: "Stellar Adventures",
+    exp_p4_desc: "Created an AR space adventure in Unity with Vuforia, combining interactive markers, animated assets, and user-friendly interface.",
+    exp_p4_tech: "Unity · Vuforia",
     exp_p5_title: "UI/UX Designer",
-    exp_p5_sub: "U-Asprak Project | Team Case Study",
-    exp_p5_desc:
-      "Created high-fidelity mockups in Figma based on the team's wireframes. Defined visual style through early sketches, color palettes, and typography choices.",
+    exp_p5_sub: "U-Asprak",
+    exp_p5_desc: "Created high-fidelity mockups in Figma based on the team's wireframes. Defined visual style through early sketches, color palettes, and typography choices.",
+    exp_p5_tech: "Figma",
     exp_p6_title: "Frontend & Backend Dev",
-    exp_p6_sub: "IUDEX Web Portfolio | Team Project",
-    exp_p6_desc:
-      "Developed a portfolio website using PHP, SQL (CRUD), and JavaScript animation templates. Handled both frontend layout and backend logic.",
+    exp_p6_sub: "IUDEX Web Portfolio",
+    exp_p6_desc: "Developed a portfolio website using PHP, SQL (CRUD), and JavaScript animation templates. Handled both frontend layout and backend logic.",
+    exp_p6_tech: "PHP · SQL · JavaScript",
 
     // Achievements
     ach_title_1: "Achievements &",
@@ -254,30 +256,32 @@ const translations = {
 
     // Projects Exp
     exp_proj_title: "Pengalaman Proyek",
+    earlier_experience_title: "Pengalaman Sebelumnya",
+    additional_projects_title: "Proyek Tambahan",
     exp_p1_title: "Project Manager & Game Dev",
-    exp_p1_sub: "RideXP | Proyek Game Arkade",
-    exp_p1_desc:
-      "Mimpin tim bikin game arkade Unity dengan input ESP32, leaderboard JSON, AI dinamis, dan UI/UX custom penuh. Juga urus planning, branding, sampai pameran publik.",
+    exp_p1_sub: "RideXP",
+    exp_p1_desc: "Memimpin tim dalam mengembangkan game arcade berbasis Unity, menangani perencanaan proyek, pengembangan game, desain UI, branding, dan persiapan pameran.",
+    exp_p1_tech: "Unity · ESP32 · JSON",
     exp_p2_title: "Game Dev & UI/UX Designer",
-    exp_p2_sub: "MathRift | Game Edukasi Platformer 2D",
-    exp_p2_desc:
-      "Bikin game platformer edukasi di Unity terintegrasi Firebase, dengan gameplay fisika-matematika, alur UI/UX lengkap, dan performa yang dioptimasi.",
+    exp_p2_sub: "MathRift",
+    exp_p2_desc: "Membangun game platformer 2D edukatif berbasis Unity dengan integrasi Firebase, berfokus pada gameplay matematika-fisika, alur UI/UX lengkap, dan optimasi performa.",
+    exp_p2_tech: "Unity · Firebase",
     exp_p3_title: "VR Dev & Environment Designer",
-    exp_p3_sub: "MindEscape: VR Chamber - Game VR",
-    exp_p3_desc:
-      "Kembangkan escape room VR di Unity — rancang environment, integrasi mekanik, navigasi user, dan optimasi buat headset VR.",
+    exp_p3_sub: "MindEscape: VR Chamber",
+    exp_p3_desc: "Mengembangkan escape room VR yang imersif di Unity, merancang lingkungan, integrasi mekanik, navigasi pengguna, dan mengoptimalkan performa headset.",
+    exp_p3_tech: "Unity · SteamVR",
     exp_p4_title: "AR Developer & Designer",
-    exp_p4_sub: "Stellar Adventures | Proyek Game AR",
-    exp_p4_desc:
-      "Buat game AR petualangan luar angkasa di Unity pakai Vuforia — marker interaktif, aset animasi, dan antarmuka yang intuitif.",
+    exp_p4_sub: "Stellar Adventures",
+    exp_p4_desc: "Membuat petualangan luar angkasa AR di Unity dengan Vuforia, menggabungkan penanda interaktif, aset animasi, dan antarmuka yang ramah pengguna.",
+    exp_p4_tech: "Unity · Vuforia",
     exp_p5_title: "UI/UX Designer",
-    exp_p5_sub: "Proyek U-Asprak | Studi Kasus Tim",
-    exp_p5_desc:
-      "Buat mockup high-fidelity di Figma dari wireframe tim. Tentukan visual mulai dari sketsa awal, palet warna, sampai tipografi.",
+    exp_p5_sub: "U-Asprak",
+    exp_p5_desc: "Membuat mockup dengan ketelitian tinggi (high-fidelity) di Figma berdasarkan wireframe tim. Menentukan gaya visual melalui sketsa awal, palet warna, dan pilihan tipografi.",
+    exp_p5_tech: "Figma",
     exp_p6_title: "Frontend & Backend Dev",
-    exp_p6_sub: "IUDEX Web Portofolio | Proyek Tim",
-    exp_p6_desc:
-      "Kembangkan situs portofolio pakai PHP, SQL (CRUD), dan template animasi JavaScript. Handle frontend sekaligus backend-nya.",
+    exp_p6_sub: "IUDEX Web Portfolio",
+    exp_p6_desc: "Mengembangkan website portofolio menggunakan PHP, SQL (CRUD), dan template animasi JavaScript. Menangani tata letak frontend dan logika backend.",
+    exp_p6_tech: "PHP · SQL · JavaScript",
 
     // Achievements
     ach_title_1: "Pencapaian &",

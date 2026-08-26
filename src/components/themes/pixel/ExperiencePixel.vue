@@ -93,6 +93,54 @@
               </p>
             </div>
           </div>
+
+          <!-- Earlier Experience Quest Collapsible inside Work section -->
+          <div class="mt-8 flex justify-center">
+            <button
+              @click="showEarlierWork = !showEarlierWork"
+              class="px-4 py-2 bg-[#161b22] text-[#f0f6fc] text-xs font-bold uppercase border-2 border-black shadow-[3px_3px_0px_#000000] hover:bg-[#ffd700] hover:text-black transition-all flex items-center gap-2 active:translate-y-0.5 font-silkscreen"
+            >
+              <span>{{ showEarlierWork ? '[-] HIDE EARLIER QUESTS' : '[+] SHOW EARLIER QUESTS' }}</span>
+            </button>
+          </div>
+
+          <div
+            v-if="showEarlierWork"
+            v-motion
+            :initial="{ opacity: 0, y: 20 }"
+            :animate="{ opacity: 1, y: 0, transition: { duration: 400 } }"
+            class="bg-[#161b22] border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_#000000] relative group hover:border-[#ffd700] transition-colors mt-6"
+          >
+            <!-- Quest Header Line -->
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b-2 border-[#30363d] pb-4 mb-4 font-silkscreen">
+              <div class="flex items-center gap-3">
+                <span class="px-2.5 py-1 bg-[#ffd700] text-black font-extrabold text-xs uppercase shadow-[2px_2px_0px_#000]">
+                  LEGACY QUEST
+                </span>
+                <span class="text-xs font-bold text-[#8b949e] uppercase border border-[#8b949e] px-2 py-0.5">
+                  EXCELLENT RATING
+                </span>
+              </div>
+
+              <div class="flex items-center gap-3 text-xs text-[#8b949e]">
+                <span class="flex items-center gap-1">
+                  <i class="bi bi-calendar-event text-[#ffd700]"></i>
+                  <span>JAN 2021 - JUNE 2021</span>
+                </span>
+                <span class="text-[#ffd700] font-bold">+7,500 XP</span>
+              </div>
+            </div>
+
+            <!-- Quest Content -->
+            <div class="space-y-2">
+              <h4 class="text-base sm:text-lg font-extrabold text-[#f0f6fc] uppercase group-hover:text-[#ffd700] transition-colors font-silkscreen">
+                {{ t('exp_w5_title') }} <span class="text-[#ffd700]">@ {{ t('exp_w5_sub') }}</span>
+              </h4>
+              <p class="text-xs sm:text-sm text-[#8b949e] leading-relaxed pt-1 font-mono">
+                {{ t('exp_w5_desc') }}
+              </p>
+            </div>
+          </div>
         </div>
 
         <!-- Pagination for Work Quests -->
@@ -165,19 +213,28 @@
 
               <!-- Quest Content -->
               <h4 class="text-sm sm:text-base font-extrabold text-[#f0f6fc] uppercase group-hover:text-[#00ff66] transition-colors font-silkscreen mb-1">
-                {{ quest.title }}
+                {{ quest.sub }}
               </h4>
               <div class="text-xs text-[#00f0ff] font-bold font-silkscreen mb-3">
-                {{ quest.sub }}
+                {{ quest.title }}
               </div>
               <p class="text-xs text-[#8b949e] leading-relaxed font-mono">
                 {{ quest.desc }}
               </p>
             </div>
 
-            <div class="mt-4 pt-3 border-t border-[#30363d] flex items-center justify-between font-silkscreen text-[11px]">
-              <span class="text-[#8b949e]">QUEST REWARD:</span>
-              <span class="text-[#ffd700] font-bold">{{ quest.xp }}</span>
+            <!-- Tech Stack badge and rewards -->
+            <div class="mt-4 pt-3 border-t border-[#30363d] space-y-3 font-silkscreen text-[11px]">
+              <div class="flex flex-wrap items-center gap-2 font-mono text-[11px]">
+                <span class="text-[#8b949e] font-bold">TECH:</span>
+                <span class="text-[#00ff66] bg-[#161b22] px-2 py-0.5 border border-[#30363d] shadow-[2px_2px_0px_#000] font-mono">
+                  {{ quest.tech }}
+                </span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-[#8b949e]">QUEST REWARD:</span>
+                <span class="text-[#ffd700] font-bold">{{ quest.xp }}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -215,6 +272,48 @@
             <span>NEXT ›</span>
           </button>
         </div>
+
+        <!-- ADDITIONAL PROJECTS (MindEscape) -->
+        <div class="mt-12 pt-8 border-t-4 border-black">
+          <h4 class="text-base sm:text-lg font-extrabold uppercase mb-6 font-silkscreen text-[#ffd700]">
+            // {{ t("additional_projects_title") }}
+          </h4>
+          
+          <div
+            v-motion
+            :initial="{ opacity: 0, y: 35 }"
+            :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, ease: 'easeOut' } }"
+            class="bg-[#161b22] border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_#000000] relative group hover:border-[#00ff66] transition-colors flex flex-col md:flex-row md:items-center justify-between gap-6"
+          >
+            <div class="flex-1">
+              <div class="flex items-center gap-3 border-b-2 border-[#30363d] pb-3 mb-4 font-silkscreen">
+                <span class="px-2 py-0.5 bg-[#ffd700] text-black font-extrabold text-[10px] uppercase shadow-[2px_2px_0px_#000]">
+                  ADDITIONAL QUEST
+                </span>
+                <span class="text-[10px] font-bold text-[#00f0ff] uppercase border border-[#00f0ff] px-1.5 py-0.5 font-mono">
+                  VR Game
+                </span>
+              </div>
+              
+              <h5 class="text-sm sm:text-base font-extrabold text-[#f0f6fc] uppercase group-hover:text-[#00ff66] transition-colors font-silkscreen mb-1">
+                {{ t("exp_p3_sub") }}
+              </h5>
+              <div class="text-xs text-[#00f0ff] font-bold font-silkscreen mb-3">
+                {{ t("exp_p3_title") }}
+              </div>
+              <p class="text-xs text-[#8b949e] leading-relaxed font-mono">
+                {{ t("exp_p3_desc") }}
+              </p>
+
+              <div class="mt-4 pt-3 border-t border-[#30363d] flex flex-wrap items-center gap-2 font-mono text-[11px]">
+                <span class="text-[#8b949e] font-bold">TECH:</span>
+                <span class="text-[#00ff66] bg-[#161b22] px-2 py-0.5 border border-[#30363d] shadow-[2px_2px_0px_#000] font-mono">
+                  {{ t("exp_p3_tech") }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -227,6 +326,7 @@ import { useLanguage } from '@/composables/useLanguage';
 
 const { t } = useLanguage();
 const activeCategory = ref('all');
+const showEarlierWork = ref(false);
 
 const workPage = ref(1);
 const workPerPage = ref(3);
@@ -267,24 +367,6 @@ const workQuests = computed(() => [
     status: "QUEST CLEARED",
     xp: "+6,000 XP",
     desc: t('exp_w3_desc')
-  },
-  {
-    id: 'w4',
-    title: t('exp_w4_title'),
-    sub: t('exp_w4_sub'),
-    period: "DEC 2019 - JUNE 2022",
-    status: "QUEST CLEARED",
-    xp: "+5,000 XP",
-    desc: t('exp_w4_desc')
-  },
-  {
-    id: 'w5',
-    title: t('exp_w5_title'),
-    sub: t('exp_w5_sub'),
-    period: "JAN 2021 - JUNE 2021",
-    status: "EXCELLENT RATING",
-    xp: "+7,500 XP",
-    desc: t('exp_w5_desc')
   }
 ]);
 
@@ -295,7 +377,8 @@ const projectQuests = computed(() => [
     sub: t('exp_p1_sub'),
     period: "JAN 2025 - JUNE 2025",
     xp: "+9,000 XP",
-    desc: t('exp_p1_desc')
+    desc: t('exp_p1_desc'),
+    tech: t('exp_p1_tech')
   },
   {
     id: 'p2',
@@ -303,15 +386,8 @@ const projectQuests = computed(() => [
     sub: t('exp_p2_sub'),
     period: "JAN 2025 - JUNE 2025",
     xp: "+8,500 XP",
-    desc: t('exp_p2_desc')
-  },
-  {
-    id: 'p3',
-    title: t('exp_p3_title'),
-    sub: t('exp_p3_sub'),
-    period: "JAN 2025 - JUNE 2025",
-    xp: "+8,000 XP",
-    desc: t('exp_p3_desc')
+    desc: t('exp_p2_desc'),
+    tech: t('exp_p2_tech')
   },
   {
     id: 'p4',
@@ -319,7 +395,8 @@ const projectQuests = computed(() => [
     sub: t('exp_p4_sub'),
     period: "SEP 2024 - FEB 2025",
     xp: "+7,500 XP",
-    desc: t('exp_p4_desc')
+    desc: t('exp_p4_desc'),
+    tech: t('exp_p4_tech')
   },
   {
     id: 'p5',
@@ -327,7 +404,8 @@ const projectQuests = computed(() => [
     sub: t('exp_p5_sub'),
     period: "JAN 2024 - JUNE 2024",
     xp: "+6,500 XP",
-    desc: t('exp_p5_desc')
+    desc: t('exp_p5_desc'),
+    tech: t('exp_p5_tech')
   },
   {
     id: 'p6',
@@ -335,7 +413,8 @@ const projectQuests = computed(() => [
     sub: t('exp_p6_sub'),
     period: "SEP 2023 - FEB 2024",
     xp: "+6,000 XP",
-    desc: t('exp_p6_desc')
+    desc: t('exp_p6_desc'),
+    tech: t('exp_p6_tech')
   }
 ]);
 
