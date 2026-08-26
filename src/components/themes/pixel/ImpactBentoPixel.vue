@@ -38,7 +38,7 @@
 
       <!-- Top Row: Bento Metrics Grid (High-Contrast Bold Colors) -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        <!-- Box 1: Yellow - 15+ Projects -->
+        <!-- Box 1: Yellow - 10+ Projects -->
         <div
           v-motion
           :initial="{ opacity: 0, scale: 0.9, y: 30 }"
@@ -62,7 +62,7 @@
             <div
               class="text-3xl sm:text-5xl font-black tracking-tighter leading-none mb-2 font-pixel whitespace-nowrap"
             >
-              15+
+              10+
             </div>
             <div
               class="text-xs font-extrabold uppercase tracking-wide opacity-90 font-mono"
@@ -153,8 +153,8 @@
 
       <!-- Live Spotify / Arcade Sound Vibes Widget -->
       <div class="mb-12">
-        <SpotifyWidget 
-          themeOverride="pixel" 
+        <SpotifyWidget
+          themeOverride="pixel"
           spotifyEmbedUrl="https://open.spotify.com/embed/playlist/0YSzquUNB6qYW9ukvaPZ66"
         />
       </div>

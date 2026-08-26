@@ -440,7 +440,7 @@
               <h4
                 class="text-4xl lg:text-[48px] font-bold font-['Poppins'] text-[#FBDF3A]"
               >
-                15+
+                10+
               </h4>
               <p
                 class="text-white text-[14px] lg:text-[16px] font-['Roboto'] font-regular"

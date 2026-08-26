@@ -183,7 +183,7 @@
                   "
                 >
                   <p
-                    class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
+                    class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                   >
                     {{ t("exp_w1_desc") }}
                   </p>
@@ -269,7 +269,7 @@
                   "
                 >
                   <p
-                    class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
+                    class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                   >
                     {{ t("exp_w2_desc") }}
                   </p>
@@ -355,7 +355,7 @@
                   "
                 >
                   <p
-                    class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
+                    class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                   >
                     {{ t("exp_w3_desc") }}
                   </p>
@@ -483,7 +483,7 @@
                     "
                   >
                     <p
-                      class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
+                      class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                     >
                       {{ t("exp_w5_desc") }}
                     </p>
@@ -603,7 +603,7 @@
                   "
                 >
                   <p
-                    class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
+                    class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                   >
                     {{ t("exp_p7_desc") }}
                   </p>
@@ -712,7 +712,7 @@
                   "
                 >
                   <p
-                    class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
+                    class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                   >
                     {{ t("exp_p1_desc") }}
                   </p>
@@ -812,7 +812,7 @@
                   "
                 >
                   <p
-                    class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
+                    class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                   >
                     {{ t("exp_p2_desc") }}
                   </p>
@@ -931,7 +931,7 @@
                   "
                 >
                   <p
-                    class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
+                    class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                   >
                     {{ t("exp_p4_desc") }}
                   </p>
@@ -1031,7 +1031,7 @@
                   "
                 >
                   <p
-                    class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
+                    class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                   >
                     {{ t("exp_p5_desc") }}
                   </p>
@@ -1131,7 +1131,7 @@
                   "
                 >
                   <p
-                    class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
+                    class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                   >
                     {{ t("exp_p6_desc") }}
                   </p>
@@ -1276,7 +1276,7 @@
                     "
                   >
                     <p
-                      class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
+                      class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                     >
                       {{ t("exp_p3_desc") }}
                     </p>

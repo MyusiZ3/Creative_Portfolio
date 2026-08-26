@@ -176,7 +176,7 @@
           <span class="text-[10px] text-[#00ff66] uppercase font-bold bg-[#00ff66]/10 px-2 py-1 border border-[#00ff66]/40">[STATUS: READY FOR BATTLE]</span>
         </div>
 
-        <!-- 10 Software Icons Grid -->
+        <!-- 9 Software Icons Grid -->
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
           <!-- Item 1: Unity -->
           <div class="bg-[#0d1117] border-2 border-black p-4 shadow-[4px_4px_0px_#000000] hover:border-[#00ff66] hover:-translate-y-1 transition-all group cursor-pointer flex flex-col items-center text-center relative">
@@ -198,19 +198,29 @@
             <div class="text-[9px] text-[#ffd700] font-silkscreen mt-1">[LVL 90] DB BACKEND</div>
           </div>
 
-          <!-- Item 3: VS Code -->
+          <!-- Item 3: Supabase -->
           <div class="bg-[#0d1117] border-2 border-black p-4 shadow-[4px_4px_0px_#000000] hover:border-[#00ff66] hover:-translate-y-1 transition-all group cursor-pointer flex flex-col items-center text-center relative">
             <span class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]">SLOT 03</span>
             <div class="w-14 h-14 bg-[#1D1D1D] rounded-lg border border-[#30363d] flex items-center justify-center mb-3 mt-2 group-hover:scale-110 transition-transform">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt="VS Code" class="w-9 h-9" />
+              <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/supabase.webp" alt="Supabase" class="w-9 h-9 object-contain" />
             </div>
-            <div class="text-xs font-bold text-[#f0f6fc] font-mono group-hover:text-[#00ff66] transition-colors">VS CODE</div>
-            <div class="text-[9px] text-[#00f0ff] font-silkscreen mt-1">[LVL 98] CODE DECK</div>
+            <div class="text-xs font-bold text-[#f0f6fc] font-mono group-hover:text-[#00ff66] transition-colors">SUPABASE</div>
+            <div class="text-[9px] text-[#00ff66] font-silkscreen mt-1">[LVL 93] DB BACKEND</div>
           </div>
 
-          <!-- Item 4: GitHub -->
+          <!-- Item 4: Antigravity IDE -->
           <div class="bg-[#0d1117] border-2 border-black p-4 shadow-[4px_4px_0px_#000000] hover:border-[#00ff66] hover:-translate-y-1 transition-all group cursor-pointer flex flex-col items-center text-center relative">
             <span class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]">SLOT 04</span>
+            <div class="w-14 h-14 bg-[#1D1D1D] rounded-lg border border-[#30363d] flex items-center justify-center mb-3 mt-2 group-hover:scale-110 transition-transform">
+              <img src="https://cdn.jsdelivr.net/gh/selfhst/icons/webp/google-antigravity.webp" alt="Antigravity IDE" class="w-10 h-10 object-contain" />
+            </div>
+            <div class="text-xs font-bold text-[#f0f6fc] font-mono group-hover:text-[#00ff66] transition-colors">ANTIGRAVITY IDE</div>
+            <div class="text-[9px] text-[#00f0ff] font-silkscreen mt-1">[LVL 99] INTEL DEV</div>
+          </div>
+
+          <!-- Item 5: GitHub -->
+          <div class="bg-[#0d1117] border-2 border-black p-4 shadow-[4px_4px_0px_#000000] hover:border-[#00ff66] hover:-translate-y-1 transition-all group cursor-pointer flex flex-col items-center text-center relative">
+            <span class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]">SLOT 05</span>
             <div class="w-14 h-14 bg-[#1D1D1D] rounded-lg border border-[#30363d] flex items-center justify-center mb-3 mt-2 group-hover:scale-110 transition-transform">
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub" class="w-9 h-9 brightness-0 invert" />
             </div>
@@ -218,9 +228,9 @@
             <div class="text-[9px] text-[#a78bfa] font-silkscreen mt-1">[LVL 92] REPO VAULT</div>
           </div>
 
-          <!-- Item 5: Adobe Illustrator -->
+          <!-- Item 6: Adobe Illustrator -->
           <div class="bg-[#0d1117] border-2 border-black p-4 shadow-[4px_4px_0px_#000000] hover:border-[#00ff66] hover:-translate-y-1 transition-all group cursor-pointer flex flex-col items-center text-center relative">
-            <span class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]">SLOT 05</span>
+            <span class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]">SLOT 06</span>
             <div class="w-14 h-14 bg-[#330000] text-[#FF9A00] rounded-lg border border-[#FF9A00]/40 flex items-center justify-center text-2xl font-bold font-mono mb-3 mt-2 group-hover:scale-110 transition-transform">
               Ai
             </div>
@@ -228,24 +238,14 @@
             <div class="text-[9px] text-[#FF9A00] font-silkscreen mt-1">[LVL 90] VECTOR WEAPON</div>
           </div>
 
-          <!-- Item 6: Adobe Photoshop -->
+          <!-- Item 7: Adobe Photoshop -->
           <div class="bg-[#0d1117] border-2 border-black p-4 shadow-[4px_4px_0px_#000000] hover:border-[#00ff66] hover:-translate-y-1 transition-all group cursor-pointer flex flex-col items-center text-center relative">
-            <span class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]">SLOT 06</span>
+            <span class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]">SLOT 07</span>
             <div class="w-14 h-14 bg-[#001E36] text-[#31A8FF] rounded-lg border border-[#31A8FF]/40 flex items-center justify-center text-2xl font-bold font-mono mb-3 mt-2 group-hover:scale-110 transition-transform">
               Ps
             </div>
             <div class="text-xs font-bold text-[#f0f6fc] font-mono group-hover:text-[#00ff66] transition-colors">PHOTOSHOP</div>
             <div class="text-[9px] text-[#31A8FF] font-silkscreen mt-1">[LVL 92] PIXEL GRAPHICS</div>
-          </div>
-
-          <!-- Item 7: Adobe XD -->
-          <div class="bg-[#0d1117] border-2 border-black p-4 shadow-[4px_4px_0px_#000000] hover:border-[#00ff66] hover:-translate-y-1 transition-all group cursor-pointer flex flex-col items-center text-center relative">
-            <span class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]">SLOT 07</span>
-            <div class="w-14 h-14 bg-[#470137] text-[#FF61F6] rounded-lg border border-[#FF61F6]/40 flex items-center justify-center text-2xl font-bold font-mono mb-3 mt-2 group-hover:scale-110 transition-transform">
-              Xd
-            </div>
-            <div class="text-xs font-bold text-[#f0f6fc] font-mono group-hover:text-[#00ff66] transition-colors">ADOBE XD</div>
-            <div class="text-[9px] text-[#FF61F6] font-silkscreen mt-1">[LVL 88] UI ARCHITECT</div>
           </div>
 
           <!-- Item 8: Figma -->
@@ -267,21 +267,11 @@
             <div class="text-xs font-bold text-[#f0f6fc] font-mono group-hover:text-[#00ff66] transition-colors">CANVA</div>
             <div class="text-[9px] text-[#00C4CC] font-silkscreen mt-1">[LVL 94] MEDIA LAYOUT</div>
           </div>
-
-          <!-- Item 10: Ibispaint X -->
-          <div class="bg-[#0d1117] border-2 border-black p-4 shadow-[4px_4px_0px_#000000] hover:border-[#00ff66] hover:-translate-y-1 transition-all group cursor-pointer flex flex-col items-center text-center relative">
-            <span class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]">SLOT 10</span>
-            <div class="w-14 h-14 bg-[#1D1D1D] rounded-lg border border-[#30363d] overflow-hidden flex items-center justify-center mb-3 mt-2 group-hover:scale-110 transition-transform">
-              <img src="https://miro.medium.com/v2/resize:fit:1400/1*hLRURjB2M29RAHVnOj6nbw.png" alt="IbisPaint X" class="w-full h-full object-cover" />
-            </div>
-            <div class="text-xs font-bold text-[#f0f6fc] font-mono group-hover:text-[#00ff66] transition-colors">IBISPAINT X</div>
-            <div class="text-[9px] text-[#a78bfa] font-silkscreen mt-1">[LVL 90] ART WORKBENCH</div>
-          </div>
         </div>
 
         <!-- Software List Summary -->
         <p class="mt-6 pt-4 border-t border-[#30363d] text-center text-xs text-[#8b949e] font-silkscreen leading-relaxed">
-          <span class="text-[#00f0ff] font-bold">[LOADED ARSENAL]</span> Unity ✦ Firebase ✦ VS Code ✦ GitHub ✦ Illustrator ✦ Photoshop ✦ Adobe XD ✦ Figma ✦ Canva ✦ IbisPaint X ✦ READY FOR DEPLOYMENT
+          <span class="text-[#00f0ff] font-bold">[LOADED ARSENAL]</span> Unity ✦ Firebase ✦ Supabase ✦ Antigravity IDE ✦ GitHub ✦ Illustrator ✦ Photoshop ✦ Figma ✦ Canva ✦ READY FOR DEPLOYMENT
         </p>
       </div>
 

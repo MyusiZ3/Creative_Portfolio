@@ -139,24 +139,37 @@
               class="w-10 lg:w-12 h-10 lg:h-12"
             />
           </div>
-          <!-- VS Code -->
+          <!-- Supabase -->
           <div
             v-motion
             :initial="{ opacity: 0, scale: 0.5, y: 20 }"
             :visible="{ opacity: 1, scale: 1, y: 0, transition: { duration: 500, delay: 160, type: 'spring', stiffness: 250, damping: 15 } }"
-            class="w-16 h-16 lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
+            class="w-16 h-16 lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl overflow-hidden p-3"
           >
             <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg"
-              alt="VS Code"
-              class="w-10 lg:w-12 h-10 lg:h-12"
+              src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/supabase.webp"
+              alt="Supabase"
+              class="w-10 lg:w-12 h-10 lg:h-12 object-contain"
+            />
+          </div>
+          <!-- Antigravity IDE -->
+          <div
+            v-motion
+            :initial="{ opacity: 0, scale: 0.5, y: 20 }"
+            :visible="{ opacity: 1, scale: 1, y: 0, transition: { duration: 500, delay: 240, type: 'spring', stiffness: 250, damping: 15 } }"
+            class="w-16 h-16 lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl overflow-hidden p-3"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/selfhst/icons/webp/google-antigravity.webp"
+              alt="Antigravity IDE"
+              class="w-10 lg:w-14 h-10 lg:h-14 object-contain"
             />
           </div>
           <!-- GitHub -->
           <div
             v-motion
             :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-            :visible="{ opacity: 1, scale: 1, y: 0, transition: { duration: 500, delay: 240, type: 'spring', stiffness: 250, damping: 15 } }"
+            :visible="{ opacity: 1, scale: 1, y: 0, transition: { duration: 500, delay: 320, type: 'spring', stiffness: 250, damping: 15 } }"
             class="w-16 h-16 lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
           >
             <img
@@ -173,7 +186,7 @@
           <div
             v-motion
             :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-            :visible="{ opacity: 1, scale: 1, y: 0, transition: { duration: 500, delay: 100, type: 'spring', stiffness: 250, damping: 15 } }"
+            :visible="{ opacity: 1, scale: 1, y: 0, transition: { duration: 500, delay: 400, type: 'spring', stiffness: 250, damping: 15 } }"
             class="w-16 h-16 lg:w-[85px] lg:h-[85px] bg-[#330000] text-[#FF9A00] text-3xl lg:text-[40px] font-bold font-['Roboto'] rounded-[16px] lg:rounded-[26px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
           >
             Ai
@@ -182,25 +195,16 @@
           <div
             v-motion
             :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-            :visible="{ opacity: 1, scale: 1, y: 0, transition: { duration: 500, delay: 180, type: 'spring', stiffness: 250, damping: 15 } }"
+            :visible="{ opacity: 1, scale: 1, y: 0, transition: { duration: 500, delay: 480, type: 'spring', stiffness: 250, damping: 15 } }"
             class="w-16 h-16 lg:w-[85px] lg:h-[85px] bg-[#001E36] text-[#31A8FF] text-3xl lg:text-[40px] font-bold font-['Roboto'] rounded-[16px] lg:rounded-[26px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
           >
             Ps
-          </div>
-          <!-- Xd -->
-          <div
-            v-motion
-            :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-            :visible="{ opacity: 1, scale: 1, y: 0, transition: { duration: 500, delay: 260, type: 'spring', stiffness: 250, damping: 15 } }"
-            class="w-16 h-16 lg:w-[85px] lg:h-[85px] bg-[#470137] text-[#FF61F6] text-3xl lg:text-[40px] font-bold font-['Roboto'] rounded-[16px] lg:rounded-[26px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
-          >
-            Xd
           </div>
           <!-- Figma -->
           <div
             v-motion
             :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-            :visible="{ opacity: 1, scale: 1, y: 0, transition: { duration: 500, delay: 340, type: 'spring', stiffness: 250, damping: 15 } }"
+            :visible="{ opacity: 1, scale: 1, y: 0, transition: { duration: 500, delay: 560, type: 'spring', stiffness: 250, damping: 15 } }"
             class="w-16 h-16 lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
           >
             <img
@@ -213,26 +217,13 @@
           <div
             v-motion
             :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-            :visible="{ opacity: 1, scale: 1, y: 0, transition: { duration: 500, delay: 420, type: 'spring', stiffness: 250, damping: 15 } }"
+            :visible="{ opacity: 1, scale: 1, y: 0, transition: { duration: 500, delay: 640, type: 'spring', stiffness: 250, damping: 15 } }"
             class="w-16 h-16 lg:w-[85px] lg:h-[85px] bg-linear-to-tr from-[#00C4CC] to-[#7D2AE8] rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl overflow-hidden"
           >
             <span
               class="text-white font-bold italic text-lg lg:text-[22px] font-['Poppins']"
               >Canva</span
             >
-          </div>
-          <!-- IbisPaint (Custom Simulation) -->
-           <div
-            v-motion
-            :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-            :visible="{ opacity: 1, scale: 1, y: 0, transition: { duration: 500, delay: 500, type: 'spring', stiffness: 250, damping: 15 } }"
-            class="w-16 h-16 lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
-          >
-            <img
-              src="https://miro.medium.com/v2/resize:fit:1400/1*hLRURjB2M29RAHVnOj6nbw.png"
-              alt="Figma"
-              class="w-10 lg:w-25 h-10 lg:h-22 rounded-[16px] lg:rounded-[24px]"
-            />
           </div>
         </div>
       </div>
@@ -246,9 +237,9 @@
         :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 400, ease: 'easeOut' } }"
         class="pt-8 text-[11px] lg:text-[16px] text-[#ffffff] font-['Roboto'] font-medium max-w-4xl mx-auto leading-loose lg:leading-loose"
       >
-        Unity &bull; Firebase &bull; VS Code &bull; Github &bull; Adobe
-        Illustrator &bull; Adobe Photoshop &bull; Adobe XD &bull; Figma &bull;
-        Canva &bull; Ibispaint X <br class="hidden lg:block" />
+        Unity &bull; Firebase &bull; Supabase &bull; Antigravity IDE &bull; Github &bull; Adobe
+        Illustrator &bull; Adobe Photoshop &bull; Figma &bull;
+        Canva <br class="hidden lg:block" />
         <span class="lg:hidden"> &bull; </span>and more
       </p>
 

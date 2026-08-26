@@ -477,7 +477,7 @@ const projects = [
     platform: "Mobile App Design",
     role: "UI/UX Designer",
     timeline: "Jan – Jun 2024",
-    techStack: ["Figma", "Adobe XD", "User Research"],
+    techStack: ["Figma", "Antigravity IDE", "User Research"],
     demoUrl: "https://behance.net",
     challenge:
       "Menyusun alur manajemen jadwal & pelaporan bagi ratusan asisten praktikum.",
