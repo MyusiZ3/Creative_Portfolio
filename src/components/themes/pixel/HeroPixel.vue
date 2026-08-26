@@ -320,10 +320,10 @@
                 </div>
                 <div class="text-right font-silkscreen shrink-0">
                   <div class="text-[10px] font-bold text-[#ffd700]">
-                    GPA 3.81
+                    {{ isId ? "IPK 3.83" : "GPA 3.83" }}
                   </div>
                   <div class="text-[8px] text-[#00ff66] uppercase">
-                    {{ isId ? "2022 - SEKARANG" : "2022 - PRESENT" }}
+                    2022 - 2026
                   </div>
                 </div>
               </div>

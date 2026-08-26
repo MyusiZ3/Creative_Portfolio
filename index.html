@@ -7,22 +7,19 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-    <title>Muhamad Sidik | Creative Multimedia Designer</title>
+    <title>Muhamad Sidik | Creative Designer</title>
     <meta
       name="description"
-      content="Explore the creative portfolio of Muhamad Sidik, a specialized Multimedia Designer focusing on UI/UX, Game Design, and Interactive Visuals."
+      content="Explore the creative portfolio of Muhamad Sidik, a specialized Creative Designer focusing on UI/UX, Game Design, and Interactive Visuals."
     />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://muhamadsidik.id/" />
-    <meta
-      property="og:title"
-      content="Muhamad Sidik | Creative Multimedia Designer"
-    />
+    <meta property="og:title" content="Muhamad Sidik | Creative Designer" />
     <meta
       property="og:description"
-      content="Explore my creative portfolio featuring Multimedia Design, UI/UX, and Interactive Projects."
+      content="Explore my creative portfolio featuring Creative Design, UI/UX, and Interactive Projects."
     />
     <meta property="og:image" content="/images/hero/og.png" />
 
@@ -31,11 +28,11 @@
     <meta property="twitter:url" content="https://muhamadsidik.id/" />
     <meta
       property="twitter:title"
-      content="Muhamad Sidik | Creative Multimedia Designer"
+      content="Muhamad Sidik | Creative Designer"
     />
     <meta
       property="twitter:description"
-      content="Explore my creative portfolio featuring Multimedia Design, UI/UX, and Interactive Projects."
+      content="Explore my creative portfolio featuring Creative Design, UI/UX, and Interactive Projects."
     />
     <meta property="twitter:image" content="/images/hero/og.png" />
 
@@ -49,22 +46,8 @@
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
     <script>
-      // Extra Security: Disable right-click and inspection keys
-      document.addEventListener("contextmenu", (e) => (e.returnValue = false));
-
       document.onkeydown = function (e) {
-        // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
-        if (
-          e.keyCode == 123 ||
-          (e.ctrlKey &&
-            e.shiftKey &&
-            (e.keyCode == 73 || e.keyCode == 74)) ||
-          (e.ctrlKey && e.keyCode == 85)
-        ) {
-          return false;
-        }
-
-        // Original zoom prevention
+        // Zoom prevention
         if (
           (e.ctrlKey || e.metaKey) &&
           (e.key === "+" || e.key === "-" || e.key === "=" || e.key === "0")
@@ -82,17 +65,6 @@
           }
         },
         { passive: false },
-      );
-
-      // Detect if DevTools is open (Optional, but can be useful)
-      let devtools = function () {};
-      devtools.toString = function () {
-        this.opened = true;
-      };
-
-      console.log(
-        "%c Security System Active ",
-        "background: #222; color: #bada55",
       );
     </script>
   </body>

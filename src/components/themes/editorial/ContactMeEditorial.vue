@@ -289,14 +289,14 @@
           <div
             class="inline-block animate-marquee-slow font-['Poppins'] font-bold text-3xl lg:text-5xl uppercase pr-4 text-white hover:text-violet-500 transition-colors duration-500"
           >
-            CREATIVE DEVELOPER • MULTIMEDIA ENGINEER • UI/UX ENTHUSIAST •
-            CREATIVE DEVELOPER • MULTIMEDIA ENGINEER • UI/UX ENTHUSIAST •&nbsp;
+            CREATIVE DEVELOPER • CREATIVE DESIGNER • UI/UX ENTHUSIAST •
+            CREATIVE DEVELOPER • CREATIVE DESIGNER • UI/UX ENTHUSIAST •&nbsp;
           </div>
           <div
             class="inline-block animate-marquee-slow font-['Poppins'] font-bold text-3xl lg:text-5xl uppercase pr-4 text-white hover:text-violet-500 transition-colors duration-500"
           >
-            CREATIVE DEVELOPER • MULTIMEDIA ENGINEER • UI/UX ENTHUSIAST •
-            CREATIVE DEVELOPER • MULTIMEDIA ENGINEER • UI/UX ENTHUSIAST •&nbsp;
+            CREATIVE DEVELOPER • CREATIVE DESIGNER • UI/UX ENTHUSIAST •
+            CREATIVE DEVELOPER • CREATIVE DESIGNER • UI/UX ENTHUSIAST •&nbsp;
           </div>
         </div>
 
@@ -373,7 +373,7 @@ const downloading = ref({ designer: false, developer: false });
 
 const sharePortfolio = async () => {
   const shareData = {
-    title: "Muhamad Sidik | Creative Multimedia Designer",
+    title: "Muhamad Sidik | Creative Designer",
     text: "Check out this amazing creative portfolio by Muhamad Sidik!",
     url: window.location.href,
   };

@@ -11,9 +11,18 @@
               y: 0,
               transition: { duration: 800, ease: 'easeOut' },
             }"
-            class="text-6xl sm:text-7xl xl:text-[110px] font-bold text-white mb-4 font-['Poppins']"
+            class="text-6xl sm:text-8xl xl:text-[125px] font-bold text-white mb-4 font-['Poppins'] leading-none tracking-tight"
           >
-            Multimedia <br class="block xl:hidden" />
+            <span class="relative inline-block mr-3 xl:mr-5">
+              <span
+                class="absolute inset-0 text-transparent pointer-events-none select-none translate-x-[4px] translate-y-[4px] sm:translate-x-[6px] sm:translate-y-[6px] xl:translate-x-[7px] xl:translate-y-[7px]"
+                style="-webkit-text-stroke: 3px #a754ff"
+                aria-hidden="true"
+                >Creative</span
+              >
+              <span class="relative text-white">Creative</span>
+            </span>
+            <br class="block xl:hidden" />
             <span
               class="text-transparent"
               style="-webkit-text-stroke: 2px #ffffff"
@@ -130,7 +139,7 @@
             }"
             src="/images/hero/ux_design.webp"
             alt="User Experience Design"
-            class="absolute bottom-[-7%] lg:bottom-[0%] lg:left-[1%] w-[40%] lg:w-[31%] z-20 pointer-events-none"
+            class="absolute bottom-[-7%] lg:bottom-[0%] lg:left-[3%] w-[38%] lg:w-[28%] z-20 pointer-events-none"
           />
 
           <!-- Hire Me Badge -->
@@ -248,7 +257,7 @@
                   <p
                     class="text-white italic text-sm font-['Roboto'] font-light"
                   >
-                    2022 - Present (GPA : 3.81 / 4.00)
+                    {{ t("edu_1_detail") }}
                   </p>
                 </div>
               </li>
@@ -279,7 +288,7 @@
                   <p
                     class="text-white italic text-sm font-['Roboto'] font-light"
                   >
-                    2019 - 2022
+                    {{ t("edu_2_detail") }}
                   </p>
                 </div>
               </li>
@@ -307,7 +316,7 @@
                 :visible="{
                   opacity: 1,
                   y: 0,
-                  transition: { duration: 500, delay: 350, ease: 'easeOut' },
+                  transition: { duration: 500, delay: 200, ease: 'easeOut' },
                 }"
                 class="flex gap-4"
               >
@@ -318,12 +327,12 @@
                   <h4
                     class="text-white text-sm lg:text-[18px] font-['Roboto'] font-extrabold"
                   >
-                    {{ t("hard_skills") }}
+                    {{ t("skills_design_title") }}
                   </h4>
                   <p
                     class="text-white text-sm lg:text-[16px] leading-relaxed font-['Roboto'] font-regular"
                   >
-                    {{ t("hard_skills_desc") }}
+                    {{ t("skills_design_desc") }}
                   </p>
                 </div>
               </li>
@@ -333,7 +342,7 @@
                 :visible="{
                   opacity: 1,
                   y: 0,
-                  transition: { duration: 500, delay: 500, ease: 'easeOut' },
+                  transition: { duration: 500, delay: 300, ease: 'easeOut' },
                 }"
                 class="flex gap-4"
               >
@@ -344,12 +353,38 @@
                   <h4
                     class="text-white text-sm lg:text-[18px] font-['Roboto'] font-extrabold"
                   >
-                    {{ t("soft_skills") }}
+                    {{ t("skills_tech_title") }}
                   </h4>
                   <p
                     class="text-white text-sm lg:text-[16px] leading-relaxed font-['Roboto'] font-regular"
                   >
-                    {{ t("soft_skills_desc") }}
+                    {{ t("skills_tech_desc") }}
+                  </p>
+                </div>
+              </li>
+              <li
+                v-motion
+                :initial="{ opacity: 0, y: 20 }"
+                :visible="{
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 500, delay: 400, ease: 'easeOut' },
+                }"
+                class="flex gap-4"
+              >
+                <span class="text-white mt-1.5"
+                  ><i class="bi bi-circle-fill text-[8px]"></i>
+                </span>
+                <div>
+                  <h4
+                    class="text-white text-sm lg:text-[18px] font-['Roboto'] font-extrabold"
+                  >
+                    {{ t("skills_process_title") }}
+                  </h4>
+                  <p
+                    class="text-white text-sm lg:text-[16px] leading-relaxed font-['Roboto'] font-regular"
+                  >
+                    {{ t("skills_process_desc") }}
                   </p>
                 </div>
               </li>
@@ -379,7 +414,7 @@
               <h4
                 class="text-4xl lg:text-[48px] font-bold font-['Poppins'] text-[#FBDF3A]"
               >
-                02+
+                03+
               </h4>
               <p
                 class="text-white text-[14px] lg:text-[16px] font-['Roboto'] font-regular"
@@ -465,17 +500,12 @@
                   <h4
                     class="text-white text-sm lg:text-[18px] font-['Roboto'] font-extrabold"
                   >
-                    Indonesian
+                    {{ t("lang_id_title") }}
                   </h4>
                   <p
                     class="text-white text-sm lg:text-[16px] font-['Roboto'] font-medium"
                   >
-                    {{ t("lang_native") }}
-                  </p>
-                  <p
-                    class="text-white text-sm italic lg:text-[16px] font-['Roboto'] font-light"
-                  >
-                    ✦ Certification : n/a
+                    {{ t("lang_id_desc") }}
                   </p>
                 </div>
               </li>
@@ -496,17 +526,17 @@
                   <h4
                     class="text-white text-sm lg:text-[18px] font-['Roboto'] font-extrabold"
                   >
-                    English
+                    {{ t("lang_en_title") }}
                   </h4>
                   <p
                     class="text-white text-sm lg:text-[16px] font-['Roboto'] font-medium"
                   >
-                    Intermediate (CEFR B1)
+                    {{ t("lang_en_level") }}
                   </p>
                   <p
                     class="text-white text-sm italic lg:text-[16px] font-['Roboto'] font-light"
                   >
-                    ✦ Certification : EPRT Score: 483 – Telkom University
+                    ✦ {{ t("lang_en_cert") }}
                   </p>
                 </div>
                 <img

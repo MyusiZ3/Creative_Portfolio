@@ -41,7 +41,7 @@ Build **Theme 2 (Pixelated Cyber-Arcade)** while maintaining a strict, isolated 
 Create directory `src/components/themes/pixel/` and build 6 new isolated components:
 
 1. **`HeroPixel.vue`**
-   - Title: `MUHAMAD SIDIK [LVL 99 MULTIMEDIA DESIGNER]`
+   - Title: `MUHAMAD SIDIK [LVL 99 CREATIVE DESIGNER]`
    - Player Select Stats Box (HP: 100/100, MP: VR/AR, Class: Game Dev & Designer).
    - Blinking `"INSERT COIN TO START"` text.
 

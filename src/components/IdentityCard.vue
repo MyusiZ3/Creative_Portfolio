@@ -72,7 +72,7 @@
           <div class="flex gap-6 sm:gap-10">
              <div class="space-y-1">
                <p class="text-[8px] text-white/40 font-mono uppercase tracking-wider">FOCUS AREA</p>
-               <p class="text-white text-[9px] sm:text-xs font-mono tracking-tight font-medium">UI/UX & MULTIMEDIA</p>
+               <p class="text-white text-[9px] sm:text-xs font-mono tracking-tight font-medium">UI/UX & CREATIVE DESIGN</p>
              </div>
              <div class="space-y-1">
                <p class="text-[8px] text-white/40 font-mono uppercase tracking-wider">STATUS</p>

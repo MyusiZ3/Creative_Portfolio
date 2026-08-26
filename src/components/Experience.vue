@@ -106,7 +106,7 @@
               <p
                 class="text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2"
               >
-                FEB 2026 - JUL 2026
+                AUG 2025 - JUL 2026
               </p>
               <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
                 <div 

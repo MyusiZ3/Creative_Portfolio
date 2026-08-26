@@ -38,27 +38,37 @@
           <div class="flex items-center justify-between border-b border-[#30363d] pb-2 mb-3">
             <div class="flex items-center gap-2 font-silkscreen text-[#00ff66] text-xs font-bold uppercase">
               <i class="bi bi-cpu-fill text-sm"></i>
-              <span>[TECH ATTACK STATS // HARD SKILLS]</span>
+              <span>[TECH ATTACK STATS // SKILLS]</span>
             </div>
             <span class="text-[9px] font-silkscreen text-[#00ff66] bg-[#00ff66]/10 px-2 py-0.5 border border-[#00ff66]/30">SYS.BUFF: +99 ENGINE</span>
           </div>
-          <p class="text-xs text-[#c9d1d9] leading-relaxed font-mono">
-            {{ t('hard_skills_desc') }}
-          </p>
+          <div class="space-y-3 font-mono text-xs text-[#c9d1d9]">
+            <div>
+              <span class="text-[#00ff66] font-bold">► {{ t('skills_design_title') }}:</span>
+              <p class="pl-3 mt-0.5 leading-relaxed">{{ t('skills_design_desc') }}</p>
+            </div>
+            <div>
+              <span class="text-[#00ff66] font-bold">► {{ t('skills_tech_title') }}:</span>
+              <p class="pl-3 mt-0.5 leading-relaxed">{{ t('skills_tech_desc') }}</p>
+            </div>
+          </div>
         </div>
 
-        <!-- Soft Skills Box -->
+        <!-- Soft Skills Box / Process Box -->
         <div class="bg-[#161b22] border-4 border-black p-5 shadow-[6px_6px_0px_#000000] relative group hover:border-[#ff0055] transition-colors">
           <div class="flex items-center justify-between border-b border-[#30363d] pb-2 mb-3">
             <div class="flex items-center gap-2 font-silkscreen text-[#ff0055] text-xs font-bold uppercase">
               <i class="bi bi-controller text-sm"></i>
-              <span>[CO-OP & GUILD STATS // SOFT SKILLS]</span>
+              <span>[PLAYSTYLE & STRATEGY // {{ t('skills_process_title') }}]</span>
             </div>
             <span class="text-[9px] font-silkscreen text-[#ff0055] bg-[#ff0055]/10 px-2 py-0.5 border border-[#ff0055]/30">PASSIVE: PARTY BUFF</span>
           </div>
-          <p class="text-xs text-[#c9d1d9] leading-relaxed font-mono">
-            {{ t('soft_skills_desc') }}
-          </p>
+          <div class="space-y-3 font-mono text-xs text-[#c9d1d9]">
+            <div>
+              <span class="text-[#ff0055] font-bold">► {{ t('skills_process_title') }}:</span>
+              <p class="pl-3 mt-0.5 leading-relaxed">{{ t('skills_process_desc') }}</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -77,7 +87,7 @@
                 <i class="bi bi-mortarboard-fill text-sm"></i>
                 <span>[ACADEMIC GUILD // {{ t('education_title') }}]</span>
               </div>
-              <span class="text-[9px] font-silkscreen text-[#ffd700] bg-[#ffd700]/10 px-2 py-0.5 border border-[#ffd700]/30">GPA: 3.81 / 4.00</span>
+              <span class="text-[9px] font-silkscreen text-[#ffd700] bg-[#ffd700]/10 px-2 py-0.5 border border-[#ffd700]/30">{{ isId ? "IPK: 3.83 / 4.00" : "GPA: 3.83 / 4.00" }}</span>
             </div>
 
             <div class="space-y-4 font-mono">
@@ -85,13 +95,13 @@
               <div class="border-l-2 border-[#ffd700] pl-3">
                 <div class="flex flex-wrap items-center justify-between gap-1">
                   <h4 class="text-xs font-bold text-[#f0f6fc] font-silkscreen">TELKOM UNIVERSITY</h4>
-                  <span class="text-[9px] text-[#8b949e] font-silkscreen">2022 - PRESENT</span>
+                  <span class="text-[9px] text-[#8b949e] font-silkscreen">2022 - 2026</span>
                 </div>
                 <p class="text-xs text-[#c9d1d9] mt-1 leading-relaxed">
                   {{ t('edu_1_desc') }}
                 </p>
                 <div class="mt-1 text-[10px] text-[#ffd700] font-silkscreen flex items-center gap-1">
-                  <i class="bi bi-star-fill text-[8px]"></i> [HONORS ROLL] GPA 3.81 / 4.00
+                  <i class="bi bi-star-fill text-[8px]"></i> [HONORS ROLL] {{ isId ? "IPK 3.83 / 4.00 (Cum Laude)" : "GPA 3.83 / 4.00 (Cum Laude)" }}
                 </div>
               </div>
 
