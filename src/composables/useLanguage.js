@@ -64,7 +64,7 @@ const translations = {
     // Experience
     exp_title: "Experience",
     exp_desc:
-      "Experienced in designing and developing interactive solutions across education, design, games, AR/VR, and UI/UX platforms — from lab teaching to full product prototyping.",
+      "A collection of experiences across design, technology, and interactive projects, shaped through academic, professional, and collaborative work.",
     exp_work_org: "Work & Organizational Experience",
     // Work items
     exp_w1_title: "Information Technology & Web Dev",
@@ -228,7 +228,7 @@ const translations = {
     // Experience
     exp_title: "Pengalaman",
     exp_desc:
-      "Punya pengalaman bikin berbagai solusi interaktif — dari jadi asisten lab, desain game, AR/VR, sampai bikin prototipe produk dari nol.",
+      "Kumpulan pengalaman di bidang desain, teknologi, dan proyek interaktif, terbentuk melalui kegiatan akademik, profesional, dan kolaboratif.",
     exp_work_org: "Pengalaman Kerja & Organisasi",
     // Work items
     exp_w1_title: "Teknologi Informasi & Web Dev",
