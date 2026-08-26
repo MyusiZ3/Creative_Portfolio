@@ -95,32 +95,39 @@ const translations = {
     show_additional_projects: "Show Additional Projects",
     hide_additional_projects: "Hide Additional Projects",
     exp_p7_title: "Unity Developer & Programmer",
-    exp_p7_sub: "MATHMAGIC",
-    exp_p7_desc: "Developed an educational mathematics game for 4th-grade students in partnership with SD Laboratorium Universitas Pattimura. Worked across UI design, application flow, Unity development, and Firebase integration, building both the player experience and supporting admin CMS.",
+    exp_p7_sub: "Mathmagic",
+    exp_p7_desc:
+      "Developed an educational mathematics game for 4th-grade students in partnership with SD Laboratorium Universitas Pattimura. Worked across UI design, application flow, Unity development, and Firebase integration, building both the player experience and supporting admin CMS.",
     exp_p7_tech: "Unity · Firebase · UI Design · System Flow",
     exp_p1_title: "Project Manager & Game Dev",
     exp_p1_sub: "RideXP",
-    exp_p1_desc: "Led a team in developing a Unity-based arcade game, handling project planning, game development, UI design, branding, and exhibition preparation.",
+    exp_p1_desc:
+      "Led a team in developing a Unity-based arcade game, handling project planning, game development, UI design, branding, and exhibition preparation.",
     exp_p1_tech: "Unity · ESP32 · JSON",
     exp_p2_title: "Game Dev & UI/UX Designer",
     exp_p2_sub: "MathRift",
-    exp_p2_desc: "Built a Unity-based educational platformer with Firebase integration, focused on math-physics gameplay, complete UI/UX flow, and optimized performance.",
+    exp_p2_desc:
+      "Built a Unity-based educational platformer with Firebase integration, focused on math-physics gameplay, complete UI/UX flow, and optimized performance.",
     exp_p2_tech: "Unity · Firebase",
     exp_p3_title: "VR Dev & ENV Designer",
     exp_p3_sub: "MindEscape: VR Chamber",
-    exp_p3_desc: "Developed an immersive VR escape room in Unity, designing environments, mechanics integration, user navigation, and optimizing headset performance.",
+    exp_p3_desc:
+      "Developed an immersive VR escape room in Unity, designing environments, mechanics integration, user navigation, and optimizing headset performance.",
     exp_p3_tech: "Unity · SteamVR",
     exp_p4_title: "AR Developer & Designer",
     exp_p4_sub: "Stellar Adventures",
-    exp_p4_desc: "Created an AR space adventure in Unity with Vuforia, combining interactive markers, animated assets, and user-friendly interface.",
+    exp_p4_desc:
+      "Created an AR space adventure in Unity with Vuforia, combining interactive markers, animated assets, and user-friendly interface.",
     exp_p4_tech: "Unity · Vuforia",
     exp_p5_title: "UI/UX Designer",
     exp_p5_sub: "U-Asprak",
-    exp_p5_desc: "Created high-fidelity mockups in Figma based on the team's wireframes. Defined visual style through early sketches, color palettes, and typography choices.",
+    exp_p5_desc:
+      "Created high-fidelity mockups in Figma based on the team's wireframes. Defined visual style through early sketches, color palettes, and typography choices.",
     exp_p5_tech: "Figma",
     exp_p6_title: "Frontend & Backend Dev",
     exp_p6_sub: "IUDEX Web Portfolio",
-    exp_p6_desc: "Developed a portfolio website using PHP, SQL (CRUD), and JavaScript animation templates. Handled both frontend layout and backend logic.",
+    exp_p6_desc:
+      "Developed a portfolio website using PHP, SQL (CRUD), and JavaScript animation templates. Handled both frontend layout and backend logic.",
     exp_p6_tech: "PHP · SQL · JavaScript",
 
     // Achievements
@@ -267,32 +274,39 @@ const translations = {
     show_additional_projects: "Lihat Proyek Tambahan",
     hide_additional_projects: "Sembunyikan Proyek Tambahan",
     exp_p7_title: "Unity Developer & Programmer",
-    exp_p7_sub: "MATHMAGIC",
-    exp_p7_desc: "Mengembangkan game edukasi matematika untuk siswa kelas 4 SD bekerja sama dengan SD Laboratorium Universitas Pattimura. Bekerja dalam desain UI, alur aplikasi, pengembangan Unity, dan integrasi Firebase, membangun pengalaman pemain serta CMS admin pendukung.",
+    exp_p7_sub: "Mathmagic",
+    exp_p7_desc:
+      "Mengembangkan game edukasi matematika untuk siswa kelas 4 SD bekerja sama dengan SD Laboratorium Universitas Pattimura. Bekerja dalam desain UI, alur aplikasi, pengembangan Unity, dan integrasi Firebase, membangun pengalaman pemain serta CMS admin pendukung.",
     exp_p7_tech: "Unity · Firebase · UI Design · System Flow",
     exp_p1_title: "Project Manager & Game Dev",
     exp_p1_sub: "RideXP",
-    exp_p1_desc: "Memimpin tim dalam mengembangkan game arcade berbasis Unity, menangani perencanaan proyek, pengembangan game, desain UI, branding, dan persiapan pameran.",
+    exp_p1_desc:
+      "Memimpin tim dalam mengembangkan game arcade berbasis Unity, menangani perencanaan proyek, pengembangan game, desain UI, branding, dan persiapan pameran.",
     exp_p1_tech: "Unity · ESP32 · JSON",
     exp_p2_title: "Game Dev & UI/UX Designer",
     exp_p2_sub: "MathRift",
-    exp_p2_desc: "Membangun game platformer 2D edukatif berbasis Unity dengan integrasi Firebase, berfokus pada gameplay matematika-fisika, alur UI/UX lengkap, dan optimasi performa.",
+    exp_p2_desc:
+      "Membangun game platformer 2D edukatif berbasis Unity dengan integrasi Firebase, berfokus pada gameplay matematika-fisika, alur UI/UX lengkap, dan optimasi performa.",
     exp_p2_tech: "Unity · Firebase",
     exp_p3_title: "VR Dev & Environment Designer",
     exp_p3_sub: "MindEscape: VR Chamber",
-    exp_p3_desc: "Mengembangkan escape room VR yang imersif di Unity, merancang lingkungan, integrasi mekanik, navigasi pengguna, dan mengoptimalkan performa headset.",
+    exp_p3_desc:
+      "Mengembangkan escape room VR yang imersif di Unity, merancang lingkungan, integrasi mekanik, navigasi pengguna, dan mengoptimalkan performa headset.",
     exp_p3_tech: "Unity · SteamVR",
     exp_p4_title: "AR Developer & Designer",
     exp_p4_sub: "Stellar Adventures",
-    exp_p4_desc: "Membuat petualangan luar angkasa AR di Unity dengan Vuforia, menggabungkan penanda interaktif, aset animasi, dan antarmuka yang ramah pengguna.",
+    exp_p4_desc:
+      "Membuat petualangan luar angkasa AR di Unity dengan Vuforia, menggabungkan penanda interaktif, aset animasi, dan antarmuka yang ramah pengguna.",
     exp_p4_tech: "Unity · Vuforia",
     exp_p5_title: "UI/UX Designer",
     exp_p5_sub: "U-Asprak",
-    exp_p5_desc: "Membuat mockup dengan ketelitian tinggi (high-fidelity) di Figma berdasarkan wireframe tim. Menentukan gaya visual melalui sketsa awal, palet warna, dan pilihan tipografi.",
+    exp_p5_desc:
+      "Membuat mockup dengan ketelitian tinggi (high-fidelity) di Figma berdasarkan wireframe tim. Menentukan gaya visual melalui sketsa awal, palet warna, dan pilihan tipografi.",
     exp_p5_tech: "Figma",
     exp_p6_title: "Frontend & Backend Dev",
     exp_p6_sub: "IUDEX Web Portfolio",
-    exp_p6_desc: "Mengembangkan website portofolio menggunakan PHP, SQL (CRUD), dan template animasi JavaScript. Menangani tata letak frontend dan logika backend.",
+    exp_p6_desc:
+      "Mengembangkan website portofolio menggunakan PHP, SQL (CRUD), dan template animasi JavaScript. Menangani tata letak frontend dan logika backend.",
     exp_p6_tech: "PHP · SQL · JavaScript",
 
     // Achievements

@@ -86,14 +86,24 @@
           >
             <button
               @click="toggleAll(true)"
-              class="px-4 py-2 text-[10px] lg:text-xs font-bold rounded-lg border border-violet-200 text-violet-600 hover:bg-violet-50 transition-all flex items-center gap-2 uppercase tracking-wider"
+              class="px-4 py-2 text-[10px] lg:text-xs font-bold rounded-lg border transition-all flex items-center gap-2 uppercase tracking-wider"
+              :class="
+                allExpanded
+                  ? 'border-violet-200 text-violet-600 bg-violet-50/50 hover:bg-violet-50'
+                  : 'border-gray-200 text-gray-400 hover:bg-gray-50'
+              "
             >
               <i class="bi bi-arrows-expand"></i>
               {{ lang === "ID" ? "Buka Semua" : "Expand All" }}
             </button>
             <button
               @click="toggleAll(false)"
-              class="px-4 py-2 text-[10px] lg:text-xs font-bold rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50 transition-all flex items-center gap-2 uppercase tracking-wider"
+              class="px-4 py-2 text-[10px] lg:text-xs font-bold rounded-lg border transition-all flex items-center gap-2 uppercase tracking-wider"
+              :class="
+                !allExpanded
+                  ? 'border-violet-200 text-violet-600 bg-violet-50/50 hover:bg-violet-50'
+                  : 'border-gray-200 text-gray-400 hover:bg-gray-50'
+              "
             >
               <i class="bi bi-arrows-collapse"></i>
               {{ lang === "ID" ? "Tutup Semua" : "Collapse All" }}
@@ -386,14 +396,21 @@
             class="flex items-center gap-2 px-5 py-2.5 border border-[#302F49]/20 hover:border-violet-500 hover:text-violet-600 rounded-full text-sm font-semibold font-['Poppins'] text-[#302F49] transition-all bg-white shadow-sm hover:shadow-md"
           >
             <span>{{ t("earlier_experience_title") }}</span>
-            <i class="bi" :class="showEarlierWork ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+            <i
+              class="bi"
+              :class="showEarlierWork ? 'bi-chevron-up' : 'bi-chevron-down'"
+            ></i>
           </button>
         </div>
 
         <!-- Collapsible Earlier Experience Row -->
         <div
           class="overflow-hidden transition-all duration-500 ease-in-out"
-          :class="showEarlierWork ? 'max-h-[1000px] opacity-100 mb-16' : 'max-h-0 opacity-0 mb-0 pointer-events-none'"
+          :class="
+            showEarlierWork
+              ? 'max-h-[1000px] opacity-100 mb-16'
+              : 'max-h-0 opacity-0 mb-0 pointer-events-none'
+          "
         >
           <div class="relative px-0 pt-4">
             <!-- Horizontal Line -->
@@ -531,7 +548,7 @@
           <div
             class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-12 relative z-10"
           >
-            <!-- Project 7 (MATHMAGIC) -->
+            <!-- Project 7 (Mathmagic) -->
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
@@ -590,16 +607,25 @@
                   >
                     {{ t("exp_p7_desc") }}
                   </p>
-                  
+
                   <!-- Highlights / Tags -->
-                  <div class="mt-3 flex items-center gap-4 text-xs font-bold text-gray-400 uppercase tracking-widest font-mono">
+                  <div
+                    class="mt-3 flex items-center gap-4 text-xs font-bold text-gray-400 uppercase tracking-widest font-mono"
+                  >
                     <span>✦ HKI Registered</span>
                     <span>✦ Real-World Partner</span>
                   </div>
 
-                  <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
-                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Tech:</span>
-                    <span class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60">
+                  <div
+                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
+                  >
+                    <span
+                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                      >Tech:</span
+                    >
+                    <span
+                      class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
+                    >
                       {{ t("exp_p7_tech") }}
                     </span>
                   </div>
@@ -690,9 +716,16 @@
                   >
                     {{ t("exp_p1_desc") }}
                   </p>
-                  <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
-                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Tech:</span>
-                    <span class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60">
+                  <div
+                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
+                  >
+                    <span
+                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                      >Tech:</span
+                    >
+                    <span
+                      class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
+                    >
                       {{ t("exp_p1_tech") }}
                     </span>
                   </div>
@@ -783,9 +816,16 @@
                   >
                     {{ t("exp_p2_desc") }}
                   </p>
-                  <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
-                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Tech:</span>
-                    <span class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60">
+                  <div
+                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
+                  >
+                    <span
+                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                      >Tech:</span
+                    >
+                    <span
+                      class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
+                    >
                       {{ t("exp_p2_tech") }}
                     </span>
                   </div>
@@ -895,9 +935,16 @@
                   >
                     {{ t("exp_p4_desc") }}
                   </p>
-                  <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
-                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Tech:</span>
-                    <span class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60">
+                  <div
+                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
+                  >
+                    <span
+                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                      >Tech:</span
+                    >
+                    <span
+                      class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
+                    >
                       {{ t("exp_p4_tech") }}
                     </span>
                   </div>
@@ -988,9 +1035,16 @@
                   >
                     {{ t("exp_p5_desc") }}
                   </p>
-                  <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
-                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Tech:</span>
-                    <span class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60">
+                  <div
+                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
+                  >
+                    <span
+                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                      >Tech:</span
+                    >
+                    <span
+                      class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
+                    >
                       {{ t("exp_p5_tech") }}
                     </span>
                   </div>
@@ -1081,9 +1135,16 @@
                   >
                     {{ t("exp_p6_desc") }}
                   </p>
-                  <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
-                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Tech:</span>
-                    <span class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60">
+                  <div
+                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
+                  >
+                    <span
+                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                      >Tech:</span
+                    >
+                    <span
+                      class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
+                    >
                       {{ t("exp_p6_tech") }}
                     </span>
                   </div>
@@ -1123,15 +1184,26 @@
             @click="showEarlierProjects = !showEarlierProjects"
             class="flex items-center gap-2 px-5 py-2.5 border border-[#302F49]/20 hover:border-violet-500 hover:text-violet-600 rounded-full text-sm font-semibold font-['Poppins'] text-[#302F49] transition-all bg-white shadow-sm hover:shadow-md"
           >
-            <span>{{ showEarlierProjects ? t("hide_additional_projects") : t("show_additional_projects") }}</span>
-            <i class="bi" :class="showEarlierProjects ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+            <span>{{
+              showEarlierProjects
+                ? t("hide_additional_projects")
+                : t("show_additional_projects")
+            }}</span>
+            <i
+              class="bi"
+              :class="showEarlierProjects ? 'bi-chevron-up' : 'bi-chevron-down'"
+            ></i>
           </button>
         </div>
 
         <!-- Collapsible Earlier Projects Row -->
         <div
           class="overflow-hidden transition-all duration-500 ease-in-out"
-          :class="showEarlierProjects ? 'max-h-[1000px] opacity-100 mb-16' : 'max-h-0 opacity-0 mb-0 pointer-events-none'"
+          :class="
+            showEarlierProjects
+              ? 'max-h-[1000px] opacity-100 mb-16'
+              : 'max-h-0 opacity-0 mb-0 pointer-events-none'
+          "
         >
           <div class="relative px-0 pt-4">
             <!-- Horizontal Line -->
@@ -1208,9 +1280,16 @@
                     >
                       {{ t("exp_p3_desc") }}
                     </p>
-                    <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
-                      <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Tech:</span>
-                      <span class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60">
+                    <div
+                      class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
+                    >
+                      <span
+                        class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                        >Tech:</span
+                      >
+                      <span
+                        class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
+                      >
                         {{ t("exp_p3_tech") }}
                       </span>
                     </div>
@@ -1250,7 +1329,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useLanguage } from "@/composables/useLanguage";
 
 const { t, lang } = useLanguage();
@@ -1258,6 +1337,24 @@ const { t, lang } = useLanguage();
 const expanded = ref({});
 const showEarlierWork = ref(false);
 const showEarlierProjects = ref(false);
+
+const allExpanded = computed(() => {
+  const keys = [
+    "w1",
+    "w2",
+    "w3",
+    "w5",
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7",
+  ];
+  const expandedCount = keys.filter((key) => expanded.value[key]).length;
+  return expandedCount >= keys.length / 2;
+});
 
 const toggleDetail = (id) => {
   expanded.value[id] = !expanded.value[id];

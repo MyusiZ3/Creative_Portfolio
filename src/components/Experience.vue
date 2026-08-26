@@ -1,6 +1,8 @@
 <template>
   <section id="experience" class="-mb-4">
-    <div class="bg-white p-8 md:p-14 lg:p-20 xl:p-40 relative overflow-hidden shadow-2xl">
+    <div
+      class="bg-white p-8 md:p-14 lg:p-20 xl:p-40 relative overflow-hidden shadow-2xl"
+    >
       <!-- Accents -->
       <img
         src="/images/accent_2.png"
@@ -10,7 +12,7 @@
       <img
         src="/images/accent_4.png"
         alt="Accent Shape"
-        class="absolute top-0 right-0 w-32 md:w-48 lg:w-64 xl:w-260 pointer-events-none  z-0 "
+        class="absolute top-0 right-0 w-32 md:w-48 lg:w-64 xl:w-260 pointer-events-none z-0"
       />
       <img
         src="/images/accent_2.png"
@@ -29,56 +31,82 @@
         <h2
           v-motion
           :initial="{ opacity: 0, y: 40 }"
-          :visible="{ opacity: 1, y: 0, transition: { duration: 700, ease: 'easeOut' } }"
+          :visible="{
+            opacity: 1,
+            y: 0,
+            transition: { duration: 700, ease: 'easeOut' },
+          }"
           class="text-4xl lg:text-[48px] font-bold font-['Poppins'] text-[#171717] mb-4 mt-20"
         >
-          {{ t('exp_title') }}
+          {{ t("exp_title") }}
         </h2>
         <div
           v-motion
           :initial="{ opacity: 0, y: 30 }"
-          :visible="{ opacity: 1, y: 0, transition: { duration: 700, delay: 150, ease: 'easeOut' } }"
+          :visible="{
+            opacity: 1,
+            y: 0,
+            transition: { duration: 700, delay: 150, ease: 'easeOut' },
+          }"
           class="text-[14px] lg:text-[15px] text-gray-600 font-['Roboto'] italic mb-10 flex items-start gap-2 max-w-4xl"
         >
           <span class="text-violet-500 text-xl font-normal leading-none mt-1"
             >✦</span
           >
-          <span
-            >{{ t('exp_desc') }}</span
-          >
+          <span>{{ t("exp_desc") }}</span>
         </div>
 
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
+        <div
+          class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8"
+        >
           <!-- Work & Organizational Experience -->
           <h3
             v-motion
             :initial="{ opacity: 0, x: -40 }"
-            :visible="{ opacity: 1, x: 0, transition: { duration: 600, ease: 'easeOut' } }"
+            :visible="{
+              opacity: 1,
+              x: 0,
+              transition: { duration: 600, ease: 'easeOut' },
+            }"
             class="text-2xl lg:text-[24px] font-bold font-['Poppins'] text-violet-500"
           >
-            {{ t('exp_work_org') }}
+            {{ t("exp_work_org") }}
           </h3>
 
           <!-- Global Controls -->
-          <div 
+          <div
             v-motion
             :initial="{ opacity: 0, scale: 0.95 }"
-            :visible="{ opacity: 1, scale: 1, transition: { duration: 600, delay: 100 } }"
+            :visible="{
+              opacity: 1,
+              scale: 1,
+              transition: { duration: 600, delay: 100 },
+            }"
             class="flex items-center gap-3 shrink-0"
           >
-            <button 
+            <button
               @click="toggleAll(true)"
-              class="px-4 py-2 text-[10px] lg:text-xs font-bold rounded-lg border border-violet-200 text-violet-600 hover:bg-violet-50 transition-all flex items-center gap-2 uppercase tracking-wider"
+              class="px-4 py-2 text-[10px] lg:text-xs font-bold rounded-lg border transition-all flex items-center gap-2 uppercase tracking-wider"
+              :class="
+                allExpanded
+                  ? 'border-violet-200 text-violet-600 bg-violet-50/50 hover:bg-violet-50'
+                  : 'border-gray-200 text-gray-400 hover:bg-gray-50'
+              "
             >
               <i class="bi bi-arrows-expand"></i>
-              {{ lang === 'ID' ? 'Buka Semua' : 'Expand All' }}
+              {{ lang === "ID" ? "Buka Semua" : "Expand All" }}
             </button>
-            <button 
+            <button
               @click="toggleAll(false)"
-              class="px-4 py-2 text-[10px] lg:text-xs font-bold rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50 transition-all flex items-center gap-2 uppercase tracking-wider"
+              class="px-4 py-2 text-[10px] lg:text-xs font-bold rounded-lg border transition-all flex items-center gap-2 uppercase tracking-wider"
+              :class="
+                !allExpanded
+                  ? 'border-violet-200 text-violet-600 bg-violet-50/50 hover:bg-violet-50'
+                  : 'border-gray-200 text-gray-400 hover:bg-gray-50'
+              "
             >
               <i class="bi bi-arrows-collapse"></i>
-              {{ lang === 'ID' ? 'Tutup Semua' : 'Collapse All' }}
+              {{ lang === "ID" ? "Tutup Semua" : "Collapse All" }}
             </button>
           </div>
         </div>
@@ -89,7 +117,11 @@
           <div
             v-motion
             :initial="{ opacity: 0, scaleX: 0 }"
-            :visible="{ opacity: 1, scaleX: 1, transition: { duration: 1000, delay: 100, ease: 'easeOut' } }"
+            :visible="{
+              opacity: 1,
+              scaleX: 1,
+              transition: { duration: 1000, delay: 100, ease: 'easeOut' },
+            }"
             class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
           ></div>
 
@@ -100,7 +132,11 @@
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{ opacity: 1, y: 0, transition: { duration: 600, ease: 'easeOut' } }"
+              :visible="{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 600, ease: 'easeOut' },
+              }"
               class="flex flex-col"
             >
               <p
@@ -108,11 +144,22 @@
               >
                 AUG 2025 - JUL 2026
               </p>
-              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
-                <div 
+              <div
+                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
+              >
+                <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 200 } }"
+                  :visible="{
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                      type: 'spring',
+                      stiffness: 250,
+                      damping: 15,
+                      delay: 200,
+                    },
+                  }"
                   class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
                 ></div>
               </div>
@@ -120,28 +167,50 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  {{ t('exp_w1_title') }}
+                  {{ t("exp_w1_title") }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  {{ t('exp_w1_sub') }}
+                  {{ t("exp_w1_sub") }}
                 </p>
-                <div class="overflow-hidden transition-all duration-300" :class="expanded['w1'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'">
+                <div
+                  class="overflow-hidden transition-all duration-300"
+                  :class="
+                    expanded['w1']
+                      ? 'max-h-96 opacity-100 mb-4'
+                      : 'max-h-0 opacity-0 mb-0'
+                  "
+                >
                   <p
                     class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
                   >
-                    {{ t('exp_w1_desc') }}
+                    {{ t("exp_w1_desc") }}
                   </p>
                 </div>
-                <button 
+                <button
                   @click="toggleDetail('w1')"
                   class="flex items-center gap-1.5 text-xs font-bold text-violet-600 hover:text-violet-800 transition-colors uppercase tracking-wider group"
                 >
-                  <span class="border-b border-transparent group-hover:border-violet-800 transition-all">
-                    {{ expanded['w1'] ? (lang === 'ID' ? 'Sembunyikan Detail' : 'Hide Detail') : (lang === 'ID' ? 'Lihat Detail' : 'Show Detail') }}
+                  <span
+                    class="border-b border-transparent group-hover:border-violet-800 transition-all"
+                  >
+                    {{
+                      expanded["w1"]
+                        ? lang === "ID"
+                          ? "Sembunyikan Detail"
+                          : "Hide Detail"
+                        : lang === "ID"
+                          ? "Lihat Detail"
+                          : "Show Detail"
+                    }}
                   </span>
-                  <i class="bi" :class="expanded['w1'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+                  <i
+                    class="bi"
+                    :class="
+                      expanded['w1'] ? 'bi-chevron-up' : 'bi-chevron-down'
+                    "
+                  ></i>
                 </button>
               </div>
             </div>
@@ -149,7 +218,11 @@
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 150, ease: 'easeOut' } }"
+              :visible="{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 600, delay: 150, ease: 'easeOut' },
+              }"
               class="flex flex-col"
             >
               <p
@@ -157,11 +230,22 @@
               >
                 SEP 2023 - JUL 2025
               </p>
-              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
-                <div 
+              <div
+                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
+              >
+                <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 350 } }"
+                  :visible="{
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                      type: 'spring',
+                      stiffness: 250,
+                      damping: 15,
+                      delay: 350,
+                    },
+                  }"
                   class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
                 ></div>
               </div>
@@ -169,28 +253,50 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  {{ t('exp_w2_title') }}
+                  {{ t("exp_w2_title") }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  {{ t('exp_w2_sub') }}
+                  {{ t("exp_w2_sub") }}
                 </p>
-                <div class="overflow-hidden transition-all duration-300" :class="expanded['w2'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'">
+                <div
+                  class="overflow-hidden transition-all duration-300"
+                  :class="
+                    expanded['w2']
+                      ? 'max-h-96 opacity-100 mb-4'
+                      : 'max-h-0 opacity-0 mb-0'
+                  "
+                >
                   <p
                     class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
                   >
-                    {{ t('exp_w2_desc') }}
+                    {{ t("exp_w2_desc") }}
                   </p>
                 </div>
-                <button 
+                <button
                   @click="toggleDetail('w2')"
                   class="flex items-center gap-1.5 text-xs font-bold text-violet-600 hover:text-violet-800 transition-colors uppercase tracking-wider group"
                 >
-                  <span class="border-b border-transparent group-hover:border-violet-800 transition-all">
-                    {{ expanded['w2'] ? (lang === 'ID' ? 'Sembunyikan Detail' : 'Hide Detail') : (lang === 'ID' ? 'Lihat Detail' : 'Show Detail') }}
+                  <span
+                    class="border-b border-transparent group-hover:border-violet-800 transition-all"
+                  >
+                    {{
+                      expanded["w2"]
+                        ? lang === "ID"
+                          ? "Sembunyikan Detail"
+                          : "Hide Detail"
+                        : lang === "ID"
+                          ? "Lihat Detail"
+                          : "Show Detail"
+                    }}
                   </span>
-                  <i class="bi" :class="expanded['w2'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+                  <i
+                    class="bi"
+                    :class="
+                      expanded['w2'] ? 'bi-chevron-up' : 'bi-chevron-down'
+                    "
+                  ></i>
                 </button>
               </div>
             </div>
@@ -198,7 +304,11 @@
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 300, ease: 'easeOut' } }"
+              :visible="{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 600, delay: 300, ease: 'easeOut' },
+              }"
               class="flex flex-col"
             >
               <p
@@ -206,11 +316,22 @@
               >
                 SEP 2023 - DEC 2023
               </p>
-              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
-                <div 
+              <div
+                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
+              >
+                <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 500 } }"
+                  :visible="{
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                      type: 'spring',
+                      stiffness: 250,
+                      damping: 15,
+                      delay: 500,
+                    },
+                  }"
                   class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
                 ></div>
               </div>
@@ -218,28 +339,50 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  {{ t('exp_w3_title') }}
+                  {{ t("exp_w3_title") }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  {{ t('exp_w3_sub') }}
+                  {{ t("exp_w3_sub") }}
                 </p>
-                <div class="overflow-hidden transition-all duration-300" :class="expanded['w3'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'">
+                <div
+                  class="overflow-hidden transition-all duration-300"
+                  :class="
+                    expanded['w3']
+                      ? 'max-h-96 opacity-100 mb-4'
+                      : 'max-h-0 opacity-0 mb-0'
+                  "
+                >
                   <p
                     class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
                   >
-                    {{ t('exp_w3_desc') }}
+                    {{ t("exp_w3_desc") }}
                   </p>
                 </div>
-                <button 
+                <button
                   @click="toggleDetail('w3')"
                   class="flex items-center gap-1.5 text-xs font-bold text-violet-600 hover:text-violet-800 transition-colors uppercase tracking-wider group"
                 >
-                  <span class="border-b border-transparent group-hover:border-violet-800 transition-all">
-                    {{ expanded['w3'] ? (lang === 'ID' ? 'Sembunyikan Detail' : 'Hide Detail') : (lang === 'ID' ? 'Lihat Detail' : 'Show Detail') }}
+                  <span
+                    class="border-b border-transparent group-hover:border-violet-800 transition-all"
+                  >
+                    {{
+                      expanded["w3"]
+                        ? lang === "ID"
+                          ? "Sembunyikan Detail"
+                          : "Hide Detail"
+                        : lang === "ID"
+                          ? "Lihat Detail"
+                          : "Show Detail"
+                    }}
                   </span>
-                  <i class="bi" :class="expanded['w3'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+                  <i
+                    class="bi"
+                    :class="
+                      expanded['w3'] ? 'bi-chevron-up' : 'bi-chevron-down'
+                    "
+                  ></i>
                 </button>
               </div>
             </div>
@@ -253,14 +396,21 @@
             class="flex items-center gap-2 px-5 py-2.5 border border-[#302F49]/20 hover:border-violet-500 hover:text-violet-600 rounded-full text-sm font-semibold font-['Poppins'] text-[#302F49] transition-all bg-white shadow-sm hover:shadow-md"
           >
             <span>{{ t("earlier_experience_title") }}</span>
-            <i class="bi" :class="showEarlierWork ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+            <i
+              class="bi"
+              :class="showEarlierWork ? 'bi-chevron-up' : 'bi-chevron-down'"
+            ></i>
           </button>
         </div>
 
         <!-- Collapsible Earlier Experience Row -->
         <div
           class="overflow-hidden transition-all duration-500 ease-in-out"
-          :class="showEarlierWork ? 'max-h-[1000px] opacity-100 mb-16' : 'max-h-0 opacity-0 mb-0 pointer-events-none'"
+          :class="
+            showEarlierWork
+              ? 'max-h-[1000px] opacity-100 mb-16'
+              : 'max-h-0 opacity-0 mb-0 pointer-events-none'
+          "
         >
           <div class="relative px-0 pt-4">
             <!-- Horizontal Line -->
@@ -372,10 +522,14 @@
         <h3
           v-motion
           :initial="{ opacity: 0, x: -40 }"
-          :visible="{ opacity: 1, x: 0, transition: { duration: 600, ease: 'easeOut' } }"
+          :visible="{
+            opacity: 1,
+            x: 0,
+            transition: { duration: 600, ease: 'easeOut' },
+          }"
           class="text-2xl lg:text-[24px] font-bold font-['Poppins'] text-violet-500 mb-8 mt-4"
         >
-          {{ t('exp_proj_title') }}
+          {{ t("exp_proj_title") }}
         </h3>
 
         <!-- Continuous Timeline Project Row 1 -->
@@ -384,18 +538,26 @@
           <div
             v-motion
             :initial="{ opacity: 0, scaleX: 0 }"
-            :visible="{ opacity: 1, scaleX: 1, transition: { duration: 1000, delay: 100, ease: 'easeOut' } }"
+            :visible="{
+              opacity: 1,
+              scaleX: 1,
+              transition: { duration: 1000, delay: 100, ease: 'easeOut' },
+            }"
             class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
           ></div>
 
           <div
             class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-12 relative z-10"
           >
-            <!-- Project 7 (MATHMAGIC) -->
+            <!-- Project 7 (Mathmagic) -->
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{ opacity: 1, y: 0, transition: { duration: 600, ease: 'easeOut' } }"
+              :visible="{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 600, ease: 'easeOut' },
+              }"
               class="flex flex-col"
             >
               <p
@@ -403,11 +565,22 @@
               >
                 JUN 2026 - JUL 2026
               </p>
-              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
-                <div 
+              <div
+                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
+              >
+                <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 200 } }"
+                  :visible="{
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                      type: 'spring',
+                      stiffness: 250,
+                      damping: 15,
+                      delay: 200,
+                    },
+                  }"
                   class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
                 ></div>
               </div>
@@ -415,41 +588,72 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  {{ t('exp_p7_sub') }}
+                  {{ t("exp_p7_sub") }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  {{ t('exp_p7_title') }}
+                  {{ t("exp_p7_title") }}
                 </p>
-                <div class="overflow-hidden transition-all duration-300" :class="expanded['p7'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'">
+                <div
+                  class="overflow-hidden transition-all duration-300"
+                  :class="
+                    expanded['p7']
+                      ? 'max-h-96 opacity-100 mb-4'
+                      : 'max-h-0 opacity-0 mb-0'
+                  "
+                >
                   <p
                     class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
                   >
-                    {{ t('exp_p7_desc') }}
+                    {{ t("exp_p7_desc") }}
                   </p>
-                  
+
                   <!-- Highlights / Tags -->
-                  <div class="mt-3 flex items-center gap-4 text-xs font-bold text-gray-400 uppercase tracking-widest font-mono">
+                  <div
+                    class="mt-3 flex items-center gap-4 text-xs font-bold text-gray-400 uppercase tracking-widest font-mono"
+                  >
                     <span>✦ HKI Registered</span>
                     <span>✦ Real-World Partner</span>
                   </div>
 
-                  <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
-                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Tech:</span>
-                    <span class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60">
+                  <div
+                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
+                  >
+                    <span
+                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                      >Tech:</span
+                    >
+                    <span
+                      class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
+                    >
                       {{ t("exp_p7_tech") }}
                     </span>
                   </div>
                 </div>
-                <button 
+                <button
                   @click="toggleDetail('p7')"
                   class="flex items-center gap-1.5 text-xs font-bold text-violet-600 hover:text-violet-800 transition-colors uppercase tracking-wider group"
                 >
-                  <span class="border-b border-transparent group-hover:border-violet-800 transition-all">
-                    {{ expanded['p7'] ? (lang === 'ID' ? 'Sembunyikan Detail' : 'Hide Detail') : (lang === 'ID' ? 'Lihat Detail' : 'Show Detail') }}
+                  <span
+                    class="border-b border-transparent group-hover:border-violet-800 transition-all"
+                  >
+                    {{
+                      expanded["p7"]
+                        ? lang === "ID"
+                          ? "Sembunyikan Detail"
+                          : "Hide Detail"
+                        : lang === "ID"
+                          ? "Lihat Detail"
+                          : "Show Detail"
+                    }}
                   </span>
-                  <i class="bi" :class="expanded['p7'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+                  <i
+                    class="bi"
+                    :class="
+                      expanded['p7'] ? 'bi-chevron-up' : 'bi-chevron-down'
+                    "
+                  ></i>
                 </button>
               </div>
             </div>
@@ -458,7 +662,11 @@
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 150, ease: 'easeOut' } }"
+              :visible="{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 600, delay: 150, ease: 'easeOut' },
+              }"
               class="flex flex-col"
             >
               <p
@@ -466,11 +674,22 @@
               >
                 JAN 2025 - JUNE 2025
               </p>
-              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
-                <div 
+              <div
+                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
+              >
+                <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 350 } }"
+                  :visible="{
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                      type: 'spring',
+                      stiffness: 250,
+                      damping: 15,
+                      delay: 350,
+                    },
+                  }"
                   class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
                 ></div>
               </div>
@@ -478,34 +697,63 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  {{ t('exp_p1_sub') }}
+                  {{ t("exp_p1_sub") }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  {{ t('exp_p1_title') }}
+                  {{ t("exp_p1_title") }}
                 </p>
-                <div class="overflow-hidden transition-all duration-300" :class="expanded['p1'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'">
+                <div
+                  class="overflow-hidden transition-all duration-300"
+                  :class="
+                    expanded['p1']
+                      ? 'max-h-96 opacity-100 mb-4'
+                      : 'max-h-0 opacity-0 mb-0'
+                  "
+                >
                   <p
                     class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
                   >
-                    {{ t('exp_p1_desc') }}
+                    {{ t("exp_p1_desc") }}
                   </p>
-                  <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
-                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Tech:</span>
-                    <span class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60">
+                  <div
+                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
+                  >
+                    <span
+                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                      >Tech:</span
+                    >
+                    <span
+                      class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
+                    >
                       {{ t("exp_p1_tech") }}
                     </span>
                   </div>
                 </div>
-                <button 
+                <button
                   @click="toggleDetail('p1')"
                   class="flex items-center gap-1.5 text-xs font-bold text-violet-600 hover:text-violet-800 transition-colors uppercase tracking-wider group"
                 >
-                  <span class="border-b border-transparent group-hover:border-violet-800 transition-all">
-                    {{ expanded['p1'] ? (lang === 'ID' ? 'Sembunyikan Detail' : 'Hide Detail') : (lang === 'ID' ? 'Lihat Detail' : 'Show Detail') }}
+                  <span
+                    class="border-b border-transparent group-hover:border-violet-800 transition-all"
+                  >
+                    {{
+                      expanded["p1"]
+                        ? lang === "ID"
+                          ? "Sembunyikan Detail"
+                          : "Hide Detail"
+                        : lang === "ID"
+                          ? "Lihat Detail"
+                          : "Show Detail"
+                    }}
                   </span>
-                  <i class="bi" :class="expanded['p1'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+                  <i
+                    class="bi"
+                    :class="
+                      expanded['p1'] ? 'bi-chevron-up' : 'bi-chevron-down'
+                    "
+                  ></i>
                 </button>
               </div>
             </div>
@@ -514,7 +762,11 @@
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 300, ease: 'easeOut' } }"
+              :visible="{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 600, delay: 300, ease: 'easeOut' },
+              }"
               class="flex flex-col"
             >
               <p
@@ -522,11 +774,22 @@
               >
                 JAN 2025 - JUNE 2025
               </p>
-              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
-                <div 
+              <div
+                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
+              >
+                <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 500 } }"
+                  :visible="{
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                      type: 'spring',
+                      stiffness: 250,
+                      damping: 15,
+                      delay: 500,
+                    },
+                  }"
                   class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
                 ></div>
               </div>
@@ -534,34 +797,63 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  {{ t('exp_p2_sub') }}
+                  {{ t("exp_p2_sub") }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  {{ t('exp_p2_title') }}
+                  {{ t("exp_p2_title") }}
                 </p>
-                <div class="overflow-hidden transition-all duration-300" :class="expanded['p2'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'">
+                <div
+                  class="overflow-hidden transition-all duration-300"
+                  :class="
+                    expanded['p2']
+                      ? 'max-h-96 opacity-100 mb-4'
+                      : 'max-h-0 opacity-0 mb-0'
+                  "
+                >
                   <p
                     class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
                   >
-                    {{ t('exp_p2_desc') }}
+                    {{ t("exp_p2_desc") }}
                   </p>
-                  <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
-                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Tech:</span>
-                    <span class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60">
+                  <div
+                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
+                  >
+                    <span
+                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                      >Tech:</span
+                    >
+                    <span
+                      class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
+                    >
                       {{ t("exp_p2_tech") }}
                     </span>
                   </div>
                 </div>
-                <button 
+                <button
                   @click="toggleDetail('p2')"
                   class="flex items-center gap-1.5 text-xs font-bold text-violet-600 hover:text-violet-800 transition-colors uppercase tracking-wider group"
                 >
-                  <span class="border-b border-transparent group-hover:border-violet-800 transition-all">
-                    {{ expanded['p2'] ? (lang === 'ID' ? 'Sembunyikan Detail' : 'Hide Detail') : (lang === 'ID' ? 'Lihat Detail' : 'Show Detail') }}
+                  <span
+                    class="border-b border-transparent group-hover:border-violet-800 transition-all"
+                  >
+                    {{
+                      expanded["p2"]
+                        ? lang === "ID"
+                          ? "Sembunyikan Detail"
+                          : "Hide Detail"
+                        : lang === "ID"
+                          ? "Lihat Detail"
+                          : "Show Detail"
+                    }}
                   </span>
-                  <i class="bi" :class="expanded['p2'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+                  <i
+                    class="bi"
+                    :class="
+                      expanded['p2'] ? 'bi-chevron-up' : 'bi-chevron-down'
+                    "
+                  ></i>
                 </button>
               </div>
             </div>
@@ -574,7 +866,11 @@
           <div
             v-motion
             :initial="{ opacity: 0, scaleX: 0 }"
-            :visible="{ opacity: 1, scaleX: 1, transition: { duration: 1000, delay: 100, ease: 'easeOut' } }"
+            :visible="{
+              opacity: 1,
+              scaleX: 1,
+              transition: { duration: 1000, delay: 100, ease: 'easeOut' },
+            }"
             class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
           ></div>
 
@@ -585,7 +881,11 @@
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{ opacity: 1, y: 0, transition: { duration: 600, ease: 'easeOut' } }"
+              :visible="{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 600, ease: 'easeOut' },
+              }"
               class="flex flex-col"
             >
               <p
@@ -593,11 +893,22 @@
               >
                 SEP 2024 - FEB 2025
               </p>
-              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
-                <div 
+              <div
+                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
+              >
+                <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 200 } }"
+                  :visible="{
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                      type: 'spring',
+                      stiffness: 250,
+                      damping: 15,
+                      delay: 200,
+                    },
+                  }"
                   class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
                 ></div>
               </div>
@@ -605,34 +916,63 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  {{ t('exp_p4_sub') }}
+                  {{ t("exp_p4_sub") }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  {{ t('exp_p4_title') }}
+                  {{ t("exp_p4_title") }}
                 </p>
-                <div class="overflow-hidden transition-all duration-300" :class="expanded['p4'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'">
+                <div
+                  class="overflow-hidden transition-all duration-300"
+                  :class="
+                    expanded['p4']
+                      ? 'max-h-96 opacity-100 mb-4'
+                      : 'max-h-0 opacity-0 mb-0'
+                  "
+                >
                   <p
                     class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
                   >
-                    {{ t('exp_p4_desc') }}
+                    {{ t("exp_p4_desc") }}
                   </p>
-                  <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
-                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Tech:</span>
-                    <span class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60">
+                  <div
+                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
+                  >
+                    <span
+                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                      >Tech:</span
+                    >
+                    <span
+                      class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
+                    >
                       {{ t("exp_p4_tech") }}
                     </span>
                   </div>
                 </div>
-                <button 
+                <button
                   @click="toggleDetail('p4')"
                   class="flex items-center gap-1.5 text-xs font-bold text-violet-600 hover:text-violet-800 transition-colors uppercase tracking-wider group"
                 >
-                  <span class="border-b border-transparent group-hover:border-violet-800 transition-all">
-                    {{ expanded['p4'] ? (lang === 'ID' ? 'Sembunyikan Detail' : 'Hide Detail') : (lang === 'ID' ? 'Lihat Detail' : 'Show Detail') }}
+                  <span
+                    class="border-b border-transparent group-hover:border-violet-800 transition-all"
+                  >
+                    {{
+                      expanded["p4"]
+                        ? lang === "ID"
+                          ? "Sembunyikan Detail"
+                          : "Hide Detail"
+                        : lang === "ID"
+                          ? "Lihat Detail"
+                          : "Show Detail"
+                    }}
                   </span>
-                  <i class="bi" :class="expanded['p4'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+                  <i
+                    class="bi"
+                    :class="
+                      expanded['p4'] ? 'bi-chevron-up' : 'bi-chevron-down'
+                    "
+                  ></i>
                 </button>
               </div>
             </div>
@@ -641,7 +981,11 @@
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 150, ease: 'easeOut' } }"
+              :visible="{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 600, delay: 150, ease: 'easeOut' },
+              }"
               class="flex flex-col"
             >
               <p
@@ -649,11 +993,22 @@
               >
                 JAN 2024 - JUNE 2024
               </p>
-              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
-                <div 
+              <div
+                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
+              >
+                <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 350 } }"
+                  :visible="{
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                      type: 'spring',
+                      stiffness: 250,
+                      damping: 15,
+                      delay: 350,
+                    },
+                  }"
                   class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
                 ></div>
               </div>
@@ -661,34 +1016,63 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  {{ t('exp_p5_sub') }}
+                  {{ t("exp_p5_sub") }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  {{ t('exp_p5_title') }}
+                  {{ t("exp_p5_title") }}
                 </p>
-                <div class="overflow-hidden transition-all duration-300" :class="expanded['p5'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'">
+                <div
+                  class="overflow-hidden transition-all duration-300"
+                  :class="
+                    expanded['p5']
+                      ? 'max-h-96 opacity-100 mb-4'
+                      : 'max-h-0 opacity-0 mb-0'
+                  "
+                >
                   <p
                     class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
                   >
-                    {{ t('exp_p5_desc') }}
+                    {{ t("exp_p5_desc") }}
                   </p>
-                  <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
-                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Tech:</span>
-                    <span class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60">
+                  <div
+                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
+                  >
+                    <span
+                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                      >Tech:</span
+                    >
+                    <span
+                      class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
+                    >
                       {{ t("exp_p5_tech") }}
                     </span>
                   </div>
                 </div>
-                <button 
+                <button
                   @click="toggleDetail('p5')"
                   class="flex items-center gap-1.5 text-xs font-bold text-violet-600 hover:text-violet-800 transition-colors uppercase tracking-wider group"
                 >
-                  <span class="border-b border-transparent group-hover:border-violet-800 transition-all">
-                    {{ expanded['p5'] ? (lang === 'ID' ? 'Sembunyikan Detail' : 'Hide Detail') : (lang === 'ID' ? 'Lihat Detail' : 'Show Detail') }}
+                  <span
+                    class="border-b border-transparent group-hover:border-violet-800 transition-all"
+                  >
+                    {{
+                      expanded["p5"]
+                        ? lang === "ID"
+                          ? "Sembunyikan Detail"
+                          : "Hide Detail"
+                        : lang === "ID"
+                          ? "Lihat Detail"
+                          : "Show Detail"
+                    }}
                   </span>
-                  <i class="bi" :class="expanded['p5'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+                  <i
+                    class="bi"
+                    :class="
+                      expanded['p5'] ? 'bi-chevron-up' : 'bi-chevron-down'
+                    "
+                  ></i>
                 </button>
               </div>
             </div>
@@ -697,7 +1081,11 @@
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 300, ease: 'easeOut' } }"
+              :visible="{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 600, delay: 300, ease: 'easeOut' },
+              }"
               class="flex flex-col"
             >
               <p
@@ -705,11 +1093,22 @@
               >
                 SEP 2023 - FEB 2024
               </p>
-              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
-                <div 
+              <div
+                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
+              >
+                <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 500 } }"
+                  :visible="{
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                      type: 'spring',
+                      stiffness: 250,
+                      damping: 15,
+                      delay: 500,
+                    },
+                  }"
                   class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
                 ></div>
               </div>
@@ -717,34 +1116,63 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  {{ t('exp_p6_sub') }}
+                  {{ t("exp_p6_sub") }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  {{ t('exp_p6_title') }}
+                  {{ t("exp_p6_title") }}
                 </p>
-                <div class="overflow-hidden transition-all duration-300" :class="expanded['p6'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'">
+                <div
+                  class="overflow-hidden transition-all duration-300"
+                  :class="
+                    expanded['p6']
+                      ? 'max-h-96 opacity-100 mb-4'
+                      : 'max-h-0 opacity-0 mb-0'
+                  "
+                >
                   <p
                     class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
                   >
-                    {{ t('exp_p6_desc') }}
+                    {{ t("exp_p6_desc") }}
                   </p>
-                  <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
-                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Tech:</span>
-                    <span class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60">
+                  <div
+                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
+                  >
+                    <span
+                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                      >Tech:</span
+                    >
+                    <span
+                      class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
+                    >
                       {{ t("exp_p6_tech") }}
                     </span>
                   </div>
                 </div>
-                <button 
+                <button
                   @click="toggleDetail('p6')"
                   class="flex items-center gap-1.5 text-xs font-bold text-violet-600 hover:text-violet-800 transition-colors uppercase tracking-wider group"
                 >
-                  <span class="border-b border-transparent group-hover:border-violet-800 transition-all">
-                    {{ expanded['p6'] ? (lang === 'ID' ? 'Sembunyikan Detail' : 'Hide Detail') : (lang === 'ID' ? 'Lihat Detail' : 'Show Detail') }}
+                  <span
+                    class="border-b border-transparent group-hover:border-violet-800 transition-all"
+                  >
+                    {{
+                      expanded["p6"]
+                        ? lang === "ID"
+                          ? "Sembunyikan Detail"
+                          : "Hide Detail"
+                        : lang === "ID"
+                          ? "Lihat Detail"
+                          : "Show Detail"
+                    }}
                   </span>
-                  <i class="bi" :class="expanded['p6'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+                  <i
+                    class="bi"
+                    :class="
+                      expanded['p6'] ? 'bi-chevron-up' : 'bi-chevron-down'
+                    "
+                  ></i>
                 </button>
               </div>
             </div>
@@ -757,15 +1185,26 @@
             @click="showEarlierProjects = !showEarlierProjects"
             class="flex items-center gap-2 px-5 py-2.5 border border-[#302F49]/20 hover:border-violet-500 hover:text-violet-600 rounded-full text-sm font-semibold font-['Poppins'] text-[#302F49] transition-all bg-white shadow-sm hover:shadow-md"
           >
-            <span>{{ showEarlierProjects ? t("hide_additional_projects") : t("show_additional_projects") }}</span>
-            <i class="bi" :class="showEarlierProjects ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+            <span>{{
+              showEarlierProjects
+                ? t("hide_additional_projects")
+                : t("show_additional_projects")
+            }}</span>
+            <i
+              class="bi"
+              :class="showEarlierProjects ? 'bi-chevron-up' : 'bi-chevron-down'"
+            ></i>
           </button>
         </div>
 
         <!-- Collapsible Earlier Projects Row -->
         <div
           class="overflow-hidden transition-all duration-500 ease-in-out"
-          :class="showEarlierProjects ? 'max-h-[1000px] opacity-100 mb-16' : 'max-h-0 opacity-0 mb-0 pointer-events-none'"
+          :class="
+            showEarlierProjects
+              ? 'max-h-[1000px] opacity-100 mb-16'
+              : 'max-h-0 opacity-0 mb-0 pointer-events-none'
+          "
         >
           <div class="relative px-0 pt-4">
             <!-- Horizontal Line -->
@@ -842,9 +1281,16 @@
                     >
                       {{ t("exp_p3_desc") }}
                     </p>
-                    <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
-                      <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Tech:</span>
-                      <span class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60">
+                    <div
+                      class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
+                    >
+                      <span
+                        class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                        >Tech:</span
+                      >
+                      <span
+                        class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
+                      >
                         {{ t("exp_p3_tech") }}
                       </span>
                     </div>
@@ -884,8 +1330,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { useLanguage } from '@/composables/useLanguage';
+import { ref, computed } from 'vue';
+import { useLanguage } from "@/composables/useLanguage";
 
 const { t, lang } = useLanguage();
 
@@ -893,13 +1339,31 @@ const expanded = ref({});
 const showEarlierWork = ref(false);
 const showEarlierProjects = ref(false);
 
+const allExpanded = computed(() => {
+  const keys = ['w1', 'w2', 'w3', 'w5', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7'];
+  const expandedCount = keys.filter(key => expanded.value[key]).length;
+  return expandedCount >= keys.length / 2;
+});
+
 const toggleDetail = (id) => {
   expanded.value[id] = !expanded.value[id];
 };
 
 const toggleAll = (expand) => {
-  const keys = ['w1', 'w2', 'w3', 'w5', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7'];
-  keys.forEach(key => {
+  const keys = [
+    "w1",
+    "w2",
+    "w3",
+    "w5",
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7",
+  ];
+  keys.forEach((key) => {
     expanded.value[key] = expand;
   });
 };
@@ -907,12 +1371,12 @@ const toggleAll = (expand) => {
 
 <style scoped>
 .timeline-dot-wrapper::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   right: 0;
   height: 1px;
-  background-color: #D1D5DB; /* bg-gray-300 */
+  background-color: #d1d5db; /* bg-gray-300 */
   top: 50%;
   transform: translateY(-50%);
   z-index: 0;
