@@ -391,11 +391,83 @@
           <div
             class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-12 relative z-10"
           >
-            <!-- Project 1 -->
+            <!-- Project 7 (MATHMAGIC) -->
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
               :visible="{ opacity: 1, y: 0, transition: { duration: 600, ease: 'easeOut' } }"
+              class="flex flex-col"
+            >
+              <p
+                class="text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2"
+              >
+                JUN 2026 - JUL 2026
+              </p>
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
+                <div 
+                  v-motion
+                  :initial="{ opacity: 0, scale: 0 }"
+                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 200 } }"
+                  class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
+                ></div>
+              </div>
+              <div>
+                <div class="flex flex-wrap items-center gap-2 mb-1">
+                  <h4
+                    class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717]"
+                  >
+                    {{ t('exp_p7_sub') }}
+                  </h4>
+                  <span class="text-[10px] font-bold text-violet-600 bg-violet-50 border border-violet-200/60 px-1.5 py-0.5 rounded font-mono uppercase tracking-wider">
+                    Game + CMS
+                  </span>
+                </div>
+                <p
+                  class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
+                >
+                  {{ t('exp_p7_title') }}
+                </p>
+                <div class="overflow-hidden transition-all duration-300" :class="expanded['p7'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'">
+                  <p
+                    class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify"
+                  >
+                    {{ t('exp_p7_desc') }}
+                  </p>
+                  
+                  <!-- Highlights / Tags -->
+                  <div class="mt-3 flex flex-wrap gap-1.5 mb-1.5">
+                    <span class="text-[11px] font-semibold text-gray-500 bg-gray-50 border border-gray-200 px-2 py-0.5 rounded">
+                      HKI Registered
+                    </span>
+                    <span class="text-[11px] font-semibold text-gray-500 bg-gray-50 border border-gray-200 px-2 py-0.5 rounded">
+                      Real-World Partner
+                    </span>
+                  </div>
+
+                  <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
+                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Tech:</span>
+                    <span class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60">
+                      {{ t("exp_p7_tech") }}
+                    </span>
+                  </div>
+                </div>
+                <button 
+                  @click="toggleDetail('p7')"
+                  class="flex items-center gap-1.5 text-xs font-bold text-violet-600 hover:text-violet-800 transition-colors uppercase tracking-wider group"
+                >
+                  <span class="border-b border-transparent group-hover:border-violet-800 transition-all">
+                    {{ expanded['p7'] ? (lang === 'ID' ? 'Sembunyikan Detail' : 'Hide Detail') : (lang === 'ID' ? 'Lihat Detail' : 'Show Detail') }}
+                  </span>
+                  <i class="bi" :class="expanded['p7'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Project 1 (RideXP) -->
+            <div
+              v-motion
+              :initial="{ opacity: 0, y: 50 }"
+              :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 150, ease: 'easeOut' } }"
               class="flex flex-col"
             >
               <p
@@ -407,7 +479,7 @@
                 <div 
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 200 } }"
+                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 350 } }"
                   class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
                 ></div>
               </div>
@@ -446,11 +518,12 @@
                 </button>
               </div>
             </div>
-            <!-- Project 2 -->
+
+            <!-- Project 2 (MathRift) -->
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 150, ease: 'easeOut' } }"
+              :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 300, ease: 'easeOut' } }"
               class="flex flex-col"
             >
               <p
@@ -462,7 +535,7 @@
                 <div 
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 350 } }"
+                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 500 } }"
                   class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
                 ></div>
               </div>
@@ -501,11 +574,27 @@
                 </button>
               </div>
             </div>
-            <!-- Project 4 (reordered) -->
+          </div>
+        </div>
+
+        <!-- Continuous Timeline Project Row 2 -->
+        <div class="relative px-0">
+          <!-- Horizontal Line -->
+          <div
+            v-motion
+            :initial="{ opacity: 0, scaleX: 0 }"
+            :visible="{ opacity: 1, scaleX: 1, transition: { duration: 1000, delay: 100, ease: 'easeOut' } }"
+            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
+          ></div>
+
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-12 relative z-10"
+          >
+            <!-- Project 4 (Stellar Adventures) -->
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 300, ease: 'easeOut' } }"
+              :visible="{ opacity: 1, y: 0, transition: { duration: 600, ease: 'easeOut' } }"
               class="flex flex-col"
             >
               <p
@@ -517,7 +606,7 @@
                 <div 
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 500 } }"
+                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 200 } }"
                   class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
                 ></div>
               </div>
@@ -556,27 +645,12 @@
                 </button>
               </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Continuous Timeline Project Row 2 -->
-        <div class="relative px-0">
-          <!-- Horizontal Line -->
-          <div
-            v-motion
-            :initial="{ opacity: 0, scaleX: 0 }"
-            :visible="{ opacity: 1, scaleX: 1, transition: { duration: 1000, delay: 100, ease: 'easeOut' } }"
-            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
-          ></div>
-
-          <div
-            class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-12 relative z-10"
-          >
-            <!-- Project 5 -->
+            <!-- Project 5 (U-Asprak) -->
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{ opacity: 1, y: 0, transition: { duration: 600, ease: 'easeOut' } }"
+              :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 150, ease: 'easeOut' } }"
               class="flex flex-col"
             >
               <p
@@ -588,7 +662,7 @@
                 <div 
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 200 } }"
+                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 350 } }"
                   class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
                 ></div>
               </div>
@@ -627,11 +701,12 @@
                 </button>
               </div>
             </div>
-            <!-- Project 6 -->
+
+            <!-- Project 6 (IUDEX Web Portfolio) -->
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 150, ease: 'easeOut' } }"
+              :visible="{ opacity: 1, y: 0, transition: { duration: 600, delay: 300, ease: 'easeOut' } }"
               class="flex flex-col"
             >
               <p
@@ -643,7 +718,7 @@
                 <div 
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 350 } }"
+                  :visible="{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 250, damping: 15, delay: 500 } }"
                   class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
                 ></div>
               </div>
@@ -786,7 +861,7 @@ const toggleDetail = (id) => {
 };
 
 const toggleAll = (expand) => {
-  const keys = ['w1', 'w2', 'w3', 'w5', 'p1', 'p2', 'p4', 'p5', 'p6'];
+  const keys = ['w1', 'w2', 'w3', 'w5', 'p1', 'p2', 'p4', 'p5', 'p6', 'p7'];
   keys.forEach(key => {
     expanded.value[key] = expand;
   });

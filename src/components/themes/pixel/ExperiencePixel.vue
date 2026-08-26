@@ -372,6 +372,15 @@ const workQuests = computed(() => [
 
 const projectQuests = computed(() => [
   {
+    id: 'p7',
+    title: t('exp_p7_title'),
+    sub: t('exp_p7_sub'),
+    period: "JUN 2026 - JUL 2026",
+    xp: "+12,000 XP",
+    desc: t('exp_p7_desc'),
+    tech: t('exp_p7_tech')
+  },
+  {
     id: 'p1',
     title: t('exp_p1_title'),
     sub: t('exp_p1_sub'),
