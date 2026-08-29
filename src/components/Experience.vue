@@ -614,7 +614,6 @@
                     class="mt-3 flex items-center gap-4 text-xs font-bold text-gray-400 uppercase tracking-widest font-mono"
                   >
                     <span>✦ HKI Registered</span>
-                    <span>✦ Real-World Partner</span>
                   </div>
 
                   <div

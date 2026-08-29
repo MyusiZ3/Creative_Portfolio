@@ -100,12 +100,12 @@ onMounted(() => {
           >{{ t('nav_about') }}</a
         >
         <a
-          href="#skills"
-          @click="handleNav('skills', t('nav_skills'), $event)"
+          href="#experience"
+          @click="handleNav('experience', t('nav_experience'), $event)"
           class="nav-item nav-link text-white font-bold text-[11px] lg:text-[12px] xl:text-[15px] transition-colors"
           :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
           style="--delay: 4"
-          >{{ t('nav_skills') }}</a
+          >{{ t('nav_experience') }}</a
         >
         <a
           :href="currentTheme === 'pixel' ? '#projects' : '#my-projects'"
@@ -197,11 +197,11 @@ onMounted(() => {
           >{{ t('nav_about') }}</a
         >
         <a
-          href="#skills"
-          @click="handleNav('skills', t('nav_skills'), $event)"
+          href="#experience"
+          @click="handleNav('experience', t('nav_experience'), $event)"
           class="text-white font-bold text-[14px] transition"
           :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
-          >{{ t('nav_skills') }}</a
+          >{{ t('nav_experience') }}</a
         >
         <a
           :href="currentTheme === 'pixel' ? '#projects' : '#my-projects'"

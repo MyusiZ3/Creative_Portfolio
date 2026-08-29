@@ -21,7 +21,7 @@ const translations = {
     // Navbar
     nav_home: "Home",
     nav_about: "About",
-    nav_skills: "Skills",
+    nav_experience: "Experience",
     nav_projects: "Projects",
     nav_achievements: "Achievements",
     nav_contact: "Contact Me",
@@ -134,7 +134,7 @@ const translations = {
     ach_title_1: "Achievements &",
     ach_title_2: "Certificates",
     ach_desc:
-      "Achievements and certifications that reflect my creative journey — this section highlights a few selected milestones that shaped my skills in multimedia and digital design.",
+      "Achievements and certifications that reflect my creative journey — this section highlights a few selected milestones that shaped MY APPS in multimedia and digital design.",
 
     // Contact
     contact_title_1: "Contact &",
@@ -156,7 +156,7 @@ const translations = {
     cta_dismiss: "Not now",
 
     // Skills Section
-    skills_badge: "MY SKILLS",
+    skills_badge: "MY APPS",
     skills_heading: "SOME SOFTWARE THAT I USE",
     skills_sub:
       "A versatile toolkit that supports my workflow across UI/UX, game development, and interactive media — from wireframes and design assets to real-time prototypes and immersive experiences.",
@@ -200,7 +200,7 @@ const translations = {
     // Navbar
     nav_home: "Beranda",
     nav_about: "Tentang",
-    nav_skills: "Keahlian",
+    nav_experience: "Pengalaman",
     nav_projects: "Proyek",
     nav_achievements: "Pencapaian",
     nav_contact: "Kontak",
@@ -335,7 +335,7 @@ const translations = {
     cta_dismiss: "Nanti dulu",
 
     // Skills Section
-    skills_badge: "MY SKILLS",
+    skills_badge: "MY APPS",
     skills_heading: "SOME SOFTWARE THAT I USE",
     skills_sub:
       "Tools yang saya pakai sehari-hari untuk desain UI/UX, game dev, dan konten digital — dari wireframe dan aset visual sampai prototipe interaktif.",

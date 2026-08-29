@@ -579,7 +579,7 @@ const projects = computed(() => {
     {
       name: isId
         ? "Djaswita AR – Dynamic AR & Web CMS (Tugas Akhir)"
-        : "Djaswita AR – Dynamic AR & Web CMS (Thesis)",
+        : "Djaswita AR – Dynamic AR (Thesis)",
       icon: "bi-box-seam",
       role: isId
         ? "Pengembang AR & Web Fullstack (Tugas Akhir)"

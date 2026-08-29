@@ -128,7 +128,7 @@ function scrollToSection(sectionId) {
         class="flex flex-col items-center gap-6 lg:gap-8 mb-12 lg:mb-16 max-w-4xl mx-auto scale-110 md:scale-[1.15] lg:scale-[1.2] origin-top"
       >
         <!-- Row 1 -->
-        <div class="flex flex-wrap justify-center gap-4 lg:gap-6">
+        <div class="flex flex-nowrap justify-center gap-2 sm:gap-4 lg:gap-6">
           <!-- Unity -->
           <div
             v-motion
@@ -144,203 +144,203 @@ function scrollToSection(sectionId) {
                 damping: 15,
               },
             }"
-            class="w-16 h-16 lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
+            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[10px] sm:rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
           >
             <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg"
-            alt="Unity"
-            class="w-10 lg:w-12 h-10 lg:h-12 brightness-0 invert"
-          />
-        </div>
-        <!-- Firebase -->
-        <div
-          v-motion
-          :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-          :visible="{
-            opacity: 1,
-            scale: 1,
-            y: 0,
-            transition: {
-              duration: 500,
-              delay: 80,
-              type: 'spring',
-              stiffness: 250,
-              damping: 15,
-            },
-          }"
-          class="w-16 h-16 lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg"
-            alt="Firebase"
-            class="w-10 lg:w-12 h-10 lg:h-12"
-          />
-        </div>
-        <!-- Supabase -->
-        <div
-          v-motion
-          :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-          :visible="{
-            opacity: 1,
-            scale: 1,
-            y: 0,
-            transition: {
-              duration: 500,
-              delay: 160,
-              type: 'spring',
-              stiffness: 250,
-              damping: 15,
-            },
-          }"
-          class="w-16 h-16 lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl overflow-hidden p-3"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/supabase.webp"
-            alt="Supabase"
-            class="w-10 lg:w-12 h-10 lg:h-12 object-contain"
-          />
-        </div>
-        <!-- Antigravity IDE -->
-        <div
-          v-motion
-          :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-          :visible="{
-            opacity: 1,
-            scale: 1,
-            y: 0,
-            transition: {
-              duration: 500,
-              delay: 240,
-              type: 'spring',
-              stiffness: 250,
-              damping: 15,
-            },
-          }"
-          class="w-16 h-16 lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl overflow-hidden p-3"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/selfhst/icons/webp/google-antigravity.webp"
-            alt="Antigravity IDE"
-            class="w-10 lg:w-14 h-10 lg:h-14 object-contain"
-          />
-        </div>
-        <!-- GitHub -->
-        <div
-          v-motion
-          :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-          :visible="{
-            opacity: 1,
-            scale: 1,
-            y: 0,
-            transition: {
-              duration: 500,
-              delay: 320,
-              type: 'spring',
-              stiffness: 250,
-              damping: 15,
-            },
-          }"
-          class="w-16 h-16 lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
-            alt="GitHub"
-            class="w-10 lg:w-12 h-10 lg:h-12 brightness-0 invert"
-          />
-        </div>
-      </div>
-
-      <!-- Row 2 -->
-      <div class="flex flex-wrap justify-center gap-4 lg:gap-6 mt-2">
-        <!-- Ai -->
-        <div
-          v-motion
-          :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-          :visible="{
-            opacity: 1,
-            scale: 1,
-            y: 0,
-            transition: {
-              duration: 500,
-              delay: 400,
-              type: 'spring',
-              stiffness: 250,
-              damping: 15,
-            },
-          }"
-          class="w-16 h-16 lg:w-[85px] lg:h-[85px] bg-[#330000] text-[#FF9A00] text-3xl lg:text-[40px] font-bold font-['Roboto'] rounded-[16px] lg:rounded-[26px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
-        >
-          Ai
-        </div>
-        <!-- Ps -->
-        <div
-          v-motion
-          :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-          :visible="{
-            opacity: 1,
-            scale: 1,
-            y: 0,
-            transition: {
-              duration: 500,
-              delay: 480,
-              type: 'spring',
-              stiffness: 250,
-              damping: 15,
-            },
-          }"
-          class="w-16 h-16 lg:w-[85px] lg:h-[85px] bg-[#001E36] text-[#31A8FF] text-3xl lg:text-[40px] font-bold font-['Roboto'] rounded-[16px] lg:rounded-[26px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
-        >
-          Ps
-        </div>
-        <!-- Figma -->
-        <div
-          v-motion
-          :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-          :visible="{
-            opacity: 1,
-            scale: 1,
-            y: 0,
-            transition: {
-              duration: 500,
-              delay: 560,
-              type: 'spring',
-              stiffness: 250,
-              damping: 15,
-            },
-          }"
-          class="w-16 h-16 lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
-        >
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
-            alt="Figma"
-            class="w-10 lg:w-12 h-10 lg:h-12"
-          />
-        </div>
-        <!-- Canva -->
-        <div
-          v-motion
-          :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-          :visible="{
-            opacity: 1,
-            scale: 1,
-            y: 0,
-            transition: {
-              duration: 500,
-              delay: 640,
-              type: 'spring',
-              stiffness: 250,
-              damping: 15,
-            },
-          }"
-          class="w-16 h-16 lg:w-[85px] lg:h-[85px] bg-linear-to-tr from-[#00C4CC] to-[#7D2AE8] rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl overflow-hidden"
-        >
-          <span
-            class="text-white font-bold italic text-lg lg:text-[22px] font-['Poppins']"
-            >Canva</span
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg"
+              alt="Unity"
+              class="w-6 sm:w-10 lg:w-12 h-6 sm:h-10 lg:h-12 brightness-0 invert"
+            />
+          </div>
+          <!-- Firebase -->
+          <div
+            v-motion
+            :initial="{ opacity: 0, scale: 0.5, y: 20 }"
+            :visible="{
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              transition: {
+                duration: 500,
+                delay: 80,
+                type: 'spring',
+                stiffness: 250,
+                damping: 15,
+              },
+            }"
+            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[10px] sm:rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
           >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg"
+              alt="Firebase"
+              class="w-6 sm:w-10 lg:w-12 h-6 sm:h-10 lg:h-12"
+            />
+          </div>
+          <!-- Supabase -->
+          <div
+            v-motion
+            :initial="{ opacity: 0, scale: 0.5, y: 20 }"
+            :visible="{
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              transition: {
+                duration: 500,
+                delay: 160,
+                type: 'spring',
+                stiffness: 250,
+                damping: 15,
+              },
+            }"
+            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[10px] sm:rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl overflow-hidden p-2 sm:p-3"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/supabase.webp"
+              alt="Supabase"
+              class="w-6 sm:w-10 lg:w-12 h-6 sm:h-10 lg:h-12 object-contain"
+            />
+          </div>
+          <!-- Antigravity IDE -->
+          <div
+            v-motion
+            :initial="{ opacity: 0, scale: 0.5, y: 20 }"
+            :visible="{
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              transition: {
+                duration: 500,
+                delay: 240,
+                type: 'spring',
+                stiffness: 250,
+                damping: 15,
+              },
+            }"
+            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[10px] sm:rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl overflow-hidden p-2 sm:p-3"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/selfhst/icons/webp/google-antigravity.webp"
+              alt="Antigravity IDE"
+              class="w-6 sm:w-10 lg:w-14 h-6 sm:h-10 lg:h-14 object-contain"
+            />
+          </div>
+          <!-- GitHub -->
+          <div
+            v-motion
+            :initial="{ opacity: 0, scale: 0.5, y: 20 }"
+            :visible="{
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              transition: {
+                duration: 500,
+                delay: 320,
+                type: 'spring',
+                stiffness: 250,
+                damping: 15,
+              },
+            }"
+            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[10px] sm:rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+              alt="GitHub"
+              class="w-6 sm:w-10 lg:w-12 h-6 sm:h-10 lg:h-12 brightness-0 invert"
+            />
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="flex flex-nowrap justify-center gap-2 sm:gap-4 lg:gap-6 mt-2">
+          <!-- Ai -->
+          <div
+            v-motion
+            :initial="{ opacity: 0, scale: 0.5, y: 20 }"
+            :visible="{
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              transition: {
+                duration: 500,
+                delay: 400,
+                type: 'spring',
+                stiffness: 250,
+                damping: 15,
+              },
+            }"
+            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#330000] text-[#FF9A00] text-lg sm:text-3xl lg:text-[40px] font-bold font-['Roboto'] rounded-[10px] sm:rounded-[16px] lg:rounded-[26px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
+          >
+            Ai
+          </div>
+          <!-- Ps -->
+          <div
+            v-motion
+            :initial="{ opacity: 0, scale: 0.5, y: 20 }"
+            :visible="{
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              transition: {
+                duration: 500,
+                delay: 480,
+                type: 'spring',
+                stiffness: 250,
+                damping: 15,
+              },
+            }"
+            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#001E36] text-[#31A8FF] text-lg sm:text-3xl lg:text-[40px] font-bold font-['Roboto'] rounded-[10px] sm:rounded-[16px] lg:rounded-[26px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
+          >
+            Ps
+          </div>
+          <!-- Figma -->
+          <div
+            v-motion
+            :initial="{ opacity: 0, scale: 0.5, y: 20 }"
+            :visible="{
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              transition: {
+                duration: 500,
+                delay: 560,
+                type: 'spring',
+                stiffness: 250,
+                damping: 15,
+              },
+            }"
+            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[10px] sm:rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
+              alt="Figma"
+              class="w-6 sm:w-10 lg:w-12 h-6 sm:h-10 lg:h-12"
+            />
+          </div>
+          <!-- Canva -->
+          <div
+            v-motion
+            :initial="{ opacity: 0, scale: 0.5, y: 20 }"
+            :visible="{
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              transition: {
+                duration: 500,
+                delay: 640,
+                type: 'spring',
+                stiffness: 250,
+                damping: 15,
+              },
+            }"
+            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-linear-to-tr from-[#00C4CC] to-[#7D2AE8] rounded-[10px] sm:rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl overflow-hidden"
+          >
+            <span
+              class="text-white font-bold italic text-[9px] sm:text-lg lg:text-[22px] font-['Poppins']"
+              >Canva</span
+            >
+          </div>
         </div>
       </div>
-    </div>
 
     <!-- Pagination & Arrow Down -->
 
