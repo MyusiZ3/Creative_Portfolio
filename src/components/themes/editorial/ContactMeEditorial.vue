@@ -346,13 +346,17 @@
               <div class="pt-2">
                 <button
                   type="submit"
-                  :disabled="formStatus === 'loading'"
-                  class="w-full sm:w-auto px-6 py-3 bg-white text-black font-bold font-['Roboto'] text-xs uppercase tracking-wider rounded-lg hover:bg-gray-200 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-lg disabled:opacity-50"
+                  :disabled="formStatus === 'loading' || cooldownTimer > 0"
+                  class="w-full sm:w-auto px-6 py-3 bg-white text-black font-bold font-['Roboto'] text-xs uppercase tracking-wider rounded-lg hover:bg-gray-200 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none"
                 >
                   <span v-if="formStatus === 'loading'">{{ t("contact_form_sending") }}</span>
+                  <span v-else-if="cooldownTimer > 0">
+                    {{ lang === 'ID' ? `Tunggu (${cooldownTimer}d)` : `Wait (${cooldownTimer}s)` }}
+                  </span>
                   <span v-else>{{ t("contact_form_send") }}</span>
-                  <i v-if="formStatus !== 'loading'" class="bi bi-send-fill text-xs"></i>
-                  <i v-else class="bi bi-arrow-repeat text-sm animate-spin"></i>
+                  <i v-if="formStatus === 'loading'" class="bi bi-arrow-repeat text-sm animate-spin"></i>
+                  <i v-else-if="cooldownTimer > 0" class="bi bi-clock-history text-xs"></i>
+                  <i v-else class="bi bi-send-fill text-xs"></i>
                 </button>
               </div>
             </form>
@@ -433,9 +437,24 @@ let timeInterval = null;
 // --- Contact Form ---
 const form = ref({ name: '', email: '', subject: '', message: '' });
 const formStatus = ref('idle'); // 'idle' | 'loading' | 'success' | 'error'
+const cooldownTimer = ref(0);
+let cooldownInterval = null;
+
+const startCooldown = (seconds = 15) => {
+  cooldownTimer.value = seconds;
+  if (cooldownInterval) clearInterval(cooldownInterval);
+  cooldownInterval = setInterval(() => {
+    if (cooldownTimer.value > 0) {
+      cooldownTimer.value--;
+    } else {
+      clearInterval(cooldownInterval);
+    }
+  }, 1000);
+};
 
 const handleFormSubmit = async () => {
   if (!form.value.name || !form.value.email || !form.value.message) return;
+  if (formStatus.value === 'loading' || cooldownTimer.value > 0) return;
   
   formStatus.value = 'loading';
   try {
@@ -455,6 +474,7 @@ const handleFormSubmit = async () => {
     if (res.ok && data.success) {
       formStatus.value = 'success';
       form.value = { name: '', email: '', subject: '', message: '' };
+      startCooldown(15);
     } else {
       throw new Error(data.message || "Web3Forms submission failed");
     }
@@ -464,6 +484,7 @@ const handleFormSubmit = async () => {
     const subject = encodeURIComponent(form.value.subject || `Pesan Portofolio dari ${form.value.name}`);
     const body = encodeURIComponent(`Nama: ${form.value.name}\nEmail: ${form.value.email}\n\nPesan:\n${form.value.message}`);
     window.location.href = `mailto:muhamadsidik.work.id@gmail.com?subject=${subject}&body=${body}`;
+    startCooldown(10);
   }
 };
 
