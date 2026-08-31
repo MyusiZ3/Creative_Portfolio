@@ -3,23 +3,6 @@
     id="process"
     class="bg-[#F8FAFC] pt-16 pb-28 lg:pt-24 lg:pb-36 px-6 lg:px-12 xl:px-32 relative overflow-hidden -mb-1"
   >
-    <!-- Top Right Accent Shape -->
-    <img
-      src="/images/accent_3.png"
-      alt="Accent Shape"
-      loading="lazy"
-      decoding="async"
-      class="absolute top-0 right-0 w-24 md:w-40 lg:w-56 xl:w-180 pointer-events-none transform z-0 opacity-40"
-    />
-    <!-- Bottom Left Accent Shape -->
-    <img
-      src="/images/accent_3.png"
-      alt="Accent Shape"
-      loading="lazy"
-      decoding="async"
-      class="absolute -bottom-1 left-0 w-32 md:w-52 lg:w-72 xl:w-200 pointer-events-none transform rotate-180 z-0 opacity-40"
-    />
-
     <div class="container mx-auto relative z-10">
       <!-- Section Header -->
       <div class="max-w-3xl mb-14 lg:mb-20 text-left">
