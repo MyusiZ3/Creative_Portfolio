@@ -351,11 +351,12 @@ const projects = [
     category: "game",
     shortDesc:
       "Aplikasi HKI pembelajaran matematika SD dengan Unity game & Web Admin Dashboard (analisis user & config).",
-    images: ["/images/projects/Mathmagic_hki.png"],
+    images: ["/images/projects/Mathmagic/dashboard_mathmagic.webp"],
     platform: "Unity Game & Web Admin",
     role: "Main UI Designer & Lead Dev",
     timeline: "2024 – 2025",
-    techStack: ["Unity 2D", "C#", "Figma", "Vite", "Analytics"],
+    techStack: ["Unity 2D", "C#", "Figma", "Vite", "Supabase"],
+    demoUrl: "https://drive.google.com/drive/folders/1rLr5_umd3LsMvZY_Q9ZyLjp5G-xHPOdv?usp=sharing",
     challenge:
       "Mendesain UI/UX gim anak yang ramah sekaligus menyediakan dashboard admin untuk konfigurasi parameter & analisis performa.",
     solution:

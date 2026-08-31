@@ -275,21 +275,12 @@
         </p>
       </div>
 
-      <!-- GitHub Contributions Calendar (Arcade Retro Style) -->
       <div 
         v-motion
         :initial="{ opacity: 0, y: 20 }"
         :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 300, ease: 'easeOut' } }"
         class="bg-[#161b22] border-4 border-black p-4 sm:p-6 shadow-[8px_8px_0px_#000000] mb-12"
       >
-        <div class="flex flex-wrap items-center justify-between border-b-2 border-[#30363d] pb-3 mb-4 font-silkscreen gap-2">
-          <span class="text-xs font-bold text-[#00ff66] uppercase flex items-center gap-2">
-            <i class="bi bi-github text-base"></i>
-            <span>GITHUB COMMIT QUEST MATRIX // REAL-TIME LOG</span>
-          </span>
-          <span class="text-[10px] text-[#00f0ff] uppercase bg-[#00f0ff]/10 px-2 py-0.5 border border-[#00f0ff]/30">[SYNC: 100% ONLINE]</span>
-        </div>
-        
         <GithubCalendar />
       </div>
 

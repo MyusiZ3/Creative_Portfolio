@@ -89,7 +89,7 @@
 
             <!-- Success Alert -->
             <div v-if="submitted" class="p-3 bg-[#00ff66]/20 border-2 border-[#00ff66] text-[#00ff66] text-xs font-bold text-center font-silkscreen">
-              ✦ TRANSMISSION SENT DIRECTLY TO MUHAMADSIDIK.IMY@GMAIL.COM!
+              ✦ TRANSMISSION SENT DIRECTLY TO MUHAMADSIDIK.WORK.ID@GMAIL.COM!
             </div>
             <div v-if="submitError" class="p-3 bg-[#ffd700]/20 border-2 border-[#ffd700] text-[#ffd700] text-xs font-bold text-center font-silkscreen">
               ✦ OPENING EMAIL CLIENT TRANSMISSION FALLBACK...
@@ -164,7 +164,7 @@
           </div>
 
           <div class="pt-4 border-t-2 border-black text-center text-[10px] text-[#8b949e] font-silkscreen">
-            © {{ new Date().getFullYear() }} MUHAMAD SIDIK • PIXEL ARCADE SYSTEM
+            © 2026 MUHAMAD SIDIK • PIXEL ARCADE SYSTEM
           </div>
         </div>
 
@@ -189,7 +189,7 @@ const submitError = ref(false);
 const sendMailtoFallback = () => {
   const subject = encodeURIComponent(`[PIXEL TRANSMISSION] Message from ${form.value.name}`);
   const body = encodeURIComponent(`Player Name: ${form.value.name}\nPlayer Email: ${form.value.email}\n\nTransmission Message:\n${form.value.message}`);
-  window.location.href = `mailto:muhamadsidik.imy@gmail.com?subject=${subject}&body=${body}`;
+  window.location.href = `mailto:muhamadsidik.work.id@gmail.com?subject=${subject}&body=${body}`;
 };
 
 const handleSubmit = async () => {
@@ -197,7 +197,7 @@ const handleSubmit = async () => {
   submitError.value = false;
 
   try {
-    const response = await fetch('https://formsubmit.co/ajax/muhamadsidik.imy@gmail.com', {
+    const response = await fetch('https://formsubmit.co/ajax/muhamadsidik.work.id@gmail.com', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -623,7 +623,7 @@ const projects = computed(() => {
       teamInfo: isId
         ? "Hak Kekayaan Intelektual | SD Lab Univ Pattimura"
         : "Intellectual Property (HKI) | SD Lab Pattimura Univ",
-      tools: "Unity 2D, C#, Figma, Vite, Database Analytics",
+      tools: "Unity 2D, C#, Figma, Vite, Supabase",
       overview: isId
         ? "Aplikasi pembelajaran matematika interaktif berlisensi HKI untuk siswa kelas 4 SD Laboratorium Universitas Pattimura. Dilengkapi Web Admin Dashboard untuk mengelola pengguna, mengonfigurasi parameter gim (global time, HP, skor), dan menganalisis performa belajar."
         : "Intellectual Property (HKI) certified educational math application for 4th Grade SD Laboratorium Universitas Pattimura. Features Unity gameplay backed by a Web Admin Dashboard for user management, game config tuning (global time, HP, score), and user analytics.",
@@ -646,8 +646,8 @@ const projects = computed(() => {
         ? "Gim Edukasi Unity & Web Admin"
         : "Unity Game & Web Admin Dashboard",
       bg: "#059669",
-      images: ["/images/projects/Mathmagic_hki.png"],
-      link: "#",
+      images: ["/images/projects/Mathmagic/dashboard_mathmagic.webp"],
+      link: "https://drive.google.com/drive/folders/1rLr5_umd3LsMvZY_Q9ZyLjp5G-xHPOdv?usp=sharing",
       _dir: "next",
     },
     {

@@ -67,18 +67,18 @@ const translations = {
       "A collection of experiences across design, technology, and interactive projects, shaped through academic, professional, and collaborative work.",
     exp_work_org: "Work & Organizational Experience",
     // Work items
-    exp_w1_title: "Information Technology & Web Dev",
+    exp_w1_title: "Information Technology",
     exp_w1_sub: "Internship | PT. Jasa & Kepariwisataan Jabar",
     exp_w1_desc:
-      "Developed multi-language (i18n) features for the DJourney website, built mobile responsive layouts, and performed bug fixes on destination search filters and UI display issues.",
+      "Contributed to internal and public-facing digital platforms through interface design, application flow design, and web development. Developed features based on business needs, improved responsive layouts and UI, and supported technical troubleshooting and IT device maintenance.",
     exp_w2_title: "Teaching Assistant",
     exp_w2_sub: "School of Applied Science | Telkom University",
     exp_w2_desc:
-      "Assisted practical sessions across 5 courses, supporting students with technical tasks, evaluating their work, managing lab resources, and coordinating with lecturers.",
+      "Supported 100+ students across multiple technical courses over two years, with a focus on interactive application development, Unity, UI/UX principles, and practical problem-solving. Also assisted laboratory sessions covering databases, computer networks, operating systems, and computer systems.",
     exp_w3_title: "Publication & Media Designer",
     exp_w3_sub: "MAPS 2023 Event | Telkom University",
     exp_w3_desc:
-      "Designed event merchandise and digital assets for promotion; collaborated with the documentation team on content coverage and visual output.",
+      "Designed core visual assets for the event, including ID cards, event apparel, and certificates for committee members and competition winners. Created Instagram story frames and promotional post designs, along with merchandise designs for items sold during the event. Also produced mockups for ID cards, apparel, and other collaterals, while coordinating with the documentation team on content coverage.",
     exp_w4_title: "Multimedia Project Crew",
     exp_w4_sub: "SMKN 1 Belitang III",
     exp_w4_desc:
@@ -86,7 +86,7 @@ const translations = {
     exp_w5_title: "Team Leader - Intern Project",
     exp_w5_sub: "Production Unit of SMKN 1 Belitang III",
     exp_w5_desc:
-      'Led a design-production project during vocational internship (PKL Based On Project), producing custom printed mugs in a multimedia lab. Managed design, printing, and coordination with other divisions. Rated "Excellent".',
+      "Led a project-based vocational internship focused on custom printing and design production. Handled mug designs based on customer orders, created simple invitation designs, produced photo prints and other printed materials, and coordinated the printing workflow with other divisions. Received an Excellent rating for project performance.",
 
     // Projects Exp
     exp_proj_title: "Projects Experience",
@@ -148,6 +148,24 @@ const translations = {
     contact_footer: "All rights reserved.",
     contact_views: "Total Views",
 
+    // Contact Form
+    contact_form_title: "Send Me a Message",
+    contact_form_sub: "Have a project, question, or opportunity? Send a message directly below.",
+    contact_form_name: "Full Name *",
+    contact_form_name_placeholder: "Your Name",
+    contact_form_email: "Email *",
+    contact_form_email_placeholder: "email@domain.com",
+    contact_form_subject: "Subject (Optional)",
+    contact_form_subject_placeholder: "Message title or topic",
+    contact_form_message: "Message *",
+    contact_form_message_placeholder: "Write your message here...",
+    contact_form_send: "Send Message",
+    contact_form_sending: "Sending...",
+    contact_form_success_title: "Message Sent!",
+    contact_form_success_desc: "Thank you for reaching out. Your message has been sent to",
+    contact_form_send_another: "Send Another Message",
+    contact_form_error: "Failed to send message via server. Opening email app...",
+
     // CTA Popup
     cta_title: "Are you interested?",
     cta_desc:
@@ -174,9 +192,10 @@ const translations = {
     my_proj_desc:
       "A showcase of roles I've taken, problems I've solved, and experiences I've crafted — across design, development, and creative tech.",
     my_proj_role: "Role",
-    my_proj_tools: "Stack",
-    my_proj_overview: "Overview",
-    my_proj_whatidid: "Contributions",
+    my_proj_team_label: "Project Team",
+    my_proj_tools: "Tools",
+    my_proj_overview: "Brief Description",
+    my_proj_whatidid: "What I Did",
     my_proj_view_work: "VIEW CASE STUDY",
     my_proj_view_all: "VIEW ALL PROJECTS",
     my_proj_show_less: "SHOW LESS",
@@ -246,18 +265,18 @@ const translations = {
       "Kumpulan pengalaman di bidang desain, teknologi, dan proyek interaktif, terbentuk melalui kegiatan akademik, profesional, dan kolaboratif.",
     exp_work_org: "Pengalaman Kerja & Organisasi",
     // Work items
-    exp_w1_title: "Teknologi Informasi & Web Dev",
+    exp_w1_title: "Teknologi Informasi",
     exp_w1_sub: "Magang | PT. Jasa & Kepariwisataan Jabar",
     exp_w1_desc:
-      "Mengembangkan fitur multi-language (i18n) pada website DJourney milik PT. Jaswita Jabar, membangun tampilan responsif mobile, serta melakukan perbaikan bug (bug fix) pada filter pencarian destinasi dan antarmuka web.",
+      "Berkontribusi pada platform digital internal dan publik melalui interface design, application flow design, dan web development. Mengembangkan fitur berdasarkan kebutuhan bisnis, meningkatkan responsive layout dan UI, serta mendukung technical troubleshooting dan pemeliharaan perangkat IT.",
     exp_w2_title: "Asisten Praktikum",
     exp_w2_sub: "Fakultas Ilmu Terapan | Universitas Telkom",
     exp_w2_desc:
-      "Jadi asisten untuk 5 mata kuliah — bantu mahasiswa di sesi praktikum, nilai tugas, kelola lab, dan koordinasi sama dosen.",
+      "Mendampingi 100+ mahasiswa di berbagai mata kuliah teknis selama dua tahun, dengan fokus pada pengembangan aplikasi interaktif, Unity, prinsip UI/UX, dan pemecahan masalah praktis. Turut membantu sesi laboratorium yang mencakup database, computer networks, operating systems, dan computer systems.",
     exp_w3_title: "Desainer Publikasi & Media",
     exp_w3_sub: "Event MAPS 2023 | Universitas Telkom",
     exp_w3_desc:
-      "Desain merchandise dan aset digital untuk promosi acara, plus kolaborasi sama tim dokumentasi buat konten dan visual event.",
+      "Mendesain aset visual utama untuk acara, termasuk ID card, baju acara, dan sertifikat untuk panitia serta pemenang lomba. Membuat desain frame story Instagram dan konten promosi, serta desain merchandise untuk item yang dijual selama acara. Turut membuat mockup untuk ID card, baju, dan material lainnya, sambil berkoordinasi dengan tim dokumentasi terkait cakupan konten.",
     exp_w4_title: "Kru Multimedia Sekolah",
     exp_w4_sub: "SMKN 1 Belitang III",
     exp_w4_desc:
@@ -265,7 +284,7 @@ const translations = {
     exp_w5_title: "Ketua Tim - Proyek Magang",
     exp_w5_sub: "Unit Produksi SMKN 1 Belitang III",
     exp_w5_desc:
-      "Mimpin proyek cetak mug kustom saat PKL Berbasis Proyek di lab multimedia SMK. Urus desain, cetak, sampai koordinasi antar divisi. Hasilnya: nilai 'Sangat Baik'.",
+      "Memimpin proyek PKL berbasis project yang berfokus pada desain dan produksi percetakan custom. Menangani desain mug sesuai pesanan, membuat desain undangan sederhana, mencetak foto dan berbagai material cetak lainnya, serta mengoordinasikan proses produksi dengan divisi terkait. Mendapatkan penilaian Excellent untuk proyek tersebut.",
 
     // Projects Exp
     exp_proj_title: "Pengalaman Proyek",
@@ -327,6 +346,24 @@ const translations = {
     contact_footer: "Hak cipta dilindungi.",
     contact_views: "Total Kunjungan",
 
+    // Contact Form
+    contact_form_title: "Kirim Pesan",
+    contact_form_sub: "Punya proyek, pertanyaan, atau penawaran? Kirim pesan langsung di bawah ini.",
+    contact_form_name: "Nama Lengkap *",
+    contact_form_name_placeholder: "Nama Anda",
+    contact_form_email: "Email *",
+    contact_form_email_placeholder: "email@domain.com",
+    contact_form_subject: "Subjek (Opsional)",
+    contact_form_subject_placeholder: "Judul pesan atau topik",
+    contact_form_message: "Pesan *",
+    contact_form_message_placeholder: "Tuliskan pesan Anda di sini...",
+    contact_form_send: "Kirim Pesan",
+    contact_form_sending: "Mengirim...",
+    contact_form_success_title: "Pesan Terkirim!",
+    contact_form_success_desc: "Terima kasih sudah menghubungi. Pesan Anda telah dikirimkan ke",
+    contact_form_send_another: "Kirim Pesan Lain",
+    contact_form_error: "Gagal mengirim pesan via server. Membuka aplikasi email...",
+
     // CTA Popup
     cta_title: "Tertarik?",
     cta_desc:
@@ -353,9 +390,10 @@ const translations = {
     my_proj_desc:
       "Showcase peran yang saya jalani, masalah yang dipecahkan, dan pengalaman yang saya rancang di bidang desain, dev, dan teknologi kreatif.",
     my_proj_role: "Peran",
-    my_proj_tools: "Stack",
-    my_proj_overview: "Ringkasan",
-    my_proj_whatidid: "Kontribusi",
+    my_proj_team_label: "Tim Proyek",
+    my_proj_tools: "Tools",
+    my_proj_overview: "Deskripsi Singkat",
+    my_proj_whatidid: "Kontribusi & Peran",
     my_proj_view_work: "LIHAT STUDI KASUS",
     my_proj_view_all: "LIHAT SEMUA PROYEK",
     my_proj_show_less: "TAMPILKAN LEBIH SEDIKIT",

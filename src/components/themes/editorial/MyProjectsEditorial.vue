@@ -291,24 +291,24 @@
               <!-- Project Title & Subtitle Info -->
               <div class="space-y-2">
                 <h3
-                  class="text-2xl lg:text-3xl xl:text-4xl font-bold font-['Poppins'] text-white tracking-tight leading-snug cursor-pointer hover:text-violet-300 transition-colors"
+                  class="text-2xl lg:text-3xl xl:text-4xl font-bold font-['Poppins'] text-white tracking-tight leading-snug cursor-pointer hover:text-zinc-300 transition-colors"
                   @click="openLightbox(index, 0)"
                 >
                   {{ project.name }}
                 </h3>
                 <p class="text-xs text-zinc-400 font-['Roboto'] font-normal">
-                  Role: <span class="text-zinc-200">{{ project.role }}</span>
+                  {{ t("my_proj_role") }}: <span class="text-zinc-200">{{ project.role }}</span>
                 </p>
               </div>
 
               <!-- Metadata Specs (Team/Duration, Tools) -->
               <div class="space-y-1.5 text-xs text-zinc-400 font-['Roboto']">
                 <p v-if="project.teamInfo">
-                  <span class="text-zinc-500">Tim Proyek |</span>
+                  <span class="text-zinc-500">{{ t("my_proj_team_label") }} |</span>
                   {{ project.teamInfo }}
                 </p>
                 <p v-if="project.tools">
-                  <span class="text-zinc-500">Tools:</span> {{ project.tools }}
+                  <span class="text-zinc-500">{{ t("my_proj_tools") }}:</span> {{ project.tools }}
                 </p>
               </div>
 
@@ -317,7 +317,7 @@
                 <p
                   class="text-zinc-400 text-xs uppercase tracking-wider font-semibold"
                 >
-                  Deskripsi Singkat:
+                  {{ t("my_proj_overview") }}:
                 </p>
                 <p
                   class="text-zinc-300 text-xs lg:text-sm font-['Roboto'] leading-relaxed"
@@ -331,7 +331,7 @@
                 <h4
                   class="text-xs font-bold text-white uppercase tracking-wider"
                 >
-                  What I Did:
+                  {{ t("my_proj_whatidid") }}:
                 </h4>
                 <ul class="space-y-1.5 pl-1">
                   <li
@@ -706,7 +706,7 @@ const projects = computed(() => {
       teamInfo: isId
         ? "Hak Kekayaan Intelektual | SD Lab Univ Pattimura"
         : "Intellectual Property (HKI) | SD Lab Pattimura Univ",
-      tools: "Unity 2D, C#, Figma, Vite, Database Analytics",
+      tools: "Unity 2D, C#, Figma, Vite, Supabase",
       overview: isId
         ? "Aplikasi pembelajaran matematika interaktif berlisensi HKI untuk siswa kelas 4 SD Laboratorium Universitas Pattimura. Dilengkapi Web Admin Dashboard untuk mengelola pengguna, mengonfigurasi parameter gim (global time, HP, skor), dan menganalisis performa belajar."
         : "Intellectual Property (HKI) certified educational math application for 4th Grade SD Laboratorium Universitas Pattimura. Features Unity gameplay backed by a Web Admin Dashboard for user management, game config tuning (global time, HP, score), and user analytics.",
@@ -730,11 +730,11 @@ const projects = computed(() => {
         : "Unity Game & Web Admin Dashboard",
       bg: "#059669",
       images: [
-        "/images/projects/mathrift.png",
+        "/images/projects/Mathmagic/dashboard_mathmagic.webp",
         "/images/projects/mathrift_2.webp",
         "/images/projects/mathrift_3.webp",
       ],
-      link: "#",
+      link: "https://drive.google.com/drive/folders/1rLr5_umd3LsMvZY_Q9ZyLjp5G-xHPOdv?usp=sharing",
       _dir: "next",
     },
     {

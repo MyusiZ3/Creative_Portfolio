@@ -60,14 +60,14 @@
               <p class="text-gray-400 text-sm mb-1">{{ t("contact_email") }}</p>
               <div class="flex items-center gap-2 group/item">
                 <a
-                  href="mailto:muhamadsidik.imy@gmail.com"
+                  href="mailto:muhamadsidik.work.id@gmail.com"
                   class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300"
                 >
-                  muhamadsidik.imy@gmail.com
+                  muhamadsidik.work.id@gmail.com
                 </a>
                 <button
                   @click="
-                    copyToClipboard('muhamadsidik.imy@gmail.com', 'email')
+                    copyToClipboard('muhamadsidik.work.id@gmail.com', 'email')
                   "
                   class="p-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 opacity-100 md:opacity-0 group-hover/item:opacity-100 transition-all flex items-center gap-1.5"
                 >
@@ -273,24 +273,24 @@
           class="h-px w-full bg-linear-to-r from-transparent via-white/20 to-transparent relative overflow-hidden"
         >
           <div
-            class="absolute inset-0 bg-linear-to-r from-transparent via-violet-500/50 to-transparent animate-shimmer"
+            class="absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent animate-shimmer"
           ></div>
         </div>
 
         <div
-          class="py-10 overflow-hidden whitespace-nowrap opacity-10 select-none cursor-default relative marquee-section"
+          class="py-6 overflow-hidden whitespace-nowrap opacity-30 select-none cursor-default relative marquee-section"
         >
           <div
-            class="inline-block animate-marquee-slow font-['Poppins'] font-bold text-3xl lg:text-5xl uppercase pr-4 text-white hover:text-violet-500 transition-colors duration-500"
+            class="inline-block animate-marquee-slow font-['Poppins'] text-sm sm:text-base tracking-[0.3em] text-zinc-400 pr-4 uppercase"
           >
-            CREATIVE DEVELOPER • CREATIVE DESIGNER • UI/UX ENTHUSIAST •
-            CREATIVE DEVELOPER • CREATIVE DESIGNER • UI/UX ENTHUSIAST •&nbsp;
+            CREATIVE DEVELOPER <span class="text-zinc-600">//</span> <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]">CREATIVE DESIGNER</span> <span class="text-zinc-600">//</span> UI/UX ENTHUSIAST <span class="text-zinc-600">//</span>&nbsp;
+            CREATIVE DEVELOPER <span class="text-zinc-600">//</span> <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]">CREATIVE DESIGNER</span> <span class="text-zinc-600">//</span> UI/UX ENTHUSIAST <span class="text-zinc-600">//</span>&nbsp;
           </div>
           <div
-            class="inline-block animate-marquee-slow font-['Poppins'] font-bold text-3xl lg:text-5xl uppercase pr-4 text-white hover:text-violet-500 transition-colors duration-500"
+            class="inline-block animate-marquee-slow font-['Poppins'] text-sm sm:text-base tracking-[0.3em] text-zinc-400 pr-4 uppercase"
           >
-            CREATIVE DEVELOPER • CREATIVE DESIGNER • UI/UX ENTHUSIAST •
-            CREATIVE DEVELOPER • CREATIVE DESIGNER • UI/UX ENTHUSIAST •&nbsp;
+            CREATIVE DEVELOPER <span class="text-zinc-600">//</span> <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]">CREATIVE DESIGNER</span> <span class="text-zinc-600">//</span> UI/UX ENTHUSIAST <span class="text-zinc-600">//</span>&nbsp;
+            CREATIVE DEVELOPER <span class="text-zinc-600">//</span> <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]">CREATIVE DESIGNER</span> <span class="text-zinc-600">//</span> UI/UX ENTHUSIAST <span class="text-zinc-600">//</span>&nbsp;
           </div>
         </div>
 

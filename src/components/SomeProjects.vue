@@ -368,8 +368,9 @@ const projects = computed(() => {
         ? "Gim Edukasi & Web Admin"
         : "Educational Game & Web Admin",
       bg: "#059669",
-      image: "/images/projects/Mathmagic_hki.png",
+      image: "/images/projects/Mathmagic/dashboard_mathmagic.webp",
       filterType: "game",
+      liveLink: "https://drive.google.com/drive/folders/1rLr5_umd3LsMvZY_Q9ZyLjp5G-xHPOdv?usp=sharing",
       caseStudy: {
         challenge: isId
           ? "Menyediakan gim pembelajaran matematika SD kelas 4 yang fleksibel parameternya serta memuat analitik siswa bagi guru."

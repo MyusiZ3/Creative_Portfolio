@@ -1,157 +1,208 @@
 <template>
   <div 
-    class="w-full relative transition-all duration-300"
+    class="w-full relative transition-all duration-500 overflow-hidden"
     :class="
       isPixel 
         ? 'bg-transparent text-[#f0f6fc] font-mono' 
-        : 'bg-[#1D1D1D]/60 backdrop-blur-sm rounded-2xl p-6 border border-white/5 shadow-2xl'
+        : 'bg-gradient-to-br from-[#1C1C1E] to-[#121214] backdrop-blur-md rounded-2xl p-6 lg:p-8 border border-white/[0.06] shadow-2xl relative'
     "
   >
-    
-    <!-- Header: Title and Total -->
-    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
-      <div class="flex items-center gap-3">
-        <i class="bi bi-github text-xl" :class="isPixel ? 'text-[#00ff66]' : 'text-white'"></i>
-        <h3 
-          class="font-medium text-lg"
-          :class="isPixel ? 'text-[#00ff66] font-silkscreen text-xs sm:text-sm uppercase tracking-wider' : 'text-white font-[\'Poppins\']'"
-        >
-          {{ selectedYearTotal.toLocaleString() }} Contributions in {{ selectedYear }}
-        </h3>
-      </div>
-      
-      <!-- Year Tabs -->
-      <div v-if="availableYears.length > 0" class="flex gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 scrollbar-hide">
-        <button
-          v-for="year in availableYears"
-          :key="year.year"
-          @click="selectYear(year.year)"
-          class="px-4 py-1.5 transition-all duration-300 whitespace-nowrap text-xs font-medium"
-          :class="[
-            isPixel ? 'font-silkscreen' : 'font-[\'Roboto\'] rounded-full',
-            selectedYear === year.year
-              ? (isPixel 
-                  ? 'bg-[#00ff66] text-black font-bold border-2 border-black shadow-[2px_2px_0px_#000000]' 
-                  : 'bg-violet-500 text-white shadow-lg shadow-violet-500/30')
-              : (isPixel 
-                  ? 'bg-[#0d1117] text-[#8b949e] border border-[#30363d] hover:text-[#00ff66] hover:border-[#00ff66]' 
-                  : 'bg-white/5 text-white/60 hover:bg-white/10 hover:text-white')
-          ]"
-        >
-          {{ year.year }}
-        </button>
-      </div>
-    </div>
+    <!-- Background glow for artistic touch -->
+    <div v-if="!isPixel" class="absolute -right-20 -bottom-20 w-80 h-80 bg-violet-600/10 rounded-full blur-[100px] pointer-events-none z-0"></div>
+    <div v-if="!isPixel" class="absolute -left-20 -top-20 w-80 h-80 bg-indigo-600/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
 
-    <!-- Loading State -->
-    <div v-if="loading" class="w-full h-[150px] flex items-center justify-center">
-      <div 
-        class="w-8 h-8 border-2 rounded-full animate-spin"
-        :class="isPixel ? 'border-[#00ff66]/20 border-t-[#00ff66]' : 'border-violet-500/20 border-t-violet-500'"
-      ></div>
-    </div>
-
-    <!-- Calendar Grid -->
-    <div v-else-if="currentYearData.length > 0" class="w-full overflow-x-auto scrollbar-hide pb-2 px-1">
-      <div class="min-w-[800px] flex gap-2">
-        
-        <!-- Day Labels -->
-        <div 
-          class="flex flex-col gap-[4px] pt-[20px] text-[10px] pr-2 shrink-0"
-          :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-white/40 font-[\'Roboto\'] font-medium'"
-        >
-          <span class="h-[12px] leading-[12px]"></span>
-          <span class="h-[12px] leading-[12px]">Mon</span>
-          <span class="h-[12px] leading-[12px]"></span>
-          <span class="h-[12px] leading-[12px]">Wed</span>
-          <span class="h-[12px] leading-[12px]"></span>
-          <span class="h-[12px] leading-[12px]">Fri</span>
-          <span class="h-[12px] leading-[12px]"></span>
-        </div>
-
-        <!-- The Grid -->
-        <div class="relative w-full">
-          <!-- Month Labels -->
-          <div 
-            class="absolute -top-5 left-0 right-0 flex justify-between text-[10px] mb-1 px-1"
-            :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-white/40 font-[\'Roboto\'] font-medium'"
+    <div class="relative z-10">
+      <!-- Header: Title and Total -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+        <div>
+          <h3 
+            class="font-semibold text-lg md:text-xl tracking-tight"
+            :class="isPixel ? 'text-[#00ff66] font-silkscreen text-xs sm:text-sm uppercase tracking-wider' : 'text-white font-[\'Poppins\']'"
           >
-            <span>Jan</span>
-            <span>Feb</span>
-            <span>Mar</span>
-            <span>Apr</span>
-            <span>May</span>
-            <span>Jun</span>
-            <span>Jul</span>
-            <span>Aug</span>
-            <span>Sep</span>
-            <span>Oct</span>
-            <span>Nov</span>
-            <span>Dec</span>
-          </div>
-
-          <!-- Heatmap -->
-          <div class="grid grid-flow-col grid-rows-7 gap-[4px] w-max">
-            <!-- Padded empty days for start of year -->
-            <div
-              v-for="n in paddingDays"
-              :key="'pad-' + n"
-              class="w-[12px] h-[12px]"
-            ></div>
-
-            <!-- Actual days -->
-            <div
-              v-for="day in currentYearData"
-              :key="day.date"
-              class="w-[12px] h-[12px] transition-all duration-300 cursor-default relative group"
-              :class="isPixel ? 'rounded-none' : 'rounded-[2px]'"
-              :style="{ backgroundColor: getIntensityColor(day.intensity) }"
-              :title="`${day.count} contribution${day.count === 1 ? '' : 's'} on ${formatDate(day.date)}`"
+            {{ selectedYearTotal.toLocaleString() }} Contributions in {{ selectedYear }}
+          </h3>
+        </div>
+        
+        <!-- Year Tabs -->
+        <div v-if="availableYears.length > 0" class="flex gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
+          <div :class="isPixel ? 'flex gap-2' : 'bg-white/[0.03] border border-white/[0.06] p-1 rounded-xl flex gap-1'">
+            <button
+              v-for="year in availableYears"
+              :key="year.year"
+              @click="selectYear(year.year)"
+              class="px-4 py-1.5 transition-all duration-300 whitespace-nowrap text-xs font-semibold tracking-wide"
+              :class="[
+                isPixel ? 'font-silkscreen' : 'rounded-lg',
+                selectedYear === year.year
+                  ? (isPixel 
+                      ? 'bg-[#00ff66] text-black font-bold border-2 border-black shadow-[2px_2px_0px_#000000]' 
+                      : 'bg-violet-600 text-white shadow-md shadow-violet-600/25')
+                  : (isPixel 
+                      ? 'bg-[#0d1117] text-[#8b949e] border border-[#30363d] hover:text-[#00ff66] hover:border-[#00ff66]' 
+                      : 'bg-transparent text-white/40 hover:text-white hover:bg-white/[0.02]')
+              ]"
             >
+              {{ year.year }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Loading State -->
+      <div v-if="loading" class="w-full h-[180px] flex items-center justify-center">
+        <div 
+          class="w-10 h-10 border-3 rounded-full animate-spin"
+          :class="isPixel ? 'border-[#00ff66]/20 border-t-[#00ff66]' : 'border-violet-600/20 border-t-violet-600'"
+        ></div>
+      </div>
+
+      <!-- Calendar Grid Wrapper -->
+      <div v-else-if="currentYearData.length > 0" class="flex flex-col gap-3">
+        
+        <!-- Calendar Scroll Area -->
+        <div class="w-full overflow-x-auto scrollbar-hide pb-3 px-1 relative">
+          <div class="min-w-[800px] flex gap-2">
+            
+            <!-- Day Labels -->
+            <div 
+              class="flex flex-col justify-between pt-[22px] pb-[4px] text-[10px] pr-2 shrink-0 h-[108px]"
+              :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-white/30 font-[\'Roboto\'] font-medium'"
+            >
+              <span class="h-[12px] leading-[12px]">Mon</span>
+              <span class="h-[12px] leading-[12px]">Wed</span>
+              <span class="h-[12px] leading-[12px]">Fri</span>
+            </div>
+
+            <!-- The Grid -->
+            <div class="relative w-full">
+              <!-- Month Labels -->
+              <div 
+                class="flex justify-between text-[10px] mb-2 px-1"
+                :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-white/30 font-[\'Roboto\'] font-medium'"
+              >
+                <span>Jan</span>
+                <span>Feb</span>
+                <span>Mar</span>
+                <span>Apr</span>
+                <span>May</span>
+                <span>Jun</span>
+                <span>Jul</span>
+                <span>Aug</span>
+                <span>Sep</span>
+                <span>Oct</span>
+                <span>Nov</span>
+                <span>Dec</span>
+              </div>
+
+              <!-- Heatmap -->
+              <div class="grid grid-flow-col grid-rows-7 gap-[4px] w-max">
+                <!-- Padded empty days for start of year -->
+                <div
+                  v-for="n in paddingDays"
+                  :key="'pad-' + n"
+                  class="w-[12px] h-[12px]"
+                ></div>
+
+                <!-- Actual days -->
+                <div
+                  v-for="day in currentYearData"
+                  :key="day.date"
+                  class="w-[12px] h-[12px] transition-all duration-200 cursor-pointer relative group rounded-[3px]"
+                  :style="{ 
+                    backgroundColor: getIntensityColor(day.intensity),
+                    boxShadow: !isPixel && day.intensity >= 3 ? `0 0 6px ${getIntensityGlow(day.intensity)}` : 'none'
+                  }"
+                  @mouseenter="showTooltip($event, day)"
+                  @mouseleave="hideTooltip"
+                >
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Error / Empty State Fallback -->
-    <div 
-      v-else 
-      class="w-full h-[140px] flex flex-col items-center justify-center gap-2 text-xs"
-      :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-white/50'"
-    >
-      <i class="bi bi-exclamation-triangle-fill text-amber-400 text-2xl"></i>
-      <span>Gagal memuat data kontribusi GitHub (Network Timeout/CORS).</span>
-      <button 
-        @click="fetchGitHubData" 
-        class="px-4 py-1.5 font-medium text-xs transition-all duration-200 mt-2 flex items-center gap-2"
-        :class="
-          isPixel 
-            ? 'bg-[#00ff66] hover:bg-[#00cc52] text-black font-silkscreen font-bold border border-black shadow-[2px_2px_0px_#000000]' 
-            : 'bg-violet-600 hover:bg-violet-500 text-white rounded-lg'
-        "
+        <!-- Custom Tooltip -->
+        <div 
+          v-if="tooltipVisible"
+          class="absolute z-50 bg-neutral-900/95 border border-white/[0.08] backdrop-blur-md px-3 py-1.5 rounded-lg text-white pointer-events-none shadow-2xl transition-all duration-75 flex flex-col gap-0.5"
+          :style="{ left: `${tooltipX}px`, top: `${tooltipY}px` }"
+        >
+          <span class="font-semibold text-white text-[11px] font-['Roboto']">
+            {{ tooltipCount === 0 ? 'No' : tooltipCount }} {{ tooltipCount === 1 ? 'contribution' : 'contributions' }}
+          </span>
+          <span class="text-white/40 text-[9px] font-['Roboto']">{{ tooltipDate }}</span>
+        </div>
+
+        <!-- Footer Row: Github Link on left, Legend on right -->
+        <div class="flex justify-between items-center mt-2 w-full">
+          <!-- Github Link Badge -->
+          <div>
+            <a 
+              v-if="!isPixel"
+              :href="`https://github.com/${username}`"
+              target="_blank"
+              class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-[10px] text-white/50 hover:text-white hover:bg-white/[0.08] hover:border-white/[0.15] transition-all font-medium tracking-wider uppercase"
+            >
+              <i class="bi bi-github"></i>
+              github.com/{{ username }}
+            </a>
+            <a 
+              v-else 
+              :href="`https://github.com/${username}`"
+              target="_blank"
+              class="text-[#8b949e] hover:text-[#00ff66] text-xs font-mono transition-colors"
+            >
+              github.com/{{ username }}
+            </a>
+          </div>
+
+          <!-- Legend -->
+          <div class="flex items-center gap-2">
+            <span 
+              class="text-[10px]"
+              :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-white/30 font-medium font-[\'Roboto\']'"
+            >
+              Less
+            </span>
+            <div class="flex gap-[4.5px]">
+              <div class="w-[11px] h-[11px] rounded-[2.5px]" :class="isPixel ? 'rounded-none' : ''" :style="{ backgroundColor: getIntensityColor(0) }"></div>
+              <div class="w-[11px] h-[11px] rounded-[2.5px]" :class="isPixel ? 'rounded-none' : ''" :style="{ backgroundColor: getIntensityColor(1) }"></div>
+              <div class="w-[11px] h-[11px] rounded-[2.5px]" :class="isPixel ? 'rounded-none' : ''" :style="{ backgroundColor: getIntensityColor(2) }"></div>
+              <div class="w-[11px] h-[11px] rounded-[2.5px]" :class="isPixel ? 'rounded-none' : ''" :style="{ backgroundColor: getIntensityColor(3) }"></div>
+              <div class="w-[11px] h-[11px] rounded-[2.5px]" :class="isPixel ? 'rounded-none' : ''" :style="{ backgroundColor: getIntensityColor(4) }"></div>
+            </div>
+            <span 
+              class="text-[10px]"
+              :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-white/30 font-medium font-[\'Roboto\']'"
+            >
+              More
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Error / Empty State Fallback -->
+      <div 
+        v-else 
+        class="w-full h-[160px] flex flex-col items-center justify-center gap-2 text-xs"
+        :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-white/50'"
       >
-        <i class="bi bi-arrow-clockwise"></i> Coba Lagi
-      </button>
-    </div>
-
-    <!-- Legend -->
-    <div 
-      v-if="!loading && currentYearData.length > 0" 
-      class="mt-4 flex justify-end items-center gap-2 text-[11px]"
-      :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-white/40 font-[\'Roboto\'] font-medium'"
-    >
-      <span>Less</span>
-      <div class="flex gap-[4px]">
-        <div class="w-[12px] h-[12px]" :class="isPixel ? 'rounded-none' : 'rounded-[2px]'" :style="{ backgroundColor: getIntensityColor(0) }"></div>
-        <div class="w-[12px] h-[12px]" :class="isPixel ? 'rounded-none' : 'rounded-[2px]'" :style="{ backgroundColor: getIntensityColor(1) }"></div>
-        <div class="w-[12px] h-[12px]" :class="isPixel ? 'rounded-none' : 'rounded-[2px]'" :style="{ backgroundColor: getIntensityColor(2) }"></div>
-        <div class="w-[12px] h-[12px]" :class="isPixel ? 'rounded-none' : 'rounded-[2px]'" :style="{ backgroundColor: getIntensityColor(3) }"></div>
-        <div class="w-[12px] h-[12px]" :class="isPixel ? 'rounded-none' : 'rounded-[2px]'" :style="{ backgroundColor: getIntensityColor(4) }"></div>
+        <i class="bi bi-exclamation-triangle-fill text-amber-400 text-2xl"></i>
+        <span>Gagal memuat data kontribusi GitHub (Network Timeout/CORS).</span>
+        <button 
+          @click="fetchGitHubData" 
+          class="px-4 py-1.5 font-semibold text-xs transition-all duration-200 mt-2 flex items-center gap-2"
+          :class="
+            isPixel 
+              ? 'bg-[#00ff66] hover:bg-[#00cc52] text-black font-silkscreen font-bold border border-black shadow-[2px_2px_0px_#000000]' 
+              : 'bg-violet-600 hover:bg-violet-500 text-white rounded-lg'
+          "
+        >
+          <i class="bi bi-arrow-clockwise"></i> Coba Lagi
+        </button>
       </div>
-      <span>More</span>
     </div>
-
   </div>
 </template>
 
@@ -175,6 +226,13 @@ const username = "MyusiZ3";
 const loading = ref(true);
 const githubData = ref({ years: [], contributions: [] });
 const selectedYear = ref(new Date().getFullYear().toString());
+
+// Tooltip States
+const tooltipVisible = ref(false);
+const tooltipCount = ref(0);
+const tooltipDate = ref('');
+const tooltipX = ref(0);
+const tooltipY = ref(0);
 
 const parseResponse = (data) => {
   let normalizedYears = [];
@@ -269,6 +327,27 @@ const selectYear = (year) => {
   selectedYear.value = year.toString();
 };
 
+const showTooltip = (event, day) => {
+  tooltipCount.value = day.count;
+  tooltipDate.value = formatDate(day.date);
+
+  const cell = event.currentTarget;
+  const container = cell.closest('.w-full.relative');
+  if (!container) return;
+
+  const cellRect = cell.getBoundingClientRect();
+  const containerRect = container.getBoundingClientRect();
+
+  // Position tooltip horizontally centered above the cell
+  tooltipX.value = (cellRect.left - containerRect.left) - 50 + (cellRect.width / 2);
+  tooltipY.value = (cellRect.top - containerRect.top) - 45;
+  tooltipVisible.value = true;
+};
+
+const hideTooltip = () => {
+  tooltipVisible.value = false;
+};
+
 const getIntensityColor = (intensity) => {
   if (isPixel.value) {
     const pixelIntensities = {
@@ -282,12 +361,28 @@ const getIntensityColor = (intensity) => {
   } else {
     const editorialIntensities = {
       0: 'rgba(255, 255, 255, 0.03)',
-      1: 'rgba(124, 58, 237, 0.3)',
-      2: 'rgba(124, 58, 237, 0.55)',
-      3: 'rgba(124, 58, 237, 0.8)',
-      4: 'rgba(124, 58, 237, 1)'
+      1: 'rgba(139, 92, 246, 0.25)', // Violet-500 tint
+      2: 'rgba(139, 92, 246, 0.50)',
+      3: 'rgba(139, 92, 246, 0.75)',
+      4: 'rgba(139, 92, 246, 1)'
     };
     return editorialIntensities[intensity] || editorialIntensities[0];
+  }
+};
+
+const getIntensityGlow = (intensity) => {
+  if (isPixel.value) {
+    const pixelGlows = {
+      3: 'rgba(0, 255, 102, 0.3)',
+      4: 'rgba(0, 255, 102, 0.6)'
+    };
+    return pixelGlows[intensity] || 'transparent';
+  } else {
+    const editorialGlows = {
+      3: 'rgba(139, 92, 246, 0.3)',
+      4: 'rgba(139, 92, 246, 0.6)'
+    };
+    return editorialGlows[intensity] || 'transparent';
   }
 };
 

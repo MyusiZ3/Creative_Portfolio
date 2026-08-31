@@ -144,7 +144,7 @@ function scrollToSection(sectionId) {
                 damping: 15,
               },
             }"
-            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[10px] sm:rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
+            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[8px] sm:rounded-[12px] lg:rounded-[18px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg"
@@ -168,7 +168,7 @@ function scrollToSection(sectionId) {
                 damping: 15,
               },
             }"
-            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[10px] sm:rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
+            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[8px] sm:rounded-[12px] lg:rounded-[18px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg"
@@ -192,7 +192,7 @@ function scrollToSection(sectionId) {
                 damping: 15,
               },
             }"
-            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[10px] sm:rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl overflow-hidden p-2 sm:p-3"
+            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[8px] sm:rounded-[12px] lg:rounded-[18px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl overflow-hidden p-2 sm:p-3"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/supabase.webp"
@@ -216,7 +216,7 @@ function scrollToSection(sectionId) {
                 damping: 15,
               },
             }"
-            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[10px] sm:rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl overflow-hidden p-2 sm:p-3"
+            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[8px] sm:rounded-[12px] lg:rounded-[18px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl overflow-hidden p-2 sm:p-3"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/selfhst/icons/webp/google-antigravity.webp"
@@ -240,7 +240,7 @@ function scrollToSection(sectionId) {
                 damping: 15,
               },
             }"
-            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[10px] sm:rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
+            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[8px] sm:rounded-[12px] lg:rounded-[18px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
@@ -268,7 +268,7 @@ function scrollToSection(sectionId) {
                 damping: 15,
               },
             }"
-            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#330000] text-[#FF9A00] text-lg sm:text-3xl lg:text-[40px] font-bold font-['Roboto'] rounded-[10px] sm:rounded-[16px] lg:rounded-[26px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
+            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#330000] text-[#FF9A00] text-lg sm:text-3xl lg:text-[40px] font-bold font-['Roboto'] rounded-[8px] sm:rounded-[12px] lg:rounded-[18px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
           >
             Ai
           </div>
@@ -288,7 +288,7 @@ function scrollToSection(sectionId) {
                 damping: 15,
               },
             }"
-            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#001E36] text-[#31A8FF] text-lg sm:text-3xl lg:text-[40px] font-bold font-['Roboto'] rounded-[10px] sm:rounded-[16px] lg:rounded-[26px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
+            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#001E36] text-[#31A8FF] text-lg sm:text-3xl lg:text-[40px] font-bold font-['Roboto'] rounded-[8px] sm:rounded-[12px] lg:rounded-[18px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
           >
             Ps
           </div>
@@ -308,7 +308,7 @@ function scrollToSection(sectionId) {
                 damping: 15,
               },
             }"
-            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[10px] sm:rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
+            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[8px] sm:rounded-[12px] lg:rounded-[18px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
@@ -332,7 +332,7 @@ function scrollToSection(sectionId) {
                 damping: 15,
               },
             }"
-            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-linear-to-tr from-[#00C4CC] to-[#7D2AE8] rounded-[10px] sm:rounded-[16px] lg:rounded-[24px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl overflow-hidden"
+            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-linear-to-tr from-[#00C4CC] to-[#7D2AE8] rounded-[8px] sm:rounded-[12px] lg:rounded-[18px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl overflow-hidden"
           >
             <span
               class="text-white font-bold italic text-[9px] sm:text-lg lg:text-[22px] font-['Poppins']"

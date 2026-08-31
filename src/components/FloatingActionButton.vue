@@ -263,7 +263,7 @@ const actions = computed(() => {
       id: "email",
       label: "Email",
       icon: "bi bi-envelope",
-      href: "mailto:muhamadsidik.imy@gmail.com",
+      href: "mailto:muhamadsidik.work.id@gmail.com",
       external: false,
     },
     {

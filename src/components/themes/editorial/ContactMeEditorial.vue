@@ -60,14 +60,14 @@
               <p class="text-gray-400 text-sm mb-1">{{ t("contact_email") }}</p>
               <div class="flex items-center gap-2 group/item">
                 <a
-                  href="mailto:muhamadsidik.imy@gmail.com"
+                  href="mailto:muhamadsidik.work.id@gmail.com"
                   class="inline-block text-white text-lg font-bold font-['Roboto'] hover:text-[#A754FF] hover:underline transition-colors duration-300"
                 >
-                  muhamadsidik.imy@gmail.com
+                  muhamadsidik.work.id@gmail.com
                 </a>
                 <button
                   @click="
-                    copyToClipboard('muhamadsidik.imy@gmail.com', 'email')
+                    copyToClipboard('muhamadsidik.work.id@gmail.com', 'email')
                   "
                   class="p-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 opacity-100 md:opacity-0 group-hover/item:opacity-100 transition-all flex items-center gap-1.5"
                 >
@@ -254,23 +254,109 @@
           </div>
         </div>
 
-        <!-- Right Column: Flush Right Image -->
+        <!-- Right Column: Clean Modern Contact Form -->
         <div
           v-motion
-          :initial="{ opacity: 0, scale: 0.95, x: 40 }"
-          :visible="{
-            opacity: 1,
-            scale: 1,
-            x: 0,
-            transition: { duration: 1000 },
-          }"
-          class="w-full md:w-7/12 lg:w-8/12 flex justify-center md:justify-end items-start md:self-start relative order-first md:order-last mb-8 md:mb-0 md:-mt-6 lg:-mt-12 xl:-mt-26 -mr-6 md:-mr-10 lg:-mr-16 xl:-mr-24 overflow-hidden"
+          :initial="{ opacity: 0, y: 30 }"
+          :visible="{ opacity: 1, y: 0, transition: { duration: 800, delay: 200 } }"
+          class="w-full md:w-6/12 lg:w-6/12"
         >
-          <img
-            src="/images/contactme.webp"
-            alt="Contact Me"
-            class="w-full max-w-sm sm:max-w-md md:max-w-xl lg:max-w-2xl xl:max-w-3xl h-auto object-contain md:object-right transition-transform duration-500"
-          />
+          <div class="w-full">
+            <!-- Header -->
+            <div class="mb-6">
+              <h3 class="text-xl font-bold font-['Poppins'] text-white">{{ t("contact_form_title") }}</h3>
+              <p class="text-xs text-gray-400 mt-1 font-['Roboto']">{{ t("contact_form_sub") }}</p>
+            </div>
+
+            <!-- Success State -->
+            <div
+              v-if="formStatus === 'success'"
+              class="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-6 text-center space-y-3"
+            >
+              <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto text-2xl">
+                <i class="bi bi-check-circle-fill"></i>
+              </div>
+              <h4 class="text-white font-bold font-['Poppins'] text-lg">{{ t("contact_form_success_title") }}</h4>
+              <p class="text-gray-300 text-xs font-['Roboto'] leading-relaxed">
+                {{ t("contact_form_success_desc") }} <strong>muhamadsidik.work.id@gmail.com</strong>.
+              </p>
+              <button
+                @click="formStatus = 'idle'"
+                class="mt-2 px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-xs font-medium font-['Roboto'] rounded-md transition-colors"
+              >
+                {{ t("contact_form_send_another") }}
+              </button>
+            </div>
+
+            <!-- Contact Form -->
+            <form v-else @submit.prevent="handleFormSubmit" class="space-y-4">
+              <!-- Name & Email grid -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-medium text-gray-300 mb-1.5 font-['Roboto']">{{ t("contact_form_name") }}</label>
+                  <input
+                    v-model="form.name"
+                    type="text"
+                    required
+                    :placeholder="t('contact_form_name_placeholder')"
+                    class="w-full bg-[#222225] border border-white/10 rounded-lg px-3.5 py-2.5 text-sm font-['Roboto'] text-white placeholder-gray-500 outline-none focus:border-white/30 focus:bg-[#28282C] transition-all"
+                  />
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-gray-300 mb-1.5 font-['Roboto']">{{ t("contact_form_email") }}</label>
+                  <input
+                    v-model="form.email"
+                    type="email"
+                    required
+                    :placeholder="t('contact_form_email_placeholder')"
+                    class="w-full bg-[#222225] border border-white/10 rounded-lg px-3.5 py-2.5 text-sm font-['Roboto'] text-white placeholder-gray-500 outline-none focus:border-white/30 focus:bg-[#28282C] transition-all"
+                  />
+                </div>
+              </div>
+
+              <!-- Subject -->
+              <div>
+                <label class="block text-xs font-medium text-gray-300 mb-1.5 font-['Roboto']">{{ t("contact_form_subject") }}</label>
+                <input
+                  v-model="form.subject"
+                  type="text"
+                  :placeholder="t('contact_form_subject_placeholder')"
+                  class="w-full bg-[#222225] border border-white/10 rounded-lg px-3.5 py-2.5 text-sm font-['Roboto'] text-white placeholder-gray-500 outline-none focus:border-white/30 focus:bg-[#28282C] transition-all"
+                />
+              </div>
+
+              <!-- Message -->
+              <div>
+                <label class="block text-xs font-medium text-gray-300 mb-1.5 font-['Roboto']">{{ t("contact_form_message") }}</label>
+                <textarea
+                  v-model="form.message"
+                  required
+                  rows="4"
+                  :placeholder="t('contact_form_message_placeholder')"
+                  class="w-full bg-[#222225] border border-white/10 rounded-lg px-3.5 py-2.5 text-sm font-['Roboto'] text-white placeholder-gray-500 outline-none focus:border-white/30 focus:bg-[#28282C] transition-all resize-none"
+                ></textarea>
+              </div>
+
+              <!-- Error status -->
+              <p v-if="formStatus === 'error'" class="text-red-400 text-xs font-['Roboto']">
+                {{ t("contact_form_error") }}
+              </p>
+
+              <!-- Submit button -->
+              <div class="pt-2">
+                <button
+                  type="submit"
+                  :disabled="formStatus === 'loading'"
+                  class="w-full sm:w-auto px-6 py-3 bg-white text-black font-bold font-['Roboto'] text-xs uppercase tracking-wider rounded-lg hover:bg-gray-200 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-lg disabled:opacity-50"
+                >
+                  <span v-if="formStatus === 'loading'">{{ t("contact_form_sending") }}</span>
+                  <span v-else>{{ t("contact_form_send") }}</span>
+                  <i v-if="formStatus !== 'loading'" class="bi bi-send-fill text-xs"></i>
+                  <i v-else class="bi bi-arrow-repeat text-sm animate-spin"></i>
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
 
@@ -279,24 +365,24 @@
           class="h-px w-full bg-linear-to-r from-transparent via-white/20 to-transparent relative overflow-hidden"
         >
           <div
-            class="absolute inset-0 bg-linear-to-r from-transparent via-violet-500/50 to-transparent animate-shimmer"
+            class="absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent animate-shimmer"
           ></div>
         </div>
 
         <div
-          class="py-10 overflow-hidden whitespace-nowrap opacity-10 select-none cursor-default relative marquee-section"
+          class="py-6 overflow-hidden whitespace-nowrap opacity-30 select-none cursor-default relative marquee-section"
         >
           <div
-            class="inline-block animate-marquee-slow font-['Poppins'] font-bold text-3xl lg:text-5xl uppercase pr-4 text-white hover:text-violet-500 transition-colors duration-500"
+            class="inline-block animate-marquee-slow font-['Poppins'] text-sm sm:text-base tracking-[0.3em] text-zinc-400 pr-4 uppercase"
           >
-            CREATIVE DEVELOPER • CREATIVE DESIGNER • UI/UX ENTHUSIAST •
-            CREATIVE DEVELOPER • CREATIVE DESIGNER • UI/UX ENTHUSIAST •&nbsp;
+            CREATIVE DEVELOPER <span class="text-zinc-600">//</span> <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]">CREATIVE DESIGNER</span> <span class="text-zinc-600">//</span> UI/UX ENTHUSIAST <span class="text-zinc-600">//</span>&nbsp;
+            CREATIVE DEVELOPER <span class="text-zinc-600">//</span> <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]">CREATIVE DESIGNER</span> <span class="text-zinc-600">//</span> UI/UX ENTHUSIAST <span class="text-zinc-600">//</span>&nbsp;
           </div>
           <div
-            class="inline-block animate-marquee-slow font-['Poppins'] font-bold text-3xl lg:text-5xl uppercase pr-4 text-white hover:text-violet-500 transition-colors duration-500"
+            class="inline-block animate-marquee-slow font-['Poppins'] text-sm sm:text-base tracking-[0.3em] text-zinc-400 pr-4 uppercase"
           >
-            CREATIVE DEVELOPER • CREATIVE DESIGNER • UI/UX ENTHUSIAST •
-            CREATIVE DEVELOPER • CREATIVE DESIGNER • UI/UX ENTHUSIAST •&nbsp;
+            CREATIVE DEVELOPER <span class="text-zinc-600">//</span> <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]">CREATIVE DESIGNER</span> <span class="text-zinc-600">//</span> UI/UX ENTHUSIAST <span class="text-zinc-600">//</span>&nbsp;
+            CREATIVE DEVELOPER <span class="text-zinc-600">//</span> <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]">CREATIVE DESIGNER</span> <span class="text-zinc-600">//</span> UI/UX ENTHUSIAST <span class="text-zinc-600">//</span>&nbsp;
           </div>
         </div>
 
@@ -343,6 +429,46 @@ const { t, lang } = useLanguage();
 
 const localTime = ref("");
 let timeInterval = null;
+
+// --- Contact Form ---
+const form = ref({ name: '', email: '', subject: '', message: '' });
+const formStatus = ref('idle'); // 'idle' | 'loading' | 'success' | 'error'
+
+const handleFormSubmit = async () => {
+  if (!form.value.name || !form.value.email || !form.value.message) return;
+  
+  formStatus.value = 'loading';
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/muhamadsidik.work.id@gmail.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        name: form.value.name,
+        email: form.value.email,
+        subject: form.value.subject || `[Portfolio Contact] New Message from ${form.value.name}`,
+        message: form.value.message,
+        _template: 'table'
+      }),
+    });
+
+    const data = await res.json();
+    if (res.ok && (data.success === "true" || data.success === true)) {
+      formStatus.value = 'success';
+      form.value = { name: '', email: '', subject: '', message: '' };
+    } else {
+      throw new Error("FormSubmit submission failed");
+    }
+  } catch (err) {
+    console.warn("FormSubmit failed, triggering mailto fallback...", err);
+    formStatus.value = 'error';
+    const subject = encodeURIComponent(form.value.subject || `Pesan Portofolio dari ${form.value.name}`);
+    const body = encodeURIComponent(`Nama: ${form.value.name}\nEmail: ${form.value.email}\n\nPesan:\n${form.value.message}`);
+    window.location.href = `mailto:muhamadsidik.work.id@gmail.com?subject=${subject}&body=${body}`;
+  }
+};
 
 const updateLocalTime = () => {
   const options = {
