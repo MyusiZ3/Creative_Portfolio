@@ -1,46 +1,36 @@
 <template>
   <section
     id="process"
-    class="bg-[#F8FAFC] pt-16 pb-36 lg:pt-24 lg:pb-48 px-6 lg:px-12 xl:px-32 relative overflow-hidden -mb-1"
+    class="bg-[#171717] py-20 lg:py-32 px-6 lg:px-16 xl:px-32 relative overflow-hidden text-white border-t border-zinc-800/80"
   >
-    <!-- Top Right Accent Shape -->
-    <img
-      src="/images/accent_3.png"
-      alt="Accent Shape"
-      loading="lazy"
-      decoding="async"
-      class="absolute top-0 right-0 w-24 md:w-40 lg:w-56 xl:w-180 pointer-events-none transform z-0 opacity-40"
-    />
-    <!-- Bottom Left Accent Shape -->
-    <img
-      src="/images/accent_3.png"
-      alt="Accent Shape"
-      loading="lazy"
-      decoding="async"
-      class="absolute -bottom-1 left-0 w-32 md:w-52 lg:w-72 xl:w-200 pointer-events-none transform rotate-180 z-0 opacity-40"
-    />
+    <!-- Background subtle texture lines -->
+    <div class="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-40"></div>
 
     <div class="container mx-auto relative z-10">
       <!-- Section Header -->
-      <div class="max-w-3xl mb-16 lg:mb-24 text-left">
-        <span
+      <div class="max-w-4xl mb-16 lg:mb-20 text-left">
+        <div
           v-motion
           :initial="{ opacity: 0, y: 10 }"
           :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }"
-          class="text-xs lg:text-sm font-bold tracking-widest text-[#6366f1] font-mono uppercase block mb-3"
+          class="flex items-center gap-3 mb-4"
         >
-          {{ lang === "ID" ? "PROSES KREATIF & TEKNIS" : "CREATIVE & TECHNICAL PROCESS" }}
-        </span>
+          <span class="w-8 h-px bg-violet-500"></span>
+          <span class="text-xs font-mono font-bold tracking-[0.25em] text-violet-400 uppercase">
+            {{ lang === "ID" ? "// METODOLOGI KERJA" : "// WORKFLOW ARCHITECTURE" }}
+          </span>
+        </div>
+
         <h2
           v-motion
           :initial="{ opacity: 0, y: 30 }"
           :visible-once="{ opacity: 1, y: 0, transition: { duration: 700, delay: 100 } }"
-          class="text-3xl lg:text-[44px] font-extrabold font-['Poppins'] text-[#1e293b] leading-tight mb-5"
+          class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-['Poppins'] text-white leading-tight mb-6"
         >
           {{
             lang === "ID"
-              ? "Bagaimana Saya Mengubah Ide Menjadi Pengalaman Nyata"
-              : "How I Turn Ideas Into Experiences"
+              ? "Bagaimana Saya Mengubah Ide Menjadi Pengalaman Digital"
+              : "How Ideas Become Digital Experiences"
           }}
         </h2>
 
@@ -48,367 +38,99 @@
           v-motion
           :initial="{ opacity: 0, y: 30 }"
           :visible-once="{ opacity: 1, y: 0, transition: { duration: 700, delay: 200 } }"
-          class="text-[#475569] font-['Roboto'] text-sm lg:text-[16px] leading-relaxed max-w-2xl"
+          class="text-zinc-400 font-['Roboto'] text-sm sm:text-base leading-relaxed max-w-3xl"
         >
           {{
             lang === "ID"
-              ? "Alur kerja terstruktur dari eksplorasi awal, perancangan visual, analisis struktur sistem, implementasi kode hingga optimasi akhir untuk menciptakan produk digital berkualitas tinggi."
-              : "A structured, production-grade pipeline starting from initial exploration, visual design, structural system planning, interactive coding, to final performance optimization."
+              ? "Alur kerja terstruktur yang menggabungkan riset mendalam, perancangan antarmuka visual, arsitektur sistem, dan pengembangan kode performa tinggi."
+              : "A disciplined, human-centered pipeline bridging deep research, visual interface design, system architecture, and high-performance interactive development."
           }}
         </p>
       </div>
 
-      <!-- Professional Workflow Container -->
-      <div class="relative w-full">
-        <!-- Desktop Connecting Dotted Line -->
-        <div class="hidden lg:block absolute top-[148px] left-[10%] right-[10%] h-0.5 border-t-2 border-dashed border-slate-300/60 z-0"></div>
-
-        <!-- Stages Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-5 relative z-10">
-          
-          <!-- STAGE 1: EXPLORE -->
-          <div
-            v-motion
-            :initial="{ opacity: 0, y: 40 }"
-            :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 100 } }"
-            class="flex flex-col bg-white rounded-[24px] p-6 border border-slate-200/80 shadow-xs hover:border-sky-400 hover:shadow-lg hover:-translate-y-2 transition-all duration-300 cursor-pointer group"
-          >
-            <!-- Badge & Stage Step -->
-            <div class="flex justify-between items-center mb-6">
-              <span class="px-2.5 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-sky-50 text-sky-600 border border-sky-100 shadow-3xs font-mono">
-                {{ lang === 'ID' ? 'Brief & Riset' : 'Brief & Research' }}
+      <!-- 5-Stage Editorial Pipeline Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-5 relative">
+        <div
+          v-for="(stage, idx) in stages"
+          :key="stage.id"
+          v-motion
+          :initial="{ opacity: 0, y: 30 }"
+          :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 100 * (idx + 1) } }"
+          class="bg-[#1c1c1c] border border-zinc-800 p-6 rounded-lg flex flex-col justify-between hover:border-violet-500/50 hover:bg-[#222222] transition-all duration-300 group relative"
+        >
+          <div>
+            <!-- Top Index & Category Header -->
+            <div class="flex items-center justify-between border-b border-zinc-800/80 pb-4 mb-5">
+              <span class="text-2xl font-mono font-light text-zinc-500 group-hover:text-violet-400 transition-colors">
+                0{{ idx + 1 }}/
               </span>
-              <span class="text-xs font-mono font-bold text-sky-500">01 / 05</span>
+              <span class="text-[10px] font-mono font-medium tracking-wider text-zinc-400 uppercase">
+                {{ lang === 'ID' ? stage.categoryID : stage.categoryEN }}
+              </span>
             </div>
 
-            <!-- Big title -->
-            <h3 class="text-xl font-bold text-slate-800 font-['Poppins'] tracking-tight group-hover:text-sky-600 transition-colors">
-              EXPLORE
+            <!-- Stage Title -->
+            <h3 class="text-xl font-bold font-['Poppins'] text-white tracking-wide mb-2 group-hover:text-violet-300 transition-colors">
+              {{ stage.title }}
             </h3>
-            
-            <p class="text-xs text-slate-500 font-['Roboto'] leading-relaxed mt-2 min-h-[48px]">
-              {{ lang === 'ID' ? 'Memahami ide, konteks, dan berbagai kemungkinan solusi.' : 'Understanding the idea, context, and possibilities.' }}
+
+            <!-- Stage Description -->
+            <p class="text-xs text-zinc-400 font-['Roboto'] leading-relaxed mb-6 min-h-[40px]">
+              {{ lang === 'ID' ? stage.descID : stage.descEN }}
             </p>
 
-            <div class="h-px bg-slate-100 my-4"></div>
+            <div class="h-px w-full bg-zinc-800 mb-4"></div>
 
-            <!-- Activities -->
-            <div class="space-y-2 flex-grow">
-              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">
+            <!-- Core Activities List -->
+            <div class="space-y-2">
+              <span class="text-[10px] font-mono font-semibold text-zinc-500 uppercase tracking-widest block mb-2">
                 {{ lang === 'ID' ? 'Fokus Utama:' : 'Core Activities:' }}
               </span>
-              <ul class="space-y-1.5 text-xs text-[#334155] font-['Roboto']">
-                <li class="flex items-center gap-2">
-                  <i class="bi bi-check-circle-fill text-sky-500 text-[10px]"></i>
-                  <span>{{ lang === 'ID' ? 'Memahami Brief Klien' : 'Understanding Client Brief' }}</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="bi bi-check-circle-fill text-sky-500 text-[10px]"></i>
-                  <span>{{ lang === 'ID' ? 'Eksplorasi Kemungkinan' : 'Idea Exploration' }}</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="bi bi-check-circle-fill text-sky-500 text-[10px]"></i>
-                  <span>{{ lang === 'ID' ? 'Sesi Brainstorming' : 'Brainstorming Sessions' }}</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="bi bi-check-circle-fill text-sky-500 text-[10px]"></i>
-                  <span>{{ lang === 'ID' ? 'Analisis Solusi' : 'Analyzing Solutions' }}</span>
+              <ul class="space-y-2 text-xs text-zinc-300 font-['Roboto']">
+                <li
+                  v-for="(act, aIdx) in (lang === 'ID' ? stage.activitiesID : stage.activitiesEN)"
+                  :key="aIdx"
+                  class="flex items-start gap-2"
+                >
+                  <span class="text-violet-400 font-mono text-[10px] select-none mt-0.5">—</span>
+                  <span class="leading-tight">{{ act }}</span>
                 </li>
               </ul>
             </div>
-
-            <!-- Visualizer -->
-            <div class="mt-6 p-3 bg-slate-50 rounded-xl border border-slate-100/80">
-              <div class="space-y-2">
-                <div>
-                  <div class="flex justify-between text-[9px] font-mono text-slate-400 mb-0.5">
-                    <span>{{ lang === 'ID' ? 'Kesesuaian Ide' : 'Concept Viability' }}</span>
-                    <span class="font-bold text-sky-600">95%</span>
-                  </div>
-                  <div class="h-1 bg-slate-200 rounded-full overflow-hidden">
-                    <div class="h-full bg-sky-500 rounded-full" style="width: 95%"></div>
-                  </div>
-                </div>
-                <div>
-                  <div class="flex justify-between text-[9px] font-mono text-slate-400 mb-0.5">
-                    <span>{{ lang === 'ID' ? 'Riset Pasar' : 'Market Fit' }}</span>
-                    <span class="font-bold text-sky-600">85%</span>
-                  </div>
-                  <div class="h-1 bg-slate-200 rounded-full overflow-hidden">
-                    <div class="h-full bg-sky-400 rounded-full" style="width: 85%"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
-          <!-- STAGE 2: VISUALIZE -->
-          <div
-            v-motion
-            :initial="{ opacity: 0, y: 40 }"
-            :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 200 } }"
-            class="flex flex-col bg-white rounded-[24px] p-6 border border-slate-200/80 shadow-xs hover:border-amber-400 hover:shadow-lg hover:-translate-y-2 transition-all duration-300 cursor-pointer group"
-          >
-            <!-- Badge & Stage Step -->
-            <div class="flex justify-between items-center mb-6">
-              <span class="px-2.5 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-amber-50 text-amber-600 border border-amber-100 shadow-3xs font-mono">
-                {{ lang === 'ID' ? 'UI & Desain Grafis' : 'UI & Graphic Design' }}
-              </span>
-              <span class="text-xs font-mono font-bold text-amber-500">02 / 05</span>
-            </div>
-
-            <!-- Big title -->
-            <h3 class="text-xl font-bold text-slate-800 font-['Poppins'] tracking-tight group-hover:text-amber-600 transition-colors">
-              VISUALIZE
-            </h3>
-            
-            <p class="text-xs text-slate-500 font-['Roboto'] leading-relaxed mt-2 min-h-[48px]">
-              {{ lang === 'ID' ? 'Menerjemahkan ide ke bentuk visual dan estetika awal.' : 'Giving abstract ideas an initial visual and aesthetic form.' }}
-            </p>
-
-            <div class="h-px bg-slate-100 my-4"></div>
-
-            <!-- Activities -->
-            <div class="space-y-2 flex-grow">
-              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">
-                {{ lang === 'ID' ? 'Fokus Utama:' : 'Core Activities:' }}
-              </span>
-              <ul class="space-y-1.5 text-xs text-[#334155] font-['Roboto']">
-                <li class="flex items-center gap-2">
-                  <i class="bi bi-check-circle-fill text-amber-500 text-[10px]"></i>
-                  <span>{{ lang === 'ID' ? 'Mood & Arah Visual' : 'Mood & Visual Direction' }}</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="bi bi-check-circle-fill text-amber-500 text-[10px]"></i>
-                  <span>{{ lang === 'ID' ? 'Membuat Sketsa' : 'Sketching Layouts' }}</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="bi bi-check-circle-fill text-amber-500 text-[10px]"></i>
-                  <span>{{ lang === 'ID' ? 'Konsep UI' : 'UI Concepts' }}</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="bi bi-check-circle-fill text-amber-500 text-[10px]"></i>
-                  <span>{{ lang === 'ID' ? 'Tata Letak & Grid' : 'Layout & Grids' }}</span>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Visualizer -->
-            <div class="mt-6">
-              <span class="text-[9px] font-mono text-slate-400 block mb-1">{{ lang === 'ID' ? 'Indeks Estetika' : 'Consistency Index' }}</span>
-              <svg class="w-full h-10 bg-slate-50 rounded-xl p-1.5 border border-slate-100" viewBox="0 0 100 30" preserveAspectRatio="none">
-                <defs>
-                  <linearGradient id="vis-grad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.2"/>
-                    <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
-                  </linearGradient>
-                </defs>
-                <path d="M0,25 Q15,5 35,18 T75,8 T100,12" fill="none" stroke="#f59e0b" stroke-width="1.5" />
-                <path d="M0,25 Q15,5 35,18 T75,8 T100,12 L100,30 L0,30 Z" fill="url(#vis-grad)" />
-              </svg>
-            </div>
+          <!-- Bottom Footer Accent Line -->
+          <div class="mt-8 pt-4 border-t border-zinc-800/60 flex items-center justify-between">
+            <span class="text-[9px] font-mono text-zinc-500 tracking-wider">PHASE 0{{ idx + 1 }}</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-zinc-700 group-hover:bg-violet-400 transition-colors"></span>
           </div>
-
-          <!-- STAGE 3: STRUCTURE -->
-          <div
-            v-motion
-            :initial="{ opacity: 0, y: 40 }"
-            :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 300 } }"
-            class="flex flex-col bg-white rounded-[24px] p-6 border border-slate-200/80 shadow-xs hover:border-violet-400 hover:shadow-lg hover:-translate-y-2 transition-all duration-300 cursor-pointer group"
-          >
-            <!-- Badge & Stage Step -->
-            <div class="flex justify-between items-center mb-6">
-              <span class="px-2.5 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-violet-50 text-violet-600 border border-violet-100 shadow-3xs font-mono">
-                {{ lang === 'ID' ? 'Arsitektur & Alur' : 'IA & App Flow' }}
-              </span>
-              <span class="text-xs font-mono font-bold text-violet-500">03 / 05</span>
-            </div>
-
-            <!-- Big title -->
-            <h3 class="text-xl font-bold text-slate-800 font-['Poppins'] tracking-tight group-hover:text-violet-600 transition-colors">
-              STRUCTURE
-            </h3>
-            
-            <p class="text-xs text-slate-500 font-['Roboto'] leading-relaxed mt-2 min-h-[48px]">
-              {{ lang === 'ID' ? 'Mengubah konsep menjadi alur aplikasi dan sistem yang terhubung.' : 'Turning concepts into connected systems and flows.' }}
-            </p>
-
-            <div class="h-px bg-slate-100 my-4"></div>
-
-            <!-- Activities -->
-            <div class="space-y-2 flex-grow">
-              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">
-                {{ lang === 'ID' ? 'Fokus Utama:' : 'Core Activities:' }}
-              </span>
-              <ul class="space-y-1.5 text-xs text-[#334155] font-['Roboto']">
-                <li class="flex items-center gap-2">
-                  <i class="bi bi-check-circle-fill text-violet-500 text-[10px]"></i>
-                  <span>{{ lang === 'ID' ? 'Arsitektur Informasi' : 'Information Architecture' }}</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="bi bi-check-circle-fill text-violet-500 text-[10px]"></i>
-                  <span>{{ lang === 'ID' ? 'Alur Pengguna & App' : 'User / Application Flow' }}</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="bi bi-check-circle-fill text-violet-500 text-[10px]"></i>
-                  <span>{{ lang === 'ID' ? 'Diagram Alur' : 'Flowcharts & Systems' }}</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="bi bi-check-circle-fill text-violet-500 text-[10px]"></i>
-                  <span>{{ lang === 'ID' ? 'Perencanaan Fitur' : 'Feature Planning' }}</span>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Visualizer -->
-            <div class="mt-6 p-2 bg-slate-50 rounded-xl border border-slate-100/80 flex items-center justify-center h-10">
-              <!-- Node visual representation -->
-              <div class="flex items-center gap-3">
-                <div class="w-2.5 h-2.5 rounded-full bg-violet-500 animate-pulse shadow-xs"></div>
-                <div class="h-0.5 w-6 bg-slate-300"></div>
-                <div class="w-2.5 h-2.5 rounded-full bg-indigo-400 shadow-xs"></div>
-                <div class="h-0.5 w-6 bg-slate-300"></div>
-                <div class="w-2.5 h-2.5 rounded-full bg-sky-400 shadow-xs"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- STAGE 4: BUILD -->
-          <div
-            v-motion
-            :initial="{ opacity: 0, y: 40 }"
-            :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 400 } }"
-            class="flex flex-col bg-white rounded-[24px] p-6 border border-slate-200/80 shadow-xs hover:border-emerald-400 hover:shadow-lg hover:-translate-y-2 transition-all duration-300 cursor-pointer group"
-          >
-            <!-- Badge & Stage Step -->
-            <div class="flex justify-between items-center mb-6">
-              <span class="px-2.5 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-emerald-50 text-emerald-600 border border-emerald-100 shadow-3xs font-mono">
-                {{ lang === 'ID' ? 'Koding & Dev' : 'Coding & Dev' }}
-              </span>
-              <span class="text-xs font-mono font-bold text-emerald-500">04 / 05</span>
-            </div>
-
-            <!-- Big title -->
-            <h3 class="text-xl font-bold text-slate-800 font-['Poppins'] tracking-tight group-hover:text-emerald-600 transition-colors">
-              BUILD
-            </h3>
-            
-            <p class="text-xs text-slate-500 font-['Roboto'] leading-relaxed mt-2 min-h-[48px]">
-              {{ lang === 'ID' ? 'Merealisasikan ide menjadi produk fungsional interaktif.' : 'Bringing ideas into a functional experience.' }}
-            </p>
-
-            <div class="h-px bg-slate-100 my-4"></div>
-
-            <!-- Activities -->
-            <div class="space-y-2 flex-grow">
-              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">
-                {{ lang === 'ID' ? 'Fokus Utama:' : 'Core Activities:' }}
-              </span>
-              <ul class="space-y-1.5 text-xs text-[#334155] font-['Roboto']">
-                <li class="flex items-center gap-2">
-                  <i class="bi bi-check-circle-fill text-emerald-500 text-[10px]"></i>
-                  <span>{{ lang === 'ID' ? 'Pembuatan Prototipe' : 'Prototyping Solutions' }}</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="bi bi-check-circle-fill text-emerald-500 text-[10px]"></i>
-                  <span>{{ lang === 'ID' ? 'Pengembangan Web' : 'Web Development (Vue)' }}</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="bi bi-check-circle-fill text-emerald-500 text-[10px]"></i>
-                  <span>{{ lang === 'ID' ? 'Unity & Game Engine' : 'Unity Development' }}</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="bi bi-check-circle-fill text-emerald-500 text-[10px]"></i>
-                  <span>{{ lang === 'ID' ? 'Integrasi Database' : 'Database/API integration' }}</span>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Visualizer -->
-            <div class="mt-6 p-2 bg-slate-900 text-emerald-400 font-mono text-[9px] rounded-xl border border-slate-800 shadow-2xs">
-              <div class="flex justify-between">
-                <span>GET /db/supa</span>
-                <span class="text-emerald-500">200 OK</span>
-              </div>
-              <div class="flex justify-between text-slate-500 text-[8px] mt-0.5">
-                <span>Latency: 32ms</span>
-                <span>Supabase API</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- STAGE 5: REFINE -->
-          <div
-            v-motion
-            :initial="{ opacity: 0, y: 40 }"
-            :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 500 } }"
-            class="flex flex-col bg-white rounded-[24px] p-6 border border-slate-200/80 shadow-xs hover:border-rose-400 hover:shadow-lg hover:-translate-y-2 transition-all duration-300 cursor-pointer group"
-          >
-            <!-- Badge & Stage Step -->
-            <div class="flex justify-between items-center mb-6">
-              <span class="px-2.5 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-rose-50 text-rose-600 border border-rose-100 shadow-3xs font-mono">
-                {{ lang === 'ID' ? 'Optimasi & Poles' : 'Optimize & Polish' }}
-              </span>
-              <span class="text-xs font-mono font-bold text-rose-500">05 / 05</span>
-            </div>
-
-            <!-- Big title -->
-            <h3 class="text-xl font-bold text-slate-800 font-['Poppins'] tracking-tight group-hover:text-rose-600 transition-colors">
-              REFINE
-            </h3>
-            
-            <p class="text-xs text-slate-500 font-['Roboto'] leading-relaxed mt-2 min-h-[48px]">
-              {{ lang === 'ID' ? 'Menguji, meningkatkan, dan memoles kualitas akhir produk.' : 'Testing, improving, and polishing the experience.' }}
-            </p>
-
-            <div class="h-px bg-slate-100 my-4"></div>
-
-            <!-- Activities -->
-            <div class="space-y-2 flex-grow">
-              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">
-                {{ lang === 'ID' ? 'Fokus Utama:' : 'Core Activities:' }}
-              </span>
-              <ul class="space-y-1.5 text-xs text-[#334155] font-['Roboto']">
-                <li class="flex items-center gap-2">
-                  <i class="bi bi-check-circle-fill text-rose-500 text-[10px]"></i>
-                  <span>{{ lang === 'ID' ? 'Pengujian Black Box' : 'Black Box Testing' }}</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="bi bi-check-circle-fill text-rose-500 text-[10px]"></i>
-                  <span>{{ lang === 'ID' ? 'Perbaikan Bug' : 'Bug Fixing & Squashing' }}</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="bi bi-check-circle-fill text-rose-500 text-[10px]"></i>
-                  <span>{{ lang === 'ID' ? 'Optimasi Performa' : 'Performance Tuning' }}</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="bi bi-check-circle-fill text-rose-500 text-[10px]"></i>
-                  <span>{{ lang === 'ID' ? 'Polesan Visual & Detail' : 'Visual Polish & Details' }}</span>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Visualizer -->
-            <div class="mt-6">
-              <div class="flex justify-between items-center text-[9px] font-mono text-slate-400 mb-1">
-                <span>Bundle Reduction</span>
-                <span class="font-bold text-rose-600">-64% KB</span>
-              </div>
-              <svg class="w-full h-10 bg-slate-50 rounded-xl p-1.5 border border-slate-100" viewBox="0 0 100 30" preserveAspectRatio="none">
-                <defs>
-                  <linearGradient id="refine-grad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#f43f5e" stop-opacity="0.2"/>
-                    <stop offset="100%" stop-color="#f43f5e" stop-opacity="0"/>
-                  </linearGradient>
-                </defs>
-                <path d="M0,5 L30,8 L60,20 L100,28" fill="none" stroke="#f43f5e" stroke-width="1.5" />
-                <path d="M0,5 L30,8 L60,20 L100,28 L100,30 L0,30 Z" fill="url(#refine-grad)" />
-              </svg>
-            </div>
-          </div>
-
         </div>
       </div>
+
+      <!-- Bottom Editorial Manifesto / Specs Bar -->
+      <div
+        v-motion
+        :initial="{ opacity: 0, y: 20 }"
+        :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 600 } }"
+        class="mt-12 p-6 bg-[#1a1a1a] border border-zinc-800 rounded-lg flex flex-col md:flex-row items-center justify-between gap-6 font-mono text-xs text-zinc-400"
+      >
+        <div class="flex items-center gap-3">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="text-zinc-300 font-medium uppercase tracking-wider">
+            {{ lang === 'ID' ? 'STATUS ALUR KERJA: SIAP PRODUKSI' : 'PIPELINE STATUS: PRODUCTION READY' }}
+          </span>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-6 text-[11px] text-zinc-500 uppercase tracking-widest">
+          <div>
+            <span class="text-zinc-400 font-bold">// METHOD:</span> HUMAN-CENTERED DESIGN
+          </div>
+          <div>
+            <span class="text-zinc-400 font-bold">// QA:</span> PIXEL-PERFECT & OPTIMIZED
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 </template>
@@ -417,8 +139,110 @@
 import { useLanguage } from "@/composables/useLanguage";
 
 const { lang } = useLanguage();
+
+const stages = [
+  {
+    id: "explore",
+    title: "EXPLORE",
+    categoryEN: "BRIEF & RESEARCH",
+    categoryID: "BRIEF & RISET",
+    descEN: "Deconstructing project scope, understanding goals, and researching domain context.",
+    descID: "Membedah cakupan proyek, memahami tujuan utama, dan melakukan riset konteks domain.",
+    activitiesEN: [
+      "Client Requirement Analysis",
+      "Market & User Research",
+      "Concept Exploration",
+      "Technical Feasibility Check"
+    ],
+    activitiesID: [
+      "Analisis Kebutuhan Klien",
+      "Riset Pengguna & Pasar",
+      "Eksplorasi Konsep",
+      "Cek Kelayakan Teknis"
+    ]
+  },
+  {
+    id: "visualize",
+    title: "VISUALIZE",
+    categoryEN: "UI & VISUAL DESIGN",
+    categoryID: "UI & DESAIN VISUAL",
+    descEN: "Translating abstract ideas into high-fidelity visual layouts, typography, and moodboards.",
+    descID: "Menerjemahkan ide abstrak ke dalam tata letak visual, tipografi, dan moodboard berkualitas tinggi.",
+    activitiesEN: [
+      "Moodboard & Aesthetic Direction",
+      "Wireframing & Layout Grids",
+      "UI Component Design (Figma)",
+      "Design System Foundations"
+    ],
+    activitiesID: [
+      "Arah Estetika & Moodboard",
+      "Wireframe & Grid Layout",
+      "Desain Komponen UI (Figma)",
+      "Fondasi Sistem Desain"
+    ]
+  },
+  {
+    id: "structure",
+    title: "STRUCTURE",
+    categoryEN: "IA & SYSTEM FLOW",
+    categoryID: "ARSITEKTUR SISTEM",
+    descEN: "Mapping user journeys, information architecture, and structured data relationships.",
+    descID: "Pemetaan perjalanan pengguna, arsitektur informasi, dan relasi data terstruktur.",
+    activitiesEN: [
+      "Information Architecture",
+      "User Journey & Navigation",
+      "Data Flow Diagrams",
+      "Feature Specification"
+    ],
+    activitiesID: [
+      "Arsitektur Informasi",
+      "Alur Navigasi Pengguna",
+      "Diagram Alur Data",
+      "Spesifikasi Fitur"
+    ]
+  },
+  {
+    id: "build",
+    title: "BUILD",
+    categoryEN: "CODE & DEV",
+    categoryID: "KODING & DEV",
+    descEN: "Writing clean, component-driven code across Vue 3, Tailwind, Unity, or backend APIs.",
+    descID: "Menulis kode bersih berbasis komponen di Vue 3, Tailwind, Unity, maupun integrasi API.",
+    activitiesEN: [
+      "Vue 3 / Component Setup",
+      "Interactive Prototyping",
+      "Unity Engine Development",
+      "API & Database Integration"
+    ],
+    activitiesID: [
+      "Setup Komponen Vue 3",
+      "Prototipe Interaktif",
+      "Pengembangan Unity Engine",
+      "Integrasi API & Database"
+    ]
+  },
+  {
+    id: "refine",
+    title: "REFINE",
+    categoryEN: "QA & OPTIMIZATION",
+    categoryID: "PENGUJIAN & POLIS",
+    descEN: "Rigorous testing, micro-animation tuning, performance audits, and final delivery.",
+    descID: "Pengujian menyeluruh, penyetelan animasi mikro, audit performa, dan finalisasi produk.",
+    activitiesEN: [
+      "Cross-Device Testing",
+      "Bug Fixing & Code Polish",
+      "Asset & Bundle Optimization",
+      "Final Quality Inspection"
+    ],
+    activitiesID: [
+      "Pengujian Lintas Perangkat",
+      "Perbaikan Bug & Polesan Kode",
+      "Optimasi Aset & Bundle",
+      "Inspeksi Kualitas Akhir"
+    ]
+  }
+];
 </script>
 
 <style scoped>
-/* Webkit transitions and styles */
 </style>
