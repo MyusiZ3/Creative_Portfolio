@@ -439,30 +439,27 @@ const handleFormSubmit = async () => {
   
   formStatus.value = 'loading';
   try {
-    const res = await fetch('https://formsubmit.co/ajax/muhamadsidik.work.id@gmail.com', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        name: form.value.name,
-        email: form.value.email,
-        subject: form.value.subject || `[Portfolio Contact] New Message from ${form.value.name}`,
-        message: form.value.message,
-        _template: 'table'
-      }),
+    const formData = new FormData();
+    formData.append("access_key", "90abbda5-bc7f-4e0a-a900-a42dfe212115");
+    formData.append("name", form.value.name);
+    formData.append("email", form.value.email);
+    formData.append("subject", form.value.subject || `[Portfolio Contact] New Message from ${form.value.name}`);
+    formData.append("message", form.value.message);
+
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
     });
 
     const data = await res.json();
-    if (res.ok && (data.success === "true" || data.success === true)) {
+    if (res.ok && data.success) {
       formStatus.value = 'success';
       form.value = { name: '', email: '', subject: '', message: '' };
     } else {
-      throw new Error("FormSubmit submission failed");
+      throw new Error(data.message || "Web3Forms submission failed");
     }
   } catch (err) {
-    console.warn("FormSubmit failed, triggering mailto fallback...", err);
+    console.warn("Web3Forms failed, triggering mailto fallback...", err);
     formStatus.value = 'error';
     const subject = encodeURIComponent(form.value.subject || `Pesan Portofolio dari ${form.value.name}`);
     const body = encodeURIComponent(`Nama: ${form.value.name}\nEmail: ${form.value.email}\n\nPesan:\n${form.value.message}`);

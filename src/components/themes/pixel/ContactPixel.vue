@@ -197,21 +197,20 @@ const handleSubmit = async () => {
   submitError.value = false;
 
   try {
-    const response = await fetch('https://formsubmit.co/ajax/muhamadsidik.work.id@gmail.com', {
+    const formData = new FormData();
+    formData.append("access_key", "90abbda5-bc7f-4e0a-a900-a42dfe212115");
+    formData.append("name", form.value.name);
+    formData.append("email", form.value.email);
+    formData.append("subject", `[PIXEL ARCADE] Transmission from ${form.value.name}`);
+    formData.append("message", form.value.message);
+
+    const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        name: form.value.name,
-        email: form.value.email,
-        message: form.value.message,
-        _subject: `[PIXEL ARCADE] Transmission from ${form.value.name}`
-      })
+      body: formData
     });
 
-    if (response.ok) {
+    const data = await response.json();
+    if (response.ok && data.success) {
       submitted.value = true;
       form.value = { name: '', email: '', message: '' };
     } else {
