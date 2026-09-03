@@ -132,6 +132,7 @@ onMounted(() => {
 
           <button
             @click="handleToggleLang"
+            aria-label="Toggle Language"
             class="nav-item w-8 h-8 flex items-center justify-center font-bold text-[11px] lg:text-[12px] xl:text-[15px] transition"
             :class="
               currentTheme === 'pixel'
@@ -145,6 +146,7 @@ onMounted(() => {
           
           <button
             @click="$emit('show-notification')"
+            aria-label="Notifications"
             class="nav-item w-8 h-8 flex items-center justify-center transition relative"
             :class="
               currentTheme === 'pixel'
@@ -165,6 +167,7 @@ onMounted(() => {
       <!-- Mobile Hamburger Button -->
       <button
         @click="toggleMenu"
+        aria-label="Toggle navigation menu"
         class="lg:hidden text-white text-3xl transition relative z-50 nav-item"
         :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66]' : 'hover:text-violet-500'"
         style="--delay: 1"
@@ -221,6 +224,7 @@ onMounted(() => {
           <ThemeToggle @toggle-theme="handleToggleTheme" />
           <button
             @click="handleToggleLang"
+            aria-label="Toggle Language"
             class="w-10 h-10 flex items-center justify-center font-bold text-[14px] transition"
             :class="
               currentTheme === 'pixel'
@@ -232,6 +236,7 @@ onMounted(() => {
           </button>
           <button
             @click="handleMobileNotification"
+            aria-label="Notifications"
             class="w-10 h-10 flex items-center justify-center transition relative pointer-events-auto"
             :class="
               currentTheme === 'pixel'
