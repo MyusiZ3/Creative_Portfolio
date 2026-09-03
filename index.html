@@ -2,7 +2,7 @@
 <html lang="">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/images/icon.png" />
+    <link rel="icon" type="image/webp" href="/images/icon.webp" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
@@ -12,6 +12,9 @@
       name="description"
       content="Explore the creative portfolio of Muhamad Sidik, a specialized Creative Designer focusing on UI/UX, Game Design, and Interactive Visuals."
     />
+
+    <!-- Preload Critical LCP Hero Image -->
+    <link rel="preload" as="image" href="/images/hero/hero_me.webp" type="image/webp" fetchpriority="high" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />

@@ -83,6 +83,9 @@
               src="/images/hero/hero_me.webp"
               alt="Hero Main"
               class="w-full h-auto block"
+              fetchpriority="high"
+              loading="eager"
+              decoding="sync"
               :style="{
                 transform: `translate(${heroImgConfig.x}px, ${heroImgConfig.y}px) scale(${heroImgConfig.scale})`,
                 transformOrigin: 'center bottom',
