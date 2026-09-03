@@ -2,7 +2,7 @@
   <section id="achievements" class="bg-white py-20 px-6 lg:px-16 xl:px-40 relative overflow-hidden">
     <!-- Top Accent (Matching the screenshot style) -->
       <img
-        src="/images/accent_3.png"
+        src="/images/accents/accent_3.webp"
         alt="Accent Shape"
         loading="lazy"
         decoding="async"
@@ -80,7 +80,7 @@
       </transition>
     </Teleport>
     <img
-        src="/images/accent_3.png"
+        src="/images/accents/accent_3.webp"
         alt="Accent Shape"
         class=" absolute bottom-[-0.2rem] lg:bottom-[-0.2rem] py-[0.1rem] left-0 w-24 md:w-40 lg:w-56 xl:w-180 pointer-events-none transform rotate-180 z-0"
       />
@@ -119,13 +119,13 @@ const achievements = computed(() => {
       {
         title: 'Finalis – LKS Desain Grafis Provinsi',
         year: '2021',
-        image: '/images/projects/mathrift.webp', 
+        image: '/images/projects/Mathrift/mathrift.webp', 
         description: 'Mewakili OKU Timur di lomba LKS SMK tingkat Provinsi Sumsel, menyelesaikan pembuatan logo, mockup kemasan, serta presentasi dengan nilai 80.13.',
       },
       {
         title: 'Web Development Path – Progate',
         year: '2021',
-        image: '/images/projects/iudex.webp', 
+        image: '/images/projects/Iudex/iudex.webp', 
         description: 'Penyelesaian kursus modul dari dasar HTML & CSS.',
       }
     ]
@@ -153,13 +153,13 @@ const achievements = computed(() => {
     {
       title: 'Finalist – Graphic Design Technology',
       year: '2021',
-      image: '/images/projects/mathrift.webp', 
+      image: '/images/projects/Mathrift/mathrift.webp', 
       description: 'Represented OKU Timur in the provincial-level vocational student competition, completed packaging and logo design with a score of 80.13.',
     },
     {
       title: 'Web Development Path – Progate',
       year: '2021',
-      image: '/images/projects/iudex.webp', 
+      image: '/images/projects/Iudex/iudex.webp', 
       description: 'Completed study sections and exercises covering HTML & CSS fundamentals.',
     }
   ];

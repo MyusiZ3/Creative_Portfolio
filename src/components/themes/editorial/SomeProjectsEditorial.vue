@@ -4,7 +4,7 @@
     class="bg-white py-20 lg:py-32 xl:pb-64 px-6 lg:px-16 xl:px-40 relative overflow-hidden"
   >
     <img
-      src="/images/accent_3.png"
+      src="/images/accents/accent_3.webp"
       alt="Accent Shape"
       loading="lazy"
       decoding="async"
@@ -142,7 +142,7 @@
 
     <!-- Bottom accent -->
     <img
-      src="/images/accent_3.png"
+      src="/images/accents/accent_3.webp"
       alt="Accent Shape"
       loading="lazy"
       decoding="async"
@@ -344,7 +344,7 @@ const projects = computed(() => {
         ? "Aplikasi AR & Web CMS (Unified)"
         : "Unified AR & Web CMS App",
       bg: "#7c3aed",
-      image: "/images/projects/arch.png",
+      image: "/images/projects/Arch/arch.webp",
       filterType: "game",
       githubLink: "https://github.com/MyusiZ3/DjaswitaAR-Fix",
       caseStudy: {
@@ -378,7 +378,7 @@ const projects = computed(() => {
       name: "DJourney Jaswita Jabar",
       category: isId ? "Portal Web Pariwisata" : "Tourism Web Portal",
       bg: "#2563eb",
-      image: "/images/projects/iudex.png",
+      image: "/images/projects/Iudex/iudex.webp",
       filterType: "web",
       caseStudy: {
         challenge: isId
@@ -393,7 +393,7 @@ const projects = computed(() => {
       name: "Luxion RideXP",
       category: isId ? "Proyek Game Arkade" : "Arcade Game Project",
       bg: "#C0392B",
-      image: "/images/projects/luxion_ridexp.webp",
+      image: "/images/projects/LuxionRideXP/luxion_ridexp.webp",
       filterType: "game",
       liveLink: "https://youtube.com/preview",
       githubLink: "https://github.com/MyusiZ3/Creative_Portfolio",
@@ -410,7 +410,7 @@ const projects = computed(() => {
       name: "MindEscape: VR Chamber",
       category: isId ? "Proyek Game VR" : "VR Game Project",
       bg: "#7c3aed",
-      image: "/images/projects/mindescape_vr.webp",
+      image: "/images/projects/MindescapeVR/mindescape_vr.webp",
       filterType: "game",
       liveLink: "https://youtube.com/preview",
       caseStudy: {
@@ -428,7 +428,7 @@ const projects = computed(() => {
         ? "Game Edukasi Platformer 2D"
         : "Educational 2D Platformer Game",
       bg: "#1a3a4a",
-      image: "/images/projects/mathrift.webp",
+      image: "/images/projects/Mathrift/mathrift.webp",
       filterType: "game",
       liveLink: "https://youtube.com/preview",
       githubLink: "https://github.com/MyusiZ3/Creative_Portfolio",
@@ -445,7 +445,7 @@ const projects = computed(() => {
       name: "Stellar Adventures",
       category: isId ? "Proyek Game AR" : "AR Game Project",
       bg: "#1a2a3a",
-      image: "/images/projects/stellar_adventures.webp",
+      image: "/images/projects/StellarAdventures/stellar_adventures.webp",
       filterType: "game",
       liveLink: "https://youtube.com/preview",
       caseStudy: {
@@ -461,7 +461,7 @@ const projects = computed(() => {
       name: "U-Asprak",
       category: isId ? "Desain Aplikasi Mobile" : "Mobile App Design",
       bg: "#5b6abf",
-      image: "/images/projects/u_asprak.webp",
+      image: "/images/projects/UAsprak/u_asprak.webp",
       filterType: "app",
       liveLink: "https://behance.net",
       caseStudy: {
@@ -477,7 +477,7 @@ const projects = computed(() => {
       name: "empEDU",
       category: isId ? "Desain Aplikasi Mobile" : "Mobile App Design",
       bg: "#2a4a3a",
-      image: "/images/projects/empedu.webp",
+      image: "/images/projects/Empedu/empedu.webp",
       filterType: "app",
       githubLink: "https://github.com/MyusiZ3/Creative_Portfolio",
       caseStudy: {
@@ -495,7 +495,7 @@ const projects = computed(() => {
         ? "Desain Web Portofolio Tim"
         : "Team Portfolio Web Design",
       bg: "#6a5acd",
-      image: "/images/projects/iudex.webp",
+      image: "/images/projects/Iudex/iudex.webp",
       filterType: "web",
       liveLink: "https://iudex.vercel.app",
       githubLink: "https://github.com/MyusiZ3/Creative_Portfolio",
@@ -514,7 +514,7 @@ const projects = computed(() => {
         ? "Desain Web Portofolio Pribadi"
         : "Personal Portfolio Web Design",
       bg: "#7c3aed",
-      image: "/images/projects/arch.webp",
+      image: "/images/projects/Arch/arch.webp",
       filterType: "web",
       liveLink: "https://arch.vercel.app",
       caseStudy: {

@@ -59,7 +59,7 @@ onMounted(() => {
     <!-- Right-side Custom Slant Accent -->
     <div class="navbar-accent-shape hidden lg:block overflow-hidden" :class="{ 'opacity-0': currentTheme === 'pixel' }">
       <!-- Background pattern -->
-      <img src="/images/accent_3.png" alt="" class="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none grayscale blur-[1px]" />
+      <img src="/images/accents/accent_3.webp" alt="" class="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none grayscale blur-[1px]" />
     </div>
 
     <!-- Content layer -->

@@ -717,7 +717,7 @@ const projects = computed(() => {
       platform: isId ? "Aplikasi Desktop Arkade" : "Arcade Desktop App",
       bg: "#C0392B",
       images: [
-        "/images/projects/luxion_ridexp.webp",
+        "/images/projects/LuxionRideXP/luxion_ridexp.webp",
         "/images/projects/luxion_ridexp_2.webp",
         "/images/projects/luxion_ridexp_3.webp",
       ],
@@ -753,7 +753,7 @@ const projects = computed(() => {
       platform: isId ? "Aplikasi Desktop VR" : "VR Desktop App",
       bg: "#4A1D8E",
       images: [
-        "/images/projects/mindescape_vr.webp",
+        "/images/projects/MindescapeVR/mindescape_vr.webp",
         "/images/projects/mindescape_vr_2.webp",
         "/images/projects/mindescape_vr_3.webp",
       ],
@@ -789,7 +789,7 @@ const projects = computed(() => {
       platform: "Desktop Game",
       bg: "#1a3a4a",
       images: [
-        "/images/projects/mathrift.webp",
+        "/images/projects/Mathrift/mathrift.webp",
         "/images/projects/mathrift_2.webp",
         "/images/projects/mathrift_3.webp",
       ],
@@ -825,7 +825,7 @@ const projects = computed(() => {
       platform: isId ? "Aplikasi AR Mobile" : "AR Mobile App",
       bg: "#1a2a3a",
       images: [
-        "/images/projects/stellar_adventures.webp",
+        "/images/projects/StellarAdventures/stellar_adventures.webp",
         "/images/projects/stellar_adventures_2.webp",
         "/images/projects/stellar_adventures_3.webp",
       ],
@@ -859,7 +859,7 @@ const projects = computed(() => {
       platform: isId ? "Desain Aplikasi Mobile" : "Mobile App Design",
       bg: "#5b6abf",
       images: [
-        "/images/projects/u_asprak.webp",
+        "/images/projects/UAsprak/u_asprak.webp",
         "/images/projects/u_asprak_2.webp",
         "/images/projects/u_asprak_3.webp",
       ],
@@ -893,7 +893,7 @@ const projects = computed(() => {
       platform: isId ? "Desain Aplikasi Mobile" : "Mobile App Design",
       bg: "#2a4a3a",
       images: [
-        "/images/projects/empedu.webp",
+        "/images/projects/Empedu/empedu.webp",
         "/images/projects/empedu_2.webp",
         "/images/projects/empedu_3.webp",
       ],
@@ -929,7 +929,7 @@ const projects = computed(() => {
       platform: "Web Application",
       bg: "#6a5acd",
       images: [
-        "/images/projects/iudex.webp",
+        "/images/projects/Iudex/iudex.webp",
         "/images/projects/iudex_2.webp",
         "/images/projects/iudex_3.webp",
       ],
@@ -963,7 +963,7 @@ const projects = computed(() => {
       platform: "Web Application",
       bg: "#7c3aed",
       images: [
-        "/images/projects/arch.webp",
+        "/images/projects/Arch/arch.webp",
         "/images/projects/arch_2.webp",
         "/images/projects/arch_3.webp",
       ],

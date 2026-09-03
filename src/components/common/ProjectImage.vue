@@ -5,6 +5,7 @@
       v-if="src && !hasError"
       :src="src"
       :alt="alt"
+      referrerpolicy="no-referrer"
       class="w-full h-full object-cover transition-all duration-700"
       :class="[
         isLoading ? 'opacity-0 scale-105' : 'opacity-100 scale-100',

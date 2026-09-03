@@ -5,7 +5,7 @@
   >
     <!-- Top Accent (Matching the screenshot style) -->
     <img
-      src="/images/accent_3.png"
+      src="/images/accents/accent_3.webp"
       alt="Accent Shape"
       loading="lazy"
       decoding="async"
@@ -33,7 +33,7 @@
         <div class="h-px w-full bg-gray-200 mt-8"></div>
       </div>
 
-      <!-- Achievements Grid (New Professional Layout) -->
+      <!-- Achievements Grid (Reference Image 2 Inspired Clean Editorial Cards) -->
       <div
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-10 mb-12"
       >
@@ -47,51 +47,73 @@
             y: 0,
             transition: { duration: 600, delay: index * 100 },
           }"
-          class="group bg-gray-50/50 rounded-3xl p-5 border border-gray-100 hover:border-violet-500/30 hover:bg-white hover:shadow-xl hover:shadow-violet-900/5 transition-all duration-500 cursor-pointer"
-          @click="selectedImg = item.image"
+          class="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-xs hover:border-[#0A3238] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer text-left h-full"
+          @click="item.pdfUrl ? openPdf(item.pdfUrl) : openImageModal(item)"
         >
-          <!-- Certificate Thumbnail -->
-          <div
-            class="relative w-full aspect-video rounded-2xl overflow-hidden mb-6 border border-gray-100 shadow-sm"
-          >
-            <ProjectImage
-              :src="item.image"
-              :alt="item.title"
-              cssClass="transform group-hover:scale-105 transition-transform duration-1000"
-            />
-            <!-- Overlay with Zoom Icon -->
+          <div>
+            <!-- Certificate Thumbnail Container -->
             <div
-              class="absolute inset-0 bg-violet-600/40 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center backdrop-blur-[2px]"
+              class="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-slate-100 border border-slate-100"
             >
-              <div
-                class="w-12 h-12 rounded-full bg-white/20 border border-white/50 flex items-center justify-center text-white text-xl transform scale-50 group-hover:scale-100 transition-transform duration-500"
+              <!-- Embedded Year Tag (Reference Image 2 Top-Left Badge) -->
+              <span
+                class="absolute top-3 left-3 bg-[#0A3238] text-emerald-300 text-[10px] font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm z-20 backdrop-blur-md"
               >
-                <i class="bi bi-zoom-in"></i>
+                {{ item.year }}
+              </span>
+
+              <ProjectImage
+                :src="getCardImage(item)"
+                :alt="item.title"
+                cssClass="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              />
+
+              <!-- Overlay with Zoom / PDF Icon -->
+              <div
+                class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-[1px]"
+              >
+                <div
+                  class="w-10 h-10 rounded-full bg-white/20 border border-white/40 flex items-center justify-center text-white text-lg transform scale-90 group-hover:scale-100 transition-transform duration-300"
+                >
+                  <i :class="item.pdfUrl ? 'bi bi-file-earmark-pdf' : 'bi bi-zoom-in'"></i>
+                </div>
               </div>
             </div>
-            <!-- Year Badge -->
-            <div
-              class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full shadow-sm"
-            >
-              <p class="text-gray-900 text-[10px] font-bold tracking-wider">
-                {{ item.year }}
-              </p>
-            </div>
-          </div>
 
-          <!-- Content -->
-          <div class="space-y-3 px-1">
+            <!-- Content Header (Bold Uppercase Title matching Reference 2) -->
             <h3
-              class="text-gray-900 text-lg font-bold font-['Poppins'] leading-tight group-hover:text-violet-600 transition-colors duration-300"
+              class="text-[#0A3238] font-['Poppins'] font-extrabold text-base lg:text-lg uppercase tracking-wide leading-snug mb-2 group-hover:text-violet-600 transition-colors"
             >
               {{ item.title }}
             </h3>
+
+            <!-- Description -->
             <p
-              class="text-[13px] font-['Roboto'] text-gray-500 leading-relaxed line-clamp-3"
+              class="text-slate-500 font-['Roboto'] text-xs leading-relaxed line-clamp-3 mb-4"
             >
               {{ item.description }}
             </p>
           </div>
+
+          <!-- Bottom Full-Width Action Button (Reference Image 2 Style) -->
+          <a
+            v-if="item.pdfUrl"
+            :href="item.pdfUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            @click.stop
+            class="w-full py-3 bg-[#0A3238] group-hover:bg-violet-600 text-white text-xs font-mono font-bold tracking-widest uppercase rounded-xl transition-colors duration-200 flex items-center justify-center gap-2 mt-auto shadow-sm"
+          >
+            <span>{{ lang === "ID" ? "CEK DOKUMEN" : "VIEW DOCUMENT" }}</span>
+            <i class="bi bi-box-arrow-up-right text-xs"></i>
+          </a>
+          <button
+            v-else
+            class="w-full py-3 bg-[#0A3238] group-hover:bg-violet-600 text-white text-xs font-mono font-bold tracking-widest uppercase rounded-xl transition-colors duration-200 flex items-center justify-center gap-2 mt-auto shadow-sm"
+          >
+            <span>{{ lang === "ID" ? "LIHAT PRATINJAU" : "PREVIEW IMAGE" }}</span>
+            <i class="bi bi-arrows-angle-expand text-xs"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -100,16 +122,31 @@
     <Teleport to="body">
       <transition name="fade">
         <div
-          v-if="selectedImg"
-          class="fixed inset-0 z-10000 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
-          @click="selectedImg = null"
+          v-if="selectedImages.length"
+          class="fixed inset-0 z-10000 flex flex-col items-center justify-center p-4 bg-black/90 backdrop-blur-md"
+          @click="selectedImages = []"
         >
-          <ProjectImage
-            :src="selectedImg"
-            cssClass="max-w-full max-h-full rounded-lg shadow-2xl !object-contain"
-          />
+          <div class="relative max-w-4xl max-h-[85vh] flex flex-col items-center justify-center" @click.stop>
+            <ProjectImage
+              :src="selectedImages[activeIndex]"
+              cssClass="max-w-full max-h-[75vh] rounded-lg shadow-2xl !object-contain"
+            />
+            <!-- Multi-Image Thumbnails Bar -->
+            <div v-if="selectedImages.length > 1" class="flex gap-3 mt-4">
+              <button
+                v-for="(img, idx) in selectedImages"
+                :key="idx"
+                @click="activeIndex = idx"
+                class="w-16 h-12 rounded-lg overflow-hidden border-2 transition-all cursor-pointer"
+                :class="activeIndex === idx ? 'border-emerald-400 scale-105 shadow-md' : 'border-white/30 opacity-60 hover:opacity-100'"
+              >
+                <img :src="img" class="w-full h-full object-cover" />
+              </button>
+            </div>
+          </div>
           <button
-            class="absolute top-6 right-6 text-white text-3xl hover:text-violet-400"
+            @click="selectedImages = []"
+            class="absolute top-6 right-6 text-white text-3xl hover:text-violet-400 cursor-pointer"
           >
             <i class="bi bi-x-lg"></i>
           </button>
@@ -117,7 +154,7 @@
       </transition>
     </Teleport>
     <img
-      src="/images/accent_3.png"
+      src="/images/accents/accent_3.webp"
       alt="Accent Shape"
       class="absolute bottom-[-0.2rem] lg:bottom-[-0.2rem] py-[0.1rem] left-0 w-24 md:w-40 lg:w-56 xl:w-180 pointer-events-none transform rotate-180 z-0"
     />
@@ -130,45 +167,88 @@ import { useLanguage } from "@/composables/useLanguage";
 import ProjectImage from "@/components/common/ProjectImage.vue";
 
 const { t, lang } = useLanguage();
-const selectedImg = ref(null);
+const selectedImages = ref([]);
+const activeIndex = ref(0);
+
+function openPdf(url) {
+  if (url) {
+    window.open(url, "_blank");
+  }
+}
+
+function openImageModal(item) {
+  if (item.gallery && item.gallery.length) {
+    selectedImages.value = item.gallery;
+  } else if (item.image) {
+    selectedImages.value = [item.image];
+  }
+  activeIndex.value = 0;
+}
+
+function getCardImage(item) {
+  if (item.image) {
+    return item.image;
+  }
+  if (item.pdfUrl && item.pdfUrl.includes("drive.google.com")) {
+    const match = item.pdfUrl.match(/\/file\/d\/([^\/]+)/) || item.pdfUrl.match(/id=([^&]+)/);
+    if (match && match[1]) {
+      return `https://lh3.googleusercontent.com/d/${match[1]}=w1000`;
+    }
+  }
+  return item.image;
+}
 
 const achievements = computed(() => {
   if (lang.value === "ID") {
     return [
       {
+        title: 'Hak Cipta (HKI) – Game "Mathmagic"',
+        year: "2026",
+        image: "/images/certificates/certificate_hki.webp",
+        pdfUrl: "https://drive.google.com/file/d/1qhppNZZRIu5ufrB9FIvlQjuEYeheZvmN/view?usp=sharing",
+        description:
+          'Hak Cipta Resmi Kemenkumham RI (No. 001400842) untuk ciptaan Permainan Video "Mathmagic" bekerja sama dengan Universitas Telkom.',
+      },
+      {
         title: "Asisten Praktikum (Teaching Assistant)",
         year: "2023-2025",
-        image: "/images/certificates/certificate_telkom_ta_1773251189179.png",
+        image: "/images/certificates/certificate_telkom_ta.webp",
+        pdfUrl: "https://drive.google.com/file/d/1KPtTa73CcjSppfzw9CGU4QYEHluBX1Gt/view?usp=sharing",
         description:
           "Telah mengabdi sebagai Asisten Praktikum untuk 5 mata kuliah multimedia dalam 4 semester.",
       },
       {
         title: "Sertifikasi BNSP Multimedia (KKNI Level II)",
         year: "2022",
-        image:
-          "/images/certificates/certificate_bnsp_multimedia_1773251217060.png",
+        image: "/images/certificates/certificate_bnsp.webp",
+        pdfUrl: "https://drive.google.com/file/d/1H0RUzyO8S__J4xcyQ35aM2SetkyWetvm/view?usp=sharing",
         description:
           "Sertifikasi kompetensi nasional BNSP dalam bidang Desain Grafis, Animasi 2D, dan Audio-Video.",
       },
       {
         title: "Sertifikat Penyelesaian Magang/PKL",
         year: "2021",
-        image:
-          "/images/certificates/certificate_internship_production_1773251239968.png",
+        image: "/images/certificates/certificate_internship.webp",
         description:
           'Penyelesaian magang 6 bulan sebagai Ketua Tim dan Desainer di Unit Produksi Multimedia, dengan evaluasi akhir "Sangat Baik".',
       },
       {
         title: "Finalis – LKS Desain Grafis Provinsi",
         year: "2021",
-        image: "/images/projects/mathrift.webp",
+        image: "/images/certificates/lks1.webp",
+        pdfUrl: "https://drive.google.com/file/d/1ZHKvrPSkePnvM0zBQbmupq2gLDsX1FwL/view?usp=sharing",
+        gallery: [
+          "/images/certificates/lks1.webp",
+          "/images/certificates/lks2.webp",
+        ],
         description:
-          "Mewakili OKU Timur di lomba LKS SMK tingkat Provinsi Sumsel, menyelesaikan pembuatan logo, mockup kemasan, serta presentasi dengan nilai 80.13.",
+          "Mewakili OKU Timur (SMK Negeri 1 Belitang) di Lomba Kompetensi Siswa (LKS) SMK tingkat Provinsi Sumsel bidang Graphic Design Technology dengan nilai 80.13.",
       },
       {
         title: "Web Development Path – Progate",
         year: "2021",
-        image: "/images/projects/iudex.webp",
+        image: "/images/certificates/certificate_progate.webp",
+        pdfUrl: "https://drive.google.com/file/d/1rvKU6meo4iJOdGnqZb3m1pHCMnaTXtVQ/view?usp=sharing",
         description: "Penyelesaian kursus modul dari dasar HTML & CSS.",
       },
     ];
@@ -176,39 +256,53 @@ const achievements = computed(() => {
 
   return [
     {
+      title: 'Copyright (HKI) – "Mathmagic" Game',
+      year: "2026",
+      image: "/images/certificates/certificate_hki.webp",
+      pdfUrl: "https://drive.google.com/file/d/1qhppNZZRIu5ufrB9FIvlQjuEYeheZvmN/view?usp=sharing",
+      description:
+        'Official Copyright Registration (No. 001400842) from Kemenkumham RI for the video game "Mathmagic" in collaboration with Telkom University.',
+    },
+    {
       title: "Teaching Assistant (Asisten Praktikum)",
       year: "2023-2025",
-      image: "/images/certificates/certificate_telkom_ta_1773251189179.png",
+      image: "/images/certificates/certificate_telkom_ta.webp",
+      pdfUrl: "https://drive.google.com/file/d/1KPtTa73CcjSppfzw9CGU4QYEHluBX1Gt/view?usp=sharing",
       description:
         "Appointed as a Teaching Assistant for 5 different multimedia courses across 4 semesters.",
     },
     {
       title: "BNSP Multimedia – Certified (KKNI Level II)",
       year: "2022",
-      image:
-        "/images/certificates/certificate_bnsp_multimedia_1773251217060.png",
+      image: "/images/certificates/certificate_bnsp.webp",
+      pdfUrl: "https://drive.google.com/file/d/1H0RUzyO8S__J4xcyQ35aM2SetkyWetvm/view?usp=sharing",
       description:
         "National certification by BNSP validating proficiency in Graphic Design / 2D Animation and Audio-Video Editing.",
     },
     {
       title: "Vocational School Internship Completion",
       year: "2021",
-      image:
-        "/images/certificates/certificate_internship_production_1773251239968.png",
+      image: "/images/certificates/certificate_internship.webp",
       description:
         'Completed a 6-month internship as Team Leader and Designer in Multimedia Production Unit with "Excellent" grade.',
     },
     {
       title: "Finalist – Graphic Design Technology",
       year: "2021",
-      image: "/images/projects/mathrift.webp",
+      image: "/images/certificates/lks1.webp",
+      pdfUrl: "https://drive.google.com/file/d/1ZHKvrPSkePnvM0zBQbmupq2gLDsX1FwL/view?usp=sharing",
+      gallery: [
+        "/images/certificates/lks1.webp",
+        "/images/certificates/lks2.webp",
+      ],
       description:
-        "Represented OKU Timur in the provincial-level vocational student competition, completed packaging and logo design with a score of 80.13.",
+        "Represented OKU Timur (SMKN 1 Belitang) in South Sumatra provincial LKS competition for Graphic Design Technology with a score of 80.13.",
     },
     {
       title: "Web Development Path – Progate",
       year: "2021",
-      image: "/images/projects/iudex.webp",
+      image: "/images/certificates/certificate_progate.webp",
+      pdfUrl: "https://drive.google.com/file/d/1rvKU6meo4iJOdGnqZb3m1pHCMnaTXtVQ/view?usp=sharing",
       description:
         "Completed study sections and exercises covering HTML & CSS fundamentals.",
     },

@@ -292,7 +292,7 @@ const designs = computed(() => {
       id: 1,
       title: 'iOS Weather App Concept',
       category: isId ? 'Desain UI/UX' : 'UI/UX Design',
-      image: '/images/projects/u_asprak.webp',
+      image: '/images/projects/UAsprak/u_asprak.webp',
       description: isId 
         ? 'Rancangan aplikasi cuaca minimalis ala iOS dengan tipografi kontras tinggi, visualisasi data berbasis bento-grid yang bersih, dan efek glassmorphism modern untuk kemudahan navigasi.'
         : 'A minimalist iOS weather application design featuring high-contrast typography, clean bento-grid-based data visualization, and modern glassmorphic panels for seamless navigation.',
@@ -303,7 +303,7 @@ const designs = computed(() => {
       id: 2,
       title: 'Productivity Bento Dashboard',
       category: isId ? 'Desain Web' : 'Web Design',
-      image: '/images/projects/iudex.webp',
+      image: '/images/projects/Iudex/iudex.webp',
       description: isId 
         ? 'Eksplorasi bento grid untuk dasbor produktivitas pribadi. Menyajikan widget modular, visualisasi grafik interaktif, dan palet warna monokromatik yang menenangkan mata saat bekerja.'
         : 'A bento grid layout exploration for a personal productivity dashboard. Features modular widgets, interactive chart visualizations, and a dark monochromatic color palette designed for high-focus sessions.',
@@ -314,7 +314,7 @@ const designs = computed(() => {
       id: 3,
       title: 'Apple Music Player Redesign',
       category: isId ? 'Desain UI/UX' : 'UI/UX Design',
-      image: '/images/projects/empedu.webp',
+      image: '/images/projects/Empedu/empedu.webp',
       description: isId 
         ? 'Redesain konseptual pemutar musik Apple dengan fokus pada kemudahan aksesibilitas satu tangan, transisi mikro yang mulus, dan tipografi judul yang tebal serta ekspresif.'
         : 'A conceptual redesign of the Apple Music player focused on one-handed reachability, smooth micro-interactions, and bold, expressive editorial title layouts.',
@@ -325,7 +325,7 @@ const designs = computed(() => {
       id: 4,
       title: 'Minimal Travel Planner App',
       category: isId ? 'Desain Mobile' : 'Mobile Design',
-      image: '/images/projects/mathrift.webp',
+      image: '/images/projects/Mathrift/mathrift.webp',
       description: isId 
         ? 'Aplikasi perencana perjalanan minimalis yang menggunakan kartu frosted glass, navigasi berbasis gestur gesek yang intuitif, serta kurasi fotografi kota yang bernilai estetika tinggi.'
         : 'A minimalist travel planner app featuring frosted glass cards, intuitive swipe-gesture-based navigation, and highly aesthetic urban photography curation.',
@@ -336,7 +336,7 @@ const designs = computed(() => {
       id: 5,
       title: 'Smart Home Control Hub',
       category: isId ? 'Desain Smart UI' : 'Smart UI Design',
-      image: '/images/projects/arch.webp',
+      image: '/images/projects/Arch/arch.webp',
       description: isId 
         ? 'Pusat kendali rumah pintar berbasis grid modular dengan kendali cepat, persentase daya baterai terintegrasi, dan ikon kustom yang rapi guna memaksimalkan aksesibilitas pengguna.'
         : 'A modular grid-based smart home control center featuring rapid toggles, integrated battery life percentages, and clean custom icons to maximize user accessibility.',

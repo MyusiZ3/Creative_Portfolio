@@ -63,12 +63,12 @@
     </section>
     <!-- Hero Image Composition -->
     <div
-      class="relative w-full mt-1 lg:-mt-20 xl:-mt-60 z-10 pointer-events-none"
+      class="relative w-full mt-1 lg:-mt-20 xl:-mt-60 z-30 pointer-events-none"
     >
       <div class="flex justify-end">
         <div class="relative w-[95%] lg:w-[78%] -mt-5 lg:-mt-20 xl:-mt-28">
           <!-- Main Hero Photo -->
-          <img
+          <div
             v-motion
             :initial="{ opacity: 0, scale: 0.9, y: 40 }"
             :visible="{
@@ -77,10 +77,18 @@
               y: 0,
               transition: { duration: 900, delay: 200, ease: 'easeOut' },
             }"
-            src="/images/hero/hero_main.webp"
-            alt="Hero Main"
-            class="w-full h-auto relative z-10"
-          />
+            class="relative z-10 w-full"
+          >
+            <img
+              src="/images/hero/hero_me.webp"
+              alt="Hero Main"
+              class="w-full h-auto block"
+              :style="{
+                transform: `translate(${heroImgConfig.x}px, ${heroImgConfig.y}px) scale(${heroImgConfig.scale})`,
+                transformOrigin: 'center bottom',
+              }"
+            />
+          </div>
 
           <!-- VISUALZZ* -->
           <img
@@ -99,7 +107,7 @@
             }"
             src="/images/hero/visual.webp"
             alt="Visualzz"
-            class="absolute -top-[0%] right-[2%] lg:right-[8%] w-[38%] lg:w-[30%] lg:-top-[-5%] z-20 pointer-events-none"
+            class="absolute -top-[20%] lg:-top-[-2%] right-[2%] lg:right-[8%] w-[38%] lg:w-[30%] z-20 pointer-events-none"
           />
 
           <!-- UI/UX + Branding & Identity Badge -->
@@ -139,7 +147,7 @@
             }"
             src="/images/hero/ux_design.webp"
             alt="User Experience Design"
-            class="absolute bottom-[-7%] lg:bottom-[0%] lg:left-[1%] w-[40%] lg:w-[31%] z-20 pointer-events-none"
+            class="absolute bottom-[-14%] lg:bottom-[-6%] lg:left-[1%] w-[40%] lg:w-[31%] z-20 pointer-events-none"
           />
 
           <!-- Hire Me Badge -->
@@ -407,7 +415,7 @@
               class="flex flex-col items-start w-1/2 lg:w-auto"
             >
               <img
-                src="/images/ceklis.png"
+                src="/images/accents/ceklis.webp"
                 alt="check"
                 class="w-10 lg:w-12 mb-5"
               />
@@ -433,7 +441,7 @@
               class="flex flex-col items-start w-1/2 lg:w-auto"
             >
               <img
-                src="/images/ceklis.png"
+                src="/images/accents/ceklis.webp"
                 alt="check"
                 class="w-10 lg:w-12 mb-5"
               />
@@ -461,7 +469,7 @@
             class="relative mt-10 lg:mt-22 pb-10 lg:pb-0"
           >
             <img
-              src="/images/about_me.webp"
+              src="/images/hero/about_me.webp"
               alt="About Me Graphic"
               class="w-full lg:w-xl"
             />
@@ -540,7 +548,7 @@
                   </p>
                 </div>
                 <img
-                  src="/images/accent_1.png"
+                  src="/images/accents/accent_1.webp"
                   alt="Accent"
                   class="w-24 lg:w-40 absolute lg:relative bottom-[-4rem] right-0 lg:bottom-[0rem] lg:float-end opacity-100 lg:opacity-100 z-10 pointer-events-none"
                 />
@@ -554,10 +562,21 @@
 </template>
 
 <script setup>
+import { reactive } from "vue";
 import Typewriter from "vue-typewriter-effect";
 import { useLanguage } from "@/composables/useLanguage";
 
 const { t, lang } = useLanguage();
+
+// =========================================================================
+// ⚙️ PENGATURAN MANUAL POSISI & UKURAN GAMBAR HERO (hero_me.webp)
+// Silakan ubah nilai di bawah ini untuk mengatur posisi & ukuran gambar:
+// =========================================================================
+const heroImgConfig = reactive({
+  scale: 1, // 🔍 Size / Ukuran: 100%
+  x: 26, // ⬅️➡️ Kiri (-px) / Kanan (+px): 26px
+  y: 14, // ⬆️⬇️ Atas (-px) / Bawah (+px): 14px
+});
 
 const scrollToContact = () => {
   const el = document.getElementById("contact");

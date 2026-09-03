@@ -385,7 +385,7 @@ const projects = [
     shortDesc:
       "Gim balap arkade sepeda fisik terhubung via ESP32 & Unity dengan papan skor real-time.",
     images: [
-      "/images/projects/luxion_ridexp.webp",
+      "/images/projects/LuxionRideXP/luxion_ridexp.webp",
       "/images/projects/luxion_ridexp_2.webp",
       "/images/projects/luxion_ridexp_3.webp",
     ],
@@ -407,7 +407,7 @@ const projects = [
     shortDesc:
       "Gim Virtual Reality teka-teki ruang eskapisme 3D imersif dengan interaksi objek fisik.",
     images: [
-      "/images/projects/mindescape_vr.webp",
+      "/images/projects/MindescapeVR/mindescape_vr.webp",
       "/images/projects/mindescape_vr_2.webp",
       "/images/projects/mindescape_vr_3.webp",
     ],
@@ -428,7 +428,7 @@ const projects = [
     shortDesc:
       "Gim 2D platformer edukasi matematika dengan mekanik boss battle & integrasi Firestore.",
     images: [
-      "/images/projects/mathrift.webp",
+      "/images/projects/Mathrift/mathrift.webp",
       "/images/projects/mathrift_2.webp",
       "/images/projects/mathrift_3.webp",
     ],
@@ -450,7 +450,7 @@ const projects = [
     shortDesc:
       "Gim Augmented Reality ruang angkasa yang memadukan dunia fisik dan obyek digital 3D.",
     images: [
-      "/images/projects/stellar_adventures.webp",
+      "/images/projects/StellarAdventures/stellar_adventures.webp",
       "/images/projects/stellar_adventures_2.webp",
       "/images/projects/stellar_adventures_3.webp",
     ],
@@ -471,7 +471,7 @@ const projects = [
     shortDesc:
       "Aplikasi manajemen jadwal & evaluasi asisten praktikum laboratorium akademis.",
     images: [
-      "/images/projects/u_asprak.webp",
+      "/images/projects/UAsprak/u_asprak.webp",
       "/images/projects/u_asprak_2.webp",
       "/images/projects/u_asprak_3.webp",
     ],
@@ -492,7 +492,7 @@ const projects = [
     shortDesc:
       "Aplikasi edukasi interaktif untuk membantu siswa memantau progres belajar mandiri.",
     images: [
-      "/images/projects/empedu.webp",
+      "/images/projects/Empedu/empedu.webp",
       "/images/projects/empedu_2.webp",
       "/images/projects/empedu_3.webp",
     ],
@@ -513,7 +513,7 @@ const projects = [
     shortDesc:
       "Situs web portofolio tim dengan animasi bento grid dan tata letak modern.",
     images: [
-      "/images/projects/iudex.webp",
+      "/images/projects/Iudex/iudex.webp",
       "/images/projects/iudex_2.webp",
       "/images/projects/iudex_3.webp",
     ],
@@ -535,7 +535,7 @@ const projects = [
     shortDesc:
       "Rancangan portofolio web pribadi minimalis dengan tipografi tebal dan estetika bersih.",
     images: [
-      "/images/projects/arch.webp",
+      "/images/projects/Arch/arch.webp",
       "/images/projects/arch_2.webp",
       "/images/projects/arch_3.webp",
     ],

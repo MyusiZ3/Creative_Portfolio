@@ -5,7 +5,7 @@
   >
     <!-- Top Right Accent Shape -->
     <img
-      src="/images/accent_3.png"
+      src="/images/accents/accent_3.webp"
       alt="Accent Shape"
       loading="lazy"
       decoding="async"
@@ -13,7 +13,7 @@
     />
     <!-- Bottom Left Accent Shape -->
     <img
-      src="/images/accent_3.png"
+      src="/images/accents/accent_3.webp"
       alt="Accent Shape"
       loading="lazy"
       decoding="async"

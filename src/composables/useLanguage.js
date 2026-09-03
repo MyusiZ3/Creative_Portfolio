@@ -134,7 +134,7 @@ const translations = {
     ach_title_1: "Achievements &",
     ach_title_2: "Certificates",
     ach_desc:
-      "Achievements and certifications that reflect my creative journey — this section highlights a few selected milestones that shaped MY APPS in multimedia and digital design.",
+      "Selected achievements and certifications throughout my creative journey — essential milestones that shaped my expertise in multimedia and digital design.",
 
     // Contact
     contact_title_1: "Contact &",

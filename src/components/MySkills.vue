@@ -19,12 +19,12 @@ function scrollToSection(sectionId) {
   >
     <!-- Decorative Side Tabs -->
     <img
-      src="/images/accent_5.png"
+      src="/images/accents/accent_5.webp"
       alt="Decorative Side Tab"
       class="absolute left-0 top-1/2 -translate-y-1/2 w-12 lg:w-20 pointer-events-none"
     />
     <img
-      src="/images/accent_5.png"
+      src="/images/accents/accent_5.webp"
       alt="Decorative Side Tab"
       class="absolute right-0 top-1/2 -translate-y-1/2 w-12 lg:w-20 pointer-events-none transform rotate-180"
     />
