@@ -110,7 +110,7 @@
             }"
             src="/images/hero/visual.webp"
             alt="Visualzz"
-            class="absolute -top-[20%] lg:-top-[-2%] right-[2%] lg:right-[8%] w-[38%] lg:w-[30%] z-20 pointer-events-none"
+            class="absolute -top-[10%] lg:-top-[-2%] right-[2%] lg:right-[8%] w-[38%] lg:w-[30%] z-20 pointer-events-none"
           />
 
           <!-- UI/UX + Branding & Identity Badge -->

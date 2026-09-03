@@ -23,14 +23,6 @@
     <div class="container mx-auto relative z-10">
       <!-- Section Header -->
       <div class="max-w-3xl mb-14 lg:mb-20 text-left">
-        <span
-          v-motion
-          :initial="{ opacity: 0, y: 10 }"
-          :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }"
-          class="text-xs lg:text-sm font-bold tracking-widest text-violet-600 font-mono uppercase block mb-3"
-        >
-          {{ lang === "ID" ? "PROSES KREATIF & TEKNIS" : "CREATIVE & TECHNICAL PROCESS" }}
-        </span>
         <h2
           v-motion
           :initial="{ opacity: 0, y: 30 }"
@@ -69,20 +61,15 @@
           class="bg-white border border-slate-200/90 shadow-xs hover:border-violet-400 hover:shadow-md transition-all duration-300 rounded-xl p-6 flex flex-col justify-between group relative"
         >
           <div>
-            <!-- Top Index & Category Header -->
-            <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-5">
-              <span class="text-2xl font-mono font-bold text-violet-600">
-                0{{ idx + 1 }}/
+            <!-- Clean Stage Index & Title -->
+            <div class="border-b border-slate-100 pb-4 mb-4">
+              <span class="text-2xl font-bold font-['Poppins'] text-violet-600 block mb-1">
+                0{{ idx + 1 }}
               </span>
-              <span class="text-[10px] font-mono font-semibold tracking-wider text-slate-400 uppercase">
-                {{ lang === 'ID' ? stage.categoryID : stage.categoryEN }}
-              </span>
+              <h3 class="text-lg font-bold font-['Poppins'] text-slate-800 tracking-tight group-hover:text-violet-600 transition-colors">
+                {{ stage.title }}
+              </h3>
             </div>
-
-            <!-- Stage Title -->
-            <h3 class="text-xl font-bold font-['Poppins'] text-slate-800 tracking-tight mb-2 group-hover:text-violet-600 transition-colors">
-              {{ stage.title }}
-            </h3>
 
             <!-- Stage Description -->
             <p class="text-xs text-slate-500 font-['Roboto'] leading-relaxed mb-5 min-h-[40px]">
@@ -91,9 +78,9 @@
 
             <div class="h-px w-full bg-slate-100 mb-4"></div>
 
-            <!-- Core Activities List (Clean Minimalist Bullets) -->
+            <!-- Core Activities List -->
             <div class="space-y-2">
-              <span class="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest block mb-2">
+              <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block mb-2 font-['Poppins']">
                 {{ lang === 'ID' ? 'Fokus Utama:' : 'Core Activities:' }}
               </span>
               <ul class="space-y-2 text-xs text-slate-600 font-['Roboto']">
@@ -102,41 +89,16 @@
                   :key="aIdx"
                   class="flex items-start gap-2"
                 >
-                  <span class="text-violet-500 font-mono text-[10px] select-none mt-0.5">—</span>
+                  <span class="text-violet-500 font-bold text-xs select-none">•</span>
                   <span class="leading-tight">{{ act }}</span>
                 </li>
               </ul>
             </div>
           </div>
 
-          <!-- Bottom Footer Accent Line -->
-          <div class="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between">
-            <span class="text-[9px] font-mono font-bold text-slate-400 tracking-wider">PHASE 0{{ idx + 1 }}</span>
-            <span class="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-violet-500 transition-colors"></span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bottom Editorial Summary Bar -->
-      <div
-        v-motion
-        :initial="{ opacity: 0, y: 20 }"
-        :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 600 } }"
-        class="mt-12 p-5 bg-white border border-slate-200/90 rounded-xl shadow-xs flex flex-col md:flex-row items-center justify-between gap-6 font-mono text-xs text-slate-600"
-      >
-        <div class="flex items-center gap-3">
-          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span class="text-slate-800 font-bold uppercase tracking-wider">
-            {{ lang === 'ID' ? 'STATUS ALUR KERJA: SIAP PRODUKSI' : 'PIPELINE STATUS: PRODUCTION READY' }}
-          </span>
-        </div>
-
-        <div class="flex flex-wrap items-center gap-6 text-[11px] text-slate-500 uppercase tracking-widest">
-          <div>
-            <span class="text-slate-700 font-bold">// METHOD:</span> HUMAN-CENTERED DESIGN
-          </div>
-          <div>
-            <span class="text-slate-700 font-bold">// QA:</span> PIXEL-PERFECT & OPTIMIZED
+          <!-- Bottom Accent Line -->
+          <div class="mt-8 pt-4 border-t border-slate-100 flex items-center justify-end">
+            <span class="w-2 h-2 rounded-full bg-slate-200 group-hover:bg-violet-500 transition-colors"></span>
           </div>
         </div>
       </div>
@@ -154,8 +116,6 @@ const stages = [
   {
     id: "explore",
     title: "EXPLORE",
-    categoryEN: "BRIEF & RESEARCH",
-    categoryID: "BRIEF & RISET",
     descEN: "Deconstructing project scope, understanding goals, and researching domain context.",
     descID: "Membedah cakupan proyek, memahami tujuan utama, dan melakukan riset konteks domain.",
     activitiesEN: [
@@ -174,8 +134,6 @@ const stages = [
   {
     id: "visualize",
     title: "VISUALIZE",
-    categoryEN: "UI & VISUAL DESIGN",
-    categoryID: "UI & DESAIN VISUAL",
     descEN: "Translating abstract ideas into high-fidelity visual layouts, typography, and moodboards.",
     descID: "Menerjemahkan ide abstrak ke dalam tata letak visual, tipografi, dan moodboard berkualitas tinggi.",
     activitiesEN: [
@@ -194,8 +152,6 @@ const stages = [
   {
     id: "structure",
     title: "STRUCTURE",
-    categoryEN: "IA & SYSTEM FLOW",
-    categoryID: "ARSITEKTUR SISTEM",
     descEN: "Mapping user journeys, information architecture, and structured data relationships.",
     descID: "Pemetaan perjalanan pengguna, arsitektur informasi, dan relasi data terstruktur.",
     activitiesEN: [
@@ -214,8 +170,6 @@ const stages = [
   {
     id: "build",
     title: "BUILD",
-    categoryEN: "CODE & DEV",
-    categoryID: "KODING & DEV",
     descEN: "Writing clean, component-driven code across Vue 3, Tailwind, Unity, or backend APIs.",
     descID: "Menulis kode bersih berbasis komponen di Vue 3, Tailwind, Unity, maupun integrasi API.",
     activitiesEN: [
@@ -234,8 +188,6 @@ const stages = [
   {
     id: "refine",
     title: "REFINE",
-    categoryEN: "QA & OPTIMIZATION",
-    categoryID: "PENGUJIAN & POLIS",
     descEN: "Rigorous testing, micro-animation tuning, performance audits, and final delivery.",
     descID: "Pengujian menyeluruh, penyetelan animasi mikro, audit performa, dan finalisasi produk.",
     activitiesEN: [
