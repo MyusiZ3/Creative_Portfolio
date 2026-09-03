@@ -31,8 +31,8 @@
         >
           {{
             lang === "ID"
-              ? "Bagaimana Saya Mengubah Ide Menjadi Pengalaman Nyata"
-              : "How I Turn Ideas Into Experiences"
+              ? "Dari Konsep Hingga Hasil Akhir"
+              : "How I Bring Concepts to Life"
           }}
         </h2>
 
@@ -44,8 +44,8 @@
         >
           {{
             lang === "ID"
-              ? "Alur kerja terstruktur dari eksplorasi awal, perancangan visual, analisis struktur sistem, implementasi kode hingga optimasi akhir untuk menciptakan produk digital berkualitas tinggi."
-              : "A structured, production-grade pipeline starting from initial exploration, visual design, structural system planning, interactive coding, to final performance optimization."
+              ? "Setiap proyek dirancang dengan alur yang terarah—mulai dari riset ide, desain visual, arsitektur sistem, penulisan kode yang rapi, hingga sentuhan akhir yang responsif."
+              : "Every project follows a thoughtful path—from initial ideas and visual design to structured architecture, clean code, and fine-tuned details."
           }}
         </p>
       </div>
