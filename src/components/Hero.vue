@@ -11,20 +11,20 @@
               y: 0,
               transition: { duration: 800, ease: 'easeOut' },
             }"
-            class="text-6xl sm:text-8xl xl:text-[125px] font-bold text-white mb-4 font-['Poppins'] leading-none tracking-tight"
+            class="text-4xl sm:text-6xl md:text-7xl lg:text-[90px] xl:text-[110px] 2xl:text-[125px] font-bold text-white mb-4 font-['Poppins'] leading-none tracking-tight whitespace-nowrap sm:whitespace-normal"
           >
-            <span class="relative inline-block mr-3 xl:mr-5">
+            <span class="relative inline-block mr-2 sm:mr-3 lg:mr-4 xl:mr-5">
               <span
-                class="absolute inset-0 text-transparent pointer-events-none select-none translate-x-[4px] translate-y-[4px] sm:translate-x-[6px] sm:translate-y-[6px] xl:translate-x-[7px] xl:translate-y-[7px]"
+                class="absolute inset-0 text-transparent pointer-events-none select-none translate-x-[3px] translate-y-[3px] sm:translate-x-[4px] sm:translate-y-[4px] xl:translate-x-[7px] xl:translate-y-[7px]"
                 style="-webkit-text-stroke: 3px #a754ff"
                 aria-hidden="true"
                 >Creative</span
               >
               <span class="relative text-white">Creative</span>
             </span>
-            <br class="block xl:hidden" />
+            <br class="block sm:hidden" />
             <span
-              class="text-transparent"
+              class="text-transparent inline-block"
               style="-webkit-text-stroke: 2px #ffffff"
               >{{ t("hero_designer") }}</span
             >
@@ -37,7 +37,7 @@
               y: 0,
               transition: { duration: 700, delay: 200, ease: 'easeOut' },
             }"
-            class="text-white text-base xl:text-[16px] w-full xl:w-140 xl:ml-2 text-justify font-['Roboto']"
+            class="text-white text-sm sm:text-base xl:text-[16px] max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:w-140 xl:ml-2 text-left sm:text-justify font-['Roboto'] leading-relaxed"
           >
             {{ t("hero_desc") }}
           </p>
