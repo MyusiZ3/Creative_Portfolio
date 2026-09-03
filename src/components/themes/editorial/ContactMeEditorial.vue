@@ -608,17 +608,18 @@ onMounted(async () => {
 
   try {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 3000);
+    const timeoutId = setTimeout(() => controller.abort(), 4000);
     const response = await fetch(
-      "https://api.counterapi.dev/v1/muhamadsidik-porto/visits/up",
-      { signal: controller.signal },
+      "https://abacus.jasoncameron.dev/hit/muhamadsidik-porto/views",
+      { signal: controller.signal }
     );
     clearTimeout(timeoutId);
 
     if (response.ok) {
       const data = await response.json();
-      if (data && typeof data.count === "number" && data.count > 0) {
-        const finalCount = Math.max(localCount, data.count + BASE_VIEW_COUNT);
+      const countVal = data && typeof data.value === "number" ? data.value : 0;
+      if (countVal > 0) {
+        const finalCount = Math.max(localCount, countVal + BASE_VIEW_COUNT);
         viewCount.value = finalCount.toLocaleString();
         localStorage.setItem(STORAGE_KEY, finalCount.toString());
       }
