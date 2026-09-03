@@ -839,7 +839,7 @@ const projects = computed(() => {
       teamInfo: isId
         ? "Studi Kasus Tim | Jan – Jun 2024"
         : "Team Project | Jan – Jun 2024",
-      tools: "Figma, Antigravity IDE",
+      tools: "Figma, Antigravity",
       overview: isId
         ? "U-Asprak merupakan desain aplikasi seluler untuk memperbaiki proses manajemen asisten praktikum, mencakup penjadwalan, nilai, serta media komunikasi."
         : "U-Asprak is a mobile application designed to streamline the teaching assistant management process, including scheduling, grading, and communication between lecturers and assistants.",

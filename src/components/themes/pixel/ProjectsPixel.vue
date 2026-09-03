@@ -356,7 +356,8 @@ const projects = [
     role: "Main UI Designer & Lead Dev",
     timeline: "2024 – 2025",
     techStack: ["Unity 2D", "C#", "Figma", "Vite", "Supabase"],
-    demoUrl: "https://drive.google.com/drive/folders/1rLr5_umd3LsMvZY_Q9ZyLjp5G-xHPOdv?usp=sharing",
+    demoUrl:
+      "https://drive.google.com/drive/folders/1rLr5_umd3LsMvZY_Q9ZyLjp5G-xHPOdv?usp=sharing",
     challenge:
       "Mendesain UI/UX gim anak yang ramah sekaligus menyediakan dashboard admin untuk konfigurasi parameter & analisis performa.",
     solution:
@@ -478,7 +479,7 @@ const projects = [
     platform: "Mobile App Design",
     role: "UI/UX Designer",
     timeline: "Jan – Jun 2024",
-    techStack: ["Figma", "Antigravity IDE", "User Research"],
+    techStack: ["Figma", "Antigravity", "User Research"],
     demoUrl: "https://behance.net",
     challenge:
       "Menyusun alur manajemen jadwal & pelaporan bagi ratusan asisten praktikum.",

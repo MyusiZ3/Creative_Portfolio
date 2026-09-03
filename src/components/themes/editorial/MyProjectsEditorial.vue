@@ -297,18 +297,22 @@
                   {{ project.name }}
                 </h3>
                 <p class="text-xs text-zinc-400 font-['Roboto'] font-normal">
-                  {{ t("my_proj_role") }}: <span class="text-zinc-200">{{ project.role }}</span>
+                  {{ t("my_proj_role") }}:
+                  <span class="text-zinc-200">{{ project.role }}</span>
                 </p>
               </div>
 
               <!-- Metadata Specs (Team/Duration, Tools) -->
               <div class="space-y-1.5 text-xs text-zinc-400 font-['Roboto']">
                 <p v-if="project.teamInfo">
-                  <span class="text-zinc-500">{{ t("my_proj_team_label") }} |</span>
+                  <span class="text-zinc-500"
+                    >{{ t("my_proj_team_label") }} |</span
+                  >
                   {{ project.teamInfo }}
                 </p>
                 <p v-if="project.tools">
-                  <span class="text-zinc-500">{{ t("my_proj_tools") }}:</span> {{ project.tools }}
+                  <span class="text-zinc-500">{{ t("my_proj_tools") }}:</span>
+                  {{ project.tools }}
                 </p>
               </div>
 
@@ -930,7 +934,7 @@ const projects = computed(() => {
       teamInfo: isId
         ? "Studi Kasus Tim | Jan – Jun 2024"
         : "Team Project | Jan – Jun 2024",
-      tools: "Figma, Antigravity IDE",
+      tools: "Figma, Antigravity",
       overview: isId
         ? "U-Asprak merupakan desain aplikasi seluler untuk memperbaiki proses manajemen asisten praktikum, mencakup penjadwalan, nilai, serta media komunikasi."
         : "U-Asprak is a mobile application designed to streamline the teaching assistant management process, including scheduling, grading, and communication between lecturers and assistants.",

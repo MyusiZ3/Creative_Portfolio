@@ -137,7 +137,7 @@
             </div>
           </div>
 
-          <div class="pt-2 flex flex-col sm:flex-row items-center gap-4">
+          <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4">
             <button
               @click="showCVOptions = !showCVOptions"
               class="flex items-center gap-2 px-6 py-2 rounded-full border border-gray-400 text-sm font-medium transition-all duration-300 group"
@@ -212,6 +212,23 @@
                 }}
               </a>
             </div>
+
+            <!-- Designed with Figma Badge -->
+            <a
+              href="https://www.figma.com/design/nlAJcmktDv5cCtASBfbYfW/Updated-Creative-Portfolio-_-Muhamad-Sidik?node-id=0-1&t=W9cHA0ZnXIl8OsD4-1"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="View design in Figma"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neutral-900/90 border border-neutral-800 text-neutral-300 text-xs font-['Poppins'] shadow-sm hover:border-violet-500/60 hover:bg-neutral-800/80 hover:text-white hover:scale-105 transition-all duration-300 select-none group"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
+                alt="Figma"
+                class="w-4 h-4 object-contain group-hover:rotate-12 transition-transform duration-300"
+              />
+              <span class="text-[12px] font-medium tracking-wide">Designed with <span class="text-white font-semibold group-hover:text-violet-300 transition-colors">Figma</span></span>
+              <i class="bi bi-box-arrow-up-right text-[10px] text-neutral-400 group-hover:text-violet-300 transition-colors ml-0.5"></i>
+            </a>
           </div>
 
           <div

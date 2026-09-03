@@ -205,7 +205,7 @@ function scrollToSection(sectionId) {
               class="w-6 sm:w-10 lg:w-12 h-6 sm:h-10 lg:h-12 object-contain"
             />
           </div>
-          <!-- Antigravity IDE -->
+          <!-- Antigravity-->
           <div
             v-motion
             :initial="{ opacity: 0, scale: 0.5, y: 20 }"
@@ -225,7 +225,7 @@ function scrollToSection(sectionId) {
           >
             <img
               src="https://cdn.jsdelivr.net/gh/selfhst/icons/webp/google-antigravity.webp"
-              alt="Antigravity IDE"
+              alt="Antigravity"
               class="w-6 sm:w-10 lg:w-14 h-6 sm:h-10 lg:h-14 object-contain"
             />
           </div>
@@ -362,9 +362,9 @@ function scrollToSection(sectionId) {
         }"
         class="pt-8 text-[11px] lg:text-[16px] text-[#ffffff] font-['Roboto'] font-medium max-w-4xl mx-auto leading-loose lg:leading-loose"
       >
-        Unity &bull; Firebase &bull; Supabase &bull; Antigravity IDE &bull;
-        Github &bull; Adobe Illustrator &bull; Adobe Photoshop &bull; Figma
-        &bull; Canva <br class="hidden lg:block" />
+        Unity &bull; Firebase &bull; Supabase &bull; Antigravity&bull; Github
+        &bull; Adobe Illustrator &bull; Adobe Photoshop &bull; Figma &bull;
+        Canva <br class="hidden lg:block" />
         <span class="lg:hidden"> &bull; </span>and more
       </p>
 
