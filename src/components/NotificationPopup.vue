@@ -38,7 +38,7 @@
                 class="font-mono text-[10px] tracking-widest uppercase font-medium"
                 :class="currentTheme === 'pixel' ? 'text-[#00ff66]' : 'text-zinc-400'"
               >
-                {{ currentTheme === 'pixel' ? '⚡ NOTICE_SYS' : '✦ NOTICE' }}
+                {{ currentTheme === 'pixel' ? '⚡ NOTICE_SYS' : '✦ FYI' }}
               </span>
             </div>
             <button 
@@ -57,13 +57,13 @@
               class="font-semibold text-sm sm:text-base leading-snug"
               :class="currentTheme === 'pixel' ? 'text-white font-mono' : 'text-white font-[\'Poppins\']'"
             >
-              {{ lang === 'EN' ? 'Under Development' : 'Dalam Pengembangan' }}
+              {{ lang === 'EN' ? 'Work in Progress' : 'Lagi Berbenah Nih' }}
             </h4>
             <p 
               class="text-xs leading-relaxed"
               :class="currentTheme === 'pixel' ? 'text-zinc-300 font-mono' : 'text-zinc-400 font-[\'Roboto\']'"
             >
-              {{ lang === 'EN' ? 'This website is currently under development. Some features may not be fully functional yet.' : 'Website ini sedang dalam tahap pengembangan. Beberapa fitur mungkin belum berfungsi sepenuhnya.' }}
+              {{ lang === 'EN' ? 'I\'m currently polishing a few features and visuals. Feel free to explore around!' : 'Portofolio ini masih dalam tahap penyempurnaan tampilan dan fitur. Silakan dieksplorasi dulu, ya!' }}
             </p>
           </div>
 
@@ -78,7 +78,7 @@
                   : 'bg-violet-600 hover:bg-violet-500 text-white rounded-xl shadow-md shadow-violet-600/20'
               "
             >
-              {{ lang === 'EN' ? 'Get In Touch' : 'Hubungi Saya' }} <i class="bi bi-arrow-right text-xs"></i>
+              {{ lang === 'EN' ? 'Let\'s Talk' : 'Yuk Ngobrol' }} <i class="bi bi-arrow-right text-xs"></i>
             </button>
             <button
               @click="closePopup"
@@ -89,7 +89,7 @@
                   : 'text-zinc-400 hover:text-white hover:bg-white/5 rounded-xl'
               "
             >
-              {{ lang === 'EN' ? 'Understood' : 'Mengerti' }}
+              {{ lang === 'EN' ? 'Got it' : 'Sip, Paham' }}
             </button>
           </div>
         </div>
@@ -120,14 +120,14 @@
                   class="font-semibold text-xs"
                   :class="currentTheme === 'pixel' ? 'text-white font-mono' : 'text-white font-[\'Poppins\']'"
                 >
-                  {{ lang === 'EN' ? 'Open to Work' : 'Tersedia untuk Kerja' }}
+                  {{ lang === 'EN' ? 'Open for Collaboration' : 'Siap Kolaborasi' }}
                 </span>
               </div>
               <span 
                 class="text-[11px]"
                 :class="currentTheme === 'pixel' ? 'text-zinc-400 font-mono text-[10px]' : 'text-zinc-400 font-[\'Roboto\']'"
               >
-                Freelance • Intern • Part-time
+                Freelance • Project • Part-time
               </span>
             </div>
           </div>

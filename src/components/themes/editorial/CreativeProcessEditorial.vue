@@ -27,13 +27,14 @@
           v-motion
           :initial="{ opacity: 0, y: 30 }"
           :visible-once="{ opacity: 1, y: 0, transition: { duration: 700, delay: 100 } }"
-          class="text-3xl lg:text-[44px] font-extrabold font-['Poppins'] text-[#1e293b] leading-tight mb-5"
+          class="text-4xl lg:text-[56px] font-bold font-['Poppins'] text-[#1e293b] leading-tight mb-5"
         >
-          {{
-            lang === "ID"
-              ? "Dari Konsep Hingga Hasil Akhir"
-              : "How I Bring Concepts to Life"
-          }}
+          <template v-if="lang === 'ID'">
+            Dari Konsep<br />Hingga Hasil Akhir
+          </template>
+          <template v-else>
+            How I Bring<br />Concepts to Life
+          </template>
         </h2>
 
         <p

@@ -81,7 +81,8 @@ const showNotification = ref(false);
 let pendingTarget = "";
 
 const handleThemeSwitch = (nextTheme) => {
-  revealLabel.value = nextTheme === "pixel" ? "ARCADE MODE" : "CREATIVE MODE";
+  revealLabel.value =
+    nextTheme === "pixel" ? "ARCADE MODE" : "CREATIVE DESIGNER";
   revealActive.value = true;
 
   setTimeout(() => {

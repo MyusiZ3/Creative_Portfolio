@@ -21,7 +21,7 @@
               class="font-mono text-[10px] tracking-widest uppercase font-medium"
               :class="currentTheme === 'pixel' ? 'text-[#00ff66]' : 'text-zinc-400'"
             >
-              {{ currentTheme === 'pixel' ? '⚡ QUEST_INVITE' : '✦ INTERESTED?' }}
+              {{ currentTheme === 'pixel' ? '⚡ QUEST_INVITE' : '✦ LET\'S CONNECT' }}
             </span>
           </div>
           <button 

@@ -176,83 +176,135 @@ onMounted(() => {
       </button>
     </div>
 
-    <!-- Mobile Menu Overlay -->
-    <div
-      class="lg:hidden fixed inset-x-0 top-[60px] backdrop-blur-md transition-all duration-300 ease-in-out shadow-2xl z-40"
-      :class="[
-        isMenuOpen ? 'max-h-screen py-6 opacity-100 visible' : 'max-h-0 py-0 opacity-0 invisible',
-        currentTheme === 'pixel' ? 'bg-[#0d1117]/98 border-b-2 border-[#00ff66]/60' : 'bg-[#171717]/95 border-t border-gray-800'
-      ]"
-    >
-      <div class="flex flex-col items-center gap-6 uppercase overflow-hidden">
-        <a
-          href="#"
-          @click="handleNav('', t('nav_home'), $event)"
-          class="text-white font-bold text-[14px] transition"
-          :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
-          >{{ t('nav_home') }}</a
-        >
-        <a
-          href="#about"
-          @click="handleNav('about', t('nav_about'), $event)"
-          class="text-white font-bold text-[14px] transition"
-          :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
-          >{{ t('nav_about') }}</a
-        >
-        <a
-          href="#experience"
-          @click="handleNav('experience', t('nav_experience'), $event)"
-          class="text-white font-bold text-[14px] transition"
-          :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
-          >{{ t('nav_experience') }}</a
-        >
-        <a
-          :href="currentTheme === 'pixel' ? '#projects' : '#my-projects'"
-          @click="handleNav(currentTheme === 'pixel' ? 'projects' : 'my-projects', t('nav_projects'), $event)"
-          class="text-white font-bold text-[14px] transition"
-          :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
-          >{{ t('nav_projects') }}</a
-        >
-        <a
-          href="#contact"
-          @click="handleNav('contact', t('nav_contact'), $event)"
-          class="text-white font-bold text-[14px] transition"
-          :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
-          >{{ t('nav_contact') }}</a
-        >
-        <div class="flex items-center gap-4 mt-2">
-          <ThemeToggle @toggle-theme="handleToggleTheme" />
-          <button
-            @click="handleToggleLang"
-            aria-label="Toggle Language"
-            class="w-10 h-10 flex items-center justify-center font-bold text-[14px] transition"
-            :class="
-              currentTheme === 'pixel'
-                ? 'bg-[#00ff66] text-black font-mono border-2 border-black shadow-[2px_2px_0px_#000] hover:bg-[#33ff88] rounded-none'
-                : 'bg-violet-500 text-white rounded-xl hover:bg-violet-600 font-[\'Roboto\'] shadow-lg shadow-violet-500/30'
-            "
-          >
-            {{ lang === 'EN' ? 'EN' : 'ID' }}
-          </button>
-          <button
-            @click="handleMobileNotification"
-            aria-label="Notifications"
-            class="w-10 h-10 flex items-center justify-center transition relative pointer-events-auto"
-            :class="
-              currentTheme === 'pixel'
-                ? 'bg-[#0a120d] border-2 border-[#00ff66]/50 text-[#00ff66] hover:bg-[#00ff66] hover:text-black rounded-none shadow-[2px_2px_0px_#000]'
-                : 'bg-white/5 border border-white/10 text-gray-300 hover:bg-violet-500 hover:text-white hover:border-violet-500 rounded-xl shadow-lg'
-            "
-          >
-            <i class="bi bi-bell-fill text-base"></i>
-            <span class="absolute -top-1 -right-1 flex h-3 w-3">
-              <span class="animate-ping absolute inline-flex h-full w-full opacity-75" :class="currentTheme === 'pixel' ? 'bg-[#00ff66]' : 'rounded-full bg-red-400'"></span>
-              <span class="relative inline-flex h-3 w-3" :class="currentTheme === 'pixel' ? 'bg-[#00ff66] border border-black shadow-[1px_1px_0px_#000]' : 'rounded-full bg-red-500 border border-[#171717]'"></span>
+    <!-- Teleport Mobile Drawer & Backdrop to Body to escape parent stacking context -->
+    <Teleport to="body">
+      <!-- Mobile Backdrop Blur Overlay (Non-clickable background) -->
+      <Transition name="fade">
+        <div
+          v-if="isMenuOpen"
+          @click="isMenuOpen = false"
+          class="fixed inset-0 z-[9998] bg-black/70 backdrop-blur-md lg:hidden cursor-pointer"
+          aria-hidden="true"
+        ></div>
+      </Transition>
+
+      <!-- Mobile Side Drawer (Slides in from right) -->
+      <div
+        class="lg:hidden fixed top-0 right-0 bottom-0 w-[290px] sm:w-[320px] max-w-[85vw] h-full z-[9999] transition-transform duration-300 ease-out shadow-2xl flex flex-col justify-between p-6 border-l"
+        :class="[
+          isMenuOpen ? 'translate-x-0' : 'translate-x-full',
+          currentTheme === 'pixel' 
+            ? 'bg-[#0d1117] border-[#00ff66]/60 shadow-[-10px_0_30px_rgba(0,0,0,0.8)]' 
+            : 'bg-[#171717] border-white/10 shadow-[-10px_0_30px_rgba(0,0,0,0.8)]'
+        ]"
+      >
+        <!-- Drawer Header -->
+        <div class="flex items-center justify-between pb-5 border-b border-white/10">
+          <div class="flex items-center gap-3">
+            <img src="/images/logo.webp" alt="logo" class="w-8 h-8 object-contain" />
+            <span 
+              class="text-xs font-bold uppercase tracking-wider"
+              :class="currentTheme === 'pixel' ? 'font-silkscreen text-[#00ff66]' : 'font-[\'Poppins\'] text-white'"
+            >
+              {{ currentTheme === 'pixel' ? 'M.SIDIK <DEV/>' : 'Muhamad Sidik' }}
             </span>
+          </div>
+          <button
+            @click="isMenuOpen = false"
+            aria-label="Close menu"
+            class="p-2 transition-colors rounded-xl"
+            :class="currentTheme === 'pixel' ? 'text-[#00ff66] hover:bg-[#00ff66]/20 rounded-none' : 'text-zinc-400 hover:text-white hover:bg-white/10'"
+          >
+            <i class="bi bi-x-lg text-lg"></i>
           </button>
         </div>
+
+        <!-- Drawer Nav Links -->
+        <div class="flex flex-col gap-2 py-6 my-auto uppercase">
+          <a
+            href="#"
+            @click="handleNav('', t('nav_home'), $event)"
+            class="text-sm sm:text-base font-bold transition flex items-center justify-between py-3 px-3 rounded-xl border-b border-white/5 group"
+            :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] hover:bg-[#00ff66]/10 font-silkscreen text-white' : 'hover:text-violet-400 hover:bg-white/5 font-[\'Poppins\'] text-zinc-100'"
+          >
+            <span>{{ t('nav_home') }}</span>
+            <i class="bi bi-arrow-right text-xs opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+          </a>
+          <a
+            href="#about"
+            @click="handleNav('about', t('nav_about'), $event)"
+            class="text-sm sm:text-base font-bold transition flex items-center justify-between py-3 px-3 rounded-xl border-b border-white/5 group"
+            :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] hover:bg-[#00ff66]/10 font-silkscreen text-white' : 'hover:text-violet-400 hover:bg-white/5 font-[\'Poppins\'] text-zinc-100'"
+          >
+            <span>{{ t('nav_about') }}</span>
+            <i class="bi bi-arrow-right text-xs opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+          </a>
+          <a
+            href="#experience"
+            @click="handleNav('experience', t('nav_experience'), $event)"
+            class="text-sm sm:text-base font-bold transition flex items-center justify-between py-3 px-3 rounded-xl border-b border-white/5 group"
+            :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] hover:bg-[#00ff66]/10 font-silkscreen text-white' : 'hover:text-violet-400 hover:bg-white/5 font-[\'Poppins\'] text-zinc-100'"
+          >
+            <span>{{ t('nav_experience') }}</span>
+            <i class="bi bi-arrow-right text-xs opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+          </a>
+          <a
+            :href="currentTheme === 'pixel' ? '#projects' : '#my-projects'"
+            @click="handleNav(currentTheme === 'pixel' ? 'projects' : 'my-projects', t('nav_projects'), $event)"
+            class="text-sm sm:text-base font-bold transition flex items-center justify-between py-3 px-3 rounded-xl border-b border-white/5 group"
+            :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] hover:bg-[#00ff66]/10 font-silkscreen text-white' : 'hover:text-violet-400 hover:bg-white/5 font-[\'Poppins\'] text-zinc-100'"
+          >
+            <span>{{ t('nav_projects') }}</span>
+            <i class="bi bi-arrow-right text-xs opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+          </a>
+          <a
+            href="#contact"
+            @click="handleNav('contact', t('nav_contact'), $event)"
+            class="text-sm sm:text-base font-bold transition flex items-center justify-between py-3 px-3 rounded-xl border-b border-white/5 group"
+            :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] hover:bg-[#00ff66]/10 font-silkscreen text-white' : 'hover:text-violet-400 hover:bg-white/5 font-[\'Poppins\'] text-zinc-100'"
+          >
+            <span>{{ t('nav_contact') }}</span>
+            <i class="bi bi-arrow-right text-xs opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+          </a>
+        </div>
+
+        <!-- Drawer Footer Controls -->
+        <div class="pt-5 border-t border-white/10 flex items-center justify-between">
+          <span class="text-[10px] text-zinc-400 font-mono tracking-widest">PREFERENCES</span>
+          <div class="flex items-center gap-2.5">
+            <ThemeToggle @toggle-theme="handleToggleTheme" />
+            <button
+              @click="handleToggleLang"
+              aria-label="Toggle Language"
+              class="w-9 h-9 flex items-center justify-center font-bold text-xs transition"
+              :class="
+                currentTheme === 'pixel'
+                  ? 'bg-[#00ff66] text-black font-mono border-2 border-black shadow-[2px_2px_0px_#000] hover:bg-[#33ff88] rounded-none'
+                  : 'bg-violet-500 text-white rounded-xl hover:bg-violet-600 font-[\'Roboto\'] shadow-lg shadow-violet-500/30'
+              "
+            >
+              {{ lang === 'EN' ? 'EN' : 'ID' }}
+            </button>
+            <button
+              @click="handleMobileNotification"
+              aria-label="Notifications"
+              class="w-9 h-9 flex items-center justify-center transition relative pointer-events-auto"
+              :class="
+                currentTheme === 'pixel'
+                  ? 'bg-[#0a120d] border-2 border-[#00ff66]/50 text-[#00ff66] hover:bg-[#00ff66] hover:text-black rounded-none shadow-[2px_2px_0px_#000]'
+                  : 'bg-white/5 border border-white/10 text-gray-300 hover:bg-violet-500 hover:text-white hover:border-violet-500 rounded-xl shadow-lg'
+              "
+            >
+              <i class="bi bi-bell-fill text-sm"></i>
+              <span class="absolute -top-1 -right-1 flex h-2.5 w-2.5">
+                <span class="animate-ping absolute inline-flex h-full w-full opacity-75" :class="currentTheme === 'pixel' ? 'bg-[#00ff66]' : 'rounded-full bg-red-400'"></span>
+                <span class="relative inline-flex h-2.5 w-2.5" :class="currentTheme === 'pixel' ? 'bg-[#00ff66] border border-black shadow-[1px_1px_0px_#000]' : 'rounded-full bg-red-500 border border-[#171717]'"></span>
+              </span>
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
+    </Teleport>
   </nav>
 </template>
 
@@ -382,5 +434,16 @@ onMounted(() => {
 /* Pixel theme accent shape color sync */
 .pixel-theme .navbar-accent-shape {
   background: #0d1117;
+}
+
+/* Backdrop blur transition */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

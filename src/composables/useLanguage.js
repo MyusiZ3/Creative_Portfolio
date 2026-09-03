@@ -33,6 +33,8 @@ const translations = {
     hero_desc:
       "Combining creativity and technology to turn ideas into visual, interactive, and functional digital experiences that connect with people, across design, web, and interactive media",
     hero_contact: "Get In Touch",
+    show_more: "Read More",
+    show_less: "Show Less",
     about_title: "About Me",
     about_intro_1:
       "A creative designer who enjoys exploring the space between creativity and technology, curious about how things look, work, and connect.",
@@ -166,12 +168,12 @@ const translations = {
     contact_form_send_another: "Send Another Message",
     contact_form_error: "Failed to send message via server. Opening email app...",
 
-    // CTA Popup
-    cta_title: "Are you interested?",
+    // CTA Popup (EN)
+    cta_title: "Have a project in mind?",
     cta_desc:
-      "I'm currently available for work. Let's create something amazing together! ✨",
-    cta_contact: "Contact Me",
-    cta_dismiss: "Not now",
+      "Whether you want to brainstorm an idea or discuss a project, feel free to reach out!",
+    cta_contact: "Let's Talk",
+    cta_dismiss: "Maybe later",
 
     // Skills Section
     skills_badge: "MY APPS",
@@ -231,6 +233,8 @@ const translations = {
     hero_desc:
       "Memadukan kreativitas dan teknologi untuk mewujudkan ide menjadi pengalaman digital yang visual, interaktif, dan fungsional, serta terhubung dengan penggunanya melalui desain, web, dan media interaktif.",
     hero_contact: "Hubungi Saya",
+    show_more: "Baca Selengkapnya",
+    show_less: "Tampilkan Sedikit",
     about_title: "Tentang Saya",
     about_intro_1:
       "Seorang creative designer yang senang menjelajahi ruang antara kreativitas dan teknologi, penasaran dengan bagaimana sesuatu terlihat, bekerja, dan saling terhubung.",
@@ -364,12 +368,12 @@ const translations = {
     contact_form_send_another: "Kirim Pesan Lain",
     contact_form_error: "Gagal mengirim pesan via server. Membuka aplikasi email...",
 
-    // CTA Popup
-    cta_title: "Tertarik?",
+    // CTA Popup (ID)
+    cta_title: "Punya Ide Keren?",
     cta_desc:
-      "Saya lagi terbuka untuk kolaborasi. Yuk bikin sesuatu yang keren bareng! ✨",
-    cta_contact: "Hubungi Saya",
-    cta_dismiss: "Nanti dulu",
+      "Kalau mau ngobrol santai, diskusi proyek, atau sekadar tanya-tanya, mari terhubung!",
+    cta_contact: "Yuk Ngobrol",
+    cta_dismiss: "Lain kali",
 
     // Skills Section
     skills_badge: "MY APPS",

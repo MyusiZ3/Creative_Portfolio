@@ -47,7 +47,7 @@
             y: 0,
             transition: { duration: 600, delay: index * 100 },
           }"
-          class="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-xs hover:border-[#0A3238] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer text-left h-full"
+          class="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-xs hover:border-[#121212] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer text-left h-full"
           @click="item.pdfUrl ? openPdf(item.pdfUrl) : openImageModal(item)"
         >
           <div>
@@ -55,9 +55,9 @@
             <div
               class="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-slate-100 border border-slate-100"
             >
-              <!-- Embedded Year Tag (Reference Image 2 Top-Left Badge) -->
+              <!-- Embedded Year Tag (White Glassmorphism) -->
               <span
-                class="absolute top-3 left-3 bg-[#0A3238] text-emerald-300 text-[10px] font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm z-20 backdrop-blur-md"
+                class="absolute top-3 left-3 bg-white/80 text-gray-900 text-[11px] font-mono font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-sm z-20 backdrop-blur-md border border-slate-200/80"
               >
                 {{ item.year }}
               </span>
@@ -82,17 +82,27 @@
 
             <!-- Content Header (Bold Uppercase Title matching Reference 2) -->
             <h3
-              class="text-[#0A3238] font-['Poppins'] font-extrabold text-base lg:text-lg uppercase tracking-wide leading-snug mb-2 group-hover:text-violet-600 transition-colors"
+              class="text-[#121212] font-['Poppins'] font-extrabold text-base lg:text-lg uppercase tracking-wide leading-snug mb-2 group-hover:text-violet-600 transition-colors"
             >
               {{ item.title }}
             </h3>
 
-            <!-- Description -->
+            <!-- Description (Max 2 lines, expand on Read More) -->
             <p
-              class="text-slate-500 font-['Roboto'] text-xs leading-relaxed line-clamp-3 mb-4"
+              class="text-slate-500 font-['Roboto'] text-xs leading-relaxed mb-2 transition-all duration-300"
+              :class="expandedCards[index] ? '' : 'line-clamp-2'"
             >
               {{ item.description }}
             </p>
+            <button
+              v-if="item.description && item.description.length > 65"
+              @click.stop="toggleExpand(index)"
+              class="text-violet-600 hover:text-violet-700 text-xs font-semibold underline mb-4 inline-flex items-center gap-1 cursor-pointer transition-colors"
+            >
+              <span>{{ expandedCards[index] ? (lang === "ID" ? "Tampilkan Sedikit" : "Show Less") : (lang === "ID" ? "Baca Selengkapnya" : "Read More") }}</span>
+              <i :class="expandedCards[index] ? 'bi bi-chevron-up' : 'bi bi-chevron-down'" class="text-[10px]"></i>
+            </button>
+            <div v-else class="mb-4"></div>
           </div>
 
           <!-- Bottom Full-Width Action Button (Reference Image 2 Style) -->
@@ -102,14 +112,14 @@
             target="_blank"
             rel="noopener noreferrer"
             @click.stop
-            class="w-full py-3 bg-[#0A3238] group-hover:bg-violet-600 text-white text-xs font-mono font-bold tracking-widest uppercase rounded-xl transition-colors duration-200 flex items-center justify-center gap-2 mt-auto shadow-sm"
+            class="w-full py-3.5 bg-[#121212] hover:bg-violet-600 group-hover:bg-violet-600 text-white text-xs font-mono font-bold tracking-widest uppercase rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-auto shadow-md"
           >
             <span>{{ lang === "ID" ? "CEK DOKUMEN" : "VIEW DOCUMENT" }}</span>
             <i class="bi bi-box-arrow-up-right text-xs"></i>
           </a>
           <button
             v-else
-            class="w-full py-3 bg-[#0A3238] group-hover:bg-violet-600 text-white text-xs font-mono font-bold tracking-widest uppercase rounded-xl transition-colors duration-200 flex items-center justify-center gap-2 mt-auto shadow-sm"
+            class="w-full py-3.5 bg-[#121212] hover:bg-violet-600 group-hover:bg-violet-600 text-white text-xs font-mono font-bold tracking-widest uppercase rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-auto shadow-md"
           >
             <span>{{ lang === "ID" ? "LIHAT PRATINJAU" : "PREVIEW IMAGE" }}</span>
             <i class="bi bi-arrows-angle-expand text-xs"></i>
@@ -169,6 +179,11 @@ import ProjectImage from "@/components/common/ProjectImage.vue";
 const { t, lang } = useLanguage();
 const selectedImages = ref([]);
 const activeIndex = ref(0);
+const expandedCards = ref({});
+
+function toggleExpand(idx) {
+  expandedCards.value[idx] = !expandedCards.value[idx];
+}
 
 function openPdf(url) {
   if (url) {

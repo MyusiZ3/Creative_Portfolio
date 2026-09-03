@@ -11,21 +11,20 @@
               y: 0,
               transition: { duration: 800, ease: 'easeOut' },
             }"
-            class="text-4xl sm:text-6xl md:text-7xl lg:text-[90px] xl:text-[110px] 2xl:text-[125px] font-bold text-white mb-4 font-['Poppins'] leading-none tracking-tight whitespace-nowrap sm:whitespace-normal"
+            class="text-[29px] min-[360px]:text-[33px] min-[400px]:text-[37px] xs:text-[40px] sm:text-6xl md:text-7xl lg:text-[90px] xl:text-[110px] 2xl:text-[125px] font-bold text-white mb-4 font-['Poppins'] leading-none tracking-tight whitespace-nowrap"
           >
-            <span class="relative inline-block mr-2 sm:mr-3 lg:mr-4 xl:mr-5">
+            <span class="relative inline-block mr-1.5 sm:mr-3 lg:mr-4 xl:mr-5">
               <span
-                class="absolute inset-0 text-transparent pointer-events-none select-none translate-x-[3px] translate-y-[3px] sm:translate-x-[4px] sm:translate-y-[4px] xl:translate-x-[7px] xl:translate-y-[7px]"
-                style="-webkit-text-stroke: 3px #a754ff"
+                class="absolute inset-0 text-transparent pointer-events-none select-none translate-x-[2px] translate-y-[2px] sm:translate-x-[4px] sm:translate-y-[4px] xl:translate-x-[7px] xl:translate-y-[7px]"
+                style="-webkit-text-stroke: 2px #a754ff"
                 aria-hidden="true"
                 >Creative</span
               >
               <span class="relative text-white">Creative</span>
             </span>
-            <br class="block sm:hidden" />
             <span
               class="text-transparent inline-block"
-              style="-webkit-text-stroke: 2px #ffffff"
+              style="-webkit-text-stroke: 1.8px #ffffff"
               >{{ t("hero_designer") }}</span
             >
           </h1>
@@ -37,9 +36,19 @@
               y: 0,
               transition: { duration: 700, delay: 200, ease: 'easeOut' },
             }"
-            class="text-white text-sm sm:text-base xl:text-[16px] max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:w-140 xl:ml-2 text-left sm:text-justify font-['Roboto'] leading-relaxed"
+            class="text-white text-xs sm:text-base xl:text-[16px] max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:w-140 xl:ml-2 text-left sm:text-justify font-['Roboto'] leading-relaxed"
           >
-            {{ t("hero_desc") }}
+            <span class="hidden sm:inline">{{ t("hero_desc") }}</span>
+            <span class="sm:hidden">
+              {{ isShowMore ? t("hero_desc") : (t("hero_desc").slice(0, 85) + "...") }}
+            </span>
+            <button
+              @click="isShowMore = !isShowMore"
+              class="sm:hidden inline-flex items-center gap-1 ml-1.5 text-xs font-semibold text-violet-400 underline hover:text-violet-300 transition pointer-events-auto"
+            >
+              <span>{{ isShowMore ? t("show_less") : t("show_more") }}</span>
+              <i :class="isShowMore ? 'bi bi-chevron-up' : 'bi bi-chevron-down'" class="text-[10px]"></i>
+            </button>
           </p>
           <div
             v-motion
@@ -63,7 +72,7 @@
     </section>
     <!-- Hero Image Composition -->
     <div
-      class="relative w-full mt-1 lg:-mt-20 xl:-mt-60 z-30 pointer-events-none"
+      class="relative w-full mt-1 lg:-mt-20 xl:-mt-60 z-30 pointer-events-none mb-8 sm:mb-0"
     >
       <div class="flex justify-end">
         <div class="relative w-[95%] lg:w-[78%] -mt-5 lg:-mt-20 xl:-mt-28">
@@ -150,7 +159,7 @@
             }"
             src="/images/hero/ux_design.webp"
             alt="User Experience Design"
-            class="absolute bottom-[-14%] lg:bottom-[-6%] lg:left-[1%] w-[40%] lg:w-[31%] z-20 pointer-events-none"
+            class="absolute bottom-[-10%] sm:bottom-[-14%] lg:bottom-[-6%] lg:left-[3%] w-[38%] lg:w-[28%] z-20 pointer-events-none"
           />
 
           <!-- Hire Me Badge -->
@@ -178,7 +187,7 @@
 
     <section
       id="about"
-      class="py-10 md:py-16 lg:py-20 xl:py-40 px-6 md:px-16 lg:px-20 xl:px-23"
+      class="pt-24 pb-10 md:py-16 lg:py-20 xl:py-40 px-6 md:px-16 lg:px-20 xl:px-23"
     >
       <div
         class="container mx-auto grid grid-cols-1 md:grid-cols-1 lg:grid-cols-5 ml-0 lg:ml-0 xl:ml-18 gap-12 lg:gap-16 xl:gap-32 items-start"
@@ -565,11 +574,12 @@
 </template>
 
 <script setup>
-import { reactive } from "vue";
+import { ref, reactive } from "vue";
 import Typewriter from "vue-typewriter-effect";
 import { useLanguage } from "@/composables/useLanguage";
 
 const { t, lang } = useLanguage();
+const isShowMore = ref(false);
 
 // =========================================================================
 // ⚙️ PENGATURAN MANUAL POSISI & UKURAN GAMBAR HERO (hero_me.webp)

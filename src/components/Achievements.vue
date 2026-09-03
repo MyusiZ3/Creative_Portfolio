@@ -49,9 +49,9 @@
                 <i class="bi bi-zoom-in"></i>
               </div>
             </div>
-            <!-- Year Badge -->
-            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full shadow-sm">
-               <p class="text-gray-900 text-[10px] font-bold tracking-wider">{{ item.year }}</p>
+            <!-- Year Badge (White Glassmorphism) -->
+            <div class="absolute top-4 right-4 bg-white/80 backdrop-blur-md px-3.5 py-1 rounded-full shadow-sm border border-slate-200/80">
+               <p class="text-gray-900 text-[11px] font-mono font-bold tracking-wider">{{ item.year }}</p>
             </div>
           </div>
           
@@ -60,9 +60,20 @@
             <h3 class="text-gray-900 text-lg font-bold font-['Poppins'] leading-tight group-hover:text-violet-600 transition-colors duration-300">
               {{ item.title }}
             </h3>
-            <p class="text-[13px] font-['Roboto'] text-gray-500 leading-relaxed line-clamp-3">
+            <p
+              class="text-[13px] font-['Roboto'] text-gray-500 leading-relaxed transition-all duration-300"
+              :class="expandedCards[index] ? '' : 'line-clamp-2'"
+            >
               {{ item.description }}
             </p>
+            <button
+              v-if="item.description && item.description.length > 65"
+              @click.stop="toggleExpand(index)"
+              class="text-violet-600 hover:text-violet-700 text-xs font-semibold underline mt-1 inline-flex items-center gap-1 cursor-pointer transition-colors"
+            >
+              <span>{{ expandedCards[index] ? (lang === "ID" ? "Tampilkan Sedikit" : "Show Less") : (lang === "ID" ? "Baca Selengkapnya" : "Read More") }}</span>
+              <i :class="expandedCards[index] ? 'bi bi-chevron-up' : 'bi bi-chevron-down'" class="text-[10px]"></i>
+            </button>
           </div>
         </div>
       </div>
@@ -94,6 +105,11 @@ import ProjectImage from './common/ProjectImage.vue';
 
 const { t, lang } = useLanguage();
 const selectedImg = ref(null);
+const expandedCards = ref({});
+
+function toggleExpand(idx) {
+  expandedCards.value[idx] = !expandedCards.value[idx];
+}
 
 const achievements = computed(() => {
   if (lang.value === 'ID') {
