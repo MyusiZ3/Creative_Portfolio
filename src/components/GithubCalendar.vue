@@ -4,13 +4,9 @@
     :class="
       isPixel 
         ? 'bg-transparent text-[#f0f6fc] font-mono' 
-        : 'bg-gradient-to-br from-[#1C1C1E] to-[#121214] backdrop-blur-md rounded-2xl p-6 lg:p-8 border border-white/[0.06] shadow-2xl relative'
+        : 'bg-[#18181b] backdrop-blur-md rounded-xl p-6 lg:p-8 border border-white/[0.08] shadow-xl relative'
     "
   >
-    <!-- Background glow for artistic touch -->
-    <div v-if="!isPixel" class="absolute -right-20 -bottom-20 w-80 h-80 bg-violet-600/10 rounded-full blur-[100px] pointer-events-none z-0"></div>
-    <div v-if="!isPixel" class="absolute -left-20 -top-20 w-80 h-80 bg-indigo-600/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
-
     <div class="relative z-10">
       <!-- Header: Title and Total -->
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
@@ -25,21 +21,21 @@
         
         <!-- Year Tabs -->
         <div v-if="availableYears.length > 0" class="flex gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
-          <div :class="isPixel ? 'flex gap-2' : 'bg-white/[0.03] border border-white/[0.06] p-1 rounded-xl flex gap-1'">
+          <div :class="isPixel ? 'flex gap-2' : 'bg-black/40 border border-white/10 p-1 rounded-lg flex gap-1'">
             <button
               v-for="year in availableYears"
               :key="year.year"
               @click="selectYear(year.year)"
-              class="px-4 py-1.5 transition-all duration-300 whitespace-nowrap text-xs font-semibold tracking-wide"
+              class="px-3.5 py-1 transition-all duration-200 whitespace-nowrap text-xs font-semibold tracking-wide"
               :class="[
-                isPixel ? 'font-silkscreen' : 'rounded-lg',
+                isPixel ? 'font-silkscreen' : 'rounded-md',
                 selectedYear === year.year
                   ? (isPixel 
                       ? 'bg-[#00ff66] text-black font-bold border-2 border-black shadow-[2px_2px_0px_#000000]' 
-                      : 'bg-violet-600 text-white shadow-md shadow-violet-600/25')
+                      : 'bg-white text-black font-bold shadow-sm')
                   : (isPixel 
                       ? 'bg-[#0d1117] text-[#8b949e] border border-[#30363d] hover:text-[#00ff66] hover:border-[#00ff66]' 
-                      : 'bg-transparent text-white/40 hover:text-white hover:bg-white/[0.02]')
+                      : 'bg-transparent text-white/50 hover:text-white hover:bg-white/[0.06]')
               ]"
             >
               {{ year.year }}
@@ -51,8 +47,8 @@
       <!-- Loading State -->
       <div v-if="loading" class="w-full h-[180px] flex items-center justify-center">
         <div 
-          class="w-10 h-10 border-3 rounded-full animate-spin"
-          :class="isPixel ? 'border-[#00ff66]/20 border-t-[#00ff66]' : 'border-violet-600/20 border-t-violet-600'"
+          class="w-8 h-8 border-2 rounded-full animate-spin"
+          :class="isPixel ? 'border-[#00ff66]/20 border-t-[#00ff66]' : 'border-white/20 border-t-white'"
         ></div>
       </div>
 
@@ -66,7 +62,7 @@
             <!-- Day Labels -->
             <div 
               class="flex flex-col justify-between pt-[22px] pb-[4px] text-[10px] pr-2 shrink-0 h-[108px]"
-              :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-white/30 font-[\'Roboto\'] font-medium'"
+              :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-white/40 font-[\'Roboto\'] font-medium'"
             >
               <span class="h-[12px] leading-[12px]">Mon</span>
               <span class="h-[12px] leading-[12px]">Wed</span>
@@ -78,7 +74,7 @@
               <!-- Month Labels -->
               <div 
                 class="flex justify-between text-[10px] mb-2 px-1"
-                :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-white/30 font-[\'Roboto\'] font-medium'"
+                :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-white/40 font-[\'Roboto\'] font-medium'"
               >
                 <span>Jan</span>
                 <span>Feb</span>
@@ -107,10 +103,9 @@
                 <div
                   v-for="day in currentYearData"
                   :key="day.date"
-                  class="w-[12px] h-[12px] transition-all duration-200 cursor-pointer relative group rounded-[3px]"
+                  class="w-[12px] h-[12px] transition-all duration-200 cursor-pointer relative group rounded-[2.5px]"
                   :style="{ 
-                    backgroundColor: getIntensityColor(day.intensity),
-                    boxShadow: !isPixel && day.intensity >= 3 ? `0 0 6px ${getIntensityGlow(day.intensity)}` : 'none'
+                    backgroundColor: getIntensityColor(day.intensity)
                   }"
                   @mouseenter="showTooltip($event, day)"
                   @mouseleave="hideTooltip"
@@ -124,7 +119,7 @@
         <!-- Custom Tooltip -->
         <div 
           v-if="tooltipVisible"
-          class="absolute z-50 bg-neutral-900/95 border border-white/[0.08] backdrop-blur-md px-3 py-1.5 rounded-lg text-white pointer-events-none shadow-2xl transition-all duration-75 flex flex-col gap-0.5"
+          class="absolute z-50 bg-[#18181b] border border-white/10 backdrop-blur-md px-3 py-1.5 rounded-md text-white pointer-events-none shadow-xl transition-all duration-75 flex flex-col gap-0.5"
           :style="{ left: `${tooltipX}px`, top: `${tooltipY}px` }"
         >
           <span class="font-semibold text-white text-[11px] font-['Roboto']">
@@ -141,7 +136,7 @@
               v-if="!isPixel"
               :href="`https://github.com/${username}`"
               target="_blank"
-              class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-[10px] text-white/50 hover:text-white hover:bg-white/[0.08] hover:border-white/[0.15] transition-all font-medium tracking-wider uppercase"
+              class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white/[0.05] border border-white/10 text-[11px] text-white/70 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all font-mono font-medium tracking-wider uppercase"
             >
               <i class="bi bi-github"></i>
               github.com/{{ username }}
@@ -160,7 +155,7 @@
           <div class="flex items-center gap-2">
             <span 
               class="text-[10px]"
-              :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-white/30 font-medium font-[\'Roboto\']'"
+              :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-white/40 font-medium font-[\'Roboto\']'"
             >
               Less
             </span>
@@ -173,7 +168,7 @@
             </div>
             <span 
               class="text-[10px]"
-              :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-white/30 font-medium font-[\'Roboto\']'"
+              :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-white/40 font-medium font-[\'Roboto\']'"
             >
               More
             </span>
@@ -196,7 +191,7 @@
           :class="
             isPixel 
               ? 'bg-[#00ff66] hover:bg-[#00cc52] text-black font-silkscreen font-bold border border-black shadow-[2px_2px_0px_#000000]' 
-              : 'bg-violet-600 hover:bg-violet-500 text-white rounded-lg'
+              : 'bg-white text-black hover:bg-neutral-200 rounded-md font-medium'
           "
         >
           <i class="bi bi-arrow-clockwise"></i> Coba Lagi
@@ -360,11 +355,11 @@ const getIntensityColor = (intensity) => {
     return pixelIntensities[intensity] || pixelIntensities[0];
   } else {
     const editorialIntensities = {
-      0: 'rgba(255, 255, 255, 0.03)',
-      1: 'rgba(139, 92, 246, 0.25)', // Violet-500 tint
-      2: 'rgba(139, 92, 246, 0.50)',
-      3: 'rgba(139, 92, 246, 0.75)',
-      4: 'rgba(139, 92, 246, 1)'
+      0: 'rgba(255, 255, 255, 0.04)',
+      1: 'rgba(16, 185, 129, 0.3)', // Clean Emerald
+      2: 'rgba(16, 185, 129, 0.55)',
+      3: 'rgba(16, 185, 129, 0.8)',
+      4: '#10b981'
     };
     return editorialIntensities[intensity] || editorialIntensities[0];
   }

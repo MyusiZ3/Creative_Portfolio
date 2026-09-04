@@ -377,7 +377,7 @@ function scrollToSection(sectionId) {
 
       <!-- Pagination & Arrow Down -->
       <div
-        @click="scrollToSection('projects')"
+        @click="scrollToSection('process')"
         v-motion
         :initial="{ opacity: 0, y: 15 }"
         :visible="{
