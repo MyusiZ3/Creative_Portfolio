@@ -1,0 +1,6 @@
+# Allow all web crawlers to index the site
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://creative-portfolio-theta-rosy.vercel.app/sitemap.xml
