@@ -44,10 +44,10 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, defineAsyncComponent } from "vue";
 import Navbar from "@/components/Navbar.vue";
 
-// Editorial Theme Components
+// Editorial Theme Components (Loaded for initial theme)
 import HeroEditorial from "@/components/themes/editorial/HeroEditorial.vue";
 import ExperienceEditorial from "@/components/themes/editorial/ExperienceEditorial.vue";
 import MySkillsEditorial from "@/components/themes/editorial/MySkillsEditorial.vue";
@@ -56,19 +56,21 @@ import MyProjectsEditorial from "@/components/themes/editorial/MyProjectsEditori
 import AchievementsEditorial from "@/components/themes/editorial/AchievementsEditorial.vue";
 import ContactMeEditorial from "@/components/themes/editorial/ContactMeEditorial.vue";
 
-// Pixel Arcade Theme Components
-import HeroPixel from "@/components/themes/pixel/HeroPixel.vue";
-import ImpactBentoPixel from "@/components/themes/pixel/ImpactBentoPixel.vue";
-import ProjectsPixel from "@/components/themes/pixel/ProjectsPixel.vue";
-import SkillsPixel from "@/components/themes/pixel/SkillsPixel.vue";
-import ExperiencePixel from "@/components/themes/pixel/ExperiencePixel.vue";
-import ContactPixel from "@/components/themes/pixel/ContactPixel.vue";
+// Pixel Arcade Theme Components (Lazy Loaded on demand)
+const HeroPixel = defineAsyncComponent(() => import("@/components/themes/pixel/HeroPixel.vue"));
+const ImpactBentoPixel = defineAsyncComponent(() => import("@/components/themes/pixel/ImpactBentoPixel.vue"));
+const ProjectsPixel = defineAsyncComponent(() => import("@/components/themes/pixel/ProjectsPixel.vue"));
+const SkillsPixel = defineAsyncComponent(() => import("@/components/themes/pixel/SkillsPixel.vue"));
+const ExperiencePixel = defineAsyncComponent(() => import("@/components/themes/pixel/ExperiencePixel.vue"));
+const ContactPixel = defineAsyncComponent(() => import("@/components/themes/pixel/ContactPixel.vue"));
 
-import PageReveal from "@/components/PageReveal.vue";
-import FloatingActionButton from "@/components/FloatingActionButton.vue";
-import CTAPopup from "@/components/CTAPopup.vue";
-import NotificationPopup from "@/components/NotificationPopup.vue";
-import CursorMultiFollow from "@/components/CursorMultiFollow.vue";
+// Async UI Components & Modals
+const PageReveal = defineAsyncComponent(() => import("@/components/PageReveal.vue"));
+const FloatingActionButton = defineAsyncComponent(() => import("@/components/FloatingActionButton.vue"));
+const CTAPopup = defineAsyncComponent(() => import("@/components/CTAPopup.vue"));
+const NotificationPopup = defineAsyncComponent(() => import("@/components/NotificationPopup.vue"));
+const CursorMultiFollow = defineAsyncComponent(() => import("@/components/CursorMultiFollow.vue"));
+
 import { useLanguage } from "@/composables/useLanguage";
 import { useTheme } from "@/composables/useTheme";
 

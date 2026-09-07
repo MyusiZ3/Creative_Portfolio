@@ -71,10 +71,11 @@ onMounted(() => {
         class="flex items-center gap-2 relative z-50 nav-item"
         style="--delay: 0"
       >
-        <img src="/images/logo.webp" alt="logo" class="w-10 lg:w-11 xl:w-14 aspect-square object-contain" />
+        <img src="/images/logo.webp" alt="Muhamad Sidik Logo" width="56" height="56" decoding="async" class="w-10 lg:w-11 xl:w-14 aspect-square object-contain" />
         <a
           href="#"
           @click="handleNav('', 'Home', $event)"
+          aria-label="Muhamad Sidik Home"
           class="font-semibold text-[11px] lg:text-[12px] xl:text-[15px] transition-colors"
           :class="currentTheme === 'pixel' ? 'font-silkscreen text-[#00ff66] hover:text-[#33ff88] tracking-wide' : 'font-[\'Poppins\'] text-white'"
           >{{ currentTheme === 'pixel' ? 'M.SIDIK' : 'Muhamad' }}<br />{{ currentTheme === 'pixel' ? '&lt;DEV/&gt;' : 'Sidik' }}</a

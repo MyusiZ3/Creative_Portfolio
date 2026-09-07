@@ -97,11 +97,13 @@
           >
             <img
               src="/images/hero/hero_me.webp"
-              alt="Hero Main"
+              alt="Muhamad Sidik - Creative Designer Portfolio Photo"
+              width="1000"
+              height="1100"
               class="w-full h-auto block"
               fetchpriority="high"
               loading="eager"
-              decoding="sync"
+              decoding="async"
               :style="{
                 transform: `translate(${heroImgConfig.x}px, ${heroImgConfig.y}px) scale(${heroImgConfig.scale})`,
                 transformOrigin: 'center bottom',
@@ -125,7 +127,11 @@
               },
             }"
             src="/images/hero/visual.webp"
-            alt="Visualzz"
+            alt="Visualzz Badge"
+            width="300"
+            height="300"
+            loading="lazy"
+            decoding="async"
             class="absolute -top-[10%] lg:-top-[-2%] right-[2%] lg:right-[8%] w-[38%] lg:w-[30%] z-20 pointer-events-none"
           />
 
@@ -145,7 +151,11 @@
               },
             }"
             src="/images/hero/branding.webp"
-            alt="Branding & Identity"
+            alt="Branding & Identity Badge"
+            width="300"
+            height="300"
+            loading="lazy"
+            decoding="async"
             class="absolute top-[50%] left-[-4%] lg:left-[-14%] w-[36%] lg:w-[30%] mt-[-10%] lg:mt-[1.5%] z-20 pointer-events-none"
           />
 
@@ -165,7 +175,11 @@
               },
             }"
             src="/images/hero/ux_design.webp"
-            alt="User Experience Design"
+            alt="User Experience Design Badge"
+            width="300"
+            height="300"
+            loading="lazy"
+            decoding="async"
             class="absolute bottom-[-10%] sm:bottom-[-14%] lg:bottom-[-6%] lg:left-[3%] w-[38%] lg:w-[28%] z-20 pointer-events-none"
           />
 

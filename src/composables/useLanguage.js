@@ -73,7 +73,7 @@ const translations = {
     exp_w1_sub: "Internship | PT. Jasa & Kepariwisataan Jabar",
     exp_w1_desc:
       "Contributed to internal and public-facing digital platforms through interface design, application flow design, and web development. Developed features based on business needs, improved responsive layouts and UI, and supported technical troubleshooting and IT device maintenance.",
-    exp_w2_title: "Teaching Assistant",
+    exp_w2_title: "Applied Science Practice Assistant",
     exp_w2_sub: "School of Applied Science | Telkom University",
     exp_w2_desc:
       "Supported 100+ students across multiple technical courses over two years, with a focus on interactive application development, Unity, UI/UX principles, and practical problem-solving. Also assisted laboratory sessions covering databases, computer networks, operating systems, and computer systems.",
@@ -273,7 +273,7 @@ const translations = {
     exp_w1_sub: "Magang | PT. Jasa & Kepariwisataan Jabar",
     exp_w1_desc:
       "Berkontribusi pada platform digital internal dan publik melalui interface design, application flow design, dan web development. Mengembangkan fitur berdasarkan kebutuhan bisnis, meningkatkan responsive layout dan UI, serta mendukung technical troubleshooting dan pemeliharaan perangkat IT.",
-    exp_w2_title: "Asisten Praktikum",
+    exp_w2_title: "Asisten Praktikum Sains Terapan",
     exp_w2_sub: "Fakultas Ilmu Terapan | Universitas Telkom",
     exp_w2_desc:
       "Mendampingi 100+ mahasiswa di berbagai mata kuliah teknis selama dua tahun, dengan fokus pada pengembangan aplikasi interaktif, Unity, prinsip UI/UX, dan pemecahan masalah praktis. Turut membantu sesi laboratorium yang mencakup database, computer networks, operating systems, dan computer systems.",

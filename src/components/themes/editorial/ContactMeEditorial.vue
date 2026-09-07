@@ -37,6 +37,7 @@
                 </a>
                 <button
                   @click="copyToClipboard('089646347327', 'phone')"
+                  aria-label="Copy phone number"
                   class="p-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 opacity-100 md:opacity-0 group-hover/item:opacity-100 transition-all flex items-center gap-1.5"
                 >
                   <i
@@ -57,7 +58,7 @@
             </div>
 
             <div class="flex flex-col items-center md:items-start">
-              <p class="text-gray-400 text-sm mb-1">{{ t("contact_email") }}</p>
+              <p class="text-gray-300 text-sm mb-1">{{ t("contact_email") }}</p>
               <div class="flex items-center gap-2 group/item">
                 <a
                   href="mailto:muhamadsidik.work.id@gmail.com"
@@ -69,6 +70,7 @@
                   @click="
                     copyToClipboard('muhamadsidik.work.id@gmail.com', 'email')
                   "
+                  aria-label="Copy email address"
                   class="p-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 opacity-100 md:opacity-0 group-hover/item:opacity-100 transition-all flex items-center gap-1.5"
                 >
                   <i
@@ -89,7 +91,7 @@
             </div>
 
             <div class="flex flex-col items-center md:items-start">
-              <p class="text-gray-400 text-sm mb-1">{{ t("contact_addr") }}</p>
+              <p class="text-gray-300 text-sm mb-1">{{ t("contact_addr") }}</p>
               <p
                 class="text-white text-lg font-bold font-['Roboto'] text-center md:text-left"
               >
@@ -99,11 +101,12 @@
           </div>
 
           <div class="space-y-3 flex flex-col items-center lg:items-start">
-            <p class="text-gray-400 text-sm">{{ t("contact_socmed") }}</p>
+            <p class="text-gray-300 text-sm">{{ t("contact_socmed") }}</p>
             <div class="flex gap-3">
               <a
                 href="https://github.com/MyusiZ3"
                 target="_blank"
+                aria-label="GitHub Profile"
                 class="w-8 h-8 rounded-full bg-[#A754FF] flex items-center justify-center text-white hover:opacity-80 transition-all duration-300"
               >
                 <i class="bi bi-github text-sm"></i>
@@ -111,6 +114,7 @@
               <a
                 href="https://www.instagram.com/imyusi_"
                 target="_blank"
+                aria-label="Instagram Profile"
                 class="w-8 h-8 rounded-full bg-[#E1306C] flex items-center justify-center text-white hover:opacity-80 transition-all duration-300"
               >
                 <i class="bi bi-instagram text-sm"></i>
@@ -118,6 +122,7 @@
               <a
                 href="https://www.linkedin.com/in/muhamad-sidik-a6757b25b"
                 target="_blank"
+                aria-label="LinkedIn Profile"
                 class="w-8 h-8 rounded-full bg-[#0077B5] flex items-center justify-center text-white hover:opacity-80 transition-all duration-300"
               >
                 <i class="bi bi-linkedin text-sm"></i>
@@ -125,6 +130,7 @@
               <!-- Universal Share Button -->
               <button
                 @click="sharePortfolio"
+                aria-label="Share Portfolio"
                 class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:border-violet-500 hover:text-violet-400 transition-all duration-300 relative group/share"
               >
                 <i class="bi bi-share-fill text-[10px]"></i>

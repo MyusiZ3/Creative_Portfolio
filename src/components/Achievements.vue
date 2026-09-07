@@ -115,10 +115,10 @@ const achievements = computed(() => {
   if (lang.value === 'ID') {
     return [
       {
-        title: 'Asisten Praktikum (Teaching Assistant)',
+        title: 'Asisten Praktikum Sains Terapan',
         year: '2023-2025',
         image: '/images/certificates/certificate_telkom_ta_1773251189179.png',
-        description: 'Telah mengabdi sebagai Asisten Praktikum untuk 5 mata kuliah multimedia dalam 4 semester.',
+        description: 'Telah mengabdi sebagai Asisten Praktikum Sains Terapan untuk 5 mata kuliah multimedia dalam 4 semester.',
       },
       {
         title: 'Sertifikasi BNSP Multimedia (KKNI Level II)',
@@ -129,7 +129,8 @@ const achievements = computed(() => {
       {
         title: 'Sertifikat Penyelesaian Magang/PKL',
         year: '2021',
-        image: '/images/certificates/certificate_internship_production_1773251239968.png',
+        image: '/images/certificates/certificate_internship.webp',
+        pdfUrl: 'https://drive.google.com/file/d/1FHECuOyo58-LqVRiP2OXt47oyuUYb7px/view?usp=sharing',
         description: 'Penyelesaian magang 6 bulan sebagai Ketua Tim dan Desainer di Unit Produksi Multimedia, dengan evaluasi akhir "Sangat Baik".',
       },
       {
@@ -149,10 +150,10 @@ const achievements = computed(() => {
 
   return [
     {
-      title: 'Teaching Assistant (Asisten Praktikum)',
+      title: 'Applied Science Practice Assistant',
       year: '2023-2025',
       image: '/images/certificates/certificate_telkom_ta_1773251189179.png',
-      description: 'Appointed as a Teaching Assistant for 5 different multimedia courses across 4 semesters.',
+      description: 'Appointed as an Applied Science Practice Assistant for 5 different multimedia courses across 4 semesters.',
     },
     {
       title: 'BNSP Multimedia – Certified (KKNI Level II)',
@@ -163,7 +164,8 @@ const achievements = computed(() => {
     {
       title: 'Vocational School Internship Completion',
       year: '2021',
-      image: '/images/certificates/certificate_internship_production_1773251239968.png',
+      image: '/images/certificates/certificate_internship.webp',
+      pdfUrl: 'https://drive.google.com/file/d/1FHECuOyo58-LqVRiP2OXt47oyuUYb7px/view?usp=sharing',
       description: 'Completed a 6-month internship as Team Leader and Designer in Multimedia Production Unit with "Excellent" grade.',
     },
     {

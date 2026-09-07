@@ -71,6 +71,10 @@
                     <img
                       :src="project.images[0]"
                       :alt="`${project.name} main view`"
+                      width="800"
+                      height="500"
+                      loading="lazy"
+                      decoding="async"
                       class="w-full h-full object-cover transition-transform duration-700 group-hover/hero:scale-105"
                     />
                     <div
@@ -93,6 +97,10 @@
                     <img
                       :src="project.images[1] || project.images[0]"
                       :alt="`${project.name} stack 2`"
+                      width="600"
+                      height="750"
+                      loading="lazy"
+                      decoding="async"
                       class="w-full h-full object-cover transition-transform duration-700 group-hover/card2:scale-110"
                     />
                     <div
@@ -120,6 +128,10 @@
                         project.images[project.images.length - 1]
                       "
                       :alt="`${project.name} stack 3`"
+                      width="500"
+                      height="500"
+                      loading="lazy"
+                      decoding="async"
                       class="w-full h-full object-cover rounded-xl transition-transform duration-700 group-hover/card3:scale-110"
                     />
                     <div
