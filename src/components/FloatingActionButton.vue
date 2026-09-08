@@ -33,8 +33,8 @@
             class="px-3.5 py-1.5 whitespace-nowrap shadow-lg transition-all"
             :class="
               currentTheme === 'pixel'
-                ? 'bg-[#050b07] text-[#00ff66] font-mono text-xs border-2 border-[#00ff66] shadow-[2px_2px_0px_#000] rounded-none'
-                : 'bg-[#1e1e2e]/90 text-white/80 text-[13px] font-[\'Roboto\'] font-medium rounded-lg border border-white/10 backdrop-blur-sm'
+                ? (item.pixelLabelClass || 'bg-[#050b07] text-[#00ff66] font-mono text-xs border-2 border-[#00ff66] shadow-[2px_2px_0px_#000] rounded-none')
+                : (item.labelClass || 'bg-[#1e1e2e]/90 text-white/80 text-[13px] font-[\'Roboto\'] font-medium rounded-lg border border-white/10 backdrop-blur-sm')
             "
           >
             {{ item.label }}
@@ -49,8 +49,8 @@
             class="fab-circle w-12 h-12 flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95"
             :class="
               currentTheme === 'pixel'
-                ? 'bg-[#0a120d] text-[#00ff66] border-2 border-[#00ff66] hover:bg-[#00ff66] hover:text-black rounded-none shadow-[2px_2px_0px_#000]'
-                : 'rounded-full text-white bg-[#1e1e2e]/60 backdrop-blur-sm border border-white/20'
+                ? (item.pixelBg || 'bg-[#0a120d] text-[#00ff66] border-2 border-[#00ff66] hover:bg-[#00ff66] hover:text-black rounded-none shadow-[2px_2px_0px_#000]')
+                : (item.bg ? ['rounded-full text-white backdrop-blur-sm', item.bg, item.border, item.shadow].filter(Boolean).join(' ') : 'rounded-full text-white bg-[#1e1e2e]/60 backdrop-blur-sm border border-white/20')
             "
           >
             <i :class="item.icon" class="text-lg"></i>
@@ -240,8 +240,12 @@ const actions = computed(() => {
         icon: "bi bi-palette",
         href: "/doc/CV_Muhamad Sidik_Graphic Designer_Intern_2025.pdf",
         external: true,
-        bg: "bg-violet-600/90",
-        border: "border-violet-400/50",
+        bg: "bg-purple-600 hover:bg-purple-500",
+        border: "border-purple-400/60",
+        shadow: "shadow-[0_0_16px_rgba(147,51,234,0.45)]",
+        labelClass: "bg-purple-950/90 text-purple-200 text-[13px] font-['Roboto'] font-medium rounded-lg border border-purple-500/40 backdrop-blur-sm",
+        pixelBg: "bg-[#a754ff] text-black border-2 border-black hover:bg-[#b86eff] rounded-none shadow-[2px_2px_0px_#000] font-mono font-bold",
+        pixelLabelClass: "bg-[#a754ff] text-black font-mono text-xs font-bold border-2 border-black shadow-[2px_2px_0px_#000] rounded-none",
         action: handleItemClick
       },
       {
@@ -250,8 +254,12 @@ const actions = computed(() => {
         icon: "bi bi-code-slash",
         href: "/doc/CV_Muhamad Sidik_IT_Intern.pdf",
         external: true,
-        bg: "bg-blue-600/90",
-        border: "border-blue-400/50",
+        bg: "bg-blue-600 hover:bg-blue-500",
+        border: "border-blue-400/60",
+        shadow: "shadow-[0_0_16px_rgba(37,99,235,0.45)]",
+        labelClass: "bg-blue-950/90 text-blue-200 text-[13px] font-['Roboto'] font-medium rounded-lg border border-blue-500/40 backdrop-blur-sm",
+        pixelBg: "bg-[#00f0ff] text-black border-2 border-black hover:bg-[#33f3ff] rounded-none shadow-[2px_2px_0px_#000] font-mono font-bold",
+        pixelLabelClass: "bg-[#00f0ff] text-black font-mono text-xs font-bold border-2 border-black shadow-[2px_2px_0px_#000] rounded-none",
         action: handleItemClick
       }
     );

@@ -32,13 +32,6 @@
             {{ t("skills_sub") }}
           </p>
         </div>
-
-        <div
-          class="text-xs text-[#8b949e] bg-[#161b22] px-3 py-2 border-2 border-black font-silkscreen shrink-0 shadow-[4px_4px_0px_#000]"
-        >
-          EQUIPMENT LOADOUT:
-          <span class="text-[#00ff66] font-bold">10/10 SLOTS MAXED</span>
-        </div>
       </div>
 
       <!-- Hard & Soft Skills STATS HUD -->
@@ -555,9 +548,9 @@
         <GithubCalendar />
       </div>
 
-      <!-- Navigation Arrow to Projects -->
+      <!-- Navigation Arrow to Experience (Career Quest Log) -->
       <div
-        @click="scrollToSection('projects')"
+        @click="scrollToSection('experience')"
         v-motion
         :initial="{ opacity: 0, y: 15 }"
         :visible-once="{
@@ -570,8 +563,7 @@
         <span
           class="text-[10px] font-silkscreen text-[#8b949e] group-hover:text-[#00ff66] transition-colors uppercase flex items-center gap-1"
         >
-          <span class="text-[#00ff66]">► PRESS START ◄</span> NEXT STAGE: ARCADE
-          PROJECTS
+          <span class="text-[#00ff66]">► PRESS START ◄</span> NEXT STAGE: CAREER QUEST LOG
         </span>
         <i
           class="bi bi-caret-down-fill text-[#00ff66] text-2xl group-hover:translate-y-1 transition-transform"

@@ -456,13 +456,16 @@
 <script setup>
 import { ref, computed, watch, onMounted, onUnmounted } from "vue";
 import { useLanguage } from "@/composables/useLanguage";
-import { usePixelAudio } from "@/composables/usePixelAudio";
 import VisitorCounter from "@/components/common/VisitorCounter.vue";
 import BugCatcherMinigame from "./BugCatcherMinigame.vue";
 
 const { t, lang } = useLanguage();
 const isId = computed(() => lang.value === "ID");
-const { playCoinSfx, playBlipSfx, playFanfareSfx, playPowerupSfx, playExplosionSfx } = usePixelAudio();
+const playCoinSfx = () => {};
+const playBlipSfx = () => {};
+const playFanfareSfx = () => {};
+const playPowerupSfx = () => {};
+const playExplosionSfx = () => {};
 
 const showMinigame = ref(false);
 

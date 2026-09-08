@@ -26,14 +26,6 @@
             IMPACT <span class="text-[#00f0ff]">& STATS</span>
           </h2>
         </div>
-        <div
-          class="text-xs text-[#8b949e] font-mono bg-[#161b22] p-2 border-2 border-black"
-        >
-          STATUS:
-          <span class="text-[#00ff66] font-bold font-silkscreen"
-            >RECORD HIGH</span
-          >
-        </div>
       </div>
 
       <!-- Top Row: Bento Metrics Grid (High-Contrast Bold Colors) -->
@@ -151,14 +143,6 @@
         </div>
       </div>
 
-      <!-- Live Spotify / Arcade Sound Vibes Widget -->
-      <div class="mb-12">
-        <SpotifyWidget
-          themeOverride="pixel"
-          spotifyEmbedUrl="https://open.spotify.com/embed/playlist/0YSzquUNB6qYW9ukvaPZ66"
-        />
-      </div>
-
       <!-- Bottom Row: Interactive Month Pills & Timeline Grid -->
       <div
         v-motion
@@ -178,7 +162,6 @@
             v-for="(month, idx) in months"
             :key="month"
             @click="selectQuarter(Math.floor(idx / 3))"
-            @mouseenter="playBlipSfx"
             class="px-3 py-1.5 text-xs font-bold uppercase transition-all border-2 cursor-pointer"
             :class="[
               Math.floor(idx / 3) === activeQuarter
@@ -196,7 +179,6 @@
             v-for="(q, index) in quarters"
             :key="q.title"
             @click="selectQuarter(index)"
-            @mouseenter="playBlipSfx"
             class="p-5 border-2 border-black transition-all flex flex-col justify-between cursor-pointer hover:border-[#00ff66]"
             :class="[
               activeQuarter === index
@@ -238,17 +220,13 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useLanguage } from "@/composables/useLanguage";
-import { usePixelAudio } from "@/composables/usePixelAudio";
-import SpotifyWidget from "@/components/common/SpotifyWidget.vue";
 
 const { lang } = useLanguage();
-const { playBlipSfx } = usePixelAudio();
 const isId = computed(() => lang.value === "ID");
 
 const activeQuarter = ref(0);
 
 const selectQuarter = (quarterIdx) => {
-  playBlipSfx();
   activeQuarter.value = quarterIdx;
 };
 

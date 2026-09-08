@@ -17,11 +17,6 @@
             SEND <span class="text-[#ff0055]">TRANSMISSION</span>
           </h2>
         </div>
-
-        <div class="text-xs text-[#8b949e] bg-[#161b22] px-3 py-2 border-2 border-black font-silkscreen flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-[#00ff66] animate-ping"></span>
-          SIGNAL: <span class="text-[#00ff66] font-bold">100% ONLINE</span>
-        </div>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -33,39 +28,55 @@
           :visible-once="{ opacity: 1, x: 0, transition: { duration: 600, delay: 150, ease: 'easeOut' } }"
           class="lg:col-span-7 bg-[#161b22] border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_#000000]"
         >
-          <form @submit.prevent="handleSubmit" class="space-y-5">
+          <form @submit.prevent="handleSubmit" class="space-y-4">
             
-            <!-- Player Name -->
-            <div>
-              <label class="block text-xs font-bold text-[#00ff66] uppercase mb-1 font-silkscreen">
-                PLAYER NAME [ID]:
-              </label>
-              <input
-                v-model="form.name"
-                type="text"
-                required
-                placeholder="ENTER YOUR NAME..."
-                class="w-full bg-[#0d1117] border-2 border-black p-3 text-xs font-mono text-[#f0f6fc] focus:border-[#00ff66] focus:outline-none transition-colors"
-              />
+            <!-- Player Name & Email Grid (Opsi 2 Layout) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- Player Name -->
+              <div>
+                <label class="block text-xs font-bold text-[#00ff66] uppercase mb-1 font-silkscreen">
+                  PLAYER NAME [ID]:
+                </label>
+                <input
+                  v-model="form.name"
+                  type="text"
+                  required
+                  placeholder="ENTER YOUR NAME..."
+                  class="w-full bg-[#0d1117] border-2 border-black p-3 text-xs font-mono text-[#f0f6fc] focus:border-[#00ff66] focus:outline-none transition-colors"
+                />
+              </div>
+
+              <!-- Player Email -->
+              <div>
+                <label class="block text-xs font-bold text-[#00f0ff] uppercase mb-1 font-silkscreen">
+                  PLAYER EMAIL:
+                </label>
+                <input
+                  v-model="form.email"
+                  type="email"
+                  required
+                  placeholder="PLAYER@DOMAIN.COM..."
+                  class="w-full bg-[#0d1117] border-2 border-black p-3 text-xs font-mono text-[#f0f6fc] focus:border-[#00f0ff] focus:outline-none transition-colors"
+                />
+              </div>
             </div>
 
-            <!-- Player Email -->
+            <!-- Transmission Subject [Optional] -->
             <div>
-              <label class="block text-xs font-bold text-[#00f0ff] uppercase mb-1 font-silkscreen">
-                PLAYER EMAIL:
+              <label class="block text-xs font-bold text-[#ffd700] uppercase mb-1 font-silkscreen">
+                TRANSMISSION SUBJECT [OPTIONAL]:
               </label>
               <input
-                v-model="form.email"
-                type="email"
-                required
-                placeholder="PLAYER@DOMAIN.COM..."
-                class="w-full bg-[#0d1117] border-2 border-black p-3 text-xs font-mono text-[#f0f6fc] focus:border-[#00f0ff] focus:outline-none transition-colors"
+                v-model="form.subject"
+                type="text"
+                placeholder="MESSAGE SUBJECT OR TOPIC..."
+                class="w-full bg-[#0d1117] border-2 border-black p-3 text-xs font-mono text-[#f0f6fc] focus:border-[#ffd700] focus:outline-none transition-colors"
               />
             </div>
 
             <!-- Transmission Message -->
             <div>
-              <label class="block text-xs font-bold text-[#ffd700] uppercase mb-1 font-silkscreen">
+              <label class="block text-xs font-bold text-[#ff0055] uppercase mb-1 font-silkscreen">
                 TRANSMISSION MESSAGE:
               </label>
               <textarea
@@ -73,18 +84,20 @@
                 required
                 rows="4"
                 placeholder="ENTER YOUR TRANSMISSION IN DETAIL..."
-                class="w-full bg-[#0d1117] border-2 border-black p-3 text-xs font-mono text-[#f0f6fc] focus:border-[#ffd700] focus:outline-none transition-colors"
+                class="w-full bg-[#0d1117] border-2 border-black p-3 text-xs font-mono text-[#f0f6fc] focus:border-[#ff0055] focus:outline-none transition-colors"
               ></textarea>
             </div>
 
             <!-- Submit Button -->
             <button
               type="submit"
-              :disabled="isSubmitting"
-              class="w-full py-4 bg-[#ff0055] text-white font-extrabold text-xs uppercase border-2 border-black shadow-[4px_4px_0px_#000000] hover:translate-x-[1px] hover:translate-y-[1px] active:translate-x-[3px] active:translate-y-[3px] transition-all flex items-center justify-center gap-2 font-silkscreen"
+              :disabled="isSubmitting || cooldownTimer > 0"
+              class="w-full py-4 bg-[#ff0055] text-white font-extrabold text-xs uppercase border-2 border-black shadow-[4px_4px_0px_#000000] hover:translate-x-[1px] hover:translate-y-[1px] active:translate-x-[3px] active:translate-y-[3px] transition-all flex items-center justify-center gap-2 font-silkscreen disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none"
             >
               <i class="bi bi-trophy-fill text-yellow-300 text-sm"></i>
-              <span>{{ isSubmitting ? "TRANSMITTING..." : "SUBMIT HIGH SCORE MESSAGE" }}</span>
+              <span v-if="isSubmitting">TRANSMITTING...</span>
+              <span v-else-if="cooldownTimer > 0">TRANSMISSION COOLDOWN ({{ cooldownTimer }}s)</span>
+              <span v-else>SUBMIT HIGH SCORE MESSAGE</span>
             </button>
 
             <!-- Success Alert -->
@@ -93,6 +106,34 @@
             </div>
             <div v-if="submitError" class="p-3 bg-[#ffd700]/20 border-2 border-[#ffd700] text-[#ffd700] text-xs font-bold text-center font-silkscreen">
               ✦ OPENING EMAIL CLIENT TRANSMISSION FALLBACK...
+            </div>
+
+            <!-- Arcade System Status & Console Terminal Log (Opsi 1) -->
+            <div class="mt-5 p-3.5 bg-[#0d1117] border-2 border-black font-mono text-[11px] space-y-1.5 shadow-[3px_3px_0px_#000000]">
+              <div class="text-[#8b949e] font-silkscreen text-[10px] flex items-center justify-between border-b border-black pb-1.5 mb-2">
+                <span>// TERMINAL STATUS: READY</span>
+                <span class="text-[#00ff66] flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-[#00ff66] animate-ping"></span> ONLINE
+                </span>
+              </div>
+              <div class="text-[#00f0ff] flex items-center justify-between">
+                <span class="flex items-center gap-1.5">
+                  <span class="text-[#8b949e]">&gt;</span> ENCRYPTION:
+                </span>
+                <span class="text-white font-bold font-silkscreen text-[10px]">256-BIT SSL ACTIVE</span>
+              </div>
+              <div class="text-[#ffd700] flex items-center justify-between">
+                <span class="flex items-center gap-1.5">
+                  <span class="text-[#8b949e]">&gt;</span> EST. RESPONSE:
+                </span>
+                <span class="text-white font-bold font-silkscreen text-[10px]">&lt; 24 HOURS</span>
+              </div>
+              <div class="text-[#00ff66] flex items-center justify-between">
+                <span class="flex items-center gap-1.5">
+                  <span class="text-[#8b949e]">&gt;</span> LOCAL TIME:
+                </span>
+                <span class="text-white font-bold font-mono text-[11px]">{{ currentTime || '23:23 WIB' }}</span>
+              </div>
             </div>
 
           </form>
@@ -174,25 +215,65 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 
 const form = ref({
   name: '',
   email: '',
+  subject: '',
   message: ''
 });
 
 const isSubmitting = ref(false);
 const submitted = ref(false);
 const submitError = ref(false);
+const cooldownTimer = ref(0);
+let cooldownInterval = null;
+
+const currentTime = ref('');
+let timeInterval = null;
+
+const updateLocalTime = () => {
+  const options = {
+    timeZone: "Asia/Jakarta",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  };
+  currentTime.value = new Intl.DateTimeFormat("en-US", options).format(new Date()) + " WIB";
+};
+
+onMounted(() => {
+  updateLocalTime();
+  timeInterval = setInterval(updateLocalTime, 1000);
+});
+
+onUnmounted(() => {
+  if (timeInterval) clearInterval(timeInterval);
+  if (cooldownInterval) clearInterval(cooldownInterval);
+});
+
+const startCooldown = (seconds = 15) => {
+  cooldownTimer.value = seconds;
+  if (cooldownInterval) clearInterval(cooldownInterval);
+  cooldownInterval = setInterval(() => {
+    if (cooldownTimer.value > 0) {
+      cooldownTimer.value--;
+    } else {
+      clearInterval(cooldownInterval);
+    }
+  }, 1000);
+};
 
 const sendMailtoFallback = () => {
-  const subject = encodeURIComponent(`[PIXEL TRANSMISSION] Message from ${form.value.name}`);
-  const body = encodeURIComponent(`Player Name: ${form.value.name}\nPlayer Email: ${form.value.email}\n\nTransmission Message:\n${form.value.message}`);
+  const subject = encodeURIComponent(form.value.subject || `[PIXEL TRANSMISSION] Message from ${form.value.name}`);
+  const body = encodeURIComponent(`Player Name: ${form.value.name}\nPlayer Email: ${form.value.email}\nSubject: ${form.value.subject}\n\nTransmission Message:\n${form.value.message}`);
   window.location.href = `mailto:muhamadsidik.work.id@gmail.com?subject=${subject}&body=${body}`;
 };
 
 const handleSubmit = async () => {
+  if (isSubmitting.value || cooldownTimer.value > 0) return;
   isSubmitting.value = true;
   submitError.value = false;
 
@@ -201,7 +282,7 @@ const handleSubmit = async () => {
     formData.append("access_key", "90abbda5-bc7f-4e0a-a900-a42dfe212115");
     formData.append("name", form.value.name);
     formData.append("email", form.value.email);
-    formData.append("subject", `[PIXEL ARCADE] Transmission from ${form.value.name}`);
+    formData.append("subject", form.value.subject || `[PIXEL ARCADE] Transmission from ${form.value.name}`);
     formData.append("message", form.value.message);
 
     const response = await fetch('https://api.web3forms.com/submit', {
@@ -212,15 +293,18 @@ const handleSubmit = async () => {
     const data = await response.json();
     if (response.ok && data.success) {
       submitted.value = true;
-      form.value = { name: '', email: '', message: '' };
+      form.value = { name: '', email: '', subject: '', message: '' };
+      startCooldown(15);
     } else {
       submitError.value = true;
       sendMailtoFallback();
+      startCooldown(10);
     }
   } catch (err) {
     console.error("Submission failed, using mailto fallback", err);
     submitError.value = true;
     sendMailtoFallback();
+    startCooldown(10);
   } finally {
     isSubmitting.value = false;
     setTimeout(() => {
