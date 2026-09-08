@@ -220,13 +220,16 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useLanguage } from "@/composables/useLanguage";
+import { usePixelAudio } from "@/composables/usePixelAudio";
 
 const { lang } = useLanguage();
+const { playBlipSfx } = usePixelAudio();
 const isId = computed(() => lang.value === "ID");
 
 const activeQuarter = ref(0);
 
 const selectQuarter = (quarterIdx) => {
+  playBlipSfx();
   activeQuarter.value = quarterIdx;
 };
 

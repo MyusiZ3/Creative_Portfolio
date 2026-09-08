@@ -354,6 +354,7 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
+import { usePixelAudio } from '@/composables/usePixelAudio';
 
 const props = defineProps({
   show: {
@@ -364,11 +365,7 @@ const props = defineProps({
 
 const emit = defineEmits(['close', 'add-score']);
 
-const playCoinSfx = () => {};
-const playBlipSfx = () => {};
-const playFanfareSfx = () => {};
-const playExplosionSfx = () => {};
-const playLaserSfx = () => {};
+const { playCoinSfx, playBlipSfx, playFanfareSfx, playExplosionSfx, playLaserSfx } = usePixelAudio();
 
 // Canvas & Container Refs
 const canvasRef = ref(null);

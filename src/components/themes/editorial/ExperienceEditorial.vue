@@ -428,6 +428,93 @@
             <div
               class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-12 relative z-10"
             >
+              <!-- Item 4 -->
+              <div
+                v-motion
+                :initial="{ opacity: 0, y: 50 }"
+                :visible="{
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 600, ease: 'easeOut' },
+                }"
+                class="flex flex-col"
+              >
+                <p
+                  class="text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2"
+                >
+                  SEP 2021 - JUN 2022
+                </p>
+                <div
+                  class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
+                >
+                  <div
+                    v-motion
+                    :initial="{ opacity: 0, scale: 0 }"
+                    :visible="{
+                      opacity: 1,
+                      scale: 1,
+                      transition: {
+                        type: 'spring',
+                        stiffness: 250,
+                        damping: 15,
+                        delay: 150,
+                      },
+                    }"
+                    class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
+                  ></div>
+                </div>
+                <div>
+                  <h4
+                    class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
+                  >
+                    {{ t("exp_w4_title") }}
+                  </h4>
+                  <p
+                    class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
+                  >
+                    {{ t("exp_w4_sub") }}
+                  </p>
+                  <div
+                    class="overflow-hidden transition-all duration-300"
+                    :class="
+                      expanded['w4']
+                        ? 'max-h-96 opacity-100 mb-4'
+                        : 'max-h-0 opacity-0 mb-0'
+                    "
+                  >
+                    <p
+                      class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
+                    >
+                      {{ t("exp_w4_desc") }}
+                    </p>
+                  </div>
+                  <button
+                    @click="toggleDetail('w4')"
+                    class="flex items-center gap-1.5 text-xs font-bold text-violet-600 hover:text-violet-800 transition-colors uppercase tracking-wider group"
+                  >
+                    <span
+                      class="border-b border-transparent group-hover:border-violet-800 transition-all"
+                    >
+                      {{
+                        expanded["w4"]
+                          ? lang === "ID"
+                            ? "Sembunyikan Detail"
+                            : "Hide Detail"
+                          : lang === "ID"
+                            ? "Lihat Detail"
+                            : "Show Detail"
+                      }}
+                    </span>
+                    <i
+                      class="bi"
+                      :class="
+                        expanded['w4'] ? 'bi-chevron-up' : 'bi-chevron-down'
+                      "
+                    ></i>
+                  </button>
+                </div>
+              </div>
+
               <!-- Item 5 -->
               <div
                 v-motion
@@ -1342,6 +1429,7 @@ const allExpanded = computed(() => {
     "w1",
     "w2",
     "w3",
+    "w4",
     "w5",
     "p1",
     "p2",
@@ -1364,6 +1452,7 @@ const toggleAll = (expand) => {
     "w1",
     "w2",
     "w3",
+    "w4",
     "w5",
     "p1",
     "p2",

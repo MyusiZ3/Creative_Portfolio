@@ -49,96 +49,51 @@
 
       <!-- WORK & ORGANIZATIONAL QUESTS -->
       <div v-if="activeCategory === 'all' || activeCategory === 'work'" class="mb-12">
-        <h3 class="text-lg sm:text-xl font-extrabold uppercase mb-6 font-silkscreen text-[#00f0ff] flex items-center gap-2">
+        <h3 id="work-quests-heading" class="text-lg sm:text-xl font-extrabold uppercase mb-6 font-silkscreen text-[#00f0ff] flex items-center gap-2 scroll-mt-24">
           <i class="bi bi-briefcase-fill text-[#ffd700]"></i>
           {{ t('exp_work_org') }}
         </h3>
 
-        <div class="space-y-6">
+        <!-- 2-Column Grid Layout (Opsi 2) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div
             v-for="(quest, idx) in displayedWorkQuests"
             :key="quest.id"
             v-motion
             :initial="{ opacity: 0, x: -30 }"
             :visible-once="{ opacity: 1, x: 0, transition: { duration: 500, delay: idx * 120, ease: 'easeOut' } }"
-            class="bg-[#161b22] border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_#000000] relative group hover:border-[#00f0ff] transition-colors"
+            class="bg-[#161b22] border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_#000000] relative group hover:border-[#00f0ff] transition-colors flex flex-col justify-between"
           >
-            <!-- Quest Header Line -->
-            <div class="flex flex-wrap items-center justify-between gap-3 border-b-2 border-[#30363d] pb-4 mb-4 font-silkscreen">
-              <div class="flex items-center gap-3">
-                <span class="px-2.5 py-1 bg-[#00f0ff] text-black font-extrabold text-xs uppercase shadow-[2px_2px_0px_#000]">
-                  WORK 0{{ (workPage - 1) * workPerPage + idx + 1 }}
-                </span>
-                <span class="text-xs font-bold text-[#00ff66] uppercase border border-[#00ff66] px-2 py-0.5">
-                  {{ quest.status }}
-                </span>
+            <div>
+              <!-- Quest Header Line -->
+              <div class="flex flex-wrap items-center justify-between gap-3 border-b-2 border-[#30363d] pb-4 mb-4 font-silkscreen">
+                <div class="flex items-center gap-3">
+                  <span class="px-2.5 py-1 bg-[#00f0ff] text-black font-extrabold text-xs uppercase shadow-[2px_2px_0px_#000]">
+                    WORK 0{{ (workPage - 1) * workPerPage + idx + 1 }}
+                  </span>
+                  <span class="text-xs font-bold text-[#00ff66] uppercase border border-[#00ff66] px-2 py-0.5">
+                    {{ quest.status }}
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-3 text-xs text-[#8b949e]">
+                  <span class="flex items-center gap-1">
+                    <i class="bi bi-calendar-event text-[#ffd700]"></i>
+                    <span>{{ quest.period }}</span>
+                  </span>
+                  <span class="text-[#ffd700] font-bold">{{ quest.xp }}</span>
+                </div>
               </div>
 
-              <div class="flex items-center gap-3 text-xs text-[#8b949e]">
-                <span class="flex items-center gap-1">
-                  <i class="bi bi-calendar-event text-[#ffd700]"></i>
-                  <span>{{ quest.period }}</span>
-                </span>
-                <span class="text-[#ffd700] font-bold">{{ quest.xp }}</span>
+              <!-- Quest Content -->
+              <div class="space-y-2">
+                <h4 class="text-base sm:text-lg font-extrabold text-[#f0f6fc] uppercase group-hover:text-[#00f0ff] transition-colors font-silkscreen">
+                  {{ quest.title }} <span class="text-[#ffd700]">@ {{ quest.sub }}</span>
+                </h4>
+                <p class="text-xs sm:text-sm text-[#8b949e] leading-relaxed pt-1 font-mono">
+                  {{ quest.desc }}
+                </p>
               </div>
-            </div>
-
-            <!-- Quest Content -->
-            <div class="space-y-2">
-              <h4 class="text-base sm:text-lg font-extrabold text-[#f0f6fc] uppercase group-hover:text-[#00f0ff] transition-colors font-silkscreen">
-                {{ quest.title }} <span class="text-[#ffd700]">@ {{ quest.sub }}</span>
-              </h4>
-              <p class="text-xs sm:text-sm text-[#8b949e] leading-relaxed pt-1 font-mono">
-                {{ quest.desc }}
-              </p>
-            </div>
-          </div>
-
-          <!-- Earlier Experience Quest Collapsible inside Work section -->
-          <div class="mt-8 flex justify-center">
-            <button
-              @click="showEarlierWork = !showEarlierWork"
-              class="px-4 py-2 bg-[#161b22] text-[#f0f6fc] text-xs font-bold uppercase border-2 border-black shadow-[3px_3px_0px_#000000] hover:bg-[#ffd700] hover:text-black transition-all flex items-center gap-2 active:translate-y-0.5 font-silkscreen"
-            >
-              <span>{{ showEarlierWork ? '[-] HIDE EARLIER QUESTS' : '[+] SHOW EARLIER QUESTS' }}</span>
-            </button>
-          </div>
-
-          <div
-            v-if="showEarlierWork"
-            v-motion
-            :initial="{ opacity: 0, y: 20 }"
-            :animate="{ opacity: 1, y: 0, transition: { duration: 400 } }"
-            class="bg-[#161b22] border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_#000000] relative group hover:border-[#ffd700] transition-colors mt-6"
-          >
-            <!-- Quest Header Line -->
-            <div class="flex flex-wrap items-center justify-between gap-3 border-b-2 border-[#30363d] pb-4 mb-4 font-silkscreen">
-              <div class="flex items-center gap-3">
-                <span class="px-2.5 py-1 bg-[#ffd700] text-black font-extrabold text-xs uppercase shadow-[2px_2px_0px_#000]">
-                  LEGACY QUEST
-                </span>
-                <span class="text-xs font-bold text-[#8b949e] uppercase border border-[#8b949e] px-2 py-0.5">
-                  EXCELLENT RATING
-                </span>
-              </div>
-
-              <div class="flex items-center gap-3 text-xs text-[#8b949e]">
-                <span class="flex items-center gap-1">
-                  <i class="bi bi-calendar-event text-[#ffd700]"></i>
-                  <span>JAN 2021 - JUNE 2021</span>
-                </span>
-                <span class="text-[#ffd700] font-bold">+7,500 XP</span>
-              </div>
-            </div>
-
-            <!-- Quest Content -->
-            <div class="space-y-2">
-              <h4 class="text-base sm:text-lg font-extrabold text-[#f0f6fc] uppercase group-hover:text-[#ffd700] transition-colors font-silkscreen">
-                {{ t('exp_w5_title') }} <span class="text-[#ffd700]">@ {{ t('exp_w5_sub') }}</span>
-              </h4>
-              <p class="text-xs sm:text-sm text-[#8b949e] leading-relaxed pt-1 font-mono">
-                {{ t('exp_w5_desc') }}
-              </p>
             </div>
           </div>
         </div>
@@ -146,7 +101,7 @@
         <!-- Pagination for Work Quests -->
         <div v-if="totalWorkPages > 1" class="mt-8 flex items-center justify-center gap-3 font-silkscreen">
           <button
-            @click="workPage > 1 && workPage--"
+            @click="changeWorkPage(workPage - 1)"
             :disabled="workPage === 1"
             class="px-4 py-2 bg-[#161b22] text-xs font-bold uppercase border-2 border-black shadow-[3px_3px_0px_#000000] transition-all flex items-center gap-2"
             :class="[
@@ -164,7 +119,7 @@
           </div>
 
           <button
-            @click="workPage < totalWorkPages && workPage++"
+            @click="changeWorkPage(workPage + 1)"
             :disabled="workPage === totalWorkPages"
             class="px-4 py-2 bg-[#161b22] text-xs font-bold uppercase border-2 border-black shadow-[3px_3px_0px_#000000] transition-all flex items-center gap-2"
             :class="[
@@ -180,7 +135,7 @@
 
       <!-- PROJECT EXPERIENCE QUESTS -->
       <div v-if="activeCategory === 'all' || activeCategory === 'project'">
-        <h3 class="text-lg sm:text-xl font-extrabold uppercase mb-6 font-silkscreen text-[#00ff66] flex items-center gap-2">
+        <h3 id="project-quests-heading" class="text-lg sm:text-xl font-extrabold uppercase mb-6 font-silkscreen text-[#00ff66] flex items-center gap-2 scroll-mt-24">
           <i class="bi bi-controller text-[#00ff66]"></i>
           {{ t('exp_proj_title') }}
         </h3>
@@ -242,7 +197,7 @@
         <!-- Pagination for Project Quests -->
         <div v-if="totalProjectPages > 1" class="mt-8 flex items-center justify-center gap-3 font-silkscreen">
           <button
-            @click="projectPage > 1 && projectPage--"
+            @click="changeProjectPage(projectPage - 1)"
             :disabled="projectPage === 1"
             class="px-4 py-2 bg-[#161b22] text-xs font-bold uppercase border-2 border-black shadow-[3px_3px_0px_#000000] transition-all flex items-center gap-2"
             :class="[
@@ -260,7 +215,7 @@
           </div>
 
           <button
-            @click="projectPage < totalProjectPages && projectPage++"
+            @click="changeProjectPage(projectPage + 1)"
             :disabled="projectPage === totalProjectPages"
             class="px-4 py-2 bg-[#161b22] text-xs font-bold uppercase border-2 border-black shadow-[3px_3px_0px_#000000] transition-all flex items-center gap-2"
             :class="[
@@ -326,13 +281,32 @@ import { useLanguage } from '@/composables/useLanguage';
 
 const { t } = useLanguage();
 const activeCategory = ref('all');
-const showEarlierWork = ref(false);
 
 const workPage = ref(1);
-const workPerPage = ref(3);
+const workPerPage = ref(2);
 
 const projectPage = ref(1);
 const projectPerPage = ref(4);
+
+const changeWorkPage = (newPage) => {
+  if (newPage >= 1 && newPage <= totalWorkPages.value) {
+    workPage.value = newPage;
+    const el = document.getElementById("work-quests-heading");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+};
+
+const changeProjectPage = (newPage) => {
+  if (newPage >= 1 && newPage <= totalProjectPages.value) {
+    projectPage.value = newPage;
+    const el = document.getElementById("project-quests-heading");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+};
 
 const setCategory = (cat) => {
   activeCategory.value = cat;
@@ -367,6 +341,24 @@ const workQuests = computed(() => [
     status: "QUEST CLEARED",
     xp: "+6,000 XP",
     desc: t('exp_w3_desc')
+  },
+  {
+    id: 'w4',
+    title: t('exp_w4_title'),
+    sub: t('exp_w4_sub'),
+    period: "SEP 2021 - JUN 2022",
+    status: "QUEST CLEARED",
+    xp: "+6,500 XP",
+    desc: t('exp_w4_desc')
+  },
+  {
+    id: 'w5',
+    title: t('exp_w5_title'),
+    sub: t('exp_w5_sub'),
+    period: "JAN 2021 - JUN 2021",
+    status: "LEGACY QUEST",
+    xp: "+7,500 XP",
+    desc: t('exp_w5_desc')
   }
 ]);
 
