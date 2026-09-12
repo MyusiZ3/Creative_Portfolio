@@ -46,6 +46,19 @@ onMounted(() => {
 </script>
 
 <template>
+  <!-- Skip to Main Content Link (a11y) -->
+  <a
+    href="#main-content"
+    class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[10000] focus:px-4 focus:py-2.5 focus:font-semibold focus:text-xs focus:rounded-xl focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-white transition-all"
+    :class="
+      currentTheme === 'pixel'
+        ? 'focus:bg-[#00ff66] focus:text-black focus:font-mono focus:border-2 focus:border-black focus:rounded-none'
+        : 'focus:bg-violet-600 focus:text-white'
+    "
+  >
+    {{ lang === 'ID' ? '✦ Lompati ke Konten Utama' : '✦ Skip to Main Content' }}
+  </a>
+
   <nav
     class="navbar-morph sticky top-0 z-50"
     :class="{ 'nav-entered': navReady, 'pixel-theme': currentTheme === 'pixel' }"

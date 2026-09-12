@@ -6,26 +6,29 @@
     @toggle-theme="handleThemeSwitch"
   />
 
-  <!-- Editorial Minimalist Theme (Theme 1) -->
-  <template v-if="currentTheme === 'editorial'">
-    <HeroEditorial />
-    <ExperienceEditorial />
-    <MySkillsEditorial />
-    <CreativeProcessEditorial />
-    <MyProjectsEditorial />
-    <AchievementsEditorial />
-    <ContactMeEditorial />
-  </template>
+  <!-- Main Content Landmark -->
+  <main id="main-content" tabindex="-1" class="focus:outline-none">
+    <!-- Editorial Minimalist Theme (Theme 1) -->
+    <template v-if="currentTheme === 'editorial'">
+      <HeroEditorial />
+      <ExperienceEditorial />
+      <MySkillsEditorial />
+      <CreativeProcessEditorial />
+      <MyProjectsEditorial />
+      <AchievementsEditorial />
+      <ContactMeEditorial />
+    </template>
 
-  <!-- Pixelated Cyber-Arcade Theme (Theme 2) -->
-  <template v-else>
-    <HeroPixel />
-    <ImpactBentoPixel />
-    <ProjectsPixel />
-    <SkillsPixel />
-    <ExperiencePixel />
-    <ContactPixel />
-  </template>
+    <!-- Pixelated Cyber-Arcade Theme (Theme 2) -->
+    <template v-else>
+      <HeroPixel />
+      <ImpactBentoPixel />
+      <ProjectsPixel />
+      <SkillsPixel />
+      <ExperiencePixel />
+      <ContactPixel />
+    </template>
+  </main>
 
   <FloatingActionButton />
   <CTAPopup />
