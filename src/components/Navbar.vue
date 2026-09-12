@@ -146,7 +146,7 @@ onMounted(() => {
 
           <button
             @click="handleToggleLang"
-            aria-label="Toggle Language"
+            :aria-label="lang === 'EN' ? 'Switch language to Indonesian' : 'Switch language to English'"
             class="nav-item w-8 h-8 flex items-center justify-center font-bold text-[11px] lg:text-[12px] xl:text-[15px] transition"
             :class="
               currentTheme === 'pixel'
@@ -160,7 +160,7 @@ onMounted(() => {
           
           <button
             @click="$emit('show-notification')"
-            aria-label="Notifications"
+            aria-label="Open notifications"
             class="nav-item w-8 h-8 flex items-center justify-center transition relative"
             :class="
               currentTheme === 'pixel'
@@ -169,7 +169,7 @@ onMounted(() => {
             "
             style="--delay: 9"
           >
-            <i class="bi bi-bell-fill text-sm"></i>
+            <i class="bi bi-bell-fill text-sm" aria-hidden="true"></i>
             <span class="absolute -top-1 -right-1 flex h-2.5 w-2.5">
               <span class="animate-ping absolute inline-flex h-full w-full opacity-75" :class="currentTheme === 'pixel' ? 'bg-[#00ff66]' : 'rounded-full bg-red-400'"></span>
               <span class="relative inline-flex h-2.5 w-2.5" :class="currentTheme === 'pixel' ? 'bg-[#00ff66] border border-black shadow-[1px_1px_0px_#000]' : 'rounded-full bg-red-500 border border-[#171717]'"></span>

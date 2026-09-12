@@ -46,6 +46,7 @@
             :target="item.external ? '_blank' : undefined"
             :rel="item.external ? 'noopener noreferrer' : undefined"
             @click="item.action ? item.action($event) : handleItemClick()"
+            :aria-label="item.label"
             class="fab-circle w-12 h-12 flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95"
             :class="
               currentTheme === 'pixel'
@@ -53,7 +54,7 @@
                 : (item.bg ? ['rounded-full text-white backdrop-blur-sm', item.bg, item.border, item.shadow].filter(Boolean).join(' ') : 'rounded-full text-white bg-[#1e1e2e]/60 backdrop-blur-sm border border-white/20')
             "
           >
-            <i :class="item.icon" class="text-lg"></i>
+            <i :class="item.icon" class="text-lg" aria-hidden="true"></i>
           </a>
         </div>
       </transition-group>
@@ -73,6 +74,7 @@
       <!-- Main Button -->
       <button
         @click="handleToggle"
+        :aria-label="isOpen ? 'Close action menu' : 'Open quick action menu'"
         class="fab-main group absolute inset-0 flex items-center justify-center transition-all duration-300 active:scale-90 shadow-lg pointer-events-auto"
         :class="[
           { 'fab-is-open': isOpen },
@@ -95,6 +97,7 @@
           height="24"
           viewBox="0 0 24 24"
           fill="none"
+          aria-hidden="true"
           class="relative z-10 transition-transform duration-300"
           :class="[
             isOpen ? 'rotate-135' : 'rotate-0',

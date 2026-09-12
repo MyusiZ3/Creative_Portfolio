@@ -3,6 +3,8 @@
     <Transition name="cta-toast">
       <div 
         v-if="isVisible && !isClosed" 
+        role="dialog"
+        aria-label="Connect Invitation"
         class="fixed top-24 right-4 sm:right-6 lg:right-10 z-[9990] w-[310px] sm:w-[340px] p-5 flex flex-col gap-3 backdrop-blur-md transition-all duration-300"
         :class="
           currentTheme === 'pixel'

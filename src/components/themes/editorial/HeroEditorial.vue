@@ -127,7 +127,8 @@
               },
             }"
             src="/images/hero/visual.webp"
-            alt="Visualzz Badge"
+            alt=""
+            aria-hidden="true"
             width="300"
             height="300"
             loading="lazy"
@@ -151,7 +152,8 @@
               },
             }"
             src="/images/hero/branding.webp"
-            alt="Branding & Identity Badge"
+            alt=""
+            aria-hidden="true"
             width="300"
             height="300"
             loading="lazy"
@@ -175,7 +177,8 @@
               },
             }"
             src="/images/hero/ux_design.webp"
-            alt="User Experience Design Badge"
+            alt=""
+            aria-hidden="true"
             width="300"
             height="300"
             loading="lazy"
@@ -199,7 +202,8 @@
               },
             }"
             src="/images/hero/hire_me.webp"
-            alt="Hire Me"
+            alt=""
+            aria-hidden="true"
             class="absolute bottom-[1.5%] lg:bottom-[4%] right-[10%] lg:right-[10%] w-[20%] lg:w-[18%] z-20 pointer-events-none"
           />
         </div>

@@ -12,6 +12,8 @@
     <Transition name="notification-toast">
       <div 
         v-if="isVisible" 
+        role="region"
+        aria-label="System Notifications"
         class="fixed top-24 right-4 sm:right-6 lg:right-10 z-[9990] w-[310px] sm:w-[350px] flex flex-col gap-3 max-w-[calc(100vw-2rem)]"
         @mouseenter="resetAutoCloseTimer"
         @mousemove="resetAutoCloseTimer"

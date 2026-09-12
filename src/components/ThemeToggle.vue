@@ -8,7 +8,7 @@
         : 'bg-[#121c16] border-2 border-[#00ff66] shadow-[0_0_8px_rgba(0,255,102,0.3)]'
     ]"
     :title="currentTheme === 'editorial' ? 'Switch to Pixel Arcade Theme' : 'Switch to Editorial Theme'"
-    aria-label="Toggle Theme"
+    :aria-label="currentTheme === 'editorial' ? 'Switch to Pixel Arcade Theme' : 'Switch to Editorial Theme'"
   >
     <!-- Thumb Circle -->
     <span
@@ -18,6 +18,7 @@
           ? 'translate-x-0 bg-violet-500 text-white'
           : 'translate-x-5 bg-[#00ff66] text-black'
       ]"
+      aria-hidden="true"
     >
       <template v-if="currentTheme === 'editorial'">✦</template>
       <template v-else>⚡</template>

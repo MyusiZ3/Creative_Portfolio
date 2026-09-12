@@ -2,6 +2,9 @@
   <Teleport to="body">
     <div
       v-if="isOpen && project"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Case Study Modal"
       class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm font-mono overflow-y-auto"
       @click.self="close"
     >
@@ -11,15 +14,16 @@
         <!-- Retro Title Bar -->
         <div class="bg-[#0d1117] border-b-4 border-black px-4 py-3 flex items-center justify-between">
           <div class="flex items-center gap-2">
-            <span class="w-3 h-3 bg-[#ff0055] inline-block border border-black"></span>
-            <span class="w-3 h-3 bg-[#ffd700] inline-block border border-black"></span>
-            <span class="w-3 h-3 bg-[#00ff66] inline-block border border-black"></span>
+            <span class="w-3 h-3 bg-[#ff0055] inline-block border border-black" aria-hidden="true"></span>
+            <span class="w-3 h-3 bg-[#ffd700] inline-block border border-black" aria-hidden="true"></span>
+            <span class="w-3 h-3 bg-[#00ff66] inline-block border border-black" aria-hidden="true"></span>
             <span class="text-xs font-bold text-[#00f0ff] uppercase tracking-wider ml-2 font-silkscreen truncate max-w-[220px] sm:max-w-none">
               MISSION BRIEFING • {{ project.title }}
             </span>
           </div>
           <button
             @click="close"
+            aria-label="Close modal dialog"
             class="px-2.5 py-0.5 bg-[#ff0055] text-white font-bold text-xs uppercase border border-black hover:bg-[#ff0055]/80 active:translate-y-0.5 transition-all font-silkscreen"
           >
             [X] ESC
