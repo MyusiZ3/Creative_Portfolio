@@ -266,7 +266,7 @@
               <div
                 class="inline-flex items-baseline gap-2 font-mono text-xs text-zinc-400"
               >
-                <span class="text-zinc-500 uppercase tracking-widest"
+                <span class="text-zinc-400 uppercase tracking-widest"
                   >// {{ t("contact_views") }}:</span
                 >
                 <span class="text-white font-bold tracking-wider">{{

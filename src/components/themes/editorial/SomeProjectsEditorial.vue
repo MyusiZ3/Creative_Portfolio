@@ -246,7 +246,7 @@
                 >
                   <div>
                     <span
-                      class="text-zinc-500 text-[10px] uppercase tracking-wider block font-semibold"
+                      class="text-zinc-400 text-[10px] uppercase tracking-wider block font-semibold"
                       >STATUS</span
                     >
                     <span
@@ -260,7 +260,7 @@
                   </div>
                   <div>
                     <span
-                      class="text-zinc-500 text-[10px] uppercase tracking-wider block font-semibold"
+                      class="text-zinc-400 text-[10px] uppercase tracking-wider block font-semibold"
                       >DURATION</span
                     >
                     <span class="text-zinc-200 text-xs font-medium mt-0.5 block"

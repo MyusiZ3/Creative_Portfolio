@@ -23,10 +23,10 @@
     >
       <div class="flex flex-col items-center gap-2">
         <i 
-          class="bi text-zinc-600 text-xl"
+          class="bi text-zinc-400 text-xl"
           :class="isLoading && !hasError ? 'bi-arrow-repeat animate-spin' : 'bi-image'"
         ></i>
-        <span class="text-zinc-500 font-mono text-[10px] uppercase tracking-widest font-medium">
+        <span class="text-zinc-400 font-mono text-[10px] uppercase tracking-widest font-medium">
           {{ isLoading && !hasError ? 'Loading' : 'No Preview' }}
         </span>
       </div>

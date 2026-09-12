@@ -315,15 +315,15 @@
               </div>
 
               <!-- Metadata Specs (Team/Duration, Tools) -->
-              <div class="space-y-1.5 text-xs text-zinc-400 font-['Roboto']">
+              <div class="space-y-1.5 text-xs text-zinc-300 font-['Roboto']">
                 <p v-if="project.teamInfo">
-                  <span class="text-zinc-500"
+                  <span class="text-zinc-400"
                     >{{ t("my_proj_team_label") }} |</span
                   >
                   {{ project.teamInfo }}
                 </p>
                 <p v-if="project.tools">
-                  <span class="text-zinc-500">{{ t("my_proj_tools") }}:</span>
+                  <span class="text-zinc-400">{{ t("my_proj_tools") }}:</span>
                   {{ project.tools }}
                 </p>
               </div>
@@ -387,7 +387,7 @@
           <!-- Divider between spreads -->
           <div
             v-if="index < visibleProjects.length - 1"
-            class="pt-20 lg:pt-28 flex items-center justify-center gap-4 text-zinc-600 font-mono text-xs tracking-widest select-none"
+            class="pt-20 lg:pt-28 flex items-center justify-center gap-4 text-zinc-400 font-mono text-xs tracking-widest select-none"
           >
             <span class="w-16 h-px bg-white/10"></span>
             <span>— 0{{ index + 1 }} / 0{{ visibleProjects.length }} —</span>

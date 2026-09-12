@@ -83,7 +83,7 @@
               </div>
 
               <!-- Description -->
-              <p class="text-xs text-slate-600 font-['Roboto'] leading-relaxed mb-5 min-h-[44px]">
+              <p class="text-xs text-slate-700 font-['Roboto'] leading-relaxed mb-5 min-h-[44px]">
                 {{ lang === 'ID' ? stage.descID : stage.descEN }}
               </p>
 
