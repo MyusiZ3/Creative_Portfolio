@@ -48,7 +48,7 @@
             y: 0,
             transition: { duration: 700, delay: 150, ease: 'easeOut' },
           }"
-          class="text-[14px] lg:text-[15px] text-gray-600 font-['Roboto'] italic mb-10 flex items-start gap-2 max-w-4xl"
+          class="text-sm lg:text-base text-gray-700 font-['Roboto'] font-normal leading-relaxed mb-10 flex items-start gap-2 max-w-4xl"
         >
           <span class="text-violet-500 text-xl font-normal leading-none mt-1"
             >✦</span
