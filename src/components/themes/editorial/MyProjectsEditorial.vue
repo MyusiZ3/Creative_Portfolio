@@ -331,7 +331,7 @@
               <!-- Overview Description -->
               <div class="space-y-1">
                 <p
-                  class="text-zinc-400 text-xs uppercase tracking-wider font-semibold"
+                  class="text-sm lg:text-base uppercase tracking-wider font-bold text-violet-400"
                 >
                   {{ t("my_proj_overview") }}:
                 </p>
@@ -345,7 +345,7 @@
               <!-- What I Did Bullet Points -->
               <div class="space-y-2 pt-2">
                 <h4
-                  class="text-xs font-bold text-white uppercase tracking-wider"
+                  class="text-sm lg:text-base uppercase tracking-wider font-bold text-violet-400"
                 >
                   {{ t("my_proj_whatidid") }}:
                 </h4>

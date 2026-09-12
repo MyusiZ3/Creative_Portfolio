@@ -223,7 +223,7 @@
                   <!-- Project Overview Column -->
                   <div>
                     <h4
-                      class="text-[11px] text-zinc-400 font-mono font-semibold tracking-wider uppercase mb-2 flex items-center gap-2"
+                      class="text-xs lg:text-sm text-violet-400 font-mono font-bold tracking-wider uppercase mb-2 flex items-center gap-2"
                     >
                       <span
                         class="w-1.5 h-1.5 rounded-full bg-violet-400"
@@ -240,7 +240,7 @@
                   <!-- What I Did / Key Contributions Column -->
                   <div>
                     <h4
-                      class="text-[11px] text-zinc-400 font-mono font-semibold tracking-wider uppercase mb-2.5 flex items-center gap-2"
+                      class="text-xs lg:text-sm text-violet-400 font-mono font-bold tracking-wider uppercase mb-2.5 flex items-center gap-2"
                     >
                       <span
                         class="w-1.5 h-1.5 rounded-full bg-violet-400"
