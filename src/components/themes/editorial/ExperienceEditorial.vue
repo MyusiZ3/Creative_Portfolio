@@ -6,22 +6,34 @@
       <!-- Accents -->
       <img
         src="/images/accents/accent_2.webp"
-        alt="Accent Shape"
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        decoding="async"
         class="absolute top-0 left-0 w-24 md:w-32 lg:w-48 xl:w-150 pointer-events-none z-0"
       />
       <img
         src="/images/accents/accent_4.webp"
-        alt="Accent Shape"
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        decoding="async"
         class="absolute top-0 right-0 w-32 md:w-48 lg:w-64 xl:w-260 pointer-events-none z-0"
       />
       <img
         src="/images/accents/accent_2.webp"
-        alt="Accent Shape"
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        decoding="async"
         class="absolute bottom-0 right-0 w-24 md:w-32 lg:w-48 xl:w-150 pointer-events-none transform rotate-180 z-0"
       />
       <img
         src="/images/accents/accent_3.webp"
-        alt="Accent Shape"
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        decoding="async"
         class="absolute bottom-[0.9rem] lg:bottom-0 py-[-0.1rem] left-0 w-24 md:w-40 lg:w-56 xl:w-180 pointer-events-none transform rotate-180 z-0"
       />
 

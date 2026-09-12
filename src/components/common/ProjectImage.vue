@@ -5,6 +5,8 @@
       v-if="src && !hasError"
       :src="src"
       :alt="alt"
+      loading="lazy"
+      decoding="async"
       referrerpolicy="no-referrer"
       class="w-full h-full object-cover transition-all duration-700"
       :class="[
