@@ -127,6 +127,9 @@ watch(
 .slab-idle {
   transform: translateY(100%);
   transition: none;
+  box-shadow: none !important;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* Enter phase: Wipes UP from bottom to cover screen */

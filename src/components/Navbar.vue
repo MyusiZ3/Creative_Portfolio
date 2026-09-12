@@ -191,12 +191,11 @@ onMounted(() => {
 
       <!-- Mobile Side Drawer (Slides in from right) -->
       <div
-        class="lg:hidden fixed top-0 right-0 bottom-0 w-[290px] sm:w-[320px] max-w-[85vw] h-full z-[9999] transition-transform duration-300 ease-out shadow-2xl flex flex-col justify-between p-6 border-l"
+        class="lg:hidden fixed top-0 right-0 bottom-0 w-[290px] sm:w-[320px] max-w-[85vw] h-full z-[9999] transition-all duration-300 ease-out flex flex-col justify-between p-6 border-l"
         :class="[
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full',
-          currentTheme === 'pixel' 
-            ? 'bg-[#0d1117] border-[#00ff66]/60 shadow-[-10px_0_30px_rgba(0,0,0,0.8)]' 
-            : 'bg-[#171717] border-white/10 shadow-[-10px_0_30px_rgba(0,0,0,0.8)]'
+          isMenuOpen
+            ? 'translate-x-0 opacity-100 pointer-events-auto ' + (currentTheme === 'pixel' ? 'bg-[#0d1117] border-[#00ff66]/60 shadow-[-10px_0_30px_rgba(0,0,0,0.8)]' : 'bg-[#171717] border-white/10 shadow-[-10px_0_30px_rgba(0,0,0,0.8)]')
+            : 'translate-x-full opacity-0 pointer-events-none shadow-none border-transparent'
         ]"
       >
         <!-- Drawer Header -->

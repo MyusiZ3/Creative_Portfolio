@@ -105,7 +105,7 @@
                   class="px-4 py-2 bg-white text-black rounded-xl text-xs font-semibold flex items-center gap-2 hover:bg-zinc-200 transition-all shadow-md"
                 >
                   <i class="bi bi-eye"></i>
-                  {{ lang === "ID" ? "Lihat Detail" : "Case Study" }}
+                  {{ lang === "ID" ? "Lihat Detail" : "View Project" }}
                 </button>
                 <a
                   v-if="project.liveLink"

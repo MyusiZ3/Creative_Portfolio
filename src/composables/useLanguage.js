@@ -198,7 +198,7 @@ const translations = {
     my_proj_tools: "Tools",
     my_proj_overview: "Brief Description",
     my_proj_whatidid: "What I Did",
-    my_proj_view_work: "VIEW CASE STUDY",
+    my_proj_view_work: "VIEW PROJECT",
     my_proj_view_all: "VIEW ALL PROJECTS",
     my_proj_show_less: "SHOW LESS",
 
@@ -398,7 +398,7 @@ const translations = {
     my_proj_tools: "Tools",
     my_proj_overview: "Deskripsi Singkat",
     my_proj_whatidid: "Kontribusi & Peran",
-    my_proj_view_work: "LIHAT STUDI KASUS",
+    my_proj_view_work: "LIHAT PROYEK",
     my_proj_view_all: "LIHAT SEMUA PROYEK",
     my_proj_show_less: "TAMPILKAN LEBIH SEDIKIT",
 
