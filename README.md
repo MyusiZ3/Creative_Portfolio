@@ -2,7 +2,7 @@
 
 A dual-themed interactive personal portfolio built with Vue 3, Vite, and Tailwind CSS. Designed to showcase work across UI/UX design, web engineering, game development, and interactive media through modern typography and retro arcade aesthetics.
 
-Live Demo: [creative-portfolio-theta-rosy.vercel.app](https://creative-portfolio-theta-rosy.vercel.app)
+Live Demo: [imycreative.vercel.app](https://imycreative.vercel.app)
 
 ---
 
