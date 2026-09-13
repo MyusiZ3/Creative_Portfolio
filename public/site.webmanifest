@@ -1,0 +1,26 @@
+{
+  "name": "Muhamad Sidik — Creative Designer Portfolio",
+  "short_name": "Muhamad Sidik",
+  "description": "Interactive portfolio of Muhamad Sidik, Creative Designer based in Bandung, Indonesia.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#171717",
+  "theme_color": "#171717",
+  "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

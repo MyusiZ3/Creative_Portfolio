@@ -2,11 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/webp" href="/images/icon.webp" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Muhamad Sidik — Creative Designer & UI/UX Portfolio</title>
     <meta
       name="description"
@@ -19,11 +15,21 @@
     <meta name="author" content="Muhamad Sidik" />
     <meta name="robots" content="index, follow" />
     <meta name="google-site-verification" content="hcSH_Y-BJNNgbyJkEwrfsDXXvflmICuTivPhaIaM7f4" />
+    <meta name="theme-color" content="#171717" />
     <link rel="canonical" href="https://imycreative.vercel.app/" />
+
+    <!-- Favicons & Web App Manifest -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://imycreative.vercel.app/" />
+    <meta property="og:site_name" content="Muhamad Sidik Portfolio" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content="Muhamad Sidik — Creative Designer & UI/UX Portfolio" />
     <meta
       property="og:description"
@@ -33,19 +39,23 @@
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Muhamad Sidik — Creative Designer & UI/UX Portfolio Banner" />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://imycreative.vercel.app/" />
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@imyusi_" />
+    <meta name="twitter:creator" content="@imyusi_" />
+    <meta name="twitter:url" content="https://imycreative.vercel.app/" />
     <meta
-      property="twitter:title"
+      name="twitter:title"
       content="Muhamad Sidik — Creative Designer & UI/UX Portfolio"
     />
     <meta
-      property="twitter:description"
+      name="twitter:description"
       content="Interactive portfolio of Muhamad Sidik, Creative Designer based in Bandung, Indonesia. Specialized in UI/UX design, game development, and digital media."
     />
-    <meta property="twitter:image" content="https://imycreative.vercel.app/images/hero/og.png" />
+    <meta name="twitter:image" content="https://imycreative.vercel.app/images/hero/og.png" />
+    <meta name="twitter:image:alt" content="Muhamad Sidik — Creative Designer & UI/UX Portfolio Banner" />
 
     <!-- Preload Critical LCP Hero Image -->
     <link rel="preload" as="image" href="/images/hero/hero_me.webp" type="image/webp" fetchpriority="high" />
@@ -92,10 +102,24 @@
       html {
         touch-action: manipulation;
       }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
     </style>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <!-- SSR/Static Crawlers Fallback Header -->
+      <h1 class="sr-only">Muhamad Sidik — Creative Designer & UI/UX Portfolio</h1>
+    </div>
     <script type="module" src="/src/main.js"></script>
     <script>
       document.onkeydown = function (e) {
