@@ -11,7 +11,7 @@
               y: 0,
               transition: { duration: 800, ease: 'easeOut' },
             }"
-            class="text-[29px] min-[360px]:text-[33px] min-[400px]:text-[37px] xs:text-[40px] sm:text-6xl md:text-7xl lg:text-[90px] xl:text-[110px] 2xl:text-[125px] font-bold text-white mb-4 font-['Poppins'] leading-none tracking-tight whitespace-nowrap"
+            class="text-[24px] min-[360px]:text-[28px] min-[400px]:text-[32px] xs:text-[36px] sm:text-5xl md:text-[58px] lg:text-[76px] xl:text-[92px] 2xl:text-[104px] font-bold text-white mb-4 font-['Poppins'] leading-none tracking-tight whitespace-nowrap"
           >
             <span class="relative inline-block mr-1.5 sm:mr-3 lg:mr-4 xl:mr-5">
               <span
@@ -97,7 +97,7 @@
           >
             <img
               src="/images/hero/hero_me.webp"
-              alt="Muhamad Sidik - Creative Designer Portfolio Photo"
+              alt="Muhamad Sidik - Creative Technologist Portfolio Photo"
               width="1000"
               height="1100"
               class="w-full h-auto block"

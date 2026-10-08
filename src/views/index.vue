@@ -87,7 +87,7 @@ let pendingTarget = "";
 
 const handleThemeSwitch = (nextTheme) => {
   revealLabel.value =
-    nextTheme === "pixel" ? "ARCADE MODE" : "CREATIVE DESIGNER";
+    nextTheme === "pixel" ? "ARCADE MODE" : "EDITORIAL MODE";
   revealActive.value = true;
 
   setTimeout(() => {

@@ -60,7 +60,7 @@
               MUHAMAD SIDIK
             </h3>
             <div class="flex items-center gap-2">
-               <span class="text-white/70 font-medium text-[9px] sm:text-[11px] uppercase tracking-widest">{{ t('hero_designer') }}</span>
+               <span class="text-white/70 font-medium text-[9px] sm:text-[11px] uppercase tracking-widest">Creative Technologist</span>
                <span class="text-white/30 text-xs font-light font-mono select-none">|</span>
                <span class="text-white/40 font-mono text-[8px] sm:text-[9px] uppercase tracking-wider">Telkom University</span>
             </div>
@@ -72,7 +72,7 @@
           <div class="flex gap-6 sm:gap-10">
              <div class="space-y-1">
                <p class="text-[8px] text-white/40 font-mono uppercase tracking-wider">FOCUS AREA</p>
-               <p class="text-white text-[9px] sm:text-xs font-mono tracking-tight font-medium">UI/UX & CREATIVE DESIGN</p>
+               <p class="text-white text-[9px] sm:text-xs font-mono tracking-tight font-medium">INTERACTIVE & PROTOTYPING</p>
              </div>
              <div class="space-y-1">
                <p class="text-[8px] text-white/40 font-mono uppercase tracking-wider">STATUS</p>

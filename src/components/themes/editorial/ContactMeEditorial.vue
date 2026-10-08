@@ -402,14 +402,14 @@
           <div
             class="inline-block animate-marquee-slow font-['Poppins'] text-sm sm:text-base tracking-[0.3em] text-zinc-400 pr-4 uppercase"
           >
-            CREATIVE DEVELOPER <span class="text-zinc-600">//</span> <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]">CREATIVE DESIGNER</span> <span class="text-zinc-600">//</span> UI/UX ENTHUSIAST <span class="text-zinc-600">//</span>&nbsp;
-            CREATIVE DEVELOPER <span class="text-zinc-600">//</span> <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]">CREATIVE DESIGNER</span> <span class="text-zinc-600">//</span> UI/UX ENTHUSIAST <span class="text-zinc-600">//</span>&nbsp;
+            CREATIVE TECHNOLOGIST <span class="text-zinc-600">//</span> <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]">INTERACTIVE DESIGNER</span> <span class="text-zinc-600">//</span> RAPID PROTOTYPER <span class="text-zinc-600">//</span>&nbsp;
+            CREATIVE TECHNOLOGIST <span class="text-zinc-600">//</span> <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]">INTERACTIVE DESIGNER</span> <span class="text-zinc-600">//</span> RAPID PROTOTYPER <span class="text-zinc-600">//</span>&nbsp;
           </div>
           <div
             class="inline-block animate-marquee-slow font-['Poppins'] text-sm sm:text-base tracking-[0.3em] text-zinc-400 pr-4 uppercase"
           >
-            CREATIVE DEVELOPER <span class="text-zinc-600">//</span> <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]">CREATIVE DESIGNER</span> <span class="text-zinc-600">//</span> UI/UX ENTHUSIAST <span class="text-zinc-600">//</span>&nbsp;
-            CREATIVE DEVELOPER <span class="text-zinc-600">//</span> <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]">CREATIVE DESIGNER</span> <span class="text-zinc-600">//</span> UI/UX ENTHUSIAST <span class="text-zinc-600">//</span>&nbsp;
+            CREATIVE TECHNOLOGIST <span class="text-zinc-600">//</span> <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]">INTERACTIVE DESIGNER</span> <span class="text-zinc-600">//</span> RAPID PROTOTYPER <span class="text-zinc-600">//</span>&nbsp;
+            CREATIVE TECHNOLOGIST <span class="text-zinc-600">//</span> <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]">INTERACTIVE DESIGNER</span> <span class="text-zinc-600">//</span> RAPID PROTOTYPER <span class="text-zinc-600">//</span>&nbsp;
           </div>
         </div>
 
@@ -540,7 +540,7 @@ const downloading = ref({ designer: false, developer: false });
 
 const sharePortfolio = async () => {
   const shareData = {
-    title: "Muhamad Sidik | Creative Designer",
+    title: "Muhamad Sidik | Creative Technologist",
     text: "Check out this amazing creative portfolio by Muhamad Sidik!",
     url: window.location.href,
   };

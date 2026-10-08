@@ -107,8 +107,8 @@
             >
               {{
                 isId
-                  ? "Creative Developer & Game Developer yang berfokus menciptakan pengalaman interaktif imersif (Arcade Games, VR/AR, dan UI/UX modern)."
-                  : "Creative Developer & Game Developer crafting immersive interactive experiences spanning Arcade Games, VR/AR, and modern UI/UX."
+                  ? "Creative Technologist yang berfokus menciptakan pengalaman interaktif fungsional (Web Interaktif, AR/VR, dan Rapid Prototyping)."
+                  : "Creative Technologist crafting functional interactive experiences spanning Interactive Web, AR/VR, and Rapid Prototyping."
               }}
             </p>
           </div>
