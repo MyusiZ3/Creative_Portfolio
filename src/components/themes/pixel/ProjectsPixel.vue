@@ -350,18 +350,55 @@ const projects = [
     title: "Mathmagic – HKI App",
     category: "game",
     shortDesc:
-      "Aplikasi HKI pembelajaran matematika SD dengan Unity game & Web Admin Dashboard (analisis user & config).",
+      "Ekosistem gim matematika interaktif SD (HKI No. 001400842) Unity 6 + Firebase dan Vite Web Admin Dashboard.",
     images: ["/images/projects/Mathmagic/dashboard_mathmagic.webp"],
-    platform: "Unity Game & Web Admin",
-    role: "Main UI Designer & Lead Dev",
-    timeline: "2024 – 2025",
-    techStack: ["Unity 2D", "C#", "Figma", "Vite", "Supabase"],
-    demoUrl:
-      "https://drive.google.com/drive/folders/1rLr5_umd3LsMvZY_Q9ZyLjp5G-xHPOdv?usp=sharing",
+    platform: "Unity 6 & Web Admin",
+    role: "Project Creator & Lead Dev",
+    timeline: "2024 – 2026",
+    techStack: ["Unity 6", "C#", "Firebase", "Vite", "Figma"],
+    demoUrl: "https://shorturl.at/cb55f",
+    githubUrl: "https://github.com/MyusiZ3/Mathmagic-Firebase",
     challenge:
-      "Mendesain UI/UX gim anak yang ramah sekaligus menyediakan dashboard admin untuk konfigurasi parameter & analisis performa.",
+      "Menyediakan gim pembelajaran matematika SD kelas 4 dengan telemetri progres siswa secara real-time dan balancing parameter tanpa rebuild aplikasi.",
     solution:
-      "Merancang UI gim ceria di Figma, memprogram logika Unity C#, serta membangun Web Admin Dashboard terpusat.",
+      "Membangun klien gim Unity 6 (C#) terintegrasi Firebase Firestore & Auth serta Vite Web Admin Dashboard berbasis Bento Grid.",
+  },
+  {
+    id: "appliq",
+    title: "AppliQ – Job Tracker",
+    category: "app",
+    shortDesc:
+      "Sistem manajemen karier & rekrutmen Kanban, ATS resume builder PDF, dan sinkronisasi Google Calendar via Flutter & Supabase.",
+    images: [
+      "/images/projects/AppliQ/appliq_element.png",
+      "/images/projects/AppliQ/appliq_logo.png",
+    ],
+    platform: "Mobile Application",
+    role: "Mobile Dev & UI/UX Designer",
+    timeline: "2025",
+    techStack: ["Flutter", "Dart", "Supabase", "PostgreSQL", "OAuth"],
+    githubUrl: "https://github.com/MyusiZ3/AppliQ",
+    challenge:
+      "Pencari kerja kesulitan mengorganisir puluhan alur rekrutmen yang tersebar serta membuat resume ATS dan cover letter terpersonalisasi secara instan.",
+    solution:
+      "Membangun aplikasi mobile modular Flutter & Supabase dengan Kanban drag-and-drop, engine PDF lokal, dan integrasi Google Calendar.",
+  },
+  {
+    id: "myduitgweh",
+    title: "MyDuitGweh – Smart Finance",
+    category: "app",
+    shortDesc:
+      "Aplikasi keuangan pribadi dengan Archen AI Advisor, pemindai struk Google ML Kit OCR, dan dompet kolaborasi bersama.",
+    images: ["/images/projects/MyDuitGweh/logo_app.png"],
+    platform: "Android Mobile App",
+    role: "Mobile Dev & Cloud Architect",
+    timeline: "2025",
+    techStack: ["Flutter", "Dart", "Firebase", "ML Kit", "Gemini API"],
+    githubUrl: "https://github.com/MyusiZ3/MyDuitGweh",
+    challenge:
+      "Pencatatan keuangan konvensional lambat dan monoton, minim wawasan interaktif, dan jarang mendukung dompet kolaborasi.",
+    solution:
+      "Mengintegrasikan Gemini & Groq AI advisor multi-persona, kamera custom OCR struk belanja, dompet kolaborasi real-time, dan UI Apple Bento.",
   },
   {
     id: "jaswita_djourney",

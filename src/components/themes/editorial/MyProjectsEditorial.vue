@@ -717,40 +717,119 @@ const projects = computed(() => {
         : "Mathmagic – Math Educational App (HKI)",
       icon: "bi-award",
       role: isId
-        ? "Desainer UI Utama, Pengembang Unity & Web"
-        : "Main UI Designer, Lead Unity & Web Developer",
+        ? "Project Creator, Lead Developer & Main UI Designer"
+        : "Project Creator, Lead Developer & Main UI Designer",
       teamInfo: isId
-        ? "Hak Kekayaan Intelektual | SD Lab Univ Pattimura"
-        : "Intellectual Property (HKI) | SD Lab Pattimura Univ",
-      tools: "Unity 2D, C#, Figma, Vite, Supabase",
+        ? "Hak Kekayaan Intelektual Resmi No. 001400842 | Telkom Univ & SD Lab Univ Pattimura"
+        : "Official Copyright (HKI) No. 001400842 | Telkom Univ & SD Lab Pattimura Univ",
+      tools: "Unity 6 (LTS), C#, Firebase (Firestore & Auth), Vite, JavaScript ES6, Figma",
       overview: isId
-        ? "Aplikasi pembelajaran matematika interaktif berlisensi HKI untuk siswa kelas 4 SD Laboratorium Universitas Pattimura. Dilengkapi Web Admin Dashboard untuk mengelola pengguna, mengonfigurasi parameter gim (global time, HP, skor), dan menganalisis performa belajar."
-        : "Intellectual Property (HKI) certified educational math application for 4th Grade SD Laboratorium Universitas Pattimura. Features Unity gameplay backed by a Web Admin Dashboard for user management, game config tuning (global time, HP, score), and user analytics.",
+        ? "Ekosistem gim pembelajaran matematika interaktif berlisensi Hak Cipta resmi Kemenkumham RI (No. 001400842) untuk siswa kelas 4 SD Laboratorium Universitas Pattimura. Mengintegrasikan klien mobile Unity 6 dengan sinkronisasi cloud real-time Firebase serta Web Admin Dashboard berbasis Vite untuk telemetri belajar siswa dan remote game parameter balancing tanpa perlu rebuild aplikasi."
+        : "An interactive educational math gaming ecosystem officially copyright registered with HKI (No. 001400842) for 4th Grade SD Laboratorium Universitas Pattimura. Combines a mobile Unity 6 game client with real-time Firebase cloud synchronization (Firestore & Auth) and a Vite Web Admin Dashboard for student telemetry analytics and remote parameter balancing without rebuilding binaries.",
       tasks: isId
         ? [
-            "Merancang seluruh antarmuka (Main UI Designer) dan alur UX gim anak di Figma",
-            "Mengembangkan logika permainan (Unity C#) mencakup kuis, HP, dan timer",
-            "Membangun Web Admin Dashboard untuk manajemen akun pengguna, siswa & guru",
-            "Membuat sistem konfigurasi gim dinamis (global time, HP, score) & panel analisis user",
-            "Pendaftaran Hak Kekayaan Intelektual (HKI) resmi aplikasi",
+            "Project Creator & Lead Developer: Merancang arsitektur penuh ekosistem gim Unity 6 dan Web Admin Dashboard",
+            "Main UI Designer: Merancang seluruh UI/UX ceria dan ramah anak di Figma serta animasi kurva sinusoidal (Mathf.Sin) di Unity",
+            "Mengembangkan mekanika kuis interaktif (Unity C#), sistem HP, timer dinamis, dan kalkulasi skor",
+            "Membangun Web Admin Dashboard (Vite & ES6) dengan Bento Grid untuk analitik telemetri siswa dan leaderboard real-time",
+            "Mengintegrasikan Firebase Firestore & Authentication untuk sinkronisasi cloud dua arah serta offline caching",
+            "Pendaftaran Hak Cipta Resmi Kemenkumham RI (No. 001400842)",
           ]
         : [
-            "Designed full user interface and child-friendly UX flow in Figma as Main UI Designer",
-            "Programmed interactive math game mechanics in Unity C# (quiz, HP, timer)",
-            "Built Web Admin Dashboard for user, student, and teacher account management",
-            "Created dynamic game configuration panel (global time, HP, score) & user analytics",
-            "Registered and secured official Intellectual Property Rights (HKI) certification",
+            "Project Creator & Lead Developer: Architected full ecosystem connecting Unity 6 mobile game client with Web Admin Dashboard",
+            "Main UI Designer: Designed complete child-friendly interface in Figma and implemented math wave sinusoidal UI animations in Unity",
+            "Programmed interactive math quiz mechanics in Unity C#, HP system, dynamic timer, and scoring",
+            "Built Vite Web Admin Dashboard featuring Bento Grid telemetry analytics, real-time leaderboards, and remote game balancing",
+            "Integrated Firebase Firestore & Authentication for bi-directional real-time cloud sync with offline session caching",
+            "Officially registered Copyright with Ministry of Law and Human Rights RI (HKI No. 001400842)",
           ],
       platform: isId
-        ? "Gim Edukasi Unity & Web Admin"
-        : "Unity Game & Web Admin Dashboard",
+        ? "Gim Edukasi Unity 6 & Web Admin Dashboard"
+        : "Unity 6 Game & Web Admin Dashboard",
       bg: "#059669",
       images: [
         "/images/projects/Mathmagic/dashboard_mathmagic.webp",
         "/images/projects/mathrift_2.webp",
         "/images/projects/mathrift_3.webp",
       ],
-      link: "https://drive.google.com/drive/folders/1rLr5_umd3LsMvZY_Q9ZyLjp5G-xHPOdv?usp=sharing",
+      link: "https://shorturl.at/cb55f",
+      _dir: "next",
+    },
+    {
+      name: isId
+        ? "AppliQ – Job Application Tracker & Career Management"
+        : "AppliQ – Job Application Tracker & Career Management",
+      icon: "bi-kanban",
+      role: isId
+        ? "Pengembang Mobile & Desainer UI/UX"
+        : "Mobile Developer & UI/UX Designer",
+      teamInfo: isId
+        ? "Proyek Personal | 2025"
+        : "Personal Project | 2025",
+      tools: "Flutter, Dart, Supabase (PostgreSQL), Google OAuth, PDF Engine",
+      overview: isId
+        ? "Aplikasi mobile pelacak lamaran kerja dan manajemen karier berbasis Flutter & Supabase. Membantu pelamar mengelola alur rekrutmen via drag-and-drop Kanban pipeline, pembuat ATS Resume/CV otomatis ke format PDF, generator cover letter dengan tanda tangan digital, sinkronisasi jadwal wawancara ke Google Calendar, serta analitik konversi karier."
+        : "A Flutter & Supabase mobile application designed to systematically manage job recruitment pipelines and career records. Features interactive drag-and-drop Kanban tracking, an instant ATS-compliant CV/resume PDF builder, dynamic cover letter generation with digital signatures, calendar interview sync with local push alerts, and visual career analytics.",
+      tasks: isId
+        ? [
+            "Merancang arsitektur aplikasi mobile modular dengan Flutter & Supabase backend",
+            "Membangun sistem Kanban pipeline interaktif (Applied, Interview, Offering, Accepted, Rejected) dengan drag-and-drop",
+            "Mengimplementasikan modul ATS Resume & Cover Letter PDF builder yang di-render langsung di perangkat",
+            "Mengintegrasikan Google OAuth 2.0, sinkronisasi Google Calendar, dan notifikasi pengingat wawancara lokal",
+            "Menerapkan Row-Level Security (RLS) PostgreSQL untuk isolasi data pengguna serta sistem multi-bahasa (ID, EN, JA, KO)",
+          ]
+        : [
+            "Architected modular Flutter mobile application backed by Supabase PostgreSQL",
+            "Built interactive drag-and-drop Kanban recruitment pipeline tracking all stages with duration metrics",
+            "Implemented native on-device ATS Resume/CV and customizable Cover Letter PDF rendering engines",
+            "Integrated Google OAuth 2.0, Google Calendar schedule sync, and local push notification reminders",
+            "Enforced PostgreSQL Row-Level Security (RLS) policies for complete user data isolation and multi-language support (ID, EN, JA, KO)",
+          ],
+      platform: isId ? "Aplikasi Mobile (Flutter)" : "Mobile Application (Flutter)",
+      bg: "#0284c7",
+      images: [
+        "/images/projects/AppliQ/appliq_element.png",
+        "/images/projects/AppliQ/appliq_logo.png",
+      ],
+      link: "https://github.com/MyusiZ3/AppliQ",
+      _dir: "next",
+    },
+    {
+      name: isId
+        ? "MyDuitGweh – Smart Financial Tracker with AI & Collaboration"
+        : "MyDuitGweh – Smart Financial Tracker with AI & Collaboration",
+      icon: "bi-wallet2",
+      role: isId
+        ? "Pengembang Mobile & Arsitek Sistem Cloud"
+        : "Mobile Developer & Cloud System Architect",
+      teamInfo: isId
+        ? "Proyek Personal | 2025"
+        : "Personal Project | 2025",
+      tools: "Flutter, Dart, Firebase (Auth/Firestore), Google ML Kit, Gemini & Groq API",
+      overview: isId
+        ? "Aplikasi manajemen keuangan pribadi berbasis Flutter & Firebase dengan estetika Apple/iOS Design Language (glassmorphism & Bento layout). Menghadirkan Archen AI Financial Advisor (didukung Gemini & Groq API dengan 5 mode kepribadian), dompet kolaborasi bersama dengan in-app chat, pemindai struk otomatis berbasis OCR Google ML Kit, serta in-app APK updater terintegrasi."
+        : "A personal finance tracker mobile application built with Flutter & Firebase featuring Apple/iOS design language aesthetics (glassmorphism & Bento layouts). Highlights include Archen AI Financial Advisor (Gemini & Groq API with 5 personality tones), multi-wallet collaboration with real-time chat, automated receipt scanning via Google ML Kit OCR, and seamless in-app APK updates.",
+      tasks: isId
+        ? [
+            "Merancang UI/UX mobile berbasis Apple design guidelines dengan Bento layout, glassmorphism, dan responsivitas halus",
+            "Mengintegrasikan Archen AI Financial Advisor menggunakan Gemini & Groq API dengan 5 kepribadian dinamis dan sistem multi-session chat",
+            "Membangun kamera custom pemindai struk belanja dengan OCR Google ML Kit untuk ekstraksi nominal dan tanggal otomatis",
+            "Mengembangkan arsitektur multi-wallet dengan dompet kolaborasi real-time (shared wallet & in-app chat room)",
+            "Menerapkan sistem keamanan biometrik (Fingerprint/Face ID), Firestore security rules, dan in-app direct APK updater",
+          ]
+        : [
+            "Crafted mobile UI/UX inspired by Apple design guidelines using Bento Grid layouts, glassmorphism, and smooth micro-interactions",
+            "Integrated Archen AI Financial Advisor powered by Gemini & Groq APIs with 5 distinct personality tones and multi-session chat",
+            "Engineered custom camera receipt scanner with Google ML Kit OCR to automatically extract merchant, date, and amounts",
+            "Developed multi-wallet architecture featuring shared collaborative wallets with real-time in-wallet chat rooms",
+            "Implemented biometric security (Fingerprint/Face ID), role-based Firestore rules, and automated in-app direct APK updates",
+          ],
+      platform: isId ? "Aplikasi Mobile Android (Flutter)" : "Android Mobile App (Flutter)",
+      bg: "#10b981",
+      images: [
+        "/images/projects/MyDuitGweh/logo_app.png",
+      ],
+      link: "https://github.com/MyusiZ3/MyDuitGweh",
       _dir: "next",
     },
     {

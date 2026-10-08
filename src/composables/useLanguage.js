@@ -37,11 +37,11 @@ const translations = {
     show_less: 'Show Less',
     about_title: 'About Me',
     about_intro_1:
-      "I’m most engaged by ideas that need to become more than just a visual concept. With a background in Multimedia Engineering Technology, I approach creative work with an understanding of the assets, logic, systems, and technical constraints behind it.",
+      'I’m most engaged by ideas that need to become more than just a visual concept. With a background in Multimedia Engineering, I approach creative work with an understanding of the assets, logic, systems, and technical constraints behind it.',
     about_intro_2:
-      "I tend to learn by building. I like turning ideas into working prototypes, testing them in practice, and troubleshooting what breaks along the way. Bugs and technical limitations are part of the process, and I enjoy figuring out why something fails and how to improve it.",
+      'I tend to learn by building. I like turning ideas into working prototypes, testing them in practice, and troubleshooting what breaks along the way. Bugs and technical limitations are part of the process, and I enjoy figuring out why something fails and how to improve it.',
     about_intro_3:
-      "This hands-on approach helps me turn creative ideas into digital experiences that are designed, built, tested, and refined.",
+      'This hands-on approach helps me turn creative ideas into digital experiences that are designed, built, tested, and refined.',
     education_title: 'Education',
     edu_1_desc: 'Applied Sciences in Multimedia Engineering Technology',
     edu_1_detail: '2022 - 2026 (GPA: 3.83 / 4.00, Cum Laude)',
@@ -51,7 +51,7 @@ const translations = {
     skills_design_title: 'Design',
     skills_design_desc: 'UI Design • Graphic Design • Prototyping',
     skills_tech_title: 'Technology',
-    skills_tech_desc: 'Web Development • Game Development • AR Development',
+    skills_tech_desc: 'Web & App Development • Game Development • AR Development',
     skills_process_title: 'Process',
     skills_process_desc: 'Creative Thinking • Problem Solving',
     stat_years: 'Years of Hands-On Experience',
@@ -96,11 +96,11 @@ const translations = {
     additional_projects_title: 'Additional Projects',
     show_additional_projects: 'Show Additional Projects',
     hide_additional_projects: 'Hide Additional Projects',
-    exp_p7_title: 'Unity Developer & Programmer',
+    exp_p7_title: 'Project Creator, Lead Dev & Main UI Designer',
     exp_p7_sub: 'Mathmagic',
     exp_p7_desc:
-      'Developed an educational mathematics game for 4th-grade students in partnership with SD Laboratorium Universitas Pattimura. Worked across UI design, application flow, Unity development, and Firebase integration, building both the player experience and supporting admin CMS.',
-    exp_p7_tech: 'Unity · Firebase · UI Design · System Flow',
+      'Developed an interactive educational mathematics game ecosystem for 4th-grade elementary students (HKI Certified No. 001400842). Engineered the Unity 6 (C#) game client with real-time Firebase cloud synchronization (Firestore & Auth) and built the Vite Web Admin Dashboard with Bento Grid telemetry analytics and remote parameter balancing.',
+    exp_p7_tech: 'Unity 6 · C# · Firebase · Vite · Figma',
     exp_p1_title: 'Project Manager & Game Dev',
     exp_p1_sub: 'RideXP',
     exp_p1_desc:
@@ -237,11 +237,11 @@ const translations = {
     show_less: 'Tampilkan Sedikit',
     about_title: 'Tentang Saya',
     about_intro_1:
-      "Saya paling tertarik pada ide-ide yang menuntut lebih dari sekadar konsep visual. Berlatar belakang Teknologi Rekayasa Multimedia, saya mendekati karya kreatif dengan pemahaman tentang aset, logika, sistem, dan batasan teknis di baliknya.",
+      'Saya paling tertarik pada ide-ide yang menuntut lebih dari sekadar konsep visual. Berlatar belakang Multimedia Engineering, saya mendekati karya kreatif dengan pemahaman tentang aset, logika, sistem, dan batasan teknis di baliknya.',
     about_intro_2:
-      "Saya terbiasa belajar lewat proses membangun langsung. Saya suka mengubah ide menjadi prototipe fungsional, mengujinya secara nyata, dan mencari tahu apa yang bermasalah di sepanjang prosesnya. Bug dan limitasi teknis adalah bagian dari proses, dan saya menikmati mencari tahu mengapa sesuatu gagal serta bagaimana memperbaikinya.",
+      'Saya terbiasa belajar lewat proses membangun langsung. Saya suka mengubah ide menjadi prototipe fungsional, testing them in practice dan mencari tahu apa yang bermasalah di sepanjang prosesnya. Bug dan limitasi teknis adalah bagian dari proses, dan saya menikmati mencari tahu mengapa sesuatu gagal serta bagaimana memperbaikinya.',
     about_intro_3:
-      "Pendekatan hands-on ini membantu saya mewujudkan ide-ide kreatif menjadi pengalaman digital yang dirancang, dibangun, diuji, dan disempurnakan.",
+      'Pendekatan hands-on ini membantu saya mewujudkan ide-ide kreatif menjadi pengalaman digital yang dirancang, dibangun, diuji, dan disempurnakan.',
     education_title: 'Pendidikan',
     edu_1_desc: 'Fakultas Ilmu Terapan, Teknologi Rekayasa Multimedia',
     edu_1_detail: '2022 - 2026 (IPK: 3.83 / 4.00, Cum Laude)',
@@ -251,7 +251,7 @@ const translations = {
     skills_design_title: 'Desain',
     skills_design_desc: 'UI Design • Desain Grafis • Prototyping',
     skills_tech_title: 'Teknologi',
-    skills_tech_desc: 'Web Development • Game Development • AR Development',
+    skills_tech_desc: 'Web & App Development • Game Development • AR Development',
     skills_process_title: 'Proses',
     skills_process_desc: 'Berpikir Kreatif • Problem Solving',
     stat_years: 'Tahun Berkarya',
@@ -296,11 +296,11 @@ const translations = {
     additional_projects_title: 'Proyek Tambahan',
     show_additional_projects: 'Lihat Proyek Tambahan',
     hide_additional_projects: 'Sembunyikan Proyek Tambahan',
-    exp_p7_title: 'Unity Developer & Programmer',
+    exp_p7_title: 'Project Creator, Lead Dev & Main UI Designer',
     exp_p7_sub: 'Mathmagic',
     exp_p7_desc:
-      'Mengembangkan game edukasi matematika untuk siswa kelas 4 SD bekerja sama dengan SD Laboratorium Universitas Pattimura. Bekerja dalam desain UI, alur aplikasi, pengembangan Unity, dan integrasi Firebase, membangun pengalaman pemain serta CMS admin pendukung.',
-    exp_p7_tech: 'Unity · Firebase · UI Design · System Flow',
+      'Mengembangkan ekosistem gim edukasi matematika interaktif untuk siswa kelas 4 SD berlisensi Hak Cipta resmi (HKI No. 001400842). Membangun klien gim mobile Unity 6 (C#) dengan sinkronisasi cloud real-time Firebase (Firestore & Auth) serta Web Admin Dashboard berbasis Vite untuk telemetri belajar dan remote game parameter balancing.',
+    exp_p7_tech: 'Unity 6 · C# · Firebase · Vite · Figma',
     exp_p1_title: 'Project Manager & Game Dev',
     exp_p1_sub: 'RideXP',
     exp_p1_desc:

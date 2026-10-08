@@ -359,19 +359,56 @@ const projects = computed(() => {
     {
       name: "Mathmagic (HKI)",
       category: isId
-        ? "Gim Edukasi & Web Admin"
-        : "Educational Game & Web Admin",
+        ? "Gim Edukasi & Web Admin (Firebase)"
+        : "Educational Game & Web Admin (Firebase)",
       bg: "#059669",
       image: "/images/projects/Mathmagic/dashboard_mathmagic.webp",
       filterType: "game",
-      liveLink: "https://drive.google.com/drive/folders/1rLr5_umd3LsMvZY_Q9ZyLjp5G-xHPOdv?usp=sharing",
+      liveLink: "https://shorturl.at/cb55f",
+      githubLink: "https://github.com/MyusiZ3/Mathmagic-Firebase",
       caseStudy: {
         challenge: isId
-          ? "Menyediakan gim pembelajaran matematika SD kelas 4 yang fleksibel parameternya serta memuat analitik siswa bagi guru."
-          : "Providing a 4th grade elementary math game with configurable game rules and comprehensive student learning analytics for teachers.",
+          ? "Menyediakan gim pembelajaran matematika SD kelas 4 berkinerja tinggi dengan telemetri progres siswa secara real-time dan remote parameter balancing tanpa rebuild aplikasi."
+          : "Delivering a high-performance 4th-grade math game with real-time student telemetry analytics and remote parameter balancing without rebuilding binaries.",
         solution: isId
-          ? "Merancang UI gim ceria Unity, memprogram sistem HP/Timer, serta membangun Web Admin Dashboard terpusat (HKI Certified)."
-          : "Designed colorful Unity UI, programmed HP/timer mechanics, and built a centralized Web Admin Dashboard (HKI Certified).",
+          ? "Membangun klien gim Unity 6 (C#) terintegrasi Firebase Firestore & Auth, serta Web Admin Dashboard (Vite & ES6) berbasis Bento Grid dengan status resmi HKI DJKI No. 001400842."
+          : "Engineered a Unity 6 (C#) game client integrated with Firebase Firestore & Auth, plus a Vite Web Admin Dashboard featuring Bento Grid telemetry, officially HKI DJKI certified (No. 001400842).",
+      },
+    },
+    {
+      name: "AppliQ",
+      category: isId
+        ? "Pelacak Lamaran Kerja & Sistem Karier"
+        : "Job Tracker & Career System",
+      bg: "#0284c7",
+      image: "/images/projects/AppliQ/appliq_logo.png",
+      filterType: "app",
+      githubLink: "https://github.com/MyusiZ3/AppliQ",
+      caseStudy: {
+        challenge: isId
+          ? "Pencari kerja kesulitan mengelola puluhan alur rekrutmen yang tersebar serta membuat resume ATS dan cover letter yang terpersonalisasi secara instan."
+          : "Job seekers struggle to track multi-stage recruitment pipelines across platforms and quickly produce tailored ATS resumes and cover letters.",
+        solution: isId
+          ? "Mengembangkan aplikasi Flutter & Supabase dengan Kanban board interaktif, generator PDF resume ATS & cover letter instan, sinkronisasi kalender, serta Row-Level Security."
+          : "Developed a Flutter & Supabase mobile app featuring drag-and-drop Kanban tracking, on-device ATS resume/cover letter PDF rendering, calendar sync, and PostgreSQL RLS security.",
+      },
+    },
+    {
+      name: "MyDuitGweh",
+      category: isId
+        ? "Smart Financial Tracker & AI Advisor"
+        : "Smart Financial Tracker & AI Advisor",
+      bg: "#10b981",
+      image: "/images/projects/MyDuitGweh/logo_app.png",
+      filterType: "app",
+      githubLink: "https://github.com/MyusiZ3/MyDuitGweh",
+      caseStudy: {
+        challenge: isId
+          ? "Pencatatan keuangan manual memakan waktu, minim wawasan interaktif, dan jarang mendukung kolaborasi anggaran bersama dengan analitik cerdas."
+          : "Manual expense recording is tedious, lacks conversational insights, and rarely supports collaborative multi-wallet budgeting with smart analytics.",
+        solution: isId
+          ? "Membangun aplikasi Flutter bertenaga Firebase dengan pemindai struk OCR Google ML Kit, Archen AI Advisor (Gemini & Groq), dompet kolaborasi bersama, dan tata letak Bento bergaya iOS."
+          : "Engineered a Flutter & Firebase app featuring Google ML Kit OCR receipt scanning, multi-persona Archen AI Advisor (Gemini & Groq), shared collaborative wallets, and Apple-inspired Bento UI.",
       },
     },
     {
