@@ -80,20 +80,22 @@ onMounted(() => {
       class="navbar-content container mx-auto flex justify-between items-center gap-2 px-6 lg:px-12 xl:px-38 py-3 relative z-10"
     >
       <!-- Logo -->
-      <div
-        class="flex items-center gap-2 relative z-50 nav-item"
+      <a
+        href="#"
+        @click="handleNav('', 'Home', $event)"
+        aria-label="Home"
+        class="flex items-center relative z-50 nav-item hover:opacity-90 hover:scale-105 transition-all duration-200 cursor-pointer"
         style="--delay: 0"
       >
-        <img src="/images/logo.webp" alt="Muhamad Sidik Logo" width="56" height="56" decoding="async" class="w-10 lg:w-11 xl:w-14 aspect-square object-contain" />
-        <a
-          href="#"
-          @click="handleNav('', 'Home', $event)"
-          aria-label="Muhamad Sidik Home"
-          class="font-semibold text-[11px] lg:text-[12px] xl:text-[15px] transition-colors"
-          :class="currentTheme === 'pixel' ? 'font-silkscreen text-[#00ff66] hover:text-[#33ff88] tracking-wide' : 'font-[\'Poppins\'] text-white'"
-          >{{ currentTheme === 'pixel' ? 'M.SIDIK' : 'Muhamad' }}<br />{{ currentTheme === 'pixel' ? '&lt;DEV/&gt;' : 'Sidik' }}</a
-        >
-      </div>
+        <img
+          src="/images/logo.webp"
+          alt="Logo"
+          width="56"
+          height="56"
+          decoding="async"
+          class="w-10 lg:w-11 xl:w-14 aspect-square object-contain"
+        />
+      </a>
 
       <!-- Desktop Menu -->
       <div class="hidden lg:flex items-center lg:gap-4 xl:gap-14 uppercase">
@@ -138,11 +140,13 @@ onMounted(() => {
           >{{ t('nav_contact') }}</a
         >
         <div class="flex items-center lg:gap-2 xl:gap-3">
+          <!-- Theme Toggle (Temporarily commented out)
           <ThemeToggle
             @toggle-theme="handleToggleTheme"
             class="nav-item"
             style="--delay: 7"
           />
+          -->
 
           <button
             @click="handleToggleLang"
@@ -213,15 +217,14 @@ onMounted(() => {
       >
         <!-- Drawer Header -->
         <div class="flex items-center justify-between pb-5 border-b border-white/10">
-          <div class="flex items-center gap-3">
-            <img src="/images/logo.webp" alt="logo" class="w-8 h-8 object-contain" />
-            <span 
-              class="text-xs font-bold uppercase tracking-wider"
-              :class="currentTheme === 'pixel' ? 'font-silkscreen text-[#00ff66]' : 'font-[\'Poppins\'] text-white'"
-            >
-              {{ currentTheme === 'pixel' ? 'M.SIDIK <DEV/>' : 'Muhamad Sidik' }}
-            </span>
-          </div>
+          <a
+            href="#"
+            @click="handleNav('', 'Home', $event)"
+            class="flex items-center hover:opacity-90 transition-opacity"
+            aria-label="Home"
+          >
+            <img src="/images/logo.webp" alt="Logo" class="w-8 h-8 object-contain" />
+          </a>
           <button
             @click="isMenuOpen = false"
             aria-label="Close menu"
@@ -285,7 +288,9 @@ onMounted(() => {
         <div class="pt-5 border-t border-white/10 flex items-center justify-between">
           <span class="text-[10px] text-zinc-400 font-mono tracking-widest">PREFERENCES</span>
           <div class="flex items-center gap-2.5">
+            <!-- Theme Toggle (Temporarily commented out)
             <ThemeToggle @toggle-theme="handleToggleTheme" />
+            -->
             <button
               @click="handleToggleLang"
               aria-label="Toggle Language"
