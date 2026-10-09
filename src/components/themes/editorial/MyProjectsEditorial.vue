@@ -324,7 +324,33 @@
                   >
                   {{ project.teamInfo }}
                 </p>
-                <p v-if="project.tools">
+                <!-- Tech Stack Badges (Clean Dashboard Icons with Tooltip) -->
+                <div v-if="project.toolIcons && project.toolIcons.length" class="flex items-center gap-2.5 flex-wrap pt-1">
+                  <span class="text-xs text-zinc-400">{{ t("my_proj_tools") }}:</span>
+                  <div class="flex items-center gap-1.5 flex-wrap">
+                    <div
+                      v-for="tool in project.toolIcons"
+                      :key="tool.name"
+                      class="relative group/tool flex items-center justify-center w-8 h-8 rounded-lg bg-white/[0.04] border border-white/10 hover:border-violet-500/50 hover:bg-white/[0.08] transition-all duration-200 cursor-pointer shadow-sm hover:scale-105"
+                    >
+                      <img
+                        :src="tool.icon"
+                        :alt="tool.name"
+                        class="w-4 h-4 object-contain transition-transform"
+                        :class="tool.invert ? 'brightness-0 invert opacity-90' : ''"
+                        loading="lazy"
+                      />
+                      <!-- Tooltip on hover -->
+                      <div
+                        class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover/tool:opacity-100 -translate-y-1 group-hover/tool:translate-y-0 transition-all duration-150 py-0.5 px-2 rounded-md bg-zinc-900/95 border border-white/20 text-[10px] font-medium text-zinc-200 whitespace-nowrap z-50 shadow-xl backdrop-blur-sm"
+                      >
+                        {{ tool.name }}
+                        <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-zinc-900/95"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p v-else-if="project.tools">
                   <span class="text-zinc-400">{{ t("my_proj_tools") }}:</span>
                   {{ project.tools }}
                 </p>
@@ -883,6 +909,13 @@ const projects = computed(() => {
         ? "Proyek Tugas Akhir Kelulusan | 2025"
         : "Final Thesis Graduation Project | 2025",
       tools: "Unity, AR Foundation, Supabase DB, Vite, JavaScript",
+      toolIcons: [
+        { name: "Unity", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/unity.svg", invert: true },
+        
+        { name: "Supabase", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/supabase.svg" },
+        { name: "Vite", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/vite.svg" },
+        { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/javascript.svg" },
+      ],
       overview: isId
         ? "Satu sistem terintegrasi yang menggabungkan aplikasi Dynamic Augmented Reality (AR) dan Web Admin Dashboard (CMS) berbasis Vite & Supabase DB sebagai topik Tugas Akhir kelulusan. Konten 3D dan informasi dalam aplikasi AR dapat di-CRUD secara real-time melalui web admin tanpa perlu rebuild aplikasi."
         : "A unified system combining a dynamic Augmented Reality (AR) app and a Vite & Supabase DB Web Admin Dashboard (CMS) built for Final Graduation Thesis. Enables real-time remote 3D content CRUD operations directly from the web admin without rebuilding application binaries.",
@@ -924,6 +957,14 @@ const projects = computed(() => {
         ? "Hak Kekayaan Intelektual Resmi No. 001400842 | Telkom Univ & SD Lab Univ Pattimura"
         : "Official Copyright (HKI) No. 001400842 | Telkom Univ & SD Lab Pattimura Univ",
       tools: "Unity 6 (LTS), C#, Firebase (Firestore & Auth), Vite, JavaScript ES6, Figma",
+      toolIcons: [
+        { name: "Unity 6", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/unity.svg", invert: true },
+        { name: "C#", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/csharp.svg" },
+        { name: "Firebase", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/firebase.svg" },
+        { name: "Vite", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/vite.svg" },
+        { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/javascript.svg" },
+        { name: "Figma", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/figma.svg" },
+      ],
       overview: isId
         ? "Ekosistem gim pembelajaran matematika interaktif berlisensi Hak Cipta resmi Kemenkumham RI (No. 001400842) untuk siswa kelas 4 SD Laboratorium Universitas Pattimura. Mengintegrasikan klien mobile Unity 6 dengan sinkronisasi cloud real-time Firebase serta Web Admin Dashboard berbasis Vite untuk telemetri belajar siswa dan remote game parameter balancing tanpa perlu rebuild aplikasi."
         : "An interactive educational math gaming ecosystem officially copyright registered with HKI (No. 001400842) for 4th Grade SD Laboratorium Universitas Pattimura. Combines a mobile Unity 6 game client with real-time Firebase cloud synchronization (Firestore & Auth) and a Vite Web Admin Dashboard for student telemetry analytics and remote parameter balancing without rebuilding binaries.",
@@ -969,6 +1010,14 @@ const projects = computed(() => {
         ? "Proyek Personal | 2025"
         : "Personal Project | 2025",
       tools: "Flutter, Dart, Supabase (PostgreSQL), Google OAuth, PDF Engine",
+      toolIcons: [
+        { name: "Flutter", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/flutter.svg" },
+        { name: "Dart", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/dart.svg" },
+        { name: "Supabase", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/supabase.svg" },
+        { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/postgresql.svg" },
+        { name: "Google OAuth", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/google.svg" },
+        { name: "Figma", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/figma.svg" },
+      ],
       overview: isId
         ? "Aplikasi mobile pelacak lamaran kerja dan manajemen karier berbasis Flutter & Supabase. Membantu pelamar mengelola alur rekrutmen via drag-and-drop Kanban pipeline, pembuat ATS Resume/CV otomatis ke format PDF, generator cover letter dengan tanda tangan digital, sinkronisasi jadwal wawancara ke Google Calendar, serta analitik konversi karier."
         : "A Flutter & Supabase mobile application designed to systematically manage job recruitment pipelines and career records. Features interactive drag-and-drop Kanban tracking, an instant ATS-compliant CV/resume PDF builder, dynamic cover letter generation with digital signatures, calendar interview sync with local push alerts, and visual career analytics.",
@@ -1007,6 +1056,12 @@ const projects = computed(() => {
         ? "Proyek Tim | Jan – Jun 2025"
         : "Team Project | Jan – Jun 2025",
       tools: "Unity, Figma, ESP32, JSON",
+      toolIcons: [
+        { name: "Unity", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/unity.svg", invert: true },
+        { name: "C#", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/csharp.svg" },
+        { name: "ESP32 (IoT)", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/espressif.svg" },
+        { name: "Figma", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/figma.svg" },
+      ],
       overview: isId
         ? "RideXP adalah game balap arkade di mana pemain mengendalikan sepeda dalam game dengan mengayuh sepeda statis fisik yang terhubung via ESP32. Dibangun di Unity, game ini menggabungkan IoT, pengembangan game, dan desain UI/UX."
         : "RideXP is an arcade-style cycling game where players control their in-game bike by pedaling a physical stationary bike connected via ESP32. Built in Unity, the game combines IoT, game development, and UI/UX design.",
