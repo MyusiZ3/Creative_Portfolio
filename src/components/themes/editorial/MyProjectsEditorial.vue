@@ -15,28 +15,30 @@
           <span
             class="inline-block bg-[#8B5CF6] text-white font-['Poppins'] font-bold text-xs sm:text-sm uppercase tracking-wider px-6 py-2 rounded-full shadow-lg shadow-violet-500/20"
           >
-            Projects
+            {{ lang === 'ID' ? 'Karya Pilihan' : 'Selected Works' }}
           </span>
         </div>
         <h2
           class="text-3xl md:text-4xl lg:text-[48px] font-bold font-['Poppins'] text-white tracking-wider mb-4"
         >
-          {{ t("my_proj_title") }}
+          {{ lang === 'ID' ? 'Proyek & Rekayasa Pilihan' : 'Selected Projects' }}
         </h2>
         <p
           class="text-zinc-400 font-['Roboto'] text-sm lg:text-base max-w-2xl mx-auto leading-relaxed"
         >
-          {{ t("my_proj_desc") }}
+          {{ lang === 'ID'
+            ? 'Kurasi sistem interaktif, arsitektur cloud, dan komputasi fisik dengan kedalaman teknis tinggi.'
+            : 'A curated selection of technical ecosystems, hardware integrations, and production applications.' }}
         </p>
 
         <!-- Hairline Divider -->
         <div class="w-full h-px bg-white/10 mt-12 mb-4"></div>
       </div>
 
-      <!-- Project Editorial Spreads Loop -->
+      <!-- Project Editorial Spreads Loop (4 Selected Works) -->
       <div class="space-y-28 lg:space-y-40">
         <article
-          v-for="(project, index) in visibleProjects"
+          v-for="(project, index) in selectedProjects"
           :key="project.name"
           :id="'my-project-' + index"
           v-motion
@@ -386,30 +388,203 @@
 
           <!-- Divider between spreads -->
           <div
-            v-if="index < visibleProjects.length - 1"
+            v-if="index < selectedProjects.length - 1"
             class="pt-20 lg:pt-28 flex items-center justify-center gap-4 text-zinc-400 font-mono text-xs tracking-widest select-none"
           >
             <span class="w-16 h-px bg-white/10"></span>
-            <span>— 0{{ index + 1 }} / 0{{ visibleProjects.length }} —</span>
+            <span>— 0{{ index + 1 }} / 0{{ selectedProjects.length }} —</span>
             <span class="w-16 h-px bg-white/10"></span>
           </div>
         </article>
       </div>
 
-      <!-- View All Projects Toggle Button -->
+      <!-- PROJECT ARCHIVE DIRECTORY (Option A: Minimalist Swiss Table) -->
       <div
-        v-if="projects.length > 4"
+        id="project-archive-section"
         v-motion
-        :initial="{ opacity: 0, y: 20 }"
-        :visible="{ opacity: 1, y: 0, transition: { delay: 300 } }"
-        class="mt-24 text-center"
+        :initial="{ opacity: 0, y: 30 }"
+        :visible="{ opacity: 1, y: 0, transition: { duration: 700 } }"
+        class="mt-32 lg:mt-40 pt-16 border-t border-white/10"
       >
-        <button
-          @click="showAll = !showAll"
-          class="font-mono text-xs uppercase tracking-widest px-8 py-4 bg-transparent border border-white/20 hover:border-violet-500 text-white rounded-full transition-all duration-300 hover:bg-violet-500/10 cursor-pointer"
+        <!-- Archive Header -->
+        <div class="mb-10">
+          <h3 class="text-2xl sm:text-3xl font-bold font-['Poppins'] text-white tracking-tight">
+            {{ lang === 'ID' ? 'Arsip Proyek' : 'Project Archive' }}
+          </h3>
+          <p class="text-xs sm:text-sm text-zinc-400 font-['Roboto'] mt-1.5 max-w-xl leading-relaxed">
+            {{ lang === 'ID' 
+              ? 'Daftar dokumentasi karya terdahulu, eksplorasi teknis, dan prototipe aplikasi (2023–2025).' 
+              : 'A catalog of earlier applications, client works, and technical explorations (2023–2025).' }}
+          </p>
+        </div>
+
+        <!-- Desktop Archive Table -->
+        <div class="hidden md:block overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-white/15 text-xs font-['Poppins'] font-semibold text-zinc-400">
+                <th class="py-3 px-3 w-[10%]">{{ lang === 'ID' ? 'Tahun' : 'Year' }}</th>
+                <th class="py-3 px-3 w-[34%]">{{ lang === 'ID' ? 'Proyek & Peran' : 'Project & Role' }}</th>
+                <th class="py-3 px-3 w-[22%]">{{ lang === 'ID' ? 'Kategori' : 'Category' }}</th>
+                <th class="py-3 px-3 w-[24%]">{{ lang === 'ID' ? 'Teknologi' : 'Tech Stack' }}</th>
+                <th class="py-3 px-3 w-[10%] text-right">{{ lang === 'ID' ? 'Tautan' : 'Link' }}</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5 text-xs font-['Roboto']">
+              <tr
+                v-for="(item, aIdx) in paginatedArchivedProjects"
+                :key="item.name"
+                class="group hover:bg-white/[0.03] transition-colors cursor-pointer"
+                @click="openLightbox(getArchiveGlobalIndex(aIdx), 0)"
+              >
+                <!-- Year -->
+                <td class="py-3.5 px-3 text-zinc-400">
+                  {{ item.year }}
+                </td>
+
+                <!-- Project & Role -->
+                <td class="py-3.5 px-3">
+                  <div class="font-['Poppins'] font-semibold text-white group-hover:text-violet-400 transition-colors">
+                    {{ item.name.split(' – ')[0].split(' - ')[0] }}
+                  </div>
+                  <div class="text-[11px] text-zinc-400 font-normal line-clamp-1 mt-0.5">
+                    {{ item.role }}
+                  </div>
+                </td>
+
+                <!-- Category -->
+                <td class="py-3.5 px-3 text-zinc-300">
+                  {{ item.platform }}
+                </td>
+
+                <!-- Core Stack -->
+                <td class="py-3.5 px-3 text-zinc-400">
+                  <span class="line-clamp-1">
+                    {{ item.tools }}
+                  </span>
+                </td>
+
+                <!-- Action / Link -->
+                <td class="py-3.5 px-3 text-right">
+                  <a
+                    v-if="item.link && item.link !== '#'"
+                    :href="item.link"
+                    target="_blank"
+                    @click.stop
+                    class="inline-flex items-center gap-1 text-xs text-violet-400 hover:text-violet-300 transition-colors group/link"
+                  >
+                    <span>{{ lang === 'ID' ? 'Buka' : 'Visit' }}</span>
+                    <i class="bi bi-arrow-up-right text-[10px] group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform"></i>
+                  </a>
+                  <button
+                    v-else
+                    @click.stop="openLightbox(getArchiveGlobalIndex(aIdx), 0)"
+                    class="inline-flex items-center gap-1 text-xs text-zinc-400 hover:text-zinc-200 transition-colors cursor-pointer"
+                  >
+                    <span>{{ lang === 'ID' ? 'Lihat' : 'View' }}</span>
+                    <i class="bi bi-eye text-[11px]"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile Archive List -->
+        <div class="md:hidden space-y-3">
+          <div
+            v-for="(item, aIdx) in paginatedArchivedProjects"
+            :key="'mob-' + item.name"
+            class="p-4 rounded-xl border border-white/10 bg-white/[0.02] space-y-1.5 cursor-pointer hover:border-violet-500/30 transition-all"
+            @click="openLightbox(getArchiveGlobalIndex(aIdx), 0)"
+          >
+            <div class="flex items-center justify-between text-xs text-zinc-400">
+              <span>{{ item.year }} • {{ item.platform }}</span>
+              <a
+                v-if="item.link && item.link !== '#'"
+                :href="item.link"
+                target="_blank"
+                @click.stop
+                class="text-violet-400 text-xs inline-flex items-center gap-1 hover:underline"
+              >
+                <span>{{ lang === 'ID' ? 'Buka' : 'Visit' }}</span>
+                <i class="bi bi-arrow-up-right text-[10px]"></i>
+              </a>
+            </div>
+            <div class="font-['Poppins'] font-semibold text-white text-sm">
+              {{ item.name.split(' – ')[0].split(' - ')[0] }}
+            </div>
+            <div class="text-xs text-zinc-400 font-['Roboto']">
+              {{ item.role }}
+            </div>
+            <div class="text-xs text-zinc-400 pt-1.5 border-t border-white/5">
+              {{ item.tools }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination Controls -->
+        <div
+          v-if="totalArchivePages > 1"
+          class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10 pt-6"
         >
-          [ {{ showAll ? t("my_proj_show_less") : t("my_proj_view_all") }} ]
-        </button>
+          <!-- Count summary -->
+          <div class="text-xs text-zinc-400 font-['Roboto']">
+            <span>
+              {{ lang === 'ID'
+                ? `Menampilkan ${(archivePage - 1) * archivePerPage + 1}–${Math.min(archivePage * archivePerPage, allArchivedProjects.length)} dari ${allArchivedProjects.length} proyek arsip`
+                : `Showing ${(archivePage - 1) * archivePerPage + 1}–${Math.min(archivePage * archivePerPage, allArchivedProjects.length)} of ${allArchivedProjects.length} archived projects`
+              }}
+            </span>
+          </div>
+
+          <!-- Pagination buttons -->
+          <div class="flex items-center gap-1.5 select-none">
+            <!-- Prev -->
+            <button
+              @click="setArchivePage(archivePage - 1)"
+              :disabled="archivePage === 1"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-medium transition-all"
+              :class="archivePage === 1 
+                ? 'opacity-30 cursor-not-allowed text-zinc-600 border-white/5' 
+                : 'text-zinc-300 hover:text-white hover:bg-white/5 border-white/10 hover:border-white/20 cursor-pointer'"
+              aria-label="Previous Page"
+            >
+              <i class="bi bi-chevron-left text-[11px]"></i>
+              <span>{{ lang === 'ID' ? 'Sebelumnya' : 'Prev' }}</span>
+            </button>
+
+            <!-- Numbers -->
+            <div class="flex items-center gap-1">
+              <button
+                v-for="p in totalArchivePages"
+                :key="p"
+                @click="setArchivePage(p)"
+                class="w-8 h-8 rounded-lg text-xs font-semibold font-mono transition-all flex items-center justify-center cursor-pointer"
+                :class="archivePage === p
+                  ? 'bg-violet-600 text-white shadow-lg shadow-violet-600/30'
+                  : 'text-zinc-400 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10'"
+                :aria-label="`Page ${p}`"
+              >
+                {{ p }}
+              </button>
+            </div>
+
+            <!-- Next -->
+            <button
+              @click="setArchivePage(archivePage + 1)"
+              :disabled="archivePage === totalArchivePages"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-medium transition-all"
+              :class="archivePage === totalArchivePages 
+                ? 'opacity-30 cursor-not-allowed text-zinc-600 border-white/5' 
+                : 'text-zinc-300 hover:text-white hover:bg-white/5 border-white/10 hover:border-white/20 cursor-pointer'"
+              aria-label="Next Page"
+            >
+              <span>{{ lang === 'ID' ? 'Berikutnya' : 'Next' }}</span>
+              <i class="bi bi-chevron-right text-[11px]"></i>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -523,10 +698,30 @@ const { t, lang } = useLanguage();
 // Track active slide per project
 const activeSlides = reactive({});
 
-const showAll = ref(false);
-const visibleProjects = computed(() =>
-  showAll.value ? projects.value : projects.value.slice(0, 4),
+const selectedProjects = computed(() => projects.value.slice(0, 4));
+
+// === Project Archive Pagination (Max 5 per page) ===
+const archivePage = ref(1);
+const archivePerPage = 5;
+
+const allArchivedProjects = computed(() => projects.value.slice(4));
+const totalArchivePages = computed(() =>
+  Math.ceil(allArchivedProjects.value.length / archivePerPage)
 );
+
+const paginatedArchivedProjects = computed(() => {
+  const start = (archivePage.value - 1) * archivePerPage;
+  return allArchivedProjects.value.slice(start, start + archivePerPage);
+});
+
+const getArchiveGlobalIndex = (localIdx) => {
+  return 4 + (archivePage.value - 1) * archivePerPage + localIdx;
+};
+
+const setArchivePage = (p) => {
+  if (p < 1 || p > totalArchivePages.value) return;
+  archivePage.value = p;
+};
 // Track direction for each project for transition
 
 // === Lightbox state ===
@@ -638,11 +833,15 @@ let autoPlayInterval = null;
 
 const handleScrollToProject = (e) => {
   const idx = e.detail;
-  if (idx >= 4 && !showAll.value) {
-    showAll.value = true;
+  if (idx >= 4) {
+    const targetPage = Math.floor((idx - 4) / archivePerPage) + 1;
+    archivePage.value = targetPage;
   }
   nextTick(() => {
-    const el = document.getElementById("my-project-" + idx);
+    let el = document.getElementById("my-project-" + idx);
+    if (!el && idx >= 4) {
+      el = document.getElementById("project-archive-section");
+    }
     if (el) {
       const y = el.getBoundingClientRect().top + window.scrollY - 100;
       window.scrollTo({ top: y, behavior: "smooth" });
@@ -672,6 +871,7 @@ const projects = computed(() => {
   const isId = lang.value === "ID";
   return [
     {
+      year: "2025",
       name: isId
         ? "Djaswita AR – Dynamic AR & Web CMS (Tugas Akhir)"
         : "Djaswita AR – Dynamic AR (Thesis)",
@@ -712,6 +912,7 @@ const projects = computed(() => {
       _dir: "next",
     },
     {
+      year: "2024",
       name: isId
         ? "Mathmagic – App Edukasi Matematika (HKI)"
         : "Mathmagic – Math Educational App (HKI)",
@@ -756,6 +957,7 @@ const projects = computed(() => {
       _dir: "next",
     },
     {
+      year: "2025",
       name: isId
         ? "AppliQ – Job Application Tracker & Career Management"
         : "AppliQ – Job Application Tracker & Career Management",
@@ -795,82 +997,7 @@ const projects = computed(() => {
       _dir: "next",
     },
     {
-      name: isId
-        ? "MyDuitGweh – Smart Financial Tracker with AI & Collaboration"
-        : "MyDuitGweh – Smart Financial Tracker with AI & Collaboration",
-      icon: "bi-wallet2",
-      role: isId
-        ? "Pengembang Mobile & Arsitek Sistem Cloud"
-        : "Mobile Developer & Cloud System Architect",
-      teamInfo: isId
-        ? "Proyek Personal | 2025"
-        : "Personal Project | 2025",
-      tools: "Flutter, Dart, Firebase (Auth/Firestore), Google ML Kit, Gemini & Groq API",
-      overview: isId
-        ? "Aplikasi manajemen keuangan pribadi berbasis Flutter & Firebase dengan estetika Apple/iOS Design Language (glassmorphism & Bento layout). Menghadirkan Archen AI Financial Advisor (didukung Gemini & Groq API dengan 5 mode kepribadian), dompet kolaborasi bersama dengan in-app chat, pemindai struk otomatis berbasis OCR Google ML Kit, serta in-app APK updater terintegrasi."
-        : "A personal finance tracker mobile application built with Flutter & Firebase featuring Apple/iOS design language aesthetics (glassmorphism & Bento layouts). Highlights include Archen AI Financial Advisor (Gemini & Groq API with 5 personality tones), multi-wallet collaboration with real-time chat, automated receipt scanning via Google ML Kit OCR, and seamless in-app APK updates.",
-      tasks: isId
-        ? [
-            "Merancang UI/UX mobile berbasis Apple design guidelines dengan Bento layout, glassmorphism, dan responsivitas halus",
-            "Mengintegrasikan Archen AI Financial Advisor menggunakan Gemini & Groq API dengan 5 kepribadian dinamis dan sistem multi-session chat",
-            "Membangun kamera custom pemindai struk belanja dengan OCR Google ML Kit untuk ekstraksi nominal dan tanggal otomatis",
-            "Mengembangkan arsitektur multi-wallet dengan dompet kolaborasi real-time (shared wallet & in-app chat room)",
-            "Menerapkan sistem keamanan biometrik (Fingerprint/Face ID), Firestore security rules, dan in-app direct APK updater",
-          ]
-        : [
-            "Crafted mobile UI/UX inspired by Apple design guidelines using Bento Grid layouts, glassmorphism, and smooth micro-interactions",
-            "Integrated Archen AI Financial Advisor powered by Gemini & Groq APIs with 5 distinct personality tones and multi-session chat",
-            "Engineered custom camera receipt scanner with Google ML Kit OCR to automatically extract merchant, date, and amounts",
-            "Developed multi-wallet architecture featuring shared collaborative wallets with real-time in-wallet chat rooms",
-            "Implemented biometric security (Fingerprint/Face ID), role-based Firestore rules, and automated in-app direct APK updates",
-          ],
-      platform: isId ? "Aplikasi Mobile Android (Flutter)" : "Android Mobile App (Flutter)",
-      bg: "#10b981",
-      images: [
-        "/images/projects/MyDuitGweh/logo_app.png",
-      ],
-      link: "https://github.com/MyusiZ3/MyDuitGweh",
-      _dir: "next",
-    },
-    {
-      name: isId
-        ? "DJourney Jaswita Jabar – Tourism Web"
-        : "DJourney Jaswita Jabar – Tourism Web",
-      icon: "bi-globe-americas",
-      role: isId
-        ? "Pengembang Frontend Web & IT Intern"
-        : "Frontend Web Developer & IT Intern",
-      teamInfo: isId
-        ? "Magang | PT. Jasa & Kepariwisataan Jabar"
-        : "Internship | PT. Jasa & Kepariwisataan Jabar",
-      tools: "HTML, CSS, JavaScript, i18n, Responsive Web Design",
-      overview: isId
-        ? "Pengembangan platform pariwisata DJourney milik PT. Jasa & Kepariwisataan Jabar (Perseroda). Berfokus pada implementasi sistem multi-language (i18n), optimasi tampilan responsif mobile, serta bug fix pada filter pencarian dan tata letak antarmuka."
-        : "Development of DJourney tourism website for PT. Jasa & Kepariwisataan Jabar. Focused on building multi-language (i18n) localization, mobile responsive layouts, and bug fixes for destination search filters and UI display issues.",
-      tasks: isId
-        ? [
-            "Mengimplementasikan fitur multi-language (i18n) untuk wisatawan domestik & mancanegara",
-            "Merancang & mengoptimalkan tampilan responsif mobile untuk aksesibilitas lintas perangkat",
-            "Melakukan pengujian & bug fixing pada fitur filter pencarian destinasi pariwisata",
-            "Memperbaiki bug inkonsistensi tata letak visual dan responsivitas antarmuka web",
-          ]
-        : [
-            "Implemented multi-language (i18n) localization for domestic & international tourists",
-            "Designed and optimized mobile-responsive layouts for cross-device compatibility",
-            "Fixed and refactored destination search filter features and logic",
-            "Resolved visual display inconsistencies and responsive UI layout bugs",
-          ],
-      platform: "Web Application",
-      bg: "#2563eb",
-      images: [
-        "/images/projects/Iudex/iudex.webp",
-        "/images/projects/iudex_2.webp",
-        "/images/projects/iudex_3.webp",
-      ],
-      link: "#",
-      _dir: "next",
-    },
-    {
+      year: "2025",
       name: "RideXP - Arcade Game Project",
       icon: "bi-bicycle",
       role: isId
@@ -911,6 +1038,85 @@ const projects = computed(() => {
       _dir: "next",
     },
     {
+      year: "2025",
+      name: isId
+        ? "MyDuitGweh – Smart Financial Tracker with AI & Collaboration"
+        : "MyDuitGweh – Smart Financial Tracker with AI & Collaboration",
+      icon: "bi-wallet2",
+      role: isId
+        ? "Pengembang Mobile & Arsitek Sistem Cloud"
+        : "Mobile Developer & Cloud System Architect",
+      teamInfo: isId
+        ? "Proyek Personal | 2025"
+        : "Personal Project | 2025",
+      tools: "Flutter, Dart, Firebase (Auth/Firestore), Google ML Kit, Gemini & Groq API",
+      overview: isId
+        ? "Aplikasi manajemen keuangan pribadi berbasis Flutter & Firebase dengan estetika Apple/iOS Design Language (glassmorphism & Bento layout). Menghadirkan Archen AI Financial Advisor (didukung Gemini & Groq API dengan 5 mode kepribadian), dompet kolaborasi bersama dengan in-app chat, pemindai struk otomatis berbasis OCR Google ML Kit, serta in-app APK updater terintegrasi."
+        : "A personal finance tracker mobile application built with Flutter & Firebase featuring Apple/iOS design language aesthetics (glassmorphism & Bento layouts). Highlights include Archen AI Financial Advisor (Gemini & Groq API with 5 personality tones), multi-wallet collaboration with real-time chat, automated receipt scanning via Google ML Kit OCR, and seamless in-app APK updates.",
+      tasks: isId
+        ? [
+            "Merancang UI/UX mobile berbasis Apple design guidelines dengan Bento layout, glassmorphism, dan responsivitas halus",
+            "Mengintegrasikan Archen AI Financial Advisor menggunakan Gemini & Groq API dengan 5 kepribadian dinamis dan sistem multi-session chat",
+            "Membangun kamera custom pemindai struk belanja dengan OCR Google ML Kit untuk ekstraksi nominal dan tanggal otomatis",
+            "Mengembangkan arsitektur multi-wallet dengan dompet kolaborasi real-time (shared wallet & in-app chat room)",
+            "Menerapkan sistem keamanan biometrik (Fingerprint/Face ID), Firestore security rules, dan in-app direct APK updater",
+          ]
+        : [
+            "Crafted mobile UI/UX inspired by Apple design guidelines using Bento Grid layouts, glassmorphism, and smooth micro-interactions",
+            "Integrated Archen AI Financial Advisor powered by Gemini & Groq APIs with 5 distinct personality tones and multi-session chat",
+            "Engineered custom camera receipt scanner with Google ML Kit OCR to automatically extract merchant, date, and amounts",
+            "Developed multi-wallet architecture featuring shared collaborative wallets with real-time in-wallet chat rooms",
+            "Implemented biometric security (Fingerprint/Face ID), role-based Firestore rules, and automated in-app direct APK updates",
+          ],
+      platform: isId ? "Aplikasi Mobile Android (Flutter)" : "Android Mobile App (Flutter)",
+      bg: "#10b981",
+      images: [
+        "/images/projects/MyDuitGweh/logo_app.png",
+      ],
+      link: "https://github.com/MyusiZ3/MyDuitGweh",
+      _dir: "next",
+    },
+    {
+      year: "2024",
+      name: isId
+        ? "DJourney Jaswita Jabar – Tourism Web"
+        : "DJourney Jaswita Jabar – Tourism Web",
+      icon: "bi-globe-americas",
+      role: isId
+        ? "Pengembang Frontend Web & IT Intern"
+        : "Frontend Web Developer & IT Intern",
+      teamInfo: isId
+        ? "Magang | PT. Jasa & Kepariwisataan Jabar"
+        : "Internship | PT. Jasa & Kepariwisataan Jabar",
+      tools: "HTML, CSS, JavaScript, i18n, Responsive Web Design",
+      overview: isId
+        ? "Pengembangan platform pariwisata DJourney milik PT. Jasa & Kepariwisataan Jabar (Perseroda). Berfokus pada implementasi sistem multi-language (i18n), optimasi tampilan responsif mobile, serta bug fix pada filter pencarian dan tata letak antarmuka."
+        : "Development of DJourney tourism website for PT. Jasa & Kepariwisataan Jabar. Focused on building multi-language (i18n) localization, mobile responsive layouts, and bug fixes for destination search filters and UI display issues.",
+      tasks: isId
+        ? [
+            "Mengimplementasikan fitur multi-language (i18n) untuk wisatawan domestik & mancanegara",
+            "Merancang & mengoptimalkan tampilan responsif mobile untuk aksesibilitas lintas perangkat",
+            "Melakukan pengujian & bug fixing pada fitur filter pencarian destinasi pariwisata",
+            "Memperbaiki bug inkonsistensi tata letak visual dan responsivitas antarmuka web",
+          ]
+        : [
+            "Implemented multi-language (i18n) localization for domestic & international tourists",
+            "Designed and optimized mobile-responsive layouts for cross-device compatibility",
+            "Fixed and refactored destination search filter features and logic",
+            "Resolved visual display inconsistencies and responsive UI layout bugs",
+          ],
+      platform: "Web Application",
+      bg: "#2563eb",
+      images: [
+        "/images/projects/Iudex/iudex.webp",
+        "/images/projects/iudex_2.webp",
+        "/images/projects/iudex_3.webp",
+      ],
+      link: "#",
+      _dir: "next",
+    },
+    {
+      year: "2025",
       name: "MindEscape – VR Escape Room Game",
       icon: "bi-headset",
       role: isId
@@ -947,6 +1153,7 @@ const projects = computed(() => {
       _dir: "next",
     },
     {
+      year: "2024",
       name: "MathRift – Educational 2D Platformer",
       icon: "bi-calculator",
       role: isId
@@ -983,6 +1190,7 @@ const projects = computed(() => {
       _dir: "next",
     },
     {
+      year: "2024",
       name: "Stellar Adventures – AR Game Project",
       icon: "bi-stars",
       role: isId
@@ -1019,6 +1227,7 @@ const projects = computed(() => {
       _dir: "next",
     },
     {
+      year: "2024",
       name: "U-Asprak – Mobile App Design",
       icon: "bi-people",
       role: "UI/UX Designer",
@@ -1053,6 +1262,7 @@ const projects = computed(() => {
       _dir: "next",
     },
     {
+      year: "2023",
       name: "empEDU – Mobile App Design",
       icon: "bi-book",
       role: "UI/UX Designer",
@@ -1087,11 +1297,10 @@ const projects = computed(() => {
       _dir: "next",
     },
     {
+      year: "2024",
       name: "IUDEX – Team Portfolio Web Design",
       icon: "bi-display",
-      role: isId
-        ? "Desainer UI/UX, Pengembang Frontend"
-        : "UI/UX Designer, Frontend Developer",
+      role: "UI/UX Designer, Frontend Developer",
       teamInfo: isId
         ? "Proyek Tim | Jan – Jun 2024"
         : "Team Project | Jan – Jun 2024",
@@ -1123,11 +1332,10 @@ const projects = computed(() => {
       _dir: "next",
     },
     {
+      year: "2024",
       name: "Arch – Personal Portfolio Web Design",
       icon: "bi-laptop",
-      role: isId
-        ? "Desainer UI/UX, Pengembang Frontend"
-        : "UI/UX Designer, Frontend Developer",
+      role: "UI/UX Designer, Frontend Developer",
       teamInfo: isId ? "Proyek Pribadi | 2024" : "Personal Project | 2024",
       tools: "Figma, Vue.js, TailwindCSS",
       overview: isId
@@ -1157,6 +1365,7 @@ const projects = computed(() => {
       _dir: "next",
     },
     {
+      year: "2024",
       name: "Merch – Merch Design for Event",
       icon: "bi-gift",
       role: isId ? "Desainer Grafis" : "Graphic Designer",
