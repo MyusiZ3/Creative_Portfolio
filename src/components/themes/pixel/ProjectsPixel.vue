@@ -338,12 +338,12 @@ const projects = [
     platform: "AR Mobile App & Web CMS",
     role: "Fullstack AR & Web Dev",
     timeline: "2025",
-    techStack: ["Unity", "AR Foundation", "Supabase", "Vite", "JS"],
+    techStack: ["Unity", "Vuforia Engine", "Supabase", "Vite", "JS"],
     githubUrl: "https://github.com/MyusiZ3/DjaswitaAR-Fix",
     challenge:
       "Menciptakan aplikasi AR yang konten 3D dan informasinya dapat di-CRUD via Web CMS tanpa perlu build ulang APK.",
     solution:
-      "Membangun satu arsitektur terpadu antara Unity AR Foundation, Supabase DB remote storage, dan Web Admin Dashboard berbasis Vite.",
+      "Membangun satu arsitektur terpadu antara Unity Vuforia Engine, Supabase DB remote storage, dan Web Admin Dashboard berbasis Vite.",
   },
   {
     id: "Mathmagic",
@@ -495,7 +495,7 @@ const projects = [
     platform: "AR Mobile App",
     role: "AR Dev & Environment Designer",
     timeline: "Aug – Dec 2024",
-    techStack: ["Unity", "AR Foundation", "Blender"],
+    techStack: ["Unity", "Vuforia Engine", "Blender"],
     demoUrl: "https://youtube.com/preview",
     challenge:
       "Pelacakan bidang datar dan kestabilan objek 3D di area ruangan berorientasi acak.",

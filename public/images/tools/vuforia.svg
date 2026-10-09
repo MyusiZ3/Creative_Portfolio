@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="vuf-grad-left" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF5E3A" />
+      <stop offset="100%" stop-color="#E02424" />
+    </linearGradient>
+    <linearGradient id="vuf-grad-right" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D61F26" />
+      <stop offset="100%" stop-color="#8E1015" />
+    </linearGradient>
+    <linearGradient id="vuf-grad-center" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF7A45" />
+      <stop offset="100%" stop-color="#FFBA53" />
+    </linearGradient>
+    <filter id="vuf-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#E02424" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <g filter="url(#vuf-glow)">
+    <!-- Stylized 3D AR Target "V" Prism -->
+    <path d="M16 20 L44 20 L64 68 L84 20 L112 20 L74 98 L54 98 Z" fill="url(#vuf-grad-center)" />
+    <path d="M16 20 L36 20 L64 82 L64 108 L16 20 Z" fill="url(#vuf-grad-left)" opacity="0.95" />
+    <path d="M112 20 L92 20 L64 82 L64 108 L112 20 Z" fill="url(#vuf-grad-right)" opacity="0.95" />
+    <!-- Center Target Diamond / AR Apex -->
+    <polygon points="64,38 72,54 64,70 56,54" fill="#FFFFFF" opacity="0.95" />
+  </g>
+</svg>

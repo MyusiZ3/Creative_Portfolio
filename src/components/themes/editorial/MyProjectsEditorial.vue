@@ -902,16 +902,14 @@ const projects = computed(() => {
         ? "Djaswita AR – Dynamic AR & Web CMS (Tugas Akhir)"
         : "Djaswita AR – Dynamic AR (Thesis)",
       icon: "bi-box-seam",
-      role: isId
-        ? "Pengembang AR & Web Fullstack (Tugas Akhir)"
-        : "Fullstack AR & Web Developer (Thesis)",
+      role: "Fullstack AR & Web Developer (Thesis)",
       teamInfo: isId
         ? "Proyek Tugas Akhir Kelulusan | 2025"
         : "Final Thesis Graduation Project | 2025",
-      tools: "Unity, AR Foundation, Supabase DB, Vite, JavaScript",
+      tools: "Unity, Vuforia Engine, Supabase DB, Vite, JavaScript",
       toolIcons: [
         { name: "Unity", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/unity.svg", invert: true },
-        
+        { name: "Vuforia Engine", icon: "/images/tools/vuforia.svg" },
         { name: "Supabase", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/supabase.svg" },
         { name: "Vite", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/vite.svg" },
         { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/javascript.svg" },
@@ -1003,9 +1001,7 @@ const projects = computed(() => {
         ? "AppliQ – Job Application Tracker & Career Management"
         : "AppliQ – Job Application Tracker & Career Management",
       icon: "bi-kanban",
-      role: isId
-        ? "Pengembang Mobile & Desainer UI/UX"
-        : "Mobile Developer & UI/UX Designer",
+      role: "Mobile Developer & UI/UX Designer",
       teamInfo: isId
         ? "Proyek Personal | 2025"
         : "Personal Project | 2025",
@@ -1049,9 +1045,7 @@ const projects = computed(() => {
       year: "2025",
       name: "RideXP - Arcade Game Project",
       icon: "bi-bicycle",
-      role: isId
-        ? "Manajer Proyek, Pengembang Game, Desainer UI/UX"
-        : "Project Manager, Game Developer, UI/UX Designer",
+      role: "Project Manager, Game Developer, UI/UX Designer",
       teamInfo: isId
         ? "Proyek Tim | Jan – Jun 2025"
         : "Team Project | Jan – Jun 2025",
@@ -1098,9 +1092,7 @@ const projects = computed(() => {
         ? "MyDuitGweh – Smart Financial Tracker with AI & Collaboration"
         : "MyDuitGweh – Smart Financial Tracker with AI & Collaboration",
       icon: "bi-wallet2",
-      role: isId
-        ? "Pengembang Mobile & Arsitek Sistem Cloud"
-        : "Mobile Developer & Cloud System Architect",
+      role: "Mobile Developer & Cloud System Architect",
       teamInfo: isId
         ? "Proyek Personal | 2025"
         : "Personal Project | 2025",
@@ -1137,9 +1129,7 @@ const projects = computed(() => {
         ? "DJourney Jaswita Jabar – Tourism Web"
         : "DJourney Jaswita Jabar – Tourism Web",
       icon: "bi-globe-americas",
-      role: isId
-        ? "Pengembang Frontend Web & IT Intern"
-        : "Frontend Web Developer & IT Intern",
+      role: "Frontend Web Developer & IT Intern",
       teamInfo: isId
         ? "Magang | PT. Jasa & Kepariwisataan Jabar"
         : "Internship | PT. Jasa & Kepariwisataan Jabar",
@@ -1174,9 +1164,7 @@ const projects = computed(() => {
       year: "2025",
       name: "MindEscape – VR Escape Room Game",
       icon: "bi-headset",
-      role: isId
-        ? "Pengembang VR, Desainer Lingkungan"
-        : "VR Developer, Environment Designer",
+      role: "VR Developer, Environment Designer",
       teamInfo: isId
         ? "Proyek Tim | Jan – Jun 2025"
         : "Team Project | Jan – Jun 2025",
@@ -1211,9 +1199,7 @@ const projects = computed(() => {
       year: "2024",
       name: "MathRift – Educational 2D Platformer",
       icon: "bi-calculator",
-      role: isId
-        ? "Pengembang Game, Desainer UI/UX"
-        : "Game Developer, UI/UX Designer",
+      role: "Game Developer, UI/UX Designer",
       teamInfo: isId
         ? "Proyek Tim | Agt – Des 2024"
         : "Team Project | Aug – Dec 2024",
@@ -1248,13 +1234,11 @@ const projects = computed(() => {
       year: "2024",
       name: "Stellar Adventures – AR Game Project",
       icon: "bi-stars",
-      role: isId
-        ? "Pengembang AR, Desainer Lingkungan"
-        : "AR Developer, Environment Designer",
+      role: "AR Developer, Environment Designer",
       teamInfo: isId
         ? "Proyek Tim | Agt – Des 2024"
         : "Team Project | Aug – Dec 2024",
-      tools: "Unity, AR Foundation, Blender",
+      tools: "Unity, Vuforia Engine, Blender",
       overview: isId
         ? "Stellar Adventures adalah game AR yang menggabungkan dunia maya dan nyata, memungkinkan pemain menavigasi ruang bertema luar angkasa melalui kamera."
         : "Stellar Adventures is an augmented reality game that blends the physical and digital world, allowing players to explore space-themed environments through their device camera.",
@@ -1423,7 +1407,7 @@ const projects = computed(() => {
       year: "2024",
       name: "Merch – Merch Design for Event",
       icon: "bi-gift",
-      role: isId ? "Desainer Grafis" : "Graphic Designer",
+      role: "Graphic Designer",
       teamInfo: isId ? "Pengerjaan Bebas | 2024" : "Freelance Project | 2024",
       tools: "Adobe Illustrator, Adobe Photoshop",
       overview: isId

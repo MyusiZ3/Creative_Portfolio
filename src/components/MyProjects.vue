@@ -581,13 +581,11 @@ const projects = computed(() => {
         ? "Djaswita AR – Dynamic AR & Web CMS (Tugas Akhir)"
         : "Djaswita AR – Dynamic AR (Thesis)",
       icon: "bi-box-seam",
-      role: isId
-        ? "Pengembang AR & Web Fullstack (Tugas Akhir)"
-        : "Fullstack AR & Web Developer (Thesis)",
+      role: "Fullstack AR & Web Developer (Thesis)",
       teamInfo: isId
         ? "Proyek Tugas Akhir Kelulusan | 2025"
         : "Final Thesis Graduation Project | 2025",
-      tools: "Unity, AR Foundation, Supabase DB, Vite, JavaScript",
+      tools: "Unity, Vuforia Engine, Supabase DB, Vite, JavaScript",
       overview: isId
         ? "Satu sistem terintegrasi yang menggabungkan aplikasi Dynamic Augmented Reality (AR) dan Web Admin Dashboard (CMS) berbasis Vite & Supabase DB sebagai topik Tugas Akhir kelulusan. Konten 3D dan informasi dalam aplikasi AR dapat di-CRUD secara real-time melalui web admin tanpa perlu rebuild aplikasi."
         : "A unified system combining a dynamic Augmented Reality (AR) app and a Vite & Supabase DB Web Admin Dashboard (CMS) built for Final Graduation Thesis. Enables real-time remote 3D content CRUD operations directly from the web admin without rebuilding application binaries.",
@@ -878,13 +876,11 @@ const projects = computed(() => {
     {
       name: "Stellar Adventures – AR Game Project",
       icon: "bi-stars",
-      role: isId
-        ? "Pengembang AR, Desainer Lingkungan"
-        : "AR Developer, Environment Designer",
+      role: "AR Developer, Environment Designer",
       teamInfo: isId
         ? "Proyek Tim | Agt – Des 2024"
         : "Team Project | Aug – Dec 2024",
-      tools: "Unity, AR Foundation, Blender",
+      tools: "Unity, Vuforia Engine, Blender",
       overview: isId
         ? "Stellar Adventures adalah game AR yang menggabungkan dunia maya dan nyata, memungkinkan pemain menavigasi ruang bertema luar angkasa melalui kamera."
         : "Stellar Adventures is an augmented reality game that blends the physical and digital world, allowing players to explore space-themed environments through their device camera.",
