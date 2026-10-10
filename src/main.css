@@ -23,10 +23,56 @@
 
 html,
 body {
+  background-color: #171717;
+  color: #ffffff;
   overflow-x: clip;
   width: 100%;
 }
 
 #app {
+  background-color: #171717;
   overflow-x: clip;
+  min-height: 100vh;
 }
+
+/* Custom Sleek Minimalist Scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) #171717;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #171717;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+  border: 2px solid #171717;
+  background-clip: padding-box;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.7);
+  border-radius: 9999px;
+  border: 2px solid #171717;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: rgba(139, 92, 246, 0.95);
+  border-radius: 9999px;
+  border: 2px solid #171717;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-corner {
+  background: #171717;
+}
+

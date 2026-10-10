@@ -232,7 +232,7 @@ const translations = {
     hero_designer: 'Technologist',
     hero_desc:
       'Memadukan desain kreatif, pengembangan teknis, dan systems thinking untuk mengubah konsep menjadi prototipe interaktif serta solusi digital yang scalable.',
-    hero_contact: 'Hubungi Saya',
+    hero_contact: 'Get In Touch',
     show_more: 'Baca Selengkapnya',
     show_less: 'Tampilkan Sedikit',
     about_title: 'Tentang Saya',
