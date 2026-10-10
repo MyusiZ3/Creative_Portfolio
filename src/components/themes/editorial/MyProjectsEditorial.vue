@@ -142,14 +142,14 @@
                   </div>
                 </div>
 
-                <!-- LAYOUT 2 (Index % 4 === 1): Overlapping Horizontal Landscape Stack (2-3 Cards) -->
+                <!-- LAYOUT 2 (Index % 4 === 1): Overlapping Editorial Collage (Varied Portrait & Square Stack) -->
                 <div
                   v-else-if="index % 4 === 1"
                   class="relative w-full min-h-[320px] sm:min-h-[400px] md:min-h-[440px] flex items-center justify-center select-none"
                 >
                   <!-- Main Hero Central Card (Landscape 16:10) -->
                   <div
-                    class="relative z-20 w-[84%] sm:w-[78%] aspect-16/10 rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.85)] border border-white/20 transition-all duration-500 hover:scale-[1.03] hover:z-40 cursor-pointer group/hero"
+                    class="relative z-20 w-[82%] sm:w-[74%] aspect-16/10 rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.85)] border border-white/20 transition-all duration-500 hover:scale-[1.03] hover:z-40 cursor-pointer group/hero"
                     @click="openLightbox(index, 0)"
                   >
                     <img
@@ -167,9 +167,9 @@
                     </div>
                   </div>
 
-                  <!-- Top Right Overlapping Card (Landscape 16:9) -->
+                  <!-- Top Right Overlapping Card (Compact Small Floating Badge/Phone Preview) -->
                   <div
-                    class="absolute top-[2%] right-[0%] z-30 w-[48%] sm:w-[42%] aspect-16/9 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.9)] border border-white/20 transition-all duration-500 transform rotate-[4deg] hover:rotate-0 hover:scale-108 hover:z-50 cursor-pointer group/card2 bg-[#18181c]"
+                    class="absolute top-[0%] right-[1%] z-30 w-[36%] sm:w-[30%] aspect-square rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.9)] border border-white/20 transition-all duration-500 transform rotate-[8deg] hover:rotate-0 hover:scale-110 hover:z-50 cursor-pointer group/card2 bg-[#18181c]"
                     @click="
                       openLightbox(index, project.images.length > 1 ? 1 : 0)
                     "
@@ -184,19 +184,19 @@
                     ></div>
                   </div>
 
-                  <!-- Bottom Left Overlapping Card (Landscape 16:9) -->
+                  <!-- Bottom Left Overlapping Card (Big Prominent Wide Laptop Dashboard - Inverted Weight) -->
                   <div
                     v-if="project.images.length > 2"
-                    class="absolute bottom-[0%] left-[0%] z-30 w-[44%] sm:w-[38%] aspect-16/9 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.9)] border border-white/20 transition-all duration-500 transform -rotate-[5deg] hover:rotate-0 hover:scale-108 hover:z-50 cursor-pointer group/card3 bg-[#1a1a22]"
+                    class="absolute bottom-[-2%] left-[-2%] z-30 w-[54%] sm:w-[48%] aspect-16/10 rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.92)] border border-white/25 transition-all duration-500 transform -rotate-[4deg] hover:rotate-0 hover:scale-105 hover:z-50 cursor-pointer group/card3 bg-[#1a1a22]"
                     @click="openLightbox(index, 2)"
                   >
                     <img
                       :src="project.images[2]"
                       :alt="`${project.name} stack 3`"
-                      class="w-full h-full object-cover rounded-xl transition-transform duration-700 group-hover/card3:scale-110"
+                      class="w-full h-full object-cover rounded-xl transition-transform duration-700 group-hover/card3:scale-105"
                     />
                     <div
-                      class="absolute inset-0 bg-black/20 group-hover/card3:bg-transparent transition-colors rounded-xl"
+                      class="absolute inset-0 bg-black/15 group-hover/card3:bg-transparent transition-colors rounded-xl"
                     ></div>
                   </div>
                 </div>
@@ -988,9 +988,9 @@ const projects = computed(() => {
         : "Unity 6 Game & Web Admin Dashboard",
       bg: "#059669",
       images: [
-        "/images/projects/Mathmagic/dashboard_mathmagic.webp",
-        "/images/projects/mathrift_2.webp",
-        "/images/projects/mathrift_3.webp",
+        "/images/projects/Mathmagic/mathmagic_appscreen_mockup.webp",
+        "/images/projects/Mathmagic/mathmagic_phone_mockup.webp",
+        "/images/projects/Mathmagic/mathmagic_web_mockup.webp",
       ],
       link: "https://shorturl.at/cb55f",
       _dir: "next",

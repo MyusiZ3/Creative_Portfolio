@@ -646,7 +646,11 @@ const projects = computed(() => {
         ? "Gim Edukasi Unity 6 & Web Admin Dashboard"
         : "Unity 6 Game & Web Admin Dashboard",
       bg: "#059669",
-      images: ["/images/projects/Mathmagic/dashboard_mathmagic.webp"],
+            images: [
+        "/images/projects/Mathmagic/mathmagic_appscreen_mockup.webp",
+        "/images/projects/Mathmagic/mathmagic_phone_mockup.webp",
+        "/images/projects/Mathmagic/mathmagic_web_mockup.webp",
+      ],
       link: "https://shorturl.at/cb55f",
       _dir: "next",
     },

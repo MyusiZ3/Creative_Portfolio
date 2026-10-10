@@ -351,7 +351,11 @@ const projects = [
     category: "game",
     shortDesc:
       "Ekosistem gim matematika interaktif SD (HKI No. 001400842) Unity 6 + Firebase dan Vite Web Admin Dashboard.",
-    images: ["/images/projects/Mathmagic/dashboard_mathmagic.webp"],
+    images: [
+      "/images/projects/Mathmagic/mathmagic_appscreen_mockup.webp",
+      "/images/projects/Mathmagic/mathmagic_phone_mockup.webp",
+      "/images/projects/Mathmagic/mathmagic_web_mockup.webp",
+    ],
     platform: "Unity 6 & Web Admin",
     role: "Project Creator & Lead Dev",
     timeline: "2024 – 2026",

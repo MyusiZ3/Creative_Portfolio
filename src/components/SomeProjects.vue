@@ -368,7 +368,7 @@ const projects = computed(() => {
         ? "Gim Edukasi & Web Admin (Firebase)"
         : "Educational Game & Web Admin (Firebase)",
       bg: "#059669",
-      image: "/images/projects/Mathmagic/dashboard_mathmagic.webp",
+      image: "/images/projects/Mathmagic/mathmagic_appscreen_mockup.webp",
       filterType: "game",
       liveLink: "https://shorturl.at/cb55f",
       githubLink: "https://github.com/MyusiZ3/Mathmagic-Firebase",
