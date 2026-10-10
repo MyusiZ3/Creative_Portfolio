@@ -341,7 +341,7 @@ const projects = [
     ],
     platform: "AR Mobile App & Web CMS",
     role: "Fullstack AR & Web Dev",
-    timeline: "2025",
+    timeline: "2026",
     techStack: ["Unity", "Vuforia Engine", "Supabase", "Vite", "JS"],
     githubUrl: "https://github.com/MyusiZ3/DjaswitaAR-Fix",
     challenge:
@@ -419,6 +419,7 @@ const projects = [
     role: "Frontend Dev & IT Intern",
     timeline: "Magang 2024",
     techStack: ["HTML", "CSS", "JavaScript", "i18n", "Responsive"],
+    demoUrl: "https://djourney.id/web/",
     challenge:
       "Mengakomodasi wisatawan mancanegara serta memperbaiki kelemahan responsivitas mobile & filter pencarian.",
     solution:

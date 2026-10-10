@@ -318,10 +318,7 @@
 
               <!-- Metadata Specs (Team/Duration, Tools) -->
               <div class="space-y-1.5 text-xs text-zinc-300 font-['Roboto']">
-                <p v-if="project.teamInfo">
-                  <span class="text-zinc-400"
-                    >{{ t("my_proj_team_label") }} |</span
-                  >
+                <p v-if="project.teamInfo" class="text-zinc-400">
                   {{ project.teamInfo }}
                 </p>
                 <!-- Tech Stack Badges (Clean Dashboard Icons with Tooltip) -->
@@ -897,15 +894,15 @@ const projects = computed(() => {
   const isId = lang.value === "ID";
   return [
     {
-      year: "2025",
+      year: "2026",
       name: isId
         ? "Djaswita AR – Dynamic AR & Web CMS (Tugas Akhir)"
         : "Djaswita AR – Dynamic AR (Thesis)",
       icon: "bi-box-seam",
       role: "Fullstack AR & Web Developer (Thesis)",
       teamInfo: isId
-        ? "Proyek Tugas Akhir Kelulusan | 2025"
-        : "Final Thesis Graduation Project | 2025",
+        ? "Proyek Pribadi untuk Tugas Akhir | 2026"
+        : "Personal Project for Final Thesis | 2026",
       tools: "Unity, Vuforia Engine, Supabase DB, Vite, JavaScript",
       toolIcons: [
         { name: "Unity", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/unity.svg", invert: true },
@@ -1003,7 +1000,7 @@ const projects = computed(() => {
       icon: "bi-kanban",
       role: "Mobile Developer & UI/UX Designer",
       teamInfo: isId
-        ? "Proyek Personal | 2025"
+        ? "Proyek Pribadi | 2025"
         : "Personal Project | 2025",
       tools: "Flutter, Dart, Supabase (PostgreSQL), Google OAuth, PDF Engine",
       toolIcons: [
@@ -1094,7 +1091,7 @@ const projects = computed(() => {
       icon: "bi-wallet2",
       role: "Mobile Developer & Cloud System Architect",
       teamInfo: isId
-        ? "Proyek Personal | 2025"
+        ? "Proyek Pribadi | 2025"
         : "Personal Project | 2025",
       tools: "Flutter, Dart, Firebase (Auth/Firestore), Google ML Kit, Gemini & Groq API",
       overview: isId
@@ -1157,7 +1154,7 @@ const projects = computed(() => {
         "/images/projects/iudex_2.webp",
         "/images/projects/iudex_3.webp",
       ],
-      link: "#",
+      link: "https://djourney.id/web/",
       _dir: "next",
     },
     {
@@ -1396,9 +1393,9 @@ const projects = computed(() => {
       platform: "Web Application",
       bg: "#7c3aed",
       images: [
-        "/images/projects/DjaswitaAR/djaswita_web_mockup.webp",
-        "/images/projects/DjaswitaAR/djaswita_appscreen_mockup.webp",
-        "/images/projects/DjaswitaAR/djaswita_3d_mockup.webp",
+        "/images/projects/Arch/arch.webp",
+        "/images/projects/arch_2.webp",
+        "/images/projects/arch_3.webp",
       ],
       link: "#",
       _dir: "next",

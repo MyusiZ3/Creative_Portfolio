@@ -423,6 +423,7 @@ const projects = computed(() => {
       bg: "#2563eb",
       image: "/images/projects/djourney_jaswita.png",
       filterType: "web",
+      liveLink: "https://djourney.id/web/",
       caseStudy: {
         challenge: isId
           ? "Meningkatkan jangkauan wisatawan mancanegara serta memperbaiki masalah responsivitas mobile dan bug filter pencarian."

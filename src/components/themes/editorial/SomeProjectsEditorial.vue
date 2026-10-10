@@ -417,6 +417,7 @@ const projects = computed(() => {
       bg: "#2563eb",
       image: "/images/projects/Iudex/iudex.webp",
       filterType: "web",
+      liveLink: "https://djourney.id/web/",
       caseStudy: {
         challenge: isId
           ? "Meningkatkan jangkauan wisatawan mancanegara serta memperbaiki masalah responsivitas mobile dan bug filter pencarian."
@@ -551,7 +552,7 @@ const projects = computed(() => {
         ? "Desain Web Portofolio Pribadi"
         : "Personal Portfolio Web Design",
       bg: "#7c3aed",
-      image: "/images/projects/DjaswitaAR/djaswita_web_mockup.webp",
+      image: "/images/projects/Arch/arch.webp",
       filterType: "web",
       liveLink: "https://arch.vercel.app",
       caseStudy: {

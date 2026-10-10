@@ -583,8 +583,8 @@ const projects = computed(() => {
       icon: "bi-box-seam",
       role: "Fullstack AR & Web Developer (Thesis)",
       teamInfo: isId
-        ? "Proyek Tugas Akhir Kelulusan | 2025"
-        : "Final Thesis Graduation Project | 2025",
+        ? "Proyek Pribadi untuk Tugas Akhir | 2026"
+        : "Personal Project for Final Thesis | 2026",
       tools: "Unity, Vuforia Engine, Supabase DB, Vite, JavaScript",
       overview: isId
         ? "Satu sistem terintegrasi yang menggabungkan aplikasi Dynamic Augmented Reality (AR) dan Web Admin Dashboard (CMS) berbasis Vite & Supabase DB sebagai topik Tugas Akhir kelulusan. Konten 3D dan informasi dalam aplikasi AR dapat di-CRUD secara real-time melalui web admin tanpa perlu rebuild aplikasi."
@@ -606,7 +606,7 @@ const projects = computed(() => {
         ? "Aplikasi AR Mobile & Web CMS (Satu Sistem)"
         : "Unified AR App & Web CMS System",
       bg: "#7c3aed",
-            images: [
+      images: [
         "/images/projects/DjaswitaAR/djaswita_web_mockup.webp",
         "/images/projects/DjaswitaAR/djaswita_appscreen_mockup.webp",
         "/images/projects/DjaswitaAR/djaswita_3d_mockup.webp",
@@ -650,7 +650,7 @@ const projects = computed(() => {
         ? "Gim Edukasi Unity 6 & Web Admin Dashboard"
         : "Unity 6 Game & Web Admin Dashboard",
       bg: "#059669",
-            images: [
+      images: [
         "/images/projects/Mathmagic/mathmagic_appscreen_mockup.webp",
         "/images/projects/Mathmagic/mathmagic_phone_mockup.webp",
         "/images/projects/Mathmagic/mathmagic_web_mockup.webp",
@@ -667,7 +667,7 @@ const projects = computed(() => {
         ? "Pengembang Mobile & Desainer UI/UX"
         : "Mobile Developer & UI/UX Designer",
       teamInfo: isId
-        ? "Proyek Personal | 2025"
+        ? "Proyek Pribadi | 2025"
         : "Personal Project | 2025",
       tools: "Flutter, Dart, Supabase (PostgreSQL), Google OAuth, PDF Engine",
       overview: isId
@@ -706,7 +706,7 @@ const projects = computed(() => {
         ? "Pengembang Mobile & Arsitek Sistem Cloud"
         : "Mobile Developer & Cloud System Architect",
       teamInfo: isId
-        ? "Proyek Personal | 2025"
+        ? "Proyek Pribadi | 2025"
         : "Personal Project | 2025",
       tools: "Flutter, Dart, Firebase (Auth/Firestore), Google ML Kit, Gemini & Groq API",
       overview: isId
@@ -766,7 +766,7 @@ const projects = computed(() => {
       platform: "Web Application",
       bg: "#2563eb",
       images: ["/images/projects/djourney_jaswita.png"],
-      link: "#",
+      link: "https://djourney.id/web/",
       _dir: "next",
     },
     {
