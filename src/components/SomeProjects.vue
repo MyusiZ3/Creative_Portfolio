@@ -350,7 +350,7 @@ const projects = computed(() => {
         ? "Aplikasi AR & Web CMS (Unified)"
         : "Unified AR & Web CMS App",
       bg: "#7c3aed",
-      image: "/images/projects/dynamic_ar_cms.png",
+      image: "/images/projects/DjaswitaAR/djaswita_web_mockup.webp",
       filterType: "game",
       githubLink: "https://github.com/MyusiZ3/DjaswitaAR-Fix",
       caseStudy: {

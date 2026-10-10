@@ -606,7 +606,11 @@ const projects = computed(() => {
         ? "Aplikasi AR Mobile & Web CMS (Satu Sistem)"
         : "Unified AR App & Web CMS System",
       bg: "#7c3aed",
-      images: ["/images/projects/dynamic_ar_cms.png"],
+            images: [
+        "/images/projects/DjaswitaAR/djaswita_web_mockup.webp",
+        "/images/projects/DjaswitaAR/djaswita_appscreen_mockup.webp",
+        "/images/projects/DjaswitaAR/djaswita_3d_mockup.webp",
+      ],
       link: "https://github.com/MyusiZ3/DjaswitaAR-Fix",
       _dir: "next",
     },

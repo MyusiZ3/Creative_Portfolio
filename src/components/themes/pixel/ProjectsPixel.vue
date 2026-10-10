@@ -334,7 +334,11 @@ const projects = [
     category: "game",
     shortDesc:
       "Satu sistem terintegrasi aplikasi AR dinamis dan Web Admin Dashboard (Vite & Supabase) tanpa rebuild.",
-    images: ["/images/projects/dynamic_ar_cms.png"],
+    images: [
+      "/images/projects/DjaswitaAR/djaswita_web_mockup.webp",
+      "/images/projects/DjaswitaAR/djaswita_appscreen_mockup.webp",
+      "/images/projects/DjaswitaAR/djaswita_3d_mockup.webp",
+    ],
     platform: "AR Mobile App & Web CMS",
     role: "Fullstack AR & Web Dev",
     timeline: "2025",

@@ -344,7 +344,7 @@ const projects = computed(() => {
         ? "Aplikasi AR & Web CMS (Unified)"
         : "Unified AR & Web CMS App",
       bg: "#7c3aed",
-      image: "/images/projects/Arch/arch.webp",
+      image: "/images/projects/DjaswitaAR/djaswita_web_mockup.webp",
       filterType: "game",
       githubLink: "https://github.com/MyusiZ3/DjaswitaAR-Fix",
       caseStudy: {
@@ -551,7 +551,7 @@ const projects = computed(() => {
         ? "Desain Web Portofolio Pribadi"
         : "Personal Portfolio Web Design",
       bg: "#7c3aed",
-      image: "/images/projects/Arch/arch.webp",
+      image: "/images/projects/DjaswitaAR/djaswita_web_mockup.webp",
       filterType: "web",
       liveLink: "https://arch.vercel.app",
       caseStudy: {
