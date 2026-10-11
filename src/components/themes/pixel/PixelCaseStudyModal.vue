@@ -40,11 +40,32 @@
             @touchmove="onTouchMove($event)"
             @touchend="onTouchEnd"
           >
-            <img
-              :src="activeModalImage"
-              :alt="project.title"
-              class="w-full h-64 sm:h-80 object-cover opacity-90 transition-all duration-300"
-            />
+            <iframe
+              v-if="isPlayingVideo && project.videoEmbedId"
+              :src="`https://www.youtube-nocookie.com/embed/${project.videoEmbedId}?autoplay=1&rel=0`"
+              class="w-full h-64 sm:h-80 border-0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+            <template v-else>
+              <img
+                :src="activeModalImage"
+                :alt="project.title"
+                class="w-full h-64 sm:h-80 object-cover opacity-90 transition-all duration-300"
+              />
+
+              <!-- Click-to-play Video Trigger Overlay -->
+              <button
+                v-if="project.videoEmbedId"
+                @click="isPlayingVideo = true"
+                class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 hover:bg-black/30 transition-all group/play cursor-pointer z-20"
+              >
+                <span class="px-4 py-2 bg-[#ff0055] text-white font-extrabold text-xs uppercase border-2 border-black shadow-[4px_4px_0px_#000000] font-silkscreen group-hover/play:scale-105 transition-transform flex items-center gap-2">
+                  <i class="bi bi-play-circle-fill text-sm"></i>
+                  <span>[▶] STREAM DEMO</span>
+                </span>
+              </button>
+            </template>
 
             <!-- Category Overlay -->
             <div class="absolute bottom-3 left-3 bg-black/80 px-3 py-1 border border-[#00ff66] text-[#00ff66] text-xs font-bold uppercase font-silkscreen z-10">
@@ -152,6 +173,14 @@
           <!-- Action Footer Buttons -->
           <div class="pt-4 border-t-2 border-[#30363d] flex flex-wrap items-center justify-between gap-4">
             <div class="flex flex-wrap items-center gap-3">
+              <button
+                v-if="project.videoEmbedId && !isPlayingVideo"
+                @click="isPlayingVideo = true"
+                class="px-5 py-2.5 bg-[#ff0055] text-white font-extrabold text-xs uppercase border-2 border-black shadow-[3px_3px_0px_#000000] hover:translate-x-[1px] hover:translate-y-[1px] transition-all font-silkscreen flex items-center gap-1.5 cursor-pointer"
+              >
+                <span>STREAM DEMO</span>
+                <i class="bi bi-play-circle-fill"></i>
+              </button>
               <a
                 v-if="project.demoUrl"
                 :href="project.demoUrl"
@@ -197,10 +226,12 @@ const props = defineProps({
 const emit = defineEmits(['close']);
 
 const currentSlideIndex = ref(0);
+const isPlayingVideo = ref(false);
 
-// Reset slide index whenever modal opens or project changes
+// Reset slide index and video player whenever modal opens or project changes
 watch(() => props.project, () => {
   currentSlideIndex.value = 0;
+  isPlayingVideo.value = false;
 });
 
 const modalImages = computed(() => {
@@ -248,6 +279,7 @@ const onTouchEnd = () => {
 };
 
 const close = () => {
+  isPlayingVideo.value = false;
   emit('close');
 };
 

@@ -462,7 +462,8 @@ const projects = [
     role: "VR Developer & Environment",
     timeline: "Jan – Jun 2025",
     techStack: ["Unity VR", "Oculus SDK", "Blender 3D"],
-    demoUrl: "https://youtube.com/preview",
+    demoUrl: "https://youtu.be/DmFdkMLRTGc?si=EKjq0QPhMt2LOcCU",
+    videoEmbedId: "DmFdkMLRTGc",
     challenge:
       "Mengatasi mabuk gerak (motion sickness) saat mengeksplorasi ruang simulasi virtual.",
     solution:

@@ -25,7 +25,7 @@
           class="inline-flex items-center gap-2 text-violet-400 font-mono text-xs uppercase tracking-widest font-semibold px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 mb-6"
         >
           <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
-          {{ t("my_proj_badge") }}
+          {{ t('my_proj_badge') }}
         </span>
       </div>
 
@@ -46,7 +46,7 @@
         }"
         class="text-3xl md:text-4xl lg:text-[48px] font-bold font-['Poppins'] text-white mb-4 tracking-wider text-center"
       >
-        {{ t("my_proj_title") }}
+        {{ t('my_proj_title') }}
       </h2>
 
       <!-- Subtitle -->
@@ -60,7 +60,7 @@
         }"
         class="text-[#8E949F] font-['Roboto'] font-medium text-[13px] lg:text-[15px] max-w-2xl mx-auto text-center leading-relaxed mb-12"
       >
-        {{ t("my_proj_desc") }}
+        {{ t('my_proj_desc') }}
       </p>
 
       <!-- Divider -->
@@ -92,9 +92,7 @@
         >
           <div class="flex flex-col lg:flex-row gap-8 lg:gap-10 items-stretch">
             <!-- Project Image Carousel (Visual Column) -->
-            <div
-              class="w-full lg:w-[48%] shrink-0 flex flex-col justify-center"
-            >
+            <div class="w-full lg:w-[48%] shrink-0 flex flex-col justify-center">
               <div
                 class="project-image-wrapper group relative rounded-2xl overflow-hidden aspect-4/3 border border-white/10 bg-[#121214]"
               >
@@ -103,10 +101,7 @@
                   class="relative w-full h-full cursor-pointer flex items-center justify-center"
                   @click="openLightbox(index, activeSlides[index] || 0)"
                 >
-                  <transition
-                    :name="getTransitionName(project._dir)"
-                    mode="out-in"
-                  >
+                  <transition :name="getTransitionName(project._dir)" mode="out-in">
                     <img
                       :key="project.images[activeSlides[index] || 0]"
                       :src="project.images[activeSlides[index] || 0]"
@@ -165,9 +160,7 @@
             <div class="flex-1 flex flex-col justify-between text-left">
               <div>
                 <!-- App Icon & Title Header -->
-                <div
-                  class="flex items-center gap-3.5 mb-5 pb-4 border-b border-white/5"
-                >
+                <div class="flex items-center gap-3.5 mb-5 pb-4 border-b border-white/5">
                   <div
                     class="w-11 h-11 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 text-lg shadow-inner shrink-0"
                   >
@@ -183,9 +176,7 @@
                     <p
                       class="text-xs text-zinc-400 font-mono mt-0.5 flex flex-wrap items-center gap-2"
                     >
-                      <span class="text-violet-400 font-semibold">{{
-                        project.platform
-                      }}</span>
+                      <span class="text-violet-400 font-semibold">{{ project.platform }}</span>
                       <span class="text-zinc-600">•</span>
                       <span>{{ project.teamInfo }}</span>
                     </p>
@@ -199,7 +190,7 @@
                   <div>
                     <span
                       class="text-zinc-500 font-mono text-[10px] uppercase tracking-wider block mb-1 font-semibold"
-                      >{{ t("my_proj_role") }}</span
+                      >{{ t('my_proj_role') }}</span
                     >
                     <span
                       class="text-zinc-200 text-xs font-medium font-['Poppins'] leading-relaxed block"
@@ -209,7 +200,7 @@
                   <div>
                     <span
                       class="text-zinc-500 font-mono text-[10px] uppercase tracking-wider block mb-1 font-semibold"
-                      >{{ t("my_proj_tools") }}</span
+                      >{{ t('my_proj_tools') }}</span
                     >
                     <span
                       class="text-zinc-200 text-xs font-medium font-['Poppins'] leading-relaxed block"
@@ -225,10 +216,8 @@
                     <h4
                       class="text-xs lg:text-sm text-violet-400 font-mono font-bold tracking-wider uppercase mb-2 flex items-center gap-2"
                     >
-                      <span
-                        class="w-1.5 h-1.5 rounded-full bg-violet-400"
-                      ></span>
-                      {{ t("my_proj_overview") }}
+                      <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
+                      {{ t('my_proj_overview') }}
                     </h4>
                     <p
                       class="text-zinc-300 text-xs lg:text-[13px] font-['Roboto'] leading-relaxed font-normal"
@@ -242,10 +231,8 @@
                     <h4
                       class="text-xs lg:text-sm text-violet-400 font-mono font-bold tracking-wider uppercase mb-2.5 flex items-center gap-2"
                     >
-                      <span
-                        class="w-1.5 h-1.5 rounded-full bg-violet-400"
-                      ></span>
-                      {{ t("my_proj_whatidid") }}
+                      <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
+                      {{ t('my_proj_whatidid') }}
                     </h4>
                     <ul class="space-y-2">
                       <li
@@ -253,9 +240,7 @@
                         :key="i"
                         class="flex items-start gap-2.5"
                       >
-                        <span class="text-violet-400 mt-1 text-[10px] shrink-0"
-                          >✦</span
-                        >
+                        <span class="text-violet-400 mt-1 text-[10px] shrink-0">✦</span>
                         <span
                           class="text-zinc-300 font-['Roboto'] text-xs lg:text-[13px] leading-relaxed font-normal"
                         >
@@ -273,7 +258,7 @@
                   :href="project.link || '#'"
                   class="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 active:scale-95 text-white font-['Poppins'] font-semibold text-xs px-5 py-2.5 rounded-xl transition-all duration-300 tracking-wider shadow-md shadow-violet-600/20 cursor-pointer"
                 >
-                  <span>{{ t("my_proj_view_work") }}</span>
+                  <span>{{ t('my_proj_view_work') }}</span>
                   <i class="bi bi-arrow-right text-xs"></i>
                 </a>
               </div>
@@ -300,7 +285,7 @@
           ></div>
 
           <span class="relative z-10">{{
-            showAll ? t("my_proj_show_less") : t("my_proj_view_all")
+            showAll ? t('my_proj_show_less') : t('my_proj_view_all')
           }}</span>
 
           <div
@@ -308,10 +293,7 @@
           >
             <i
               class="bi transition-transform duration-500"
-              :class="[
-                showAll ? 'bi-chevron-up' : 'bi-chevron-down',
-                'group-hover:scale-110',
-              ]"
+              :class="[showAll ? 'bi-chevron-up' : 'bi-chevron-down', 'group-hover:scale-110']"
             ></i>
           </div>
         </button>
@@ -330,10 +312,7 @@
         @keydown.right="lightboxNext"
       >
         <!-- Backdrop -->
-        <div
-          class="absolute inset-0 bg-black/90 backdrop-blur-md"
-          @click="closeLightbox"
-        ></div>
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-md" @click="closeLightbox"></div>
 
         <!-- Close Button -->
         <button
@@ -399,11 +378,7 @@
             :key="i"
             @click="lightboxGoTo(i)"
             class="w-2.5 h-2.5 rounded-full transition-all duration-300"
-            :class="
-              lightbox.slideIdx === i
-                ? 'bg-violet-400 w-6'
-                : 'bg-white/30 hover:bg-white/60'
-            "
+            :class="lightbox.slideIdx === i ? 'bg-violet-400 w-6' : 'bg-white/30 hover:bg-white/60'"
           ></button>
         </div>
       </div>
@@ -412,26 +387,18 @@
 </template>
 
 <script setup>
-import {
-  ref,
-  reactive,
-  computed,
-  onMounted,
-  onUnmounted,
-  watch,
-  nextTick,
-} from "vue";
-import { useLanguage } from "@/composables/useLanguage";
+import { ref, reactive, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
+import { useLanguage } from '@/composables/useLanguage'
 
-const { t, lang } = useLanguage();
+const { t, lang } = useLanguage()
 
 // Track active slide per project
-const activeSlides = reactive({});
+const activeSlides = reactive({})
 
-const showAll = ref(false);
+const showAll = ref(false)
 const visibleProjects = computed(() =>
   showAll.value ? projects.value : projects.value.slice(0, 4),
-);
+)
 // Track direction for each project for transition
 
 // === Lightbox state ===
@@ -439,654 +406,614 @@ const lightbox = reactive({
   open: false,
   projectIdx: 0,
   slideIdx: 0,
-  dir: "next",
-});
+  dir: 'next',
+})
 
 const lightboxImages = computed(() => {
   if (lightbox.projectIdx >= 0 && lightbox.projectIdx < projects.value.length) {
-    return projects.value[lightbox.projectIdx].images;
+    return projects.value[lightbox.projectIdx].images
   }
-  return [];
-});
+  return []
+})
 
 const openLightbox = (projectIdx, slideIdx) => {
-  lightbox.projectIdx = projectIdx;
-  lightbox.slideIdx = slideIdx;
-  lightbox.dir = "next";
-  lightbox.open = true;
-  document.body.style.overflow = "hidden";
+  lightbox.projectIdx = projectIdx
+  lightbox.slideIdx = slideIdx
+  lightbox.dir = 'next'
+  lightbox.open = true
+  document.body.style.overflow = 'hidden'
   nextTick(() => {
-    window.addEventListener("keydown", handleLightboxKey);
-  });
-};
+    window.addEventListener('keydown', handleLightboxKey)
+  })
+}
 
 const closeLightbox = () => {
-  lightbox.open = false;
-  document.body.style.overflow = "";
-  window.removeEventListener("keydown", handleLightboxKey);
-};
+  lightbox.open = false
+  document.body.style.overflow = ''
+  window.removeEventListener('keydown', handleLightboxKey)
+}
 
 const lightboxNext = () => {
-  lightbox.dir = "next";
-  lightbox.slideIdx = (lightbox.slideIdx + 1) % lightboxImages.value.length;
-};
+  lightbox.dir = 'next'
+  lightbox.slideIdx = (lightbox.slideIdx + 1) % lightboxImages.value.length
+}
 
 const lightboxPrev = () => {
-  lightbox.dir = "prev";
+  lightbox.dir = 'prev'
   lightbox.slideIdx =
-    (lightbox.slideIdx - 1 + lightboxImages.value.length) %
-    lightboxImages.value.length;
-};
+    (lightbox.slideIdx - 1 + lightboxImages.value.length) % lightboxImages.value.length
+}
 
 const lightboxGoTo = (i) => {
-  lightbox.dir = i > lightbox.slideIdx ? "next" : "prev";
-  lightbox.slideIdx = i;
-};
+  lightbox.dir = i > lightbox.slideIdx ? 'next' : 'prev'
+  lightbox.slideIdx = i
+}
 
 const handleLightboxKey = (e) => {
-  if (e.key === "Escape") closeLightbox();
-  if (e.key === "ArrowRight") lightboxNext();
-  if (e.key === "ArrowLeft") lightboxPrev();
-};
+  if (e.key === 'Escape') closeLightbox()
+  if (e.key === 'ArrowRight') lightboxNext()
+  if (e.key === 'ArrowLeft') lightboxPrev()
+}
 
 // Touch / swipe support
-let touchStartX = 0;
-let touchEndX = 0;
+let touchStartX = 0
+let touchEndX = 0
 
 const onTouchStart = (e) => {
-  touchStartX = e.touches[0].clientX;
-};
+  touchStartX = e.touches[0].clientX
+}
 
 const onTouchMove = (e) => {
-  touchEndX = e.touches[0].clientX;
-};
+  touchEndX = e.touches[0].clientX
+}
 
 const onTouchEnd = () => {
-  const diff = touchStartX - touchEndX;
+  const diff = touchStartX - touchEndX
   if (Math.abs(diff) > 50) {
-    if (diff > 0) lightboxNext();
-    else lightboxPrev();
+    if (diff > 0) lightboxNext()
+    else lightboxPrev()
   }
-  touchStartX = 0;
-  touchEndX = 0;
-};
-const slideDirections = reactive({});
+  touchStartX = 0
+  touchEndX = 0
+}
+const slideDirections = reactive({})
 
 const getTransitionName = (dir) => {
-  return dir === "prev" ? "slide-prev" : "slide-next";
-};
+  return dir === 'prev' ? 'slide-prev' : 'slide-next'
+}
 
 const goToSlide = (projectIdx, slideIdx) => {
-  const current = activeSlides[projectIdx] || 0;
-  slideDirections[projectIdx] = slideIdx > current ? "next" : "prev";
+  const current = activeSlides[projectIdx] || 0
+  slideDirections[projectIdx] = slideIdx > current ? 'next' : 'prev'
   // Assign _dir to the project reactively
-  projects.value[projectIdx]._dir = slideDirections[projectIdx];
-  activeSlides[projectIdx] = slideIdx;
-};
+  projects.value[projectIdx]._dir = slideDirections[projectIdx]
+  activeSlides[projectIdx] = slideIdx
+}
 
 const nextSlide = (projectIdx, total) => {
-  const current = activeSlides[projectIdx] || 0;
-  slideDirections[projectIdx] = "next";
-  projects.value[projectIdx]._dir = "next";
-  activeSlides[projectIdx] = (current + 1) % total;
-};
+  const current = activeSlides[projectIdx] || 0
+  slideDirections[projectIdx] = 'next'
+  projects.value[projectIdx]._dir = 'next'
+  activeSlides[projectIdx] = (current + 1) % total
+}
 
 const prevSlide = (projectIdx, total) => {
-  const current = activeSlides[projectIdx] || 0;
-  slideDirections[projectIdx] = "prev";
-  projects.value[projectIdx]._dir = "prev";
-  activeSlides[projectIdx] = (current - 1 + total) % total;
-};
+  const current = activeSlides[projectIdx] || 0
+  slideDirections[projectIdx] = 'prev'
+  projects.value[projectIdx]._dir = 'prev'
+  activeSlides[projectIdx] = (current - 1 + total) % total
+}
 
 // Auto-play carousel
-let autoPlayInterval = null;
+let autoPlayInterval = null
 
 const handleScrollToProject = (e) => {
-  const idx = e.detail;
+  const idx = e.detail
   if (idx >= 4 && !showAll.value) {
-    showAll.value = true;
+    showAll.value = true
   }
   nextTick(() => {
-    const el = document.getElementById("my-project-" + idx);
+    const el = document.getElementById('my-project-' + idx)
     if (el) {
-      const y = el.getBoundingClientRect().top + window.scrollY - 100;
-      window.scrollTo({ top: y, behavior: "smooth" });
+      const y = el.getBoundingClientRect().top + window.scrollY - 100
+      window.scrollTo({ top: y, behavior: 'smooth' })
     }
-  });
-};
+  })
+}
 
 onMounted(() => {
-  window.addEventListener("scrollToProject", handleScrollToProject);
+  window.addEventListener('scrollToProject', handleScrollToProject)
   autoPlayInterval = setInterval(() => {
     projects.value.forEach((project, idx) => {
       if (project.images.length > 1) {
-        const current = activeSlides[idx] || 0;
-        projects.value[idx]._dir = "next";
-        activeSlides[idx] = (current + 1) % project.images.length;
+        const current = activeSlides[idx] || 0
+        projects.value[idx]._dir = 'next'
+        activeSlides[idx] = (current + 1) % project.images.length
       }
-    });
-  }, 4000);
-});
+    })
+  }, 4000)
+})
 
 onUnmounted(() => {
-  window.removeEventListener("scrollToProject", handleScrollToProject);
-  if (autoPlayInterval) clearInterval(autoPlayInterval);
-});
+  window.removeEventListener('scrollToProject', handleScrollToProject)
+  if (autoPlayInterval) clearInterval(autoPlayInterval)
+})
 
 const projects = computed(() => {
-  const isId = lang.value === "ID";
+  const isId = lang.value === 'ID'
   return [
     {
-      name: isId
-        ? "Djaswita AR – Dynamic AR & Web CMS (Tugas Akhir)"
-        : "Djaswita AR – Dynamic AR (Thesis)",
-      icon: "bi-box-seam",
-      role: "Fullstack AR & Web Developer (Thesis)",
+      name: isId ? 'Djaswita AR – Dynamic AR & Web CMS (Tugas Akhir)' : 'Djaswita AR – Dynamic AR',
+      icon: 'bi-box-seam',
+      role: 'Fullstack AR & Web Developer (Thesis)',
       teamInfo: isId
-        ? "Proyek Pribadi untuk Tugas Akhir | 2026"
-        : "Personal Project for Final Thesis | 2026",
-      tools: "Unity, Vuforia Engine, Supabase DB, Vite, JavaScript",
+        ? 'Proyek Pribadi untuk Tugas Akhir | 2026'
+        : 'Personal Project for Final Thesis | 2026',
+      tools: 'Unity, Vuforia Engine, Supabase DB, Vite, JavaScript',
       overview: isId
-        ? "Satu sistem terintegrasi yang menggabungkan aplikasi Dynamic Augmented Reality (AR) dan Web Admin Dashboard (CMS) berbasis Vite & Supabase DB sebagai topik Tugas Akhir kelulusan. Konten 3D dan informasi dalam aplikasi AR dapat di-CRUD secara real-time melalui web admin tanpa perlu rebuild aplikasi."
-        : "A unified system combining a dynamic Augmented Reality (AR) app and a Vite & Supabase DB Web Admin Dashboard (CMS) built for Final Graduation Thesis. Enables real-time remote 3D content CRUD operations directly from the web admin without rebuilding application binaries.",
+        ? 'Satu sistem terintegrasi yang menggabungkan aplikasi Dynamic Augmented Reality (AR) dan Web Admin Dashboard (CMS) berbasis Vite & Supabase DB sebagai topik Tugas Akhir kelulusan. Konten 3D dan informasi dalam aplikasi AR dapat di-CRUD secara real-time melalui web admin tanpa perlu rebuild aplikasi.'
+        : 'A unified system combining a dynamic Augmented Reality (AR) app and a Vite & Supabase DB Web Admin Dashboard (CMS) built for Final Graduation Thesis. Enables real-time remote 3D content CRUD operations directly from the web admin without rebuilding application binaries.',
       tasks: isId
         ? [
-            "Membangun arsitektur AR dinamis yang memuat aset 3D & data dari Supabase DB",
-            "Mengembangkan Web Admin Dashboard (CMS) menggunakan Vite untuk manajemen CRUD konten AR",
-            "Mengeliminasi kebutuhan rebuild aplikasi AR saat ada perubahan atau penambahan materi 3D",
-            "Mengintegrasikan autentikasi database, manajemen storage, dan endpoint API real-time",
+            'Membangun arsitektur AR dinamis yang memuat aset 3D & data dari Supabase DB',
+            'Mengembangkan Web Admin Dashboard (CMS) menggunakan Vite untuk manajemen CRUD konten AR',
+            'Mengeliminasi kebutuhan rebuild aplikasi AR saat ada perubahan atau penambahan materi 3D',
+            'Mengintegrasikan autentikasi database, manajemen storage, dan endpoint API real-time',
           ]
         : [
-            "Architected dynamic AR remote asset loading pipeline connected to Supabase DB",
-            "Developed Web Admin Dashboard (CMS) using Vite for full AR content CRUD management",
-            "Eliminated application binary rebuilds when 3D models or informational content are modified",
-            "Integrated database authentication, cloud storage management, and real-time APIs",
+            'Architected dynamic AR remote asset loading pipeline connected to Supabase DB',
+            'Developed Web Admin Dashboard (CMS) using Vite for full AR content CRUD management',
+            'Eliminated application binary rebuilds when 3D models or informational content are modified',
+            'Integrated database authentication, cloud storage management, and real-time APIs',
           ],
       platform: isId
-        ? "Aplikasi AR Mobile & Web CMS (Satu Sistem)"
-        : "Unified AR App & Web CMS System",
-      bg: "#7c3aed",
+        ? 'Aplikasi AR Mobile & Web CMS (Satu Sistem)'
+        : 'Unified AR App & Web CMS System',
+      bg: '#7c3aed',
       images: [
-        "/images/projects/DjaswitaAR/djaswita_web_mockup.webp",
-        "/images/projects/DjaswitaAR/djaswita_appscreen_mockup.webp",
-        "/images/projects/DjaswitaAR/djaswita_3d_mockup.webp",
+        '/images/projects/DjaswitaAR/djaswita_web_mockup.webp',
+        '/images/projects/DjaswitaAR/djaswita_appscreen_mockup.webp',
+        '/images/projects/DjaswitaAR/djaswita_3d_mockup.webp',
       ],
-      link: "https://github.com/MyusiZ3/DjaswitaAR-Fix",
-      _dir: "next",
+      link: 'https://github.com/MyusiZ3/DjaswitaAR-Fix',
+      _dir: 'next',
     },
     {
-      name: isId
-        ? "Mathmagic – App Edukasi Matematika (HKI)"
-        : "Mathmagic – Math Educational App (HKI)",
-      icon: "bi-award",
+      name: isId ? 'Mathmagic – App Edukasi Matematika (HKI)' : 'Mathmagic – Educational App',
+      icon: 'bi-award',
       role: isId
-        ? "Project Creator, Lead Developer & Main UI Designer"
-        : "Project Creator, Lead Developer & Main UI Designer",
+        ? 'Project Creator, Lead Developer & Main UI Designer'
+        : 'Project Creator, Lead Developer & Main UI Designer',
       teamInfo: isId
-        ? "Hak Kekayaan Intelektual Resmi No. 001400842 | Telkom Univ & SD Lab Univ Pattimura"
-        : "Official Copyright (HKI) No. 001400842 | Telkom Univ & SD Lab Pattimura Univ",
-      tools: "Unity 6 (LTS), C#, Firebase (Firestore & Auth), Vite, JavaScript ES6, Figma",
+        ? 'Hak Kekayaan Intelektual Resmi No. 001400842 | Telkom Univ & SD Lab Univ Pattimura'
+        : 'Official Copyright (HKI) No. 001400842 | Telkom Univ & SD Lab Pattimura Univ',
+      tools: 'Unity 6 (LTS), C#, Firebase (Firestore & Auth), Vite, JavaScript ES6, Figma',
       overview: isId
-        ? "Ekosistem gim pembelajaran matematika interaktif berlisensi Hak Cipta resmi Kemenkumham RI (No. 001400842) untuk siswa kelas 4 SD Laboratorium Universitas Pattimura. Mengintegrasikan klien mobile Unity 6 dengan sinkronisasi cloud real-time Firebase serta Web Admin Dashboard berbasis Vite untuk telemetri belajar siswa dan remote game parameter balancing tanpa perlu rebuild aplikasi."
-        : "An interactive educational math gaming ecosystem officially copyright registered with HKI (No. 001400842) for 4th Grade SD Laboratorium Universitas Pattimura. Combines a mobile Unity 6 game client with real-time Firebase cloud synchronization (Firestore & Auth) and a Vite Web Admin Dashboard for student telemetry analytics and remote parameter balancing without rebuilding binaries.",
+        ? 'Ekosistem gim pembelajaran matematika interaktif berlisensi Hak Cipta resmi Kemenkumham RI (No. 001400842) untuk siswa kelas 4 SD Laboratorium Universitas Pattimura. Mengintegrasikan klien mobile Unity 6 dengan sinkronisasi cloud real-time Firebase serta Web Admin Dashboard berbasis Vite untuk telemetri belajar siswa dan remote game parameter balancing tanpa perlu rebuild aplikasi.'
+        : 'An interactive educational math gaming ecosystem officially copyright registered with HKI (No. 001400842) for 4th Grade SD Laboratorium Universitas Pattimura. Combines a mobile Unity 6 game client with real-time Firebase cloud synchronization (Firestore & Auth) and a Vite Web Admin Dashboard for student telemetry analytics and remote parameter balancing without rebuilding binaries.',
       tasks: isId
         ? [
-            "Project Creator & Lead Developer: Merancang arsitektur penuh ekosistem gim Unity 6 dan Web Admin Dashboard",
-            "Main UI Designer: Merancang seluruh UI/UX ceria dan ramah anak di Figma serta animasi kurva sinusoidal (Mathf.Sin) di Unity",
-            "Mengembangkan mekanika kuis interaktif (Unity C#), sistem HP, timer dinamis, dan kalkulasi skor",
-            "Membangun Web Admin Dashboard (Vite & ES6) dengan Bento Grid untuk analitik telemetri siswa dan leaderboard real-time",
-            "Mengintegrasikan Firebase Firestore & Authentication untuk sinkronisasi cloud dua arah serta offline caching",
-            "Pendaftaran Hak Cipta Resmi Kemenkumham RI (No. 001400842)",
+            'Project Creator & Lead Developer: Merancang arsitektur penuh ekosistem gim Unity 6 dan Web Admin Dashboard',
+            'Main UI Designer: Merancang seluruh UI/UX ceria dan ramah anak di Figma serta animasi kurva sinusoidal (Mathf.Sin) di Unity',
+            'Mengembangkan mekanika kuis interaktif (Unity C#), sistem HP, timer dinamis, dan kalkulasi skor',
+            'Membangun Web Admin Dashboard (Vite & ES6) dengan Bento Grid untuk analitik telemetri siswa dan leaderboard real-time',
+            'Mengintegrasikan Firebase Firestore & Authentication untuk sinkronisasi cloud dua arah serta offline caching',
+            'Pendaftaran Hak Cipta Resmi Kemenkumham RI (No. 001400842)',
           ]
         : [
-            "Project Creator & Lead Developer: Architected full ecosystem connecting Unity 6 mobile game client with Web Admin Dashboard",
-            "Main UI Designer: Designed complete child-friendly interface in Figma and implemented math wave sinusoidal UI animations in Unity",
-            "Programmed interactive math quiz mechanics in Unity C#, HP system, dynamic timer, and scoring",
-            "Built Vite Web Admin Dashboard featuring Bento Grid telemetry analytics, real-time leaderboards, and remote game balancing",
-            "Integrated Firebase Firestore & Authentication for bi-directional real-time cloud sync with offline session caching",
-            "Officially registered Copyright with Ministry of Law and Human Rights RI (HKI No. 001400842)",
+            'Project Creator & Lead Developer: Architected full ecosystem connecting Unity 6 mobile game client with Web Admin Dashboard',
+            'Main UI Designer: Designed complete child-friendly interface in Figma and implemented math wave sinusoidal UI animations in Unity',
+            'Programmed interactive math quiz mechanics in Unity C#, HP system, dynamic timer, and scoring',
+            'Built Vite Web Admin Dashboard featuring Bento Grid telemetry analytics, real-time leaderboards, and remote game balancing',
+            'Integrated Firebase Firestore & Authentication for bi-directional real-time cloud sync with offline session caching',
+            'Officially registered Copyright with Ministry of Law and Human Rights RI (HKI No. 001400842)',
           ],
       platform: isId
-        ? "Gim Edukasi Unity 6 & Web Admin Dashboard"
-        : "Unity 6 Game & Web Admin Dashboard",
-      bg: "#059669",
+        ? 'Gim Edukasi Unity 6 & Web Admin Dashboard'
+        : 'Unity 6 Game & Web Admin Dashboard',
+      bg: '#059669',
       images: [
-        "/images/projects/Mathmagic/mathmagic_appscreen_mockup.webp",
-        "/images/projects/Mathmagic/mathmagic_phone_mockup.webp",
-        "/images/projects/Mathmagic/mathmagic_web_mockup.webp",
+        '/images/projects/Mathmagic/mathmagic_appscreen_mockup.webp',
+        '/images/projects/Mathmagic/mathmagic_phone_mockup.webp',
+        '/images/projects/Mathmagic/mathmagic_web_mockup.webp',
       ],
-      link: "https://shorturl.at/cb55f",
-      _dir: "next",
+      link: 'https://shorturl.at/cb55f',
+      _dir: 'next',
+    },
+    {
+      name: isId ? 'AppliQ – Job Application Tracker' : 'AppliQ – Job Application Tracker',
+      icon: 'bi-kanban',
+      role: isId ? 'Pengembang Mobile & Desainer UI/UX' : 'Mobile Developer & UI/UX Designer',
+      teamInfo: isId ? 'Proyek Pribadi | 2025' : 'Personal Project | 2025',
+      tools: 'Flutter, Dart, Supabase (PostgreSQL), Google OAuth, PDF Engine',
+      overview: isId
+        ? 'Aplikasi mobile pelacak lamaran kerja dan manajemen karier berbasis Flutter & Supabase. Membantu pelamar mengelola alur rekrutmen via drag-and-drop Kanban pipeline, pembuat ATS Resume/CV otomatis ke format PDF, generator cover letter dengan tanda tangan digital, sinkronisasi jadwal wawancara ke Google Calendar, serta analitik konversi karier.'
+        : 'A Flutter & Supabase mobile application designed to systematically manage job recruitment pipelines and career records. Features interactive drag-and-drop Kanban tracking, an instant ATS-compliant CV/resume PDF builder, dynamic cover letter generation with digital signatures, calendar interview sync with local push alerts, and visual career analytics.',
+      tasks: isId
+        ? [
+            'Merancang arsitektur aplikasi mobile modular dengan Flutter & Supabase backend',
+            'Membangun sistem Kanban pipeline interaktif (Applied, Interview, Offering, Accepted, Rejected) dengan drag-and-drop',
+            'Mengimplementasikan modul ATS Resume & Cover Letter PDF builder yang di-render langsung di perangkat',
+            'Mengintegrasikan Google OAuth 2.0, sinkronisasi Google Calendar, dan notifikasi pengingat wawancara lokal',
+            'Menerapkan Row-Level Security (RLS) PostgreSQL untuk isolasi data pengguna serta sistem multi-bahasa (ID, EN, JA, KO)',
+          ]
+        : [
+            'Architected modular Flutter mobile application backed by Supabase PostgreSQL',
+            'Built interactive drag-and-drop Kanban recruitment pipeline tracking all stages with duration metrics',
+            'Implemented native on-device ATS Resume/CV and customizable Cover Letter PDF rendering engines',
+            'Integrated Google OAuth 2.0, Google Calendar schedule sync, and local push notification reminders',
+            'Enforced PostgreSQL Row-Level Security (RLS) policies for complete user data isolation and multi-language support (ID, EN, JA, KO)',
+          ],
+      platform: isId ? 'Aplikasi Mobile (Flutter)' : 'Mobile Application (Flutter)',
+      bg: '#0284c7',
+      images: [
+        '/images/projects/AppliQ/appliq_element.png',
+        '/images/projects/AppliQ/appliq_logo.png',
+      ],
+      link: 'https://github.com/MyusiZ3/AppliQ',
+      _dir: 'next',
     },
     {
       name: isId
-        ? "AppliQ – Job Application Tracker & Career Management"
-        : "AppliQ – Job Application Tracker & Career Management",
-      icon: "bi-kanban",
+        ? 'MyDuitGweh – Smart Financial Tracker with AI & Collaboration'
+        : 'MyDuitGweh – Smart Financial Tracker with AI & Collaboration',
+      icon: 'bi-wallet2',
       role: isId
-        ? "Pengembang Mobile & Desainer UI/UX"
-        : "Mobile Developer & UI/UX Designer",
-      teamInfo: isId
-        ? "Proyek Pribadi | 2025"
-        : "Personal Project | 2025",
-      tools: "Flutter, Dart, Supabase (PostgreSQL), Google OAuth, PDF Engine",
+        ? 'Pengembang Mobile & Arsitek Sistem Cloud'
+        : 'Mobile Developer & Cloud System Architect',
+      teamInfo: isId ? 'Proyek Pribadi | 2025' : 'Personal Project | 2025',
+      tools: 'Flutter, Dart, Firebase (Auth/Firestore), Google ML Kit, Gemini & Groq API',
       overview: isId
-        ? "Aplikasi mobile pelacak lamaran kerja dan manajemen karier berbasis Flutter & Supabase. Membantu pelamar mengelola alur rekrutmen via drag-and-drop Kanban pipeline, pembuat ATS Resume/CV otomatis ke format PDF, generator cover letter dengan tanda tangan digital, sinkronisasi jadwal wawancara ke Google Calendar, serta analitik konversi karier."
-        : "A Flutter & Supabase mobile application designed to systematically manage job recruitment pipelines and career records. Features interactive drag-and-drop Kanban tracking, an instant ATS-compliant CV/resume PDF builder, dynamic cover letter generation with digital signatures, calendar interview sync with local push alerts, and visual career analytics.",
+        ? 'Aplikasi manajemen keuangan pribadi berbasis Flutter & Firebase dengan estetika Apple/iOS Design Language (glassmorphism & Bento layout). Menghadirkan Archen AI Financial Advisor (didukung Gemini & Groq API dengan 5 mode kepribadian), dompet kolaborasi bersama dengan in-app chat, pemindai struk otomatis berbasis OCR Google ML Kit, serta in-app APK updater terintegrasi.'
+        : 'A personal finance tracker mobile application built with Flutter & Firebase featuring Apple/iOS design language aesthetics (glassmorphism & Bento layouts). Highlights include Archen AI Financial Advisor (Gemini & Groq API with 5 personality tones), multi-wallet collaboration with real-time chat, automated receipt scanning via Google ML Kit OCR, and seamless in-app APK updates.',
       tasks: isId
         ? [
-            "Merancang arsitektur aplikasi mobile modular dengan Flutter & Supabase backend",
-            "Membangun sistem Kanban pipeline interaktif (Applied, Interview, Offering, Accepted, Rejected) dengan drag-and-drop",
-            "Mengimplementasikan modul ATS Resume & Cover Letter PDF builder yang di-render langsung di perangkat",
-            "Mengintegrasikan Google OAuth 2.0, sinkronisasi Google Calendar, dan notifikasi pengingat wawancara lokal",
-            "Menerapkan Row-Level Security (RLS) PostgreSQL untuk isolasi data pengguna serta sistem multi-bahasa (ID, EN, JA, KO)",
+            'Merancang UI/UX mobile berbasis Apple design guidelines dengan Bento layout, glassmorphism, dan responsivitas halus',
+            'Mengintegrasikan Archen AI Financial Advisor menggunakan Gemini & Groq API dengan 5 kepribadian dinamis dan sistem multi-session chat',
+            'Membangun kamera custom pemindai struk belanja dengan OCR Google ML Kit untuk ekstraksi nominal dan tanggal otomatis',
+            'Mengembangkan arsitektur multi-wallet dengan dompet kolaborasi real-time (shared wallet & in-app chat room)',
+            'Menerapkan sistem keamanan biometrik (Fingerprint/Face ID), Firestore security rules, dan in-app direct APK updater',
           ]
         : [
-            "Architected modular Flutter mobile application backed by Supabase PostgreSQL",
-            "Built interactive drag-and-drop Kanban recruitment pipeline tracking all stages with duration metrics",
-            "Implemented native on-device ATS Resume/CV and customizable Cover Letter PDF rendering engines",
-            "Integrated Google OAuth 2.0, Google Calendar schedule sync, and local push notification reminders",
-            "Enforced PostgreSQL Row-Level Security (RLS) policies for complete user data isolation and multi-language support (ID, EN, JA, KO)",
+            'Crafted mobile UI/UX inspired by Apple design guidelines using Bento Grid layouts, glassmorphism, and smooth micro-interactions',
+            'Integrated Archen AI Financial Advisor powered by Gemini & Groq APIs with 5 distinct personality tones and multi-session chat',
+            'Engineered custom camera receipt scanner with Google ML Kit OCR to automatically extract merchant, date, and amounts',
+            'Developed multi-wallet architecture featuring shared collaborative wallets with real-time in-wallet chat rooms',
+            'Implemented biometric security (Fingerprint/Face ID), role-based Firestore rules, and automated in-app direct APK updates',
           ],
-      platform: isId ? "Aplikasi Mobile (Flutter)" : "Mobile Application (Flutter)",
-      bg: "#0284c7",
-      images: [
-        "/images/projects/AppliQ/appliq_element.png",
-        "/images/projects/AppliQ/appliq_logo.png",
-      ],
-      link: "https://github.com/MyusiZ3/AppliQ",
-      _dir: "next",
+      platform: isId ? 'Aplikasi Mobile Android (Flutter)' : 'Android Mobile App (Flutter)',
+      bg: '#10b981',
+      images: ['/images/projects/MyDuitGweh/logo_app.png'],
+      link: 'https://github.com/MyusiZ3/MyDuitGweh',
+      _dir: 'next',
     },
     {
-      name: isId
-        ? "MyDuitGweh – Smart Financial Tracker with AI & Collaboration"
-        : "MyDuitGweh – Smart Financial Tracker with AI & Collaboration",
-      icon: "bi-wallet2",
+      name: isId ? 'DJourney Jaswita Jabar – Tourism Web' : 'DJourney Jaswita Jabar – Tourism Web',
+      icon: 'bi-globe-americas',
+      role: isId ? 'Pengembang Frontend Web & IT Intern' : 'Frontend Web Developer & IT Intern',
+      teamInfo: isId
+        ? 'Magang | PT. Jasa & Kepariwisataan Jabar'
+        : 'Internship | PT. Jasa & Kepariwisataan Jabar',
+      tools: 'HTML, CSS, JavaScript, i18n, Responsive Web Design',
+      overview: isId
+        ? 'Pengembangan platform pariwisata DJourney milik PT. Jasa & Kepariwisataan Jabar (Perseroda). Berfokus pada implementasi sistem multi-language (i18n), optimasi tampilan responsif mobile, serta bug fix pada filter pencarian dan tata letak antarmuka.'
+        : 'Development of DJourney tourism website for PT. Jasa & Kepariwisataan Jabar. Focused on building multi-language (i18n) localization, mobile responsive layouts, and bug fixes for destination search filters and UI display issues.',
+      tasks: isId
+        ? [
+            'Mengimplementasikan fitur multi-language (i18n) untuk wisatawan domestik & mancanegara',
+            'Merancang & mengoptimalkan tampilan responsif mobile untuk aksesibilitas lintas perangkat',
+            'Melakukan pengujian & bug fixing pada fitur filter pencarian destinasi pariwisata',
+            'Memperbaiki bug inkonsistensi tata letak visual dan responsivitas antarmuka web',
+          ]
+        : [
+            'Implemented multi-language (i18n) localization for domestic & international tourists',
+            'Designed and optimized mobile-responsive layouts for cross-device compatibility',
+            'Fixed and refactored destination search filter features and logic',
+            'Resolved visual display inconsistencies and responsive UI layout bugs',
+          ],
+      platform: 'Web Application',
+      bg: '#2563eb',
+      images: ['/images/projects/djourney_jaswita.png'],
+      link: 'https://djourney.id/web/',
+      _dir: 'next',
+    },
+    {
+      name: 'RideXP - Arcade Game Project',
+      icon: 'bi-bicycle',
       role: isId
-        ? "Pengembang Mobile & Arsitek Sistem Cloud"
-        : "Mobile Developer & Cloud System Architect",
-      teamInfo: isId
-        ? "Proyek Pribadi | 2025"
-        : "Personal Project | 2025",
-      tools: "Flutter, Dart, Firebase (Auth/Firestore), Google ML Kit, Gemini & Groq API",
+        ? 'Manajer Proyek, Pengembang Game, Desainer UI/UX'
+        : 'Project Manager, Game Developer, UI/UX Designer',
+      teamInfo: isId ? 'Proyek Tim | Jan – Jun 2025' : 'Team Project | Jan – Jun 2025',
+      tools: 'Unity, Figma, ESP32, JSON',
       overview: isId
-        ? "Aplikasi manajemen keuangan pribadi berbasis Flutter & Firebase dengan estetika Apple/iOS Design Language (glassmorphism & Bento layout). Menghadirkan Archen AI Financial Advisor (didukung Gemini & Groq API dengan 5 mode kepribadian), dompet kolaborasi bersama dengan in-app chat, pemindai struk otomatis berbasis OCR Google ML Kit, serta in-app APK updater terintegrasi."
-        : "A personal finance tracker mobile application built with Flutter & Firebase featuring Apple/iOS design language aesthetics (glassmorphism & Bento layouts). Highlights include Archen AI Financial Advisor (Gemini & Groq API with 5 personality tones), multi-wallet collaboration with real-time chat, automated receipt scanning via Google ML Kit OCR, and seamless in-app APK updates.",
+        ? 'RideXP adalah game balap arkade di mana pemain mengendalikan sepeda dalam game dengan mengayuh sepeda statis fisik yang terhubung via ESP32. Dibangun di Unity, game ini menggabungkan IoT, pengembangan game, dan desain UI/UX.'
+        : 'RideXP is an arcade-style cycling game where players control their in-game bike by pedaling a physical stationary bike connected via ESP32. Built in Unity, the game combines IoT, game development, and UI/UX design.',
       tasks: isId
         ? [
-            "Merancang UI/UX mobile berbasis Apple design guidelines dengan Bento layout, glassmorphism, dan responsivitas halus",
-            "Mengintegrasikan Archen AI Financial Advisor menggunakan Gemini & Groq API dengan 5 kepribadian dinamis dan sistem multi-session chat",
-            "Membangun kamera custom pemindai struk belanja dengan OCR Google ML Kit untuk ekstraksi nominal dan tanggal otomatis",
-            "Mengembangkan arsitektur multi-wallet dengan dompet kolaborasi real-time (shared wallet & in-app chat room)",
-            "Menerapkan sistem keamanan biometrik (Fingerprint/Face ID), Firestore security rules, dan in-app direct APK updater",
+            'Memimpin koordinasi tim dan perencanaan fitur',
+            'Merancang alur UI/UX (menu, HUD, layar hasil) menggunakan Figma',
+            'Membangun sistem papan peringkat lokal menggunakan JSON',
+            'Mengimplementasikan NPC AI berbasis navigasi waypoint',
+            'Merancang lingkungan game, aset visual, serta efek visual (VFX)',
+            'Membuat identitas karya serta materi presentasi untuk pameran',
           ]
         : [
-            "Crafted mobile UI/UX inspired by Apple design guidelines using Bento Grid layouts, glassmorphism, and smooth micro-interactions",
-            "Integrated Archen AI Financial Advisor powered by Gemini & Groq APIs with 5 distinct personality tones and multi-session chat",
-            "Engineered custom camera receipt scanner with Google ML Kit OCR to automatically extract merchant, date, and amounts",
-            "Developed multi-wallet architecture featuring shared collaborative wallets with real-time in-wallet chat rooms",
-            "Implemented biometric security (Fingerprint/Face ID), role-based Firestore rules, and automated in-app direct APK updates",
+            'Led team coordination and feature planning',
+            'Designed full UI/UX flow (menu, HUD, result screen) using Figma',
+            'Built local leaderboard system using JSON',
+            'Implemented AI NPC with waypoint-based navigation',
+            'Designed game environments, composited visual assets, and created VFX logic',
+            'Created branding assets & presentation deck for public exhibition',
           ],
-      platform: isId ? "Aplikasi Mobile Android (Flutter)" : "Android Mobile App (Flutter)",
-      bg: "#10b981",
+      platform: isId ? 'Aplikasi Desktop Arkade' : 'Arcade Desktop App',
+      bg: '#C0392B',
       images: [
-        "/images/projects/MyDuitGweh/logo_app.png",
+        '/images/projects/LuxionRideXP/luxion_ridexp.webp',
+        '/images/projects/luxion_ridexp_2.webp',
+        '/images/projects/luxion_ridexp_3.webp',
       ],
-      link: "https://github.com/MyusiZ3/MyDuitGweh",
-      _dir: "next",
+      link: '#',
+      _dir: 'next',
     },
     {
-      name: isId
-        ? "DJourney Jaswita Jabar – Tourism Web"
-        : "DJourney Jaswita Jabar – Tourism Web",
-      icon: "bi-globe-americas",
-      role: isId
-        ? "Pengembang Frontend Web & IT Intern"
-        : "Frontend Web Developer & IT Intern",
-      teamInfo: isId
-        ? "Magang | PT. Jasa & Kepariwisataan Jabar"
-        : "Internship | PT. Jasa & Kepariwisataan Jabar",
-      tools: "HTML, CSS, JavaScript, i18n, Responsive Web Design",
+      name: 'MindEscape – VR Escape Room Game',
+      icon: 'bi-headset',
+      role: isId ? 'Pengembang VR, Desainer Lingkungan' : 'VR Developer, Environment Designer',
+      teamInfo: isId ? 'Proyek Tim | Jan – Jun 2025' : 'Team Project | Jan – Jun 2025',
+      tools: 'Unity, Oculus SDK',
       overview: isId
-        ? "Pengembangan platform pariwisata DJourney milik PT. Jasa & Kepariwisataan Jabar (Perseroda). Berfokus pada implementasi sistem multi-language (i18n), optimasi tampilan responsif mobile, serta bug fix pada filter pencarian dan tata letak antarmuka."
-        : "Development of DJourney tourism website for PT. Jasa & Kepariwisataan Jabar. Focused on building multi-language (i18n) localization, mobile responsive layouts, and bug fixes for destination search filters and UI display issues.",
+        ? 'MindEscape adalah permaianan VR ruang lolos yang berfokus pada eksplorasi dan interaksi lingkungan. Dibuat menggunakan Unity, proyek ini mensimulasikan pengalaman puzzle penuh menggunakan headset VR.'
+        : 'MindEscape is a virtual reality escape room game focused on exploration and environmental interaction. Built using Unity, the project simulates a full puzzle escape experience using a VR headset.',
       tasks: isId
         ? [
-            "Mengimplementasikan fitur multi-language (i18n) untuk wisatawan domestik & mancanegara",
-            "Merancang & mengoptimalkan tampilan responsif mobile untuk aksesibilitas lintas perangkat",
-            "Melakukan pengujian & bug fixing pada fitur filter pencarian destinasi pariwisata",
-            "Memperbaiki bug inkonsistensi tata letak visual dan responsivitas antarmuka web",
+            'Merancang tata letak lingkungan 3D dan penempatan objek',
+            'Menangani sistem kamera VR dan transisi adegan',
+            'Menerapkan mekanisme interaksi alat (mengambil objek, pemicu teka-teki)',
+            'Mengoptimalkan pencahayaan dan performa untuk kelancaran',
           ]
         : [
-            "Implemented multi-language (i18n) localization for domestic & international tourists",
-            "Designed and optimized mobile-responsive layouts for cross-device compatibility",
-            "Fixed and refactored destination search filter features and logic",
-            "Resolved visual display inconsistencies and responsive UI layout bugs",
+            'Designed 3D environment layout and object placement',
+            'Handled VR camera systems and scene transitions',
+            'Implemented user interaction mechanics (grabbing, puzzle triggers)',
+            'Optimized lighting and performance for smooth VR experience',
           ],
-      platform: "Web Application",
-      bg: "#2563eb",
-      images: ["/images/projects/djourney_jaswita.png"],
-      link: "https://djourney.id/web/",
-      _dir: "next",
+      platform: isId ? 'Aplikasi Desktop VR' : 'VR Desktop App',
+      bg: '#4A1D8E',
+      images: [
+        '/images/projects/MindescapeVR/mindescape_vr.webp',
+        '/images/projects/mindescape_vr_2.webp',
+        '/images/projects/mindescape_vr_3.webp',
+      ],
+      link: 'https://youtu.be/DmFdkMLRTGc?si=EKjq0QPhMt2LOcCU',
+      videoEmbedId: 'DmFdkMLRTGc',
+      _dir: 'next',
     },
     {
-      name: "RideXP - Arcade Game Project",
-      icon: "bi-bicycle",
-      role: isId
-        ? "Manajer Proyek, Pengembang Game, Desainer UI/UX"
-        : "Project Manager, Game Developer, UI/UX Designer",
-      teamInfo: isId
-        ? "Proyek Tim | Jan – Jun 2025"
-        : "Team Project | Jan – Jun 2025",
-      tools: "Unity, Figma, ESP32, JSON",
+      name: 'MathRift – Educational 2D Platformer',
+      icon: 'bi-calculator',
+      role: isId ? 'Pengembang Game, Desainer UI/UX' : 'Game Developer, UI/UX Designer',
+      teamInfo: isId ? 'Proyek Tim | Agt – Des 2024' : 'Team Project | Aug – Dec 2024',
+      tools: 'Unity, Figma',
       overview: isId
-        ? "RideXP adalah game balap arkade di mana pemain mengendalikan sepeda dalam game dengan mengayuh sepeda statis fisik yang terhubung via ESP32. Dibangun di Unity, game ini menggabungkan IoT, pengembangan game, dan desain UI/UX."
-        : "RideXP is an arcade-style cycling game where players control their in-game bike by pedaling a physical stationary bike connected via ESP32. Built in Unity, the game combines IoT, game development, and UI/UX design.",
+        ? 'MathRift adalah game platform 2D edukasi yang dirancang agar belajar matematika jadi menyenangkan lewat gameplay interaktif, teka teki, dan level yang menantang secara bertahap.'
+        : 'MathRift is a 2D educational platformer game designed to make learning math fun through interactive gameplay, puzzles, and progressive difficulty levels.',
       tasks: isId
         ? [
-            "Memimpin koordinasi tim dan perencanaan fitur",
-            "Merancang alur UI/UX (menu, HUD, layar hasil) menggunakan Figma",
-            "Membangun sistem papan peringkat lokal menggunakan JSON",
-            "Mengimplementasikan NPC AI berbasis navigasi waypoint",
-            "Merancang lingkungan game, aset visual, serta efek visual (VFX)",
-            "Membuat identitas karya serta materi presentasi untuk pameran",
+            'Mengembangkan mekanisme inti dan pengontrol pemain',
+            'Merancang wireframe UI/UX hingga hasil akhir dalam Figma',
+            'Mengintegrasikan progres level dan sistem penilaian',
+            'Membuat aset permainan dan animasi sprite',
           ]
         : [
-            "Led team coordination and feature planning",
-            "Designed full UI/UX flow (menu, HUD, result screen) using Figma",
-            "Built local leaderboard system using JSON",
-            "Implemented AI NPC with waypoint-based navigation",
-            "Designed game environments, composited visual assets, and created VFX logic",
-            "Created branding assets & presentation deck for public exhibition",
+            'Developed core game mechanics and player controller',
+            'Designed UI/UX wireframes and final screens in Figma',
+            'Implemented level progression and scoring system',
+            'Created game assets and sprite animations',
           ],
-      platform: isId ? "Aplikasi Desktop Arkade" : "Arcade Desktop App",
-      bg: "#C0392B",
+      platform: 'Desktop Game',
+      bg: '#1a3a4a',
       images: [
-        "/images/projects/LuxionRideXP/luxion_ridexp.webp",
-        "/images/projects/luxion_ridexp_2.webp",
-        "/images/projects/luxion_ridexp_3.webp",
+        '/images/projects/Mathrift/mathrift.webp',
+        '/images/projects/mathrift_2.webp',
+        '/images/projects/mathrift_3.webp',
       ],
-      link: "#",
-      _dir: "next",
+      link: '#',
+      _dir: 'next',
     },
     {
-      name: "MindEscape – VR Escape Room Game",
-      icon: "bi-headset",
-      role: isId
-        ? "Pengembang VR, Desainer Lingkungan"
-        : "VR Developer, Environment Designer",
-      teamInfo: isId
-        ? "Proyek Tim | Jan – Jun 2025"
-        : "Team Project | Jan – Jun 2025",
-      tools: "Unity, Oculus SDK",
+      name: 'Stellar Adventures – AR Game Project',
+      icon: 'bi-stars',
+      role: 'AR Developer, Environment Designer',
+      teamInfo: isId ? 'Proyek Tim | Agt – Des 2024' : 'Team Project | Aug – Dec 2024',
+      tools: 'Unity, Vuforia Engine, Blender',
       overview: isId
-        ? "MindEscape adalah permaianan VR ruang lolos yang berfokus pada eksplorasi dan interaksi lingkungan. Dibuat menggunakan Unity, proyek ini mensimulasikan pengalaman puzzle penuh menggunakan headset VR."
-        : "MindEscape is a virtual reality escape room game focused on exploration and environmental interaction. Built using Unity, the project simulates a full puzzle escape experience using a VR headset.",
+        ? 'Stellar Adventures adalah game AR yang menggabungkan dunia maya dan nyata, memungkinkan pemain menavigasi ruang bertema luar angkasa melalui kamera.'
+        : 'Stellar Adventures is an augmented reality game that blends the physical and digital world, allowing players to explore space-themed environments through their device camera.',
       tasks: isId
         ? [
-            "Merancang tata letak lingkungan 3D dan penempatan objek",
-            "Menangani sistem kamera VR dan transisi adegan",
-            "Menerapkan mekanisme interaksi alat (mengambil objek, pemicu teka-teki)",
-            "Mengoptimalkan pencahayaan dan performa untuk kelancaran",
+            'Mengembangkan pendeteksi bidang datar dan kemunculan objek',
+            'Merancang tekstur dan model lingkungan 3D',
+            'Menerapkan mekanika permainan langsung di ruang AR',
+            'Mengoptimalkan AR untuk perangkat mobile',
           ]
         : [
-            "Designed 3D environment layout and object placement",
-            "Handled VR camera systems and scene transitions",
-            "Implemented user interaction mechanics (grabbing, puzzle triggers)",
-            "Optimized lighting and performance for smooth VR experience",
+            'Developed AR plane detection and object placement',
+            'Designed 3D environment models and textures',
+            'Implemented interactive game mechanics in AR space',
+            'Optimized performance for mobile AR devices',
           ],
-      platform: isId ? "Aplikasi Desktop VR" : "VR Desktop App",
-      bg: "#4A1D8E",
+      platform: isId ? 'Aplikasi AR Mobile' : 'AR Mobile App',
+      bg: '#1a2a3a',
       images: [
-        "/images/projects/MindescapeVR/mindescape_vr.webp",
-        "/images/projects/mindescape_vr_2.webp",
-        "/images/projects/mindescape_vr_3.webp",
+        '/images/projects/StellarAdventures/stellar_adventures.webp',
+        '/images/projects/stellar_adventures_2.webp',
+        '/images/projects/stellar_adventures_3.webp',
       ],
-      link: "#",
-      _dir: "next",
+      link: '#',
+      _dir: 'next',
     },
     {
-      name: "MathRift – Educational 2D Platformer",
-      icon: "bi-calculator",
-      role: isId
-        ? "Pengembang Game, Desainer UI/UX"
-        : "Game Developer, UI/UX Designer",
-      teamInfo: isId
-        ? "Proyek Tim | Agt – Des 2024"
-        : "Team Project | Aug – Dec 2024",
-      tools: "Unity, Figma",
+      name: 'U-Asprak – Mobile App Design',
+      icon: 'bi-people',
+      role: 'UI/UX Designer',
+      teamInfo: isId ? 'Studi Kasus Tim | Jan – Jun 2024' : 'Team Project | Jan – Jun 2024',
+      tools: 'Figma, Antigravity',
       overview: isId
-        ? "MathRift adalah game platform 2D edukasi yang dirancang agar belajar matematika jadi menyenangkan lewat gameplay interaktif, teka teki, dan level yang menantang secara bertahap."
-        : "MathRift is a 2D educational platformer game designed to make learning math fun through interactive gameplay, puzzles, and progressive difficulty levels.",
+        ? 'U-Asprak merupakan desain aplikasi seluler untuk memperbaiki proses manajemen asisten praktikum, mencakup penjadwalan, nilai, serta media komunikasi.'
+        : 'U-Asprak is a mobile application designed to streamline the teaching assistant management process, including scheduling, grading, and communication between lecturers and assistants.',
       tasks: isId
         ? [
-            "Mengembangkan mekanisme inti dan pengontrol pemain",
-            "Merancang wireframe UI/UX hingga hasil akhir dalam Figma",
-            "Mengintegrasikan progres level dan sistem penilaian",
-            "Membuat aset permainan dan animasi sprite",
+            'Melakukan riset terhadap pengguna',
+            'Merancang alur wireframe ber-resolusi tinggi',
+            'Membangun protipe interaktif untuk dipakai dalam user testing',
+            'Mendefinisikan bahasa desain dan library komponen',
           ]
         : [
-            "Developed core game mechanics and player controller",
-            "Designed UI/UX wireframes and final screens in Figma",
-            "Implemented level progression and scoring system",
-            "Created game assets and sprite animations",
+            'Conducted user research and created user personas',
+            'Designed wireframes and high-fidelity prototypes',
+            'Built interactive prototype for usability testing',
+            'Created design system and component library',
           ],
-      platform: "Desktop Game",
-      bg: "#1a3a4a",
+      platform: isId ? 'Desain Aplikasi Mobile' : 'Mobile App Design',
+      bg: '#5b6abf',
       images: [
-        "/images/projects/Mathrift/mathrift.webp",
-        "/images/projects/mathrift_2.webp",
-        "/images/projects/mathrift_3.webp",
+        '/images/projects/UAsprak/u_asprak.webp',
+        '/images/projects/u_asprak_2.webp',
+        '/images/projects/u_asprak_3.webp',
       ],
-      link: "#",
-      _dir: "next",
+      link: '#',
+      _dir: 'next',
     },
     {
-      name: "Stellar Adventures – AR Game Project",
-      icon: "bi-stars",
-      role: "AR Developer, Environment Designer",
-      teamInfo: isId
-        ? "Proyek Tim | Agt – Des 2024"
-        : "Team Project | Aug – Dec 2024",
-      tools: "Unity, Vuforia Engine, Blender",
+      name: 'empEDU – Mobile App Design',
+      icon: 'bi-book',
+      role: 'UI/UX Designer',
+      teamInfo: isId ? 'Proyek Tim | Agt – Des 2023' : 'Team Project | Aug – Dec 2023',
+      tools: 'Figma',
       overview: isId
-        ? "Stellar Adventures adalah game AR yang menggabungkan dunia maya dan nyata, memungkinkan pemain menavigasi ruang bertema luar angkasa melalui kamera."
-        : "Stellar Adventures is an augmented reality game that blends the physical and digital world, allowing players to explore space-themed environments through their device camera.",
+        ? 'empEDU merupakan desain aplikasi edukasi yang diciptakan agar siswa lebih leluasa belajar dan memeriksa kemajuan akademik dengan peranti yang interaktif.'
+        : 'empEDU is an educational mobile app designed to empower students with accessible learning materials, progress tracking, and interactive study tools.',
       tasks: isId
         ? [
-            "Mengembangkan pendeteksi bidang datar dan kemunculan objek",
-            "Merancang tekstur dan model lingkungan 3D",
-            "Menerapkan mekanika permainan langsung di ruang AR",
-            "Mengoptimalkan AR untuk perangkat mobile",
+            'Merancang alur pengguna dari awal hingga akhir',
+            'Merancang mockup resolusi tinggi di semua antarmuka layar',
+            'Mengembangkan prototipe untuk pengujian interaksi',
+            'Revisi hasil riset dan percobaan',
           ]
         : [
-            "Developed AR plane detection and object placement",
-            "Designed 3D environment models and textures",
-            "Implemented interactive game mechanics in AR space",
-            "Optimized performance for mobile AR devices",
+            'Designed end-to-end user flow and information architecture',
+            'Created high-fidelity UI mockups for all screens',
+            'Developed interactive prototypes for user testing',
+            'Iterated designs based on usability feedback',
           ],
-      platform: isId ? "Aplikasi AR Mobile" : "AR Mobile App",
-      bg: "#1a2a3a",
+      platform: isId ? 'Desain Aplikasi Mobile' : 'Mobile App Design',
+      bg: '#2a4a3a',
       images: [
-        "/images/projects/StellarAdventures/stellar_adventures.webp",
-        "/images/projects/stellar_adventures_2.webp",
-        "/images/projects/stellar_adventures_3.webp",
+        '/images/projects/Empedu/empedu.webp',
+        '/images/projects/empedu_2.webp',
+        '/images/projects/empedu_3.webp',
       ],
-      link: "#",
-      _dir: "next",
+      link: '#',
+      _dir: 'next',
     },
     {
-      name: "U-Asprak – Mobile App Design",
-      icon: "bi-people",
-      role: "UI/UX Designer",
-      teamInfo: isId
-        ? "Studi Kasus Tim | Jan – Jun 2024"
-        : "Team Project | Jan – Jun 2024",
-      tools: "Figma, Antigravity",
+      name: 'IUDEX – Team Portfolio Web Design',
+      icon: 'bi-display',
+      role: isId ? 'Desainer UI/UX, Pengembang Frontend' : 'UI/UX Designer, Frontend Developer',
+      teamInfo: isId ? 'Proyek Tim | Jan – Jun 2024' : 'Team Project | Jan – Jun 2024',
+      tools: 'Figma, HTML, CSS, JavaScript',
       overview: isId
-        ? "U-Asprak merupakan desain aplikasi seluler untuk memperbaiki proses manajemen asisten praktikum, mencakup penjadwalan, nilai, serta media komunikasi."
-        : "U-Asprak is a mobile application designed to streamline the teaching assistant management process, including scheduling, grading, and communication between lecturers and assistants.",
+        ? 'IUDEX adalah situs web portofolio tim yang menampilkan kapabilitas, identitas visual sebuah tim pada desain tata letak kekinian bercorak profesional.'
+        : 'IUDEX is a team portfolio website designed to showcase the collective works and capabilities of a creative team, featuring a modern and professional layout.',
       tasks: isId
         ? [
-            "Melakukan riset terhadap pengguna",
-            "Merancang alur wireframe ber-resolusi tinggi",
-            "Membangun protipe interaktif untuk dipakai dalam user testing",
-            "Mendefinisikan bahasa desain dan library komponen",
+            'Merancang prototipe tata letak lewat Figma yang disesuaikan dalam web',
+            'Mengimplementasikan frontend menggunakan susunan HTML, CSS, JavaScript',
+            'Memberikan pemanis tampilan transisi scrolling interaktif yang nyaman',
+            'Menguji fungsional dan tingkat ketanggapsegeraannya',
           ]
         : [
-            "Conducted user research and created user personas",
-            "Designed wireframes and high-fidelity prototypes",
-            "Built interactive prototype for usability testing",
-            "Created design system and component library",
+            'Designed responsive web layout using Figma',
+            'Developed frontend with HTML, CSS, and JavaScript',
+            'Implemented smooth scroll animations and transitions',
+            'Ensured cross-browser compatibility and responsiveness',
           ],
-      platform: isId ? "Desain Aplikasi Mobile" : "Mobile App Design",
-      bg: "#5b6abf",
+      platform: 'Web Application',
+      bg: '#6a5acd',
       images: [
-        "/images/projects/UAsprak/u_asprak.webp",
-        "/images/projects/u_asprak_2.webp",
-        "/images/projects/u_asprak_3.webp",
+        '/images/projects/Iudex/iudex.webp',
+        '/images/projects/iudex_2.webp',
+        '/images/projects/iudex_3.webp',
       ],
-      link: "#",
-      _dir: "next",
+      link: '#',
+      _dir: 'next',
     },
     {
-      name: "empEDU – Mobile App Design",
-      icon: "bi-book",
-      role: "UI/UX Designer",
-      teamInfo: isId
-        ? "Proyek Tim | Agt – Des 2023"
-        : "Team Project | Aug – Dec 2023",
-      tools: "Figma",
+      name: 'Arch – Personal Portfolio Web Design',
+      icon: 'bi-laptop',
+      role: isId ? 'Desainer UI/UX, Pengembang Frontend' : 'UI/UX Designer, Frontend Developer',
+      teamInfo: isId ? 'Proyek Pribadi | 2024' : 'Personal Project | 2024',
+      tools: 'Figma, Vue.js, TailwindCSS',
       overview: isId
-        ? "empEDU merupakan desain aplikasi edukasi yang diciptakan agar siswa lebih leluasa belajar dan memeriksa kemajuan akademik dengan peranti yang interaktif."
-        : "empEDU is an educational mobile app designed to empower students with accessible learning materials, progress tracking, and interactive study tools.",
+        ? 'Arch adalah nama portofolio pengutamaan desain nan apik, dan ditunjang portofolio perupa berbasis laman untuk disajikan memperindah desain serta kebolehan penulisan.'
+        : 'Arch is a personal portfolio web design project focused on creating a visually stunning and interactive personal website to showcase design and development work.',
       tasks: isId
         ? [
-            "Merancang alur pengguna dari awal hingga akhir",
-            "Merancang mockup resolusi tinggi di semua antarmuka layar",
-            "Mengembangkan prototipe untuk pengujian interaksi",
-            "Revisi hasil riset dan percobaan",
+            'Merancang seluruh tata letak web dan identitas merek portofolionya',
+            'Menulis koding dan menyesuaikan fronted website responsif',
+            'Memasukkan seluruh gaya animatif mikro interaksi nan halus',
+            'Mengoptimalkan kemudahan temu sistem cari (SEO)',
           ]
         : [
-            "Designed end-to-end user flow and information architecture",
-            "Created high-fidelity UI mockups for all screens",
-            "Developed interactive prototypes for user testing",
-            "Iterated designs based on usability feedback",
+            'Designed complete portfolio layout and visual identity',
+            'Built responsive frontend with modern web technologies',
+            'Integrated smooth animations and micro-interactions',
+            'Optimized for performance and SEO',
           ],
-      platform: isId ? "Desain Aplikasi Mobile" : "Mobile App Design",
-      bg: "#2a4a3a",
+      platform: 'Web Application',
+      bg: '#7c3aed',
       images: [
-        "/images/projects/Empedu/empedu.webp",
-        "/images/projects/empedu_2.webp",
-        "/images/projects/empedu_3.webp",
+        '/images/projects/Arch/arch.webp',
+        '/images/projects/arch_2.webp',
+        '/images/projects/arch_3.webp',
       ],
-      link: "#",
-      _dir: "next",
+      link: '#',
+      _dir: 'next',
     },
     {
-      name: "IUDEX – Team Portfolio Web Design",
-      icon: "bi-display",
-      role: isId
-        ? "Desainer UI/UX, Pengembang Frontend"
-        : "UI/UX Designer, Frontend Developer",
-      teamInfo: isId
-        ? "Proyek Tim | Jan – Jun 2024"
-        : "Team Project | Jan – Jun 2024",
-      tools: "Figma, HTML, CSS, JavaScript",
+      name: 'Merch – Merch Design for Event',
+      icon: 'bi-gift',
+      role: isId ? 'Desainer Grafis' : 'Graphic Designer',
+      teamInfo: isId ? 'Pengerjaan Bebas | 2024' : 'Freelance Project | 2024',
+      tools: 'Adobe Illustrator, Adobe Photoshop',
       overview: isId
-        ? "IUDEX adalah situs web portofolio tim yang menampilkan kapabilitas, identitas visual sebuah tim pada desain tata letak kekinian bercorak profesional."
-        : "IUDEX is a team portfolio website designed to showcase the collective works and capabilities of a creative team, featuring a modern and professional layout.",
+        ? 'Merch merupakan hasil komoditas rancangan pada barang berupa kaos sablon, kemasan, atau stiker acara dan materi promosi guna pemanfaatan tertentu pemasaran yang menarik.'
+        : 'Merch is a merchandise design project creating branded apparel and accessories for an event, including t-shirts, tote bags, and promotional materials.',
       tasks: isId
         ? [
-            "Merancang prototipe tata letak lewat Figma yang disesuaikan dalam web",
-            "Mengimplementasikan frontend menggunakan susunan HTML, CSS, JavaScript",
-            "Memberikan pemanis tampilan transisi scrolling interaktif yang nyaman",
-            "Menguji fungsional dan tingkat ketanggapsegeraannya",
+            'Berkreasi membuat susunan ilustrasi grafis',
+            'Merilis format sesuai patokan industri pencetakan massal',
+            'Mengembangkan kemewahan branding dari keseluruhan barang',
+            'Bergabung berkongsi dalam hal kerja dan standar produksinya',
           ]
         : [
-            "Designed responsive web layout using Figma",
-            "Developed frontend with HTML, CSS, and JavaScript",
-            "Implemented smooth scroll animations and transitions",
-            "Ensured cross-browser compatibility and responsiveness",
+            'Created original merchandise designs and illustrations',
+            'Prepared print-ready artwork with proper specifications',
+            'Developed cohesive visual branding across all merchandise',
+            'Collaborated with manufacturing for production quality',
           ],
-      platform: "Web Application",
-      bg: "#6a5acd",
+      platform: 'Graphic Design',
+      bg: '#8b5cf6',
       images: [
-        "/images/projects/Iudex/iudex.webp",
-        "/images/projects/iudex_2.webp",
-        "/images/projects/iudex_3.webp",
+        '/images/projects/merch.webp',
+        '/images/projects/merch_2.webp',
+        '/images/projects/merch_3.webp',
       ],
-      link: "#",
-      _dir: "next",
+      link: '#',
+      _dir: 'next',
     },
-    {
-      name: "Arch – Personal Portfolio Web Design",
-      icon: "bi-laptop",
-      role: isId
-        ? "Desainer UI/UX, Pengembang Frontend"
-        : "UI/UX Designer, Frontend Developer",
-      teamInfo: isId ? "Proyek Pribadi | 2024" : "Personal Project | 2024",
-      tools: "Figma, Vue.js, TailwindCSS",
-      overview: isId
-        ? "Arch adalah nama portofolio pengutamaan desain nan apik, dan ditunjang portofolio perupa berbasis laman untuk disajikan memperindah desain serta kebolehan penulisan."
-        : "Arch is a personal portfolio web design project focused on creating a visually stunning and interactive personal website to showcase design and development work.",
-      tasks: isId
-        ? [
-            "Merancang seluruh tata letak web dan identitas merek portofolionya",
-            "Menulis koding dan menyesuaikan fronted website responsif",
-            "Memasukkan seluruh gaya animatif mikro interaksi nan halus",
-            "Mengoptimalkan kemudahan temu sistem cari (SEO)",
-          ]
-        : [
-            "Designed complete portfolio layout and visual identity",
-            "Built responsive frontend with modern web technologies",
-            "Integrated smooth animations and micro-interactions",
-            "Optimized for performance and SEO",
-          ],
-      platform: "Web Application",
-      bg: "#7c3aed",
-      images: [
-        "/images/projects/Arch/arch.webp",
-        "/images/projects/arch_2.webp",
-        "/images/projects/arch_3.webp",
-      ],
-      link: "#",
-      _dir: "next",
-    },
-    {
-      name: "Merch – Merch Design for Event",
-      icon: "bi-gift",
-      role: isId ? "Desainer Grafis" : "Graphic Designer",
-      teamInfo: isId ? "Pengerjaan Bebas | 2024" : "Freelance Project | 2024",
-      tools: "Adobe Illustrator, Adobe Photoshop",
-      overview: isId
-        ? "Merch merupakan hasil komoditas rancangan pada barang berupa kaos sablon, kemasan, atau stiker acara dan materi promosi guna pemanfaatan tertentu pemasaran yang menarik."
-        : "Merch is a merchandise design project creating branded apparel and accessories for an event, including t-shirts, tote bags, and promotional materials.",
-      tasks: isId
-        ? [
-            "Berkreasi membuat susunan ilustrasi grafis",
-            "Merilis format sesuai patokan industri pencetakan massal",
-            "Mengembangkan kemewahan branding dari keseluruhan barang",
-            "Bergabung berkongsi dalam hal kerja dan standar produksinya",
-          ]
-        : [
-            "Created original merchandise designs and illustrations",
-            "Prepared print-ready artwork with proper specifications",
-            "Developed cohesive visual branding across all merchandise",
-            "Collaborated with manufacturing for production quality",
-          ],
-      platform: "Graphic Design",
-      bg: "#8b5cf6",
-      images: [
-        "/images/projects/merch.webp",
-        "/images/projects/merch_2.webp",
-        "/images/projects/merch_3.webp",
-      ],
-      link: "#",
-      _dir: "next",
-    },
-  ];
-});
+  ]
+})
 </script>
 
 <style scoped>
@@ -1141,18 +1068,13 @@ const projects = computed(() => {
 }
 
 .project-item::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 10%;
   width: 80%;
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(124, 58, 237, 0.2),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.2), transparent);
 }
 
 .project-item:last-child::after {
@@ -1178,15 +1100,10 @@ const projects = computed(() => {
 }
 
 .view-work-btn::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(124, 58, 237, 0.1),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.1), transparent);
   transform: translateX(-100%);
   transition: transform 0.5s ease;
 }

@@ -456,7 +456,8 @@ const projects = computed(() => {
       bg: "#7c3aed",
       image: "/images/projects/MindescapeVR/mindescape_vr.webp",
       filterType: "game",
-      liveLink: "https://youtube.com/preview",
+      liveLink: "https://youtu.be/DmFdkMLRTGc?si=EKjq0QPhMt2LOcCU",
+      videoEmbedId: "DmFdkMLRTGc",
       caseStudy: {
         challenge: isId
           ? "Mengatasi mabuk gerak (motion sickness) pada dunia realitas virtual tingkat imersif tinggi."

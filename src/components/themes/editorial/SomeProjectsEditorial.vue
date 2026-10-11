@@ -181,11 +181,41 @@
               <div
                 class="relative z-10 w-full h-full flex items-center justify-center"
               >
-                <ProjectImage
-                  :src="selectedProject.image"
-                  :alt="selectedProject.name"
-                  cssClass="max-h-[320px] object-contain rounded-xl transition-transform duration-700 group-hover:scale-105"
-                />
+                <iframe
+                  v-if="isPlayingVideo && selectedProject.videoEmbedId"
+                  :src="`https://www.youtube-nocookie.com/embed/${selectedProject.videoEmbedId}?autoplay=1&rel=0`"
+                  class="w-full h-full min-h-[240px] lg:min-h-[300px] rounded-xl border-0 aspect-video shadow-2xl"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+                <div
+                  v-else
+                  class="relative w-full h-full flex items-center justify-center"
+                >
+                  <ProjectImage
+                    :src="selectedProject.image"
+                    :alt="selectedProject.name"
+                    cssClass="max-h-[320px] object-contain rounded-xl transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <!-- Lazy Play Trigger Overlay -->
+                  <button
+                    v-if="selectedProject.videoEmbedId"
+                    @click="isPlayingVideo = true"
+                    class="absolute inset-0 flex flex-col items-center justify-center bg-black/40 hover:bg-black/20 rounded-xl transition-all group/play cursor-pointer z-20"
+                    :title="lang === 'ID' ? 'Putar Video Demo Langsung' : 'Stream Video Demo'"
+                  >
+                    <span
+                      class="w-14 h-14 rounded-full bg-red-600 text-white flex items-center justify-center shadow-lg shadow-red-600/40 group-hover/play:scale-110 transition-transform"
+                    >
+                      <i class="bi bi-play-fill text-2xl ml-0.5"></i>
+                    </span>
+                    <span
+                      class="mt-2.5 px-3 py-1 rounded-full bg-black/80 border border-white/15 text-white text-[11px] font-['Poppins'] font-medium tracking-wide shadow-md"
+                    >
+                      {{ lang === 'ID' ? 'Putar Video Demo (Stream)' : 'Stream Video Demo' }}
+                    </span>
+                  </button>
+                </div>
               </div>
               <div class="absolute bottom-4 left-4 z-20">
                 <span
@@ -274,8 +304,18 @@
               <div
                 class="flex items-center gap-3 pt-6 mt-6 border-t border-white/5"
               >
+                <button
+                  v-if="selectedProject.videoEmbedId && !isPlayingVideo"
+                  @click="isPlayingVideo = true"
+                  class="flex-1 px-5 py-2.5 rounded-xl bg-red-600 text-white font-['Poppins'] font-semibold text-xs flex items-center justify-center gap-2 hover:bg-red-500 transition-all shadow-md shadow-red-600/20 cursor-pointer"
+                >
+                  <i class="bi bi-play-circle-fill text-sm"></i>
+                  <span>{{
+                    lang === "ID" ? "Stream Video Demo" : "Stream Video Demo"
+                  }}</span>
+                </button>
                 <a
-                  v-if="selectedProject.liveLink"
+                  v-else-if="selectedProject.liveLink"
                   :href="selectedProject.liveLink"
                   target="_blank"
                   class="flex-1 px-5 py-2.5 rounded-xl bg-violet-600 text-white font-['Poppins'] font-semibold text-xs flex items-center justify-center gap-2 hover:bg-violet-500 transition-all shadow-md shadow-violet-600/20"
@@ -312,6 +352,7 @@ const { t, lang } = useLanguage();
 
 const selectedProject = ref(null);
 const activeFilter = ref("all");
+const isPlayingVideo = ref(false);
 
 const filterCategories = [
   { id: "all", nameId: "Semua", nameEn: "All" },
@@ -327,11 +368,13 @@ const filteredProjects = computed(() => {
 
 const openCaseStudy = (project) => {
   selectedProject.value = project;
+  isPlayingVideo.value = false;
   document.body.style.overflow = "hidden";
 };
 
 const closeCaseStudy = () => {
   selectedProject.value = null;
+  isPlayingVideo.value = false;
   document.body.style.overflow = "";
 };
 
@@ -450,7 +493,8 @@ const projects = computed(() => {
       bg: "#7c3aed",
       image: "/images/projects/MindescapeVR/mindescape_vr.webp",
       filterType: "game",
-      liveLink: "https://youtube.com/preview",
+      liveLink: "https://youtu.be/DmFdkMLRTGc?si=EKjq0QPhMt2LOcCU",
+      videoEmbedId: "DmFdkMLRTGc",
       caseStudy: {
         challenge: isId
           ? "Mengatasi mabuk gerak (motion sickness) pada dunia realitas virtual tingkat imersif tinggi."
