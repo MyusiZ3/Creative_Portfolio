@@ -374,16 +374,27 @@
                   {{ project.platform }}
                 </p>
 
-                <a
-                  :href="project.link || '#'"
-                  @click="project.link === '#' ? openLightbox(index, 0) : null"
-                  class="inline-flex items-center justify-between gap-3 px-6 py-2.5 rounded-full border border-white/30 text-white hover:bg-white hover:text-black font-['Poppins'] font-medium text-xs tracking-wider uppercase transition-all duration-300 group cursor-pointer"
-                >
-                  <span>{{ t('my_proj_view_work') }}</span>
-                  <i
-                    class="bi bi-chevron-right text-xs group-hover:translate-x-1 transition-transform"
-                  ></i>
-                </a>
+                <div class="flex flex-wrap items-center gap-3">
+                  <button
+                    v-if="project.videoEmbedId"
+                    @click="openVideoModal(project.videoEmbedId, project.name)"
+                    class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-red-600 hover:bg-red-500 text-white font-['Poppins'] font-semibold text-xs tracking-wider uppercase transition-all shadow-lg shadow-red-600/30 cursor-pointer hover:scale-105"
+                  >
+                    <i class="bi bi-play-circle-fill text-sm"></i>
+                    <span>{{ lang === 'ID' ? 'Putar Video Demo' : 'Stream Demo' }}</span>
+                  </button>
+
+                  <a
+                    :href="project.link || '#'"
+                    @click="project.link === '#' ? openLightbox(index, 0) : null"
+                    class="inline-flex items-center justify-between gap-3 px-6 py-2.5 rounded-full border border-white/30 text-white hover:bg-white hover:text-black font-['Poppins'] font-medium text-xs tracking-wider uppercase transition-all duration-300 group cursor-pointer"
+                  >
+                    <span>{{ t('my_proj_view_work') }}</span>
+                    <i
+                      class="bi bi-chevron-right text-xs group-hover:translate-x-1 transition-transform"
+                    ></i>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -815,13 +826,13 @@ const { t, lang } = useLanguage()
 // Track active slide per project
 const activeSlides = reactive({})
 
-const selectedProjects = computed(() => projects.value.slice(0, 4))
+const selectedProjects = computed(() => projects.value.slice(0, 5))
 
 // === Project Archive Pagination (Max 5 per page) ===
 const archivePage = ref(1)
 const archivePerPage = 5
 
-const allArchivedProjects = computed(() => projects.value.slice(4))
+const allArchivedProjects = computed(() => projects.value.slice(5))
 const totalArchivePages = computed(() =>
   Math.ceil(allArchivedProjects.value.length / archivePerPage),
 )
@@ -832,7 +843,7 @@ const paginatedArchivedProjects = computed(() => {
 })
 
 const getArchiveGlobalIndex = (localIdx) => {
-  return 4 + (archivePage.value - 1) * archivePerPage + localIdx
+  return 5 + (archivePage.value - 1) * archivePerPage + localIdx
 }
 
 const setArchivePage = (p) => {
@@ -1272,6 +1283,51 @@ const projects = computed(() => {
       link: '#',
       _dir: 'next',
     },
+    {
+      year: '2024',
+      name: isId ? 'Stellar Adventures – AR Game Project' : 'Stellar Adventures – AR Game Project',
+      icon: 'bi-stars',
+      role: 'AR Developer, Environment Designer',
+      teamInfo: isId ? 'Proyek Tim | Agt – Des 2024' : 'Team Project | Aug – Dec 2024',
+      tools: 'Unity, Vuforia Engine, Blender',
+      toolIcons: [
+        {
+          name: 'Unity',
+          icon: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/unity.svg',
+          invert: true,
+        },
+        { name: 'Vuforia Engine', icon: '/images/tools/vuforia.svg' },
+        {
+          name: 'Blender',
+          icon: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/blender.svg',
+        },
+      ],
+      overview: isId
+        ? 'Stellar Adventures adalah game AR yang menggabungkan dunia maya dan nyata, memungkinkan pemain menavigasi ruang bertema luar angkasa melalui kamera perangkat mobile.'
+        : 'Stellar Adventures is an augmented reality game that blends the physical and digital world, allowing players to explore space-themed environments through their mobile device camera.',
+      tasks: isId
+        ? [
+            'Mengembangkan pendeteksi bidang datar (plane detection) dan kemunculan objek 3D luar angkasa',
+            'Merancang tekstur dan model lingkungan 3D menggunakan Blender',
+            'Menerapkan mekanika interaksi dan gameplay langsung di ruang AR dengan Vuforia Engine',
+            'Mengoptimalkan performa rendering grafis dan pencahayaan untuk perangkat mobile AR',
+          ]
+        : [
+            'Developed AR plane detection and space 3D object instantiation pipeline',
+            'Designed 3D environment models and space textures using Blender',
+            'Implemented interactive game mechanics in AR space using Vuforia Engine',
+            'Optimized graphic rendering and lighting performance for mobile AR devices',
+          ],
+      platform: isId ? 'Aplikasi AR Mobile' : 'AR Mobile App',
+      bg: '#1a2a3a',
+      images: [
+        '/images/projects/StellarAdventures/stellar_adventures.webp',
+        '/images/projects/StellarAdventures/stellar_adventures_gameplay.webp',
+      ],
+      link: 'https://youtu.be/beb_pedFmMg?si=tQhdt1NH_zsD2kko',
+      videoEmbedId: 'beb_pedFmMg',
+      _dir: 'next',
+    },
 
     {
       year: '2025',
@@ -1408,39 +1464,7 @@ const projects = computed(() => {
       link: '#',
       _dir: 'next',
     },
-    {
-      year: '2024',
-      name: 'Stellar Adventures – AR Game Project',
-      icon: 'bi-stars',
-      role: 'AR Developer, Environment Designer',
-      teamInfo: isId ? 'Proyek Tim | Agt – Des 2024' : 'Team Project | Aug – Dec 2024',
-      tools: 'Unity, Vuforia Engine, Blender',
-      overview: isId
-        ? 'Stellar Adventures adalah game AR yang menggabungkan dunia maya dan nyata, memungkinkan pemain menavigasi ruang bertema luar angkasa melalui kamera.'
-        : 'Stellar Adventures is an augmented reality game that blends the physical and digital world, allowing players to explore space-themed environments through their device camera.',
-      tasks: isId
-        ? [
-            'Mengembangkan pendeteksi bidang datar dan kemunculan objek',
-            'Merancang tekstur dan model lingkungan 3D',
-            'Menerapkan mekanika permainan langsung di ruang AR',
-            'Mengoptimalkan AR untuk perangkat mobile',
-          ]
-        : [
-            'Developed AR plane detection and object placement',
-            'Designed 3D environment models and textures',
-            'Implemented interactive game mechanics in AR space',
-            'Optimized performance for mobile AR devices',
-          ],
-      platform: isId ? 'Aplikasi AR Mobile' : 'AR Mobile App',
-      bg: '#1a2a3a',
-      images: [
-        '/images/projects/StellarAdventures/stellar_adventures.webp',
-        '/images/projects/stellar_adventures_2.webp',
-        '/images/projects/stellar_adventures_3.webp',
-      ],
-      link: '#',
-      _dir: 'next',
-    },
+
     {
       year: '2024',
       name: 'U-Asprak – Mobile App Design',

@@ -499,14 +499,14 @@ const projects = [
       "Gim Augmented Reality ruang angkasa yang memadukan dunia fisik dan obyek digital 3D.",
     images: [
       "/images/projects/StellarAdventures/stellar_adventures.webp",
-      "/images/projects/stellar_adventures_2.webp",
-      "/images/projects/stellar_adventures_3.webp",
+      "/images/projects/StellarAdventures/stellar_adventures_gameplay.webp",
     ],
     platform: "AR Mobile App",
     role: "AR Dev & Environment Designer",
     timeline: "Aug – Dec 2024",
     techStack: ["Unity", "Vuforia Engine", "Blender"],
-    demoUrl: "https://youtube.com/preview",
+    demoUrl: "https://youtu.be/beb_pedFmMg?si=tQhdt1NH_zsD2kko",
+    videoEmbedId: "beb_pedFmMg",
     challenge:
       "Pelacakan bidang datar dan kestabilan objek 3D di area ruangan berorientasi acak.",
     solution:

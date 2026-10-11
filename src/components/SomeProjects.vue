@@ -492,7 +492,8 @@ const projects = computed(() => {
       bg: "#1a2a3a",
       image: "/images/projects/StellarAdventures/stellar_adventures.webp",
       filterType: "game",
-      liveLink: "https://youtube.com/preview",
+      liveLink: "https://youtu.be/beb_pedFmMg?si=tQhdt1NH_zsD2kko",
+      videoEmbedId: "beb_pedFmMg",
       caseStudy: {
         challenge: isId
           ? "Pelacakan obyek 3D secara presisi pada lingkungan ruangan yang berpencahayaan rendah."

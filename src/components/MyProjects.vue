@@ -846,10 +846,10 @@ const projects = computed(() => {
       bg: '#1a2a3a',
       images: [
         '/images/projects/StellarAdventures/stellar_adventures.webp',
-        '/images/projects/stellar_adventures_2.webp',
-        '/images/projects/stellar_adventures_3.webp',
+        '/images/projects/StellarAdventures/stellar_adventures_gameplay.webp',
       ],
-      link: '#',
+      link: 'https://youtu.be/beb_pedFmMg?si=tQhdt1NH_zsD2kko',
+      videoEmbedId: 'beb_pedFmMg',
       _dir: 'next',
     },
     {
