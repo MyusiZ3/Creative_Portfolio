@@ -411,11 +411,11 @@ const projects = computed(() => {
       githubLink: "https://github.com/MyusiZ3/Mathmagic-Firebase",
       caseStudy: {
         challenge: isId
-          ? "Menyediakan gim pembelajaran matematika SD kelas 4 berkinerja tinggi dengan telemetri progres siswa secara real-time dan remote parameter balancing tanpa rebuild aplikasi."
-          : "Delivering a high-performance 4th-grade math game with real-time student telemetry analytics and remote parameter balancing without rebuilding binaries.",
+          ? "Menyediakan media belajar matematika interaktif untuk siswa SD yang terhubung dengan pemantauan pengajar secara real-time."
+          : "Delivering an engaging math learning game for elementary students with real-time progress tracking for educators.",
         solution: isId
-          ? "Membangun klien gim Unity 6 (C#) terintegrasi Firebase Firestore & Auth, serta Web Admin Dashboard (Vite & ES6) berbasis Bento Grid dengan status resmi HKI DJKI No. 001400842."
-          : "Engineered a Unity 6 (C#) game client integrated with Firebase Firestore & Auth, plus a Vite Web Admin Dashboard featuring Bento Grid telemetry, officially HKI DJKI certified (No. 001400842).",
+          ? "Membangun game Unity 6 (C#) terintegrasi Firebase dan Web Admin Dashboard (Vite) untuk telemetri belajar dan leaderboard real-time."
+          : "Built a Unity 6 (C#) game integrated with Firebase and a Vite Web Admin Dashboard for real-time learning telemetry and leaderboards.",
       },
     },
     {
@@ -426,6 +426,7 @@ const projects = computed(() => {
       bg: "#0284c7",
       image: "/images/projects/AppliQ/appliq_logo.png",
       filterType: "app",
+      liveLink: "https://myusiz3.github.io/AppliQ/",
       githubLink: "https://github.com/MyusiZ3/AppliQ",
       caseStudy: {
         challenge: isId
@@ -444,6 +445,7 @@ const projects = computed(() => {
       bg: "#10b981",
       image: "/images/projects/MyDuitGweh/logo_app.png",
       filterType: "app",
+      liveLink: "https://myduitgweh.firebaseapp.com/",
       githubLink: "https://github.com/MyusiZ3/MyDuitGweh",
       caseStudy: {
         challenge: isId
@@ -458,7 +460,7 @@ const projects = computed(() => {
       name: "DJourney Jaswita Jabar",
       category: isId ? "Portal Web Pariwisata" : "Tourism Web Portal",
       bg: "#2563eb",
-      image: "/images/projects/Iudex/iudex.webp",
+      image: "/images/projects/djourney_jaswita.png",
       filterType: "web",
       liveLink: "https://djourney.id/web/",
       caseStudy: {
@@ -562,6 +564,7 @@ const projects = computed(() => {
       bg: "#2a4a3a",
       image: "/images/projects/Empedu/empedu.webp",
       filterType: "app",
+      liveLink: "https://youtu.be/4qN5RWZo9Nw?si=mdo5mKqoznMrGAgz",
       githubLink: "https://github.com/MyusiZ3/Creative_Portfolio",
       caseStudy: {
         challenge: isId
@@ -580,7 +583,7 @@ const projects = computed(() => {
       bg: "#6a5acd",
       image: "/images/projects/Iudex/iudex.webp",
       filterType: "web",
-      liveLink: "https://iudex.vercel.app",
+      liveLink: "https://iudex-portfolio.vercel.app/",
       githubLink: "https://github.com/MyusiZ3/Creative_Portfolio",
       caseStudy: {
         challenge: isId

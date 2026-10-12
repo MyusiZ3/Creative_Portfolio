@@ -547,8 +547,8 @@ const projects = computed(() => {
       icon: 'bi-box-seam',
       role: 'Fullstack AR & Web Developer (Thesis)',
       teamInfo: isId
-        ? 'Proyek Pribadi untuk Tugas Akhir | 2026'
-        : 'Personal Project for Final Thesis | 2026',
+        ? 'Proyek Pribadi untuk Tugas Akhir | Mei – Jun 2026'
+        : 'Personal Project for Final Thesis | May – Jun 2026',
       tools: 'Unity, Vuforia Engine, Supabase DB, Vite, JavaScript',
       overview: isId
         ? 'Satu sistem terintegrasi yang menggabungkan aplikasi Dynamic Augmented Reality (AR) dan Web Admin Dashboard (CMS) berbasis Vite & Supabase DB sebagai topik Tugas Akhir kelulusan. Konten 3D dan informasi dalam aplikasi AR dapat di-CRUD secara real-time melalui web admin tanpa perlu rebuild aplikasi.'
@@ -585,28 +585,24 @@ const projects = computed(() => {
         ? 'Project Creator, Lead Developer & Main UI Designer'
         : 'Project Creator, Lead Developer & Main UI Designer',
       teamInfo: isId
-        ? 'Hak Kekayaan Intelektual Resmi No. 001400842 | Telkom Univ & SD Lab Univ Pattimura'
-        : 'Official Copyright (HKI) No. 001400842 | Telkom Univ & SD Lab Pattimura Univ',
+        ? 'Hak Kekayaan Intelektual Resmi No. 001400842 | Mei – Jul 2026'
+        : 'Official Copyright (HKI) No. 001400842 | May – Jul 2026',
       tools: 'Unity 6 (LTS), C#, Firebase (Firestore & Auth), Vite, JavaScript ES6, Figma',
       overview: isId
-        ? 'Ekosistem gim pembelajaran matematika interaktif berlisensi Hak Cipta resmi Kemenkumham RI (No. 001400842) untuk siswa kelas 4 SD Laboratorium Universitas Pattimura. Mengintegrasikan klien mobile Unity 6 dengan sinkronisasi cloud real-time Firebase serta Web Admin Dashboard berbasis Vite untuk telemetri belajar siswa dan remote game parameter balancing tanpa perlu rebuild aplikasi.'
-        : 'An interactive educational math gaming ecosystem officially copyright registered with HKI (No. 001400842) for 4th Grade SD Laboratorium Universitas Pattimura. Combines a mobile Unity 6 game client with real-time Firebase cloud synchronization (Firestore & Auth) and a Vite Web Admin Dashboard for student telemetry analytics and remote parameter balancing without rebuilding binaries.',
+        ? 'Game edukasi matematika interaktif berbasis Unity 6 yang terintegrasi dengan Firebase dan Web Admin Dashboard (Vite). Menggabungkan mekanika kuis interaktif dengan sinkronisasi cloud real-time untuk pemantauan progres belajar siswa.'
+        : 'An interactive educational math game built with Unity 6, integrated with Firebase and a Vite Web Admin Dashboard. Combines engaging quiz mechanics with real-time cloud sync for student progress tracking.',
       tasks: isId
         ? [
-            'Project Creator & Lead Developer: Merancang arsitektur penuh ekosistem gim Unity 6 dan Web Admin Dashboard',
-            'Main UI Designer: Merancang seluruh UI/UX ceria dan ramah anak di Figma serta animasi kurva sinusoidal (Mathf.Sin) di Unity',
-            'Mengembangkan mekanika kuis interaktif (Unity C#), sistem HP, timer dinamis, dan kalkulasi skor',
-            'Membangun Web Admin Dashboard (Vite & ES6) dengan Bento Grid untuk analitik telemetri siswa dan leaderboard real-time',
-            'Mengintegrasikan Firebase Firestore & Authentication untuk sinkronisasi cloud dua arah serta offline caching',
-            'Pendaftaran Hak Cipta Resmi Kemenkumham RI (No. 001400842)',
+            'Mengembangkan klien game mobile Unity 6 (C#) dengan kuis interaktif, sistem HP, dan timer dinamis',
+            'Merancang antarmuka UI/UX ramah anak di Figma serta implementasi animasi responsif di Unity',
+            'Membangun Web Admin Dashboard (Vite) untuk pemantauan telemetri belajar siswa dan leaderboard real-time',
+            'Mengintegrasikan Firebase Firestore & Authentication untuk sinkronisasi cloud dua arah dan offline caching',
           ]
         : [
-            'Project Creator & Lead Developer: Architected full ecosystem connecting Unity 6 mobile game client with Web Admin Dashboard',
-            'Main UI Designer: Designed complete child-friendly interface in Figma and implemented math wave sinusoidal UI animations in Unity',
-            'Programmed interactive math quiz mechanics in Unity C#, HP system, dynamic timer, and scoring',
-            'Built Vite Web Admin Dashboard featuring Bento Grid telemetry analytics, real-time leaderboards, and remote game balancing',
-            'Integrated Firebase Firestore & Authentication for bi-directional real-time cloud sync with offline session caching',
-            'Officially registered Copyright with Ministry of Law and Human Rights RI (HKI No. 001400842)',
+            'Developed Unity 6 (C#) mobile game client featuring interactive quiz mechanics, HP, and dynamic timers',
+            'Designed child-friendly UI/UX in Figma and implemented responsive in-game animations in Unity',
+            'Built Vite Web Admin Dashboard for student learning telemetry and real-time leaderboards',
+            'Integrated Firebase Firestore & Authentication for bi-directional cloud sync and offline caching',
           ],
       platform: isId
         ? 'Gim Edukasi Unity 6 & Web Admin Dashboard'
@@ -624,7 +620,7 @@ const projects = computed(() => {
       name: isId ? 'AppliQ – Job Application Tracker' : 'AppliQ – Job Application Tracker',
       icon: 'bi-kanban',
       role: isId ? 'Pengembang Mobile & Desainer UI/UX' : 'Mobile Developer & UI/UX Designer',
-      teamInfo: isId ? 'Proyek Pribadi | 2025' : 'Personal Project | 2025',
+      teamInfo: isId ? 'Proyek Pribadi | Sep – Okt 2026' : 'Personal Project | Sep – Oct 2026',
       tools: 'Flutter, Dart, Supabase (PostgreSQL), Google OAuth, PDF Engine',
       overview: isId
         ? 'Aplikasi mobile pelacak lamaran kerja dan manajemen karier berbasis Flutter & Supabase. Membantu pelamar mengelola alur rekrutmen via drag-and-drop Kanban pipeline, pembuat ATS Resume/CV otomatis ke format PDF, generator cover letter dengan tanda tangan digital, sinkronisasi jadwal wawancara ke Google Calendar, serta analitik konversi karier.'
@@ -650,7 +646,7 @@ const projects = computed(() => {
         '/images/projects/AppliQ/appliq_element.png',
         '/images/projects/AppliQ/appliq_logo.png',
       ],
-      link: 'https://github.com/MyusiZ3/AppliQ',
+      link: 'https://myusiz3.github.io/AppliQ/',
       _dir: 'next',
     },
     {
@@ -661,7 +657,7 @@ const projects = computed(() => {
       role: isId
         ? 'Pengembang Mobile & Arsitek Sistem Cloud'
         : 'Mobile Developer & Cloud System Architect',
-      teamInfo: isId ? 'Proyek Pribadi | 2025' : 'Personal Project | 2025',
+      teamInfo: isId ? 'Proyek Pribadi | Mar – Sep 2026' : 'Personal Project | Mar – Sep 2026',
       tools: 'Flutter, Dart, Firebase (Auth/Firestore), Google ML Kit, Gemini & Groq API',
       overview: isId
         ? 'Aplikasi manajemen keuangan pribadi berbasis Flutter & Firebase dengan estetika Apple/iOS Design Language (glassmorphism & Bento layout). Menghadirkan Archen AI Financial Advisor (didukung Gemini & Groq API dengan 5 mode kepribadian), dompet kolaborasi bersama dengan in-app chat, pemindai struk otomatis berbasis OCR Google ML Kit, serta in-app APK updater terintegrasi.'
@@ -684,32 +680,32 @@ const projects = computed(() => {
       platform: isId ? 'Aplikasi Mobile Android (Flutter)' : 'Android Mobile App (Flutter)',
       bg: '#10b981',
       images: ['/images/projects/MyDuitGweh/logo_app.png'],
-      link: 'https://github.com/MyusiZ3/MyDuitGweh',
+      link: 'https://myduitgweh.firebaseapp.com/',
       _dir: 'next',
     },
     {
       name: isId ? 'DJourney Jaswita Jabar – Tourism Web' : 'DJourney Jaswita Jabar – Tourism Web',
       icon: 'bi-globe-americas',
-      role: isId ? 'Pengembang Frontend Web & IT Intern' : 'Frontend Web Developer & IT Intern',
+      role: isId ? 'Pengembang Frontend Web & Translator Intern' : 'Frontend Web Developer & Translator Intern',
       teamInfo: isId
-        ? 'Magang | PT. Jasa & Kepariwisataan Jabar'
-        : 'Internship | PT. Jasa & Kepariwisataan Jabar',
+        ? 'Magang | PT. Jasa & Kepariwisataan Jabar (2026)'
+        : 'Internship | PT. Jasa & Kepariwisataan Jabar (2026)',
       tools: 'HTML, CSS, JavaScript, i18n, Responsive Web Design',
       overview: isId
-        ? 'Pengembangan platform pariwisata DJourney milik PT. Jasa & Kepariwisataan Jabar (Perseroda). Berfokus pada implementasi sistem multi-language (i18n), optimasi tampilan responsif mobile, serta bug fix pada filter pencarian dan tata letak antarmuka.'
-        : 'Development of DJourney tourism website for PT. Jasa & Kepariwisataan Jabar. Focused on building multi-language (i18n) localization, mobile responsive layouts, and bug fixes for destination search filters and UI display issues.',
+        ? 'Pengembangan antarmuka platform pariwisata DJourney milik PT. Jasa & Kepariwisataan Jabar (Perseroda). Berfokus sebagai penerjemah sistem multi-bahasa (i18n), perbaikan tampilan responsif mobile (responsif fix), dan penyelesaian bug fungsionalitas filter pencarian serta antarmuka web.'
+        : 'Development of DJourney tourism web platform for PT. Jasa & Kepariwisataan Jabar. Focused on multi-language localization (translator / i18n), mobile layout optimization (responsive fixes), and resolving destination search filter and UI layout bugs.',
       tasks: isId
         ? [
-            'Mengimplementasikan fitur multi-language (i18n) untuk wisatawan domestik & mancanegara',
-            'Merancang & mengoptimalkan tampilan responsif mobile untuk aksesibilitas lintas perangkat',
-            'Melakukan pengujian & bug fixing pada fitur filter pencarian destinasi pariwisata',
-            'Memperbaiki bug inkonsistensi tata letak visual dan responsivitas antarmuka web',
+            'Mengimplementasikan fitur multi-language (i18n / translator) untuk wisatawan domestik & mancanegara',
+            'Merancang dan memperbaiki tata letak responsif mobile (responsif fix) lintas berbagai resolusi perangkat',
+            'Menangani pengujian serta bug fixing menyeluruh pada sistem filter pencarian destinasi',
+            'Memperbaiki inkonsistensi tata letak visual antarmuka dan interaktivitas komponen web',
           ]
         : [
-            'Implemented multi-language (i18n) localization for domestic & international tourists',
-            'Designed and optimized mobile-responsive layouts for cross-device compatibility',
-            'Fixed and refactored destination search filter features and logic',
-            'Resolved visual display inconsistencies and responsive UI layout bugs',
+            'Implemented multi-language localization (i18n / translator) for domestic & international travelers',
+            'Designed and engineered mobile responsive fixes across diverse viewport resolutions',
+            'Conducted thorough debugging and fixes on destination search and category filters',
+            'Resolved visual layout bugs, alignment inconsistencies, and interactive component glitches',
           ],
       platform: 'Web Application',
       bg: '#2563eb',
@@ -759,7 +755,7 @@ const projects = computed(() => {
       name: 'MindEscape – VR Escape Room Game',
       icon: 'bi-headset',
       role: isId ? 'Pengembang VR, Desainer Lingkungan' : 'VR Developer, Environment Designer',
-      teamInfo: isId ? 'Proyek Tim | Jan – Jun 2025' : 'Team Project | Jan – Jun 2025',
+      teamInfo: isId ? 'Proyek Tim | Feb – Mar 2025' : 'Team Project | Feb – Mar 2025',
       tools: 'Unity, Oculus SDK',
       overview: isId
         ? 'MindEscape adalah permaianan VR ruang lolos yang berfokus pada eksplorasi dan interaksi lingkungan. Dibuat menggunakan Unity, proyek ini mensimulasikan pengalaman puzzle penuh menggunakan headset VR.'
@@ -792,7 +788,7 @@ const projects = computed(() => {
       name: 'MathRift – Educational 2D Platformer',
       icon: 'bi-calculator',
       role: isId ? 'Pengembang Game, Desainer UI/UX' : 'Game Developer, UI/UX Designer',
-      teamInfo: isId ? 'Proyek Tim | Agt – Des 2024' : 'Team Project | Aug – Dec 2024',
+      teamInfo: isId ? 'Proyek Tim | Jan – Jun 2025' : 'Team Project | Jan – Jun 2025',
       tools: 'Unity, Figma',
       overview: isId
         ? 'MathRift adalah game platform 2D edukasi yang dirancang agar belajar matematika jadi menyenangkan lewat gameplay interaktif, teka teki, dan level yang menantang secara bertahap.'
@@ -824,7 +820,7 @@ const projects = computed(() => {
       name: 'Stellar Adventures – AR Game Project',
       icon: 'bi-stars',
       role: 'AR Developer, Environment Designer',
-      teamInfo: isId ? 'Proyek Tim | Agt – Des 2024' : 'Team Project | Aug – Dec 2024',
+      teamInfo: isId ? 'Proyek Tim | Sep 2024 – Feb 2025' : 'Team Project | Sep 2024 – Feb 2025',
       tools: 'Unity, Vuforia Engine, Blender',
       overview: isId
         ? 'Stellar Adventures adalah game AR yang menggabungkan dunia maya dan nyata, memungkinkan pemain menavigasi ruang bertema luar angkasa melalui kamera.'
@@ -913,14 +909,15 @@ const projects = computed(() => {
         '/images/projects/empedu_2.webp',
         '/images/projects/empedu_3.webp',
       ],
-      link: '#',
+      link: 'https://youtu.be/4qN5RWZo9Nw?si=mdo5mKqoznMrGAgz',
+      videoEmbedId: '4qN5RWZo9Nw',
       _dir: 'next',
     },
     {
       name: 'IUDEX – Team Portfolio Web Design',
       icon: 'bi-display',
       role: isId ? 'Desainer UI/UX, Pengembang Frontend' : 'UI/UX Designer, Frontend Developer',
-      teamInfo: isId ? 'Proyek Tim | Jan – Jun 2024' : 'Team Project | Jan – Jun 2024',
+      teamInfo: isId ? 'Proyek Tim | Sep 2023 – Feb 2024' : 'Team Project | Sep 2023 – Feb 2024',
       tools: 'Figma, HTML, CSS, JavaScript',
       overview: isId
         ? 'IUDEX adalah situs web portofolio tim yang menampilkan kapabilitas, identitas visual sebuah tim pada desain tata letak kekinian bercorak profesional.'
@@ -945,7 +942,7 @@ const projects = computed(() => {
         '/images/projects/iudex_2.webp',
         '/images/projects/iudex_3.webp',
       ],
-      link: '#',
+      link: 'https://iudex-portfolio.vercel.app/',
       _dir: 'next',
     },
     {
