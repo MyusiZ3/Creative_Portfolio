@@ -157,7 +157,7 @@
                     PROJ 0{{ (projectPage - 1) * projectPerPage + idx + 1 }}
                   </span>
                   <span class="text-[10px] font-bold text-[#ffd700] uppercase border border-[#ffd700] px-1.5 py-0.5">
-                    CLEARED
+                    {{ quest.scope || 'CLEARED' }}
                   </span>
                 </div>
                 <div class="text-[11px] text-[#8b949e]">
@@ -227,48 +227,6 @@
             <span>NEXT ›</span>
           </button>
         </div>
-
-        <!-- ADDITIONAL PROJECTS (MindEscape) -->
-        <div class="mt-12 pt-8 border-t-4 border-black">
-          <h4 class="text-base sm:text-lg font-extrabold uppercase mb-6 font-silkscreen text-[#ffd700]">
-            // {{ t("additional_projects_title") }}
-          </h4>
-          
-          <div
-            v-motion
-            :initial="{ opacity: 0, y: 35 }"
-            :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, ease: 'easeOut' } }"
-            class="bg-[#161b22] border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_#000000] relative group hover:border-[#00ff66] transition-colors flex flex-col md:flex-row md:items-center justify-between gap-6"
-          >
-            <div class="flex-1">
-              <div class="flex items-center gap-3 border-b-2 border-[#30363d] pb-3 mb-4 font-silkscreen">
-                <span class="px-2 py-0.5 bg-[#ffd700] text-black font-extrabold text-[10px] uppercase shadow-[2px_2px_0px_#000]">
-                  ADDITIONAL QUEST
-                </span>
-                <span class="text-[10px] font-bold text-[#00f0ff] uppercase border border-[#00f0ff] px-1.5 py-0.5 font-mono">
-                  VR Game
-                </span>
-              </div>
-              
-              <h5 class="text-sm sm:text-base font-extrabold text-[#f0f6fc] uppercase group-hover:text-[#00ff66] transition-colors font-silkscreen mb-1">
-                {{ t("exp_p3_sub") }}
-              </h5>
-              <div class="text-xs text-[#00f0ff] font-bold font-silkscreen mb-3">
-                {{ t("exp_p3_title") }}
-              </div>
-              <p class="text-xs text-[#8b949e] leading-relaxed font-mono">
-                {{ t("exp_p3_desc") }}
-              </p>
-
-              <div class="mt-4 pt-3 border-t border-[#30363d] flex flex-wrap items-center gap-2 font-mono text-[11px]">
-                <span class="text-[#8b949e] font-bold">TECH:</span>
-                <span class="text-[#00ff66] bg-[#161b22] px-2 py-0.5 border border-[#30363d] shadow-[2px_2px_0px_#000] font-mono">
-                  {{ t("exp_p3_tech") }}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
     </div>
@@ -279,7 +237,7 @@
 import { ref, computed } from 'vue';
 import { useLanguage } from '@/composables/useLanguage';
 
-const { t } = useLanguage();
+const { t, lang } = useLanguage();
 const activeCategory = ref('all');
 
 const workPage = ref(1);
@@ -364,46 +322,81 @@ const workQuests = computed(() => [
 
 const projectQuests = computed(() => [
   {
+    id: 'p8',
+    title: t('exp_p8_title'),
+    sub: t('exp_p8_sub'),
+    period: "SEP 2026 - OCT 2026",
+    scope: lang.value === 'ID' ? 'PERSONAL' : 'PERSONAL',
+    xp: "+12,500 XP",
+    desc: t('exp_p8_desc'),
+    tech: t('exp_p8_tech')
+  },
+  {
     id: 'p7',
     title: t('exp_p7_title'),
     sub: t('exp_p7_sub'),
-    period: "JUN 2026 - JUL 2026",
+    period: "MAY 2026 - JUL 2026",
+    scope: "HKI CERTIFIED",
     xp: "+12,000 XP",
     desc: t('exp_p7_desc'),
     tech: t('exp_p7_tech')
+  },
+  {
+    id: 'p9',
+    title: t('exp_p9_title'),
+    sub: t('exp_p9_sub'),
+    period: "MAY 2026 - JUN 2026",
+    scope: lang.value === 'ID' ? 'THESIS' : 'THESIS',
+    xp: "+11,500 XP",
+    desc: t('exp_p9_desc'),
+    tech: t('exp_p9_tech')
   },
   {
     id: 'p1',
     title: t('exp_p1_title'),
     sub: t('exp_p1_sub'),
     period: "JAN 2025 - JUNE 2025",
-    xp: "+9,000 XP",
+    scope: "TEAM",
+    xp: "+9,500 XP",
     desc: t('exp_p1_desc'),
     tech: t('exp_p1_tech')
   },
   {
-    id: 'p2',
-    title: t('exp_p2_title'),
-    sub: t('exp_p2_sub'),
-    period: "JAN 2025 - JUNE 2025",
-    xp: "+8,500 XP",
-    desc: t('exp_p2_desc'),
-    tech: t('exp_p2_tech')
+    id: 'p3',
+    title: t('exp_p3_title'),
+    sub: t('exp_p3_sub'),
+    period: "FEB 2025 - MAR 2025",
+    scope: "TEAM",
+    xp: "+9,000 XP",
+    desc: t('exp_p3_desc'),
+    tech: t('exp_p3_tech')
   },
   {
     id: 'p4',
     title: t('exp_p4_title'),
     sub: t('exp_p4_sub'),
     period: "SEP 2024 - FEB 2025",
-    xp: "+7,500 XP",
+    scope: "TEAM",
+    xp: "+8,000 XP",
     desc: t('exp_p4_desc'),
     tech: t('exp_p4_tech')
+  },
+  {
+    id: 'p2',
+    title: t('exp_p2_title'),
+    sub: t('exp_p2_sub'),
+    period: "JAN 2025 - JUNE 2025",
+    scope: "TEAM",
+    xp: "+7,500 XP",
+    desc: t('exp_p2_desc'),
+    tech: t('exp_p2_tech')
   },
   {
     id: 'p5',
     title: t('exp_p5_title'),
     sub: t('exp_p5_sub'),
     period: "JAN 2024 - JUNE 2024",
+    scope: "CASE STUDY",
     xp: "+6,500 XP",
     desc: t('exp_p5_desc'),
     tech: t('exp_p5_tech')
@@ -413,6 +406,7 @@ const projectQuests = computed(() => [
     title: t('exp_p6_title'),
     sub: t('exp_p6_sub'),
     period: "SEP 2023 - FEB 2024",
+    scope: "TEAM",
     xp: "+6,000 XP",
     desc: t('exp_p6_desc'),
     tech: t('exp_p6_tech')

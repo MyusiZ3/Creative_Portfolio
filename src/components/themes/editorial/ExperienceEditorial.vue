@@ -134,7 +134,7 @@
               scaleX: 1,
               transition: { duration: 1000, delay: 100, ease: 'easeOut' },
             }"
-            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
+            class="absolute top-[40px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
           ></div>
 
           <div
@@ -152,7 +152,7 @@
               class="flex flex-col"
             >
               <p
-                class="text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2"
+                class="text-[14px] lg:text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2 h-5 leading-5"
               >
                 AUG 2025 - JUL 2026
               </p>
@@ -238,7 +238,7 @@
               class="flex flex-col"
             >
               <p
-                class="text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2"
+                class="text-[14px] lg:text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2 h-5 leading-5"
               >
                 SEP 2023 - JUL 2025
               </p>
@@ -324,7 +324,7 @@
               class="flex flex-col"
             >
               <p
-                class="text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2"
+                class="text-[14px] lg:text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2 h-5 leading-5"
               >
                 SEP 2023 - DEC 2023
               </p>
@@ -405,11 +405,11 @@
         <div class="flex justify-center mb-12">
           <button
             @click="showEarlierWork = !showEarlierWork"
-            class="flex items-center gap-2 px-5 py-2.5 border border-[#302F49]/20 hover:border-violet-500 hover:text-violet-600 rounded-full text-sm font-semibold font-['Poppins'] text-[#302F49] transition-all bg-white shadow-sm hover:shadow-md"
+            class="inline-flex items-center gap-2.5 px-7 py-3 rounded-full text-sm font-semibold font-['Poppins'] text-white bg-[#171717] hover:bg-violet-600 transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 group cursor-pointer"
           >
             <span>{{ t("earlier_experience_title") }}</span>
             <i
-              class="bi"
+              class="bi transition-transform duration-300"
               :class="showEarlierWork ? 'bi-chevron-up' : 'bi-chevron-down'"
             ></i>
           </button>
@@ -424,7 +424,7 @@
               : 'max-h-0 opacity-0 mb-0 pointer-events-none'
           "
         >
-          <div class="relative px-0 pt-4">
+          <div class="relative px-0 mt-6">
             <!-- Horizontal Line -->
             <div
               v-motion
@@ -434,7 +434,7 @@
                 scaleX: 1,
                 transition: { duration: 1000, delay: 100, ease: 'easeOut' },
               }"
-              class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
+              class="absolute top-[40px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
             ></div>
 
             <div
@@ -452,7 +452,7 @@
                 class="flex flex-col"
               >
                 <p
-                  class="text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2"
+                  class="text-[14px] lg:text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2 h-5 leading-5"
                 >
                   SEP 2021 - JUN 2022
                 </p>
@@ -539,7 +539,7 @@
                 class="flex flex-col"
               >
                 <p
-                  class="text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2"
+                  class="text-[14px] lg:text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2 h-5 leading-5"
                 >
                   JAN 2021 - JUNE 2021
                 </p>
@@ -630,7 +630,7 @@
         >
           {{ t("exp_proj_title") }}
         </h3>
-        <!-- Continuous Timeline Project Row 1 -->
+        <!-- Continuous Timeline Project Row 1 (2026 Flagships & Systems) -->
         <div class="relative mb-16 px-0">
           <!-- Horizontal Line -->
           <div
@@ -641,13 +641,13 @@
               scaleX: 1,
               transition: { duration: 1000, delay: 100, ease: 'easeOut' },
             }"
-            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
+            class="absolute top-[40px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
           ></div>
 
           <div
             class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-12 relative z-10"
           >
-            <!-- Project 7 (Mathmagic) -->
+            <!-- Project 8 (AppliQ) -->
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
@@ -659,9 +659,9 @@
               class="flex flex-col"
             >
               <p
-                class="text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2"
+                class="text-[14px] lg:text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2 h-5 leading-5"
               >
-                JUN 2026 - JUL 2026
+                SEP 2026 - OCT 2026
               </p>
               <div
                 class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
@@ -677,6 +677,106 @@
                       stiffness: 250,
                       damping: 15,
                       delay: 200,
+                    },
+                  }"
+                  class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
+                ></div>
+              </div>
+              <div>
+                <h4
+                  class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
+                >
+                  {{ t("exp_p8_sub") }}
+                </h4>
+                <p
+                  class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
+                >
+                  {{ t("exp_p8_title") }}
+                </p>
+                <div
+                  class="overflow-hidden transition-all duration-300"
+                  :class="
+                    expanded['p8']
+                      ? 'max-h-96 opacity-100 mb-4'
+                      : 'max-h-0 opacity-0 mb-0'
+                  "
+                >
+                  <p
+                    class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
+                  >
+                    {{ t("exp_p8_desc") }}
+                  </p>
+                  <div
+                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
+                  >
+                    <span
+                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                      >Tech:</span
+                    >
+                    <span
+                      class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
+                    >
+                      {{ t("exp_p8_tech") }}
+                    </span>
+                  </div>
+                </div>
+                <button
+                  @click="toggleDetail('p8')"
+                  class="flex items-center gap-1.5 text-xs font-bold text-violet-600 hover:text-violet-800 transition-colors uppercase tracking-wider group"
+                >
+                  <span
+                    class="border-b border-transparent group-hover:border-violet-800 transition-all"
+                  >
+                    {{
+                      expanded["p8"]
+                        ? lang === "ID"
+                          ? "Sembunyikan Detail"
+                          : "Hide Detail"
+                        : lang === "ID"
+                          ? "Lihat Detail"
+                          : "Show Detail"
+                    }}
+                  </span>
+                  <i
+                    class="bi"
+                    :class="
+                      expanded['p8'] ? 'bi-chevron-up' : 'bi-chevron-down'
+                    "
+                  ></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Project 7 (Mathmagic) -->
+            <div
+              v-motion
+              :initial="{ opacity: 0, y: 50 }"
+              :visible="{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 600, delay: 150, ease: 'easeOut' },
+              }"
+              class="flex flex-col"
+            >
+              <p
+                class="text-[14px] lg:text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2 h-5 leading-5"
+              >
+                MAY 2026 - JUL 2026
+              </p>
+              <div
+                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
+              >
+                <div
+                  v-motion
+                  :initial="{ opacity: 0, scale: 0 }"
+                  :visible="{
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                      type: 'spring',
+                      stiffness: 250,
+                      damping: 15,
+                      delay: 350,
                     },
                   }"
                   class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
@@ -711,7 +811,7 @@
                   <div
                     class="mt-3 flex items-center gap-4 text-xs font-bold text-gray-400 uppercase tracking-widest font-mono"
                   >
-                    <span>✦ HKI Registered</span>
+                    <span>✦ HKI Registered No. 001400842</span>
                   </div>
 
                   <div
@@ -755,6 +855,125 @@
               </div>
             </div>
 
+            <!-- Project 9 (Djaswita AR) -->
+            <div
+              v-motion
+              :initial="{ opacity: 0, y: 50 }"
+              :visible="{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 600, delay: 300, ease: 'easeOut' },
+              }"
+              class="flex flex-col"
+            >
+              <p
+                class="text-[14px] lg:text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2 h-5 leading-5"
+              >
+                MAY 2026 - JUN 2026
+              </p>
+              <div
+                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
+              >
+                <div
+                  v-motion
+                  :initial="{ opacity: 0, scale: 0 }"
+                  :visible="{
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                      type: 'spring',
+                      stiffness: 250,
+                      damping: 15,
+                      delay: 500,
+                    },
+                  }"
+                  class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
+                ></div>
+              </div>
+              <div>
+                <h4
+                  class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
+                >
+                  {{ t("exp_p9_sub") }}
+                </h4>
+                <p
+                  class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
+                >
+                  {{ t("exp_p9_title") }}
+                </p>
+                <div
+                  class="overflow-hidden transition-all duration-300"
+                  :class="
+                    expanded['p9']
+                      ? 'max-h-96 opacity-100 mb-4'
+                      : 'max-h-0 opacity-0 mb-0'
+                  "
+                >
+                  <p
+                    class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
+                  >
+                    {{ t("exp_p9_desc") }}
+                  </p>
+                  <div
+                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
+                  >
+                    <span
+                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                      >Tech:</span
+                    >
+                    <span
+                      class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
+                    >
+                      {{ t("exp_p9_tech") }}
+                    </span>
+                  </div>
+                </div>
+                <button
+                  @click="toggleDetail('p9')"
+                  class="flex items-center gap-1.5 text-xs font-bold text-violet-600 hover:text-violet-800 transition-colors uppercase tracking-wider group"
+                >
+                  <span
+                    class="border-b border-transparent group-hover:border-violet-800 transition-all"
+                  >
+                    {{
+                      expanded["p9"]
+                        ? lang === "ID"
+                          ? "Sembunyikan Detail"
+                          : "Hide Detail"
+                        : lang === "ID"
+                          ? "Lihat Detail"
+                          : "Show Detail"
+                    }}
+                  </span>
+                  <i
+                    class="bi"
+                    :class="
+                      expanded['p9'] ? 'bi-chevron-up' : 'bi-chevron-down'
+                    "
+                  ></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Continuous Timeline Project Row 2 (2025 Interactive & VR Systems) -->
+        <div class="relative mb-16 px-0">
+          <!-- Horizontal Line -->
+          <div
+            v-motion
+            :initial="{ opacity: 0, scaleX: 0 }"
+            :visible="{
+              opacity: 1,
+              scaleX: 1,
+              transition: { duration: 1000, delay: 100, ease: 'easeOut' },
+            }"
+            class="absolute top-[40px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
+          ></div>
+
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-12 relative z-10"
+          >
             <!-- Project 1 (RideXP) -->
             <div
               v-motion
@@ -762,12 +981,12 @@
               :visible="{
                 opacity: 1,
                 y: 0,
-                transition: { duration: 600, delay: 150, ease: 'easeOut' },
+                transition: { duration: 600, ease: 'easeOut' },
               }"
               class="flex flex-col"
             >
               <p
-                class="text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2"
+                class="text-[14px] lg:text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2 h-5 leading-5"
               >
                 JAN 2025 - JUNE 2025
               </p>
@@ -784,7 +1003,7 @@
                       type: 'spring',
                       stiffness: 250,
                       damping: 15,
-                      delay: 350,
+                      delay: 200,
                     },
                   }"
                   class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
@@ -855,6 +1074,106 @@
               </div>
             </div>
 
+            <!-- Project 3 (MindEscape VR) -->
+            <div
+              v-motion
+              :initial="{ opacity: 0, y: 50 }"
+              :visible="{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 600, delay: 150, ease: 'easeOut' },
+              }"
+              class="flex flex-col"
+            >
+              <p
+                class="text-[14px] lg:text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2 h-5 leading-5"
+              >
+                FEB 2025 - MAR 2025
+              </p>
+              <div
+                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
+              >
+                <div
+                  v-motion
+                  :initial="{ opacity: 0, scale: 0 }"
+                  :visible="{
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                      type: 'spring',
+                      stiffness: 250,
+                      damping: 15,
+                      delay: 350,
+                    },
+                  }"
+                  class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
+                ></div>
+              </div>
+              <div>
+                <h4
+                  class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
+                >
+                  {{ t("exp_p3_sub") }}
+                </h4>
+                <p
+                  class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
+                >
+                  {{ t("exp_p3_title") }}
+                </p>
+                <div
+                  class="overflow-hidden transition-all duration-300"
+                  :class="
+                    expanded['p3']
+                      ? 'max-h-96 opacity-100 mb-4'
+                      : 'max-h-0 opacity-0 mb-0'
+                  "
+                >
+                  <p
+                    class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
+                  >
+                    {{ t("exp_p3_desc") }}
+                  </p>
+                  <div
+                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
+                  >
+                    <span
+                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                      >Tech:</span
+                    >
+                    <span
+                      class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
+                    >
+                      {{ t("exp_p3_tech") }}
+                    </span>
+                  </div>
+                </div>
+                <button
+                  @click="toggleDetail('p3')"
+                  class="flex items-center gap-1.5 text-xs font-bold text-violet-600 hover:text-violet-800 transition-colors uppercase tracking-wider group"
+                >
+                  <span
+                    class="border-b border-transparent group-hover:border-violet-800 transition-all"
+                  >
+                    {{
+                      expanded["p3"]
+                        ? lang === "ID"
+                          ? "Sembunyikan Detail"
+                          : "Hide Detail"
+                        : lang === "ID"
+                          ? "Lihat Detail"
+                          : "Show Detail"
+                    }}
+                  </span>
+                  <i
+                    class="bi"
+                    :class="
+                      expanded['p3'] ? 'bi-chevron-up' : 'bi-chevron-down'
+                    "
+                  ></i>
+                </button>
+              </div>
+            </div>
+
             <!-- Project 2 (MathRift) -->
             <div
               v-motion
@@ -867,7 +1186,7 @@
               class="flex flex-col"
             >
               <p
-                class="text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2"
+                class="text-[14px] lg:text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2 h-5 leading-5"
               >
                 JAN 2025 - JUNE 2025
               </p>
@@ -957,8 +1276,8 @@
           </div>
         </div>
 
-        <!-- Continuous Timeline Project Row 2 -->
-        <div class="relative px-0">
+        <!-- Continuous Timeline Project Row 3 (2023 - 2024 Foundations & Simulations) -->
+        <div class="relative mb-16 px-0">
           <!-- Horizontal Line -->
           <div
             v-motion
@@ -968,7 +1287,7 @@
               scaleX: 1,
               transition: { duration: 1000, delay: 100, ease: 'easeOut' },
             }"
-            class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
+            class="absolute top-[40px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
           ></div>
 
           <div
@@ -986,7 +1305,7 @@
               class="flex flex-col"
             >
               <p
-                class="text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2"
+                class="text-[14px] lg:text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2 h-5 leading-5"
               >
                 SEP 2024 - FEB 2025
               </p>
@@ -1086,7 +1405,7 @@
               class="flex flex-col"
             >
               <p
-                class="text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2"
+                class="text-[14px] lg:text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2 h-5 leading-5"
               >
                 JAN 2024 - JUNE 2024
               </p>
@@ -1186,7 +1505,7 @@
               class="flex flex-col"
             >
               <p
-                class="text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2"
+                class="text-[14px] lg:text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2 h-5 leading-5"
               >
                 SEP 2023 - FEB 2024
               </p>
@@ -1276,150 +1595,15 @@
           </div>
         </div>
 
-        <!-- Toggle Earlier Projects Button -->
-        <div class="flex justify-center mt-20 mb-12">
-          <button
-            @click="showEarlierProjects = !showEarlierProjects"
-            class="flex items-center gap-2 px-5 py-2.5 border border-[#302F49]/20 hover:border-violet-500 hover:text-violet-600 rounded-full text-sm font-semibold font-['Poppins'] text-[#302F49] transition-all bg-white shadow-sm hover:shadow-md"
+        <!-- CTA directly to Projects Section -->
+        <div class="flex justify-center mt-12 mb-4">
+          <a
+            href="#my-projects"
+            class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full text-sm font-semibold font-['Poppins'] text-white bg-[#171717] hover:bg-violet-600 transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 group"
           >
-            <span>{{
-              showEarlierProjects
-                ? t("hide_additional_projects")
-                : t("show_additional_projects")
-            }}</span>
-            <i
-              class="bi"
-              :class="showEarlierProjects ? 'bi-chevron-up' : 'bi-chevron-down'"
-            ></i>
-          </button>
-        </div>
-
-        <!-- Collapsible Earlier Projects Row -->
-        <div
-          class="overflow-hidden transition-all duration-500 ease-in-out"
-          :class="
-            showEarlierProjects
-              ? 'max-h-[1000px] opacity-100 mb-16'
-              : 'max-h-0 opacity-0 mb-0 pointer-events-none'
-          "
-        >
-          <div class="relative px-0 pt-4">
-            <!-- Horizontal Line -->
-            <div
-              v-motion
-              :initial="{ opacity: 0, scaleX: 0 }"
-              :visible="{
-                opacity: 1,
-                scaleX: 1,
-                transition: { duration: 1000, delay: 100, ease: 'easeOut' },
-              }"
-              class="absolute top-[42px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
-            ></div>
-
-            <div
-              class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-12 relative z-10"
-            >
-              <!-- Project 3 (MindEscape) -->
-              <div
-                v-motion
-                :initial="{ opacity: 0, y: 50 }"
-                :visible="{
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 600, ease: 'easeOut' },
-                }"
-                class="flex flex-col"
-              >
-                <p
-                  class="text-[15px] font-bold text-[#302F49] font-['Roboto'] uppercase mb-2"
-                >
-                  SEP 2022 - JAN 2023
-                </p>
-                <div
-                  class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
-                >
-                  <div
-                    v-motion
-                    :initial="{ opacity: 0, scale: 0 }"
-                    :visible="{
-                      opacity: 1,
-                      scale: 1,
-                      transition: {
-                        type: 'spring',
-                        stiffness: 250,
-                        damping: 15,
-                        delay: 200,
-                      },
-                    }"
-                    class="w-3 h-3 bg-[#171717] rounded-full ml-[20%] relative z-20"
-                  ></div>
-                </div>
-                <div>
-                  <h4
-                    class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
-                  >
-                    {{ t("exp_p3_sub") }}
-                  </h4>
-                  <p
-                    class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
-                  >
-                    {{ t("exp_p3_title") }}
-                  </p>
-                  <div
-                    class="overflow-hidden transition-all duration-300"
-                    :class="
-                      expanded['p3']
-                        ? 'max-h-96 opacity-100 mb-4'
-                        : 'max-h-0 opacity-0 mb-0'
-                    "
-                  >
-                    <p
-                      class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
-                    >
-                      {{ t("exp_p3_desc") }}
-                    </p>
-                    <div
-                      class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
-                    >
-                      <span
-                        class="text-xs font-bold text-gray-500 uppercase tracking-wider"
-                        >Tech:</span
-                      >
-                      <span
-                        class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
-                      >
-                        {{ t("exp_p3_tech") }}
-                      </span>
-                    </div>
-                  </div>
-                  <button
-                    @click="toggleDetail('p3')"
-                    class="flex items-center gap-1.5 text-xs font-bold text-violet-600 hover:text-violet-800 transition-colors uppercase tracking-wider group"
-                  >
-                    <span
-                      class="border-b border-transparent group-hover:border-violet-800 transition-all"
-                    >
-                      {{
-                        expanded["p3"]
-                          ? lang === "ID"
-                            ? "Sembunyikan Detail"
-                            : "Hide Detail"
-                          : lang === "ID"
-                            ? "Lihat Detail"
-                            : "Show Detail"
-                      }}
-                    </span>
-                    <i
-                      class="bi"
-                      :class="
-                        expanded['p3'] ? 'bi-chevron-up' : 'bi-chevron-down'
-                      "
-                    ></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+            <span>{{ lang === 'ID' ? 'Lihat Semua Studi Kasus' : 'Explore All Case Studies' }}</span>
+            <i class="bi bi-arrow-up-right transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"></i>
+          </a>
         </div>
       </div>
     </div>
@@ -1434,7 +1618,6 @@ const { t, lang } = useLanguage();
 
 const expanded = ref({});
 const showEarlierWork = ref(false);
-const showEarlierProjects = ref(false);
 
 const allExpanded = computed(() => {
   const keys = [
@@ -1443,13 +1626,15 @@ const allExpanded = computed(() => {
     "w3",
     "w4",
     "w5",
+    "p8",
+    "p7",
+    "p9",
     "p1",
-    "p2",
     "p3",
+    "p2",
     "p4",
     "p5",
     "p6",
-    "p7",
   ];
   const expandedCount = keys.filter((key) => expanded.value[key]).length;
   return expandedCount >= keys.length / 2;
@@ -1466,13 +1651,15 @@ const toggleAll = (expand) => {
     "w3",
     "w4",
     "w5",
+    "p8",
+    "p7",
+    "p9",
     "p1",
-    "p2",
     "p3",
+    "p2",
     "p4",
     "p5",
     "p6",
-    "p7",
   ];
   keys.forEach((key) => {
     expanded.value[key] = expand;

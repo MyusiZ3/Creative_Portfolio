@@ -69,58 +69,63 @@ const translations = {
       'A collection of experiences across design, technology, and interactive projects, shaped through academic, professional, and collaborative work.',
     exp_work_org: 'Work & Organizational Experience',
     // Work items
-    exp_w1_title: 'Information Technology',
-    exp_w1_sub: 'Internship | PT. Jasa & Kepariwisataan Jabar',
+    exp_w1_title: 'IT Support & Web Developer',
+    exp_w1_sub: 'Intern | PT Jasa dan Kepariwisataan Jabar (Perseroda)',
     exp_w1_desc:
-      'Contributed to internal and public-facing digital platforms through interface design, application flow design, and web development. Developed features based on business needs, improved responsive layouts and UI, and supported technical troubleshooting and IT device maintenance.',
-    exp_w2_title: 'Applied Science Practice Assistant',
+      'Executed a dual-responsibility role as primary IT Support and Web Developer. Handled daily hardware/software troubleshooting, office network maintenance, and IT systems reliability. Simultaneously contributed to UI/UX interface design and responsive web feature development for internal and public-facing operational platforms.',
+    exp_w2_title: 'Laboratory Teaching Assistant',
     exp_w2_sub: 'School of Applied Science | Telkom University',
     exp_w2_desc:
-      'Supported 100+ students across multiple technical courses over two years, with a focus on interactive application development, Unity, UI/UX principles, and practical problem-solving. Also assisted laboratory sessions covering databases, computer networks, operating systems, and computer systems.',
-    exp_w3_title: 'Publication & Media Designer',
+      'Mentored 100+ undergraduate students over two years across technical laboratory courses, focusing on interactive application development, Unity Engine, UI/UX principles, and practical debugging. Also led lab sessions covering databases, computer networks, operating systems, and computer architectures.',
+    exp_w3_title: 'Brand & Visual Identity Designer',
     exp_w3_sub: 'MAPS 2023 Event | Telkom University',
     exp_w3_desc:
-      'Designed core visual assets for the event, including ID cards, event apparel, and certificates for committee members and competition winners. Created Instagram story frames and promotional post designs, along with merchandise designs for items sold during the event. Also produced mockups for ID cards, apparel, and other collaterals, while coordinating with the documentation team on content coverage.',
-    exp_w4_title: 'Multimedia Project Crew',
-    exp_w4_sub: 'SMKN 1 Belitang III',
+      'Crafted the comprehensive visual identity for the annual MAPS 2023 event, including committee apparel, official credentials, certificates, and promotional merchandise. Designed digital marketing assets and promotional social media frames while coordinating visual coverage guidelines.',
+    exp_w4_title: 'Creative Media & Video Production Crew',
+    exp_w4_sub: 'SMKN 1 Belitang III (Early Experience)',
     exp_w4_desc:
-      'Contributed to school multimedia organization by filming documentation, creating cover music videos, and supporting video production tasks for events and school activities.',
-    exp_w5_title: 'Team Leader - Intern Project',
+      'Active member of the school multimedia production team, handling institutional event video documentation, creative music video production, and audiovisual equipment operations.',
+    exp_w5_title: 'Graphic Design & Print Production Lead Intern',
     exp_w5_sub: 'Production Unit of SMKN 1 Belitang III',
     exp_w5_desc:
-      'Led a project-based vocational internship focused on custom printing and design production. Handled mug designs based on customer orders, created simple invitation designs, produced photo prints and other printed materials, and coordinated the printing workflow with other divisions. Received an Excellent rating for project performance.',
+      'Led a vocational internship project team focused on custom graphic design and commercial print production (mugs, invitations, marketing collateral). Managed prepress quality control and cross-divisional execution, earning an Excellent performance rating.',
 
     // Projects Exp
     exp_proj_title: 'Projects Experience',
     earlier_experience_title: 'Earlier Experience',
     additional_projects_title: 'Additional Projects',
-    show_additional_projects: 'Show Additional Projects',
-    hide_additional_projects: 'Hide Additional Projects',
+    show_additional_projects: 'Show Earlier Projects (2024 – 2025)',
+    hide_additional_projects: 'Hide Earlier Projects',
     exp_p7_title: 'Project Creator, Lead Dev & Main UI Designer',
     exp_p7_sub: 'Mathmagic',
     exp_p7_desc:
-      'Developed an interactive educational mathematics game ecosystem for 4th-grade elementary students (HKI Certified No. 001400842). Engineered the Unity 6 (C#) game client with real-time Firebase cloud synchronization (Firestore & Auth) and built the Vite Web Admin Dashboard with Bento Grid telemetry analytics and remote parameter balancing.',
+      'Developed an interactive educational math game in Unity 6 (C#) integrated with Firebase and a Vite Web Admin Dashboard for real-time student learning telemetry.',
     exp_p7_tech: 'Unity 6 · C# · Firebase · Vite · Figma',
+    exp_p8_title: 'Mobile Dev & UI/UX Designer',
+    exp_p8_sub: 'AppliQ',
+    exp_p8_desc:
+      'Developed a Flutter & Supabase mobile job tracker featuring interactive Kanban pipelines, on-device ATS resume/cover letter PDF rendering, and Google Calendar sync.',
+    exp_p8_tech: 'Flutter · Dart · Supabase · PostgreSQL · Figma',
     exp_p1_title: 'Project Manager & Game Dev',
     exp_p1_sub: 'RideXP',
     exp_p1_desc:
       'Led a team in developing a Unity-based arcade game, handling project planning, game development, UI design, branding, and exhibition preparation.',
     exp_p1_tech: 'Unity · ESP32 · JSON',
-    exp_p2_title: 'Game Dev & UI/UX Designer',
-    exp_p2_sub: 'MathRift',
-    exp_p2_desc:
-      'Built a Unity-based educational platformer with Firebase integration, focused on math-physics gameplay, complete UI/UX flow, and optimized performance.',
-    exp_p2_tech: 'Unity · Firebase',
-    exp_p3_title: 'VR Dev & ENV Designer',
-    exp_p3_sub: 'MindEscape: VR Chamber',
-    exp_p3_desc:
-      'Developed an immersive VR escape room in Unity, designing environments, mechanics integration, user navigation, and optimizing headset performance.',
-    exp_p3_tech: 'Unity · SteamVR',
+    exp_p9_title: 'Lead AR Developer & Designer',
+    exp_p9_sub: 'Djaswita AR',
+    exp_p9_desc:
+      'Engineered an interactive Augmented Reality application (Unity & Vuforia) integrated with a Vite + Supabase Web Admin Dashboard for dynamic remote 3D content management.',
+    exp_p9_tech: 'Unity · Vuforia · Vite · Supabase · C#',
     exp_p4_title: 'AR Developer & Designer',
     exp_p4_sub: 'Stellar Adventures',
     exp_p4_desc:
       'Created an AR space adventure in Unity with Vuforia, combining interactive markers, animated assets, and user-friendly interface.',
     exp_p4_tech: 'Unity · Vuforia',
+    exp_p2_title: 'Game Dev & UI/UX Designer',
+    exp_p2_sub: 'MathRift',
+    exp_p2_desc:
+      'Built a Unity-based educational platformer with Firebase integration, focused on math-physics gameplay, complete UI/UX flow, and optimized performance.',
+    exp_p2_tech: 'Unity · Firebase',
     exp_p5_title: 'UI/UX Designer',
     exp_p5_sub: 'U-Asprak',
     exp_p5_desc:
@@ -131,6 +136,11 @@ const translations = {
     exp_p6_desc:
       'Developed a portfolio website using PHP, SQL (CRUD), and JavaScript animation templates. Handled both frontend layout and backend logic.',
     exp_p6_tech: 'PHP · SQL · JavaScript',
+    exp_p3_title: 'VR Dev & Environment Designer',
+    exp_p3_sub: 'MindEscape: VR Chamber',
+    exp_p3_desc:
+      'Developed an immersive VR escape room in Unity, designing environments, mechanics integration, user navigation, and optimizing headset performance.',
+    exp_p3_tech: 'Unity · SteamVR',
 
     // Achievements
     ach_title_1: 'Achievements &',
@@ -269,58 +279,63 @@ const translations = {
       'Kumpulan pengalaman di bidang desain, teknologi, dan proyek interaktif, terbentuk melalui kegiatan akademik, profesional, dan kolaboratif.',
     exp_work_org: 'Pengalaman Kerja & Organisasi',
     // Work items
-    exp_w1_title: 'Teknologi Informasi',
-    exp_w1_sub: 'Magang | PT. Jasa & Kepariwisataan Jabar',
+    exp_w1_title: 'IT Support & Web Developer',
+    exp_w1_sub: 'Intern | PT Jasa dan Kepariwisataan Jabar (Perseroda)',
     exp_w1_desc:
-      'Berkontribusi pada platform digital internal dan publik melalui interface design, application flow design, dan web development. Mengembangkan fitur berdasarkan kebutuhan bisnis, meningkatkan responsive layout dan UI, serta mendukung technical troubleshooting dan pemeliharaan perangkat IT.',
-    exp_w2_title: 'Asisten Praktikum Sains Terapan',
+      'Menjalankan peran ganda sebagai IT Support utama dan Web Developer. Bertanggung jawab atas troubleshooting perangkat keras/lunak, pemeliharaan infrastruktur jaringan kantor, serta stabilitas sistem TI. Turut berkontribusi dalam perancangan antarmuka (UI/UX) dan pengembangan modul web responsif untuk platform digital operasional perusahaan.',
+    exp_w2_title: 'Asisten Praktikum Laboratorium',
     exp_w2_sub: 'Fakultas Ilmu Terapan | Universitas Telkom',
     exp_w2_desc:
-      'Mendampingi 100+ mahasiswa di berbagai mata kuliah teknis selama dua tahun, dengan fokus pada pengembangan aplikasi interaktif, Unity, prinsip UI/UX, dan pemecahan masalah praktis. Turut membantu sesi laboratorium yang mencakup database, computer networks, operating systems, dan computer systems.',
-    exp_w3_title: 'Desainer Publikasi & Media',
+      'Mendampingi 100+ mahasiswa selama 2 tahun dalam sesi laboratorium teknis—berfokus pada pengembangan aplikasi interaktif, Unity Engine, prinsip UI/UX, dan pemecahan masalah praktis. Turut mengampu modul basis data, jaringan komputer, sistem operasi, serta arsitektur komputer.',
+    exp_w3_title: 'Desainer Identitas Visual & Publikasi Kreatif',
     exp_w3_sub: 'Event MAPS 2023 | Universitas Telkom',
     exp_w3_desc:
-      'Mendesain aset visual utama untuk acara, termasuk ID card, baju acara, dan sertifikat untuk panitia serta pemenang lomba. Membuat desain frame story Instagram dan konten promosi, serta desain merchandise untuk item yang dijual selama acara. Turut membuat mockup untuk ID card, baju, dan material lainnya, sambil berkoordinasi dengan tim dokumentasi terkait cakupan konten.',
-    exp_w4_title: 'Kru Multimedia Sekolah',
-    exp_w4_sub: 'SMKN 1 Belitang III',
+      'Merancang sistem identitas visual menyeluruh untuk acara tahunan MAPS 2023, mencakup ID card, seragam kepanitiaan, sertifikat resmi, dan merchandise eksklusif. Memproduksi materi promosi media sosial dan frame digital serta menyusun standar visual publikasi.',
+    exp_w4_title: 'Kru Produksi Multimedia & Dokumentasi',
+    exp_w4_sub: 'SMKN 1 Belitang III (Pengalaman Awal)',
     exp_w4_desc:
-      'Aktif di organisasi multimedia sekolah — dokumentasi acara, bikin video musik cover, dan bantu produksi video untuk berbagai kegiatan.',
-    exp_w5_title: 'Ketua Tim - Proyek Magang',
+      'Berperan aktif dalam tim multimedia sekolah untuk dokumentasi video kegiatan resmi, produksi video musik kreatif, serta manajemen peralatan audio-visual.',
+    exp_w5_title: 'Ketua Tim Proyek Percetakan & Desain Grafis',
     exp_w5_sub: 'Unit Produksi SMKN 1 Belitang III',
     exp_w5_desc:
-      'Memimpin proyek PKL berbasis project yang berfokus pada desain dan produksi percetakan custom. Menangani desain mug sesuai pesanan, membuat desain undangan sederhana, mencetak foto dan berbagai material cetak lainnya, serta mengoordinasikan proses produksi dengan divisi terkait. Mendapatkan penilaian Excellent untuk proyek tersebut.',
+      'Memimpin tim magang kejuruan dalam desain grafis dan alur produksi percetakan kustom (mug, undangan, dan materi cetak komersial). Mengoordinasikan alur kerja lintas divisi dan kontrol kualitas cetak hingga meraih predikat performa Excellent.',
 
     // Projects Exp
     exp_proj_title: 'Pengalaman Proyek',
     earlier_experience_title: 'Pengalaman Sebelumnya',
     additional_projects_title: 'Proyek Tambahan',
-    show_additional_projects: 'Lihat Proyek Tambahan',
-    hide_additional_projects: 'Sembunyikan Proyek Tambahan',
+    show_additional_projects: 'Lihat Proyek Lainnya (2024 – 2025)',
+    hide_additional_projects: 'Sembunyikan Proyek Lainnya',
     exp_p7_title: 'Project Creator, Lead Dev & Main UI Designer',
     exp_p7_sub: 'Mathmagic',
     exp_p7_desc:
-      'Mengembangkan ekosistem gim edukasi matematika interaktif untuk siswa kelas 4 SD berlisensi Hak Cipta resmi (HKI No. 001400842). Membangun klien gim mobile Unity 6 (C#) dengan sinkronisasi cloud real-time Firebase (Firestore & Auth) serta Web Admin Dashboard berbasis Vite untuk telemetri belajar dan remote game parameter balancing.',
+      'Mengembangkan game edukasi matematika interaktif Unity 6 (C#) yang terintegrasi dengan Firebase dan Web Admin Dashboard (Vite) untuk pemantauan telemetri belajar siswa secara real-time.',
     exp_p7_tech: 'Unity 6 · C# · Firebase · Vite · Figma',
+    exp_p8_title: 'Mobile Dev & UI/UX Designer',
+    exp_p8_sub: 'AppliQ',
+    exp_p8_desc:
+      'Mengembangkan aplikasi pelacak karier berbasis Flutter & Supabase dengan Kanban pipeline interaktif, generator PDF resume ATS on-device, dan sinkronisasi Google Calendar.',
+    exp_p8_tech: 'Flutter · Dart · Supabase · PostgreSQL · Figma',
     exp_p1_title: 'Project Manager & Game Dev',
     exp_p1_sub: 'RideXP',
     exp_p1_desc:
       'Memimpin tim dalam mengembangkan game arcade berbasis Unity, menangani perencanaan proyek, pengembangan game, desain UI, branding, dan persiapan pameran.',
     exp_p1_tech: 'Unity · ESP32 · JSON',
-    exp_p2_title: 'Game Dev & UI/UX Designer',
-    exp_p2_sub: 'MathRift',
-    exp_p2_desc:
-      'Membangun game platformer 2D edukatif berbasis Unity dengan integrasi Firebase, berfokus pada gameplay matematika-fisika, alur UI/UX lengkap, dan optimasi performa.',
-    exp_p2_tech: 'Unity · Firebase',
-    exp_p3_title: 'VR Dev & Environment Designer',
-    exp_p3_sub: 'MindEscape: VR Chamber',
-    exp_p3_desc:
-      'Mengembangkan escape room VR yang imersif di Unity, merancang lingkungan, integrasi mekanik, navigasi pengguna, dan mengoptimalkan performa headset.',
-    exp_p3_tech: 'Unity · SteamVR',
+    exp_p9_title: 'Lead AR Developer & Designer',
+    exp_p9_sub: 'Djaswita AR',
+    exp_p9_desc:
+      'Membangun aplikasi Augmented Reality interaktif (Unity & Vuforia) terintegrasi Web Admin Dashboard (Vite + Supabase) untuk manajemen konten 3D secara real-time.',
+    exp_p9_tech: 'Unity · Vuforia · Vite · Supabase · C#',
     exp_p4_title: 'AR Developer & Designer',
     exp_p4_sub: 'Stellar Adventures',
     exp_p4_desc:
       'Membuat petualangan luar angkasa AR di Unity dengan Vuforia, menggabungkan penanda interaktif, aset animasi, dan antarmuka yang ramah pengguna.',
     exp_p4_tech: 'Unity · Vuforia',
+    exp_p2_title: 'Game Dev & UI/UX Designer',
+    exp_p2_sub: 'MathRift',
+    exp_p2_desc:
+      'Membangun game platformer 2D edukatif berbasis Unity dengan integrasi Firebase, berfokus pada gameplay matematika-fisika, alur UI/UX lengkap, dan optimasi performa.',
+    exp_p2_tech: 'Unity · Firebase',
     exp_p5_title: 'UI/UX Designer',
     exp_p5_sub: 'U-Asprak',
     exp_p5_desc:
@@ -331,6 +346,11 @@ const translations = {
     exp_p6_desc:
       'Mengembangkan website portofolio menggunakan PHP, SQL (CRUD), dan template animasi JavaScript. Menangani tata letak frontend dan logika backend.',
     exp_p6_tech: 'PHP · SQL · JavaScript',
+    exp_p3_title: 'VR Dev & Environment Designer',
+    exp_p3_sub: 'MindEscape: VR Chamber',
+    exp_p3_desc:
+      'Mengembangkan escape room VR yang imersif di Unity, merancang lingkungan, integrasi mekanik, navigasi pengguna, dan mengoptimalkan performa headset.',
+    exp_p3_tech: 'Unity · SteamVR',
 
     // Achievements
     ach_title_1: 'Pencapaian &',
