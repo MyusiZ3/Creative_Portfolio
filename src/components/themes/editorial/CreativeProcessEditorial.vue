@@ -1,7 +1,7 @@
 <template>
   <section
     id="process"
-    class="bg-[#F8FAFC] pt-16 pb-16 lg:pt-24 lg:pb-55 px-6 lg:px-12 xl:px-32 relative overflow-hidden -mb-1"
+    class="bg-[#F8FAFC] pt-16 pb-16 lg:pt-24 lg:pb-36 xl:pb-48 px-6 lg:px-10 xl:px-12 2xl:px-20 relative overflow-hidden -mb-1"
   >
     <!-- Top Right Accent Shape -->
     <img
@@ -47,43 +47,50 @@
         </p>
       </div>
 
-      <!-- 5-Stage Stacking & Overlapping Process Cards Deck (Full Monochrome Theme) -->
+      <!-- 5-Stage Process Cards Deck (Responsive: 1-col mobile, 2-col sm, 3-col lg, 5-col overlapping deck on xl) -->
       <div
-        class="flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-row justify-center items-stretch lg:-space-x-4 max-w-[1550px] mx-auto pt-4 pb-4 lg:pt-10 lg:pb-8 relative z-10 px-2 sm:px-0 mb-2 lg:mb-4"
+        class="flex flex-wrap xl:flex-nowrap justify-center items-stretch gap-6 xl:gap-0 xl:-space-x-3 max-w-[1550px] mx-auto pt-2 pb-4 lg:pt-6 lg:pb-8 relative z-10 px-1 sm:px-0 mb-2 lg:mb-4"
       >
         <div
           v-for="(stage, idx) in stages"
           :key="stage.id"
           v-motion
-          :initial="{ opacity: 0, y: 40, scale: 0.95 }"
+          :initial="{ opacity: 0, y: 35, scale: 0.96 }"
           :visible-once="{
             opacity: 1,
             y: 0,
             scale: 1,
-            transition: { duration: 600, delay: 100 * (idx + 1) },
+            transition: { duration: 600, delay: 90 * (idx + 1) },
           }"
-          class="w-full lg:w-1/5 group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white shadow-[0_18px_40px_rgba(0,0,0,0.08)] transition-all duration-500 ease-out hover:z-[100] hover:rotate-0 hover:scale-105 hover:shadow-[0_30px_60px_rgba(0,0,0,0.22)] cursor-pointer mb-6 lg:mb-0 overflow-hidden"
+          class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] xl:w-1/5 group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-white shadow-[0_14px_35px_rgba(0,0,0,0.06)] transition-all duration-500 ease-out hover:z-[100] hover:rotate-0 hover:scale-105 hover:shadow-[0_28px_56px_rgba(0,0,0,0.18)] hover:border-slate-300 cursor-pointer overflow-hidden min-h-[330px] xl:min-h-[380px]"
           :class="stage.stackClass"
         >
           <!-- Card Header & Body -->
-          <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+          <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
             <div>
-              <!-- Top Row: Title & Plain Monochrome Number -->
-              <div class="flex items-center justify-between mb-5">
+              <!-- Top Row: Icon + Title & Phase Number Tag -->
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2.5 min-w-0">
+                  <span
+                    class="w-8 h-8 shrink-0 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700 group-hover:bg-zinc-900 group-hover:text-white transition-all duration-300 text-sm"
+                  >
+                    <i :class="['bi', stage.icon]"></i>
+                  </span>
+                  <span
+                    class="text-[13px] sm:text-[14px] font-bold font-['Poppins'] text-[#18181b] tracking-wider uppercase truncate"
+                  >
+                    {{ lang === 'ID' ? stage.titleID : stage.titleEN }}
+                  </span>
+                </div>
                 <span
-                  class="text-sm font-extrabold font-['Poppins'] text-[#262626] tracking-wider uppercase"
-                >
-                  {{ lang === 'ID' ? stage.titleID : stage.titleEN }}
-                </span>
-                <span
-                  class="text-base sm:text-lg font-extrabold font-['Poppins'] text-zinc-400 tracking-tight group-hover:text-zinc-800 transition-colors"
+                  class="text-xs shrink-0 ml-2 font-bold font-mono text-zinc-400 bg-zinc-100/90 px-2 py-0.5 rounded-full group-hover:text-zinc-900 group-hover:bg-zinc-200/80 transition-colors"
                 >
                   0{{ idx + 1 }}
                 </span>
               </div>
 
               <!-- Description -->
-              <p class="text-xs text-slate-700 font-['Roboto'] leading-relaxed mb-5 min-h-[44px]">
+              <p class="text-[12.5px] text-slate-600 font-['Roboto'] leading-relaxed mb-4 min-h-[42px]">
                 {{ lang === 'ID' ? stage.descID : stage.descEN }}
               </p>
 
@@ -92,7 +99,7 @@
                 <span
                   v-for="(act, aIdx) in lang === 'ID' ? stage.activitiesID : stage.activitiesEN"
                   :key="aIdx"
-                  class="inline-block text-[10.5px] font-medium font-['Roboto'] px-2.5 py-1 rounded-lg border border-slate-200 text-slate-700 bg-slate-50/80 group-hover:border-slate-300 transition-colors"
+                  class="inline-flex items-center whitespace-nowrap text-[10.5px] sm:text-[11px] font-medium font-['Roboto'] px-2.5 py-1 rounded-lg border border-slate-200/80 text-slate-700 bg-slate-50/90 group-hover:bg-white group-hover:border-slate-300 transition-colors"
                 >
                   {{ act }}
                 </span>
@@ -100,15 +107,18 @@
             </div>
           </div>
 
-          <!-- Dark Off-Black Bottom Footer Bar (Matching Image 2 Reference) -->
+          <!-- Bottom Footer Bar (Sleek Satin Off-Black with Live Pulse Dot) -->
           <div
-            class="px-5 py-3.5 bg-[#262626] text-center select-none transition-colors border-t border-[#333333]"
+            class="px-5 py-3 bg-[#18181b] flex items-center justify-between select-none transition-colors border-t border-zinc-800"
           >
             <span
-              class="text-[9.5px] font-extrabold font-['Poppins'] tracking-widest uppercase text-zinc-200"
+              class="text-[9.5px] font-bold font-['Poppins'] tracking-widest uppercase text-zinc-300"
             >
               {{ lang === 'ID' ? stage.footerID : stage.footerEN }}
             </span>
+            <span
+              class="w-1.5 h-1.5 rounded-full bg-zinc-600 group-hover:bg-emerald-400 transition-colors duration-300"
+            ></span>
           </div>
         </div>
       </div>
@@ -124,13 +134,14 @@ const { lang } = useLanguage()
 const stages = [
   {
     id: 'explore',
+    icon: 'bi-compass',
     titleEN: 'EXPLORE',
     titleID: 'EKSPLORASI',
     descEN: 'Deconstructing project scope, understanding goals, and researching domain context.',
     descID: 'Membedah cakupan proyek, memahami tujuan utama, dan riset konteks domain.',
     footerEN: 'PHASE 01 • DISCOVERY',
     footerID: 'FASE 01 • DISCOVERY',
-    stackClass: 'lg:rotate-[-4deg] lg:translate-y-2 z-10',
+    stackClass: 'xl:rotate-[-1.5deg] xl:translate-y-1 z-10',
     activitiesEN: [
       'Requirement Analysis',
       'User Research',
@@ -141,6 +152,7 @@ const stages = [
   },
   {
     id: 'visualize',
+    icon: 'bi-palette',
     titleEN: 'VISUALIZE',
     titleID: 'VISUALISASI',
     descEN:
@@ -148,19 +160,20 @@ const stages = [
     descID: 'Menerjemahkan ide ke tata letak visual, tipografi, dan moodboard berkualitas tinggi.',
     footerEN: 'PHASE 02 • UI DESIGN',
     footerID: 'FASE 02 • DESAIN UI',
-    stackClass: 'lg:rotate-[3deg] lg:-translate-y-3 z-20',
+    stackClass: 'xl:rotate-[1deg] xl:-translate-y-1.5 z-20',
     activitiesEN: ['Moodboard Direction', 'Wireframe & Grids', 'Figma UI Design', 'Design System'],
     activitiesID: ['Arah Moodboard', 'Wireframe & Grid', 'Desain Figma UI', 'Sistem Desain'],
   },
   {
     id: 'structure',
+    icon: 'bi-diagram-3',
     titleEN: 'STRUCTURE',
     titleID: 'STRUKTUR',
     descEN: 'Mapping user journeys, information architecture, and structured data relationships.',
     descID: 'Pemetaan alur pengguna, arsitektur informasi, dan relasi data terstruktur.',
     footerEN: 'PHASE 03 • ARCHITECTURE',
     footerID: 'FASE 03 • ARSITEKTUR',
-    stackClass: 'lg:rotate-[-3deg] lg:translate-y-4 z-30',
+    stackClass: 'xl:rotate-[-1deg] xl:translate-y-2 z-30',
     activitiesEN: ['Info Architecture', 'User Journey Map', 'Data Flow Diagrams', 'Feature Specs'],
     activitiesID: [
       'Arsitektur Informasi',
@@ -171,13 +184,14 @@ const stages = [
   },
   {
     id: 'build',
+    icon: 'bi-code-slash',
     titleEN: 'BUILD',
     titleID: 'PENGEMBANGAN',
     descEN: 'Writing clean, component-driven code across Vue 3, Tailwind, Unity, or backend APIs.',
     descID: 'Menulis kode bersih berbasis komponen di Vue 3, Tailwind, Unity, maupun API.',
     footerEN: 'PHASE 04 • DEVELOPMENT',
     footerID: 'FASE 04 • DOKUMEN KODE',
-    stackClass: 'lg:rotate-[4deg] lg:-translate-y-2 z-40',
+    stackClass: 'xl:rotate-[1.5deg] xl:-translate-y-1 z-40',
     activitiesEN: [
       'Vue 3 / Component',
       'Interactive Proto',
@@ -188,13 +202,14 @@ const stages = [
   },
   {
     id: 'refine',
+    icon: 'bi-patch-check',
     titleEN: 'REFINE',
     titleID: 'POLESAN AKHIR',
     descEN: 'Rigorous testing, micro-animation tuning, performance audits, and final delivery.',
     descID: 'Pengujian menyeluruh, penyetelan animasi mikro, audit performa, & finalisasi.',
     footerEN: 'PHASE 05 • QUALITY & POLISH',
     footerID: 'FASE 05 • FINISHING & LAUNCH',
-    stackClass: 'lg:rotate-[-3deg] lg:translate-y-3 z-50',
+    stackClass: 'xl:rotate-[-1deg] xl:translate-y-1.5 z-50',
     activitiesEN: [
       'Cross-Device Test',
       'Bug Fixing & Polish',
