@@ -930,8 +930,8 @@ const projects = computed(() => {
       bg: '#5b6abf',
       images: [
         '/images/projects/UAsprak/u_asprak.webp',
-        '/images/projects/u_asprak_2.webp',
-        '/images/projects/u_asprak_3.webp',
+        '/images/projects/UAsprak/uasprak_showcase.webp',
+        '/images/projects/UAsprak/uasprak_ux.webp',
       ],
       link: '#',
       _dir: 'next',

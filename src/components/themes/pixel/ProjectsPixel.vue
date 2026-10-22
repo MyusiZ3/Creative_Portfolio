@@ -537,8 +537,8 @@ const projects = [
       "Aplikasi manajemen jadwal & evaluasi asisten praktikum laboratorium akademis.",
     images: [
       "/images/projects/UAsprak/u_asprak.webp",
-      "/images/projects/u_asprak_2.webp",
-      "/images/projects/u_asprak_3.webp",
+      "/images/projects/UAsprak/uasprak_showcase.webp",
+      "/images/projects/UAsprak/uasprak_ux.webp",
     ],
     platform: "Mobile App Design",
     role: "UI/UX Designer",
