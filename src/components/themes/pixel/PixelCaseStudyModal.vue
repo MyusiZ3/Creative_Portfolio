@@ -9,15 +9,29 @@
       @click.self="close"
     >
       <!-- Arcade Window Box -->
-      <div class="relative w-full max-w-4xl bg-[#161b22] border-4 border-black shadow-[12px_12px_0px_#000000] my-8 overflow-hidden">
-        
+      <div
+        class="relative w-full max-w-4xl bg-[#161b22] border-4 border-black shadow-[12px_12px_0px_#000000] my-8 overflow-hidden"
+      >
         <!-- Retro Title Bar -->
-        <div class="bg-[#0d1117] border-b-4 border-black px-4 py-3 flex items-center justify-between">
+        <div
+          class="bg-[#0d1117] border-b-4 border-black px-4 py-3 flex items-center justify-between"
+        >
           <div class="flex items-center gap-2">
-            <span class="w-3 h-3 bg-[#ff0055] inline-block border border-black" aria-hidden="true"></span>
-            <span class="w-3 h-3 bg-[#ffd700] inline-block border border-black" aria-hidden="true"></span>
-            <span class="w-3 h-3 bg-[#00ff66] inline-block border border-black" aria-hidden="true"></span>
-            <span class="text-xs font-bold text-[#00f0ff] uppercase tracking-wider ml-2 font-silkscreen truncate max-w-[220px] sm:max-w-none">
+            <span
+              class="w-3 h-3 bg-[#ff0055] inline-block border border-black"
+              aria-hidden="true"
+            ></span>
+            <span
+              class="w-3 h-3 bg-[#ffd700] inline-block border border-black"
+              aria-hidden="true"
+            ></span>
+            <span
+              class="w-3 h-3 bg-[#00ff66] inline-block border border-black"
+              aria-hidden="true"
+            ></span>
+            <span
+              class="text-xs font-bold text-[#00f0ff] uppercase tracking-wider ml-2 font-silkscreen truncate max-w-[220px] sm:max-w-none"
+            >
               MISSION BRIEFING • {{ project.title }}
             </span>
           </div>
@@ -32,9 +46,8 @@
 
         <!-- Scrollable Modal Content -->
         <div class="p-6 max-h-[80vh] overflow-y-auto space-y-6">
-          
           <!-- Top Hero Image Banner / Multi-Image Slider -->
-          <div 
+          <div
             class="relative border-2 border-black bg-[#0d1117] overflow-hidden group/modal-slider select-none"
             @touchstart="onTouchStart($event)"
             @touchmove="onTouchMove($event)"
@@ -44,7 +57,14 @@
               v-if="isPlayingVideo && project.videoEmbedId"
               :src="`https://www.youtube-nocookie.com/embed/${project.videoEmbedId}?autoplay=1&rel=0`"
               class="w-full h-64 sm:h-80 border-0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="
+                accelerometer;
+                autoplay;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+              "
               allowfullscreen
             ></iframe>
             <template v-else>
@@ -52,6 +72,8 @@
                 :src="activeModalImage"
                 :alt="project.title"
                 class="w-full h-64 sm:h-80 object-cover opacity-90 transition-all duration-300"
+                loading="lazy"
+                decoding="async"
               />
 
               <!-- Click-to-play Video Trigger Overlay -->
@@ -60,7 +82,9 @@
                 @click="isPlayingVideo = true"
                 class="absolute inset-0 flex flex-col items-center justify-center bg-black/50 hover:bg-black/30 transition-all group/play cursor-pointer z-20"
               >
-                <span class="px-4 py-2 bg-[#ff0055] text-white font-extrabold text-xs uppercase border-2 border-black shadow-[4px_4px_0px_#000000] font-silkscreen group-hover/play:scale-105 transition-transform flex items-center gap-2">
+                <span
+                  class="px-4 py-2 bg-[#ff0055] text-white font-extrabold text-xs uppercase border-2 border-black shadow-[4px_4px_0px_#000000] font-silkscreen group-hover/play:scale-105 transition-transform flex items-center gap-2"
+                >
                   <i class="bi bi-play-circle-fill text-sm"></i>
                   <span>[▶] STREAM DEMO</span>
                 </span>
@@ -68,12 +92,14 @@
             </template>
 
             <!-- Category Overlay -->
-            <div class="absolute bottom-3 left-3 bg-black/80 px-3 py-1 border border-[#00ff66] text-[#00ff66] text-xs font-bold uppercase font-silkscreen z-10">
+            <div
+              class="absolute bottom-3 left-3 bg-black/80 px-3 py-1 border border-[#00ff66] text-[#00ff66] text-xs font-bold uppercase font-silkscreen z-10"
+            >
               {{ project.category }}
             </div>
 
             <!-- Slide Counter -->
-            <div 
+            <div
               v-if="modalImages.length > 1"
               class="absolute top-3 right-3 bg-black/80 px-2.5 py-1 border border-[#ffd700] text-[#ffd700] text-xs font-bold uppercase font-silkscreen z-10"
             >
@@ -115,7 +141,9 @@
 
           <!-- Project Title & Subtitle -->
           <div>
-            <h3 class="text-lg sm:text-xl font-extrabold text-[#f0f6fc] uppercase tracking-tight font-pixel leading-tight">
+            <h3
+              class="text-lg sm:text-xl font-extrabold text-[#f0f6fc] uppercase tracking-tight font-pixel leading-tight"
+            >
               {{ project.title }}
             </h3>
             <p class="text-xs sm:text-sm text-[#00f0ff] font-bold mt-1 uppercase font-silkscreen">
@@ -126,8 +154,12 @@
           <!-- Metrics Grid -->
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-[#0d1117] p-4 border-2 border-black">
             <div v-for="(metric, idx) in projectMetrics" :key="idx">
-              <div class="text-[10px] text-[#8b949e] font-bold uppercase font-silkscreen">{{ metric.label }}</div>
-              <div class="text-xs font-extrabold text-[#ffd700] mt-1 font-silkscreen">{{ metric.value }}</div>
+              <div class="text-[10px] text-[#8b949e] font-bold uppercase font-silkscreen">
+                {{ metric.label }}
+              </div>
+              <div class="text-xs font-extrabold text-[#ffd700] mt-1 font-silkscreen">
+                {{ metric.value }}
+              </div>
             </div>
           </div>
 
@@ -135,33 +167,45 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- The Challenge -->
             <div class="bg-[#0d1117] p-5 border-2 border-black">
-              <h4 class="text-xs font-bold text-[#ff0055] uppercase tracking-wider mb-2 flex items-center gap-1.5 font-silkscreen">
+              <h4
+                class="text-xs font-bold text-[#ff0055] uppercase tracking-wider mb-2 flex items-center gap-1.5 font-silkscreen"
+              >
                 <i class="bi bi-exclamation-triangle-fill text-[#ff0055]"></i>
                 <span>THE CHALLENGE</span>
               </h4>
               <p class="text-xs text-[#8b949e] leading-relaxed font-mono">
-                {{ project.challenge || "Desain tantangan berfokus pada integrasi performa tinggi, kemudahan navigasi pengguna, dan estetika visual yang konsisten." }}
+                {{
+                  project.challenge ||
+                  'Desain tantangan berfokus pada integrasi performa tinggi, kemudahan navigasi pengguna, dan estetika visual yang konsisten.'
+                }}
               </p>
             </div>
 
             <!-- The Solution -->
             <div class="bg-[#0d1117] p-5 border-2 border-black">
-              <h4 class="text-xs font-bold text-[#00ff66] uppercase tracking-wider mb-2 flex items-center gap-1.5 font-silkscreen">
+              <h4
+                class="text-xs font-bold text-[#00ff66] uppercase tracking-wider mb-2 flex items-center gap-1.5 font-silkscreen"
+              >
                 <i class="bi bi-shield-check text-[#00ff66]"></i>
                 <span>THE STRATEGY</span>
               </h4>
               <p class="text-xs text-[#8b949e] leading-relaxed font-mono">
-                {{ project.solution || "Menerapkan pendekatan desain berbasis komponen terisolasi, pengujian real-time, dan pengoptimalan alur kerja antarmuka." }}
+                {{
+                  project.solution ||
+                  'Menerapkan pendekatan desain berbasis komponen terisolasi, pengujian real-time, dan pengoptimalan alur kerja antarmuka.'
+                }}
               </p>
             </div>
           </div>
 
           <!-- Tech Stack Tags -->
           <div>
-            <h4 class="text-xs font-bold text-[#8b949e] uppercase mb-2 font-silkscreen">EQUIPPED WEAPONS (STACK):</h4>
+            <h4 class="text-xs font-bold text-[#8b949e] uppercase mb-2 font-silkscreen">
+              EQUIPPED WEAPONS (STACK):
+            </h4>
             <div class="flex flex-wrap gap-2">
               <span
-                v-for="tech in (project.techStack || ['Unity', 'C#', 'Vue.js', 'Figma'])"
+                v-for="tech in project.techStack || ['Unity', 'C#', 'Vue.js', 'Figma']"
                 :key="tech"
                 class="px-2.5 py-1 bg-[#0d1117] border border-[#30363d] text-[#00f0ff] text-xs font-bold uppercase font-silkscreen"
               >
@@ -171,7 +215,9 @@
           </div>
 
           <!-- Action Footer Buttons -->
-          <div class="pt-4 border-t-2 border-[#30363d] flex flex-wrap items-center justify-between gap-4">
+          <div
+            class="pt-4 border-t-2 border-[#30363d] flex flex-wrap items-center justify-between gap-4"
+          >
             <div class="flex flex-wrap items-center gap-3">
               <button
                 v-if="project.videoEmbedId && !isPlayingVideo"
@@ -182,13 +228,22 @@
                 <i class="bi bi-play-circle-fill"></i>
               </button>
               <a
+                v-if="project.flipbookUrl"
+                :href="project.flipbookUrl"
+                target="_blank"
+                class="px-5 py-2.5 bg-[#a855f7] text-white font-extrabold text-xs uppercase border-2 border-black shadow-[3px_3px_0px_#000000] hover:translate-x-[1px] hover:translate-y-[1px] transition-all font-silkscreen flex items-center gap-1.5"
+              >
+                <span>AR FLIPBOOK</span>
+                <i class="bi bi-book-half"></i>
+              </a>
+              <a
                 v-if="project.demoUrl"
                 :href="project.demoUrl"
                 target="_blank"
                 class="px-5 py-2.5 bg-[#00ff66] text-black font-extrabold text-xs uppercase border-2 border-black shadow-[3px_3px_0px_#000000] hover:translate-x-[1px] hover:translate-y-[1px] transition-all font-silkscreen flex items-center gap-1.5"
               >
-                <span>LAUNCH DEMO</span>
-                <i class="bi bi-rocket-takeoff-fill"></i>
+                <span>{{ project.appUrl ? 'GET APP (DRIVE)' : 'LAUNCH DEMO' }}</span>
+                <i :class="project.appUrl ? 'bi bi-google' : 'bi bi-rocket-takeoff-fill'"></i>
               </a>
               <a
                 v-if="project.githubUrl"
@@ -208,7 +263,6 @@
               CLOSE BRIEFING
             </button>
           </div>
-
         </div>
       </div>
     </div>
@@ -216,77 +270,81 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch } from 'vue'
 
 const props = defineProps({
   isOpen: Boolean,
-  project: Object
-});
+  project: Object,
+})
 
-const emit = defineEmits(['close']);
+const emit = defineEmits(['close'])
 
-const currentSlideIndex = ref(0);
-const isPlayingVideo = ref(false);
+const currentSlideIndex = ref(0)
+const isPlayingVideo = ref(false)
 
 // Reset slide index and video player whenever modal opens or project changes
-watch(() => props.project, () => {
-  currentSlideIndex.value = 0;
-  isPlayingVideo.value = false;
-});
+watch(
+  () => props.project,
+  () => {
+    currentSlideIndex.value = 0
+    isPlayingVideo.value = false
+  },
+)
 
 const modalImages = computed(() => {
   if (props.project?.images && props.project.images.length > 0) {
-    return props.project.images;
+    return props.project.images
   }
   if (props.project?.image) {
-    return [props.project.image];
+    return [props.project.image]
   }
-  return ['https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200'];
-});
+  return ['https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200']
+})
 
 const activeModalImage = computed(() => {
-  return modalImages.value[currentSlideIndex.value] || modalImages.value[0];
-});
+  return modalImages.value[currentSlideIndex.value] || modalImages.value[0]
+})
 
 const nextSlide = () => {
-  currentSlideIndex.value = (currentSlideIndex.value + 1) % modalImages.value.length;
-};
+  currentSlideIndex.value = (currentSlideIndex.value + 1) % modalImages.value.length
+}
 
 const prevSlide = () => {
-  currentSlideIndex.value = (currentSlideIndex.value - 1 + modalImages.value.length) % modalImages.value.length;
-};
+  currentSlideIndex.value =
+    (currentSlideIndex.value - 1 + modalImages.value.length) % modalImages.value.length
+}
 
 // Touch Swiping in Modal
-let touchStartX = 0;
-let touchEndX = 0;
+let touchStartX = 0
+let touchEndX = 0
 
 const onTouchStart = (e) => {
-  touchStartX = e.touches[0].clientX;
-};
+  touchStartX = e.touches[0].clientX
+}
 
 const onTouchMove = (e) => {
-  touchEndX = e.touches[0].clientX;
-};
+  touchEndX = e.touches[0].clientX
+}
 
 const onTouchEnd = () => {
-  const diff = touchStartX - touchEndX;
+  const diff = touchStartX - touchEndX
   if (Math.abs(diff) > 40 && modalImages.value.length > 1) {
-    if (diff > 0) nextSlide();
-    else prevSlide();
+    if (diff > 0) nextSlide()
+    else prevSlide()
   }
-  touchStartX = 0;
-  touchEndX = 0;
-};
+  touchStartX = 0
+  touchEndX = 0
+}
 
 const close = () => {
-  isPlayingVideo.value = false;
-  emit('close');
-};
+  isPlayingVideo.value = false
+  emit('close')
+}
 
 const projectMetrics = computed(() => [
   { label: 'PLATFORM', value: props.project?.platform || 'Multi-Platform' },
   { label: 'ROLE', value: props.project?.role || 'Lead Dev / Designer' },
   { label: 'TIMELINE', value: props.project?.timeline || '3 - 6 Months' },
-  { label: 'STATUS', value: 'STAGE CLEARED' }
-]);
+  { label: 'STATUS', value: 'STAGE CLEARED' },
+])
 </script>

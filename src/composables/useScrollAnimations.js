@@ -16,9 +16,9 @@ export function fadeUp(delay = 0, duration = 700, distance = 40) {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration, delay, ease: "easeOut" },
+      transition: { duration, delay, ease: 'easeOut' },
     },
-  };
+  }
 }
 
 /**
@@ -30,9 +30,9 @@ export function fadeDown(delay = 0, duration = 700, distance = 40) {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration, delay, ease: "easeOut" },
+      transition: { duration, delay, ease: 'easeOut' },
     },
-  };
+  }
 }
 
 /**
@@ -44,9 +44,9 @@ export function fadeLeft(delay = 0, duration = 700, distance = 60) {
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration, delay, ease: "easeOut" },
+      transition: { duration, delay, ease: 'easeOut' },
     },
-  };
+  }
 }
 
 /**
@@ -58,9 +58,9 @@ export function fadeRight(delay = 0, duration = 700, distance = 60) {
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration, delay, ease: "easeOut" },
+      transition: { duration, delay, ease: 'easeOut' },
     },
-  };
+  }
 }
 
 /**
@@ -72,9 +72,9 @@ export function scaleUp(delay = 0, duration = 600, startScale = 0.85) {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration, delay, ease: "easeOut" },
+      transition: { duration, delay, ease: 'easeOut' },
     },
-  };
+  }
 }
 
 /**
@@ -89,12 +89,12 @@ export function pop(delay = 0, duration = 500) {
       transition: {
         duration,
         delay,
-        type: "spring",
+        type: 'spring',
         stiffness: 250,
         damping: 15,
       },
     },
-  };
+  }
 }
 
 /**
@@ -104,5 +104,5 @@ export function pop(delay = 0, duration = 500) {
  * @param {number} staggerAmount - ms between each item
  */
 export function staggerDelay(index, baseDelay = 0, staggerAmount = 100) {
-  return baseDelay + index * staggerAmount;
+  return baseDelay + index * staggerAmount
 }

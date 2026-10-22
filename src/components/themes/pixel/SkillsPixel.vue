@@ -21,15 +21,11 @@
           >
             ✦ STAGE 03 // HERO SKILLSET & ARSENAL
           </span>
-          <h2
-            class="text-2xl sm:text-4xl font-extrabold uppercase mt-2 font-pixel leading-tight"
-          >
+          <h2 class="text-2xl sm:text-4xl font-extrabold uppercase mt-2 font-pixel leading-tight">
             SOME SOFTWARE <span class="text-[#00ff66]">THAT I USE</span>
           </h2>
-          <p
-            class="text-xs sm:text-sm text-[#8b949e] max-w-2xl mt-3 leading-relaxed"
-          >
-            {{ t("skills_sub") }}
+          <p class="text-xs sm:text-sm text-[#8b949e] max-w-2xl mt-3 leading-relaxed">
+            {{ t('skills_sub') }}
           </p>
         </div>
       </div>
@@ -49,9 +45,7 @@
         <div
           class="bg-[#161b22] border-4 border-black p-5 shadow-[6px_6px_0px_#000000] relative group hover:border-[#00ff66] transition-colors"
         >
-          <div
-            class="flex items-center justify-between border-b border-[#30363d] pb-2 mb-3"
-          >
+          <div class="flex items-center justify-between border-b border-[#30363d] pb-2 mb-3">
             <div
               class="flex items-center gap-2 font-silkscreen text-[#00ff66] text-xs font-bold uppercase"
             >
@@ -65,19 +59,15 @@
           </div>
           <div class="space-y-3 font-mono text-xs text-[#c9d1d9]">
             <div>
-              <span class="text-[#00ff66] font-bold"
-                >► {{ t("skills_design_title") }}:</span
-              >
+              <span class="text-[#00ff66] font-bold">► {{ t('skills_design_title') }}:</span>
               <p class="pl-3 mt-0.5 leading-relaxed">
-                {{ t("skills_design_desc") }}
+                {{ t('skills_design_desc') }}
               </p>
             </div>
             <div>
-              <span class="text-[#00ff66] font-bold"
-                >► {{ t("skills_tech_title") }}:</span
-              >
+              <span class="text-[#00ff66] font-bold">► {{ t('skills_tech_title') }}:</span>
               <p class="pl-3 mt-0.5 leading-relaxed">
-                {{ t("skills_tech_desc") }}
+                {{ t('skills_tech_desc') }}
               </p>
             </div>
           </div>
@@ -87,16 +77,12 @@
         <div
           class="bg-[#161b22] border-4 border-black p-5 shadow-[6px_6px_0px_#000000] relative group hover:border-[#ff0055] transition-colors"
         >
-          <div
-            class="flex items-center justify-between border-b border-[#30363d] pb-2 mb-3"
-          >
+          <div class="flex items-center justify-between border-b border-[#30363d] pb-2 mb-3">
             <div
               class="flex items-center gap-2 font-silkscreen text-[#ff0055] text-xs font-bold uppercase"
             >
               <i class="bi bi-controller text-sm"></i>
-              <span
-                >[PLAYSTYLE & STRATEGY // {{ t("skills_process_title") }}]</span
-              >
+              <span>[PLAYSTYLE & STRATEGY // {{ t('skills_process_title') }}]</span>
             </div>
             <span
               class="text-[9px] font-silkscreen text-[#ff0055] bg-[#ff0055]/10 px-2 py-0.5 border border-[#ff0055]/30"
@@ -105,11 +91,9 @@
           </div>
           <div class="space-y-3 font-mono text-xs text-[#c9d1d9]">
             <div>
-              <span class="text-[#ff0055] font-bold"
-                >► {{ t("skills_process_title") }}:</span
-              >
+              <span class="text-[#ff0055] font-bold">► {{ t('skills_process_title') }}:</span>
               <p class="pl-3 mt-0.5 leading-relaxed">
-                {{ t("skills_process_desc") }}
+                {{ t('skills_process_desc') }}
               </p>
             </div>
           </div>
@@ -132,18 +116,16 @@
           class="bg-[#161b22] border-4 border-black p-5 shadow-[6px_6px_0px_#000000] relative group hover:border-[#ffd700] transition-colors flex flex-col justify-between"
         >
           <div>
-            <div
-              class="flex items-center justify-between border-b border-[#30363d] pb-2 mb-4"
-            >
+            <div class="flex items-center justify-between border-b border-[#30363d] pb-2 mb-4">
               <div
                 class="flex items-center gap-2 font-silkscreen text-[#ffd700] text-xs font-bold uppercase"
               >
                 <i class="bi bi-mortarboard-fill text-sm"></i>
-                <span>[ACADEMIC GUILD // {{ t("education_title") }}]</span>
+                <span>[ACADEMIC GUILD // {{ t('education_title') }}]</span>
               </div>
               <span
                 class="text-[9px] font-silkscreen text-[#ffd700] bg-[#ffd700]/10 px-2 py-0.5 border border-[#ffd700]/30"
-                >{{ isId ? "IPK: 3.83 / 4.00" : "GPA: 3.83 / 4.00" }}</span
+                >{{ isId ? 'IPK: 3.83 / 4.00' : 'GPA: 3.83 / 4.00' }}</span
               >
             </div>
 
@@ -154,22 +136,16 @@
                   <h4 class="text-xs font-bold text-[#f0f6fc] font-silkscreen">
                     TELKOM UNIVERSITY
                   </h4>
-                  <span class="text-[9px] text-[#8b949e] font-silkscreen"
-                    >2022 - 2026</span
-                  >
+                  <span class="text-[9px] text-[#8b949e] font-silkscreen">2022 - 2026</span>
                 </div>
                 <p class="text-xs text-[#c9d1d9] mt-1 leading-relaxed">
-                  {{ t("edu_1_desc") }}
+                  {{ t('edu_1_desc') }}
                 </p>
                 <div
                   class="mt-1 text-[10px] text-[#ffd700] font-silkscreen flex items-center gap-1"
                 >
                   <i class="bi bi-star-fill text-[8px]"></i> [HONORS ROLL]
-                  {{
-                    isId
-                      ? "IPK 3.83 / 4.00 (Cum Laude)"
-                      : "GPA 3.83 / 4.00 (Cum Laude)"
-                  }}
+                  {{ isId ? 'IPK 3.83 / 4.00 (Cum Laude)' : 'GPA 3.83 / 4.00 (Cum Laude)' }}
                 </div>
               </div>
 
@@ -181,12 +157,10 @@
                   <h4 class="text-xs font-bold text-[#f0f6fc] font-silkscreen">
                     SMKN 1 BELITANG III
                   </h4>
-                  <span class="text-[9px] text-[#8b949e] font-silkscreen"
-                    >2019 - 2022</span
-                  >
+                  <span class="text-[9px] text-[#8b949e] font-silkscreen">2019 - 2022</span>
                 </div>
                 <p class="text-xs text-[#c9d1d9] mt-1">
-                  {{ t("edu_2_desc") }}
+                  {{ t('edu_2_desc') }}
                 </p>
               </div>
             </div>
@@ -198,14 +172,12 @@
           class="bg-[#161b22] border-4 border-black p-5 shadow-[6px_6px_0px_#000000] relative group hover:border-[#00f0ff] transition-colors flex flex-col justify-between"
         >
           <div>
-            <div
-              class="flex items-center justify-between border-b border-[#30363d] pb-2 mb-4"
-            >
+            <div class="flex items-center justify-between border-b border-[#30363d] pb-2 mb-4">
               <div
                 class="flex items-center gap-2 font-silkscreen text-[#00f0ff] text-xs font-bold uppercase"
               >
                 <i class="bi bi-translate text-sm"></i>
-                <span>[COMMUNICATION BUFFS // {{ t("lang_title") }}]</span>
+                <span>[COMMUNICATION BUFFS // {{ t('lang_title') }}]</span>
               </div>
               <span
                 class="text-[9px] font-silkscreen text-[#00f0ff] bg-[#00f0ff]/10 px-2 py-0.5 border border-[#00f0ff]/30"
@@ -218,17 +190,14 @@
               <div class="border-l-2 border-[#00f0ff] pl-3">
                 <div class="flex flex-wrap items-center justify-between gap-1">
                   <h4 class="text-xs font-bold text-[#f0f6fc] font-silkscreen">
-                    {{ isId ? "BAHASA INDONESIA" : "INDONESIAN" }}
+                    {{ isId ? 'BAHASA INDONESIA' : 'INDONESIAN' }}
                   </h4>
-                  <span
-                    class="text-[9px] text-[#00ff66] font-silkscreen font-bold"
-                    >[{{ isId ? "NATIVE / ASLI" : "NATIVE / MAX" }}]</span
+                  <span class="text-[9px] text-[#00ff66] font-silkscreen font-bold"
+                    >[{{ isId ? 'NATIVE / ASLI' : 'NATIVE / MAX' }}]</span
                   >
                 </div>
                 <p class="text-xs text-[#c9d1d9] mt-1">
-                  {{
-                    isId ? "Penutur Asli (Native Speaker)" : "Native Speaker"
-                  }}
+                  {{ isId ? 'Penutur Asli (Native Speaker)' : 'Native Speaker' }}
                 </p>
               </div>
 
@@ -236,25 +205,19 @@
               <div class="border-l-2 border-[#00f0ff] pl-3">
                 <div class="flex flex-wrap items-center justify-between gap-1">
                   <h4 class="text-xs font-bold text-[#f0f6fc] font-silkscreen">
-                    {{ isId ? "BAHASA INGGRIS" : "ENGLISH" }}
+                    {{ isId ? 'BAHASA INGGRIS' : 'ENGLISH' }}
                   </h4>
-                  <span
-                    class="text-[9px] text-[#00f0ff] font-silkscreen font-bold"
-                    >[{{ isId ? "MENENGAH" : "INTERMEDIATE" }}]</span
+                  <span class="text-[9px] text-[#00f0ff] font-silkscreen font-bold"
+                    >[{{ isId ? 'MENENGAH' : 'INTERMEDIATE' }}]</span
                   >
                 </div>
                 <p class="text-xs text-[#c9d1d9] mt-1">
-                  {{
-                    isId
-                      ? "Tingkat Menengah (CEFR B1)"
-                      : "Intermediate Level (CEFR B1)"
-                  }}
+                  {{ isId ? 'Tingkat Menengah (CEFR B1)' : 'Intermediate Level (CEFR B1)' }}
                 </p>
                 <div
                   class="mt-1 text-[10px] text-[#00f0ff] font-silkscreen flex items-center gap-1"
                 >
-                  <i class="bi bi-award-fill text-[9px]"></i> [OFFICIAL SCORE]
-                  EPRT: 483
+                  <i class="bi bi-award-fill text-[9px]"></i> [OFFICIAL SCORE] EPRT: 483
                 </div>
               </div>
             </div>
@@ -295,8 +258,7 @@
           <div
             class="bg-[#0d1117] border-2 border-black p-4 shadow-[4px_4px_0px_#000000] hover:border-[#00ff66] hover:-translate-y-1 transition-all group cursor-pointer flex flex-col items-center text-center relative"
           >
-            <span
-              class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]"
+            <span class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]"
               >SLOT 01</span
             >
             <div
@@ -313,17 +275,14 @@
             >
               UNITY
             </div>
-            <div class="text-[9px] text-[#00ff66] font-silkscreen mt-1">
-              [LVL 95] GAME ENGINE
-            </div>
+            <div class="text-[9px] text-[#00ff66] font-silkscreen mt-1">[LVL 95] GAME ENGINE</div>
           </div>
 
           <!-- Item 2: Firebase -->
           <div
             class="bg-[#0d1117] border-2 border-black p-4 shadow-[4px_4px_0px_#000000] hover:border-[#00ff66] hover:-translate-y-1 transition-all group cursor-pointer flex flex-col items-center text-center relative"
           >
-            <span
-              class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]"
+            <span class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]"
               >SLOT 02</span
             >
             <div
@@ -340,17 +299,14 @@
             >
               FIREBASE
             </div>
-            <div class="text-[9px] text-[#ffd700] font-silkscreen mt-1">
-              [LVL 90] DB BACKEND
-            </div>
+            <div class="text-[9px] text-[#ffd700] font-silkscreen mt-1">[LVL 90] DB BACKEND</div>
           </div>
 
           <!-- Item 3: Supabase -->
           <div
             class="bg-[#0d1117] border-2 border-black p-4 shadow-[4px_4px_0px_#000000] hover:border-[#00ff66] hover:-translate-y-1 transition-all group cursor-pointer flex flex-col items-center text-center relative"
           >
-            <span
-              class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]"
+            <span class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]"
               >SLOT 03</span
             >
             <div
@@ -367,17 +323,14 @@
             >
               SUPABASE
             </div>
-            <div class="text-[9px] text-[#00ff66] font-silkscreen mt-1">
-              [LVL 93] DB BACKEND
-            </div>
+            <div class="text-[9px] text-[#00ff66] font-silkscreen mt-1">[LVL 93] DB BACKEND</div>
           </div>
 
           <!-- Item 4: Antigravity-->
           <div
             class="bg-[#0d1117] border-2 border-black p-4 shadow-[4px_4px_0px_#000000] hover:border-[#00ff66] hover:-translate-y-1 transition-all group cursor-pointer flex flex-col items-center text-center relative"
           >
-            <span
-              class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]"
+            <span class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]"
               >SLOT 04</span
             >
             <div
@@ -394,17 +347,14 @@
             >
               Antigravity
             </div>
-            <div class="text-[9px] text-[#00f0ff] font-silkscreen mt-1">
-              [LVL 99] INTEL DEV
-            </div>
+            <div class="text-[9px] text-[#00f0ff] font-silkscreen mt-1">[LVL 99] INTEL DEV</div>
           </div>
 
           <!-- Item 5: GitHub -->
           <div
             class="bg-[#0d1117] border-2 border-black p-4 shadow-[4px_4px_0px_#000000] hover:border-[#00ff66] hover:-translate-y-1 transition-all group cursor-pointer flex flex-col items-center text-center relative"
           >
-            <span
-              class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]"
+            <span class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]"
               >SLOT 05</span
             >
             <div
@@ -421,17 +371,14 @@
             >
               GITHUB
             </div>
-            <div class="text-[9px] text-[#a78bfa] font-silkscreen mt-1">
-              [LVL 92] REPO VAULT
-            </div>
+            <div class="text-[9px] text-[#a78bfa] font-silkscreen mt-1">[LVL 92] REPO VAULT</div>
           </div>
 
           <!-- Item 6: Adobe Illustrator -->
           <div
             class="bg-[#0d1117] border-2 border-black p-4 shadow-[4px_4px_0px_#000000] hover:border-[#00ff66] hover:-translate-y-1 transition-all group cursor-pointer flex flex-col items-center text-center relative"
           >
-            <span
-              class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]"
+            <span class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]"
               >SLOT 06</span
             >
             <div
@@ -444,17 +391,14 @@
             >
               ILLUSTRATOR
             </div>
-            <div class="text-[9px] text-[#FF9A00] font-silkscreen mt-1">
-              [LVL 90] VECTOR WEAPON
-            </div>
+            <div class="text-[9px] text-[#FF9A00] font-silkscreen mt-1">[LVL 90] VECTOR WEAPON</div>
           </div>
 
           <!-- Item 7: Adobe Photoshop -->
           <div
             class="bg-[#0d1117] border-2 border-black p-4 shadow-[4px_4px_0px_#000000] hover:border-[#00ff66] hover:-translate-y-1 transition-all group cursor-pointer flex flex-col items-center text-center relative"
           >
-            <span
-              class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]"
+            <span class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]"
               >SLOT 07</span
             >
             <div
@@ -476,8 +420,7 @@
           <div
             class="bg-[#0d1117] border-2 border-black p-4 shadow-[4px_4px_0px_#000000] hover:border-[#00ff66] hover:-translate-y-1 transition-all group cursor-pointer flex flex-col items-center text-center relative"
           >
-            <span
-              class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]"
+            <span class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]"
               >SLOT 08</span
             >
             <div
@@ -494,34 +437,27 @@
             >
               FIGMA
             </div>
-            <div class="text-[9px] text-[#ffd700] font-silkscreen mt-1">
-              [LVL 96] PROTO WEAPON
-            </div>
+            <div class="text-[9px] text-[#ffd700] font-silkscreen mt-1">[LVL 96] PROTO WEAPON</div>
           </div>
 
           <!-- Item 9: Canva -->
           <div
             class="bg-[#0d1117] border-2 border-black p-4 shadow-[4px_4px_0px_#000000] hover:border-[#00ff66] hover:-translate-y-1 transition-all group cursor-pointer flex flex-col items-center text-center relative"
           >
-            <span
-              class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]"
+            <span class="absolute top-1 right-2 text-[9px] font-silkscreen text-[#8b949e]"
               >SLOT 09</span
             >
             <div
               class="w-14 h-14 bg-gradient-to-tr from-[#00C4CC] to-[#7D2AE8] rounded-lg border border-white/20 flex items-center justify-center mb-3 mt-2 group-hover:scale-110 transition-transform"
             >
-              <span class="text-white font-bold italic text-sm font-mono"
-                >Canva</span
-              >
+              <span class="text-white font-bold italic text-sm font-mono">Canva</span>
             </div>
             <div
               class="text-xs font-bold text-[#f0f6fc] font-mono group-hover:text-[#00ff66] transition-colors"
             >
               CANVA
             </div>
-            <div class="text-[9px] text-[#00C4CC] font-silkscreen mt-1">
-              [LVL 94] MEDIA LAYOUT
-            </div>
+            <div class="text-[9px] text-[#00C4CC] font-silkscreen mt-1">[LVL 94] MEDIA LAYOUT</div>
           </div>
         </div>
 
@@ -529,9 +465,8 @@
         <p
           class="mt-6 pt-4 border-t border-[#30363d] text-center text-xs text-[#8b949e] font-silkscreen leading-relaxed"
         >
-          <span class="text-[#00f0ff] font-bold">[LOADED ARSENAL]</span> Unity ✦
-          Firebase ✦ Supabase ✦ Antigravity✦ GitHub ✦ Illustrator ✦ Photoshop ✦
-          Figma ✦ Canva ✦ READY FOR DEPLOYMENT
+          <span class="text-[#00f0ff] font-bold">[LOADED ARSENAL]</span> Unity ✦ Firebase ✦ Supabase
+          ✦ Antigravity✦ GitHub ✦ Illustrator ✦ Photoshop ✦ Figma ✦ Canva ✦ READY FOR DEPLOYMENT
         </p>
       </div>
 
@@ -574,17 +509,17 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-import { useLanguage } from "@/composables/useLanguage";
-import GithubCalendar from "@/components/GithubCalendar.vue";
+import { computed } from 'vue'
+import { useLanguage } from '@/composables/useLanguage'
+import GithubCalendar from '@/components/GithubCalendar.vue'
 
-const { t, lang } = useLanguage();
-const isId = computed(() => lang.value === "ID");
+const { t, lang } = useLanguage()
+const isId = computed(() => lang.value === 'ID')
 
 function scrollToSection(sectionId) {
-  const section = document.getElementById(sectionId);
+  const section = document.getElementById(sectionId)
   if (section) {
-    section.scrollIntoView({ behavior: "smooth" });
+    section.scrollIntoView({ behavior: 'smooth' })
   }
 }
 </script>

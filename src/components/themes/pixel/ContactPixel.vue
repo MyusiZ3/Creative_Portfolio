@@ -1,16 +1,20 @@
 <template>
-  <section id="contact" class="py-20 bg-[#0d1117] text-[#f0f6fc] font-mono border-t-4 border-black relative">
+  <section
+    id="contact"
+    class="py-20 bg-[#0d1117] text-[#f0f6fc] font-mono border-t-4 border-black relative"
+  >
     <div class="max-w-6xl mx-auto px-4">
-      
       <!-- Section Header -->
-      <div 
+      <div
         v-motion
         :initial="{ opacity: 0, y: -20 }"
         :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, ease: 'easeOut' } }"
         class="mb-12 border-b-4 border-black pb-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
       >
         <div>
-          <span class="text-xs font-bold text-[#ff0055] uppercase tracking-widest bg-[#161b22] px-3 py-1 border border-[#ff0055] shadow-[2px_2px_0px_#000] font-silkscreen">
+          <span
+            class="text-xs font-bold text-[#ff0055] uppercase tracking-widest bg-[#161b22] px-3 py-1 border border-[#ff0055] shadow-[2px_2px_0px_#000] font-silkscreen"
+          >
             ✦ HIGH SCORE ENTRY
           </span>
           <h2 class="text-2xl sm:text-4xl font-extrabold uppercase mt-2 font-pixel leading-tight">
@@ -20,21 +24,25 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
         <!-- Transmission Form -->
-        <div 
+        <div
           v-motion
           :initial="{ opacity: 0, x: -40 }"
-          :visible-once="{ opacity: 1, x: 0, transition: { duration: 600, delay: 150, ease: 'easeOut' } }"
+          :visible-once="{
+            opacity: 1,
+            x: 0,
+            transition: { duration: 600, delay: 150, ease: 'easeOut' },
+          }"
           class="lg:col-span-7 bg-[#161b22] border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_#000000]"
         >
           <form @submit.prevent="handleSubmit" class="space-y-4">
-            
             <!-- Player Name & Email Grid (Opsi 2 Layout) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <!-- Player Name -->
               <div>
-                <label class="block text-xs font-bold text-[#00ff66] uppercase mb-1 font-silkscreen">
+                <label
+                  class="block text-xs font-bold text-[#00ff66] uppercase mb-1 font-silkscreen"
+                >
                   PLAYER NAME [ID]:
                 </label>
                 <input
@@ -48,7 +56,9 @@
 
               <!-- Player Email -->
               <div>
-                <label class="block text-xs font-bold text-[#00f0ff] uppercase mb-1 font-silkscreen">
+                <label
+                  class="block text-xs font-bold text-[#00f0ff] uppercase mb-1 font-silkscreen"
+                >
                   PLAYER EMAIL:
                 </label>
                 <input
@@ -96,21 +106,33 @@
             >
               <i class="bi bi-trophy-fill text-yellow-300 text-sm"></i>
               <span v-if="isSubmitting">TRANSMITTING...</span>
-              <span v-else-if="cooldownTimer > 0">TRANSMISSION COOLDOWN ({{ cooldownTimer }}s)</span>
+              <span v-else-if="cooldownTimer > 0"
+                >TRANSMISSION COOLDOWN ({{ cooldownTimer }}s)</span
+              >
               <span v-else>SUBMIT HIGH SCORE MESSAGE</span>
             </button>
 
             <!-- Success Alert -->
-            <div v-if="submitted" class="p-3 bg-[#00ff66]/20 border-2 border-[#00ff66] text-[#00ff66] text-xs font-bold text-center font-silkscreen">
+            <div
+              v-if="submitted"
+              class="p-3 bg-[#00ff66]/20 border-2 border-[#00ff66] text-[#00ff66] text-xs font-bold text-center font-silkscreen"
+            >
               ✦ TRANSMISSION SENT DIRECTLY TO MUHAMADSIDIK.WORK.ID@GMAIL.COM!
             </div>
-            <div v-if="submitError" class="p-3 bg-[#ffd700]/20 border-2 border-[#ffd700] text-[#ffd700] text-xs font-bold text-center font-silkscreen">
+            <div
+              v-if="submitError"
+              class="p-3 bg-[#ffd700]/20 border-2 border-[#ffd700] text-[#ffd700] text-xs font-bold text-center font-silkscreen"
+            >
               ✦ OPENING EMAIL CLIENT TRANSMISSION FALLBACK...
             </div>
 
             <!-- Arcade System Status & Console Terminal Log (Opsi 1) -->
-            <div class="mt-5 p-3.5 bg-[#0d1117] border-2 border-black font-mono text-[11px] space-y-1.5 shadow-[3px_3px_0px_#000000]">
-              <div class="text-[#8b949e] font-silkscreen text-[10px] flex items-center justify-between border-b border-black pb-1.5 mb-2">
+            <div
+              class="mt-5 p-3.5 bg-[#0d1117] border-2 border-black font-mono text-[11px] space-y-1.5 shadow-[3px_3px_0px_#000000]"
+            >
+              <div
+                class="text-[#8b949e] font-silkscreen text-[10px] flex items-center justify-between border-b border-black pb-1.5 mb-2"
+              >
                 <span>// TERMINAL STATUS: READY</span>
                 <span class="text-[#00ff66] flex items-center gap-1.5">
                   <span class="w-2 h-2 rounded-full bg-[#00ff66] animate-ping"></span> ONLINE
@@ -120,7 +142,9 @@
                 <span class="flex items-center gap-1.5">
                   <span class="text-[#8b949e]">&gt;</span> ENCRYPTION:
                 </span>
-                <span class="text-white font-bold font-silkscreen text-[10px]">256-BIT SSL ACTIVE</span>
+                <span class="text-white font-bold font-silkscreen text-[10px]"
+                  >256-BIT SSL ACTIVE</span
+                >
               </div>
               <div class="text-[#ffd700] flex items-center justify-between">
                 <span class="flex items-center gap-1.5">
@@ -132,22 +156,29 @@
                 <span class="flex items-center gap-1.5">
                   <span class="text-[#8b949e]">&gt;</span> LOCAL TIME:
                 </span>
-                <span class="text-white font-bold font-mono text-[11px]">{{ currentTime || '23:23 WIB' }}</span>
+                <span class="text-white font-bold font-mono text-[11px]">{{
+                  currentTime || '23:23 WIB'
+                }}</span>
               </div>
             </div>
-
           </form>
         </div>
 
         <!-- Social Badges & Direct Links -->
-        <div 
+        <div
           v-motion
           :initial="{ opacity: 0, x: 40 }"
-          :visible-once="{ opacity: 1, x: 0, transition: { duration: 600, delay: 300, ease: 'easeOut' } }"
+          :visible-once="{
+            opacity: 1,
+            x: 0,
+            transition: { duration: 600, delay: 300, ease: 'easeOut' },
+          }"
           class="lg:col-span-5 bg-[#161b22] border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_#000000] flex flex-col justify-between space-y-6"
         >
           <div>
-            <h3 class="text-sm font-bold text-[#ffd700] uppercase tracking-wider border-b-2 border-black pb-3 mb-4 font-silkscreen">
+            <h3
+              class="text-sm font-bold text-[#ffd700] uppercase tracking-wider border-b-2 border-black pb-3 mb-4 font-silkscreen"
+            >
               CONNECT & NETWORK
             </h3>
 
@@ -161,19 +192,27 @@
                 class="p-3 bg-[#0d1117] border-2 border-black flex items-center justify-between hover:border-[#00ff66] hover:bg-[#1f242c] transition-all group"
               >
                 <div class="flex items-center gap-3">
-                  <span class="text-xl flex items-center justify-center w-7 h-7 group-hover:scale-110 transition-transform">
+                  <span
+                    class="text-xl flex items-center justify-center w-7 h-7 group-hover:scale-110 transition-transform"
+                  >
                     <i :class="link.icon"></i>
                   </span>
                   <div>
-                    <div class="text-xs font-bold text-[#f0f6fc] group-hover:text-[#00ff66] transition-colors font-silkscreen">
+                    <div
+                      class="text-xs font-bold text-[#f0f6fc] group-hover:text-[#00ff66] transition-colors font-silkscreen"
+                    >
                       {{ link.name }}
                     </div>
                     <div class="text-[10px] text-[#8b949e] font-mono">{{ link.handle }}</div>
                   </div>
                 </div>
-                <span class="text-xs font-bold text-[#00ff66] font-silkscreen flex items-center gap-1">
+                <span
+                  class="text-xs font-bold text-[#00ff66] font-silkscreen flex items-center gap-1"
+                >
                   <span>CONNECT</span>
-                  <i class="bi bi-play-fill text-sm group-hover:translate-x-1 transition-transform"></i>
+                  <i
+                    class="bi bi-play-fill text-sm group-hover:translate-x-1 transition-transform"
+                  ></i>
                 </span>
               </a>
             </div>
@@ -204,120 +243,148 @@
             </div>
           </div>
 
-          <div class="pt-4 border-t-2 border-black text-center text-[10px] text-[#8b949e] font-silkscreen">
+          <div
+            class="pt-4 border-t-2 border-black text-center text-[10px] text-[#8b949e] font-silkscreen"
+          >
             © 2026 MUHAMAD SIDIK • PIXEL ARCADE SYSTEM
           </div>
         </div>
-
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue'
 
 const form = ref({
   name: '',
   email: '',
   subject: '',
-  message: ''
-});
+  message: '',
+})
 
-const isSubmitting = ref(false);
-const submitted = ref(false);
-const submitError = ref(false);
-const cooldownTimer = ref(0);
-let cooldownInterval = null;
+const isSubmitting = ref(false)
+const submitted = ref(false)
+const submitError = ref(false)
+const cooldownTimer = ref(0)
+let cooldownInterval = null
 
-const currentTime = ref('');
-let timeInterval = null;
+const currentTime = ref('')
+let timeInterval = null
 
 const updateLocalTime = () => {
   const options = {
-    timeZone: "Asia/Jakarta",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
+    timeZone: 'Asia/Jakarta',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
     hour12: false,
-  };
-  currentTime.value = new Intl.DateTimeFormat("en-US", options).format(new Date()) + " WIB";
-};
+  }
+  currentTime.value = new Intl.DateTimeFormat('en-US', options).format(new Date()) + ' WIB'
+}
 
 onMounted(() => {
-  updateLocalTime();
-  timeInterval = setInterval(updateLocalTime, 1000);
-});
+  updateLocalTime()
+  timeInterval = setInterval(updateLocalTime, 1000)
+})
 
 onUnmounted(() => {
-  if (timeInterval) clearInterval(timeInterval);
-  if (cooldownInterval) clearInterval(cooldownInterval);
-});
+  if (timeInterval) clearInterval(timeInterval)
+  if (cooldownInterval) clearInterval(cooldownInterval)
+})
 
 const startCooldown = (seconds = 15) => {
-  cooldownTimer.value = seconds;
-  if (cooldownInterval) clearInterval(cooldownInterval);
+  cooldownTimer.value = seconds
+  if (cooldownInterval) clearInterval(cooldownInterval)
   cooldownInterval = setInterval(() => {
     if (cooldownTimer.value > 0) {
-      cooldownTimer.value--;
+      cooldownTimer.value--
     } else {
-      clearInterval(cooldownInterval);
+      clearInterval(cooldownInterval)
     }
-  }, 1000);
-};
+  }, 1000)
+}
 
 const sendMailtoFallback = () => {
-  const subject = encodeURIComponent(form.value.subject || `[PIXEL TRANSMISSION] Message from ${form.value.name}`);
-  const body = encodeURIComponent(`Player Name: ${form.value.name}\nPlayer Email: ${form.value.email}\nSubject: ${form.value.subject}\n\nTransmission Message:\n${form.value.message}`);
-  window.location.href = `mailto:muhamadsidik.work.id@gmail.com?subject=${subject}&body=${body}`;
-};
+  const subject = encodeURIComponent(
+    form.value.subject || `[PIXEL TRANSMISSION] Message from ${form.value.name}`,
+  )
+  const body = encodeURIComponent(
+    `Player Name: ${form.value.name}\nPlayer Email: ${form.value.email}\nSubject: ${form.value.subject}\n\nTransmission Message:\n${form.value.message}`,
+  )
+  window.location.href = `mailto:muhamadsidik.work.id@gmail.com?subject=${subject}&body=${body}`
+}
 
 const handleSubmit = async () => {
-  if (isSubmitting.value || cooldownTimer.value > 0) return;
-  isSubmitting.value = true;
-  submitError.value = false;
+  if (isSubmitting.value || cooldownTimer.value > 0) return
+  isSubmitting.value = true
+  submitError.value = false
 
   try {
-    const formData = new FormData();
-    formData.append("access_key", "90abbda5-bc7f-4e0a-a900-a42dfe212115");
-    formData.append("name", form.value.name);
-    formData.append("email", form.value.email);
-    formData.append("subject", form.value.subject || `[PIXEL ARCADE] Transmission from ${form.value.name}`);
-    formData.append("message", form.value.message);
+    const formData = new FormData()
+    formData.append('access_key', '90abbda5-bc7f-4e0a-a900-a42dfe212115')
+    formData.append('name', form.value.name)
+    formData.append('email', form.value.email)
+    formData.append(
+      'subject',
+      form.value.subject || `[PIXEL ARCADE] Transmission from ${form.value.name}`,
+    )
+    formData.append('message', form.value.message)
 
     const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      body: formData
-    });
+      body: formData,
+    })
 
-    const data = await response.json();
+    const data = await response.json()
     if (response.ok && data.success) {
-      submitted.value = true;
-      form.value = { name: '', email: '', subject: '', message: '' };
-      startCooldown(15);
+      submitted.value = true
+      form.value = { name: '', email: '', subject: '', message: '' }
+      startCooldown(15)
     } else {
-      submitError.value = true;
-      sendMailtoFallback();
-      startCooldown(10);
+      submitError.value = true
+      sendMailtoFallback()
+      startCooldown(10)
     }
   } catch (err) {
-    console.error("Submission failed, using mailto fallback", err);
-    submitError.value = true;
-    sendMailtoFallback();
-    startCooldown(10);
+    console.error('Submission failed, using mailto fallback', err)
+    submitError.value = true
+    sendMailtoFallback()
+    startCooldown(10)
   } finally {
-    isSubmitting.value = false;
+    isSubmitting.value = false
     setTimeout(() => {
-      submitted.value = false;
-      submitError.value = false;
-    }, 6000);
+      submitted.value = false
+      submitError.value = false
+    }, 6000)
   }
-};
+}
 
 const socialLinks = [
-  { name: 'GITHUB', handle: '@MyusiZ3', icon: 'bi bi-github text-[#00ff66]', url: 'https://github.com/MyusiZ3' },
-  { name: 'LINKEDIN', handle: 'Muhamad Sidik', icon: 'bi bi-linkedin text-[#00f0ff]', url: 'https://www.linkedin.com/in/muhamad-sidik-a6757b25b' },
-  { name: 'INSTAGRAM', handle: '@imyusi_', icon: 'bi bi-instagram text-[#ff0055]', url: 'https://www.instagram.com/imyusi_' },
-  { name: 'WHATSAPP', handle: '(+62) 896 4634 7327', icon: 'bi bi-whatsapp text-[#00ff66]', url: 'https://wa.me/6289646347327' }
-];
+  {
+    name: 'GITHUB',
+    handle: '@MyusiZ3',
+    icon: 'bi bi-github text-[#00ff66]',
+    url: 'https://github.com/MyusiZ3',
+  },
+  {
+    name: 'LINKEDIN',
+    handle: 'Muhamad Sidik',
+    icon: 'bi bi-linkedin text-[#00f0ff]',
+    url: 'https://www.linkedin.com/in/muhamad-sidik-a6757b25b',
+  },
+  {
+    name: 'INSTAGRAM',
+    handle: '@imyusi_',
+    icon: 'bi bi-instagram text-[#ff0055]',
+    url: 'https://www.instagram.com/imyusi_',
+  },
+  {
+    name: 'WHATSAPP',
+    handle: '(+62) 896 4634 7327',
+    icon: 'bi bi-whatsapp text-[#00ff66]',
+    url: 'https://wa.me/6289646347327',
+  },
+]
 </script>

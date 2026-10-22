@@ -1,22 +1,19 @@
 <script setup>
-import GithubCalendar from "./GithubCalendar.vue";
-import { useLanguage } from "@/composables/useLanguage";
+import GithubCalendar from './GithubCalendar.vue'
+import { useLanguage } from '@/composables/useLanguage'
 
-const { t } = useLanguage();
+const { t } = useLanguage()
 
 function scrollToSection(sectionId) {
-  const section = document.getElementById(sectionId);
+  const section = document.getElementById(sectionId)
   if (section) {
-    section.scrollIntoView({ behavior: "smooth" });
+    section.scrollIntoView({ behavior: 'smooth' })
   }
 }
 </script>
 <template>
   <!-- MY APPS Section -->
-  <section
-    id="skills"
-    class="bg-[#171717] py-20 px-6 md:px-16 lg:px-40 relative overflow-hidden"
-  >
+  <section id="skills" class="bg-[#171717] py-20 px-6 md:px-16 lg:px-40 relative overflow-hidden">
     <!-- Decorative Side Tabs -->
     <img
       src="/images/accents/accent_5.webp"
@@ -46,7 +43,7 @@ function scrollToSection(sectionId) {
         }"
         class="inline-block bg-violet-500 text-white font-['Poppins'] font-bold text-[14px] lg:text-[16px] px-6 py-2 rounded-full mb-6 mt-10"
       >
-        {{ t("skills_badge") }}
+        {{ t('skills_badge') }}
       </div>
 
       <!-- Title -->
@@ -60,7 +57,7 @@ function scrollToSection(sectionId) {
         }"
         class="text-3xl md:text-4xl lg:text-[48px] font-bold font-['Poppins'] text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-300 to-indigo-400 mb-6 uppercase tracking-wider"
       >
-        {{ t("skills_heading") }}
+        {{ t('skills_heading') }}
       </h2>
 
       <!-- Subtitle -->
@@ -74,7 +71,7 @@ function scrollToSection(sectionId) {
         }"
         class="text-[#8E949F] font-['Roboto'] font-medium text-[14px] lg:text-[16px] max-w-3xl mx-auto leading-relaxed mb-16"
       >
-        {{ t("skills_sub") }}
+        {{ t('skills_sub') }}
       </p>
 
       <!-- Divider with Dot Matrices -->
@@ -256,9 +253,7 @@ function scrollToSection(sectionId) {
         </div>
 
         <!-- Row 2 -->
-        <div
-          class="flex flex-nowrap justify-center gap-2 sm:gap-4 lg:gap-6 mt-2"
-        >
+        <div class="flex flex-nowrap justify-center gap-2 sm:gap-4 lg:gap-6 mt-2">
           <!-- Ai -->
           <div
             v-motion
@@ -362,9 +357,8 @@ function scrollToSection(sectionId) {
         }"
         class="pt-8 text-[11px] lg:text-[16px] text-[#ffffff] font-['Roboto'] font-medium max-w-4xl mx-auto leading-loose lg:leading-loose"
       >
-        Unity &bull; Firebase &bull; Supabase &bull; Antigravity&bull; Github
-        &bull; Adobe Illustrator &bull; Adobe Photoshop &bull; Figma &bull;
-        Canva <br class="hidden lg:block" />
+        Unity &bull; Firebase &bull; Supabase &bull; Antigravity&bull; Github &bull; Adobe
+        Illustrator &bull; Adobe Photoshop &bull; Figma &bull; Canva <br class="hidden lg:block" />
         <span class="lg:hidden"> &bull; </span>and more
       </p>
 
@@ -395,21 +389,11 @@ function scrollToSection(sectionId) {
         class="flex flex-col items-center gap-6 pb-4"
       >
         <div class="flex gap-2.5">
-          <div
-            class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-transparent"
-          ></div>
-          <div
-            class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-transparent"
-          ></div>
-          <div
-            class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-gray-500"
-          ></div>
-          <div
-            class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-transparent"
-          ></div>
-          <div
-            class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-transparent"
-          ></div>
+          <div class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-transparent"></div>
+          <div class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-transparent"></div>
+          <div class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-gray-500"></div>
+          <div class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-transparent"></div>
+          <div class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-transparent"></div>
         </div>
         <i
           class="bi bi-caret-down-fill text-white text-3xl opacity-80 hover:opacity-100 hover:translate-y-1 transition-all cursor-pointer"

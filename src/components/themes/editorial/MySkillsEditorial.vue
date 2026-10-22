@@ -1,22 +1,19 @@
 <script setup>
-import GithubCalendar from "@/components/GithubCalendar.vue";
-import { useLanguage } from "@/composables/useLanguage";
+import GithubCalendar from '@/components/GithubCalendar.vue'
+import { useLanguage } from '@/composables/useLanguage'
 
-const { t } = useLanguage();
+const { t } = useLanguage()
 
 function scrollToSection(sectionId) {
-  const section = document.getElementById(sectionId);
+  const section = document.getElementById(sectionId)
   if (section) {
-    section.scrollIntoView({ behavior: "smooth" });
+    section.scrollIntoView({ behavior: 'smooth' })
   }
 }
 </script>
 <template>
   <!-- My Skills Section -->
-  <section
-    id="skills"
-    class="bg-[#171717] py-20 px-6 md:px-16 lg:px-40 relative overflow-hidden"
-  >
+  <section id="skills" class="bg-[#171717] py-20 px-6 md:px-16 lg:px-40 relative overflow-hidden">
     <!-- Decorative Side Tabs -->
     <img
       src="/images/accents/accent_5.webp"
@@ -40,7 +37,7 @@ function scrollToSection(sectionId) {
         <span
           class="inline-block bg-[#8B5CF6] text-white font-['Poppins'] font-bold text-xs sm:text-sm uppercase tracking-wider px-6 py-2 rounded-full mb-4 shadow-lg shadow-violet-500/20"
         >
-          {{ t("skills_badge") }}
+          {{ t('skills_badge') }}
         </span>
       </div>
 
@@ -55,7 +52,7 @@ function scrollToSection(sectionId) {
         }"
         class="text-3xl md:text-4xl lg:text-[48px] font-bold font-['Poppins'] text-white mb-6 uppercase tracking-wider text-center"
       >
-        {{ t("skills_heading") }}
+        {{ t('skills_heading') }}
       </h2>
 
       <!-- Subtitle -->
@@ -69,7 +66,7 @@ function scrollToSection(sectionId) {
         }"
         class="text-[#8E949F] font-['Roboto'] font-medium text-[14px] lg:text-[16px] max-w-3xl mx-auto leading-relaxed mb-16 text-center"
       >
-        {{ t("skills_sub") }}
+        {{ t('skills_sub') }}
       </p>
 
       <!-- Divider with Dot Matrices -->
@@ -342,24 +339,23 @@ function scrollToSection(sectionId) {
         </div>
       </div>
 
-    <!-- Pagination & Arrow Down -->
+      <!-- Pagination & Arrow Down -->
 
-    <!-- Text Subtitle List -->
-    <p
-      v-motion
-      :initial="{ opacity: 0, y: 20 }"
-      :visible="{
-        opacity: 1,
-        y: 0,
-        transition: { duration: 600, delay: 400, ease: 'easeOut' },
-      }"
-      class="pt-8 text-[11px] lg:text-[16px] text-[#ffffff] font-['Roboto'] font-medium max-w-4xl mx-auto leading-loose lg:leading-loose"
-    >
-      Unity &bull; Firebase &bull; Supabase &bull; Antigravity &bull; Github &bull; Adobe
-      Illustrator &bull; Adobe Photoshop &bull; Figma &bull;
-      Canva <br class="hidden lg:block" />
-      <span class="lg:hidden"> &bull; </span>and more
-    </p>
+      <!-- Text Subtitle List -->
+      <p
+        v-motion
+        :initial="{ opacity: 0, y: 20 }"
+        :visible="{
+          opacity: 1,
+          y: 0,
+          transition: { duration: 600, delay: 400, ease: 'easeOut' },
+        }"
+        class="pt-8 text-[11px] lg:text-[16px] text-[#ffffff] font-['Roboto'] font-medium max-w-4xl mx-auto leading-loose lg:leading-loose"
+      >
+        Unity &bull; Firebase &bull; Supabase &bull; Antigravity &bull; Github &bull; Adobe
+        Illustrator &bull; Adobe Photoshop &bull; Figma &bull; Canva <br class="hidden lg:block" />
+        <span class="lg:hidden"> &bull; </span>and more
+      </p>
 
       <!-- GitHub Contributions -->
       <div
@@ -388,21 +384,11 @@ function scrollToSection(sectionId) {
         class="flex flex-col items-center gap-6 pb-4"
       >
         <div class="flex gap-2.5">
-          <div
-            class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-transparent"
-          ></div>
-          <div
-            class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-transparent"
-          ></div>
-          <div
-            class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-gray-500"
-          ></div>
-          <div
-            class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-transparent"
-          ></div>
-          <div
-            class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-transparent"
-          ></div>
+          <div class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-transparent"></div>
+          <div class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-transparent"></div>
+          <div class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-gray-500"></div>
+          <div class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-transparent"></div>
+          <div class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-transparent"></div>
         </div>
         <i
           class="bi bi-caret-down-fill text-white text-3xl opacity-80 hover:opacity-100 hover:translate-y-1 transition-all cursor-pointer"

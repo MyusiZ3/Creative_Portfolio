@@ -69,24 +69,24 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, onUnmounted } from 'vue';
-import { useTheme } from '@/composables/useTheme';
+import { ref, reactive, onMounted, onUnmounted } from 'vue'
+import { useTheme } from '@/composables/useTheme'
 
-const { currentTheme } = useTheme();
-const isPointerFine = ref(false);
-const mouse = reactive({ x: -100, y: -100 });
-const dotScale = ref(1);
-const dotOpacity = ref(0);
+const { currentTheme } = useTheme()
+const isPointerFine = ref(false)
+const mouse = reactive({ x: -100, y: -100 })
+const dotScale = ref(1)
+const dotOpacity = ref(0)
 
-const ripples = ref([]);
-let rippleId = 0;
+const ripples = ref([])
+let rippleId = 0
 
 // 3 trailing ring circles with different spring speeds
 const circleConfig = [
-  { stiffness: 0.005, damping: 0.88 },  // large, slowest — very lazy
-  { stiffness: 0.015, damping: 0.87 },  // medium
-  { stiffness: 0.025,  damping: 0.86 },  // small, faster but still smooth
-];
+  { stiffness: 0.005, damping: 0.88 }, // large, slowest — very lazy
+  { stiffness: 0.015, damping: 0.87 }, // medium
+  { stiffness: 0.025, damping: 0.86 }, // small, faster but still smooth
+]
 
 const circles = reactive(
   circleConfig.map((cfg) => ({
@@ -98,42 +98,46 @@ const circles = reactive(
     damping: cfg.damping,
     scale: 1,
     opacity: 0,
-  }))
-);
+  })),
+)
 
-let animFrame = null;
+let animFrame = null
 
 const onMouseMove = (e) => {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
-  dotOpacity.value = 1;
-  circles.forEach((c) => { c.opacity = 1; });
-};
+  mouse.x = e.clientX
+  mouse.y = e.clientY
+  dotOpacity.value = 1
+  circles.forEach((c) => {
+    c.opacity = 1
+  })
+}
 
 const onMouseDown = () => {
   // Squeeze dot
-  dotScale.value = 0.5;
+  dotScale.value = 0.5
 
   // Scale burst on rings
-  circles[0].scale = 1.5;
-  circles[1].scale = 1.4;
-  circles[2].scale = 1.3;
+  circles[0].scale = 1.5
+  circles[1].scale = 1.4
+  circles[2].scale = 1.3
 
   // Spawn a ripple ring
-  spawnRipple(mouse.x, mouse.y);
-};
+  spawnRipple(mouse.x, mouse.y)
+}
 
 const onMouseUp = () => {
-  dotScale.value = 1;
-};
+  dotScale.value = 1
+}
 
 const onMouseLeave = () => {
-  dotOpacity.value = 0;
-  circles.forEach((c) => { c.opacity = 0; });
-};
+  dotOpacity.value = 0
+  circles.forEach((c) => {
+    c.opacity = 0
+  })
+}
 
 const spawnRipple = (cx, cy) => {
-  const id = rippleId++;
+  const id = rippleId++
   const r = {
     id,
     style: {
@@ -146,13 +150,13 @@ const spawnRipple = (cx, cy) => {
       transform: 'translate(-50%, -50%) scale(1)',
       transition: 'none',
     },
-  };
-  ripples.value.push(r);
+  }
+  ripples.value.push(r)
 
   // Animate outward
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
-      const found = ripples.value.find((p) => p.id === id);
+      const found = ripples.value.find((p) => p.id === id)
       if (found) {
         found.style = {
           ...found.style,
@@ -161,55 +165,55 @@ const spawnRipple = (cx, cy) => {
           opacity: 0,
           transform: 'translate(-50%, -50%) scale(1)',
           transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
-        };
+        }
       }
-    });
-  });
+    })
+  })
 
   setTimeout(() => {
-    ripples.value = ripples.value.filter((p) => p.id !== id);
-  }, 600);
-};
+    ripples.value = ripples.value.filter((p) => p.id !== id)
+  }, 600)
+}
 
 const animate = () => {
   circles.forEach((circle) => {
-    const dx = mouse.x - circle.x;
-    const dy = mouse.y - circle.y;
-    circle.vx += dx * circle.stiffness;
-    circle.vy += dy * circle.stiffness;
-    circle.vx *= circle.damping;
-    circle.vy *= circle.damping;
-    circle.x += circle.vx;
-    circle.y += circle.vy;
+    const dx = mouse.x - circle.x
+    const dy = mouse.y - circle.y
+    circle.vx += dx * circle.stiffness
+    circle.vy += dy * circle.stiffness
+    circle.vx *= circle.damping
+    circle.vy *= circle.damping
+    circle.x += circle.vx
+    circle.y += circle.vy
 
     // Return scale to 1
     if (circle.scale !== 1) {
-      circle.scale += (1 - circle.scale) * 0.1;
-      if (Math.abs(circle.scale - 1) < 0.01) circle.scale = 1;
+      circle.scale += (1 - circle.scale) * 0.1
+      if (Math.abs(circle.scale - 1) < 0.01) circle.scale = 1
     }
-  });
+  })
 
-  animFrame = requestAnimationFrame(animate);
-};
+  animFrame = requestAnimationFrame(animate)
+}
 
 onMounted(() => {
   if (window.matchMedia('(pointer: fine)').matches) {
-    isPointerFine.value = true;
-    window.addEventListener('mousemove', onMouseMove, { passive: true });
-    window.addEventListener('mousedown', onMouseDown);
-    window.addEventListener('mouseup', onMouseUp);
-    document.documentElement.addEventListener('mouseleave', onMouseLeave);
-    animFrame = requestAnimationFrame(animate);
+    isPointerFine.value = true
+    window.addEventListener('mousemove', onMouseMove, { passive: true })
+    window.addEventListener('mousedown', onMouseDown)
+    window.addEventListener('mouseup', onMouseUp)
+    document.documentElement.addEventListener('mouseleave', onMouseLeave)
+    animFrame = requestAnimationFrame(animate)
   }
-});
+})
 
 onUnmounted(() => {
-  window.removeEventListener('mousemove', onMouseMove);
-  window.removeEventListener('mousedown', onMouseDown);
-  window.removeEventListener('mouseup', onMouseUp);
-  document.documentElement.removeEventListener('mouseleave', onMouseLeave);
-  if (animFrame) cancelAnimationFrame(animFrame);
-});
+  window.removeEventListener('mousemove', onMouseMove)
+  window.removeEventListener('mousedown', onMouseDown)
+  window.removeEventListener('mouseup', onMouseUp)
+  document.documentElement.removeEventListener('mouseleave', onMouseLeave)
+  if (animFrame) cancelAnimationFrame(animFrame)
+})
 </script>
 
 <style scoped>
@@ -229,7 +233,10 @@ onUnmounted(() => {
   pointer-events: none;
   will-change: transform, opacity;
   backface-visibility: hidden;
-  transition: opacity 0.3s ease, border-radius 0.3s ease, border-color 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    border-radius 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .cursor-dot {
@@ -241,7 +248,11 @@ onUnmounted(() => {
   pointer-events: none;
   will-change: transform, opacity;
   backface-visibility: hidden;
-  transition: transform 0.15s ease, opacity 0.3s ease, background-color 0.3s ease, border-radius 0.3s ease;
+  transition:
+    transform 0.15s ease,
+    opacity 0.3s ease,
+    background-color 0.3s ease,
+    border-radius 0.3s ease;
 }
 
 .click-ripple {

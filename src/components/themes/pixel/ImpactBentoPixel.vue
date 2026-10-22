@@ -1,7 +1,5 @@
 <template>
-  <section
-    class="py-16 bg-[#0d1117] text-[#f0f6fc] font-mono border-t-4 border-black relative"
-  >
+  <section class="py-16 bg-[#0d1117] text-[#f0f6fc] font-mono border-t-4 border-black relative">
     <div class="max-w-6xl mx-auto px-4">
       <!-- Section Title Marquee -->
       <div
@@ -56,14 +54,8 @@
             >
               10+
             </div>
-            <div
-              class="text-xs font-extrabold uppercase tracking-wide opacity-90 font-mono"
-            >
-              {{
-                isId
-                  ? "Proyek & Gim Diberdayakan"
-                  : "Projects & Games Delivered"
-              }}
+            <div class="text-xs font-extrabold uppercase tracking-wide opacity-90 font-mono">
+              {{ isId ? 'Proyek & Gim Diberdayakan' : 'Projects & Games Delivered' }}
             </div>
           </div>
         </div>
@@ -94,12 +86,8 @@
             >
               3+YRS
             </div>
-            <div
-              class="text-xs font-extrabold uppercase tracking-wide opacity-90 font-mono"
-            >
-              {{
-                isId ? "Pengalaman Desain & Dev" : "Years Multimedia & Dev Exp."
-              }}
+            <div class="text-xs font-extrabold uppercase tracking-wide opacity-90 font-mono">
+              {{ isId ? 'Pengalaman Desain & Dev' : 'Years Multimedia & Dev Exp.' }}
             </div>
           </div>
         </div>
@@ -130,14 +118,8 @@
             >
               100+
             </div>
-            <div
-              class="text-xs font-extrabold uppercase tracking-wide opacity-90 font-mono"
-            >
-              {{
-                isId
-                  ? "Mahasiswa Diajar (5 Mata Kuliah)"
-                  : "Students Mentored (5 Lab Courses)"
-              }}
+            <div class="text-xs font-extrabold uppercase tracking-wide opacity-90 font-mono">
+              {{ isId ? 'Mahasiswa Diajar (5 Mata Kuliah)' : 'Students Mentored (5 Lab Courses)' }}
             </div>
           </div>
         </div>
@@ -188,10 +170,7 @@
           >
             <div>
               <!-- Gradient Bar Indicator -->
-              <div
-                class="h-2 w-full mb-4 rounded-none"
-                :class="q.gradient"
-              ></div>
+              <div class="h-2 w-full mb-4 rounded-none" :class="q.gradient"></div>
 
               <div class="text-[10px] font-bold text-[#ffd700] uppercase mb-1">
                 {{ q.quarter }} • {{ q.months }}
@@ -218,74 +197,72 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
-import { useLanguage } from "@/composables/useLanguage";
-import { usePixelAudio } from "@/composables/usePixelAudio";
+import { ref, computed } from 'vue'
+import { useLanguage } from '@/composables/useLanguage'
+import { usePixelAudio } from '@/composables/usePixelAudio'
 
-const { lang } = useLanguage();
-const { playBlipSfx } = usePixelAudio();
-const isId = computed(() => lang.value === "ID");
+const { lang } = useLanguage()
+const { playBlipSfx } = usePixelAudio()
+const isId = computed(() => lang.value === 'ID')
 
-const activeQuarter = ref(0);
+const activeQuarter = ref(0)
 
 const selectQuarter = (quarterIdx) => {
-  playBlipSfx();
-  activeQuarter.value = quarterIdx;
-};
+  playBlipSfx()
+  activeQuarter.value = quarterIdx
+}
 
 const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+]
 
 const quarters = computed(() => [
   {
-    quarter: "QUARTER 1",
-    months: "JAN - MAR",
-    title: isId.value ? "Opened 2 New Labs" : "Opened 2 New Labs",
+    quarter: 'QUARTER 1',
+    months: 'JAN - MAR',
+    title: isId.value ? 'Opened 2 New Labs' : 'Opened 2 New Labs',
     desc: isId.value
-      ? "Inisiasi lab gim VR & pengoptimalan framerate untuk MindEscape VR Chamber."
-      : "Initiated VR lab testing & framerate optimization for MindEscape VR Chamber.",
-    gradient: "bg-gradient-to-r from-purple-500 to-pink-500",
+      ? 'Inisiasi lab gim VR & pengoptimalan framerate untuk MindEscape VR Chamber.'
+      : 'Initiated VR lab testing & framerate optimization for MindEscape VR Chamber.',
+    gradient: 'bg-gradient-to-r from-purple-500 to-pink-500',
   },
   {
-    quarter: "QUARTER 2",
-    months: "APR - JUN",
-    title: isId.value ? "Partnership & U-Asprak" : "Partnership & U-Asprak",
+    quarter: 'QUARTER 2',
+    months: 'APR - JUN',
+    title: isId.value ? 'Partnership & U-Asprak' : 'Partnership & U-Asprak',
     desc: isId.value
-      ? "Peluncuran sistem manajemen asisten praktikum U-Asprak & kolaborasi akademis."
-      : "Launched U-Asprak lab assistant system & academic integration platform.",
-    gradient: "bg-gradient-to-r from-[#ffd700] to-orange-500",
+      ? 'Peluncuran sistem manajemen asisten praktikum U-Asprak & kolaborasi akademis.'
+      : 'Launched U-Asprak lab assistant system & academic integration platform.',
+    gradient: 'bg-gradient-to-r from-[#ffd700] to-orange-500',
   },
   {
-    quarter: "QUARTER 3",
-    months: "JUL - SEP",
-    title: isId.value
-      ? "Product Launch 'Luxion 3.0'"
-      : "Product Launch 'Luxion 3.0'",
+    quarter: 'QUARTER 3',
+    months: 'JUL - SEP',
+    title: isId.value ? "Product Launch 'Luxion 3.0'" : "Product Launch 'Luxion 3.0'",
     desc: isId.value
-      ? "Rilis publik gim arkade Luxion RideXP dan MathRift 2D platformer."
-      : "Public release of Luxion RideXP arcade game & MathRift 2D platformer.",
-    gradient: "bg-gradient-to-r from-[#00ff66] to-[#00f0ff]",
+      ? 'Rilis publik gim arkade Luxion RideXP dan MathRift 2D platformer.'
+      : 'Public release of Luxion RideXP arcade game & MathRift 2D platformer.',
+    gradient: 'bg-gradient-to-r from-[#00ff66] to-[#00f0ff]',
   },
   {
-    quarter: "QUARTER 4",
-    months: "OCT - DEC",
-    title: isId.value ? "Won 3 Industry Awards" : "Won 3 Industry Awards",
+    quarter: 'QUARTER 4',
+    months: 'OCT - DEC',
+    title: isId.value ? 'Won 3 Industry Awards' : 'Won 3 Industry Awards',
     desc: isId.value
-      ? "Meraih 3 penghargaan industri & pengajuan Hak Cipta (HKI) publikasi."
-      : "Won 3 industry design awards & finalized HKI copyright submissions.",
-    gradient: "bg-gradient-to-r from-cyan-500 to-blue-600",
+      ? 'Meraih 3 penghargaan industri & pengajuan Hak Cipta (HKI) publikasi.'
+      : 'Won 3 industry design awards & finalized HKI copyright submissions.',
+    gradient: 'bg-gradient-to-r from-cyan-500 to-blue-600',
   },
-]);
+])
 </script>

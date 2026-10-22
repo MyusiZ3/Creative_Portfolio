@@ -1,48 +1,48 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted } from 'vue'
 
-import ThemeToggle from "@/components/ThemeToggle.vue";
-import { useLanguage } from "@/composables/useLanguage";
-import { useTheme } from "@/composables/useTheme";
+import ThemeToggle from '@/components/ThemeToggle.vue'
+import { useLanguage } from '@/composables/useLanguage'
+import { useTheme } from '@/composables/useTheme'
 
-const isMenuOpen = ref(false);
-const navReady = ref(false);
+const isMenuOpen = ref(false)
+const navReady = ref(false)
 
-const emit = defineEmits(["navigate", "toggle-lang", "show-notification", "toggle-theme"]);
+const emit = defineEmits(['navigate', 'toggle-lang', 'show-notification', 'toggle-theme'])
 
-const { lang, toggleLanguage, t } = useLanguage();
-const { currentTheme } = useTheme();
+const { lang, toggleLanguage, t } = useLanguage()
+const { currentTheme } = useTheme()
 
 const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value;
-};
+  isMenuOpen.value = !isMenuOpen.value
+}
 
 const handleNav = (target, label, event) => {
-  event.preventDefault();
-  isMenuOpen.value = false;
-  emit("navigate", { target, label });
-};
+  event.preventDefault()
+  isMenuOpen.value = false
+  emit('navigate', { target, label })
+}
 
 const handleToggleLang = () => {
-  isMenuOpen.value = false;
-  emit("toggle-lang");
-};
+  isMenuOpen.value = false
+  emit('toggle-lang')
+}
 
 const handleMobileNotification = () => {
-  isMenuOpen.value = false;
-  emit("show-notification");
-};
+  isMenuOpen.value = false
+  emit('show-notification')
+}
 
 const handleToggleTheme = (newTheme) => {
-  emit("toggle-theme", newTheme);
-};
+  emit('toggle-theme', newTheme)
+}
 
 onMounted(() => {
   // Small delay to trigger the morph entrance
   requestAnimationFrame(() => {
-    navReady.value = true;
-  });
-});
+    navReady.value = true
+  })
+})
 </script>
 
 <template>
@@ -70,9 +70,16 @@ onMounted(() => {
     <div v-if="currentTheme === 'pixel'" class="pixel-bottom-border"></div>
 
     <!-- Right-side Custom Slant Accent -->
-    <div class="navbar-accent-shape hidden lg:block overflow-hidden" :class="{ 'opacity-0': currentTheme === 'pixel' }">
+    <div
+      class="navbar-accent-shape hidden lg:block overflow-hidden"
+      :class="{ 'opacity-0': currentTheme === 'pixel' }"
+    >
       <!-- Background pattern -->
-      <img src="/images/accents/accent_3.webp" alt="" class="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none grayscale blur-[1px]" />
+      <img
+        src="/images/accents/accent_3.webp"
+        alt=""
+        class="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none grayscale blur-[1px]"
+      />
     </div>
 
     <!-- Content layer -->
@@ -103,7 +110,11 @@ onMounted(() => {
           href="#"
           @click="handleNav('', t('nav_home'), $event)"
           class="nav-item nav-link text-white font-bold text-[11px] lg:text-[12px] xl:text-[15px] transition-colors"
-          :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
+          :class="
+            currentTheme === 'pixel'
+              ? 'hover:text-[#00ff66] font-silkscreen'
+              : 'hover:text-violet-500 font-[\'Roboto\']'
+          "
           style="--delay: 1"
           >{{ t('nav_home') }}</a
         >
@@ -111,7 +122,11 @@ onMounted(() => {
           href="#about"
           @click="handleNav('about', t('nav_about'), $event)"
           class="nav-item nav-link text-white font-bold text-[11px] lg:text-[12px] xl:text-[15px] transition-colors"
-          :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
+          :class="
+            currentTheme === 'pixel'
+              ? 'hover:text-[#00ff66] font-silkscreen'
+              : 'hover:text-violet-500 font-[\'Roboto\']'
+          "
           style="--delay: 2"
           >{{ t('nav_about') }}</a
         >
@@ -119,15 +134,29 @@ onMounted(() => {
           href="#experience"
           @click="handleNav('experience', t('nav_experience'), $event)"
           class="nav-item nav-link text-white font-bold text-[11px] lg:text-[12px] xl:text-[15px] transition-colors"
-          :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
+          :class="
+            currentTheme === 'pixel'
+              ? 'hover:text-[#00ff66] font-silkscreen'
+              : 'hover:text-violet-500 font-[\'Roboto\']'
+          "
           style="--delay: 4"
           >{{ t('nav_experience') }}</a
         >
         <a
           :href="currentTheme === 'pixel' ? '#projects' : '#my-projects'"
-          @click="handleNav(currentTheme === 'pixel' ? 'projects' : 'my-projects', t('nav_projects'), $event)"
+          @click="
+            handleNav(
+              currentTheme === 'pixel' ? 'projects' : 'my-projects',
+              t('nav_projects'),
+              $event,
+            )
+          "
           class="nav-item nav-link text-white font-bold text-[11px] lg:text-[12px] xl:text-[15px] transition-colors"
-          :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
+          :class="
+            currentTheme === 'pixel'
+              ? 'hover:text-[#00ff66] font-silkscreen'
+              : 'hover:text-violet-500 font-[\'Roboto\']'
+          "
           style="--delay: 5"
           >{{ t('nav_projects') }}</a
         >
@@ -135,7 +164,11 @@ onMounted(() => {
           href="#contact"
           @click="handleNav('contact', t('nav_contact'), $event)"
           class="nav-item nav-link text-white font-bold text-[11px] lg:text-[12px] xl:text-[15px] transition-colors"
-          :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] font-silkscreen' : 'hover:text-violet-500 font-[\'Roboto\']'"
+          :class="
+            currentTheme === 'pixel'
+              ? 'hover:text-[#00ff66] font-silkscreen'
+              : 'hover:text-violet-500 font-[\'Roboto\']'
+          "
           style="--delay: 7"
           >{{ t('nav_contact') }}</a
         >
@@ -150,7 +183,9 @@ onMounted(() => {
 
           <button
             @click="handleToggleLang"
-            :aria-label="lang === 'EN' ? 'Switch language to Indonesian' : 'Switch language to English'"
+            :aria-label="
+              lang === 'EN' ? 'Switch language to Indonesian' : 'Switch language to English'
+            "
             class="nav-item w-8 h-8 flex items-center justify-center font-bold text-[11px] lg:text-[12px] xl:text-[15px] transition"
             :class="
               currentTheme === 'pixel'
@@ -161,7 +196,7 @@ onMounted(() => {
           >
             {{ lang === 'EN' ? 'EN' : 'ID' }}
           </button>
-          
+
           <button
             @click="$emit('show-notification')"
             aria-label="Open notifications"
@@ -175,8 +210,18 @@ onMounted(() => {
           >
             <i class="bi bi-bell-fill text-sm" aria-hidden="true"></i>
             <span class="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-              <span class="animate-ping absolute inline-flex h-full w-full opacity-75" :class="currentTheme === 'pixel' ? 'bg-[#00ff66]' : 'rounded-full bg-red-400'"></span>
-              <span class="relative inline-flex h-2.5 w-2.5" :class="currentTheme === 'pixel' ? 'bg-[#00ff66] border border-black shadow-[1px_1px_0px_#000]' : 'rounded-full bg-red-500 border border-[#171717]'"></span>
+              <span
+                class="animate-ping absolute inline-flex h-full w-full opacity-75"
+                :class="currentTheme === 'pixel' ? 'bg-[#00ff66]' : 'rounded-full bg-red-400'"
+              ></span>
+              <span
+                class="relative inline-flex h-2.5 w-2.5"
+                :class="
+                  currentTheme === 'pixel'
+                    ? 'bg-[#00ff66] border border-black shadow-[1px_1px_0px_#000]'
+                    : 'rounded-full bg-red-500 border border-[#171717]'
+                "
+              ></span>
             </span>
           </button>
         </div>
@@ -211,8 +256,11 @@ onMounted(() => {
         class="lg:hidden fixed top-0 right-0 bottom-0 w-[290px] sm:w-[320px] max-w-[85vw] h-full z-[9999] transition-all duration-300 ease-out flex flex-col justify-between p-6 border-l"
         :class="[
           isMenuOpen
-            ? 'translate-x-0 opacity-100 pointer-events-auto ' + (currentTheme === 'pixel' ? 'bg-[#0d1117] border-[#00ff66]/60 shadow-[-10px_0_30px_rgba(0,0,0,0.8)]' : 'bg-[#171717] border-white/10 shadow-[-10px_0_30px_rgba(0,0,0,0.8)]')
-            : 'translate-x-full opacity-0 pointer-events-none shadow-none border-transparent'
+            ? 'translate-x-0 opacity-100 pointer-events-auto ' +
+              (currentTheme === 'pixel'
+                ? 'bg-[#0d1117] border-[#00ff66]/60 shadow-[-10px_0_30px_rgba(0,0,0,0.8)]'
+                : 'bg-[#171717] border-white/10 shadow-[-10px_0_30px_rgba(0,0,0,0.8)]')
+            : 'translate-x-full opacity-0 pointer-events-none shadow-none border-transparent',
         ]"
       >
         <!-- Drawer Header -->
@@ -229,7 +277,11 @@ onMounted(() => {
             @click="isMenuOpen = false"
             aria-label="Close menu"
             class="p-2 transition-colors rounded-xl"
-            :class="currentTheme === 'pixel' ? 'text-[#00ff66] hover:bg-[#00ff66]/20 rounded-none' : 'text-zinc-400 hover:text-white hover:bg-white/10'"
+            :class="
+              currentTheme === 'pixel'
+                ? 'text-[#00ff66] hover:bg-[#00ff66]/20 rounded-none'
+                : 'text-zinc-400 hover:text-white hover:bg-white/10'
+            "
           >
             <i class="bi bi-x-lg text-lg"></i>
           </button>
@@ -241,46 +293,82 @@ onMounted(() => {
             href="#"
             @click="handleNav('', t('nav_home'), $event)"
             class="text-sm sm:text-base font-bold transition flex items-center justify-between py-3 px-3 rounded-xl border-b border-white/5 group"
-            :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] hover:bg-[#00ff66]/10 font-silkscreen text-white' : 'hover:text-violet-400 hover:bg-white/5 font-[\'Poppins\'] text-zinc-100'"
+            :class="
+              currentTheme === 'pixel'
+                ? 'hover:text-[#00ff66] hover:bg-[#00ff66]/10 font-silkscreen text-white'
+                : 'hover:text-violet-400 hover:bg-white/5 font-[\'Poppins\'] text-zinc-100'
+            "
           >
             <span>{{ t('nav_home') }}</span>
-            <i class="bi bi-arrow-right text-xs opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+            <i
+              class="bi bi-arrow-right text-xs opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all"
+            ></i>
           </a>
           <a
             href="#about"
             @click="handleNav('about', t('nav_about'), $event)"
             class="text-sm sm:text-base font-bold transition flex items-center justify-between py-3 px-3 rounded-xl border-b border-white/5 group"
-            :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] hover:bg-[#00ff66]/10 font-silkscreen text-white' : 'hover:text-violet-400 hover:bg-white/5 font-[\'Poppins\'] text-zinc-100'"
+            :class="
+              currentTheme === 'pixel'
+                ? 'hover:text-[#00ff66] hover:bg-[#00ff66]/10 font-silkscreen text-white'
+                : 'hover:text-violet-400 hover:bg-white/5 font-[\'Poppins\'] text-zinc-100'
+            "
           >
             <span>{{ t('nav_about') }}</span>
-            <i class="bi bi-arrow-right text-xs opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+            <i
+              class="bi bi-arrow-right text-xs opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all"
+            ></i>
           </a>
           <a
             href="#experience"
             @click="handleNav('experience', t('nav_experience'), $event)"
             class="text-sm sm:text-base font-bold transition flex items-center justify-between py-3 px-3 rounded-xl border-b border-white/5 group"
-            :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] hover:bg-[#00ff66]/10 font-silkscreen text-white' : 'hover:text-violet-400 hover:bg-white/5 font-[\'Poppins\'] text-zinc-100'"
+            :class="
+              currentTheme === 'pixel'
+                ? 'hover:text-[#00ff66] hover:bg-[#00ff66]/10 font-silkscreen text-white'
+                : 'hover:text-violet-400 hover:bg-white/5 font-[\'Poppins\'] text-zinc-100'
+            "
           >
             <span>{{ t('nav_experience') }}</span>
-            <i class="bi bi-arrow-right text-xs opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+            <i
+              class="bi bi-arrow-right text-xs opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all"
+            ></i>
           </a>
           <a
             :href="currentTheme === 'pixel' ? '#projects' : '#my-projects'"
-            @click="handleNav(currentTheme === 'pixel' ? 'projects' : 'my-projects', t('nav_projects'), $event)"
+            @click="
+              handleNav(
+                currentTheme === 'pixel' ? 'projects' : 'my-projects',
+                t('nav_projects'),
+                $event,
+              )
+            "
             class="text-sm sm:text-base font-bold transition flex items-center justify-between py-3 px-3 rounded-xl border-b border-white/5 group"
-            :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] hover:bg-[#00ff66]/10 font-silkscreen text-white' : 'hover:text-violet-400 hover:bg-white/5 font-[\'Poppins\'] text-zinc-100'"
+            :class="
+              currentTheme === 'pixel'
+                ? 'hover:text-[#00ff66] hover:bg-[#00ff66]/10 font-silkscreen text-white'
+                : 'hover:text-violet-400 hover:bg-white/5 font-[\'Poppins\'] text-zinc-100'
+            "
           >
             <span>{{ t('nav_projects') }}</span>
-            <i class="bi bi-arrow-right text-xs opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+            <i
+              class="bi bi-arrow-right text-xs opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all"
+            ></i>
           </a>
           <a
             href="#contact"
             @click="handleNav('contact', t('nav_contact'), $event)"
             class="text-sm sm:text-base font-bold transition flex items-center justify-between py-3 px-3 rounded-xl border-b border-white/5 group"
-            :class="currentTheme === 'pixel' ? 'hover:text-[#00ff66] hover:bg-[#00ff66]/10 font-silkscreen text-white' : 'hover:text-violet-400 hover:bg-white/5 font-[\'Poppins\'] text-zinc-100'"
+            :class="
+              currentTheme === 'pixel'
+                ? 'hover:text-[#00ff66] hover:bg-[#00ff66]/10 font-silkscreen text-white'
+                : 'hover:text-violet-400 hover:bg-white/5 font-[\'Poppins\'] text-zinc-100'
+            "
           >
             <span>{{ t('nav_contact') }}</span>
-            <i class="bi bi-arrow-right text-xs opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+            <i
+              class="bi bi-arrow-right text-xs opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all"
+            ></i>
           </a>
         </div>
 
@@ -315,8 +403,18 @@ onMounted(() => {
             >
               <i class="bi bi-bell-fill text-sm"></i>
               <span class="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-                <span class="animate-ping absolute inline-flex h-full w-full opacity-75" :class="currentTheme === 'pixel' ? 'bg-[#00ff66]' : 'rounded-full bg-red-400'"></span>
-                <span class="relative inline-flex h-2.5 w-2.5" :class="currentTheme === 'pixel' ? 'bg-[#00ff66] border border-black shadow-[1px_1px_0px_#000]' : 'rounded-full bg-red-500 border border-[#171717]'"></span>
+                <span
+                  class="animate-ping absolute inline-flex h-full w-full opacity-75"
+                  :class="currentTheme === 'pixel' ? 'bg-[#00ff66]' : 'rounded-full bg-red-400'"
+                ></span>
+                <span
+                  class="relative inline-flex h-2.5 w-2.5"
+                  :class="
+                    currentTheme === 'pixel'
+                      ? 'bg-[#00ff66] border border-black shadow-[1px_1px_0px_#000]'
+                      : 'rounded-full bg-red-500 border border-[#171717]'
+                  "
+                ></span>
               </span>
             </button>
           </div>
@@ -371,7 +469,7 @@ onMounted(() => {
 .navbar-accent-shape {
   --shape-width: 420px;
   --shape-height: 90px;
-  --shape-right: 0px; 
+  --shape-right: 0px;
   --shape-top-offset: 1%; /* Connect seamlessly to the bottom of the nav */
   --slant-start-point: 25%; /* Left starting point of the bottom slant (25% = steep curve rightwards) */
   /* --shape-width: 820px;
@@ -382,7 +480,7 @@ onMounted(() => {
 
   position: absolute;
   right: var(--shape-right);
-  top: var(--shape-top-offset); 
+  top: var(--shape-top-offset);
   width: var(--shape-width);
   height: var(--shape-height);
   background: #171717;
@@ -392,7 +490,7 @@ onMounted(() => {
   /* Polygon structure: top-left (0,0), top-right (100%,0), bot-right (100%,100%), bot-left (starts at start-point) */
   clip-path: polygon(0 0, 100% 0, 100% 0, var(--slant-start-point) 0);
   transition: clip-path 0.7s cubic-bezier(0.65, 0, 0.35, 1);
-  transition-delay: 0.1s; 
+  transition-delay: 0.1s;
 }
 
 .nav-entered .navbar-accent-shape {
@@ -424,7 +522,7 @@ onMounted(() => {
 }
 
 .nav-link::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -4px;
   left: 50%;

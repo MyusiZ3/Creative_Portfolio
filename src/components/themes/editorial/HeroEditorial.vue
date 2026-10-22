@@ -25,7 +25,7 @@
             <span
               class="text-transparent inline-block"
               style="-webkit-text-stroke: 1.8px #ffffff"
-              >{{ t("hero_designer") }}</span
+              >{{ t('hero_designer') }}</span
             >
           </h1>
           <p
@@ -38,19 +38,15 @@
             }"
             class="text-white text-xs sm:text-base xl:text-[16px] max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:w-140 xl:ml-2 text-left sm:text-justify font-['Roboto'] leading-relaxed"
           >
-            <span class="hidden sm:inline">{{ t("hero_desc") }}</span>
+            <span class="hidden sm:inline">{{ t('hero_desc') }}</span>
             <span class="sm:hidden">
-              {{
-                isShowMore
-                  ? t("hero_desc")
-                  : t("hero_desc").slice(0, 85) + "..."
-              }}
+              {{ isShowMore ? t('hero_desc') : t('hero_desc').slice(0, 85) + '...' }}
             </span>
             <button
               @click="isShowMore = !isShowMore"
               class="sm:hidden inline-flex items-center gap-1 ml-1.5 text-xs font-semibold text-violet-400 underline hover:text-violet-300 transition pointer-events-auto"
             >
-              <span>{{ isShowMore ? t("show_less") : t("show_more") }}</span>
+              <span>{{ isShowMore ? t('show_less') : t('show_more') }}</span>
               <i
                 :class="isShowMore ? 'bi bi-chevron-up' : 'bi bi-chevron-down'"
                 class="text-[10px]"
@@ -71,16 +67,14 @@
               @click="scrollToContact"
               class="bg-violet-500 text-white rounded-full hover:bg-violet-600 transition text-lg xl:text-2xl font-medium px-6 py-3 xl:px-8 xl:py-4 pointer-events-auto"
             >
-              {{ t("hero_contact") }} <i class="bi bi-arrow-right"></i>
+              {{ t('hero_contact') }} <i class="bi bi-arrow-right"></i>
             </button>
           </div>
         </div>
       </div>
     </section>
     <!-- Hero Image Composition -->
-    <div
-      class="relative w-full mt-1 lg:-mt-20 xl:-mt-60 z-30 pointer-events-none mb-8 sm:mb-0"
-    >
+    <div class="relative w-full mt-1 lg:-mt-20 xl:-mt-60 z-30 pointer-events-none mb-8 sm:mb-0">
       <div class="flex justify-end">
         <div class="relative w-[95%] lg:w-[78%] -mt-5 lg:-mt-20 xl:-mt-28">
           <!-- Main Hero Photo -->
@@ -230,7 +224,7 @@
             <h2
               class="text-4xl lg:text-[48px] font-bold font-['Poppins'] text-violet-500 mb-4 lg:mb-6"
             >
-              {{ t("about_title") }}
+              {{ t('about_title') }}
             </h2>
             <h3
               class="text-2xl lg:text-[28px] font-medium font-['Poppins'] text-[#FBDF3A] mb-4 lg:mb-6"
@@ -249,13 +243,13 @@
               class="text-white space-y-4 text-sm lg:text-[16px] text-justify leading-relaxed font-['Roboto'] font-regular"
             >
               <p>
-                {{ t("about_intro_1") }}
+                {{ t('about_intro_1') }}
               </p>
               <p>
-                {{ t("about_intro_2") }}
+                {{ t('about_intro_2') }}
               </p>
               <p>
-                {{ t("about_intro_3") }}
+                {{ t('about_intro_3') }}
               </p>
             </div>
           </div>
@@ -272,7 +266,7 @@
             <h3
               class="text-2xl lg:text-[28px] font-bold font-['Poppins'] text-violet-500 mb-4 lg:mb-6"
             >
-              {{ t("education_title") }}
+              {{ t('education_title') }}
             </h3>
             <ul class="space-y-4 lg:space-y-6">
               <li
@@ -285,24 +279,16 @@
                 }"
                 class="flex gap-4"
               >
-                <span class="text-white mt-1.5"
-                  ><i class="bi bi-circle-fill text-[8px]"></i>
-                </span>
+                <span class="text-white mt-1.5"><i class="bi bi-circle-fill text-[8px]"></i> </span>
                 <div>
-                  <h4
-                    class="text-white text-sm lg:text-[18px] font-['Roboto'] font-extrabold"
-                  >
+                  <h4 class="text-white text-sm lg:text-[18px] font-['Roboto'] font-extrabold">
                     Telkom University
                   </h4>
-                  <p
-                    class="text-white text-sm lg:text-[16px] font-['Roboto'] font-regular"
-                  >
-                    {{ t("edu_1_desc") }}
+                  <p class="text-white text-sm lg:text-[16px] font-['Roboto'] font-regular">
+                    {{ t('edu_1_desc') }}
                   </p>
-                  <p
-                    class="text-white italic text-sm font-['Roboto'] font-light"
-                  >
-                    {{ t("edu_1_detail") }}
+                  <p class="text-white italic text-sm font-['Roboto'] font-light">
+                    {{ t('edu_1_detail') }}
                   </p>
                 </div>
               </li>
@@ -316,24 +302,16 @@
                 }"
                 class="flex gap-4"
               >
-                <span class="text-white mt-1.5"
-                  ><i class="bi bi-circle-fill text-[8px]"></i>
-                </span>
+                <span class="text-white mt-1.5"><i class="bi bi-circle-fill text-[8px]"></i> </span>
                 <div>
-                  <h4
-                    class="text-white text-sm lg:text-[18px] font-['Roboto'] font-extrabold"
-                  >
+                  <h4 class="text-white text-sm lg:text-[18px] font-['Roboto'] font-extrabold">
                     SMKN 1 Belitang III
                   </h4>
-                  <p
-                    class="text-white text-sm lg:text-[16px] font-['Roboto'] font-regular"
-                  >
-                    {{ t("edu_2_desc") }}
+                  <p class="text-white text-sm lg:text-[16px] font-['Roboto'] font-regular">
+                    {{ t('edu_2_desc') }}
                   </p>
-                  <p
-                    class="text-white italic text-sm font-['Roboto'] font-light"
-                  >
-                    {{ t("edu_2_detail") }}
+                  <p class="text-white italic text-sm font-['Roboto'] font-light">
+                    {{ t('edu_2_detail') }}
                   </p>
                 </div>
               </li>
@@ -352,7 +330,7 @@
             <h3
               class="text-2xl lg:text-[28px] font-bold font-['Poppins'] text-violet-500 mb-4 lg:mb-6"
             >
-              {{ t("skills_title") }}
+              {{ t('skills_title') }}
             </h3>
             <ul class="space-y-4 lg:space-y-6">
               <li
@@ -365,19 +343,15 @@
                 }"
                 class="flex gap-4"
               >
-                <span class="text-white mt-1.5"
-                  ><i class="bi bi-circle-fill text-[8px]"></i>
-                </span>
+                <span class="text-white mt-1.5"><i class="bi bi-circle-fill text-[8px]"></i> </span>
                 <div>
-                  <h4
-                    class="text-white text-sm lg:text-[18px] font-['Roboto'] font-extrabold"
-                  >
-                    {{ t("skills_design_title") }}
+                  <h4 class="text-white text-sm lg:text-[18px] font-['Roboto'] font-extrabold">
+                    {{ t('skills_design_title') }}
                   </h4>
                   <p
                     class="text-white text-sm lg:text-[16px] leading-relaxed font-['Roboto'] font-regular"
                   >
-                    {{ t("skills_design_desc") }}
+                    {{ t('skills_design_desc') }}
                   </p>
                 </div>
               </li>
@@ -391,19 +365,15 @@
                 }"
                 class="flex gap-4"
               >
-                <span class="text-white mt-1.5"
-                  ><i class="bi bi-circle-fill text-[8px]"></i>
-                </span>
+                <span class="text-white mt-1.5"><i class="bi bi-circle-fill text-[8px]"></i> </span>
                 <div>
-                  <h4
-                    class="text-white text-sm lg:text-[18px] font-['Roboto'] font-extrabold"
-                  >
-                    {{ t("skills_tech_title") }}
+                  <h4 class="text-white text-sm lg:text-[18px] font-['Roboto'] font-extrabold">
+                    {{ t('skills_tech_title') }}
                   </h4>
                   <p
                     class="text-white text-sm lg:text-[16px] leading-relaxed font-['Roboto'] font-regular"
                   >
-                    {{ t("skills_tech_desc") }}
+                    {{ t('skills_tech_desc') }}
                   </p>
                 </div>
               </li>
@@ -417,19 +387,15 @@
                 }"
                 class="flex gap-4"
               >
-                <span class="text-white mt-1.5"
-                  ><i class="bi bi-circle-fill text-[8px]"></i>
-                </span>
+                <span class="text-white mt-1.5"><i class="bi bi-circle-fill text-[8px]"></i> </span>
                 <div>
-                  <h4
-                    class="text-white text-sm lg:text-[18px] font-['Roboto'] font-extrabold"
-                  >
-                    {{ t("skills_process_title") }}
+                  <h4 class="text-white text-sm lg:text-[18px] font-['Roboto'] font-extrabold">
+                    {{ t('skills_process_title') }}
                   </h4>
                   <p
                     class="text-white text-sm lg:text-[16px] leading-relaxed font-['Roboto'] font-regular"
                   >
-                    {{ t("skills_process_desc") }}
+                    {{ t('skills_process_desc') }}
                   </p>
                 </div>
               </li>
@@ -437,9 +403,7 @@
           </div>
         </div>
 
-        <div
-          class="col-span-1 lg:col-span-3 space-y-12 lg:space-y-16 lg:pl-0 xl:pl-10"
-        >
+        <div class="col-span-1 lg:col-span-3 space-y-12 lg:space-y-16 lg:pl-0 xl:pl-10">
           <div class="flex flex-row gap-8 lg:gap-10 xl:gap-20">
             <div
               v-motion
@@ -451,20 +415,10 @@
               }"
               class="flex flex-col items-start w-1/2 lg:w-auto"
             >
-              <img
-                src="/images/accents/ceklis.webp"
-                alt="check"
-                class="w-10 lg:w-12 mb-5"
-              />
-              <h4
-                class="text-4xl lg:text-[48px] font-bold font-['Poppins'] text-[#FBDF3A]"
-              >
-                03+
-              </h4>
-              <p
-                class="text-white text-[14px] lg:text-[16px] font-['Roboto'] font-regular"
-              >
-                {{ t("stat_years") }}
+              <img src="/images/accents/ceklis.webp" alt="check" class="w-10 lg:w-12 mb-5" />
+              <h4 class="text-4xl lg:text-[48px] font-bold font-['Poppins'] text-[#FBDF3A]">03+</h4>
+              <p class="text-white text-[14px] lg:text-[16px] font-['Roboto'] font-regular">
+                {{ t('stat_years') }}
               </p>
             </div>
             <div
@@ -477,20 +431,10 @@
               }"
               class="flex flex-col items-start w-1/2 lg:w-auto"
             >
-              <img
-                src="/images/accents/ceklis.webp"
-                alt="check"
-                class="w-10 lg:w-12 mb-5"
-              />
-              <h4
-                class="text-4xl lg:text-[48px] font-bold font-['Poppins'] text-[#FBDF3A]"
-              >
-                10+
-              </h4>
-              <p
-                class="text-white text-[14px] lg:text-[16px] font-['Roboto'] font-regular"
-              >
-                {{ t("stat_projects") }}
+              <img src="/images/accents/ceklis.webp" alt="check" class="w-10 lg:w-12 mb-5" />
+              <h4 class="text-4xl lg:text-[48px] font-bold font-['Poppins'] text-[#FBDF3A]">10+</h4>
+              <p class="text-white text-[14px] lg:text-[16px] font-['Roboto'] font-regular">
+                {{ t('stat_projects') }}
               </p>
             </div>
           </div>
@@ -505,11 +449,7 @@
             }"
             class="relative mt-10 lg:mt-22 pb-10 lg:pb-0"
           >
-            <img
-              src="/images/hero/about_me.webp"
-              alt="About Me Graphic"
-              class="w-full lg:w-xl"
-            />
+            <img src="/images/hero/about_me.webp" alt="About Me Graphic" class="w-full lg:w-xl" />
           </div>
 
           <div
@@ -525,7 +465,7 @@
             <h3
               class="text-2xl lg:text-[28px] font-bold font-['Poppins'] text-violet-500 mb-4 lg:mb-6"
             >
-              {{ t("lang_title") }}
+              {{ t('lang_title') }}
             </h3>
             <ul class="space-y-4 lg:space-y-6 relative z-20">
               <li
@@ -538,19 +478,13 @@
                 }"
                 class="flex gap-4"
               >
-                <span class="text-white mt-0"
-                  ><i class="bi bi-circle-fill text-[8px]"></i>
-                </span>
+                <span class="text-white mt-0"><i class="bi bi-circle-fill text-[8px]"></i> </span>
                 <div>
-                  <h4
-                    class="text-white text-sm lg:text-[18px] font-['Roboto'] font-extrabold"
-                  >
-                    {{ t("lang_id_title") }}
+                  <h4 class="text-white text-sm lg:text-[18px] font-['Roboto'] font-extrabold">
+                    {{ t('lang_id_title') }}
                   </h4>
-                  <p
-                    class="text-white text-sm lg:text-[16px] font-['Roboto'] font-medium"
-                  >
-                    {{ t("lang_id_desc") }}
+                  <p class="text-white text-sm lg:text-[16px] font-['Roboto'] font-medium">
+                    {{ t('lang_id_desc') }}
                   </p>
                 </div>
               </li>
@@ -564,24 +498,16 @@
                 }"
                 class="flex gap-4"
               >
-                <span class="text-white mt-1.5"
-                  ><i class="bi bi-circle-fill text-[8px]"></i>
-                </span>
+                <span class="text-white mt-1.5"><i class="bi bi-circle-fill text-[8px]"></i> </span>
                 <div>
-                  <h4
-                    class="text-white text-sm lg:text-[18px] font-['Roboto'] font-extrabold"
-                  >
-                    {{ t("lang_en_title") }}
+                  <h4 class="text-white text-sm lg:text-[18px] font-['Roboto'] font-extrabold">
+                    {{ t('lang_en_title') }}
                   </h4>
-                  <p
-                    class="text-white text-sm lg:text-[16px] font-['Roboto'] font-medium"
-                  >
-                    {{ t("lang_en_level") }}
+                  <p class="text-white text-sm lg:text-[16px] font-['Roboto'] font-medium">
+                    {{ t('lang_en_level') }}
                   </p>
-                  <p
-                    class="text-white text-sm italic lg:text-[16px] font-['Roboto'] font-light"
-                  >
-                    ✦ {{ t("lang_en_cert") }}
+                  <p class="text-white text-sm italic lg:text-[16px] font-['Roboto'] font-light">
+                    ✦ {{ t('lang_en_cert') }}
                   </p>
                 </div>
                 <img
@@ -599,12 +525,12 @@
 </template>
 
 <script setup>
-import { ref, reactive } from "vue";
-import Typewriter from "vue-typewriter-effect";
-import { useLanguage } from "@/composables/useLanguage";
+import { ref, reactive } from 'vue'
+import Typewriter from 'vue-typewriter-effect'
+import { useLanguage } from '@/composables/useLanguage'
 
-const { t, lang } = useLanguage();
-const isShowMore = ref(false);
+const { t, lang } = useLanguage()
+const isShowMore = ref(false)
 
 // =========================================================================
 // ⚙️ PENGATURAN MANUAL POSISI & UKURAN GAMBAR HERO (hero_me.webp)
@@ -614,14 +540,14 @@ const heroImgConfig = reactive({
   scale: 1, // 🔍 Size / Ukuran: 100%
   x: 26, // ⬅️➡️ Kiri (-px) / Kanan (+px): 26px
   y: 14, // ⬆️⬇️ Atas (-px) / Bawah (+px): 14px
-});
+})
 
 const scrollToContact = () => {
-  const el = document.getElementById("contact");
+  const el = document.getElementById('contact')
   if (el) {
-    el.scrollIntoView({ behavior: "smooth" });
+    el.scrollIntoView({ behavior: 'smooth' })
   }
-};
+}
 </script>
 
 <style scoped>

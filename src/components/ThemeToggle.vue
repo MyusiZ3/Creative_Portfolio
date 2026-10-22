@@ -5,10 +5,14 @@
     :class="[
       currentTheme === 'editorial'
         ? 'bg-zinc-800 border border-white/20 hover:border-violet-400'
-        : 'bg-[#121c16] border-2 border-[#00ff66] shadow-[0_0_8px_rgba(0,255,102,0.3)]'
+        : 'bg-[#121c16] border-2 border-[#00ff66] shadow-[0_0_8px_rgba(0,255,102,0.3)]',
     ]"
-    :title="currentTheme === 'editorial' ? 'Switch to Pixel Arcade Theme' : 'Switch to Editorial Theme'"
-    :aria-label="currentTheme === 'editorial' ? 'Switch to Pixel Arcade Theme' : 'Switch to Editorial Theme'"
+    :title="
+      currentTheme === 'editorial' ? 'Switch to Pixel Arcade Theme' : 'Switch to Editorial Theme'
+    "
+    :aria-label="
+      currentTheme === 'editorial' ? 'Switch to Pixel Arcade Theme' : 'Switch to Editorial Theme'
+    "
   >
     <!-- Thumb Circle -->
     <span
@@ -16,7 +20,7 @@
       :class="[
         currentTheme === 'editorial'
           ? 'translate-x-0 bg-violet-500 text-white'
-          : 'translate-x-5 bg-[#00ff66] text-black'
+          : 'translate-x-5 bg-[#00ff66] text-black',
       ]"
       aria-hidden="true"
     >
@@ -27,13 +31,13 @@
 </template>
 
 <script setup>
-import { useTheme } from '@/composables/useTheme';
+import { useTheme } from '@/composables/useTheme'
 
-const emit = defineEmits(['toggle-theme']);
-const { currentTheme, toggleTheme } = useTheme();
+const emit = defineEmits(['toggle-theme'])
+const { currentTheme, toggleTheme } = useTheme()
 
 const handleToggle = () => {
-  toggleTheme();
-  emit('toggle-theme', currentTheme.value);
-};
+  toggleTheme()
+  emit('toggle-theme', currentTheme.value)
+}
 </script>

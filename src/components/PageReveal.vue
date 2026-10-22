@@ -1,58 +1,54 @@
 <script setup>
-import { ref, watch, computed } from "vue";
-import { useTheme } from "@/composables/useTheme";
+import { ref, watch, computed } from 'vue'
+import { useTheme } from '@/composables/useTheme'
 
-const { currentTheme } = useTheme();
+const { currentTheme } = useTheme()
 
 const props = defineProps({
   active: Boolean,
   label: {
     type: String,
-    default: "",
+    default: '',
   },
-});
+})
 
-const emit = defineEmits(["done"]);
+const emit = defineEmits(['done'])
 
-const phase = ref("idle"); // idle -> enter -> hold -> exit -> idle
+const phase = ref('idle') // idle -> enter -> hold -> exit -> idle
 
 const formattedLabel = computed(() => {
-  return props.label ? props.label.trim() : "NAVIGATION";
-});
+  return props.label ? props.label.trim() : 'NAVIGATION'
+})
 
 watch(
   () => props.active,
   (val) => {
     if (val) {
-      phase.value = "enter";
+      phase.value = 'enter'
 
       // Hold screen coverage briefly while scrolling
       setTimeout(() => {
-        phase.value = "hold";
-      }, 450);
+        phase.value = 'hold'
+      }, 450)
 
       // Start wiping out to reveal target section
       setTimeout(() => {
-        phase.value = "exit";
-      }, 800);
+        phase.value = 'exit'
+      }, 800)
 
       // Reset to idle
       setTimeout(() => {
-        phase.value = "idle";
-        emit("done");
-      }, 1250);
+        phase.value = 'idle'
+        emit('done')
+      }, 1250)
     }
-  }
-);
+  },
+)
 </script>
 
 <template>
   <Teleport to="body">
-    <div
-      class="page-reveal-container"
-      :class="{ active: phase !== 'idle' }"
-      aria-hidden="true"
-    >
+    <div class="page-reveal-container" :class="{ active: phase !== 'idle' }" aria-hidden="true">
       <!-- Single Solid Curtain Slab -->
       <div
         class="page-reveal-slab"
@@ -66,19 +62,31 @@ watch(
           <div class="reveal-content">
             <span
               class="reveal-tag"
-              :class="currentTheme === 'pixel' ? 'text-[#00ff66] font-mono tracking-widest' : 'text-zinc-400'"
+              :class="
+                currentTheme === 'pixel'
+                  ? 'text-[#00ff66] font-mono tracking-widest'
+                  : 'text-zinc-400'
+              "
             >
               {{ currentTheme === 'pixel' ? '⚡ GAME_SYS' : '✦ PORTFOLIO' }}
             </span>
             <h2
               class="reveal-title"
-              :class="currentTheme === 'pixel' ? 'font-mono text-[#00ff66] drop-shadow-[0_0_10px_rgba(0,255,102,0.8)]' : 'font-sans text-white'"
+              :class="
+                currentTheme === 'pixel'
+                  ? 'font-mono text-[#00ff66] drop-shadow-[0_0_10px_rgba(0,255,102,0.8)]'
+                  : 'font-sans text-white'
+              "
             >
               {{ formattedLabel }}
             </h2>
             <div
               class="reveal-accent-line"
-              :class="currentTheme === 'pixel' ? 'bg-[#00ff66] shadow-[0_0_10px_#00ff66]' : 'bg-violet-500 shadow-[0_0_10px_rgba(139,92,246,0.6)]'"
+              :class="
+                currentTheme === 'pixel'
+                  ? 'bg-[#00ff66] shadow-[0_0_10px_#00ff66]'
+                  : 'bg-violet-500 shadow-[0_0_10px_rgba(139,92,246,0.6)]'
+              "
             ></div>
           </div>
         </div>
@@ -153,7 +161,9 @@ watch(
 .reveal-content-wrapper {
   opacity: 0;
   transform: translateY(12px);
-  transition: opacity 0.25s ease 0.1s, transform 0.25s ease 0.1s;
+  transition:
+    opacity 0.25s ease 0.1s,
+    transform 0.25s ease 0.1s;
 }
 
 .reveal-content-wrapper.visible {

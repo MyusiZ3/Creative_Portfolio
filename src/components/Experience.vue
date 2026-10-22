@@ -1,8 +1,6 @@
 <template>
   <section id="experience" class="-mb-4">
-    <div
-      class="bg-white p-8 md:p-14 lg:p-20 xl:p-40 relative overflow-hidden shadow-2xl"
-    >
+    <div class="bg-white p-8 md:p-14 lg:p-20 xl:p-40 relative overflow-hidden shadow-2xl">
       <!-- Accents -->
       <img
         src="/images/accents/accent_2.webp"
@@ -50,7 +48,7 @@
           }"
           class="text-4xl lg:text-[48px] font-bold font-['Poppins'] text-[#171717] mb-4 mt-20"
         >
-          {{ t("exp_title") }}
+          {{ t('exp_title') }}
         </h2>
         <div
           v-motion
@@ -62,15 +60,11 @@
           }"
           class="text-sm lg:text-base text-gray-700 font-['Roboto'] font-normal leading-relaxed mb-10 flex items-start gap-2 max-w-4xl"
         >
-          <span class="text-violet-500 text-xl font-normal leading-none mt-1"
-            >✦</span
-          >
-          <span>{{ t("exp_desc") }}</span>
+          <span class="text-violet-500 text-xl font-normal leading-none mt-1">✦</span>
+          <span>{{ t('exp_desc') }}</span>
         </div>
 
-        <div
-          class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8"
-        >
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
           <!-- Work & Organizational Experience -->
           <h3
             v-motion
@@ -82,7 +76,7 @@
             }"
             class="text-2xl lg:text-[24px] font-bold font-['Poppins'] text-violet-500"
           >
-            {{ t("exp_work_org") }}
+            {{ t('exp_work_org') }}
           </h3>
 
           <!-- Global Controls -->
@@ -106,7 +100,7 @@
               "
             >
               <i class="bi bi-arrows-expand"></i>
-              {{ lang === "ID" ? "Buka Semua" : "Expand All" }}
+              {{ lang === 'ID' ? 'Buka Semua' : 'Expand All' }}
             </button>
             <button
               @click="toggleAll(false)"
@@ -118,7 +112,7 @@
               "
             >
               <i class="bi bi-arrows-collapse"></i>
-              {{ lang === "ID" ? "Tutup Semua" : "Collapse All" }}
+              {{ lang === 'ID' ? 'Tutup Semua' : 'Collapse All' }}
             </button>
           </div>
         </div>
@@ -137,9 +131,7 @@
             class="absolute top-[40px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
           ></div>
 
-          <div
-            class="grid grid-cols-1 md:grid-cols-3 gap-x-6 xl:gap-x-12 gap-y-12 relative z-10"
-          >
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-x-6 xl:gap-x-12 gap-y-12 relative z-10">
             <!-- Item 1 -->
             <div
               v-motion
@@ -156,9 +148,7 @@
               >
                 AUG 2025 - JUL 2026
               </p>
-              <div
-                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
-              >
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
@@ -179,25 +169,21 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  {{ t("exp_w1_title") }}
+                  {{ t('exp_w1_title') }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  {{ t("exp_w1_sub") }}
+                  {{ t('exp_w1_sub') }}
                 </p>
                 <div
                   class="overflow-hidden transition-all duration-300"
-                  :class="
-                    expanded['w1']
-                      ? 'max-h-96 opacity-100 mb-4'
-                      : 'max-h-0 opacity-0 mb-0'
-                  "
+                  :class="expanded['w1'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'"
                 >
                   <p
                     class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                   >
-                    {{ t("exp_w1_desc") }}
+                    {{ t('exp_w1_desc') }}
                   </p>
                 </div>
                 <button
@@ -208,21 +194,16 @@
                     class="border-b border-transparent group-hover:border-violet-800 transition-all"
                   >
                     {{
-                      expanded["w1"]
-                        ? lang === "ID"
-                          ? "Sembunyikan Detail"
-                          : "Hide Detail"
-                        : lang === "ID"
-                          ? "Lihat Detail"
-                          : "Show Detail"
+                      expanded['w1']
+                        ? lang === 'ID'
+                          ? 'Sembunyikan Detail'
+                          : 'Hide Detail'
+                        : lang === 'ID'
+                          ? 'Lihat Detail'
+                          : 'Show Detail'
                     }}
                   </span>
-                  <i
-                    class="bi"
-                    :class="
-                      expanded['w1'] ? 'bi-chevron-up' : 'bi-chevron-down'
-                    "
-                  ></i>
+                  <i class="bi" :class="expanded['w1'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
                 </button>
               </div>
             </div>
@@ -242,9 +223,7 @@
               >
                 SEP 2023 - JUL 2025
               </p>
-              <div
-                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
-              >
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
@@ -265,25 +244,21 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  {{ t("exp_w2_title") }}
+                  {{ t('exp_w2_title') }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  {{ t("exp_w2_sub") }}
+                  {{ t('exp_w2_sub') }}
                 </p>
                 <div
                   class="overflow-hidden transition-all duration-300"
-                  :class="
-                    expanded['w2']
-                      ? 'max-h-96 opacity-100 mb-4'
-                      : 'max-h-0 opacity-0 mb-0'
-                  "
+                  :class="expanded['w2'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'"
                 >
                   <p
                     class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                   >
-                    {{ t("exp_w2_desc") }}
+                    {{ t('exp_w2_desc') }}
                   </p>
                 </div>
                 <button
@@ -294,21 +269,16 @@
                     class="border-b border-transparent group-hover:border-violet-800 transition-all"
                   >
                     {{
-                      expanded["w2"]
-                        ? lang === "ID"
-                          ? "Sembunyikan Detail"
-                          : "Hide Detail"
-                        : lang === "ID"
-                          ? "Lihat Detail"
-                          : "Show Detail"
+                      expanded['w2']
+                        ? lang === 'ID'
+                          ? 'Sembunyikan Detail'
+                          : 'Hide Detail'
+                        : lang === 'ID'
+                          ? 'Lihat Detail'
+                          : 'Show Detail'
                     }}
                   </span>
-                  <i
-                    class="bi"
-                    :class="
-                      expanded['w2'] ? 'bi-chevron-up' : 'bi-chevron-down'
-                    "
-                  ></i>
+                  <i class="bi" :class="expanded['w2'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
                 </button>
               </div>
             </div>
@@ -328,9 +298,7 @@
               >
                 SEP 2023 - DEC 2023
               </p>
-              <div
-                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
-              >
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
@@ -351,25 +319,21 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  {{ t("exp_w3_title") }}
+                  {{ t('exp_w3_title') }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  {{ t("exp_w3_sub") }}
+                  {{ t('exp_w3_sub') }}
                 </p>
                 <div
                   class="overflow-hidden transition-all duration-300"
-                  :class="
-                    expanded['w3']
-                      ? 'max-h-96 opacity-100 mb-4'
-                      : 'max-h-0 opacity-0 mb-0'
-                  "
+                  :class="expanded['w3'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'"
                 >
                   <p
                     class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                   >
-                    {{ t("exp_w3_desc") }}
+                    {{ t('exp_w3_desc') }}
                   </p>
                 </div>
                 <button
@@ -380,21 +344,16 @@
                     class="border-b border-transparent group-hover:border-violet-800 transition-all"
                   >
                     {{
-                      expanded["w3"]
-                        ? lang === "ID"
-                          ? "Sembunyikan Detail"
-                          : "Hide Detail"
-                        : lang === "ID"
-                          ? "Lihat Detail"
-                          : "Show Detail"
+                      expanded['w3']
+                        ? lang === 'ID'
+                          ? 'Sembunyikan Detail'
+                          : 'Hide Detail'
+                        : lang === 'ID'
+                          ? 'Lihat Detail'
+                          : 'Show Detail'
                     }}
                   </span>
-                  <i
-                    class="bi"
-                    :class="
-                      expanded['w3'] ? 'bi-chevron-up' : 'bi-chevron-down'
-                    "
-                  ></i>
+                  <i class="bi" :class="expanded['w3'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
                 </button>
               </div>
             </div>
@@ -407,7 +366,7 @@
             @click="showEarlierWork = !showEarlierWork"
             class="inline-flex items-center gap-2.5 px-7 py-3 rounded-full text-sm font-semibold font-['Poppins'] text-white bg-[#171717] hover:bg-violet-600 transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 group cursor-pointer"
           >
-            <span>{{ t("earlier_experience_title") }}</span>
+            <span>{{ t('earlier_experience_title') }}</span>
             <i
               class="bi transition-transform duration-300"
               :class="showEarlierWork ? 'bi-chevron-up' : 'bi-chevron-down'"
@@ -437,9 +396,7 @@
               class="absolute top-[40px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
             ></div>
 
-            <div
-              class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-12 relative z-10"
-            >
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-12 relative z-10">
               <!-- Item 4 -->
               <div
                 v-motion
@@ -456,9 +413,7 @@
                 >
                   SEP 2021 - JUN 2022
                 </p>
-                <div
-                  class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
-                >
+                <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
                   <div
                     v-motion
                     :initial="{ opacity: 0, scale: 0 }"
@@ -479,25 +434,21 @@
                   <h4
                     class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                   >
-                    {{ t("exp_w4_title") }}
+                    {{ t('exp_w4_title') }}
                   </h4>
                   <p
                     class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                   >
-                    {{ t("exp_w4_sub") }}
+                    {{ t('exp_w4_sub') }}
                   </p>
                   <div
                     class="overflow-hidden transition-all duration-300"
-                    :class="
-                      expanded['w4']
-                        ? 'max-h-96 opacity-100 mb-4'
-                        : 'max-h-0 opacity-0 mb-0'
-                    "
+                    :class="expanded['w4'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'"
                   >
                     <p
                       class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                     >
-                      {{ t("exp_w4_desc") }}
+                      {{ t('exp_w4_desc') }}
                     </p>
                   </div>
                   <button
@@ -508,21 +459,16 @@
                       class="border-b border-transparent group-hover:border-violet-800 transition-all"
                     >
                       {{
-                        expanded["w4"]
-                          ? lang === "ID"
-                            ? "Sembunyikan Detail"
-                            : "Hide Detail"
-                          : lang === "ID"
-                            ? "Lihat Detail"
-                            : "Show Detail"
+                        expanded['w4']
+                          ? lang === 'ID'
+                            ? 'Sembunyikan Detail'
+                            : 'Hide Detail'
+                          : lang === 'ID'
+                            ? 'Lihat Detail'
+                            : 'Show Detail'
                       }}
                     </span>
-                    <i
-                      class="bi"
-                      :class="
-                        expanded['w4'] ? 'bi-chevron-up' : 'bi-chevron-down'
-                      "
-                    ></i>
+                    <i class="bi" :class="expanded['w4'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
                   </button>
                 </div>
               </div>
@@ -543,9 +489,7 @@
                 >
                   JAN 2021 - JUNE 2021
                 </p>
-                <div
-                  class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
-                >
+                <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
                   <div
                     v-motion
                     :initial="{ opacity: 0, scale: 0 }"
@@ -566,25 +510,21 @@
                   <h4
                     class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                   >
-                    {{ t("exp_w5_title") }}
+                    {{ t('exp_w5_title') }}
                   </h4>
                   <p
                     class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                   >
-                    {{ t("exp_w5_sub") }}
+                    {{ t('exp_w5_sub') }}
                   </p>
                   <div
                     class="overflow-hidden transition-all duration-300"
-                    :class="
-                      expanded['w5']
-                        ? 'max-h-96 opacity-100 mb-4'
-                        : 'max-h-0 opacity-0 mb-0'
-                    "
+                    :class="expanded['w5'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'"
                   >
                     <p
                       class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                     >
-                      {{ t("exp_w5_desc") }}
+                      {{ t('exp_w5_desc') }}
                     </p>
                   </div>
                   <button
@@ -595,21 +535,16 @@
                       class="border-b border-transparent group-hover:border-violet-800 transition-all"
                     >
                       {{
-                        expanded["w5"]
-                          ? lang === "ID"
-                            ? "Sembunyikan Detail"
-                            : "Hide Detail"
-                          : lang === "ID"
-                            ? "Lihat Detail"
-                            : "Show Detail"
+                        expanded['w5']
+                          ? lang === 'ID'
+                            ? 'Sembunyikan Detail'
+                            : 'Hide Detail'
+                          : lang === 'ID'
+                            ? 'Lihat Detail'
+                            : 'Show Detail'
                       }}
                     </span>
-                    <i
-                      class="bi"
-                      :class="
-                        expanded['w5'] ? 'bi-chevron-up' : 'bi-chevron-down'
-                      "
-                    ></i>
+                    <i class="bi" :class="expanded['w5'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
                   </button>
                 </div>
               </div>
@@ -628,7 +563,7 @@
           }"
           class="text-2xl lg:text-[24px] font-bold font-['Poppins'] text-violet-500 mb-8 mt-4"
         >
-          {{ t("exp_proj_title") }}
+          {{ t('exp_proj_title') }}
         </h3>
         <!-- Continuous Timeline Project Row 1 (2026 Flagships & Systems) -->
         <div class="relative mb-16 px-0">
@@ -644,9 +579,7 @@
             class="absolute top-[40px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
           ></div>
 
-          <div
-            class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-12 relative z-10"
-          >
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-12 relative z-10">
             <!-- Project 8 (AppliQ) -->
             <div
               v-motion
@@ -663,9 +596,7 @@
               >
                 SEP 2026 - OCT 2026
               </p>
-              <div
-                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
-              >
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
@@ -686,37 +617,30 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  {{ t("exp_p8_sub") }}
+                  {{ t('exp_p8_sub') }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  {{ t("exp_p8_title") }}
+                  {{ t('exp_p8_title') }}
                 </p>
                 <div
                   class="overflow-hidden transition-all duration-300"
-                  :class="
-                    expanded['p8']
-                      ? 'max-h-96 opacity-100 mb-4'
-                      : 'max-h-0 opacity-0 mb-0'
-                  "
+                  :class="expanded['p8'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'"
                 >
                   <p
                     class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                   >
-                    {{ t("exp_p8_desc") }}
+                    {{ t('exp_p8_desc') }}
                   </p>
-                  <div
-                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
-                  >
-                    <span
-                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                  <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
+                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider"
                       >Tech:</span
                     >
                     <span
                       class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
                     >
-                      {{ t("exp_p8_tech") }}
+                      {{ t('exp_p8_tech') }}
                     </span>
                   </div>
                 </div>
@@ -728,21 +652,16 @@
                     class="border-b border-transparent group-hover:border-violet-800 transition-all"
                   >
                     {{
-                      expanded["p8"]
-                        ? lang === "ID"
-                          ? "Sembunyikan Detail"
-                          : "Hide Detail"
-                        : lang === "ID"
-                          ? "Lihat Detail"
-                          : "Show Detail"
+                      expanded['p8']
+                        ? lang === 'ID'
+                          ? 'Sembunyikan Detail'
+                          : 'Hide Detail'
+                        : lang === 'ID'
+                          ? 'Lihat Detail'
+                          : 'Show Detail'
                     }}
                   </span>
-                  <i
-                    class="bi"
-                    :class="
-                      expanded['p8'] ? 'bi-chevron-up' : 'bi-chevron-down'
-                    "
-                  ></i>
+                  <i class="bi" :class="expanded['p8'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
                 </button>
               </div>
             </div>
@@ -763,9 +682,7 @@
               >
                 MAY 2026 - JUL 2026
               </p>
-              <div
-                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
-              >
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
@@ -786,25 +703,21 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  {{ t("exp_p7_sub") }}
+                  {{ t('exp_p7_sub') }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  {{ t("exp_p7_title") }}
+                  {{ t('exp_p7_title') }}
                 </p>
                 <div
                   class="overflow-hidden transition-all duration-300"
-                  :class="
-                    expanded['p7']
-                      ? 'max-h-96 opacity-100 mb-4'
-                      : 'max-h-0 opacity-0 mb-0'
-                  "
+                  :class="expanded['p7'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'"
                 >
                   <p
                     class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                   >
-                    {{ t("exp_p7_desc") }}
+                    {{ t('exp_p7_desc') }}
                   </p>
 
                   <!-- Highlights / Tags -->
@@ -814,17 +727,14 @@
                     <span>✦ HKI Registered No. 001400842</span>
                   </div>
 
-                  <div
-                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
-                  >
-                    <span
-                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                  <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
+                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider"
                       >Tech:</span
                     >
                     <span
                       class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
                     >
-                      {{ t("exp_p7_tech") }}
+                      {{ t('exp_p7_tech') }}
                     </span>
                   </div>
                 </div>
@@ -836,21 +746,16 @@
                     class="border-b border-transparent group-hover:border-violet-800 transition-all"
                   >
                     {{
-                      expanded["p7"]
-                        ? lang === "ID"
-                          ? "Sembunyikan Detail"
-                          : "Hide Detail"
-                        : lang === "ID"
-                          ? "Lihat Detail"
-                          : "Show Detail"
+                      expanded['p7']
+                        ? lang === 'ID'
+                          ? 'Sembunyikan Detail'
+                          : 'Hide Detail'
+                        : lang === 'ID'
+                          ? 'Lihat Detail'
+                          : 'Show Detail'
                     }}
                   </span>
-                  <i
-                    class="bi"
-                    :class="
-                      expanded['p7'] ? 'bi-chevron-up' : 'bi-chevron-down'
-                    "
-                  ></i>
+                  <i class="bi" :class="expanded['p7'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
                 </button>
               </div>
             </div>
@@ -871,9 +776,7 @@
               >
                 MAY 2026 - JUN 2026
               </p>
-              <div
-                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
-              >
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
@@ -894,37 +797,30 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  {{ t("exp_p9_sub") }}
+                  {{ t('exp_p9_sub') }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  {{ t("exp_p9_title") }}
+                  {{ t('exp_p9_title') }}
                 </p>
                 <div
                   class="overflow-hidden transition-all duration-300"
-                  :class="
-                    expanded['p9']
-                      ? 'max-h-96 opacity-100 mb-4'
-                      : 'max-h-0 opacity-0 mb-0'
-                  "
+                  :class="expanded['p9'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'"
                 >
                   <p
                     class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                   >
-                    {{ t("exp_p9_desc") }}
+                    {{ t('exp_p9_desc') }}
                   </p>
-                  <div
-                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
-                  >
-                    <span
-                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                  <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
+                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider"
                       >Tech:</span
                     >
                     <span
                       class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
                     >
-                      {{ t("exp_p9_tech") }}
+                      {{ t('exp_p9_tech') }}
                     </span>
                   </div>
                 </div>
@@ -936,21 +832,16 @@
                     class="border-b border-transparent group-hover:border-violet-800 transition-all"
                   >
                     {{
-                      expanded["p9"]
-                        ? lang === "ID"
-                          ? "Sembunyikan Detail"
-                          : "Hide Detail"
-                        : lang === "ID"
-                          ? "Lihat Detail"
-                          : "Show Detail"
+                      expanded['p9']
+                        ? lang === 'ID'
+                          ? 'Sembunyikan Detail'
+                          : 'Hide Detail'
+                        : lang === 'ID'
+                          ? 'Lihat Detail'
+                          : 'Show Detail'
                     }}
                   </span>
-                  <i
-                    class="bi"
-                    :class="
-                      expanded['p9'] ? 'bi-chevron-up' : 'bi-chevron-down'
-                    "
-                  ></i>
+                  <i class="bi" :class="expanded['p9'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
                 </button>
               </div>
             </div>
@@ -971,9 +862,7 @@
             class="absolute top-[40px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
           ></div>
 
-          <div
-            class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-12 relative z-10"
-          >
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-12 relative z-10">
             <!-- Project 1 (RideXP) -->
             <div
               v-motion
@@ -990,9 +879,7 @@
               >
                 JAN 2025 - JUNE 2025
               </p>
-              <div
-                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
-              >
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
@@ -1013,37 +900,30 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  {{ t("exp_p1_sub") }}
+                  {{ t('exp_p1_sub') }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  {{ t("exp_p1_title") }}
+                  {{ t('exp_p1_title') }}
                 </p>
                 <div
                   class="overflow-hidden transition-all duration-300"
-                  :class="
-                    expanded['p1']
-                      ? 'max-h-96 opacity-100 mb-4'
-                      : 'max-h-0 opacity-0 mb-0'
-                  "
+                  :class="expanded['p1'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'"
                 >
                   <p
                     class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                   >
-                    {{ t("exp_p1_desc") }}
+                    {{ t('exp_p1_desc') }}
                   </p>
-                  <div
-                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
-                  >
-                    <span
-                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                  <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
+                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider"
                       >Tech:</span
                     >
                     <span
                       class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
                     >
-                      {{ t("exp_p1_tech") }}
+                      {{ t('exp_p1_tech') }}
                     </span>
                   </div>
                 </div>
@@ -1055,21 +935,16 @@
                     class="border-b border-transparent group-hover:border-violet-800 transition-all"
                   >
                     {{
-                      expanded["p1"]
-                        ? lang === "ID"
-                          ? "Sembunyikan Detail"
-                          : "Hide Detail"
-                        : lang === "ID"
-                          ? "Lihat Detail"
-                          : "Show Detail"
+                      expanded['p1']
+                        ? lang === 'ID'
+                          ? 'Sembunyikan Detail'
+                          : 'Hide Detail'
+                        : lang === 'ID'
+                          ? 'Lihat Detail'
+                          : 'Show Detail'
                     }}
                   </span>
-                  <i
-                    class="bi"
-                    :class="
-                      expanded['p1'] ? 'bi-chevron-up' : 'bi-chevron-down'
-                    "
-                  ></i>
+                  <i class="bi" :class="expanded['p1'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
                 </button>
               </div>
             </div>
@@ -1090,9 +965,7 @@
               >
                 FEB 2025 - MAR 2025
               </p>
-              <div
-                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
-              >
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
@@ -1113,37 +986,30 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  {{ t("exp_p3_sub") }}
+                  {{ t('exp_p3_sub') }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  {{ t("exp_p3_title") }}
+                  {{ t('exp_p3_title') }}
                 </p>
                 <div
                   class="overflow-hidden transition-all duration-300"
-                  :class="
-                    expanded['p3']
-                      ? 'max-h-96 opacity-100 mb-4'
-                      : 'max-h-0 opacity-0 mb-0'
-                  "
+                  :class="expanded['p3'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'"
                 >
                   <p
                     class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                   >
-                    {{ t("exp_p3_desc") }}
+                    {{ t('exp_p3_desc') }}
                   </p>
-                  <div
-                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
-                  >
-                    <span
-                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                  <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
+                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider"
                       >Tech:</span
                     >
                     <span
                       class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
                     >
-                      {{ t("exp_p3_tech") }}
+                      {{ t('exp_p3_tech') }}
                     </span>
                   </div>
                 </div>
@@ -1155,21 +1021,16 @@
                     class="border-b border-transparent group-hover:border-violet-800 transition-all"
                   >
                     {{
-                      expanded["p3"]
-                        ? lang === "ID"
-                          ? "Sembunyikan Detail"
-                          : "Hide Detail"
-                        : lang === "ID"
-                          ? "Lihat Detail"
-                          : "Show Detail"
+                      expanded['p3']
+                        ? lang === 'ID'
+                          ? 'Sembunyikan Detail'
+                          : 'Hide Detail'
+                        : lang === 'ID'
+                          ? 'Lihat Detail'
+                          : 'Show Detail'
                     }}
                   </span>
-                  <i
-                    class="bi"
-                    :class="
-                      expanded['p3'] ? 'bi-chevron-up' : 'bi-chevron-down'
-                    "
-                  ></i>
+                  <i class="bi" :class="expanded['p3'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
                 </button>
               </div>
             </div>
@@ -1190,9 +1051,7 @@
               >
                 JAN 2025 - JUNE 2025
               </p>
-              <div
-                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
-              >
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
@@ -1213,37 +1072,30 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  {{ t("exp_p2_sub") }}
+                  {{ t('exp_p2_sub') }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  {{ t("exp_p2_title") }}
+                  {{ t('exp_p2_title') }}
                 </p>
                 <div
                   class="overflow-hidden transition-all duration-300"
-                  :class="
-                    expanded['p2']
-                      ? 'max-h-96 opacity-100 mb-4'
-                      : 'max-h-0 opacity-0 mb-0'
-                  "
+                  :class="expanded['p2'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'"
                 >
                   <p
                     class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                   >
-                    {{ t("exp_p2_desc") }}
+                    {{ t('exp_p2_desc') }}
                   </p>
-                  <div
-                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
-                  >
-                    <span
-                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                  <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
+                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider"
                       >Tech:</span
                     >
                     <span
                       class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
                     >
-                      {{ t("exp_p2_tech") }}
+                      {{ t('exp_p2_tech') }}
                     </span>
                   </div>
                 </div>
@@ -1255,21 +1107,16 @@
                     class="border-b border-transparent group-hover:border-violet-800 transition-all"
                   >
                     {{
-                      expanded["p2"]
-                        ? lang === "ID"
-                          ? "Sembunyikan Detail"
-                          : "Hide Detail"
-                        : lang === "ID"
-                          ? "Lihat Detail"
-                          : "Show Detail"
+                      expanded['p2']
+                        ? lang === 'ID'
+                          ? 'Sembunyikan Detail'
+                          : 'Hide Detail'
+                        : lang === 'ID'
+                          ? 'Lihat Detail'
+                          : 'Show Detail'
                     }}
                   </span>
-                  <i
-                    class="bi"
-                    :class="
-                      expanded['p2'] ? 'bi-chevron-up' : 'bi-chevron-down'
-                    "
-                  ></i>
+                  <i class="bi" :class="expanded['p2'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
                 </button>
               </div>
             </div>
@@ -1290,9 +1137,7 @@
             class="absolute top-[40px] left-0 right-0 h-px bg-gray-300 z-0 origin-left hidden md:block"
           ></div>
 
-          <div
-            class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-12 relative z-10"
-          >
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-12 relative z-10">
             <!-- Project 4 (Stellar Adventures) -->
             <div
               v-motion
@@ -1309,9 +1154,7 @@
               >
                 SEP 2024 - FEB 2025
               </p>
-              <div
-                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
-              >
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
@@ -1332,37 +1175,30 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  {{ t("exp_p4_sub") }}
+                  {{ t('exp_p4_sub') }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  {{ t("exp_p4_title") }}
+                  {{ t('exp_p4_title') }}
                 </p>
                 <div
                   class="overflow-hidden transition-all duration-300"
-                  :class="
-                    expanded['p4']
-                      ? 'max-h-96 opacity-100 mb-4'
-                      : 'max-h-0 opacity-0 mb-0'
-                  "
+                  :class="expanded['p4'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'"
                 >
                   <p
                     class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                   >
-                    {{ t("exp_p4_desc") }}
+                    {{ t('exp_p4_desc') }}
                   </p>
-                  <div
-                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
-                  >
-                    <span
-                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                  <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
+                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider"
                       >Tech:</span
                     >
                     <span
                       class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
                     >
-                      {{ t("exp_p4_tech") }}
+                      {{ t('exp_p4_tech') }}
                     </span>
                   </div>
                 </div>
@@ -1374,21 +1210,16 @@
                     class="border-b border-transparent group-hover:border-violet-800 transition-all"
                   >
                     {{
-                      expanded["p4"]
-                        ? lang === "ID"
-                          ? "Sembunyikan Detail"
-                          : "Hide Detail"
-                        : lang === "ID"
-                          ? "Lihat Detail"
-                          : "Show Detail"
+                      expanded['p4']
+                        ? lang === 'ID'
+                          ? 'Sembunyikan Detail'
+                          : 'Hide Detail'
+                        : lang === 'ID'
+                          ? 'Lihat Detail'
+                          : 'Show Detail'
                     }}
                   </span>
-                  <i
-                    class="bi"
-                    :class="
-                      expanded['p4'] ? 'bi-chevron-up' : 'bi-chevron-down'
-                    "
-                  ></i>
+                  <i class="bi" :class="expanded['p4'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
                 </button>
               </div>
             </div>
@@ -1409,9 +1240,7 @@
               >
                 JAN 2024 - JUNE 2024
               </p>
-              <div
-                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
-              >
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
@@ -1432,37 +1261,30 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  {{ t("exp_p5_sub") }}
+                  {{ t('exp_p5_sub') }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  {{ t("exp_p5_title") }}
+                  {{ t('exp_p5_title') }}
                 </p>
                 <div
                   class="overflow-hidden transition-all duration-300"
-                  :class="
-                    expanded['p5']
-                      ? 'max-h-96 opacity-100 mb-4'
-                      : 'max-h-0 opacity-0 mb-0'
-                  "
+                  :class="expanded['p5'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'"
                 >
                   <p
                     class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                   >
-                    {{ t("exp_p5_desc") }}
+                    {{ t('exp_p5_desc') }}
                   </p>
-                  <div
-                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
-                  >
-                    <span
-                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                  <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
+                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider"
                       >Tech:</span
                     >
                     <span
                       class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
                     >
-                      {{ t("exp_p5_tech") }}
+                      {{ t('exp_p5_tech') }}
                     </span>
                   </div>
                 </div>
@@ -1474,21 +1296,16 @@
                     class="border-b border-transparent group-hover:border-violet-800 transition-all"
                   >
                     {{
-                      expanded["p5"]
-                        ? lang === "ID"
-                          ? "Sembunyikan Detail"
-                          : "Hide Detail"
-                        : lang === "ID"
-                          ? "Lihat Detail"
-                          : "Show Detail"
+                      expanded['p5']
+                        ? lang === 'ID'
+                          ? 'Sembunyikan Detail'
+                          : 'Hide Detail'
+                        : lang === 'ID'
+                          ? 'Lihat Detail'
+                          : 'Show Detail'
                     }}
                   </span>
-                  <i
-                    class="bi"
-                    :class="
-                      expanded['p5'] ? 'bi-chevron-up' : 'bi-chevron-down'
-                    "
-                  ></i>
+                  <i class="bi" :class="expanded['p5'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
                 </button>
               </div>
             </div>
@@ -1509,9 +1326,7 @@
               >
                 SEP 2023 - FEB 2024
               </p>
-              <div
-                class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10"
-              >
+              <div class="h-6 flex items-center mb-4 relative timeline-dot-wrapper z-10">
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
@@ -1532,37 +1347,30 @@
                 <h4
                   class="text-[18px] lg:text-[20px] font-semibold font-['Poppins'] text-[#171717] mb-1"
                 >
-                  {{ t("exp_p6_sub") }}
+                  {{ t('exp_p6_sub') }}
                 </h4>
                 <p
                   class="text-[14px] lg:text-[16px] font-medium text-[#302F49] font-['Roboto'] mb-3"
                 >
-                  {{ t("exp_p6_title") }}
+                  {{ t('exp_p6_title') }}
                 </p>
                 <div
                   class="overflow-hidden transition-all duration-300"
-                  :class="
-                    expanded['p6']
-                      ? 'max-h-96 opacity-100 mb-4'
-                      : 'max-h-0 opacity-0 mb-0'
-                  "
+                  :class="expanded['p6'] ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0 mb-0'"
                 >
                   <p
                     class="text-[14px] lg:text-[15px] text-[#8E949F] leading-relaxed font-['Roboto'] font-regular text-justify min-h-[90px] lg:min-h-[98px]"
                   >
-                    {{ t("exp_p6_desc") }}
+                    {{ t('exp_p6_desc') }}
                   </p>
-                  <div
-                    class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2"
-                  >
-                    <span
-                      class="text-xs font-bold text-gray-500 uppercase tracking-wider"
+                  <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center gap-2">
+                    <span class="text-xs font-bold text-gray-500 uppercase tracking-wider"
                       >Tech:</span
                     >
                     <span
                       class="text-xs text-gray-700 bg-gray-50 px-2.5 py-1 rounded font-mono border border-gray-200/60"
                     >
-                      {{ t("exp_p6_tech") }}
+                      {{ t('exp_p6_tech') }}
                     </span>
                   </div>
                 </div>
@@ -1574,21 +1382,16 @@
                     class="border-b border-transparent group-hover:border-violet-800 transition-all"
                   >
                     {{
-                      expanded["p6"]
-                        ? lang === "ID"
-                          ? "Sembunyikan Detail"
-                          : "Hide Detail"
-                        : lang === "ID"
-                          ? "Lihat Detail"
-                          : "Show Detail"
+                      expanded['p6']
+                        ? lang === 'ID'
+                          ? 'Sembunyikan Detail'
+                          : 'Hide Detail'
+                        : lang === 'ID'
+                          ? 'Lihat Detail'
+                          : 'Show Detail'
                     }}
                   </span>
-                  <i
-                    class="bi"
-                    :class="
-                      expanded['p6'] ? 'bi-chevron-up' : 'bi-chevron-down'
-                    "
-                  ></i>
+                  <i class="bi" :class="expanded['p6'] ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
                 </button>
               </div>
             </div>
@@ -1601,8 +1404,12 @@
             href="#my-projects"
             class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full text-sm font-semibold font-['Poppins'] text-white bg-[#171717] hover:bg-violet-600 transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 group"
           >
-            <span>{{ lang === 'ID' ? 'Lihat Semua Studi Kasus' : 'Explore All Case Studies' }}</span>
-            <i class="bi bi-arrow-up-right transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"></i>
+            <span>{{
+              lang === 'ID' ? 'Lihat Semua Studi Kasus' : 'Explore All Case Studies'
+            }}</span>
+            <i
+              class="bi bi-arrow-up-right transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+            ></i>
           </a>
         </div>
       </div>
@@ -1611,65 +1418,35 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
-import { useLanguage } from "@/composables/useLanguage";
+import { ref, computed } from 'vue'
+import { useLanguage } from '@/composables/useLanguage'
 
-const { t, lang } = useLanguage();
+const { t, lang } = useLanguage()
 
-const expanded = ref({});
-const showEarlierWork = ref(false);
+const expanded = ref({})
+const showEarlierWork = ref(false)
 
 const allExpanded = computed(() => {
-  const keys = [
-    "w1",
-    "w2",
-    "w3",
-    "w4",
-    "w5",
-    "p8",
-    "p7",
-    "p9",
-    "p1",
-    "p3",
-    "p2",
-    "p4",
-    "p5",
-    "p6",
-  ];
-  const expandedCount = keys.filter((key) => expanded.value[key]).length;
-  return expandedCount >= keys.length / 2;
-});
+  const keys = ['w1', 'w2', 'w3', 'w4', 'w5', 'p8', 'p7', 'p9', 'p1', 'p3', 'p2', 'p4', 'p5', 'p6']
+  const expandedCount = keys.filter((key) => expanded.value[key]).length
+  return expandedCount >= keys.length / 2
+})
 
 const toggleDetail = (id) => {
-  expanded.value[id] = !expanded.value[id];
-};
+  expanded.value[id] = !expanded.value[id]
+}
 
 const toggleAll = (expand) => {
-  const keys = [
-    "w1",
-    "w2",
-    "w3",
-    "w4",
-    "w5",
-    "p8",
-    "p7",
-    "p9",
-    "p1",
-    "p3",
-    "p2",
-    "p4",
-    "p5",
-    "p6",
-  ];
+  const keys = ['w1', 'w2', 'w3', 'w4', 'w5', 'p8', 'p7', 'p9', 'p1', 'p3', 'p2', 'p4', 'p5', 'p6']
   keys.forEach((key) => {
-    expanded.value[key] = expand;
-  });
-};
+    expanded.value[key] = expand
+  })
+}
 </script>
 
 <style scoped>
 .timeline-dot-wrapper::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   right: 0;

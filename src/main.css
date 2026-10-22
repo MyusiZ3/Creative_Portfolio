@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --breakpoint-sm: 640px;
@@ -19,7 +19,6 @@
 .font-vt323 {
   font-family: 'VT323', monospace;
 }
-
 
 html,
 body {
@@ -75,4 +74,3 @@ html {
 ::-webkit-scrollbar-corner {
   background: #171717;
 }
-

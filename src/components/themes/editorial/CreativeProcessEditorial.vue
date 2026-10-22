@@ -41,8 +41,8 @@
         >
           {{
             lang === 'ID'
-              ? 'Setiap proyek dirancang dengan alur yang terarah—mulai dari riset ide, desain visual, arsitektur sistem, penulisan kode yang rapi, hingga sentuhan akhir yang responsif.'
-              : 'Every project follows a thoughtful path—from initial ideas and visual design to structured architecture, clean code, and fine-tuned details.'
+              ? 'Setiap proyek dirancang dengan alur yang terarah, mulai dari riset ide, desain visual, arsitektur sistem, penulisan kode yang rapi, hingga sentuhan akhir yang responsif.'
+              : 'Every project follows a thoughtful path, from initial ideas and visual design to structured architecture, clean code, and fine-tuned details.'
           }}
         </p>
       </div>
@@ -90,7 +90,9 @@
               </div>
 
               <!-- Description -->
-              <p class="text-[12.5px] text-slate-600 font-['Roboto'] leading-relaxed mb-4 min-h-[42px]">
+              <p
+                class="text-[12.5px] text-slate-600 font-['Roboto'] leading-relaxed mb-4 min-h-[42px]"
+              >
                 {{ lang === 'ID' ? stage.descID : stage.descEN }}
               </p>
 

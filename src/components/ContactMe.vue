@@ -4,29 +4,25 @@
     class="bg-[#171717] py-16 lg:py-24 pl-6 md:pl-10 lg:pl-16 xl:pl-24 pr-6 md:pr-10 lg:pr-16 xl:pr-24 relative overflow-hidden"
   >
     <div class="w-full max-w-[1600px] mx-auto relative z-10">
-      <div
-        class="flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-12"
-      >
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-12">
         <div
           v-motion
           :initial="{ opacity: 0, x: -50 }"
           :visible="{ opacity: 1, x: 0, transition: { duration: 800 } }"
           class="w-full md:w-5/12 lg:w-4/12 space-y-7 flex flex-col items-center md:items-start text-center md:text-left shrink-0"
         >
-          <h2
-            class="text-3xl lg:text-5xl font-bold font-['Poppins'] text-white leading-tight"
-          >
+          <h2 class="text-3xl lg:text-5xl font-bold font-['Poppins'] text-white leading-tight">
             <span class="inline-block whitespace-nowrap">
-              <span class="text-[#A754FF]">{{ t("contact_title_1") }}</span>
-              {{ t("contact_title_2") }}
+              <span class="text-[#A754FF]">{{ t('contact_title_1') }}</span>
+              {{ t('contact_title_2') }}
             </span>
             <br class="hidden md:block" />
-            {{ t("contact_title_3") }}
+            {{ t('contact_title_3') }}
           </h2>
 
           <div class="space-y-5 w-full">
             <div class="flex flex-col items-center md:items-start">
-              <p class="text-gray-400 text-sm mb-1">{{ t("contact_phone") }}</p>
+              <p class="text-gray-400 text-sm mb-1">{{ t('contact_phone') }}</p>
               <div class="flex items-center gap-2 group/item">
                 <a
                   href="https://wa.me/6289646347327"
@@ -41,11 +37,7 @@
                 >
                   <i
                     class="bi"
-                    :class="
-                      copyStatus.phone
-                        ? 'bi-check-lg text-green-400'
-                        : 'bi-copy'
-                    "
+                    :class="copyStatus.phone ? 'bi-check-lg text-green-400' : 'bi-copy'"
                   ></i>
                   <span
                     v-if="copyStatus.phone"
@@ -57,7 +49,7 @@
             </div>
 
             <div class="flex flex-col items-center md:items-start">
-              <p class="text-gray-400 text-sm mb-1">{{ t("contact_email") }}</p>
+              <p class="text-gray-400 text-sm mb-1">{{ t('contact_email') }}</p>
               <div class="flex items-center gap-2 group/item">
                 <a
                   href="mailto:muhamadsidik.work.id@gmail.com"
@@ -66,18 +58,12 @@
                   muhamadsidik.work.id@gmail.com
                 </a>
                 <button
-                  @click="
-                    copyToClipboard('muhamadsidik.work.id@gmail.com', 'email')
-                  "
+                  @click="copyToClipboard('muhamadsidik.work.id@gmail.com', 'email')"
                   class="p-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 opacity-100 md:opacity-0 group-hover/item:opacity-100 transition-all flex items-center gap-1.5"
                 >
                   <i
                     class="bi"
-                    :class="
-                      copyStatus.email
-                        ? 'bi-check-lg text-green-400'
-                        : 'bi-copy'
-                    "
+                    :class="copyStatus.email ? 'bi-check-lg text-green-400' : 'bi-copy'"
                   ></i>
                   <span
                     v-if="copyStatus.email"
@@ -89,17 +75,15 @@
             </div>
 
             <div class="flex flex-col items-center md:items-start">
-              <p class="text-gray-400 text-sm mb-1">{{ t("contact_addr") }}</p>
-              <p
-                class="text-white text-lg font-bold font-['Roboto'] text-center md:text-left"
-              >
+              <p class="text-gray-400 text-sm mb-1">{{ t('contact_addr') }}</p>
+              <p class="text-white text-lg font-bold font-['Roboto'] text-center md:text-left">
                 Bandung, Indonesia
               </p>
             </div>
           </div>
 
           <div class="space-y-3 flex flex-col items-center lg:items-start">
-            <p class="text-gray-400 text-sm">{{ t("contact_socmed") }}</p>
+            <p class="text-gray-400 text-sm">{{ t('contact_socmed') }}</p>
             <div class="flex gap-3">
               <a
                 href="https://github.com/MyusiZ3"
@@ -147,12 +131,10 @@
                   : 'text-white hover:bg-white hover:text-black'
               "
             >
-              {{ t("contact_btn") }}
+              {{ t('contact_btn') }}
               <i
                 class="bi bi-chevron-right text-xs transition-transform"
-                :class="
-                  showCVOptions ? 'rotate-90' : 'group-hover:translate-x-1'
-                "
+                :class="showCVOptions ? 'rotate-90' : 'group-hover:translate-x-1'"
               ></i>
             </button>
 
@@ -174,16 +156,13 @@
                     : 'bg-violet-600 text-white hover:bg-violet-700'
                 "
               >
-                <i
-                  class="bi"
-                  :class="downloading.designer ? 'bi-check2-all' : 'bi-palette'"
-                ></i>
+                <i class="bi" :class="downloading.designer ? 'bi-check2-all' : 'bi-palette'"></i>
                 {{
                   downloading.designer
-                    ? lang === "ID"
-                      ? "Mengunduh..."
-                      : "Downloading..."
-                    : "Designer"
+                    ? lang === 'ID'
+                      ? 'Mengunduh...'
+                      : 'Downloading...'
+                    : 'Designer'
                 }}
               </a>
               <a
@@ -199,16 +178,14 @@
               >
                 <i
                   class="bi"
-                  :class="
-                    downloading.developer ? 'bi-check2-all' : 'bi-code-slash'
-                  "
+                  :class="downloading.developer ? 'bi-check2-all' : 'bi-code-slash'"
                 ></i>
                 {{
                   downloading.developer
-                    ? lang === "ID"
-                      ? "Mengunduh..."
-                      : "Downloading..."
-                    : "Developer"
+                    ? lang === 'ID'
+                      ? 'Mengunduh...'
+                      : 'Downloading...'
+                    : 'Developer'
                 }}
               </a>
             </div>
@@ -226,8 +203,15 @@
                 alt="Figma"
                 class="w-4 h-4 object-contain group-hover:rotate-12 transition-transform duration-300"
               />
-              <span class="text-[12px] font-medium tracking-wide">Designed with <span class="text-white font-semibold group-hover:text-violet-300 transition-colors">Figma</span></span>
-              <i class="bi bi-box-arrow-up-right text-[10px] text-neutral-400 group-hover:text-violet-300 transition-colors ml-0.5"></i>
+              <span class="text-[12px] font-medium tracking-wide"
+                >Designed with
+                <span class="text-white font-semibold group-hover:text-violet-300 transition-colors"
+                  >Figma</span
+                ></span
+              >
+              <i
+                class="bi bi-box-arrow-up-right text-[10px] text-neutral-400 group-hover:text-violet-300 transition-colors ml-0.5"
+              ></i>
             </a>
           </div>
 
@@ -258,7 +242,9 @@
               class="pt-2"
             >
               <div class="inline-flex items-baseline gap-2 font-mono text-xs text-zinc-400">
-                <span class="text-zinc-500 uppercase tracking-widest">// {{ t("contact_views") }}:</span>
+                <span class="text-zinc-500 uppercase tracking-widest"
+                  >// {{ t('contact_views') }}:</span
+                >
                 <span class="text-white font-bold tracking-wider">{{ viewCount }}</span>
               </div>
             </div>
@@ -300,14 +286,34 @@
           <div
             class="inline-block animate-marquee-slow font-['Poppins'] text-sm sm:text-base tracking-[0.3em] text-zinc-400 pr-4 uppercase"
           >
-            CREATIVE TECHNOLOGIST <span class="text-zinc-600">//</span> <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]">INTERACTIVE DESIGNER</span> <span class="text-zinc-600">//</span> RAPID PROTOTYPER <span class="text-zinc-600">//</span>&nbsp;
-            CREATIVE TECHNOLOGIST <span class="text-zinc-600">//</span> <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]">INTERACTIVE DESIGNER</span> <span class="text-zinc-600">//</span> RAPID PROTOTYPER <span class="text-zinc-600">//</span>&nbsp;
+            CREATIVE TECHNOLOGIST <span class="text-zinc-600">//</span>
+            <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]"
+              >INTERACTIVE DESIGNER</span
+            >
+            <span class="text-zinc-600">//</span> RAPID PROTOTYPER
+            <span class="text-zinc-600">//</span>&nbsp; CREATIVE TECHNOLOGIST
+            <span class="text-zinc-600">//</span>
+            <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]"
+              >INTERACTIVE DESIGNER</span
+            >
+            <span class="text-zinc-600">//</span> RAPID PROTOTYPER
+            <span class="text-zinc-600">//</span>&nbsp;
           </div>
           <div
             class="inline-block animate-marquee-slow font-['Poppins'] text-sm sm:text-base tracking-[0.3em] text-zinc-400 pr-4 uppercase"
           >
-            CREATIVE TECHNOLOGIST <span class="text-zinc-600">//</span> <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]">INTERACTIVE DESIGNER</span> <span class="text-zinc-600">//</span> RAPID PROTOTYPER <span class="text-zinc-600">//</span>&nbsp;
-            CREATIVE TECHNOLOGIST <span class="text-zinc-600">//</span> <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]">INTERACTIVE DESIGNER</span> <span class="text-zinc-600">//</span> RAPID PROTOTYPER <span class="text-zinc-600">//</span>&nbsp;
+            CREATIVE TECHNOLOGIST <span class="text-zinc-600">//</span>
+            <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]"
+              >INTERACTIVE DESIGNER</span
+            >
+            <span class="text-zinc-600">//</span> RAPID PROTOTYPER
+            <span class="text-zinc-600">//</span>&nbsp; CREATIVE TECHNOLOGIST
+            <span class="text-zinc-600">//</span>
+            <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]"
+              >INTERACTIVE DESIGNER</span
+            >
+            <span class="text-zinc-600">//</span> RAPID PROTOTYPER
+            <span class="text-zinc-600">//</span>&nbsp;
           </div>
         </div>
 
@@ -323,7 +329,7 @@
             class="text-gray-300 font-['Roboto'] text-sm flex items-center justify-center gap-2 group cursor-default"
           >
             &copy; 2026 Muhamad Sidik |
-            <span>{{ t("contact_footer") }}</span>
+            <span>{{ t('contact_footer') }}</span>
           </p>
         </div>
       </div>
@@ -347,156 +353,153 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
-import { useLanguage } from "@/composables/useLanguage";
+import { ref, onMounted, onUnmounted } from 'vue'
+import { useLanguage } from '@/composables/useLanguage'
 
-const { t, lang } = useLanguage();
+const { t, lang } = useLanguage()
 
-const localTime = ref("");
-let timeInterval = null;
+const localTime = ref('')
+let timeInterval = null
 
 const updateLocalTime = () => {
   const options = {
-    timeZone: "Asia/Jakarta",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
+    timeZone: 'Asia/Jakarta',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
     hour12: false,
-  };
-  localTime.value = new Intl.DateTimeFormat("en-US", options).format(
-    new Date(),
-  );
-};
+  }
+  localTime.value = new Intl.DateTimeFormat('en-US', options).format(new Date())
+}
 
 onMounted(() => {
-  updateLocalTime();
-  timeInterval = setInterval(updateLocalTime, 1000);
-});
+  updateLocalTime()
+  timeInterval = setInterval(updateLocalTime, 1000)
+})
 
 onUnmounted(() => {
-  if (timeInterval) clearInterval(timeInterval);
-});
+  if (timeInterval) clearInterval(timeInterval)
+})
 
-const showCVOptions = ref(false);
-const viewCount = ref("...");
-const copyStatus = ref({ phone: false, email: false, share: false });
-const downloading = ref({ designer: false, developer: false });
+const showCVOptions = ref(false)
+const viewCount = ref('...')
+const copyStatus = ref({ phone: false, email: false, share: false })
+const downloading = ref({ designer: false, developer: false })
 
 const sharePortfolio = async () => {
   const shareData = {
-    title: "Muhamad Sidik | Creative Technologist",
-    text: "Check out this amazing creative portfolio by Muhamad Sidik!",
+    title: 'Muhamad Sidik | Creative Technologist',
+    text: 'Check out this amazing creative portfolio by Muhamad Sidik!',
     url: window.location.href,
-  };
+  }
 
   try {
     if (navigator.share) {
-      await navigator.share(shareData);
+      await navigator.share(shareData)
     } else {
       // Fallback: Copy Link
-      await copyToClipboard(window.location.href, 'share');
+      await copyToClipboard(window.location.href, 'share')
     }
   } catch (err) {
-    console.error("Sharing failed:", err);
+    console.error('Sharing failed:', err)
   }
-};
+}
 
 const copyToClipboard = async (text, type) => {
   try {
     if (navigator.clipboard && window.isSecureContext) {
-      await navigator.clipboard.writeText(text);
+      await navigator.clipboard.writeText(text)
     } else {
-      const textArea = document.createElement("textarea");
-      textArea.value = text;
-      textArea.style.position = "fixed";
-      textArea.style.left = "-999999px";
-      textArea.style.top = "-999999px";
-      document.body.appendChild(textArea);
-      textArea.focus();
-      textArea.select();
-      document.execCommand("copy");
-      textArea.remove();
+      const textArea = document.createElement('textarea')
+      textArea.value = text
+      textArea.style.position = 'fixed'
+      textArea.style.left = '-999999px'
+      textArea.style.top = '-999999px'
+      document.body.appendChild(textArea)
+      textArea.focus()
+      textArea.select()
+      document.execCommand('copy')
+      textArea.remove()
     }
-    copyStatus.value[type] = true;
+    copyStatus.value[type] = true
     setTimeout(() => {
-      copyStatus.value[type] = false;
-    }, 2000);
+      copyStatus.value[type] = false
+    }, 2000)
   } catch (err) {
-    console.error("Failed to copy text: ", err);
+    console.error('Failed to copy text: ', err)
   }
-};
+}
 
 const trackDownload = (type) => {
-  downloading.value[type] = true;
+  downloading.value[type] = true
   setTimeout(() => {
-    downloading.value[type] = false;
-  }, 3000);
-};
+    downloading.value[type] = false
+  }, 3000)
+}
 
 // Fetch and increment view count with 258+ base count
-const BASE_VIEW_COUNT = 258;
+const BASE_VIEW_COUNT = 258
 
 onMounted(async () => {
-  const STORAGE_KEY = "porto_editorial_total_views";
-  const LAST_VISIT_KEY = "porto_editorial_last_visit";
-  const now = Date.now();
-  const ONE_HOUR = 3600 * 1000;
+  const STORAGE_KEY = 'porto_editorial_total_views'
+  const LAST_VISIT_KEY = 'porto_editorial_last_visit'
+  const now = Date.now()
+  const ONE_HOUR = 3600 * 1000
 
-  let localCount = parseInt(localStorage.getItem(STORAGE_KEY) || "0", 10);
+  let localCount = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10)
   if (!localCount || localCount < BASE_VIEW_COUNT) {
-    localCount = BASE_VIEW_COUNT;
+    localCount = BASE_VIEW_COUNT
   }
 
-  const lastVisit = localStorage.getItem(LAST_VISIT_KEY);
+  const lastVisit = localStorage.getItem(LAST_VISIT_KEY)
   if (!lastVisit || now - parseInt(lastVisit, 10) > ONE_HOUR) {
-    localCount += 1;
-    localStorage.setItem(STORAGE_KEY, localCount.toString());
-    localStorage.setItem(LAST_VISIT_KEY, now.toString());
+    localCount += 1
+    localStorage.setItem(STORAGE_KEY, localCount.toString())
+    localStorage.setItem(LAST_VISIT_KEY, now.toString())
   }
 
-  viewCount.value = localCount.toLocaleString();
+  viewCount.value = localCount.toLocaleString()
 
   try {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 4000);
-    const response = await fetch(
-      "https://abacus.jasoncameron.dev/hit/muhamadsidik-porto/views",
-      { signal: controller.signal }
-    );
-    clearTimeout(timeoutId);
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 4000)
+    const response = await fetch('https://abacus.jasoncameron.dev/hit/muhamadsidik-porto/views', {
+      signal: controller.signal,
+    })
+    clearTimeout(timeoutId)
 
     if (response.ok) {
-      const data = await response.json();
-      const countVal = data && typeof data.value === "number" ? data.value : 0;
+      const data = await response.json()
+      const countVal = data && typeof data.value === 'number' ? data.value : 0
       if (countVal > 0) {
-        const finalCount = Math.max(localCount, countVal + BASE_VIEW_COUNT);
-        viewCount.value = finalCount.toLocaleString();
-        localStorage.setItem(STORAGE_KEY, finalCount.toString());
+        const finalCount = Math.max(localCount, countVal + BASE_VIEW_COUNT)
+        viewCount.value = finalCount.toLocaleString()
+        localStorage.setItem(STORAGE_KEY, finalCount.toString())
       }
     }
   } catch (error) {
     // Keep local stored count (minimum 258+)
   }
-});
+})
 
 // Heart Particles Logic
-const heartIconRef = ref(null);
-const heartParticles = ref([]);
-let heartPid = 0;
+const heartIconRef = ref(null)
+const heartParticles = ref([])
+let heartPid = 0
 
 const spawnHeartParticles = () => {
-  if (!heartIconRef.value) return;
-  const rect = heartIconRef.value.getBoundingClientRect();
-  const centerX = rect.left + rect.width / 2;
-  const centerY = rect.top + rect.height / 2;
+  if (!heartIconRef.value) return
+  const rect = heartIconRef.value.getBoundingClientRect()
+  const centerX = rect.left + rect.width / 2
+  const centerY = rect.top + rect.height / 2
 
-  const count = 12;
-  const newParticles = [];
+  const count = 12
+  const newParticles = []
 
   for (let i = 0; i < count; i++) {
-    const id = heartPid++;
-    const angle = (Math.PI * 2 * i) / count + Math.random() * 0.5;
-    const velocity = 80 + Math.random() * 100;
+    const id = heartPid++
+    const angle = (Math.PI * 2 * i) / count + Math.random() * 0.5
+    const velocity = 80 + Math.random() * 100
 
     const p = {
       id,
@@ -505,43 +508,29 @@ const spawnHeartParticles = () => {
       opacity: 1,
       scale: 0.5 + Math.random() * 1.5,
       rotate: Math.random() * 360,
-    };
-    newParticles.push(p);
-    heartParticles.value.push(p);
+    }
+    newParticles.push(p)
+    heartParticles.value.push(p)
 
     setTimeout(() => {
-      p.x += Math.cos(angle) * velocity;
-      p.y += Math.sin(angle) * velocity - 40;
-      p.opacity = 0;
-      p.scale = 0;
-      p.rotate += 180;
-    }, 50);
+      p.x += Math.cos(angle) * velocity
+      p.y += Math.sin(angle) * velocity - 40
+      p.opacity = 0
+      p.scale = 0
+      p.rotate += 180
+    }, 50)
   }
 
   setTimeout(() => {
-    heartParticles.value = heartParticles.value.filter(
-      (p) => !newParticles.includes(p),
-    );
-  }, 1000);
-};
+    heartParticles.value = heartParticles.value.filter((p) => !newParticles.includes(p))
+  }, 1000)
+}
 </script>
 
 <style scoped>
 .marquee-section {
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 15%,
-    black 85%,
-    transparent
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 15%,
-    black 85%,
-    transparent
-  );
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 
 .marquee-wrapper {

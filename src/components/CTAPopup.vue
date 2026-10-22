@@ -1,8 +1,8 @@
 <template>
   <Teleport to="body">
     <Transition name="cta-toast">
-      <div 
-        v-if="isVisible && !isClosed" 
+      <div
+        v-if="isVisible && !isClosed"
         role="dialog"
         aria-label="Connect Invitation"
         class="fixed top-24 right-4 sm:right-6 lg:right-10 z-[9990] w-[310px] sm:w-[340px] p-5 flex flex-col gap-3 backdrop-blur-md transition-all duration-300"
@@ -15,21 +15,29 @@
         <!-- Header Tag & Close Button -->
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-2">
-            <span 
-              class="w-2 h-2" 
-              :class="currentTheme === 'pixel' ? 'bg-[#00ff66] rounded-none shadow-[0_0_6px_#00ff66]' : 'rounded-full bg-violet-500'"
+            <span
+              class="w-2 h-2"
+              :class="
+                currentTheme === 'pixel'
+                  ? 'bg-[#00ff66] rounded-none shadow-[0_0_6px_#00ff66]'
+                  : 'rounded-full bg-violet-500'
+              "
             ></span>
-            <span 
+            <span
               class="font-mono text-[10px] tracking-widest uppercase font-medium"
               :class="currentTheme === 'pixel' ? 'text-[#00ff66]' : 'text-zinc-400'"
             >
-              {{ currentTheme === 'pixel' ? '⚡ QUEST_INVITE' : '✦ LET\'S CONNECT' }}
+              {{ currentTheme === 'pixel' ? '⚡ QUEST_INVITE' : "✦ LET'S CONNECT" }}
             </span>
           </div>
-          <button 
+          <button
             @click="closePopup"
             class="transition-colors p-1"
-            :class="currentTheme === 'pixel' ? 'text-[#00ff66] hover:bg-[#00ff66]/20 rounded-none' : 'text-zinc-400 hover:text-white rounded-lg hover:bg-white/5'"
+            :class="
+              currentTheme === 'pixel'
+                ? 'text-[#00ff66] hover:bg-[#00ff66]/20 rounded-none'
+                : 'text-zinc-400 hover:text-white rounded-lg hover:bg-white/5'
+            "
             aria-label="Close"
           >
             <i class="bi bi-x-lg text-xs"></i>
@@ -38,15 +46,21 @@
 
         <!-- Content -->
         <div class="flex flex-col gap-1">
-          <h4 
+          <h4
             class="font-semibold text-sm sm:text-base leading-snug"
-            :class="currentTheme === 'pixel' ? 'text-white font-mono' : 'text-white font-[\'Poppins\']'"
+            :class="
+              currentTheme === 'pixel' ? 'text-white font-mono' : 'text-white font-[\'Poppins\']'
+            "
           >
             {{ t('cta_title') }}
           </h4>
-          <p 
+          <p
             class="text-xs leading-relaxed"
-            :class="currentTheme === 'pixel' ? 'text-zinc-300 font-mono' : 'text-zinc-400 font-[\'Roboto\']'"
+            :class="
+              currentTheme === 'pixel'
+                ? 'text-zinc-300 font-mono'
+                : 'text-zinc-400 font-[\'Roboto\']'
+            "
           >
             {{ t('cta_desc') }}
           </p>
@@ -83,39 +97,41 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import { useLanguage } from '@/composables/useLanguage';
-import { useTheme } from '@/composables/useTheme';
+import { ref, onMounted } from 'vue'
+import { useLanguage } from '@/composables/useLanguage'
+import { useTheme } from '@/composables/useTheme'
 
-const { t } = useLanguage();
-const { currentTheme } = useTheme();
-const isVisible = ref(false);
-const isClosed = ref(false);
+const { t } = useLanguage()
+const { currentTheme } = useTheme()
+const isVisible = ref(false)
+const isClosed = ref(false)
 
 const closePopup = () => {
-  isClosed.value = true;
-};
+  isClosed.value = true
+}
 
 const goToContact = () => {
-  isClosed.value = true;
-  const el = document.getElementById('contact');
+  isClosed.value = true
+  const el = document.getElementById('contact')
   if (el) {
-    el.scrollIntoView({ behavior: 'smooth' });
+    el.scrollIntoView({ behavior: 'smooth' })
   }
-};
+}
 
 onMounted(() => {
   // Show popup after 10 seconds of staying on the page
   setTimeout(() => {
-    isVisible.value = true;
-  }, 10000); 
-});
+    isVisible.value = true
+  }, 10000)
+})
 </script>
 
 <style scoped>
 .cta-toast-enter-active,
 .cta-toast-leave-active {
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cta-toast-enter-from,
