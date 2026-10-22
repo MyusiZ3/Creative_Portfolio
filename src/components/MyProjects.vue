@@ -253,14 +253,52 @@
               </div>
 
               <!-- Action Button -->
-              <div class="border-t border-white/5 pt-4 flex justify-end">
+              <div class="border-t border-white/5 pt-4 flex flex-wrap items-center justify-end gap-3">
                 <a
-                  :href="project.link || '#'"
+                  v-if="project.flipbookUrl"
+                  :href="project.flipbookUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 border border-violet-400/50 text-violet-300 hover:bg-violet-600 hover:text-white font-['Poppins'] font-semibold text-xs px-4 py-2.5 rounded-xl transition-all shadow-md shadow-violet-600/20 cursor-pointer"
+                  :title="lang === 'ID' ? 'Buka E-Book / Flipbook Interaktif' : 'Open AR Flipbook E-Book'"
+                >
+                  <i class="bi bi-book-half text-sm"></i>
+                  <span>{{ lang === 'ID' ? 'E-Book (Flipbook)' : 'Flipbook E-Book' }}</span>
+                  <i class="bi bi-arrow-up-right text-[10px]"></i>
+                </a>
+
+                <a
+                  v-if="project.appUrl"
+                  :href="project.appUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 bg-white text-zinc-900 hover:bg-zinc-200 font-['Poppins'] font-semibold text-xs px-5 py-2.5 rounded-xl transition-all shadow-md shadow-white/10 cursor-pointer"
+                  :title="lang === 'ID' ? 'Unduh Aplikasi di Google Drive' : 'Download Application on Google Drive'"
+                >
+                  <i class="bi bi-google text-xs text-emerald-600"></i>
+                  <span>{{ lang === 'ID' ? 'Unduh App (Drive)' : 'Get App (Drive)' }}</span>
+                  <i class="bi bi-arrow-up-right text-[10px]"></i>
+                </a>
+
+                <a
+                  v-else-if="project.link && project.link !== '#'"
+                  :href="project.link"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   class="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 active:scale-95 text-white font-['Poppins'] font-semibold text-xs px-5 py-2.5 rounded-xl transition-all duration-300 tracking-wider shadow-md shadow-violet-600/20 cursor-pointer"
                 >
                   <span>{{ t('my_proj_view_work') }}</span>
                   <i class="bi bi-arrow-right text-xs"></i>
                 </a>
+
+                <button
+                  v-else-if="project.link === '#'"
+                  @click="openLightbox(index, 0)"
+                  class="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 active:scale-95 text-white font-['Poppins'] font-semibold text-xs px-5 py-2.5 rounded-xl transition-all duration-300 tracking-wider shadow-md shadow-violet-600/20 cursor-pointer"
+                >
+                  <span>{{ t('my_proj_view_work') }}</span>
+                  <i class="bi bi-arrow-right text-xs"></i>
+                </button>
               </div>
             </div>
           </div>
@@ -344,7 +382,9 @@
               :key="lightboxImages[lightbox.slideIdx]"
               :src="lightboxImages[lightbox.slideIdx]"
               :alt="`Lightbox image ${lightbox.slideIdx + 1}`"
-              class="w-full h-auto max-h-[85vh] object-contain rounded-xl mx-auto block"
+              loading="lazy"
+              decoding="async"
+              class="max-w-full max-h-[85vh] w-auto h-auto object-contain rounded-xl mx-auto block shadow-2xl"
               draggable="false"
             />
           </transition>
@@ -543,37 +583,37 @@ const projects = computed(() => {
   const isId = lang.value === 'ID'
   return [
     {
-      name: isId ? 'Djaswita AR – Dynamic AR & Web CMS (Tugas Akhir)' : 'Djaswita AR – Dynamic AR',
+      name: isId ? 'Djaswita AR – Dynamic AR (Tugas Akhir)' : 'Djaswita AR – Dynamic AR',
       icon: 'bi-box-seam',
-      role: 'Fullstack AR & Web Developer (Thesis)',
+      role: isId ? 'Fullstack AR & Web Developer (Tugas Akhir)' : 'Fullstack AR & Web Developer (Thesis)',
       teamInfo: isId
-        ? 'Proyek Pribadi untuk Tugas Akhir | Mei – Jun 2026'
-        : 'Personal Project for Final Thesis | May – Jun 2026',
-      tools: 'Unity, Vuforia Engine, Supabase DB, Vite, JavaScript',
+        ? 'Tugas Akhir untuk PT Jaswita Jabar (BUMD) | Mei – Jun 2026'
+        : 'Final Thesis for PT Jaswita Jabar (BUMD) | May – Jun 2026',
+      tools: 'Unity, Vuforia Engine, Supabase, Vite, JavaScript, C#',
       overview: isId
-        ? 'Satu sistem terintegrasi yang menggabungkan aplikasi Dynamic Augmented Reality (AR) dan Web Admin Dashboard (CMS) berbasis Vite & Supabase DB sebagai topik Tugas Akhir kelulusan. Konten 3D dan informasi dalam aplikasi AR dapat di-CRUD secara real-time melalui web admin tanpa perlu rebuild aplikasi.'
-        : 'A unified system combining a dynamic Augmented Reality (AR) app and a Vite & Supabase DB Web Admin Dashboard (CMS) built for Final Graduation Thesis. Enables real-time remote 3D content CRUD operations directly from the web admin without rebuilding application binaries.',
+        ? 'Platform media promosi interaktif yang dirancang khusus untuk PT Jaswita Jabar (BUMD) guna memodernisasi materi pameran. Menggantikan brosur cetak statis yang sulit diperbarui, platform ini menggabungkan aplikasi Augmented Reality (Android) dan Web Admin Dashboard (Vite & Supabase). Seluruh materi promosi multi-unit bisnis seperti teks, visual, video, model 3D, serta penambahan image marker baru dapat dikelola langsung dari web secara real-time tanpa perlu rebuild aplikasi.'
+        : 'An interactive promotional platform developed for PT Jaswita Jabar (BUMD) to modernize their exhibition showcase. Replacing rigid printed brochures, this unified platform pairs an Android Augmented Reality app with a Vite & Supabase Web Admin Dashboard. Multi-unit business marketing content (copy, media, 3D assets, and new image markers) can be managed dynamically in real time without application rebuilds.',
       tasks: isId
         ? [
-            'Membangun arsitektur AR dinamis yang memuat aset 3D & data dari Supabase DB',
-            'Mengembangkan Web Admin Dashboard (CMS) menggunakan Vite untuk manajemen CRUD konten AR',
-            'Mengeliminasi kebutuhan rebuild aplikasi AR saat ada perubahan atau penambahan materi 3D',
-            'Mengintegrasikan autentikasi database, manajemen storage, dan endpoint API real-time',
+            'Merancang arsitektur AR berbasis Unity & Vuforia yang memuat target marker dan konten promosi secara dinamis dari cloud',
+            'Membangun Web Admin Dashboard (CMS) menggunakan Vite & Supabase untuk manajemen konten mandiri dan penambahan marker baru',
+            'Mengeliminasi keharusan rebuild file APK saat terjadi pergantian materi promosi di tiap kegiatan pameran',
+            'Mencapai tingkat kelulusan 100% pada 44 skenario uji black-box serta skor SUS 86,50 (Aplikasi AR) dan 83,17 (Web Admin)',
           ]
         : [
-            'Architected dynamic AR remote asset loading pipeline connected to Supabase DB',
-            'Developed Web Admin Dashboard (CMS) using Vite for full AR content CRUD management',
-            'Eliminated application binary rebuilds when 3D models or informational content are modified',
-            'Integrated database authentication, cloud storage management, and real-time APIs',
+            'Architected a dynamic AR client in Unity & Vuforia capable of fetching image markers and rich promotional media dynamically from the cloud',
+            'Developed a responsive Web Admin CMS with Vite & Supabase for self-service content management and instant marker provisioning',
+            'Eliminated the need to rebuild application binaries whenever marketing materials change across different exhibitions',
+            'Achieved a 100% pass rate across 44 black-box test cases and strong usability validation with SUS scores of 86.50 (AR) and 83.17 (CMS)',
           ],
       platform: isId
-        ? 'Aplikasi AR Mobile & Web CMS (Satu Sistem)'
-        : 'Unified AR App & Web CMS System',
+        ? 'Platform Terpadu: AR Android & Web CMS'
+        : 'Unified Platform: Android AR & Web CMS',
       bg: '#7c3aed',
       images: [
-        '/images/projects/DjaswitaAR/djaswita_web_mockup.webp',
-        '/images/projects/DjaswitaAR/djaswita_appscreen_mockup.webp',
-        '/images/projects/DjaswitaAR/djaswita_3d_mockup.webp',
+        '/images/projects/DjaswitaAR/dashboard_laptop_mockup.webp',
+        '/images/projects/DjaswitaAR/djaswitamobile.webp',
+        '/images/projects/DjaswitaAR/djaswitaflowchart.webp',
       ],
       link: 'https://github.com/MyusiZ3/DjaswitaAR-Fix',
       _dir: 'next',
@@ -745,8 +785,12 @@ const projects = computed(() => {
       bg: '#C0392B',
       images: [
         '/images/projects/LuxionRideXP/luxion_ridexp.webp',
-        '/images/projects/luxion_ridexp_2.webp',
-        '/images/projects/luxion_ridexp_3.webp',
+        '/images/projects/LuxionRideXP/luxion_ridexp_1.webp',
+        '/images/projects/LuxionRideXP/luxion_ridexp_2.webp',
+        '/images/projects/LuxionRideXP/luxion_ridexp_3.webp',
+        '/images/projects/LuxionRideXP/luxion_ridexp_4.webp',
+        '/images/projects/LuxionRideXP/luxion_ridexp_5.webp',
+        '/images/projects/LuxionRideXP/luxion_ridexp_6.webp',
       ],
       link: '#',
       _dir: 'next',
@@ -777,8 +821,14 @@ const projects = computed(() => {
       bg: '#4A1D8E',
       images: [
         '/images/projects/MindescapeVR/mindescape_vr.webp',
-        '/images/projects/mindescape_vr_2.webp',
-        '/images/projects/mindescape_vr_3.webp',
+        '/images/projects/MindescapeVR/mindescape_vr_1.webp',
+        '/images/projects/MindescapeVR/mindescape_vr_2.webp',
+        '/images/projects/MindescapeVR/mindescape_vr_3.webp',
+        '/images/projects/MindescapeVR/mindescape_vr_4.webp',
+        '/images/projects/MindescapeVR/mindescape_vr_5.webp',
+        '/images/projects/MindescapeVR/mindescape_vr_6.webp',
+        '/images/projects/MindescapeVR/mindescape_vr_7.webp',
+        '/images/projects/MindescapeVR/mindescape_vr_8.webp',
       ],
       link: 'https://youtu.be/DmFdkMLRTGc?si=EKjq0QPhMt2LOcCU',
       videoEmbedId: 'DmFdkMLRTGc',
@@ -842,9 +892,15 @@ const projects = computed(() => {
       bg: '#1a2a3a',
       images: [
         '/images/projects/StellarAdventures/stellar_adventures.webp',
-        '/images/projects/StellarAdventures/stellar_adventures_gameplay.webp',
+        '/images/projects/StellarAdventures/mckup_cover.webp',
+        '/images/projects/StellarAdventures/mckup_page.webp',
+        '/images/projects/StellarAdventures/mckup_card.webp',
+        '/images/projects/StellarAdventures/prev1.webp',
+        '/images/projects/StellarAdventures/prev2.webp',
       ],
-      link: 'https://youtu.be/beb_pedFmMg?si=tQhdt1NH_zsD2kko',
+      link: 'https://drive.google.com/drive/folders/1E5aDwwwQ6N-_4L24yXOicgDLIbja2S4L?usp=drive_link',
+      appUrl: 'https://drive.google.com/drive/folders/1E5aDwwwQ6N-_4L24yXOicgDLIbja2S4L?usp=drive_link',
+      flipbookUrl: 'https://heyzine.com/flip-book/46f2424104.html',
       videoEmbedId: 'beb_pedFmMg',
       _dir: 'next',
     },

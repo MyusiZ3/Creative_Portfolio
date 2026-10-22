@@ -302,20 +302,49 @@
 
               <!-- Action Buttons -->
               <div
-                class="flex items-center gap-3 pt-6 mt-6 border-t border-white/5"
+                class="flex flex-wrap items-center gap-3 pt-6 mt-6 border-t border-white/5"
               >
                 <button
                   v-if="selectedProject.videoEmbedId && !isPlayingVideo"
                   @click="isPlayingVideo = true"
-                  class="flex-1 px-5 py-2.5 rounded-xl bg-red-600 text-white font-['Poppins'] font-semibold text-xs flex items-center justify-center gap-2 hover:bg-red-500 transition-all shadow-md shadow-red-600/20 cursor-pointer"
+                  class="flex-1 min-w-[140px] px-4 py-2.5 rounded-xl bg-red-600 text-white font-['Poppins'] font-semibold text-xs flex items-center justify-center gap-2 hover:bg-red-500 transition-all shadow-md shadow-red-600/20 cursor-pointer"
                 >
                   <i class="bi bi-play-circle-fill text-sm"></i>
                   <span>{{
                     lang === "ID" ? "Stream Video Demo" : "Stream Video Demo"
                   }}</span>
                 </button>
+
                 <a
-                  v-else-if="selectedProject.liveLink"
+                  v-if="selectedProject.flipbookUrl"
+                  :href="selectedProject.flipbookUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex-1 min-w-[140px] px-4 py-2.5 rounded-xl border border-violet-400/50 text-violet-300 hover:bg-violet-600 hover:text-white font-['Poppins'] font-semibold text-xs flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-violet-600/20"
+                >
+                  <i class="bi bi-book-half text-sm"></i>
+                  <span>{{
+                    lang === "ID" ? "E-Book (Flipbook)" : "AR Flipbook"
+                  }}</span>
+                  <i class="bi bi-arrow-up-right text-[10px]"></i>
+                </a>
+
+                <a
+                  v-if="selectedProject.appUrl"
+                  :href="selectedProject.appUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex-1 min-w-[140px] px-4 py-2.5 rounded-xl bg-white text-zinc-900 font-['Poppins'] font-semibold text-xs flex items-center justify-center gap-2 hover:bg-zinc-200 transition-all shadow-md shadow-white/10"
+                >
+                  <i class="bi bi-google text-xs text-emerald-600"></i>
+                  <span>{{
+                    lang === "ID" ? "Unduh App (Drive)" : "Download App"
+                  }}</span>
+                  <i class="bi bi-arrow-up-right text-[10px]"></i>
+                </a>
+
+                <a
+                  v-else-if="selectedProject.liveLink && !selectedProject.videoEmbedId"
                   :href="selectedProject.liveLink"
                   target="_blank"
                   class="flex-1 px-5 py-2.5 rounded-xl bg-violet-600 text-white font-['Poppins'] font-semibold text-xs flex items-center justify-center gap-2 hover:bg-violet-500 transition-all shadow-md shadow-violet-600/20"
@@ -384,19 +413,19 @@ const projects = computed(() => {
     {
       name: isId ? "Djaswita AR (Tugas Akhir)" : "Djaswita AR (Thesis)",
       category: isId
-        ? "Aplikasi AR & Web CMS (Unified)"
-        : "Unified AR & Web CMS App",
+        ? "Platform AR & Web CMS (BUMD)"
+        : "AR & Web CMS Platform (BUMD)",
       bg: "#7c3aed",
-      image: "/images/projects/DjaswitaAR/djaswita_web_mockup.webp",
+      image: "/images/projects/DjaswitaAR/dashboard_laptop_mockup.webp",
       filterType: "game",
       githubLink: "https://github.com/MyusiZ3/DjaswitaAR-Fix",
       caseStudy: {
         challenge: isId
-          ? "Aplikasi AR konvensional mengharuskan build ulang APK setiap kali terjadi perubahan konten 3D atau informasi."
-          : "Conventional AR apps require complete binary rebuilds whenever 3D assets or information are updated.",
+          ? "Media promosi pameran PT Jaswita Jabar masih berupa cetakan statis yang lambat diperbarui antar-event, sementara aplikasi AR biasa mengharuskan build ulang APK setiap kali materi promosi berganti."
+          : "Exhibition materials for PT Jaswita Jabar relied on static printouts that could not easily adapt between events, while conventional AR apps required binary rebuilds for every content update.",
         solution: isId
-          ? "Membangun satu sistem terintegrasi antara aplikasi AR dinamis dan Web Admin Dashboard (Vite + Supabase) untuk manajemen CRUD konten real-time."
-          : "Built a unified system combining dynamic AR app and a Vite & Supabase Web Admin Dashboard for real-time remote CRUD content management.",
+          ? "Membangun platform promosi interaktif yang memadukan aplikasi AR Android dan Web CMS berbasis Supabase, memungkinkan tim memperbarui materi promosi multi-unit bisnis dan marker baru secara mandiri tanpa rebuild."
+          : "Engineered an interactive promotional platform combining an Android AR client and a Supabase Web CMS, empowering teams to update multi-unit marketing media and add markers dynamically without rebuilding.",
       },
     },
     {
@@ -531,7 +560,9 @@ const projects = computed(() => {
       bg: "#1a2a3a",
       image: "/images/projects/StellarAdventures/stellar_adventures.webp",
       filterType: "game",
-      liveLink: "https://youtu.be/beb_pedFmMg?si=tQhdt1NH_zsD2kko",
+      liveLink: "https://drive.google.com/drive/folders/1E5aDwwwQ6N-_4L24yXOicgDLIbja2S4L?usp=drive_link",
+      appUrl: "https://drive.google.com/drive/folders/1E5aDwwwQ6N-_4L24yXOicgDLIbja2S4L?usp=drive_link",
+      flipbookUrl: "https://heyzine.com/flip-book/46f2424104.html",
       videoEmbedId: "beb_pedFmMg",
       caseStudy: {
         challenge: isId

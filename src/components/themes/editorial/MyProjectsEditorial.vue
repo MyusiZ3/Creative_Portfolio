@@ -242,14 +242,14 @@
                   </div>
                 </div>
 
-                <!-- LAYOUT 4 (Index % 4 === 3): Wide Banner + Corner Overlap -->
+                <!-- LAYOUT 4 (Index % 4 === 3): Wide Banner + Corner Overlap Multi-Card Collage -->
                 <div
                   v-else
                   class="relative w-full min-h-[320px] sm:min-h-[400px] md:min-h-[440px] flex items-center justify-center select-none"
                 >
                   <!-- Center Hero Wide Banner -->
                   <div
-                    class="relative z-10 w-[88%] aspect-16/10 rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.85)] border border-white/20 transition-all duration-500 hover:scale-[1.02] hover:z-30 cursor-pointer group/banner"
+                    class="relative z-10 w-[84%] sm:w-[78%] aspect-16/10 rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.85)] border border-white/20 transition-all duration-500 hover:scale-[1.02] hover:z-30 cursor-pointer group/banner"
                     @click="openLightbox(index, 0)"
                   >
                     <img
@@ -260,11 +260,32 @@
                     <div
                       class="absolute inset-0 bg-black/10 group-hover/banner:bg-transparent transition-colors"
                     ></div>
+                    <div
+                      class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/70 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover/banner:opacity-100 transition-opacity"
+                    >
+                      <i class="bi bi-arrows-fullscreen text-xs"></i>
+                    </div>
+                  </div>
+
+                  <!-- Top-Left Floating Angled Card (if images > 2) -->
+                  <div
+                    v-if="project.images.length > 2"
+                    class="absolute left-[-1%] top-[-2%] z-20 w-[42%] sm:w-[36%] aspect-4/3 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.92)] border border-white/25 transition-all duration-500 transform -rotate-[5deg] hover:rotate-0 hover:scale-108 hover:z-40 cursor-pointer group/corner1 bg-[#18181d]"
+                    @click="openLightbox(index, 2)"
+                  >
+                    <img
+                      :src="project.images[2]"
+                      :alt="`${project.name} left overlay`"
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover/corner1:scale-110"
+                    />
+                    <div
+                      class="absolute inset-0 bg-black/20 group-hover/corner1:bg-transparent transition-colors"
+                    ></div>
                   </div>
 
                   <!-- Bottom-Right Corner Card -->
                   <div
-                    class="absolute right-[0%] bottom-[0%] z-20 w-[42%] aspect-4/3 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.9)] border border-white/25 transition-all duration-500 hover:scale-108 hover:z-40 cursor-pointer group/corner2 bg-[#18181d]"
+                    class="absolute right-[-1%] bottom-[-2%] z-25 w-[44%] sm:w-[38%] aspect-4/3 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.9)] border border-white/25 transition-all duration-500 transform rotate-[4deg] hover:rotate-0 hover:scale-108 hover:z-40 cursor-pointer group/corner2 bg-[#18181d]"
                     @click="openLightbox(index, project.images.length > 1 ? 1 : 0)"
                   >
                     <img
@@ -275,6 +296,16 @@
                     <div
                       class="absolute inset-0 bg-black/20 group-hover/corner2:bg-transparent transition-colors"
                     ></div>
+                  </div>
+
+                  <!-- More Photos Badge (if images > 3) -->
+                  <div
+                    v-if="project.images.length > 3"
+                    @click="openLightbox(index, 3)"
+                    class="absolute bottom-1 left-2 z-30 px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-white text-xs font-mono font-medium flex items-center gap-1.5 cursor-pointer hover:bg-violet-600 transition-colors shadow-lg"
+                  >
+                    <i class="bi bi-images text-xs"></i>
+                    <span>+{{ project.images.length - 3 }} {{ lang === 'ID' ? 'Foto' : 'More' }}</span>
                   </div>
                 </div>
               </div>
@@ -374,26 +405,102 @@
                   {{ project.platform }}
                 </p>
 
-                <div class="flex flex-wrap items-center gap-3">
+                <!-- Action Button Row with Horizontal Quick Icons Expansion -->
+                <div class="flex items-center gap-2.5 flex-wrap project-action-popover-container">
+                  <!-- Single Clean "VIEW PROJECT" Button -->
                   <button
-                    v-if="project.videoEmbedId"
-                    @click="openVideoModal(project.videoEmbedId, project.name)"
-                    class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-red-600 hover:bg-red-500 text-white font-['Poppins'] font-semibold text-xs tracking-wider uppercase transition-all shadow-lg shadow-red-600/30 cursor-pointer hover:scale-105"
+                    type="button"
+                    @click.stop="handlePrimaryClick(project, index)"
+                    class="inline-flex items-center justify-between gap-3 px-6 py-2.5 rounded-full border font-['Poppins'] font-medium text-xs tracking-wider uppercase transition-all duration-300 group cursor-pointer shadow-sm select-none"
+                    :class="
+                      activeDropdown === index && getProjectActions(project, index).length > 1
+                        ? 'bg-white !text-zinc-950 border-white shadow-lg shadow-white/10'
+                        : 'border-white/30 text-white hover:bg-white hover:!text-zinc-950 hover:border-white'
+                    "
+                    :title="
+                      getProjectActions(project, index).length > 1
+                        ? (lang === 'ID' ? 'Tampilkan opsi media' : 'Show media options')
+                        : t('my_proj_view_work')
+                    "
                   >
-                    <i class="bi bi-play-circle-fill text-sm"></i>
-                    <span>{{ lang === 'ID' ? 'Putar Video Demo' : 'Stream Demo' }}</span>
+                    <span :class="activeDropdown === index && getProjectActions(project, index).length > 1 ? 'text-zinc-950 font-semibold' : ''">
+                      {{ t('my_proj_view_work') }}
+                    </span>
+                    <!-- Icon: Close 'X' if open, or Right Chevron if multiple, or External Arrow if single -->
+                    <i
+                      class="bi text-xs transition-transform duration-200"
+                      :class="[
+                        activeDropdown === index && getProjectActions(project, index).length > 1
+                          ? 'bi-x-lg text-zinc-950'
+                          : getProjectActions(project, index).length > 1
+                          ? 'bi-chevron-right group-hover:translate-x-1'
+                          : 'bi-arrow-up-right group-hover:translate-x-0.5 group-hover:-translate-y-0.5'
+                      ]"
+                    ></i>
                   </button>
 
-                  <a
-                    :href="project.link || '#'"
-                    @click="project.link === '#' ? openLightbox(index, 0) : null"
-                    class="inline-flex items-center justify-between gap-3 px-6 py-2.5 rounded-full border border-white/30 text-white hover:bg-white hover:text-black font-['Poppins'] font-medium text-xs tracking-wider uppercase transition-all duration-300 group cursor-pointer"
+                  <!-- Horizontal Quick Action Icons (Pops up to the right) -->
+                  <transition
+                    enter-active-class="transition duration-300 ease-out"
+                    enter-from-class="opacity-0 -translate-x-3 scale-90"
+                    enter-to-class="opacity-100 translate-x-0 scale-100"
+                    leave-active-class="transition duration-200 ease-in"
+                    leave-from-class="opacity-100 translate-x-0 scale-100"
+                    leave-to-class="opacity-0 -translate-x-3 scale-90"
                   >
-                    <span>{{ t('my_proj_view_work') }}</span>
-                    <i
-                      class="bi bi-chevron-right text-xs group-hover:translate-x-1 transition-transform"
-                    ></i>
-                  </a>
+                    <div
+                      v-if="activeDropdown === index && getProjectActions(project, index).length > 1"
+                      class="flex items-center gap-2"
+                    >
+                      <template
+                        v-for="action in getProjectActions(project, index)"
+                        :key="action.id"
+                      >
+                        <!-- Video Modal Action Button -->
+                        <button
+                          v-if="action.handler"
+                          type="button"
+                          @click="action.handler"
+                          class="relative group/icon w-10 h-10 rounded-full bg-zinc-900/90 border border-white/20 hover:border-white hover:bg-white flex items-center justify-center transition-all duration-200 shadow-md hover:scale-110 active:scale-95 cursor-pointer"
+                          :aria-label="action.label"
+                        >
+                          <i :class="['bi', action.icon, action.brandColor, 'text-base transition-colors']"></i>
+
+                          <!-- Floating Tooltip on Hover -->
+                          <div
+                            class="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 opacity-0 group-hover/icon:opacity-100 transition-all duration-150 py-1 px-2.5 rounded-lg bg-zinc-900/95 border border-white/20 text-[11px] font-['Poppins'] font-medium text-zinc-100 whitespace-nowrap z-50 shadow-xl backdrop-blur-sm -translate-y-1 group-hover/icon:translate-y-0"
+                          >
+                            {{ action.label }}
+                            <div
+                              class="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-zinc-900/95"
+                            ></div>
+                          </div>
+                        </button>
+
+                        <!-- External URL Action Link -->
+                        <a
+                          v-else
+                          :href="action.url"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="relative group/icon w-10 h-10 rounded-full bg-zinc-900/90 border border-white/20 hover:border-white hover:bg-white flex items-center justify-center transition-all duration-200 shadow-md hover:scale-110 active:scale-95 cursor-pointer"
+                          :aria-label="action.label"
+                        >
+                          <i :class="['bi', action.icon, action.brandColor, 'text-base transition-colors']"></i>
+
+                          <!-- Floating Tooltip on Hover -->
+                          <div
+                            class="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 opacity-0 group-hover/icon:opacity-100 transition-all duration-150 py-1 px-2.5 rounded-lg bg-zinc-900/95 border border-white/20 text-[11px] font-['Poppins'] font-medium text-zinc-100 whitespace-nowrap z-50 shadow-xl backdrop-blur-sm -translate-y-1 group-hover/icon:translate-y-0"
+                          >
+                            {{ action.label }}
+                            <div
+                              class="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-zinc-900/95"
+                            ></div>
+                          </div>
+                        </a>
+                      </template>
+                    </div>
+                  </transition>
                 </div>
               </div>
             </div>
@@ -669,11 +776,11 @@
           <i class="bi bi-x-lg text-lg"></i>
         </button>
 
-        <!-- Counter & Stream Button -->
+        <!-- Counter & Action Buttons -->
         <div
-          class="absolute top-5 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 text-white/60 font-['Roboto'] text-sm"
+          class="absolute top-5 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2.5 text-white/60 font-['Roboto'] text-sm"
         >
-          <span>{{ lightbox.slideIdx + 1 }} / {{ lightboxImages.length }}</span>
+          <span class="mr-1">{{ lightbox.slideIdx + 1 }} / {{ lightboxImages.length }}</span>
           <button
             v-if="currentLightboxProject && currentLightboxProject.videoEmbedId"
             @click="openVideoModal(currentLightboxProject.videoEmbedId, currentLightboxProject.name)"
@@ -683,6 +790,28 @@
             <i class="bi bi-play-circle-fill text-xs"></i>
             <span>{{ lang === 'ID' ? 'Stream Demo' : 'Stream Demo' }}</span>
           </button>
+          <a
+            v-if="currentLightboxProject && currentLightboxProject.flipbookUrl"
+            :href="currentLightboxProject.flipbookUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-600/90 hover:bg-violet-600 text-white font-['Poppins'] text-xs font-semibold tracking-wide transition-all shadow-md cursor-pointer hover:scale-105"
+            :title="lang === 'ID' ? 'Buka Versi E-Book / Flipbook' : 'Open Flipbook E-Book'"
+          >
+            <i class="bi bi-book-half text-xs"></i>
+            <span>Flipbook</span>
+          </a>
+          <a
+            v-if="currentLightboxProject && currentLightboxProject.appUrl"
+            :href="currentLightboxProject.appUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white hover:bg-zinc-200 text-zinc-900 font-['Poppins'] text-xs font-semibold tracking-wide transition-all shadow-md cursor-pointer hover:scale-105"
+            :title="lang === 'ID' ? 'Unduh File Aplikasi di Google Drive' : 'Download Application on Google Drive'"
+          >
+            <i class="bi bi-google text-xs text-emerald-600"></i>
+            <span>Drive App</span>
+          </a>
         </div>
 
         <!-- Image Container -->
@@ -700,7 +829,9 @@
               :key="lightboxImages[lightbox.slideIdx]"
               :src="lightboxImages[lightbox.slideIdx]"
               :alt="`Lightbox image ${lightbox.slideIdx + 1}`"
-              class="w-full h-auto max-h-[85vh] object-contain rounded-xl mx-auto block"
+              loading="lazy"
+              decoding="async"
+              class="max-w-full max-h-[85vh] w-auto h-auto object-contain rounded-xl mx-auto block shadow-2xl"
               draggable="false"
             />
           </transition>
@@ -905,6 +1036,150 @@ const handleVideoKey = (e) => {
   }
 }
 
+// === Action Popover Dropdown state (Option A) ===
+const activeDropdown = ref(null)
+
+const toggleDropdown = (index) => {
+  activeDropdown.value = activeDropdown.value === index ? null : index
+}
+
+const closeDropdown = () => {
+  activeDropdown.value = null
+}
+
+const getProjectActions = (project, index) => {
+  const actions = []
+  const isId = lang.value === 'ID'
+
+  // 1. Video demo (YouTube)
+  if (project.videoEmbedId) {
+    actions.push({
+      id: 'video',
+      type: 'video',
+      icon: 'bi-youtube',
+      iconColor: 'text-red-500',
+      brandColor: 'text-red-500 group-hover/icon:text-red-600',
+      label: isId ? 'Tonton Video Demo' : 'Watch Video Demo',
+      sub: isId ? 'Tonton demo video interaktif' : 'Watch interactive video demo',
+      badge: 'YouTube',
+      badgeStyle: 'bg-red-500/10 text-red-400 border-red-500/20',
+      handler: () => {
+        closeDropdown()
+        openVideoModal(project.videoEmbedId, project.name)
+      },
+    })
+  }
+
+  // 2. Interactive E-Book / Flipbook
+  if (project.flipbookUrl) {
+    actions.push({
+      id: 'flipbook',
+      type: 'flipbook',
+      icon: 'bi-book-half',
+      iconColor: 'text-violet-400',
+      brandColor: 'text-violet-400 group-hover/icon:text-violet-700',
+      label: isId ? 'Buka Flipbook E-Book' : 'Flipbook E-Book',
+      sub: isId ? 'Versi digital interaktif' : 'Interactive digital version',
+      badge: 'Heyzine',
+      badgeStyle: 'bg-violet-500/10 text-violet-300 border-violet-500/20',
+      url: project.flipbookUrl,
+    })
+  }
+
+  // 3. Download App / Files (Google Drive)
+  if (project.appUrl) {
+    actions.push({
+      id: 'app',
+      type: 'app',
+      icon: 'bi-google',
+      iconColor: 'text-emerald-400',
+      brandColor: 'text-emerald-400 group-hover/icon:text-emerald-600',
+      label: isId ? 'Unduh dari Google Drive' : 'Google Drive (APK & Assets)',
+      sub: isId ? 'File APK & panduan lengkap' : 'APK files & documentation',
+      badge: 'Drive',
+      badgeStyle: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20',
+      url: project.appUrl,
+    })
+  }
+
+  // 4. Live interactive web demo
+  if (project.demoUrl) {
+    actions.push({
+      id: 'demo',
+      type: 'demo',
+      icon: 'bi-box-arrow-up-right',
+      iconColor: 'text-amber-400',
+      brandColor: 'text-amber-400 group-hover/icon:text-amber-600',
+      label: isId ? 'Buka Live Web Demo' : 'Live Interactive Demo',
+      sub: isId ? 'Uji coba aplikasi langsung' : 'Try live demo in browser',
+      badge: 'Live',
+      badgeStyle: 'bg-amber-500/10 text-amber-300 border-amber-500/20',
+      url: project.demoUrl,
+    })
+  }
+
+  // 5. GitHub or Figma or External project link
+  if (
+    project.link &&
+    project.link !== '#' &&
+    project.link !== project.appUrl &&
+    project.link !== project.flipbookUrl &&
+    project.link !== project.demoUrl
+  ) {
+    const isGithub = project.link.includes('github.com')
+    const isFigma = project.link.includes('figma.com')
+    actions.push({
+      id: 'link',
+      type: 'link',
+      icon: isGithub ? 'bi-github' : isFigma ? 'bi-figma' : 'bi-arrow-up-right',
+      iconColor: isGithub ? 'text-zinc-200' : isFigma ? 'text-pink-400' : 'text-sky-400',
+      brandColor: isGithub
+        ? 'text-zinc-200 group-hover/icon:text-zinc-950'
+        : isFigma
+        ? 'text-pink-400 group-hover/icon:text-purple-600'
+        : 'text-sky-400 group-hover/icon:text-sky-600',
+      label: isGithub
+        ? (isId ? 'Lihat Repositori GitHub' : 'GitHub Repository')
+        : isFigma
+        ? (isId ? 'Lihat Prototipe Figma' : 'Figma Prototype')
+        : (isId ? 'Buka Tautan Proyek' : 'Visit Project Link'),
+      sub: isGithub
+        ? (isId ? 'Lihat kode sumber' : 'View source code')
+        : isFigma
+        ? (isId ? 'Lihat alur desain UI' : 'View design flow')
+        : (isId ? 'Buka tautan eksternal' : 'Open external link'),
+      badge: isGithub ? 'GitHub' : isFigma ? 'Figma' : 'Link',
+      badgeStyle: 'bg-white/5 text-zinc-300 border-white/10',
+      url: project.link,
+    })
+  }
+
+  return actions
+}
+
+const handlePrimaryClick = (project, index) => {
+  const actions = getProjectActions(project, index)
+  if (actions.length > 1) {
+    toggleDropdown(index)
+  } else if (actions.length === 1) {
+    const act = actions[0]
+    if (act.handler) {
+      act.handler()
+    } else if (act.url) {
+      window.open(act.url, '_blank', 'noopener,noreferrer')
+    }
+  } else {
+    // If no action link at all or link is '#', open lightbox
+    openLightbox(index, 0)
+  }
+}
+
+const handleGlobalClick = (e) => {
+  if (!e.target.closest('.project-action-popover-container')) {
+    activeDropdown.value = null
+  }
+}
+
 const openLightbox = (projectIdx, slideIdx) => {
   lightbox.projectIdx = projectIdx
   lightbox.slideIdx = slideIdx
@@ -942,6 +1217,10 @@ const lightboxGoTo = (i) => {
 
 const handleLightboxKey = (e) => {
   if (videoModal.open) return
+  if (activeDropdown.value !== null && e.key === 'Escape') {
+    closeDropdown()
+    return
+  }
   if (e.key === 'Escape') closeLightbox()
   if (e.key === 'ArrowRight') lightboxNext()
   if (e.key === 'ArrowLeft') lightboxPrev()
@@ -1019,6 +1298,7 @@ const handleScrollToProject = (e) => {
 
 onMounted(() => {
   window.addEventListener('scrollToProject', handleScrollToProject)
+  window.addEventListener('click', handleGlobalClick)
   autoPlayInterval = setInterval(() => {
     projects.value.forEach((project, idx) => {
       if (project.images.length > 1) {
@@ -1032,6 +1312,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   window.removeEventListener('scrollToProject', handleScrollToProject)
+  window.removeEventListener('click', handleGlobalClick)
   window.removeEventListener('keydown', handleVideoKey)
   window.removeEventListener('keydown', handleLightboxKey)
   if (autoPlayInterval) clearInterval(autoPlayInterval)
@@ -1042,13 +1323,13 @@ const projects = computed(() => {
   return [
     {
       year: '2026',
-      name: isId ? 'Djaswita AR – Dynamic AR & Web CMS (Tugas Akhir)' : 'Djaswita AR – Dynamic AR',
+      name: isId ? 'Djaswita AR – Dynamic AR (Tugas Akhir)' : 'Djaswita AR – Dynamic AR',
       icon: 'bi-box-seam',
-      role: 'Fullstack AR & Web Developer (Thesis)',
+      role: isId ? 'Fullstack AR & Web Developer (Tugas Akhir)' : 'Fullstack AR & Web Developer (Thesis)',
       teamInfo: isId
-        ? 'Proyek Pribadi untuk Tugas Akhir | Mei – Jun 2026'
-        : 'Personal Project for Final Thesis | May – Jun 2026',
-      tools: 'Unity, Vuforia Engine, Supabase DB, Vite, JavaScript',
+        ? 'Tugas Akhir untuk PT Jaswita Jabar (BUMD) | Mei – Jun 2026'
+        : 'Final Thesis for PT Jaswita Jabar (BUMD) | May – Jun 2026',
+      tools: 'Unity, Vuforia Engine, Supabase, Vite, JavaScript, C#',
       toolIcons: [
         {
           name: 'Unity',
@@ -1070,29 +1351,29 @@ const projects = computed(() => {
         },
       ],
       overview: isId
-        ? 'Satu sistem terintegrasi yang menggabungkan aplikasi Dynamic Augmented Reality (AR) dan Web Admin Dashboard (CMS) berbasis Vite & Supabase DB sebagai topik Tugas Akhir kelulusan. Konten 3D dan informasi dalam aplikasi AR dapat di-CRUD secara real-time melalui web admin tanpa perlu rebuild aplikasi.'
-        : 'A unified system combining a dynamic Augmented Reality (AR) app and a Vite & Supabase DB Web Admin Dashboard (CMS) built for Final Graduation Thesis. Enables real-time remote 3D content CRUD operations directly from the web admin without rebuilding application binaries.',
+        ? 'Platform media promosi interaktif yang dirancang khusus untuk PT Jaswita Jabar (BUMD) guna memodernisasi materi pameran. Menggantikan brosur cetak statis yang sulit diperbarui, platform ini menggabungkan aplikasi Augmented Reality (Android) dan Web Admin Dashboard (Vite & Supabase). Seluruh materi promosi multi-unit bisnis seperti teks, visual, video, model 3D, serta penambahan image marker baru dapat dikelola langsung dari web secara real-time tanpa perlu rebuild aplikasi.'
+        : 'An interactive promotional platform developed for PT Jaswita Jabar (BUMD) to modernize their exhibition showcase. Replacing rigid printed brochures, this unified platform pairs an Android Augmented Reality app with a Vite & Supabase Web Admin Dashboard. Multi-unit business marketing content (copy, media, 3D assets, and new image markers) can be managed dynamically in real time without application rebuilds.',
       tasks: isId
         ? [
-            'Membangun arsitektur AR dinamis yang memuat aset 3D & data dari Supabase DB',
-            'Mengembangkan Web Admin Dashboard (CMS) menggunakan Vite untuk manajemen CRUD konten AR',
-            'Mengeliminasi kebutuhan rebuild aplikasi AR saat ada perubahan atau penambahan materi 3D',
-            'Mengintegrasikan autentikasi database, manajemen storage, dan endpoint API real-time',
+            'Merancang arsitektur AR berbasis Unity & Vuforia yang memuat target marker dan konten promosi secara dinamis dari cloud',
+            'Membangun Web Admin Dashboard (CMS) menggunakan Vite & Supabase untuk manajemen konten mandiri dan penambahan marker baru',
+            'Mengeliminasi keharusan rebuild file APK saat terjadi pergantian materi promosi di tiap kegiatan pameran',
+            'Mencapai tingkat kelulusan 100% pada 44 skenario uji black-box serta skor SUS 86,50 (Aplikasi AR) dan 83,17 (Web Admin)',
           ]
         : [
-            'Architected dynamic AR remote asset loading pipeline connected to Supabase DB',
-            'Developed Web Admin Dashboard (CMS) using Vite for full AR content CRUD management',
-            'Eliminated application binary rebuilds when 3D models or informational content are modified',
-            'Integrated database authentication, cloud storage management, and real-time APIs',
+            'Architected a dynamic AR client in Unity & Vuforia capable of fetching image markers and rich promotional media dynamically from the cloud',
+            'Developed a responsive Web Admin CMS with Vite & Supabase for self-service content management and instant marker provisioning',
+            'Eliminated the need to rebuild application binaries whenever marketing materials change across different exhibitions',
+            'Achieved a 100% pass rate across 44 black-box test cases and strong usability validation with SUS scores of 86.50 (AR) and 83.17 (CMS)',
           ],
       platform: isId
-        ? 'Aplikasi AR Mobile & Web CMS (Satu Sistem)'
-        : 'Unified AR App & Web CMS System',
+        ? 'Platform Terpadu: AR Android & Web CMS'
+        : 'Unified Platform: Android AR & Web CMS',
       bg: '#7c3aed',
       images: [
-        '/images/projects/DjaswitaAR/djaswita_web_mockup.webp',
-        '/images/projects/DjaswitaAR/djaswita_appscreen_mockup.webp',
-        '/images/projects/DjaswitaAR/djaswita_3d_mockup.webp',
+        '/images/projects/DjaswitaAR/dashboard_laptop_mockup.webp',
+        '/images/projects/DjaswitaAR/djaswitamobile.webp',
+        '/images/projects/DjaswitaAR/djaswitaflowchart.webp',
       ],
       link: 'https://github.com/MyusiZ3/DjaswitaAR-Fix',
       _dir: 'next',
@@ -1273,8 +1554,12 @@ const projects = computed(() => {
       bg: '#C0392B',
       images: [
         '/images/projects/LuxionRideXP/luxion_ridexp.webp',
-        '/images/projects/luxion_ridexp_2.webp',
-        '/images/projects/luxion_ridexp_3.webp',
+        '/images/projects/LuxionRideXP/luxion_ridexp_1.webp',
+        '/images/projects/LuxionRideXP/luxion_ridexp_2.webp',
+        '/images/projects/LuxionRideXP/luxion_ridexp_3.webp',
+        '/images/projects/LuxionRideXP/luxion_ridexp_4.webp',
+        '/images/projects/LuxionRideXP/luxion_ridexp_5.webp',
+        '/images/projects/LuxionRideXP/luxion_ridexp_6.webp',
       ],
       link: '#',
       _dir: 'next',
@@ -1318,9 +1603,15 @@ const projects = computed(() => {
       bg: '#1a2a3a',
       images: [
         '/images/projects/StellarAdventures/stellar_adventures.webp',
-        '/images/projects/StellarAdventures/stellar_adventures_gameplay.webp',
+        '/images/projects/StellarAdventures/mckup_cover.webp',
+        '/images/projects/StellarAdventures/mckup_page.webp',
+        '/images/projects/StellarAdventures/mckup_card.webp',
+        '/images/projects/StellarAdventures/prev1.webp',
+        '/images/projects/StellarAdventures/prev2.webp',
       ],
-      link: 'https://youtu.be/beb_pedFmMg?si=tQhdt1NH_zsD2kko',
+      link: 'https://drive.google.com/drive/folders/1E5aDwwwQ6N-_4L24yXOicgDLIbja2S4L?usp=drive_link',
+      appUrl: 'https://drive.google.com/drive/folders/1E5aDwwwQ6N-_4L24yXOicgDLIbja2S4L?usp=drive_link',
+      flipbookUrl: 'https://heyzine.com/flip-book/46f2424104.html',
       videoEmbedId: 'beb_pedFmMg',
       _dir: 'next',
     },
@@ -1418,8 +1709,14 @@ const projects = computed(() => {
       bg: '#4A1D8E',
       images: [
         '/images/projects/MindescapeVR/mindescape_vr.webp',
-        '/images/projects/mindescape_vr_2.webp',
-        '/images/projects/mindescape_vr_3.webp',
+        '/images/projects/MindescapeVR/mindescape_vr_1.webp',
+        '/images/projects/MindescapeVR/mindescape_vr_2.webp',
+        '/images/projects/MindescapeVR/mindescape_vr_3.webp',
+        '/images/projects/MindescapeVR/mindescape_vr_4.webp',
+        '/images/projects/MindescapeVR/mindescape_vr_5.webp',
+        '/images/projects/MindescapeVR/mindescape_vr_6.webp',
+        '/images/projects/MindescapeVR/mindescape_vr_7.webp',
+        '/images/projects/MindescapeVR/mindescape_vr_8.webp',
       ],
       link: 'https://youtu.be/DmFdkMLRTGc?si=EKjq0QPhMt2LOcCU',
       videoEmbedId: 'DmFdkMLRTGc',
