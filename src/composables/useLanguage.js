@@ -114,7 +114,7 @@ const translations = {
     exp_p9_title: 'Lead AR Developer & Designer',
     exp_p9_sub: 'Djaswita AR',
     exp_p9_desc:
-      'Engineered an interactive Augmented Reality application (Unity & Vuforia) integrated with a Vite + Supabase Web Admin Dashboard for dynamic remote 3D content management.',
+      'Developed an interactive promotional platform for PT Jaswita Jabar (BUMD), integrating an Android AR app (Unity & Vuforia) with a Web CMS (Vite & Supabase) for instant, zero-rebuild content updates.',
     exp_p9_tech: 'Unity · Vuforia · Vite · Supabase · C#',
     exp_p4_title: 'AR Developer & Designer',
     exp_p4_sub: 'Stellar Adventures',
@@ -146,7 +146,7 @@ const translations = {
     ach_title_1: 'Achievements &',
     ach_title_2: 'Certificates',
     ach_desc:
-      'Selected achievements and certifications throughout my creative journey — essential milestones that shaped my expertise in multimedia and digital design.',
+      'Selected achievements and certifications throughout my creative journey, reflecting key milestones that shaped my expertise in multimedia and digital design.',
 
     // Contact
     contact_title_1: 'Contact &',
@@ -189,20 +189,20 @@ const translations = {
     skills_badge: 'MY APPS',
     skills_heading: 'SOME SOFTWARE THAT I USE',
     skills_sub:
-      'A versatile toolkit that supports my workflow across UI/UX, game development, and interactive media — from wireframes and design assets to real-time prototypes and immersive experiences.',
+      'A versatile toolkit that supports my workflow across UI/UX, game development, and interactive media, spanning wireframes and design assets to real-time prototypes and immersive experiences.',
 
     // Some Projects
     project_tag: 'Selected Works',
     some_proj_title_1: "Some Projects I've Designed &",
     some_proj_title_2: 'Developed',
     some_proj_desc:
-      'A selection of works spanning UI/UX design, game development, AR/VR, and web-based platforms — built during academic and collaborative projects.',
+      'A selection of works spanning UI/UX design, game development, AR/VR, and web-based platforms, built during academic and collaborative projects.',
 
     // My Projects
     my_proj_badge: 'PROJECT CONTRIBUTIONS',
     my_proj_title: 'What I Did',
     my_proj_desc:
-      "A showcase of roles I've taken, problems I've solved, and experiences I've crafted — across design, development, and creative tech.",
+      "A showcase of roles I've taken, problems I've solved, and experiences I've crafted across design, development, and creative tech.",
     my_proj_role: 'Role',
     my_proj_team_label: 'Project Team',
     my_proj_tools: 'Tools',
@@ -286,7 +286,7 @@ const translations = {
     exp_w2_title: 'Asisten Praktikum Laboratorium',
     exp_w2_sub: 'Fakultas Ilmu Terapan | Universitas Telkom',
     exp_w2_desc:
-      'Mendampingi 100+ mahasiswa selama 2 tahun dalam sesi laboratorium teknis—berfokus pada pengembangan aplikasi interaktif, Unity Engine, prinsip UI/UX, dan pemecahan masalah praktis. Turut mengampu modul basis data, jaringan komputer, sistem operasi, serta arsitektur komputer.',
+      'Mendampingi 100+ mahasiswa selama 2 tahun dalam sesi laboratorium teknis dengan fokus pada pengembangan aplikasi interaktif, Unity Engine, prinsip UI/UX, dan pemecahan masalah praktis. Turut mengampu modul basis data, jaringan komputer, sistem operasi, serta arsitektur komputer.',
     exp_w3_title: 'Desainer Identitas Visual & Publikasi Kreatif',
     exp_w3_sub: 'Event MAPS 2023 | Universitas Telkom',
     exp_w3_desc:
@@ -324,7 +324,7 @@ const translations = {
     exp_p9_title: 'Lead AR Developer & Designer',
     exp_p9_sub: 'Djaswita AR',
     exp_p9_desc:
-      'Membangun aplikasi Augmented Reality interaktif (Unity & Vuforia) terintegrasi Web Admin Dashboard (Vite + Supabase) untuk manajemen konten 3D secara real-time.',
+      'Membangun platform media promosi interaktif untuk PT Jaswita Jabar (BUMD) yang memadukan aplikasi AR Android (Unity & Vuforia) dan Web CMS (Vite + Supabase) untuk update konten mandiri tanpa rebuild.',
     exp_p9_tech: 'Unity · Vuforia · Vite · Supabase · C#',
     exp_p4_title: 'AR Developer & Designer',
     exp_p4_sub: 'Stellar Adventures',
@@ -356,7 +356,7 @@ const translations = {
     ach_title_1: 'Pencapaian &',
     ach_title_2: 'Sertifikat',
     ach_desc:
-      'Beberapa pencapaian dan sertifikasi selama perjalanan kreatif saya — tonggak penting yang ikut membentuk skill di bidang multimedia dan desain digital.',
+      'Beberapa pencapaian dan sertifikasi selama perjalanan kreatif saya yang ikut membentuk keahlian di bidang multimedia dan desain digital.',
 
     // Contact
     contact_title_1: 'Kontak &',
@@ -399,14 +399,14 @@ const translations = {
     skills_badge: 'MY APPS',
     skills_heading: 'SOME SOFTWARE THAT I USE',
     skills_sub:
-      'Tools yang saya pakai sehari-hari untuk desain UI/UX, game dev, dan konten digital — dari wireframe dan aset visual sampai prototipe interaktif.',
+      'Tools yang saya pakai sehari-hari untuk desain UI/UX, game dev, dan konten digital, dari wireframe dan aset visual sampai prototipe interaktif.',
 
     // Some Projects
     project_tag: 'Portofolio Terpilih',
     some_proj_title_1: 'Beberapa Proyek yang Pernah Saya Rancang &',
     some_proj_title_2: 'Kembangkan',
     some_proj_desc:
-      'Kumpulan karya dari berbagai bidang — desain UI/UX, game dev, AR/VR, dan web — yang dibuat selama kuliah maupun proyek bareng tim.',
+      'Kumpulan karya dari berbagai bidang seperti desain UI/UX, game dev, AR/VR, dan web yang dibuat selama kuliah maupun proyek bersama tim.',
 
     // My Projects
     my_proj_badge: 'KONTRIBUSI PROYEK',
@@ -426,7 +426,7 @@ const translations = {
     ds_badge: 'Pameran Desain',
     ds_title: 'Eksplorasi Visual',
     ds_desc:
-      'Koleksi karya kreatif saya — dari ilustrasi digital dan konsep UI/UX, sampai identitas brand.',
+      'Koleksi karya kreatif saya, mulai dari ilustrasi digital dan konsep UI/UX, sampai identitas brand.',
     ds_scroll: 'Geser',
     ds_tools: 'Tools',
     ds_date: 'Tanggal',
