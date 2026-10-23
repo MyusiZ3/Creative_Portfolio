@@ -1729,7 +1729,7 @@ const projects = computed(() => {
         { name: 'Vuforia Engine', icon: '/images/tools/vuforia.svg' },
         {
           name: 'Adobe Illustrator',
-          icon: '/images/tools/adobe-illustrator.svg',
+          icon: 'https://cdn.jsdelivr.net/gh/selfhst/icons/svg/adobe-illustrator.svg',
         },
         {
           name: 'Universal Render Pipeline (URP)',
