@@ -886,61 +886,79 @@
           @click="closeVideoModal"
         ></div>
 
-        <!-- Dialog Box -->
+        <!-- Tech Chamfered Dialog Box (Image 2 Silhouette) -->
         <div
-          class="relative z-10 w-full max-w-4xl bg-[#121214] border border-white/15 rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+          class="relative z-10 w-full max-w-4xl p-[1px] bg-gradient-to-br from-white/25 via-white/10 to-white/20 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)]"
+          style="clip-path: polygon(0 0, 100% 0, 100% 100%, 36px 100%, 0 calc(100% - 36px));"
           @click.stop
         >
-          <!-- Top Bar -->
+          <!-- Inner Chassis -->
           <div
-            class="flex items-center justify-between px-4 sm:px-6 py-3.5 border-b border-white/10 bg-white/[0.03]"
+            class="w-full bg-[#0d0d10] flex flex-col overflow-hidden"
+            style="clip-path: polygon(0 0, 100% 0, 100% 100%, 35px 100%, 0 calc(100% - 35px));"
           >
-            <div class="flex items-center gap-2.5 min-w-0 pr-4">
-              <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse shrink-0"></span>
-              <h4
-                class="font-['Poppins'] font-semibold text-sm text-white tracking-wide truncate"
-              >
-                {{ videoModal.title || 'MindEscape – Gameplay Demo' }}
-              </h4>
-              <span
-                class="hidden sm:inline-block text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-white/10 text-zinc-300 shrink-0"
-              >
-                Direct Stream
-              </span>
+            <!-- Top Bar -->
+            <div
+              class="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-white/10 bg-[#131316]"
+            >
+              <div class="flex items-center gap-3 min-w-0 pr-4">
+                <h4
+                  class="font-['Poppins'] font-medium text-xs sm:text-sm text-zinc-100 tracking-wider truncate uppercase"
+                >
+                  {{ (videoModal.title || 'MindEscape · Gameplay Demo').replace(/[—–]/g, '·') }}
+                </h4>
+              </div>
+
+              <div class="flex items-center gap-2 shrink-0">
+                <a
+                  v-if="videoModal.videoId"
+                  :href="`https://youtu.be/${videoModal.videoId}`"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono tracking-wider text-zinc-400 hover:text-white border border-white/10 hover:border-white/30 bg-white/[0.02] hover:bg-white/10 transition-colors"
+                  title="Buka di YouTube"
+                >
+                  <span>YOUTUBE</span>
+                  <i class="bi bi-box-arrow-up-right text-[9px]"></i>
+                </a>
+                <button
+                  @click="closeVideoModal"
+                  class="w-7 h-7 border border-white/15 bg-white/5 hover:bg-white hover:text-zinc-950 text-zinc-300 flex items-center justify-center transition-all cursor-pointer"
+                  aria-label="Tutup Video"
+                >
+                  <i class="bi bi-x-lg text-[11px]"></i>
+                </button>
+              </div>
             </div>
 
-            <div class="flex items-center gap-2 shrink-0">
-              <a
+            <!-- Video Player Iframe (Mounted only when videoModal.videoId is set) -->
+            <div class="relative w-full aspect-video bg-black">
+              <iframe
                 v-if="videoModal.videoId"
-                :href="`https://youtu.be/${videoModal.videoId}`"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs text-zinc-400 hover:text-white hover:bg-white/10 transition-colors"
-                title="Buka di YouTube"
-              >
-                <span>YouTube</span>
-                <i class="bi bi-box-arrow-up-right text-[10px]"></i>
-              </a>
-              <button
-                @click="closeVideoModal"
-                class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-zinc-300 hover:text-white flex items-center justify-center transition-all cursor-pointer"
-                aria-label="Tutup Video"
-              >
-                <i class="bi bi-x-lg text-xs"></i>
-              </button>
+                :src="`https://www.youtube-nocookie.com/embed/${videoModal.videoId}?autoplay=1&rel=0&modestbranding=1`"
+                title="YouTube Video Player"
+                class="w-full h-full border-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
             </div>
-          </div>
 
-          <!-- Video Player Iframe (Mounted only when videoModal.videoId is set) -->
-          <div class="relative w-full aspect-video bg-black">
-            <iframe
-              v-if="videoModal.videoId"
-              :src="`https://www.youtube-nocookie.com/embed/${videoModal.videoId}?autoplay=1&rel=0&modestbranding=1`"
-              title="YouTube Video Player"
-              class="w-full h-full border-0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
+            <!-- Bottom Tech Bar with Chamfer Corner Accent -->
+            <div
+              class="flex items-center justify-between px-5 py-2.5 border-t border-white/10 bg-[#131316] text-[10px] font-mono tracking-widest text-zinc-500 uppercase select-none"
+            >
+              <!-- Left: Padded past the 36px bottom-left chamfer cut -->
+              <div class="pl-8 flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-violet-400/80"></span>
+                <span class="text-zinc-400">ESC TO CLOSE</span>
+              </div>
+
+              <!-- Right: Tech status indicator -->
+              <div class="flex items-center gap-3">
+                <span class="hidden sm:inline text-zinc-600">// PREVIEW PLAYBACK</span>
+                <span class="text-zinc-400">1080P HD</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
