@@ -456,7 +456,7 @@
                         v-for="action in getProjectActions(project, index)"
                         :key="action.id"
                       >
-                        <!-- Video Modal Action Button -->
+                        <!-- Video / Flipbook Modal Action Button -->
                         <button
                           v-if="action.handler"
                           type="button"
@@ -464,7 +464,13 @@
                           class="relative group/icon w-10 h-10 rounded-full bg-zinc-900/90 border border-white/20 hover:border-white hover:bg-white flex items-center justify-center transition-all duration-200 shadow-md hover:scale-110 active:scale-95 cursor-pointer"
                           :aria-label="action.label"
                         >
-                          <i :class="['bi', action.icon, action.brandColor, 'text-base transition-colors']"></i>
+                          <img
+                            v-if="action.svg"
+                            :src="action.svg"
+                            :alt="action.label"
+                            class="w-4 h-4 object-contain transition-transform"
+                          />
+                          <i v-else :class="['bi', action.icon, action.brandColor, 'text-base transition-colors']"></i>
 
                           <!-- Floating Tooltip on Hover -->
                           <div
@@ -486,7 +492,13 @@
                           class="relative group/icon w-10 h-10 rounded-full bg-zinc-900/90 border border-white/20 hover:border-white hover:bg-white flex items-center justify-center transition-all duration-200 shadow-md hover:scale-110 active:scale-95 cursor-pointer"
                           :aria-label="action.label"
                         >
-                          <i :class="['bi', action.icon, action.brandColor, 'text-base transition-colors']"></i>
+                          <img
+                            v-if="action.svg"
+                            :src="action.svg"
+                            :alt="action.label"
+                            class="w-4 h-4 object-contain transition-transform"
+                          />
+                          <i v-else :class="['bi', action.icon, action.brandColor, 'text-base transition-colors']"></i>
 
                           <!-- Floating Tooltip on Hover -->
                           <div
@@ -807,7 +819,7 @@
             class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white hover:bg-zinc-200 text-zinc-900 font-['Poppins'] text-xs font-semibold tracking-wide transition-all shadow-md cursor-pointer hover:scale-105"
             :title="lang === 'ID' ? 'Unduh File Aplikasi di Google Drive' : 'Download Application on Google Drive'"
           >
-            <i class="bi bi-google text-xs text-emerald-600"></i>
+            <img src="/images/tools/google-drive.svg" alt="Google Drive" class="w-3.5 h-3.5 object-contain" />
             <span>Drive App</span>
           </a>
         </div>
@@ -1227,6 +1239,7 @@ const getProjectActions = (project, index) => {
     actions.push({
       id: 'app',
       type: 'app',
+      svg: '/images/tools/google-drive.svg',
       icon: 'bi-google',
       iconColor: 'text-emerald-400',
       brandColor: 'text-emerald-400 group-hover/icon:text-emerald-600',
@@ -1706,7 +1719,7 @@ const projects = computed(() => {
       icon: 'bi-stars',
       role: 'AR Developer, Environment Designer',
       teamInfo: isId ? 'Proyek Tim | Sep 2024 – Feb 2025' : 'Team Project | Sep 2024 – Feb 2025',
-      tools: 'Unity, Vuforia Engine, Blender',
+      tools: 'Unity (URP), Vuforia Engine, Adobe Illustrator',
       toolIcons: [
         {
           name: 'Unity',
@@ -1715,8 +1728,12 @@ const projects = computed(() => {
         },
         { name: 'Vuforia Engine', icon: '/images/tools/vuforia.svg' },
         {
-          name: 'Blender',
-          icon: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/blender.svg',
+          name: 'Adobe Illustrator',
+          icon: '/images/tools/adobe-illustrator.svg',
+        },
+        {
+          name: 'Universal Render Pipeline (URP)',
+          icon: '/images/tools/urp.svg',
         },
       ],
       overview: isId
@@ -1725,15 +1742,15 @@ const projects = computed(() => {
       tasks: isId
         ? [
             'Mengembangkan pendeteksi bidang datar (plane detection) dan kemunculan objek 3D luar angkasa',
-            'Merancang tekstur dan model lingkungan 3D menggunakan Blender',
+            'Merancang aset visual, tekstur vektor, dan ilustrasi UI menggunakan Adobe Illustrator',
             'Menerapkan mekanika interaksi dan gameplay langsung di ruang AR dengan Vuforia Engine',
-            'Mengoptimalkan performa rendering grafis dan pencahayaan untuk perangkat mobile AR',
+            'Mengoptimalkan performa rendering grafis dan pencahayaan mobile AR dengan Universal Render Pipeline (URP)',
           ]
         : [
             'Developed AR plane detection and space 3D object instantiation pipeline',
-            'Designed 3D environment models and space textures using Blender',
+            'Designed 2D visual assets, vector textures, and UI illustrations using Adobe Illustrator',
             'Implemented interactive game mechanics in AR space using Vuforia Engine',
-            'Optimized graphic rendering and lighting performance for mobile AR devices',
+            'Optimized mobile AR graphics rendering and lighting pipeline with Universal Render Pipeline (URP)',
           ],
       platform: isId ? 'Aplikasi AR Mobile' : 'AR Mobile App',
       bg: '#1a2a3a',

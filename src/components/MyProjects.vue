@@ -871,7 +871,7 @@ const projects = computed(() => {
       icon: 'bi-stars',
       role: 'AR Developer, Environment Designer',
       teamInfo: isId ? 'Proyek Tim | Sep 2024 – Feb 2025' : 'Team Project | Sep 2024 – Feb 2025',
-      tools: 'Unity, Vuforia Engine, Blender',
+      tools: 'Unity (URP), Vuforia Engine, Adobe Illustrator',
       overview: isId
         ? 'Stellar Adventures adalah game AR yang menggabungkan dunia maya dan nyata, memungkinkan pemain menavigasi ruang bertema luar angkasa melalui kamera.'
         : 'Stellar Adventures is an augmented reality game that blends the physical and digital world, allowing players to explore space-themed environments through their device camera.',

@@ -243,7 +243,8 @@
                 class="px-5 py-2.5 bg-[#00ff66] text-black font-extrabold text-xs uppercase border-2 border-black shadow-[3px_3px_0px_#000000] hover:translate-x-[1px] hover:translate-y-[1px] transition-all font-silkscreen flex items-center gap-1.5"
               >
                 <span>{{ project.appUrl ? 'GET APP (DRIVE)' : 'LAUNCH DEMO' }}</span>
-                <i :class="project.appUrl ? 'bi bi-google' : 'bi bi-rocket-takeoff-fill'"></i>
+                <img v-if="project.appUrl" src="/images/tools/google-drive.svg" alt="Google Drive" class="w-3.5 h-3.5 object-contain" />
+                <i v-else class="bi bi-rocket-takeoff-fill"></i>
               </a>
               <a
                 v-if="project.githubUrl"

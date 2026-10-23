@@ -350,7 +350,7 @@
                   rel="noopener noreferrer"
                   class="flex-1 min-w-[140px] px-4 py-2.5 rounded-xl bg-white text-zinc-900 font-['Poppins'] font-semibold text-xs flex items-center justify-center gap-2 hover:bg-zinc-200 transition-all shadow-md shadow-white/10"
                 >
-                  <i class="bi bi-google text-xs text-emerald-600"></i>
+                  <img src="/images/tools/google-drive.svg" alt="Google Drive" class="w-3.5 h-3.5 object-contain" />
                   <span>{{
                     lang === "ID" ? "Unduh App (Drive)" : "Download App"
                   }}</span>
