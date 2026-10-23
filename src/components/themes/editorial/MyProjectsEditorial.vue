@@ -942,23 +942,6 @@
                 allowfullscreen
               ></iframe>
             </div>
-
-            <!-- Bottom Tech Bar with Chamfer Corner Accent -->
-            <div
-              class="flex items-center justify-between px-5 py-2.5 border-t border-white/10 bg-[#131316] text-[10px] font-mono tracking-widest text-zinc-500 uppercase select-none"
-            >
-              <!-- Left: Padded past the 36px bottom-left chamfer cut -->
-              <div class="pl-8 flex items-center gap-2">
-                <span class="w-1.5 h-1.5 bg-violet-400/80"></span>
-                <span class="text-zinc-400">ESC TO CLOSE</span>
-              </div>
-
-              <!-- Right: Tech status indicator -->
-              <div class="flex items-center gap-3">
-                <span class="hidden sm:inline text-zinc-600">// PREVIEW PLAYBACK</span>
-                <span class="text-zinc-400">1080P HD</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
