@@ -188,6 +188,14 @@
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
                 ></iframe>
+                <iframe
+                  v-else-if="isPlayingFlipbook && selectedProject.flipbookUrl"
+                  :src="selectedProject.flipbookUrl"
+                  class="w-full h-full min-h-[280px] lg:min-h-[360px] rounded-xl border-0 shadow-2xl bg-black"
+                  allow="autoplay; fullscreen; clipboard-write"
+                  allowfullscreen
+                  scrolling="no"
+                ></iframe>
                 <div
                   v-else
                   class="relative w-full h-full flex items-center justify-center"
@@ -315,19 +323,25 @@
                   }}</span>
                 </button>
 
-                <a
+                <button
                   v-if="selectedProject.flipbookUrl"
-                  :href="selectedProject.flipbookUrl"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="flex-1 min-w-[140px] px-4 py-2.5 rounded-xl border border-violet-400/50 text-violet-300 hover:bg-violet-600 hover:text-white font-['Poppins'] font-semibold text-xs flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-violet-600/20"
+                  type="button"
+                  @click="isPlayingFlipbook = !isPlayingFlipbook; if (isPlayingFlipbook) isPlayingVideo = false"
+                  class="flex-1 min-w-[140px] px-4 py-2.5 rounded-xl border font-['Poppins'] font-semibold text-xs flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer"
+                  :class="
+                    isPlayingFlipbook
+                      ? 'bg-violet-600 text-white border-violet-500 shadow-violet-600/30'
+                      : 'border-violet-400/50 text-violet-300 hover:bg-violet-600 hover:text-white hover:shadow-violet-600/20'
+                  "
                 >
                   <i class="bi bi-book-half text-sm"></i>
                   <span>{{
-                    lang === "ID" ? "E-Book (Flipbook)" : "AR Flipbook"
+                    isPlayingFlipbook
+                      ? (lang === "ID" ? "Tutup Flipbook" : "Close E-Book")
+                      : (lang === "ID" ? "E-Book (Flipbook)" : "AR Flipbook")
                   }}</span>
-                  <i class="bi bi-arrow-up-right text-[10px]"></i>
-                </a>
+                  <i :class="isPlayingFlipbook ? 'bi bi-x-lg text-[10px]' : 'bi bi-arrow-right text-[10px]'"></i>
+                </button>
 
                 <a
                   v-if="selectedProject.appUrl"
@@ -382,6 +396,7 @@ const { t, lang } = useLanguage();
 const selectedProject = ref(null);
 const activeFilter = ref("all");
 const isPlayingVideo = ref(false);
+const isPlayingFlipbook = ref(false);
 
 const filterCategories = [
   { id: "all", nameId: "Semua", nameEn: "All" },
@@ -398,12 +413,14 @@ const filteredProjects = computed(() => {
 const openCaseStudy = (project) => {
   selectedProject.value = project;
   isPlayingVideo.value = false;
+  isPlayingFlipbook.value = false;
   document.body.style.overflow = "hidden";
 };
 
 const closeCaseStudy = () => {
   selectedProject.value = null;
   isPlayingVideo.value = false;
+  isPlayingFlipbook.value = false;
   document.body.style.overflow = "";
 };
 

@@ -790,17 +790,15 @@
             <i class="bi bi-play-circle-fill text-xs"></i>
             <span>{{ lang === 'ID' ? 'Stream Demo' : 'Stream Demo' }}</span>
           </button>
-          <a
+          <button
             v-if="currentLightboxProject && currentLightboxProject.flipbookUrl"
-            :href="currentLightboxProject.flipbookUrl"
-            target="_blank"
-            rel="noopener noreferrer"
+            @click="openFlipbookModal(currentLightboxProject.flipbookUrl, currentLightboxProject.name)"
             class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-600/90 hover:bg-violet-600 text-white font-['Poppins'] text-xs font-semibold tracking-wide transition-all shadow-md cursor-pointer hover:scale-105"
-            :title="lang === 'ID' ? 'Buka Versi E-Book / Flipbook' : 'Open Flipbook E-Book'"
+            :title="lang === 'ID' ? 'Buka E-Book / Flipbook Interaktif' : 'Open Interactive Flipbook'"
           >
             <i class="bi bi-book-half text-xs"></i>
             <span>Flipbook</span>
-          </a>
+          </button>
           <a
             v-if="currentLightboxProject && currentLightboxProject.appUrl"
             :href="currentLightboxProject.appUrl"
@@ -947,6 +945,90 @@
       </div>
     </transition>
   </Teleport>
+
+  <!-- Interactive Flipbook Embed Modal Teleport -->
+  <Teleport to="body">
+    <transition
+      enter-active-class="transition duration-300 ease-out"
+      enter-from-class="opacity-0 scale-95"
+      enter-to-class="opacity-100 scale-100"
+      leave-active-class="transition duration-200 ease-in"
+      leave-from-class="opacity-100 scale-100"
+      leave-to-class="opacity-0 scale-95"
+    >
+      <div
+        v-if="flipbookModal.open"
+        class="fixed inset-0 z-99999 flex items-center justify-center p-3 sm:p-6 lg:p-8 select-none"
+        @keydown.esc="closeFlipbookModal"
+      >
+        <!-- Backdrop -->
+        <div
+          class="absolute inset-0 bg-black/95 backdrop-blur-md transition-opacity"
+          @click="closeFlipbookModal"
+        ></div>
+
+        <!-- Tech Chamfered Dialog Box -->
+        <div
+          class="relative z-10 w-full max-w-5xl p-[1px] bg-gradient-to-br from-violet-400/30 via-white/10 to-violet-500/20 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.95)]"
+          style="clip-path: polygon(0 0, 100% 0, 100% 100%, 36px 100%, 0 calc(100% - 36px));"
+          @click.stop
+        >
+          <!-- Inner Chassis -->
+          <div
+            class="w-full bg-[#0d0d10] flex flex-col overflow-hidden"
+            style="clip-path: polygon(0 0, 100% 0, 100% 100%, 35px 100%, 0 calc(100% - 35px));"
+          >
+            <!-- Top Bar -->
+            <div
+              class="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-white/10 bg-[#131316]"
+            >
+              <div class="flex items-center gap-3 min-w-0 pr-4">
+                <i class="bi bi-book-half text-violet-400 text-sm"></i>
+                <h4
+                  class="font-['Poppins'] font-medium text-xs sm:text-sm text-zinc-100 tracking-wider truncate uppercase"
+                >
+                  {{ (flipbookModal.title || 'Stellar Adventures · Digital Flipbook').replace(/[—–]/g, '·') }}
+                </h4>
+              </div>
+
+              <div class="flex items-center gap-2 shrink-0">
+                <a
+                  v-if="flipbookModal.url"
+                  :href="flipbookModal.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono tracking-wider text-violet-300 hover:text-white border border-violet-500/30 hover:border-violet-400/60 bg-violet-500/10 hover:bg-violet-500/20 transition-colors"
+                  title="Buka Tab Penuh di Heyzine"
+                >
+                  <span>HEYZINE</span>
+                  <i class="bi bi-box-arrow-up-right text-[9px]"></i>
+                </a>
+                <button
+                  @click="closeFlipbookModal"
+                  class="w-7 h-7 border border-white/15 bg-white/5 hover:bg-white hover:text-zinc-950 text-zinc-300 flex items-center justify-center transition-all cursor-pointer"
+                  aria-label="Tutup Flipbook"
+                >
+                  <i class="bi bi-x-lg text-[11px]"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Flipbook Embedded Iframe -->
+            <div class="relative w-full bg-[#09090b] flex items-center justify-center">
+              <iframe
+                v-if="flipbookModal.url"
+                :src="flipbookModal.url"
+                class="w-full h-[460px] sm:h-[540px] lg:h-[600px] border-0"
+                allow="autoplay; fullscreen; clipboard-write"
+                allowfullscreen
+                scrolling="no"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
+  </Teleport>
 </template>
 
 <script setup>
@@ -1025,7 +1107,7 @@ const closeVideoModal = () => {
   videoModal.open = false
   videoModal.videoId = ''
   videoModal.title = ''
-  if (!lightbox.open) {
+  if (!lightbox.open && !flipbookModal.open) {
     document.body.style.overflow = ''
   }
   window.removeEventListener('keydown', handleVideoKey)
@@ -1034,6 +1116,37 @@ const closeVideoModal = () => {
 const handleVideoKey = (e) => {
   if (e.key === 'Escape') {
     closeVideoModal()
+  }
+}
+
+// === Flipbook Modal state (Interactive embedded digital book) ===
+const flipbookModal = reactive({
+  open: false,
+  url: '',
+  title: '',
+})
+
+const openFlipbookModal = (url, title = '') => {
+  flipbookModal.url = url
+  flipbookModal.title = title
+  flipbookModal.open = true
+  document.body.style.overflow = 'hidden'
+  window.addEventListener('keydown', handleFlipbookKey)
+}
+
+const closeFlipbookModal = () => {
+  flipbookModal.open = false
+  flipbookModal.url = ''
+  flipbookModal.title = ''
+  if (!lightbox.open && !videoModal.open) {
+    document.body.style.overflow = ''
+  }
+  window.removeEventListener('keydown', handleFlipbookKey)
+}
+
+const handleFlipbookKey = (e) => {
+  if (e.key === 'Escape') {
+    closeFlipbookModal()
   }
 }
 
@@ -1071,7 +1184,7 @@ const getProjectActions = (project, index) => {
     })
   }
 
-  // 2. Interactive E-Book / Flipbook
+  // 2. Interactive E-Book / Flipbook (Embedded Modal)
   if (project.flipbookUrl) {
     actions.push({
       id: 'flipbook',
@@ -1083,7 +1196,10 @@ const getProjectActions = (project, index) => {
       sub: isId ? 'Versi digital interaktif' : 'Interactive digital version',
       badge: 'Heyzine',
       badgeStyle: 'bg-violet-500/10 text-violet-300 border-violet-500/20',
-      url: project.flipbookUrl,
+      handler: () => {
+        closeDropdown()
+        openFlipbookModal(project.flipbookUrl, project.name)
+      },
     })
   }
 
@@ -1194,7 +1310,7 @@ const openLightbox = (projectIdx, slideIdx) => {
 
 const closeLightbox = () => {
   lightbox.open = false
-  if (!videoModal.open) {
+  if (!videoModal.open && !flipbookModal.open) {
     document.body.style.overflow = ''
   }
   window.removeEventListener('keydown', handleLightboxKey)
