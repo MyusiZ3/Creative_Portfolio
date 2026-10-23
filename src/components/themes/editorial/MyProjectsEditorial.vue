@@ -897,34 +897,41 @@
           >
             <!-- Top Bar -->
             <div
-              class="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-white/10 bg-[#131316]"
+              class="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-white/[0.08] bg-[#121215]"
             >
-              <div class="flex items-center gap-3 min-w-0 pr-4">
+              <div class="flex items-center gap-2.5 min-w-0 pr-4">
                 <h4
-                  class="font-['Poppins'] font-medium text-xs sm:text-sm text-zinc-100 tracking-wider truncate uppercase"
+                  class="font-['Poppins'] font-medium text-sm text-zinc-100 truncate"
                 >
-                  {{ (videoModal.title || 'MindEscape · Gameplay Demo').replace(/[—–]/g, '·') }}
+                  {{ getCleanTitle(videoModal.title) || 'MindEscape' }}
                 </h4>
+                <span class="text-zinc-600 text-xs select-none hidden sm:inline">/</span>
+                <span class="text-zinc-400 font-['Roboto'] text-xs font-normal hidden sm:inline">
+                  {{ lang === 'ID' ? 'Demo Video' : 'Video Demo' }}
+                </span>
               </div>
 
-              <div class="flex items-center gap-2 shrink-0">
+              <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
                 <a
                   v-if="videoModal.videoId"
                   :href="`https://youtu.be/${videoModal.videoId}`"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono tracking-wider text-zinc-400 hover:text-white border border-white/10 hover:border-white/30 bg-white/[0.02] hover:bg-white/10 transition-colors"
-                  title="Buka di YouTube"
+                  class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-['Poppins'] text-zinc-400 hover:text-white hover:bg-white/5 rounded-md transition-all duration-150 cursor-pointer"
+                  :title="lang === 'ID' ? 'Tonton di YouTube' : 'Watch on YouTube'"
                 >
-                  <span>YOUTUBE</span>
-                  <i class="bi bi-box-arrow-up-right text-[9px]"></i>
+                  <span>YouTube</span>
+                  <i class="bi bi-arrow-up-right text-[11px] text-zinc-500"></i>
                 </a>
+
+                <span v-if="videoModal.videoId" class="h-3.5 w-px bg-white/10 hidden sm:block"></span>
+
                 <button
                   @click="closeVideoModal"
-                  class="w-7 h-7 border border-white/15 bg-white/5 hover:bg-white hover:text-zinc-950 text-zinc-300 flex items-center justify-center transition-all cursor-pointer"
-                  aria-label="Tutup Video"
+                  class="w-7 h-7 rounded-md text-zinc-400 hover:text-white hover:bg-white/10 flex items-center justify-center transition-colors cursor-pointer"
+                  :aria-label="lang === 'ID' ? 'Tutup dialog' : 'Close modal'"
                 >
-                  <i class="bi bi-x-lg text-[11px]"></i>
+                  <i class="bi bi-x-lg text-xs"></i>
                 </button>
               </div>
             </div>
@@ -969,7 +976,7 @@
 
         <!-- Tech Chamfered Dialog Box -->
         <div
-          class="relative z-10 w-full max-w-5xl p-[1px] bg-gradient-to-br from-violet-400/30 via-white/10 to-violet-500/20 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.95)]"
+          class="relative z-10 w-full max-w-5xl p-[1px] bg-gradient-to-br from-white/20 via-white/5 to-white/10 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.95)]"
           style="clip-path: polygon(0 0, 100% 0, 100% 100%, 36px 100%, 0 calc(100% - 36px));"
           @click.stop
         >
@@ -980,35 +987,41 @@
           >
             <!-- Top Bar -->
             <div
-              class="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-white/10 bg-[#131316]"
+              class="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-white/[0.08] bg-[#121215]"
             >
-              <div class="flex items-center gap-3 min-w-0 pr-4">
-                <i class="bi bi-book-half text-violet-400 text-sm"></i>
+              <div class="flex items-center gap-2.5 min-w-0 pr-4">
                 <h4
-                  class="font-['Poppins'] font-medium text-xs sm:text-sm text-zinc-100 tracking-wider truncate uppercase"
+                  class="font-['Poppins'] font-medium text-sm text-zinc-100 truncate"
                 >
-                  {{ (flipbookModal.title || 'Stellar Adventures · Digital Flipbook').replace(/[—–]/g, '·') }}
+                  {{ getCleanTitle(flipbookModal.title) || 'Stellar Adventures' }}
                 </h4>
+                <span class="text-zinc-600 text-xs select-none hidden sm:inline">/</span>
+                <span class="text-zinc-400 font-['Roboto'] text-xs font-normal hidden sm:inline">
+                  {{ lang === 'ID' ? 'Flipbook Interaktif' : 'Interactive Flipbook' }}
+                </span>
               </div>
 
-              <div class="flex items-center gap-2 shrink-0">
+              <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
                 <a
                   v-if="flipbookModal.url"
                   :href="flipbookModal.url"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono tracking-wider text-violet-300 hover:text-white border border-violet-500/30 hover:border-violet-400/60 bg-violet-500/10 hover:bg-violet-500/20 transition-colors"
-                  title="Buka Tab Penuh di Heyzine"
+                  class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-['Poppins'] text-zinc-400 hover:text-white hover:bg-white/5 rounded-md transition-all duration-150 cursor-pointer"
+                  :title="lang === 'ID' ? 'Buka versi penuh di Heyzine' : 'Open full view on Heyzine'"
                 >
-                  <span>HEYZINE</span>
-                  <i class="bi bi-box-arrow-up-right text-[9px]"></i>
+                  <span>{{ lang === 'ID' ? 'Buka Penuh' : 'Open Full' }}</span>
+                  <i class="bi bi-arrow-up-right text-[11px] text-zinc-500"></i>
                 </a>
+
+                <span v-if="flipbookModal.url" class="h-3.5 w-px bg-white/10 hidden sm:block"></span>
+
                 <button
                   @click="closeFlipbookModal"
-                  class="w-7 h-7 border border-white/15 bg-white/5 hover:bg-white hover:text-zinc-950 text-zinc-300 flex items-center justify-center transition-all cursor-pointer"
-                  aria-label="Tutup Flipbook"
+                  class="w-7 h-7 rounded-md text-zinc-400 hover:text-white hover:bg-white/10 flex items-center justify-center transition-colors cursor-pointer"
+                  :aria-label="lang === 'ID' ? 'Tutup dialog' : 'Close modal'"
                 >
-                  <i class="bi bi-x-lg text-[11px]"></i>
+                  <i class="bi bi-x-lg text-xs"></i>
                 </button>
               </div>
             </div>
@@ -1063,6 +1076,12 @@ const getArchiveGlobalIndex = (localIdx) => {
 const setArchivePage = (p) => {
   if (p < 1 || p > totalArchivePages.value) return
   archivePage.value = p
+}
+
+const getCleanTitle = (rawTitle) => {
+  if (!rawTitle) return ''
+  const parts = rawTitle.split(/\s*[-–—·]\s*/)
+  return parts[0].trim()
 }
 // Track direction for each project for transition
 
