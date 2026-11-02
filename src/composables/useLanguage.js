@@ -192,7 +192,7 @@ const translations = {
       'A versatile toolkit that supports my workflow across UI/UX, game development, and interactive media, spanning wireframes and design assets to real-time prototypes and immersive experiences.',
 
     // Some Projects
-    project_tag: 'Selected Works',
+    project_tag: 'Works',
     some_proj_title_1: "Some Projects I've Designed &",
     some_proj_title_2: 'Developed',
     some_proj_desc:

@@ -15,7 +15,7 @@
           <span
             class="inline-block bg-[#8B5CF6] text-white font-['Poppins'] font-bold text-xs sm:text-sm uppercase tracking-wider px-6 py-2 rounded-full shadow-lg shadow-violet-500/20"
           >
-            {{ lang === 'ID' ? 'Karya Pilihan' : 'Selected Works' }}
+            {{ lang === 'ID' ? 'Karya' : 'Works' }}
           </span>
         </div>
         <h2
@@ -572,12 +572,18 @@
                 </th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-white/5 text-xs font-['Roboto']">
+            <tbody
+              class="divide-y divide-white/5 text-xs font-['Roboto']"
+              @mouseleave="onArchiveRowLeave"
+            >
               <tr
                 v-for="(item, aIdx) in paginatedArchivedProjects"
                 :key="item.name"
-                class="group hover:bg-white/[0.03] transition-colors cursor-pointer"
+                class="group hover:bg-white/[0.04] transition-colors cursor-pointer"
                 @click="openLightbox(getArchiveGlobalIndex(aIdx), 0)"
+                @mouseenter="onArchiveRowEnter(item, $event)"
+                @mousemove="onArchiveRowMove($event)"
+                @mouseleave="onArchiveRowLeave"
               >
                 <!-- Year -->
                 <td class="py-3.5 px-3 text-zinc-400">
@@ -1054,6 +1060,102 @@
       </div>
     </transition>
   </Teleport>
+
+  <!-- Floating Archive Project Thumbnail Preview Popup -->
+  <Teleport to="body">
+    <transition
+      enter-active-class="transition-all duration-200 ease-out"
+      enter-from-class="opacity-0 scale-90 translate-y-2"
+      enter-to-class="opacity-100 scale-100 translate-y-0"
+      leave-active-class="transition-all duration-150 ease-in"
+      leave-from-class="opacity-100 scale-100 translate-y-0"
+      leave-to-class="opacity-0 scale-95 translate-y-1"
+    >
+      <div
+        v-if="hoverPreview.show && hoverPreview.image"
+        class="fixed z-[9999] pointer-events-none select-none transition-transform duration-75 ease-out"
+        :style="{
+          left: `${hoverPreview.x}px`,
+          top: `${hoverPreview.y}px`,
+          transform: 'translateY(-50%)',
+        }"
+      >
+        <!-- Chamfer Outer Chassis with Glow Border -->
+        <div
+          class="relative w-64 sm:w-72 p-[1.5px] bg-gradient-to-br from-violet-500 via-white/20 to-violet-400 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_35px_rgba(139,92,246,0.3)] filter backdrop-blur-md"
+          style="clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));"
+        >
+          <!-- Inner Chassis Panel -->
+          <div
+            class="relative w-full h-44 sm:h-48 bg-[#09090c] overflow-hidden flex flex-col justify-between"
+            style="clip-path: polygon(0 0, calc(100% - 23px) 0, 100% 23px, 100% 100%, 23px 100%, 0 calc(100% - 23px));"
+          >
+            <!-- Background Full Thumbnail Image -->
+            <img
+              :src="hoverPreview.image"
+              :alt="hoverPreview.title"
+              class="absolute inset-0 w-full h-full object-cover scale-105"
+              loading="eager"
+            />
+            <!-- Dark Gradient Vignette Overlay -->
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-[#09090c] via-[#09090c]/60 to-black/30 pointer-events-none"
+            ></div>
+
+            <!-- Top-Right Chamfer Corner Accent Wedge -->
+            <div class="absolute top-0 right-0 w-8 h-8 pointer-events-none overflow-hidden z-20">
+              <div
+                class="absolute top-0 right-0 w-4 h-4 bg-gradient-to-br from-violet-400 to-violet-600 transform rotate-45 translate-x-2 -translate-y-2 shadow-sm"
+              ></div>
+            </div>
+
+            <!-- Bottom-Left Chamfer Corner Accent Wedge -->
+            <div class="absolute bottom-0 left-0 w-8 h-8 pointer-events-none overflow-hidden z-20">
+              <div
+                class="absolute bottom-0 left-0 w-4 h-4 bg-gradient-to-br from-violet-600 to-violet-400 transform rotate-45 -translate-x-2 translate-y-2 shadow-sm"
+              ></div>
+            </div>
+
+            <!-- Top-Left Corner L-Bracket -->
+            <span
+              class="absolute top-2.5 left-2.5 w-2.5 h-2.5 border-t-2 border-l-2 border-violet-400/90 z-20 pointer-events-none"
+            ></span>
+
+            <!-- Bottom-Right Corner L-Bracket -->
+            <span
+              class="absolute bottom-2.5 right-2.5 w-2.5 h-2.5 border-b-2 border-r-2 border-violet-400/90 z-20 pointer-events-none"
+            ></span>
+
+            <!-- Top HUD Bar: Category & Year -->
+            <div class="relative z-10 px-4 pt-3 flex items-center justify-between gap-2">
+              <div
+                v-if="hoverPreview.platform"
+                class="inline-flex items-center gap-1.5 px-2 py-0.5 bg-black/70 backdrop-blur-md border-l-2 border-violet-500 text-[10px] font-['Poppins'] font-semibold text-zinc-200 uppercase tracking-wider truncate max-w-[170px]"
+              >
+                <span>{{ hoverPreview.platform }}</span>
+              </div>
+              <span
+                v-if="hoverPreview.year"
+                class="text-[11px] font-bold font-['Poppins'] text-white drop-shadow-md ml-auto"
+              >
+                {{ hoverPreview.year }}
+              </span>
+            </div>
+
+            <!-- Bottom Caption: Title & Role -->
+            <div class="relative z-10 px-4 pb-3.5 pt-6 bg-gradient-to-t from-[#09090c] via-[#09090c]/90 to-transparent">
+              <div class="font-['Poppins'] font-bold text-white text-sm tracking-wide truncate drop-shadow">
+                {{ hoverPreview.title }}
+              </div>
+              <div class="text-[11px] text-zinc-300 font-['Roboto'] truncate mt-0.5">
+                {{ hoverPreview.role }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
+  </Teleport>
 </template>
 
 <script setup>
@@ -1088,6 +1190,70 @@ const getArchiveGlobalIndex = (localIdx) => {
 const setArchivePage = (p) => {
   if (p < 1 || p > totalArchivePages.value) return
   archivePage.value = p
+}
+
+// === Archive Row Hover Thumbnail Preview ===
+const hoverPreview = reactive({
+  show: false,
+  x: 0,
+  y: 0,
+  image: '',
+  title: '',
+  role: '',
+  year: '',
+  platform: '',
+})
+
+let hoverPreviewRaf = null
+
+const onArchiveRowEnter = (item, e) => {
+  const thumb = item.images?.[0]
+  if (!thumb) return
+  hoverPreview.image = thumb
+  hoverPreview.title = item.name.split(' – ')[0].split(' - ')[0]
+  hoverPreview.role = item.role || ''
+  hoverPreview.year = item.year || ''
+  hoverPreview.platform = item.platform || ''
+  updateHoverPreviewCoords(e.clientX, e.clientY)
+  hoverPreview.show = true
+}
+
+const onArchiveRowMove = (e) => {
+  if (!hoverPreview.show) return
+  if (hoverPreviewRaf) cancelAnimationFrame(hoverPreviewRaf)
+  hoverPreviewRaf = requestAnimationFrame(() => {
+    updateHoverPreviewCoords(e.clientX, e.clientY)
+  })
+}
+
+const updateHoverPreviewCoords = (clientX, clientY) => {
+  const popupWidth = 290
+  const popupHeight = 200
+  const padding = 16
+
+  // Default to right of cursor
+  let x = clientX + 24
+  let y = clientY
+
+  // If overflowing right edge of viewport, place to the left of cursor
+  if (x + popupWidth > window.innerWidth - padding) {
+    x = clientX - popupWidth - 20
+  }
+
+  // Vertical clamping so it never clips top or bottom of viewport
+  const halfH = popupHeight / 2
+  if (y - halfH < padding) {
+    y = padding + halfH
+  } else if (y + halfH > window.innerHeight - padding) {
+    y = window.innerHeight - padding - halfH
+  }
+
+  hoverPreview.x = x
+  hoverPreview.y = y
+}
+
+const onArchiveRowLeave = () => {
+  hoverPreview.show = false
 }
 
 const getCleanTitle = (rawTitle) => {
@@ -1832,7 +1998,8 @@ const projects = computed(() => {
       platform: 'Web Application',
       bg: '#2563eb',
       images: [
-        '/images/projects/djourney_jaswita.png',
+        '/images/projects/DjaswitaAR/dashboard_laptop_mockup.webp',
+        '/images/projects/DjaswitaAR/djaswitamobile.webp',
       ],
       link: 'https://djourney.id/web/',
       _dir: 'next',
