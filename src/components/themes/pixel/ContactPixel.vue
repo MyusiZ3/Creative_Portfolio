@@ -233,7 +233,7 @@
                 <span>DESIGN CV</span>
               </a>
               <a
-                href="https://drive.google.com/file/d/1y7P0Qih05hqS6HEZAfHexz3sXPkXk77Z/view?usp=sharing"
+                href="https://drive.google.com/file/d/1vJV1-Fg-yQBTy2pEQAf9TykozAsRmHnC/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="p-2.5 bg-[#0d1117] border-2 border-black text-[#f0f6fc] hover:text-[#00f0ff] hover:border-[#00f0ff] text-[10px] font-bold font-silkscreen text-center flex items-center justify-center gap-1.5 transition-all shadow-[2px_2px_0px_#000]"

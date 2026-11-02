@@ -267,7 +267,7 @@ const actions = computed(() => {
         id: 'resume_developer',
         label: 'CV Developer',
         icon: 'bi bi-code-slash',
-        href: 'https://drive.google.com/file/d/1y7P0Qih05hqS6HEZAfHexz3sXPkXk77Z/view?usp=sharing',
+        href: 'https://drive.google.com/file/d/1vJV1-Fg-yQBTy2pEQAf9TykozAsRmHnC/view?usp=sharing',
         external: true,
         bg: 'bg-blue-600 hover:bg-blue-500',
         border: 'border-blue-400/60',

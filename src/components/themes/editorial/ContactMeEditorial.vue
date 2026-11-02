@@ -172,7 +172,7 @@
                 }}
               </a>
               <a
-                href="https://drive.google.com/file/d/1y7P0Qih05hqS6HEZAfHexz3sXPkXk77Z/view?usp=sharing"
+                href="https://drive.google.com/file/d/1vJV1-Fg-yQBTy2pEQAf9TykozAsRmHnC/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 @click="trackDownload('developer')"
