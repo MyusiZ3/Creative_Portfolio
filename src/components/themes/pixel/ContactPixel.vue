@@ -233,8 +233,9 @@
                 <span>DESIGN CV</span>
               </a>
               <a
-                href="/doc/CV_Muhamad Sidik_IT_Intern.pdf"
-                download
+                href="https://drive.google.com/file/d/1y7P0Qih05hqS6HEZAfHexz3sXPkXk77Z/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="p-2.5 bg-[#0d1117] border-2 border-black text-[#f0f6fc] hover:text-[#00f0ff] hover:border-[#00f0ff] text-[10px] font-bold font-silkscreen text-center flex items-center justify-center gap-1.5 transition-all shadow-[2px_2px_0px_#000]"
               >
                 <i class="bi bi-code-slash text-xs text-[#00f0ff]"></i>
@@ -372,7 +373,7 @@ const socialLinks = [
     name: 'LINKEDIN',
     handle: 'Muhamad Sidik',
     icon: 'bi bi-linkedin text-[#00f0ff]',
-    url: 'https://www.linkedin.com/in/muhamad-sidik-a6757b25b',
+    url: 'https://www.linkedin.com/in/muhamad-sidik-imy/',
   },
   {
     name: 'INSTAGRAM',

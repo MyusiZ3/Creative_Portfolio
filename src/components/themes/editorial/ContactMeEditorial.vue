@@ -104,7 +104,7 @@
                 <i class="bi bi-instagram text-sm"></i>
               </a>
               <a
-                href="https://www.linkedin.com/in/muhamad-sidik-a6757b25b"
+                href="https://www.linkedin.com/in/muhamad-sidik-imy/"
                 target="_blank"
                 aria-label="LinkedIn Profile"
                 class="w-8 h-8 rounded-full bg-[#0077B5] flex items-center justify-center text-white hover:opacity-80 transition-all duration-300"
@@ -172,8 +172,9 @@
                 }}
               </a>
               <a
-                href="/doc/CV_Muhamad Sidik_IT_Intern.pdf"
-                download
+                href="https://drive.google.com/file/d/1y7P0Qih05hqS6HEZAfHexz3sXPkXk77Z/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
                 @click="trackDownload('developer')"
                 class="flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold transition-all duration-300"
                 :class="

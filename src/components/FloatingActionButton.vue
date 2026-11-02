@@ -267,7 +267,7 @@ const actions = computed(() => {
         id: 'resume_developer',
         label: 'CV Developer',
         icon: 'bi bi-code-slash',
-        href: '/doc/CV_Muhamad Sidik_IT_Intern.pdf',
+        href: 'https://drive.google.com/file/d/1y7P0Qih05hqS6HEZAfHexz3sXPkXk77Z/view?usp=sharing',
         external: true,
         bg: 'bg-blue-600 hover:bg-blue-500',
         border: 'border-blue-400/60',
@@ -296,7 +296,7 @@ const actions = computed(() => {
       id: 'linkedin',
       label: 'LinkedIn',
       icon: 'bi bi-linkedin',
-      href: 'https://linkedin.com/in/',
+      href: 'https://www.linkedin.com/in/muhamad-sidik-imy/',
       external: true,
     },
     {
