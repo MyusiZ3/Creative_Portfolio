@@ -650,8 +650,8 @@ const projects = computed(() => {
       name: isId ? 'Mathmagic – App Edukasi Matematika (HKI)' : 'Mathmagic – Educational App',
       icon: 'bi-award',
       role: isId
-        ? 'Project Creator, Lead Developer & Main UI Designer'
-        : 'Project Creator, Lead Developer & Main UI Designer',
+        ? 'Lead Game Developer & Desainer UI/UX'
+        : 'Lead Game Developer & UI/UX Designer',
       teamInfo: isId
         ? 'Hak Kekayaan Intelektual Resmi No. 001400842 | Mei – Jul 2026'
         : 'Official Copyright (HKI) No. 001400842 | May – Jul 2026',
@@ -787,31 +787,27 @@ const projects = computed(() => {
       name: 'RideXP - Arcade Game Project',
       icon: 'bi-bicycle',
       role: isId
-        ? 'Manajer Proyek, Pengembang Game, Desainer UI/UX'
-        : 'Project Manager, Game Developer, UI/UX Designer',
+        ? 'Project Manager, Game Developer & Desainer UI/UX'
+        : 'Project Manager, Game Developer & UI/UX Designer',
       teamInfo: isId ? 'Proyek Tim (10 Orang) | Jan – Jun 2025' : '10-Person Team Project | Jan – Jun 2025',
       tools: 'Unity, Figma, ESP32, JSON',
       overview: isId
-        ? 'RideXP adalah game balap arkade di mana pemain mengendalikan sepeda dalam game dengan mengayuh sepeda statis fisik yang terhubung via ESP32. Dibangun di Unity, game ini menggabungkan IoT, pengembangan game, dan desain UI/UX.'
-        : 'RideXP is an arcade-style cycling game where players control their in-game bike by pedaling a physical stationary bike connected via ESP32. Built in Unity, the game combines IoT, game development, and UI/UX design.',
+        ? 'Game balap sepeda arkade 3D berbasis Unity yang terhubung secara real-time dengan sepeda statis fisik melalui mikrokontroler ESP32. Dikembangkan bersama tim lintas divisi beranggotakan 10 orang, proyek ini memadukan telemetri kecepatan kayuhan fisik ke dalam gameplay 3D, sistem papan peringkat (leaderboard) lokal berbasis JSON, navigasi lawan AI berbasis waypoint, serta desain kabinet booth arkade fisik untuk pameran.'
+        : 'A 3D arcade cycling game built in Unity and connected in real time to a physical stationary bike via an ESP32 microcontroller. Developed by a 10-person cross-functional team, the system translates physical pedaling speed into in-game velocity and pairs it with a local JSON leaderboard, waypoint-based AI opponents, custom HUD/menu flows, and a full-scale physical arcade booth for exhibition.',
       tasks: isId
         ? [
-            'Memimpin koordinasi tim dan perencanaan fitur',
-            'Merancang alur UI/UX (menu, HUD, layar hasil) menggunakan Figma',
-            'Membangun sistem papan peringkat lokal menggunakan JSON',
-            'Mengimplementasikan NPC AI berbasis navigasi waypoint',
-            'Merancang lingkungan game, aset visual, serta efek visual (VFX)',
-            'Membuat identitas karya serta materi presentasi untuk pameran',
+            'Memimpin koordinasi lintas divisi pada tim beranggotakan 10 orang serta menyusun jadwal pengembangan fitur',
+            'Merancang alur UI/UX lengkap di Figma (Splash, pemilihan peta, HUD kecepatan/minimap, hingga layar skor akhir)',
+            'Membangun sistem penyimpanan papan peringkat (leaderboard) lokal berbasis JSON dan logika NPC AI berbasis waypoint di Unity',
+            'Merancang lingkungan 3D, efek visual (VFX) power-up, serta desain cetak booth arkade fisik skala penuh di Adobe Illustrator',
           ]
         : [
-            'Led team coordination and feature planning',
-            'Designed full UI/UX flow (menu, HUD, result screen) using Figma',
-            'Built local leaderboard system using JSON',
-            'Implemented AI NPC with waypoint-based navigation',
-            'Designed game environments, composited visual assets, and created VFX logic',
-            'Created branding assets & presentation deck for public exhibition',
+            'Led cross-functional coordination and milestone planning across a 10-person project team',
+            'Designed the end-to-end UI/UX flow in Figma, covering map selection, real-time speed/minimap HUD, and post-match screens',
+            'Implemented the local JSON leaderboard storage system and waypoint-based AI NPC racing behavior in Unity (C#)',
+            'Created 3D track environments, power-up VFX, and full-scale print-ready graphics for the physical exhibition arcade booth',
           ],
-      platform: isId ? 'Aplikasi Desktop Arkade' : 'Arcade Desktop App',
+      platform: isId ? 'Aplikasi Desktop Arkade & IoT' : 'IoT-Integrated Arcade Desktop App',
       bg: '#C0392B',
       images: [
         '/images/projects/LuxionRideXP/luxion_ridexp.webp',
@@ -830,24 +826,24 @@ const projects = computed(() => {
     {
       name: 'MindEscape – VR Escape Room Game',
       icon: 'bi-headset',
-      role: isId ? 'Pengembang VR, Desainer Lingkungan' : 'VR Developer, Environment Designer',
+      role: isId ? 'VR Developer & Environment Designer' : 'VR Developer & Environment Designer',
       teamInfo: isId ? 'Proyek Tim | Feb – Mar 2025' : 'Team Project | Feb – Mar 2025',
       tools: 'Unity, Oculus SDK',
       overview: isId
-        ? 'MindEscape adalah permaianan VR ruang lolos yang berfokus pada eksplorasi dan interaksi lingkungan. Dibuat menggunakan Unity, proyek ini mensimulasikan pengalaman puzzle penuh menggunakan headset VR.'
-        : 'MindEscape is a virtual reality escape room game focused on exploration and environmental interaction. Built using Unity, the project simulates a full puzzle escape experience using a VR headset.',
+        ? 'Game simulasi teka-teki (escape room) berbasis Virtual Reality yang dibangun di Unity menggunakan Oculus SDK/SteamVR. Berfokus pada eksplorasi ruang 3D, manipulasi objek fisik secara langsung dengan kontroler VR, serta optimasi kenyamanan gerak pengguna.'
+        : 'A Virtual Reality escape room puzzle simulation built in Unity with Oculus SDK/SteamVR. Focuses on 3D spatial exploration, physics-based object manipulation via VR controllers, and frame-rate optimization for user comfort.',
       tasks: isId
         ? [
-            'Merancang tata letak lingkungan 3D dan penempatan objek',
-            'Menangani sistem kamera VR dan transisi adegan',
-            'Menerapkan mekanisme interaksi alat (mengambil objek, pemicu teka-teki)',
-            'Mengoptimalkan pencahayaan dan performa untuk kelancaran',
+            'Merancang tata letak ruangan 3D, pencahayaan atmosferik, dan penempatan objek teka-teki',
+            'Mengonfigurasi sistem kamera VR, pergerakan pemain, dan transisi antar-skena',
+            'Menerapkan mekanika interaksi tangan VR (mengambil objek, memutar kunci, dan pemicu puzzle)',
+            'Mengoptimalkan pencahayaan (baked lighting) dan performa rendering agar stabil di perangkat headset VR',
           ]
         : [
-            'Designed 3D environment layout and object placement',
-            'Handled VR camera systems and scene transitions',
-            'Implemented user interaction mechanics (grabbing, puzzle triggers)',
-            'Optimized lighting and performance for smooth VR experience',
+            'Designed 3D room layouts, atmospheric lighting, and spatial puzzle object placement',
+            'Configured VR camera rigs, locomotion systems, and scene transitions',
+            'Implemented VR hand interaction mechanics (object grabbing, key triggers, and puzzle logic)',
+            'Optimized baked lighting and rendering performance to maintain stable frame rates on VR headsets',
           ],
       platform: isId ? 'Aplikasi Desktop VR' : 'VR Desktop App',
       bg: '#4A1D8E',
@@ -866,24 +862,24 @@ const projects = computed(() => {
     {
       name: 'MathRift – Educational 2D Platformer',
       icon: 'bi-calculator',
-      role: isId ? 'Pengembang Game, Desainer UI/UX' : 'Game Developer, UI/UX Designer',
+      role: isId ? 'Game Developer & Desainer UI/UX' : 'Game Developer & UI/UX Designer',
       teamInfo: isId ? 'Proyek Tim | Jan – Jun 2025' : 'Team Project | Jan – Jun 2025',
-      tools: 'Unity, Figma',
+      tools: 'Unity, Firebase, Figma',
       overview: isId
-        ? 'MathRift adalah game platform 2D edukasi yang dirancang agar belajar matematika jadi menyenangkan lewat gameplay interaktif, teka teki, dan level yang menantang secara bertahap.'
-        : 'MathRift is a 2D educational platformer game designed to make learning math fun through interactive gameplay, puzzles, and progressive difficulty levels.',
+        ? 'Game platformer 2D edukasi matematika berbasis Unity yang terintegrasi dengan Firebase. Mengemas latihan berhitung ke dalam mekanika rintangan platformer, pertarungan bos, dan tingkat kesulitan bertahap.'
+        : 'A 2D educational math platformer built in Unity and integrated with Firebase. Combines arithmetic problem-solving with platforming mechanics, boss encounters, and progressive level difficulty.',
       tasks: isId
         ? [
-            'Mengembangkan mekanisme inti dan pengontrol pemain',
-            'Merancang wireframe UI/UX hingga hasil akhir dalam Figma',
-            'Mengintegrasikan progres level dan sistem penilaian',
-            'Membuat aset permainan dan animasi sprite',
+            'Mengembangkan mekanika pergerakan karakter 2D, rintangan, dan logika kuis matematika di Unity (C#)',
+            'Merancang wireframe hingga antarmuka UI/UX penuh menggunakan Figma',
+            'Mengimplementasikan sistem progres level, penilaian skor, dan integrasi data Firebase',
+            'Menyusun aset lingkungan 2D serta animasi sprite karakter',
           ]
         : [
-            'Developed core game mechanics and player controller',
-            'Designed UI/UX wireframes and final screens in Figma',
-            'Implemented level progression and scoring system',
-            'Created game assets and sprite animations',
+            'Developed 2D character movement, obstacle mechanics, and math quiz logic in Unity (C#)',
+            'Designed wireframes and full UI/UX screens in Figma',
+            'Implemented level progression, scoring logic, and Firebase data integration',
+            'Assembled 2D environment assets and character sprite animations',
           ],
       platform: 'Desktop Game',
       bg: '#1a3a4a',
@@ -898,24 +894,24 @@ const projects = computed(() => {
     {
       name: 'Stellar Adventures – AR Game Project',
       icon: 'bi-stars',
-      role: 'AR Developer, Environment Designer',
+      role: isId ? 'AR Developer & Environment Designer' : 'AR Developer & Environment Designer',
       teamInfo: isId ? 'Proyek Tim | Sep 2024 – Feb 2025' : 'Team Project | Sep 2024 – Feb 2025',
       tools: 'Unity (URP), Vuforia Engine, Adobe Illustrator',
       overview: isId
-        ? 'Stellar Adventures adalah game AR yang menggabungkan dunia maya dan nyata, memungkinkan pemain menavigasi ruang bertema luar angkasa melalui kamera.'
-        : 'Stellar Adventures is an augmented reality game that blends the physical and digital world, allowing players to explore space-themed environments through their device camera.',
+        ? 'Aplikasi edukasi Augmented Reality (AR) bertema eksplorasi tata surya yang dibangun menggunakan Unity (Universal Render Pipeline) dan Vuforia Engine, dilengkapi buku cerita interaktif (flipbook) sebagai target pemindaian marker. Memungkinkan pengguna memvisualisasikan objek ruang angkasa 3D dan berinteraksi langsung melalui kamera perangkat Android.'
+        : 'An Augmented Reality (AR) space exploration application built with Unity (Universal Render Pipeline) and Vuforia Engine, paired with an interactive storybook (flipbook) for marker-based scanning. Enables users to inspect 3D planetary models, trigger interactive space mechanics, and explore environments through their Android camera.',
       tasks: isId
         ? [
-            'Mengembangkan pendeteksi bidang datar dan kemunculan objek',
-            'Merancang tekstur dan model lingkungan 3D',
-            'Menerapkan mekanika permainan langsung di ruang AR',
-            'Mengoptimalkan AR untuk perangkat mobile',
+            'Mengembangkan pendeteksi bidang datar (plane detection) dan kemunculan objek 3D luar angkasa',
+            'Merancang aset visual, tekstur vektor, dan ilustrasi UI menggunakan Adobe Illustrator',
+            'Menerapkan mekanika interaksi dan gameplay langsung di ruang AR dengan Vuforia Engine',
+            'Mengoptimalkan performa rendering grafis dan pencahayaan mobile AR dengan Universal Render Pipeline (URP)',
           ]
         : [
-            'Developed AR plane detection and object placement',
-            'Designed 3D environment models and textures',
-            'Implemented interactive game mechanics in AR space',
-            'Optimized performance for mobile AR devices',
+            'Developed AR plane detection and space 3D object instantiation pipeline',
+            'Designed 2D visual assets, vector textures, and UI illustrations using Adobe Illustrator',
+            'Implemented interactive game mechanics in AR space using Vuforia Engine',
+            'Optimized mobile AR graphics rendering and lighting pipeline with Universal Render Pipeline (URP)',
           ],
       platform: isId ? 'Aplikasi AR Mobile' : 'AR Mobile App',
       bg: '#1a2a3a',
@@ -936,24 +932,24 @@ const projects = computed(() => {
     {
       name: 'U-Asprak – Mobile App Design',
       icon: 'bi-people',
-      role: 'UI/UX Designer',
-      teamInfo: isId ? 'Studi Kasus Tim | Jan – Jun 2024' : 'Team Project | Jan – Jun 2024',
-      tools: 'Figma, Antigravity',
+      role: isId ? 'Desainer UI/UX' : 'UI/UX Designer',
+      teamInfo: isId ? 'Proyek Tim | Jan – Jun 2024' : 'Team Project | Jan – Jun 2024',
+      tools: 'Figma',
       overview: isId
-        ? 'U-Asprak merupakan desain aplikasi seluler untuk memperbaiki proses manajemen asisten praktikum, mencakup penjadwalan, nilai, serta media komunikasi.'
-        : 'U-Asprak is a mobile application designed to streamline the teaching assistant management process, including scheduling, grading, and communication between lecturers and assistants.',
+        ? 'Perancangan UI/UX aplikasi mobile untuk memusatkan administrasi asisten praktikum laboratorium kampus, mencakup penjadwalan shift mengajar, rekapitulasi nilai praktikum, serta koordinasi antara dosen dan asisten.'
+        : 'A mobile UI/UX design case study created to centralize university laboratory teaching assistant administration, covering shift scheduling, lab grading workflows, and lecturer-assistant coordination.',
       tasks: isId
         ? [
-            'Melakukan riset terhadap pengguna',
-            'Merancang alur wireframe ber-resolusi tinggi',
-            'Membangun protipe interaktif untuk dipakai dalam user testing',
-            'Mendefinisikan bahasa desain dan library komponen',
+            'Melakukan riset kebutuhan pengguna dan memetakan alur kerja asisten praktikum',
+            'Merancang wireframe dan mockup antarmuka high-fidelity di Figma',
+            'Membangun prototipe interaktif untuk pengujian kegunaan (usability testing)',
+            'Menyusun sistem desain (palet warna, tipografi, dan komponen UI reusable)',
           ]
         : [
-            'Conducted user research and created user personas',
-            'Designed wireframes and high-fidelity prototypes',
-            'Built interactive prototype for usability testing',
-            'Created design system and component library',
+            'Conducted user research and mapped laboratory teaching assistant workflows',
+            'Designed wireframes and high-fidelity UI mockups in Figma',
+            'Built interactive prototypes for usability testing sessions',
+            'Established a consistent design system with reusable UI components',
           ],
       platform: isId ? 'Desain Aplikasi Mobile' : 'Mobile App Design',
       bg: '#5b6abf',
@@ -968,24 +964,24 @@ const projects = computed(() => {
     {
       name: 'empEDU – Mobile App Design',
       icon: 'bi-book',
-      role: 'UI/UX Designer',
+      role: isId ? 'Desainer UI/UX' : 'UI/UX Designer',
       teamInfo: isId ? 'Proyek Tim | Agt – Des 2023' : 'Team Project | Aug – Dec 2023',
       tools: 'Figma',
       overview: isId
-        ? 'empEDU merupakan desain aplikasi edukasi yang diciptakan agar siswa lebih leluasa belajar dan memeriksa kemajuan akademik dengan peranti yang interaktif.'
-        : 'empEDU is an educational mobile app designed to empower students with accessible learning materials, progress tracking, and interactive study tools.',
+        ? 'Perancangan UI/UX aplikasi pembelajaran mobile yang dilengkapi fitur gamifikasi, pelacakan progres akademik, serta modul materi belajar interaktif untuk siswa.'
+        : 'A gamified educational mobile app UI/UX design featuring structured learning modules, academic progress tracking, and interactive study tools.',
       tasks: isId
         ? [
-            'Merancang alur pengguna dari awal hingga akhir',
-            'Merancang mockup resolusi tinggi di semua antarmuka layar',
-            'Mengembangkan prototipe untuk pengujian interaksi',
-            'Revisi hasil riset dan percobaan',
+            'Merancang arsitektur informasi dan alur pengguna (user flow) dari onboarding hingga modul belajar',
+            'Membuat desain layar high-fidelity di Figma untuk seluruh fitur utama',
+            'Membangun prototipe interaktif untuk simulasi dan evaluasi pengguna',
+            'Melakukan iterasi desain berdasarkan umpan balik pengujian usability',
           ]
         : [
-            'Designed end-to-end user flow and information architecture',
-            'Created high-fidelity UI mockups for all screens',
-            'Developed interactive prototypes for user testing',
-            'Iterated designs based on usability feedback',
+            'Designed information architecture and end-to-end user flows from onboarding to study modules',
+            'Created high-fidelity UI screens in Figma across all core features',
+            'Built interactive prototypes for user flow simulation and evaluation',
+            'Iterated interface designs based on usability testing feedback',
           ],
       platform: isId ? 'Desain Aplikasi Mobile' : 'Mobile App Design',
       bg: '#2a4a3a',
@@ -1001,24 +997,24 @@ const projects = computed(() => {
     {
       name: 'IUDEX – Team Portfolio Web Design',
       icon: 'bi-display',
-      role: isId ? 'Desainer UI/UX, Pengembang Frontend' : 'UI/UX Designer, Frontend Developer',
+      role: isId ? 'Desainer UI/UX & Frontend Developer' : 'UI/UX Designer & Frontend Developer',
       teamInfo: isId ? 'Proyek Tim | Sep 2023 – Feb 2024' : 'Team Project | Sep 2023 – Feb 2024',
       tools: 'Figma, HTML, CSS, JavaScript',
       overview: isId
-        ? 'IUDEX adalah situs web portofolio tim yang menampilkan kapabilitas, identitas visual sebuah tim pada desain tata letak kekinian bercorak profesional.'
-        : 'IUDEX is a team portfolio website designed to showcase the collective works and capabilities of a creative team, featuring a modern and professional layout.',
+        ? 'Website portofolio kolektif untuk menampilkan profil anggota tim, daftar proyek, dan identitas visual tim dalam tata letak web yang responsif.'
+        : 'A collective team portfolio website built to present member profiles, project catalogs, and team visual identity in a responsive layout.',
       tasks: isId
         ? [
-            'Merancang prototipe tata letak lewat Figma yang disesuaikan dalam web',
-            'Mengimplementasikan frontend menggunakan susunan HTML, CSS, JavaScript',
-            'Memberikan pemanis tampilan transisi scrolling interaktif yang nyaman',
-            'Menguji fungsional dan tingkat ketanggapsegeraannya',
+            'Merancang tata letak antarmuka web responsif di Figma',
+            'Mengimplementasikan halaman frontend menggunakan HTML, CSS, dan JavaScript',
+            'Menambahkan animasi transisi scroll dan interaksi antarmuka',
+            'Memastikan tampilan responsif di berbagai ukuran layar dan peramban (cross-browser)',
           ]
         : [
-            'Designed responsive web layout using Figma',
-            'Developed frontend with HTML, CSS, and JavaScript',
-            'Implemented smooth scroll animations and transitions',
-            'Ensured cross-browser compatibility and responsiveness',
+            'Designed responsive web interface layouts in Figma',
+            'Implemented frontend pages using HTML, CSS, and JavaScript',
+            'Added scroll transition animations and interactive UI states',
+            'Tested responsive layout behavior across viewports and browsers',
           ],
       platform: 'Web Application',
       bg: '#6a5acd',
@@ -1033,24 +1029,24 @@ const projects = computed(() => {
     {
       name: 'Arch – Personal Portfolio Web Design',
       icon: 'bi-laptop',
-      role: isId ? 'Desainer UI/UX, Pengembang Frontend' : 'UI/UX Designer, Frontend Developer',
+      role: isId ? 'Desainer UI/UX & Frontend Developer' : 'UI/UX Designer & Frontend Developer',
       teamInfo: isId ? 'Proyek Pribadi | 2024' : 'Personal Project | 2024',
       tools: 'Figma, Vue.js, TailwindCSS',
       overview: isId
-        ? 'Arch adalah nama portofolio pengutamaan desain nan apik, dan ditunjang portofolio perupa berbasis laman untuk disajikan memperindah desain serta kebolehan penulisan.'
-        : 'Arch is a personal portfolio web design project focused on creating a visually stunning and interactive personal website to showcase design and development work.',
+        ? 'Eksplorasi desain dan pengembangan website portofolio pribadi generasi awal menggunakan Vue.js dan Tailwind CSS dengan pendekatan tipografi editorial minimalis.'
+        : 'An earlier personal portfolio website built with Vue.js and Tailwind CSS, exploring minimalist editorial typography and component-based frontend architecture.',
       tasks: isId
         ? [
-            'Merancang seluruh tata letak web dan identitas merek portofolionya',
-            'Menulis koding dan menyesuaikan fronted website responsif',
-            'Memasukkan seluruh gaya animatif mikro interaksi nan halus',
-            'Mengoptimalkan kemudahan temu sistem cari (SEO)',
+            'Merancang sistem tata letak dan identitas visual portofolio di Figma',
+            'Membangun komponen frontend responsif menggunakan Vue.js dan Tailwind CSS',
+            'Mengintegrasikan transisi halaman dan mikro-interaksi antarmuka',
+            'Mengoptimalkan struktur halaman dan performa pemuatan aset',
           ]
         : [
-            'Designed complete portfolio layout and visual identity',
-            'Built responsive frontend with modern web technologies',
-            'Integrated smooth animations and micro-interactions',
-            'Optimized for performance and SEO',
+            'Designed layout structure and visual identity in Figma',
+            'Built responsive frontend components with Vue.js and Tailwind CSS',
+            'Integrated page transitions and UI micro-interactions',
+            'Optimized page structure and asset loading performance',
           ],
       platform: 'Web Application',
       bg: '#7c3aed',
@@ -1066,23 +1062,23 @@ const projects = computed(() => {
       name: 'Merch – Merch Design for Event',
       icon: 'bi-gift',
       role: isId ? 'Desainer Grafis' : 'Graphic Designer',
-      teamInfo: isId ? 'Pengerjaan Bebas | 2024' : 'Freelance Project | 2024',
+      teamInfo: isId ? 'Proyek Lepas (Freelance) | 2024' : 'Freelance Project | 2024',
       tools: 'Adobe Illustrator, Adobe Photoshop',
       overview: isId
-        ? 'Merch merupakan hasil komoditas rancangan pada barang berupa kaos sablon, kemasan, atau stiker acara dan materi promosi guna pemanfaatan tertentu pemasaran yang menarik.'
-        : 'Merch is a merchandise design project creating branded apparel and accessories for an event, including t-shirts, tote bags, and promotional materials.',
+        ? 'Perancangan produk merchandise dan atribut visual acara, mencakup desain kaos (apparel), tote bag, lanyard, stiker, serta materi cetak promosi siap produksi.'
+        : 'Event merchandise and apparel graphic design project covering t-shirts, tote bags, lanyards, stickers, and print-ready promotional collateral.',
       tasks: isId
         ? [
-            'Berkreasi membuat susunan ilustrasi grafis',
-            'Merilis format sesuai patokan industri pencetakan massal',
-            'Mengembangkan kemewahan branding dari keseluruhan barang',
-            'Bergabung berkongsi dalam hal kerja dan standar produksinya',
+            'Membuat ilustrasi vektor orisinal dan komposisi tipografi di Adobe Illustrator',
+            'Menyiapkan file pracetak (print-ready) sesuai spesifikasi warna CMYK dan sablon vendor',
+            'Menjaga konsistensi identitas visual di seluruh lini atribut merchandise acara',
+            'Berkoordinasi dengan vendor produksi untuk memastikan akurasi hasil cetak',
           ]
         : [
-            'Created original merchandise designs and illustrations',
-            'Prepared print-ready artwork with proper specifications',
-            'Developed cohesive visual branding across all merchandise',
-            'Collaborated with manufacturing for production quality',
+            'Created original vector illustrations and typography compositions in Adobe Illustrator',
+            'Prepared CMYK print-ready artwork matching vendor screen-printing specifications',
+            'Maintained visual branding consistency across all event apparel and accessories',
+            'Coordinated with production vendors to verify print quality and material output',
           ],
       platform: 'Graphic Design',
       bg: '#8b5cf6',
