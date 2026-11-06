@@ -37,11 +37,11 @@ const translations = {
     show_less: 'Show Less',
     about_title: 'About Me',
     about_intro_1:
-      'I’m most engaged by ideas that need to become more than just a visual concept. With a background in Multimedia Engineering, I approach creative work with an understanding of the assets, logic, systems, and technical constraints behind it.',
+      'I am an engineering graduate focused on building dependable full-stack applications and maintaining resilient IT operations. Grounded in Multimedia Engineering Technology, I combine structured software development (Vue, Flutter, PostgreSQL) with practical infrastructure support (hardware, networking, and systems administration).',
     about_intro_2:
-      'I tend to learn by building. I like turning ideas into working prototypes, testing them in practice, and troubleshooting what breaks along the way. Bugs and technical limitations are part of the process, and I enjoy figuring out why something fails and how to improve it.',
+      'Rather than just creating visual prototypes, I prioritize functional integrity: diagnosing system bottlenecks, resolving edge-case bugs, and conducting rigorous validation through black-box and usability testing.',
     about_intro_3:
-      'This hands-on approach helps me turn creative ideas into digital experiences that are designed, built, tested, and refined.',
+      'Whether automating internal workflows or resolving daily technical disruptions, my goal is simple: deliver stable, user-focused technology that drives operational efficiency.',
     education_title: 'Education',
     edu_1_desc: 'Applied Sciences in Multimedia Engineering Technology',
     edu_1_detail: '2022 - 2026 (GPA: 3.83 / 4.00, Cum Laude)',
@@ -247,11 +247,11 @@ const translations = {
     show_less: 'Tampilkan Sedikit',
     about_title: 'Tentang Saya',
     about_intro_1:
-      'Saya paling tertarik pada ide-ide yang menuntut lebih dari sekadar konsep visual. Berlatar belakang Multimedia Engineering, saya mendekati karya kreatif dengan pemahaman tentang aset, logika, sistem, dan batasan teknis di baliknya.',
+      'Saya lulusan sarjana terapan bidang teknik yang berfokus pada pengembangan aplikasi full-stack yang andal serta pengelolaan operasional TI yang stabil. Berlatar belakang Teknologi Rekayasa Multimedia, saya memadukan pengembangan perangkat lunak terstruktur (Vue, Flutter, PostgreSQL) dengan dukungan infrastruktur praktis (perangkat keras, jaringan, dan administrasi sistem).',
     about_intro_2:
-      'Saya terbiasa belajar lewat proses membangun langsung. Saya suka mengubah ide menjadi prototipe fungsional, testing them in practice dan mencari tahu apa yang bermasalah di sepanjang prosesnya. Bug dan limitasi teknis adalah bagian dari proses, dan saya menikmati mencari tahu mengapa sesuatu gagal serta bagaimana memperbaikinya.',
+      'Lebih dari sekadar membangun prototipe visual, saya memprioritaskan integritas fungsional: mengidentifikasi hambatan sistem, menangani bug teknis, serta melakukan validasi terukur melalui pengujian black-box dan uji kegunaan (usability testing).',
     about_intro_3:
-      'Pendekatan hands-on ini membantu saya mewujudkan ide-ide kreatif menjadi pengalaman digital yang dirancang, dibangun, diuji, dan disempurnakan.',
+      'Baik dalam mengotomatisasi alur kerja internal maupun menangani kendala teknis harian, fokus saya jelas: menghadirkan solusi teknologi yang stabil dan tepat guna untuk mendukung efisiensi operasional organisasi.',
     education_title: 'Pendidikan',
     edu_1_desc: 'Fakultas Ilmu Terapan, Teknologi Rekayasa Multimedia',
     edu_1_detail: '2022 - 2026 (IPK: 3.83 / 4.00, Cum Laude)',
