@@ -68,7 +68,18 @@
               allowfullscreen
             ></iframe>
             <template v-else>
+              <video
+                v-if="isVideo(activeModalImage)"
+                :src="activeModalImage"
+                autoplay
+                loop
+                muted
+                playsinline
+                controls
+                class="w-full h-64 sm:h-80 object-contain bg-black opacity-90 transition-all duration-300"
+              ></video>
               <img
+                v-else
                 :src="activeModalImage"
                 :alt="project.title"
                 class="w-full h-64 sm:h-80 object-cover opacity-90 transition-all duration-300"
@@ -237,13 +248,25 @@
                 <i class="bi bi-book-half"></i>
               </a>
               <a
-                v-if="project.demoUrl"
-                :href="project.demoUrl"
+                v-if="project.landingUrl || project.demoUrl"
+                :href="project.landingUrl || project.demoUrl"
                 target="_blank"
                 class="px-5 py-2.5 bg-[#00ff66] text-black font-extrabold text-xs uppercase border-2 border-black shadow-[3px_3px_0px_#000000] hover:translate-x-[1px] hover:translate-y-[1px] transition-all font-silkscreen flex items-center gap-1.5"
               >
-                <span>{{ project.appUrl ? 'GET APP (DRIVE)' : 'LAUNCH DEMO' }}</span>
-                <img v-if="project.appUrl" src="/images/tools/google-drive.svg" alt="Google Drive" class="w-3.5 h-3.5 object-contain" />
+                <span>{{
+                  project.landingUrl
+                    ? 'DOWNLOAD WEB / APK'
+                    : project.appUrl
+                      ? 'GET APP (DRIVE)'
+                      : 'LAUNCH DEMO'
+                }}</span>
+                <img
+                  v-if="project.appUrl"
+                  src="/images/tools/google-drive.svg"
+                  alt="Google Drive"
+                  class="w-3.5 h-3.5 object-contain"
+                />
+                <i v-else-if="project.landingUrl" class="bi bi-globe2"></i>
                 <i v-else class="bi bi-rocket-takeoff-fill"></i>
               </a>
               <a
@@ -305,6 +328,11 @@ const modalImages = computed(() => {
 const activeModalImage = computed(() => {
   return modalImages.value[currentSlideIndex.value] || modalImages.value[0]
 })
+
+const isVideo = (url) => {
+  if (typeof url !== 'string') return false
+  return /\.(webm|mp4|ogg)(\?.*)?$/i.test(url)
+}
 
 const nextSlide = () => {
   currentSlideIndex.value = (currentSlideIndex.value + 1) % modalImages.value.length

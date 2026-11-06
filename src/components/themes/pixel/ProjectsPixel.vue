@@ -62,7 +62,7 @@
               ease: 'easeOut',
             },
           }"
-          class="bg-[#161b22] border-4 border-black p-5 shadow-[8px_8px_0px_#000000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[10px_10px_0px_#00ff66] transition-all flex flex-col justify-between group"
+          class="bg-[#161b22] border-4 border-black p-5 shadow-[8px_8px_0px_#000000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[10px_10px_0px_#00ff66] transition-all flex flex-col justify-between group"
         >
           <div>
             <!-- Cartridge Header Badge -->
@@ -93,8 +93,19 @@
               @touchmove="onTouchMove($event)"
               @touchend="onTouchEnd(proj)"
             >
-              <!-- Active Image -->
+              <!-- Active Image / Video -->
+              <video
+                v-if="isVideo(proj.images[activeSlides[proj.id] || 0])"
+                :src="proj.images[activeSlides[proj.id] || 0]"
+                autoplay
+                loop
+                muted
+                playsinline
+                class="w-full h-full object-cover group-hover/slider:scale-105 transition-transform duration-500 cursor-pointer"
+                @click="openModal(proj)"
+              ></video>
               <img
+                v-else
                 :src="proj.images[activeSlides[proj.id] || 0]"
                 :alt="proj.title"
                 class="w-full h-full object-cover group-hover/slider:scale-105 transition-transform duration-500 cursor-pointer"
@@ -184,14 +195,14 @@
             <!-- Direct Navigation Buttons -->
             <div class="flex items-center gap-2">
               <a
-                v-if="proj.demoUrl"
-                :href="proj.demoUrl"
+                v-if="proj.landingUrl || proj.demoUrl"
+                :href="proj.landingUrl || proj.demoUrl"
                 target="_blank"
                 @click.stop
                 class="px-2.5 py-1 bg-[#00ff66] text-black font-extrabold text-[10px] uppercase border border-black shadow-[2px_2px_0px_#000000] hover:bg-[#00ff66]/80 transition-all font-silkscreen flex items-center gap-1"
-                title="Launch Live Demo"
+                :title="proj.landingUrl ? 'Download Web / APK' : 'Launch Live Demo'"
               >
-                <span>DEMO</span>
+                <span>{{ proj.landingUrl ? 'WEB / APK' : 'DEMO' }}</span>
                 <i class="bi bi-box-arrow-up-right text-[10px]"></i>
               </a>
 
@@ -282,6 +293,11 @@ const itemsPerPage = ref(6);
 const isModalOpen = ref(false);
 const selectedProject = ref(null);
 const activeSlides = reactive({});
+
+const isVideo = (url) => {
+  if (typeof url !== "string") return false;
+  return /\.(webm|mp4|ogg)(\?.*)?$/i.test(url);
+};
 
 // Touch gestures
 let touchStartX = 0;
@@ -378,14 +394,15 @@ const projects = [
     shortDesc:
       "Sistem manajemen karier & rekrutmen Kanban, ATS resume builder PDF, dan sinkronisasi Google Calendar via Flutter & Supabase.",
     images: [
-      "/images/projects/AppliQ/appliq_element.png",
-      "/images/projects/AppliQ/appliq_logo.png",
+      "/images/projects/AppliQ/appliq_mockup.webp",
+      "/images/projects/AppliQ/appliq_web_mockup.webp",
+      "/images/projects/AppliQ/logo_cat_anim.webm",
     ],
     platform: "Mobile Application",
     role: "Mobile Dev & UI/UX Designer",
     timeline: "Sep – Okt 2026",
     techStack: ["Flutter", "Dart", "Supabase", "PostgreSQL", "OAuth"],
-    demoUrl: "https://myusiz3.github.io/AppliQ/",
+    landingUrl: "https://myusiz3.github.io/AppliQ/",
     githubUrl: "https://github.com/MyusiZ3/AppliQ",
     challenge:
       "Pencari kerja kesulitan mengorganisir puluhan alur rekrutmen yang tersebar serta membuat resume ATS dan cover letter terpersonalisasi secara instan.",
