@@ -31,17 +31,17 @@ const translations = {
     typewriter_2: "I'm Muhamad Sidik...",
     hero_designer: 'Technologist',
     hero_desc:
-      'Combining creative design, technical development, and systems thinking to transform concepts into interactive prototypes, digital solutions, and scalable experiences.',
+      'Full-stack developer and IT support engineer bridging UI/UX design, web and mobile application development, interactive 3D/AR systems, and reliable day-to-day technical operations.',
     hero_contact: 'Get In Touch',
     show_more: 'Read More',
     show_less: 'Show Less',
     about_title: 'About Me',
     about_intro_1:
-      'I am an engineering graduate focused on building dependable full-stack applications and maintaining resilient IT operations. Grounded in Multimedia Engineering Technology, I combine structured software development (Vue, Flutter, PostgreSQL) with practical infrastructure support (hardware, networking, and systems administration).',
+      'I am an Applied Science fresh graduate in Multimedia Engineering Technology from Telkom University specializing in full-stack software development and IT technical support. I build web and mobile applications using Vue.js, Vite, Flutter, PostgreSQL, and Supabase, alongside interactive 3D/AR software in Unity.',
     about_intro_2:
-      'Rather than just creating visual prototypes, I prioritize functional integrity: diagnosing system bottlenecks, resolving edge-case bugs, and conducting rigorous validation through black-box and usability testing.',
+      'My experience spans enterprise IT support and web development at PT Jasa dan Kepariwisataan Jabar (Perseroda) and two years as a Laboratory Teaching Assistant mentoring over 100 students in software engineering, computer networks, and database systems.',
     about_intro_3:
-      'Whether automating internal workflows or resolving daily technical disruptions, my goal is simple: deliver stable, user-focused technology that drives operational efficiency.',
+      'Across every project, I focus on functional reliability: designing clean UI/UX workflows, integrating cloud backend services, handling daily hardware and network troubleshooting, and validating releases through black-box and usability testing.',
     education_title: 'Education',
     edu_1_desc: 'Applied Sciences in Multimedia Engineering Technology',
     edu_1_detail: '2022 - 2026 (GPA: 3.83 / 4.00, Cum Laude)',
@@ -241,17 +241,17 @@ const translations = {
     typewriter_2: 'Saya Muhamad Sidik...',
     hero_designer: 'Technologist',
     hero_desc:
-      'Memadukan desain kreatif, pengembangan teknis, dan systems thinking untuk mengubah konsep menjadi prototipe interaktif serta solusi digital yang scalable.',
+      'Pengembang full-stack dan IT support yang memadukan perancangan UI/UX, pengembangan aplikasi web dan mobile, sistem interaktif 3D/AR, serta dukungan operasional teknis harian.',
     hero_contact: 'Get In Touch',
     show_more: 'Baca Selengkapnya',
     show_less: 'Tampilkan Sedikit',
     about_title: 'Tentang Saya',
     about_intro_1:
-      'Saya lulusan sarjana terapan bidang teknik yang berfokus pada pengembangan aplikasi full-stack yang andal serta pengelolaan operasional TI yang stabil. Berlatar belakang Teknologi Rekayasa Multimedia, saya memadukan pengembangan perangkat lunak terstruktur (Vue, Flutter, PostgreSQL) dengan dukungan infrastruktur praktis (perangkat keras, jaringan, dan administrasi sistem).',
+      'Saya lulusan baru (fresh graduate) Sarjana Terapan Teknologi Rekayasa Multimedia dari Universitas Telkom yang berfokus pada pengembangan perangkat lunak full-stack dan dukungan teknis TI (IT Support). Saya membangun aplikasi web dan mobile menggunakan Vue.js, Vite, Flutter, PostgreSQL, dan Supabase, serta sistem interaktif 3D/AR berbasis Unity.',
     about_intro_2:
-      'Lebih dari sekadar membangun prototipe visual, saya memprioritaskan integritas fungsional: mengidentifikasi hambatan sistem, menangani bug teknis, serta melakukan validasi terukur melalui pengujian black-box dan uji kegunaan (usability testing).',
+      'Pengalaman praktis saya mencakup peran IT Support dan Web Developer di PT Jasa dan Kepariwisataan Jabar (Perseroda), serta dua tahun sebagai Asisten Praktikum Laboratorium yang membimbing lebih dari 100 mahasiswa pada mata kuliah rekayasa perangkat lunak, jaringan komputer, dan sistem basis data.',
     about_intro_3:
-      'Baik dalam mengotomatisasi alur kerja internal maupun menangani kendala teknis harian, fokus saya jelas: menghadirkan solusi teknologi yang stabil dan tepat guna untuk mendukung efisiensi operasional organisasi.',
+      'Dalam setiap pekerjaan, saya mengutamakan keandalan fungsi: merancang alur UI/UX yang rapi, mengintegrasikan layanan backend cloud, menangani troubleshooting perangkat keras serta jaringan harian, dan memvalidasi sistem melalui pengujian black-box serta usability testing.',
     education_title: 'Pendidikan',
     edu_1_desc: 'Fakultas Ilmu Terapan, Teknologi Rekayasa Multimedia',
     edu_1_detail: '2022 - 2026 (IPK: 3.83 / 4.00, Cum Laude)',
