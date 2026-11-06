@@ -102,8 +102,19 @@
                   @click="openLightbox(index, activeSlides[index] || 0)"
                 >
                   <transition :name="getTransitionName(project._dir)" mode="out-in">
+                    <video
+                      v-if="isVideo(project.images[activeSlides[index] || 0])"
+                      :key="'vid-' + project.images[activeSlides[index] || 0]"
+                      :src="project.images[activeSlides[index] || 0]"
+                      autoplay
+                      loop
+                      muted
+                      playsinline
+                      class="absolute inset-0 w-full h-full object-cover"
+                    ></video>
                     <img
-                      :key="project.images[activeSlides[index] || 0]"
+                      v-else
+                      :key="'img-' + project.images[activeSlides[index] || 0]"
                       :src="project.images[activeSlides[index] || 0]"
                       :alt="`${project.name} - ${(activeSlides[index] || 0) + 1}`"
                       class="absolute inset-0 w-full h-full object-cover"
@@ -185,7 +196,7 @@
 
                 <!-- Editorial Metadata Specs Grid -->
                 <div
-                  class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 p-4 rounded-2xl bg-white/[0.02] border border-white/5"
+                  class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 p-4 rounded-2xl bg-white/2 border border-white/5"
                 >
                   <div>
                     <span
@@ -281,14 +292,14 @@
                 </a>
 
                 <a
-                  v-else-if="project.link && project.link !== '#'"
-                  :href="project.link"
+                  v-else-if="project.landingUrl || (project.link && project.link !== '#')"
+                  :href="project.landingUrl || project.link"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-500 active:scale-95 text-white font-['Poppins'] font-semibold text-xs px-5 py-2.5 rounded-xl transition-all duration-300 tracking-wider shadow-md shadow-violet-600/20 cursor-pointer"
                 >
-                  <span>{{ t('my_proj_view_work') }}</span>
-                  <i class="bi bi-arrow-right text-xs"></i>
+                  <span>{{ project.landingUrl ? (lang === 'ID' ? 'Web Portal / Unduh APK' : 'Web Portal & Download') : t('my_proj_view_work') }}</span>
+                  <i class="bi bi-arrow-up-right text-xs"></i>
                 </a>
 
                 <button
@@ -378,8 +389,20 @@
             :name="lightbox.dir === 'prev' ? 'lb-slide-prev' : 'lb-slide-next'"
             mode="out-in"
           >
+            <video
+              v-if="isVideo(lightboxImages[lightbox.slideIdx])"
+              :key="'lb-vid-' + lightboxImages[lightbox.slideIdx]"
+              :src="lightboxImages[lightbox.slideIdx]"
+              autoplay
+              loop
+              muted
+              playsinline
+              controls
+              class="max-w-full max-h-[85vh] w-auto h-auto object-contain rounded-xl mx-auto block shadow-2xl bg-black/40"
+            ></video>
             <img
-              :key="lightboxImages[lightbox.slideIdx]"
+              v-else
+              :key="'lb-img-' + lightboxImages[lightbox.slideIdx]"
               :src="lightboxImages[lightbox.slideIdx]"
               :alt="`Lightbox image ${lightbox.slideIdx + 1}`"
               loading="lazy"
@@ -455,6 +478,11 @@ const lightboxImages = computed(() => {
   }
   return []
 })
+
+const isVideo = (url) => {
+  if (typeof url !== 'string') return false
+  return /\.(webm|mp4|ogg)(\?.*)?$/i.test(url)
+}
 
 const openLightbox = (projectIdx, slideIdx) => {
   lightbox.projectIdx = projectIdx
@@ -683,10 +711,12 @@ const projects = computed(() => {
       platform: isId ? 'Aplikasi Mobile (Flutter)' : 'Mobile Application (Flutter)',
       bg: '#0284c7',
       images: [
-        '/images/projects/AppliQ/appliq_element.png',
-        '/images/projects/AppliQ/appliq_logo.png',
+        '/images/projects/AppliQ/appliq_mockup.webp',
+        '/images/projects/AppliQ/appliq_web_mockup.webp',
+        '/images/projects/AppliQ/logo_cat_anim.webm',
       ],
-      link: 'https://myusiz3.github.io/AppliQ/',
+      landingUrl: 'https://myusiz3.github.io/AppliQ/',
+      link: 'https://github.com/MyusiZ3/AppliQ',
       _dir: 'next',
     },
     {

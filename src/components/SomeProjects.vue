@@ -12,9 +12,7 @@
     />
     <div class="container mx-auto relative z-10">
       <!-- Title & Filters -->
-      <div
-        class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12"
-      >
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
         <div
           v-motion
           :initial="{ opacity: 0, x: -50 }"
@@ -25,18 +23,18 @@
             class="inline-flex items-center gap-2 text-violet-600 font-mono text-xs uppercase tracking-widest font-semibold mb-3 px-3.5 py-1.5 rounded-full bg-violet-50 border border-violet-200"
           >
             <span class="w-1.5 h-1.5 rounded-full bg-violet-600"></span>
-            {{ t("project_tag") }}
+            {{ t('project_tag') }}
           </div>
           <h2
             class="text-3xl lg:text-[40px] xl:text-[48px] font-extrabold font-['Poppins'] text-[#1a1a2e] leading-tight mb-4"
           >
-            {{ t("some_proj_title_1") }}<br class="hidden sm:block" />
-            {{ t("some_proj_title_2") }}
+            {{ t('some_proj_title_1') }}<br class="hidden sm:block" />
+            {{ t('some_proj_title_2') }}
           </h2>
           <p
             class="text-[#555] font-['Roboto'] text-[13px] lg:text-[15px] max-w-xl leading-relaxed"
           >
-            {{ t("some_proj_desc") }}
+            {{ t('some_proj_desc') }}
           </p>
         </div>
 
@@ -62,15 +60,13 @@
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-black'
             "
           >
-            {{ lang === "ID" ? cat.nameId : cat.nameEn }}
+            {{ lang === 'ID' ? cat.nameId : cat.nameEn }}
           </button>
         </div>
       </div>
 
       <!-- Projects Grid -->
-      <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10"
-      >
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
         <div
           v-for="(project, index) in filteredProjects"
           :key="project.name"
@@ -111,7 +107,7 @@
                   class="px-4 py-2 bg-white text-black rounded-xl text-xs font-semibold flex items-center gap-2 hover:bg-zinc-200 transition-all shadow-md"
                 >
                   <i class="bi bi-eye"></i>
-                  {{ lang === "ID" ? "Lihat Detail" : "View Project" }}
+                  {{ lang === 'ID' ? 'Lihat Detail' : 'View Project' }}
                 </button>
                 <a
                   v-if="project.liveLink"
@@ -131,9 +127,7 @@
             <p
               class="text-violet-600 font-mono text-[11px] font-semibold uppercase tracking-wider mb-1 flex items-center gap-2"
             >
-              <span
-                class="w-1.5 h-1.5 rounded-full bg-violet-600 inline-block"
-              ></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-violet-600 inline-block"></span>
               {{ project.category }}
             </p>
             <h3
@@ -160,13 +154,10 @@
       <transition name="case-study-fade">
         <div
           v-if="selectedProject"
-          class="fixed inset-0 z-[9995] flex items-center justify-center p-4 lg:p-6"
+          class="fixed inset-0 z-9995 flex items-center justify-center p-4 lg:p-6"
         >
           <!-- Backdrop -->
-          <div
-            class="absolute inset-0 bg-black/80 backdrop-blur-md"
-            @click="closeCaseStudy"
-          ></div>
+          <div class="absolute inset-0 bg-black/80 backdrop-blur-md" @click="closeCaseStudy"></div>
 
           <!-- Modal Content -->
           <div
@@ -182,15 +173,13 @@
 
             <!-- Left side: Visual -->
             <div
-              class="w-full lg:w-1/2 min-h-[240px] lg:min-h-full bg-[#121214] p-6 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 relative overflow-hidden group"
+              class="w-full lg:w-1/2 min-h-60 lg:min-h-full bg-[#121214] p-6 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 relative overflow-hidden group"
             >
-              <div
-                class="relative z-10 w-full h-full flex items-center justify-center"
-              >
+              <div class="relative z-10 w-full h-full flex items-center justify-center">
                 <iframe
                   v-if="isPlayingFlipbook && selectedProject.flipbookUrl"
                   :src="selectedProject.flipbookUrl"
-                  class="w-full h-full min-h-[280px] lg:min-h-[360px] rounded-xl border-0 shadow-2xl bg-black"
+                  class="w-full h-full min-h-70 lg:min-h-90 rounded-xl border-0 shadow-2xl bg-black"
                   allow="autoplay; fullscreen; clipboard-write"
                   allowfullscreen
                   scrolling="no"
@@ -218,9 +207,7 @@
               <div class="space-y-6">
                 <!-- Header -->
                 <div class="pb-4 border-b border-white/5 pr-8">
-                  <h3
-                    class="text-white text-xl lg:text-2xl font-bold font-['Poppins']"
-                  >
+                  <h3 class="text-white text-xl lg:text-2xl font-bold font-['Poppins']">
                     {{ selectedProject.name }}
                   </h3>
                 </div>
@@ -231,11 +218,9 @@
                     class="text-[11px] text-zinc-400 font-mono font-semibold tracking-wider uppercase mb-2 flex items-center gap-2"
                   >
                     <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
-                    {{ lang === "ID" ? "TANTANGAN" : "THE CHALLENGE" }}
+                    {{ lang === 'ID' ? 'TANTANGAN' : 'THE CHALLENGE' }}
                   </h4>
-                  <p
-                    class="text-zinc-300 font-['Roboto'] text-xs lg:text-[13px] leading-relaxed"
-                  >
+                  <p class="text-zinc-300 font-['Roboto'] text-xs lg:text-[13px] leading-relaxed">
                     {{ selectedProject.caseStudy.challenge }}
                   </p>
                 </div>
@@ -246,18 +231,16 @@
                     class="text-[11px] text-zinc-400 font-mono font-semibold tracking-wider uppercase mb-2 flex items-center gap-2"
                   >
                     <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
-                    {{ lang === "ID" ? "SOLUSI" : "THE SOLUTION" }}
+                    {{ lang === 'ID' ? 'SOLUSI' : 'THE SOLUTION' }}
                   </h4>
-                  <p
-                    class="text-zinc-300 font-['Roboto'] text-xs lg:text-[13px] leading-relaxed"
-                  >
+                  <p class="text-zinc-300 font-['Roboto'] text-xs lg:text-[13px] leading-relaxed">
                     {{ selectedProject.caseStudy.solution }}
                   </p>
                 </div>
 
                 <!-- Results/Tech Specs Bar -->
                 <div
-                  class="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 flex flex-wrap items-center justify-between gap-4 text-xs font-mono"
+                  class="p-3.5 rounded-xl bg-white/2 border border-white/5 flex flex-wrap items-center justify-between gap-4 text-xs font-mono"
                 >
                   <div>
                     <span
@@ -267,9 +250,7 @@
                     <span
                       class="text-emerald-400 text-xs font-medium flex items-center gap-1.5 mt-0.5"
                     >
-                      <span
-                        class="w-1.5 h-1.5 bg-emerald-400 rounded-full"
-                      ></span>
+                      <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span>
                       COMPLETED
                     </span>
                   </div>
@@ -278,22 +259,18 @@
                       class="text-zinc-500 text-[10px] uppercase tracking-wider block font-semibold"
                       >DURATION</span
                     >
-                    <span class="text-zinc-200 text-xs font-medium mt-0.5 block"
-                      >5 - 8 MONTHS</span
-                    >
+                    <span class="text-zinc-200 text-xs font-medium mt-0.5 block">5 - 8 MONTHS</span>
                   </div>
                 </div>
               </div>
 
               <!-- Action Buttons -->
-              <div
-                class="flex flex-wrap items-center gap-3 pt-6 mt-6 border-t border-white/5"
-              >
+              <div class="flex flex-wrap items-center gap-3 pt-6 mt-6 border-t border-white/5">
                 <button
                   v-if="selectedProject.flipbookUrl"
                   type="button"
                   @click="isPlayingFlipbook = !isPlayingFlipbook"
-                  class="flex-1 min-w-[140px] px-4 py-2.5 rounded-xl border font-['Poppins'] font-semibold text-xs flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer"
+                  class="flex-1 min-w-35 px-4 py-2.5 rounded-xl border font-['Poppins'] font-semibold text-xs flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer"
                   :class="
                     isPlayingFlipbook
                       ? 'bg-violet-600 text-white border-violet-500 shadow-violet-600/30'
@@ -303,10 +280,18 @@
                   <i class="bi bi-book-half text-sm"></i>
                   <span>{{
                     isPlayingFlipbook
-                      ? (lang === "ID" ? "Tutup Flipbook" : "Close E-Book")
-                      : (lang === "ID" ? "E-Book (Flipbook)" : "AR Flipbook")
+                      ? lang === 'ID'
+                        ? 'Tutup Flipbook'
+                        : 'Close E-Book'
+                      : lang === 'ID'
+                        ? 'E-Book (Flipbook)'
+                        : 'AR Flipbook'
                   }}</span>
-                  <i :class="isPlayingFlipbook ? 'bi bi-x-lg text-[10px]' : 'bi bi-arrow-right text-[10px]'"></i>
+                  <i
+                    :class="
+                      isPlayingFlipbook ? 'bi bi-x-lg text-[10px]' : 'bi bi-arrow-right text-[10px]'
+                    "
+                  ></i>
                 </button>
 
                 <a
@@ -314,12 +299,14 @@
                   :href="selectedProject.appUrl"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="flex-1 min-w-[140px] px-4 py-2.5 rounded-xl bg-white text-zinc-900 font-['Poppins'] font-semibold text-xs flex items-center justify-center gap-2 hover:bg-zinc-200 transition-all shadow-md shadow-white/10"
+                  class="flex-1 min-w-35 px-4 py-2.5 rounded-xl bg-white text-zinc-900 font-['Poppins'] font-semibold text-xs flex items-center justify-center gap-2 hover:bg-zinc-200 transition-all shadow-md shadow-white/10"
                 >
-                  <img src="/images/tools/google-drive.svg" alt="Google Drive" class="w-3.5 h-3.5 object-contain" />
-                  <span>{{
-                    lang === "ID" ? "Unduh App (Drive)" : "Download App"
-                  }}</span>
+                  <img
+                    src="/images/tools/google-drive.svg"
+                    alt="Google Drive"
+                    class="w-3.5 h-3.5 object-contain"
+                  />
+                  <span>{{ lang === 'ID' ? 'Unduh App (Drive)' : 'Download App' }}</span>
                   <i class="bi bi-arrow-up-right text-[10px]"></i>
                 </a>
 
@@ -329,9 +316,7 @@
                   target="_blank"
                   class="flex-1 px-5 py-2.5 rounded-xl bg-violet-600 text-white font-['Poppins'] font-semibold text-xs flex items-center justify-center gap-2 hover:bg-violet-500 transition-all shadow-md shadow-violet-600/20"
                 >
-                  <span>{{
-                    lang === "ID" ? "Lihat Live Demo" : "Live Demo"
-                  }}</span>
+                  <span>{{ lang === 'ID' ? 'Lihat Live Demo' : 'Live Demo' }}</span>
                   <i class="bi bi-arrow-right text-xs"></i>
                 </a>
                 <a
@@ -353,295 +338,285 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
-import { useLanguage } from "@/composables/useLanguage";
-import ProjectImage from "./common/ProjectImage.vue";
+import { ref, computed } from 'vue'
+import { useLanguage } from '@/composables/useLanguage'
+import ProjectImage from './common/ProjectImage.vue'
 
-const { t, lang } = useLanguage();
+const { t, lang } = useLanguage()
 
-const selectedProject = ref(null);
-const activeFilter = ref("all");
-const isPlayingFlipbook = ref(false);
+const selectedProject = ref(null)
+const activeFilter = ref('all')
+const isPlayingFlipbook = ref(false)
 
 const filterCategories = [
-  { id: "all", nameId: "Semua", nameEn: "All" },
-  { id: "game", nameId: "Game", nameEn: "Game" },
-  { id: "app", nameId: "Desain App", nameEn: "App Design" },
-  { id: "web", nameId: "Web & Portofolio", nameEn: "Web & Portfolio" },
-];
+  { id: 'all', nameId: 'Semua', nameEn: 'All' },
+  { id: 'game', nameId: 'Game', nameEn: 'Game' },
+  { id: 'app', nameId: 'Desain App', nameEn: 'App Design' },
+  { id: 'web', nameId: 'Web & Portofolio', nameEn: 'Web & Portfolio' },
+]
 
 const filteredProjects = computed(() => {
-  if (activeFilter.value === "all") return projects.value;
-  return projects.value.filter((p) => p.filterType === activeFilter.value);
-});
+  if (activeFilter.value === 'all') return projects.value
+  return projects.value.filter((p) => p.filterType === activeFilter.value)
+})
 
 const openCaseStudy = (project) => {
-  selectedProject.value = project;
-  isPlayingFlipbook.value = false;
-  document.body.style.overflow = "hidden";
-};
+  selectedProject.value = project
+  isPlayingFlipbook.value = false
+  document.body.style.overflow = 'hidden'
+}
 
 const closeCaseStudy = () => {
-  selectedProject.value = null;
-  isPlayingFlipbook.value = false;
-  document.body.style.overflow = "";
-};
+  selectedProject.value = null
+  isPlayingFlipbook.value = false
+  document.body.style.overflow = ''
+}
 
 const projects = computed(() => {
-  const isId = lang.value === "ID";
+  const isId = lang.value === 'ID'
   return [
     {
-      name: isId ? "Djaswita AR (Tugas Akhir)" : "Djaswita AR (Thesis)",
+      name: isId ? 'Djaswita AR (Tugas Akhir)' : 'Djaswita AR (Thesis)',
+      category: isId ? 'Platform AR & Web CMS (BUMD)' : 'AR & Web CMS Platform (BUMD)',
+      bg: '#7c3aed',
+      image: '/images/projects/DjaswitaAR/dashboard_laptop_mockup.webp',
+      filterType: 'game',
+      githubLink: 'https://github.com/MyusiZ3/DjaswitaAR-Fix',
+      caseStudy: {
+        challenge: isId
+          ? 'Media promosi pameran PT Jaswita Jabar masih berupa cetakan statis yang lambat diperbarui antar-event, sementara aplikasi AR biasa mengharuskan build ulang APK setiap kali materi promosi berganti.'
+          : 'Exhibition materials for PT Jaswita Jabar relied on static printouts that could not easily adapt between events, while conventional AR apps required binary rebuilds for every content update.',
+        solution: isId
+          ? 'Membangun platform promosi interaktif yang memadukan aplikasi AR Android dan Web CMS berbasis Supabase, memungkinkan tim memperbarui materi promosi multi-unit bisnis dan marker baru secara mandiri tanpa rebuild.'
+          : 'Engineered an interactive promotional platform combining an Android AR client and a Supabase Web CMS, empowering teams to update multi-unit marketing media and add markers dynamically without rebuilding.',
+      },
+    },
+    {
+      name: 'Mathmagic (HKI)',
       category: isId
-        ? "Platform AR & Web CMS (BUMD)"
-        : "AR & Web CMS Platform (BUMD)",
-      bg: "#7c3aed",
-      image: "/images/projects/DjaswitaAR/dashboard_laptop_mockup.webp",
-      filterType: "game",
-      githubLink: "https://github.com/MyusiZ3/DjaswitaAR-Fix",
+        ? 'Gim Edukasi & Web Admin (Firebase)'
+        : 'Educational Game & Web Admin (Firebase)',
+      bg: '#059669',
+      image: '/images/projects/Mathmagic/mathmagic_appscreen_mockup.webp',
+      filterType: 'game',
+      liveLink: 'https://shorturl.at/cb55f',
+      githubLink: 'https://github.com/MyusiZ3/Mathmagic-Firebase',
       caseStudy: {
         challenge: isId
-          ? "Media promosi pameran PT Jaswita Jabar masih berupa cetakan statis yang lambat diperbarui antar-event, sementara aplikasi AR biasa mengharuskan build ulang APK setiap kali materi promosi berganti."
-          : "Exhibition materials for PT Jaswita Jabar relied on static printouts that could not easily adapt between events, while conventional AR apps required binary rebuilds for every content update.",
+          ? 'Menyediakan media belajar matematika interaktif untuk siswa SD yang terhubung dengan pemantauan pengajar secara real-time.'
+          : 'Delivering an engaging math learning game for elementary students with real-time progress tracking for educators.',
         solution: isId
-          ? "Membangun platform promosi interaktif yang memadukan aplikasi AR Android dan Web CMS berbasis Supabase, memungkinkan tim memperbarui materi promosi multi-unit bisnis dan marker baru secara mandiri tanpa rebuild."
-          : "Engineered an interactive promotional platform combining an Android AR client and a Supabase Web CMS, empowering teams to update multi-unit marketing media and add markers dynamically without rebuilding.",
+          ? 'Membangun game Unity 6 (C#) terintegrasi Firebase dan Web Admin Dashboard (Vite) untuk telemetri belajar dan leaderboard real-time.'
+          : 'Built a Unity 6 (C#) game integrated with Firebase and a Vite Web Admin Dashboard for real-time learning telemetry and leaderboards.',
       },
     },
     {
-      name: "Mathmagic (HKI)",
+      name: 'AppliQ',
+      category: isId ? 'Pelacak Lamaran Kerja & Sistem Karier' : 'Job Tracker & Career System',
+      bg: '#0284c7',
+      image: '/images/projects/AppliQ/appliq_mockup.webp',
+      filterType: 'app',
+      liveLink: 'https://myusiz3.github.io/AppliQ/',
+      githubLink: 'https://github.com/MyusiZ3/AppliQ',
+      caseStudy: {
+        challenge: isId
+          ? 'Pencari kerja kesulitan mengelola puluhan alur rekrutmen yang tersebar serta membuat resume ATS dan cover letter yang terpersonalisasi secara instan.'
+          : 'Job seekers struggle to track multi-stage recruitment pipelines across platforms and quickly produce tailored ATS resumes and cover letters.',
+        solution: isId
+          ? 'Mengembangkan aplikasi Flutter & Supabase dengan Kanban board interaktif, generator PDF resume ATS & cover letter instan, sinkronisasi kalender, serta Row-Level Security.'
+          : 'Developed a Flutter & Supabase mobile app featuring drag-and-drop Kanban tracking, on-device ATS resume/cover letter PDF rendering, calendar sync, and PostgreSQL RLS security.',
+      },
+    },
+    {
+      name: 'MyDuitGweh',
       category: isId
-        ? "Gim Edukasi & Web Admin (Firebase)"
-        : "Educational Game & Web Admin (Firebase)",
-      bg: "#059669",
-      image: "/images/projects/Mathmagic/mathmagic_appscreen_mockup.webp",
-      filterType: "game",
-      liveLink: "https://shorturl.at/cb55f",
-      githubLink: "https://github.com/MyusiZ3/Mathmagic-Firebase",
+        ? 'Smart Financial Tracker & AI Advisor'
+        : 'Smart Financial Tracker & AI Advisor',
+      bg: '#10b981',
+      image: '/images/projects/MyDuitGweh/logo_app.png',
+      filterType: 'app',
+      liveLink: 'https://myduitgweh.firebaseapp.com/',
+      githubLink: 'https://github.com/MyusiZ3/MyDuitGweh',
       caseStudy: {
         challenge: isId
-          ? "Menyediakan media belajar matematika interaktif untuk siswa SD yang terhubung dengan pemantauan pengajar secara real-time."
-          : "Delivering an engaging math learning game for elementary students with real-time progress tracking for educators.",
+          ? 'Pencatatan keuangan manual memakan waktu, minim wawasan interaktif, dan jarang mendukung kolaborasi anggaran bersama dengan analitik cerdas.'
+          : 'Manual expense recording is tedious, lacks conversational insights, and rarely supports collaborative multi-wallet budgeting with smart analytics.',
         solution: isId
-          ? "Membangun game Unity 6 (C#) terintegrasi Firebase dan Web Admin Dashboard (Vite) untuk telemetri belajar dan leaderboard real-time."
-          : "Built a Unity 6 (C#) game integrated with Firebase and a Vite Web Admin Dashboard for real-time learning telemetry and leaderboards.",
+          ? 'Membangun aplikasi Flutter bertenaga Firebase dengan pemindai struk OCR Google ML Kit, Archen AI Advisor (Gemini & Groq), dompet kolaborasi bersama, dan tata letak Bento bergaya iOS.'
+          : 'Engineered a Flutter & Firebase app featuring Google ML Kit OCR receipt scanning, multi-persona Archen AI Advisor (Gemini & Groq), shared collaborative wallets, and Apple-inspired Bento UI.',
       },
     },
     {
-      name: "AppliQ",
-      category: isId
-        ? "Pelacak Lamaran Kerja & Sistem Karier"
-        : "Job Tracker & Career System",
-      bg: "#0284c7",
-      image: "/images/projects/AppliQ/appliq_logo.png",
-      filterType: "app",
-      liveLink: "https://myusiz3.github.io/AppliQ/",
-      githubLink: "https://github.com/MyusiZ3/AppliQ",
+      name: 'DJourney Jaswita Jabar',
+      category: isId ? 'Portal Web Pariwisata' : 'Tourism Web Portal',
+      bg: '#2563eb',
+      image: '/images/projects/djourney_jaswita.png',
+      filterType: 'web',
+      liveLink: 'https://djourney.id/web/',
       caseStudy: {
         challenge: isId
-          ? "Pencari kerja kesulitan mengelola puluhan alur rekrutmen yang tersebar serta membuat resume ATS dan cover letter yang terpersonalisasi secara instan."
-          : "Job seekers struggle to track multi-stage recruitment pipelines across platforms and quickly produce tailored ATS resumes and cover letters.",
+          ? 'Meningkatkan jangkauan wisatawan mancanegara serta memperbaiki masalah responsivitas mobile dan bug filter pencarian.'
+          : 'Expanding international tourist reach while resolving mobile responsiveness issues and search filter bugs on the DJourney platform.',
         solution: isId
-          ? "Mengembangkan aplikasi Flutter & Supabase dengan Kanban board interaktif, generator PDF resume ATS & cover letter instan, sinkronisasi kalender, serta Row-Level Security."
-          : "Developed a Flutter & Supabase mobile app featuring drag-and-drop Kanban tracking, on-device ATS resume/cover letter PDF rendering, calendar sync, and PostgreSQL RLS security.",
+          ? 'Mengimplementasikan lokalisasi multi-bahasa (i18n), menyelaraskan CSS responsive layout, dan merefaktor logika filter JS.'
+          : 'Implemented multi-language (i18n) localization, aligned responsive mobile CSS rules, and refactored JavaScript filter logic.',
       },
     },
     {
-      name: "MyDuitGweh",
-      category: isId
-        ? "Smart Financial Tracker & AI Advisor"
-        : "Smart Financial Tracker & AI Advisor",
-      bg: "#10b981",
-      image: "/images/projects/MyDuitGweh/logo_app.png",
-      filterType: "app",
-      liveLink: "https://myduitgweh.firebaseapp.com/",
-      githubLink: "https://github.com/MyusiZ3/MyDuitGweh",
+      name: 'Luxion RideXP',
+      category: isId ? 'Proyek Game Arkade' : 'Arcade Game Project',
+      bg: '#C0392B',
+      image: '/images/projects/LuxionRideXP/luxion_ridexp.webp',
+      filterType: 'game',
+      liveLink: 'https://youtube.com/preview',
+      githubLink: 'https://github.com/MyusiZ3/Creative_Portfolio',
       caseStudy: {
         challenge: isId
-          ? "Pencatatan keuangan manual memakan waktu, minim wawasan interaktif, dan jarang mendukung kolaborasi anggaran bersama dengan analitik cerdas."
-          : "Manual expense recording is tedious, lacks conversational insights, and rarely supports collaborative multi-wallet budgeting with smart analytics.",
+          ? 'Menciptakan pengalaman gim arkade yang memacu andrenalin sekaligus ramah bagi segala usia.'
+          : 'Creating an adrenaline-pumping arcade gaming experience that remains accessible to all ages.',
         solution: isId
-          ? "Membangun aplikasi Flutter bertenaga Firebase dengan pemindai struk OCR Google ML Kit, Archen AI Advisor (Gemini & Groq), dompet kolaborasi bersama, dan tata letak Bento bergaya iOS."
-          : "Engineered a Flutter & Firebase app featuring Google ML Kit OCR receipt scanning, multi-persona Archen AI Advisor (Gemini & Groq), shared collaborative wallets, and Apple-inspired Bento UI.",
+          ? 'Menggunakan sistem kendali responsif dan ragam level yang meningkat secara bertahap.'
+          : 'Implemented responsive control systems and progressive difficulty levels to maintain engagement.',
       },
     },
     {
-      name: "DJourney Jaswita Jabar",
-      category: isId ? "Portal Web Pariwisata" : "Tourism Web Portal",
-      bg: "#2563eb",
-      image: "/images/projects/djourney_jaswita.png",
-      filterType: "web",
-      liveLink: "https://djourney.id/web/",
+      name: 'MindEscape: VR Chamber',
+      category: isId ? 'Proyek Game VR' : 'VR Game Project',
+      bg: '#7c3aed',
+      image: '/images/projects/MindescapeVR/mindescape_vr.webp',
+      filterType: 'game',
+      liveLink: 'https://youtu.be/DmFdkMLRTGc?si=EKjq0QPhMt2LOcCU',
+      videoEmbedId: 'DmFdkMLRTGc',
       caseStudy: {
         challenge: isId
-          ? "Meningkatkan jangkauan wisatawan mancanegara serta memperbaiki masalah responsivitas mobile dan bug filter pencarian."
-          : "Expanding international tourist reach while resolving mobile responsiveness issues and search filter bugs on the DJourney platform.",
+          ? 'Mengatasi mabuk gerak (motion sickness) pada dunia realitas virtual tingkat imersif tinggi.'
+          : 'Overcoming motion sickness in high-immersion VR environments during exploration.',
         solution: isId
-          ? "Mengimplementasikan lokalisasi multi-bahasa (i18n), menyelaraskan CSS responsive layout, dan merefaktor logika filter JS."
-          : "Implemented multi-language (i18n) localization, aligned responsive mobile CSS rules, and refactored JavaScript filter logic.",
+          ? 'Optimasi frame rate dan sinkronisasi gerakan fisik serta visual dalam lingkungan XR.'
+          : 'Optimized frame rates and implemented hybrid locomotion systems to ensure comfort.',
       },
     },
     {
-      name: "Luxion RideXP",
-      category: isId ? "Proyek Game Arkade" : "Arcade Game Project",
-      bg: "#C0392B",
-      image: "/images/projects/LuxionRideXP/luxion_ridexp.webp",
-      filterType: "game",
-      liveLink: "https://youtube.com/preview",
-      githubLink: "https://github.com/MyusiZ3/Creative_Portfolio",
+      name: 'MathRift',
+      category: isId ? 'Game Edukasi Platformer 2D' : 'Educational 2D Platformer Game',
+      bg: '#1a3a4a',
+      image: '/images/projects/Mathrift/mathrift.webp',
+      filterType: 'game',
+      liveLink: 'https://youtube.com/preview',
+      githubLink: 'https://github.com/MyusiZ3/Creative_Portfolio',
       caseStudy: {
         challenge: isId
-          ? "Menciptakan pengalaman gim arkade yang memacu andrenalin sekaligus ramah bagi segala usia."
-          : "Creating an adrenaline-pumping arcade gaming experience that remains accessible to all ages.",
+          ? 'Bagaimana membuat matematika terasa menyenangkan melalui mekanisme mekanika gim 2D.'
+          : 'How to make mathematics feel fun and engaging through 2D platforming mechanics.',
         solution: isId
-          ? "Menggunakan sistem kendali responsif dan ragam level yang meningkat secara bertahap."
-          : "Implemented responsive control systems and progressive difficulty levels to maintain engagement.",
+          ? 'Integrasi soal matematika ke dalam teka-teki lingkungan dan kepingan artefak gim.'
+          : 'Integrated equations into environmental puzzles and progression tokens effectively.',
       },
     },
     {
-      name: "MindEscape: VR Chamber",
-      category: isId ? "Proyek Game VR" : "VR Game Project",
-      bg: "#7c3aed",
-      image: "/images/projects/MindescapeVR/mindescape_vr.webp",
-      filterType: "game",
-      liveLink: "https://youtu.be/DmFdkMLRTGc?si=EKjq0QPhMt2LOcCU",
-      videoEmbedId: "DmFdkMLRTGc",
+      name: 'Stellar Adventures',
+      category: isId ? 'Proyek Game AR' : 'AR Game Project',
+      bg: '#1a2a3a',
+      image: '/images/projects/StellarAdventures/stellar_adventures.webp',
+      filterType: 'game',
+      liveLink:
+        'https://drive.google.com/drive/folders/1E5aDwwwQ6N-_4L24yXOicgDLIbja2S4L?usp=drive_link',
+      appUrl:
+        'https://drive.google.com/drive/folders/1E5aDwwwQ6N-_4L24yXOicgDLIbja2S4L?usp=drive_link',
+      flipbookUrl: 'https://heyzine.com/flip-book/46f2424104.html',
+      videoEmbedId: 'beb_pedFmMg',
       caseStudy: {
         challenge: isId
-          ? "Mengatasi mabuk gerak (motion sickness) pada dunia realitas virtual tingkat imersif tinggi."
-          : "Overcoming motion sickness in high-immersion VR environments during exploration.",
+          ? 'Pelacakan obyek 3D secara presisi pada lingkungan ruangan yang berpencahayaan rendah.'
+          : 'Ensuring precision 3D object tracking in low-light indoor environments for AR apps.',
         solution: isId
-          ? "Optimasi frame rate dan sinkronisasi gerakan fisik serta visual dalam lingkungan XR."
-          : "Optimized frame rates and implemented hybrid locomotion systems to ensure comfort.",
+          ? 'Penerapan algoritma ARCore/ARKit yang dioptimasi dengan penanda fidusia dinamis.'
+          : 'Leveraged ARCore/ARKit with custom anchor-point optimizations for stability.',
       },
     },
     {
-      name: "MathRift",
-      category: isId
-        ? "Game Edukasi Platformer 2D"
-        : "Educational 2D Platformer Game",
-      bg: "#1a3a4a",
-      image: "/images/projects/Mathrift/mathrift.webp",
-      filterType: "game",
-      liveLink: "https://youtube.com/preview",
-      githubLink: "https://github.com/MyusiZ3/Creative_Portfolio",
+      name: 'U-Asprak',
+      category: isId ? 'Desain Aplikasi Mobile' : 'Mobile App Design',
+      bg: '#5b6abf',
+      image: '/images/projects/UAsprak/u_asprak.webp',
+      filterType: 'app',
+      liveLink: 'https://behance.net',
       caseStudy: {
         challenge: isId
-          ? "Bagaimana membuat matematika terasa menyenangkan melalui mekanisme mekanika gim 2D."
-          : "How to make mathematics feel fun and engaging through 2D platforming mechanics.",
+          ? 'Membangun efisiensi komunikasi antara asisten praktikum dengan jumlah mahasiswa yang besar.'
+          : 'Building communication efficiency between lab assistants and massive student groups.',
         solution: isId
-          ? "Integrasi soal matematika ke dalam teka-teki lingkungan dan kepingan artefak gim."
-          : "Integrated equations into environmental puzzles and progression tokens effectively.",
+          ? 'Rancangan antarmuka yang memusatkan penjadwalan serta sistem pelaporan terintegrasi.'
+          : 'Designed a centralized hub for scheduling and automated reporting systems.',
       },
     },
     {
-      name: "Stellar Adventures",
-      category: isId ? "Proyek Game AR" : "AR Game Project",
-      bg: "#1a2a3a",
-      image: "/images/projects/StellarAdventures/stellar_adventures.webp",
-      filterType: "game",
-      liveLink: "https://drive.google.com/drive/folders/1E5aDwwwQ6N-_4L24yXOicgDLIbja2S4L?usp=drive_link",
-      appUrl: "https://drive.google.com/drive/folders/1E5aDwwwQ6N-_4L24yXOicgDLIbja2S4L?usp=drive_link",
-      flipbookUrl: "https://heyzine.com/flip-book/46f2424104.html",
-      videoEmbedId: "beb_pedFmMg",
+      name: 'empEDU',
+      category: isId ? 'Desain Aplikasi Mobile' : 'Mobile App Design',
+      bg: '#2a4a3a',
+      image: '/images/projects/Empedu/empedu.webp',
+      filterType: 'app',
+      liveLink: 'https://youtu.be/4qN5RWZo9Nw?si=mdo5mKqoznMrGAgz',
+      githubLink: 'https://github.com/MyusiZ3/Creative_Portfolio',
       caseStudy: {
         challenge: isId
-          ? "Pelacakan obyek 3D secara presisi pada lingkungan ruangan yang berpencahayaan rendah."
-          : "Ensuring precision 3D object tracking in low-light indoor environments for AR apps.",
+          ? 'Meningkatkan daya pikat materi pembelajaran melalui ragam rancangan aplikasi interaktif.'
+          : 'Boosting engagement for educational content through interactive mobile designs.',
         solution: isId
-          ? "Penerapan algoritma ARCore/ARKit yang dioptimasi dengan penanda fidusia dinamis."
-          : "Leveraged ARCore/ARKit with custom anchor-point optimizations for stability.",
+          ? 'Penggunaan prinsip gamifikasi dan tata letak yang ramah bagi pengguna awam.'
+          : 'Applied gamification principles and UX patterns tailored for accessible learning.',
       },
     },
     {
-      name: "U-Asprak",
-      category: isId ? "Desain Aplikasi Mobile" : "Mobile App Design",
-      bg: "#5b6abf",
-      image: "/images/projects/UAsprak/u_asprak.webp",
-      filterType: "app",
-      liveLink: "https://behance.net",
+      name: 'IUDEX',
+      category: isId ? 'Desain Web Portofolio Tim' : 'Team Portfolio Web Design',
+      bg: '#6a5acd',
+      image: '/images/projects/Iudex/iudex.webp',
+      filterType: 'web',
+      liveLink: 'https://iudex-portfolio.vercel.app/',
+      githubLink: 'https://github.com/MyusiZ3/Creative_Portfolio',
       caseStudy: {
         challenge: isId
-          ? "Membangun efisiensi komunikasi antara asisten praktikum dengan jumlah mahasiswa yang besar."
-          : "Building communication efficiency between lab assistants and massive student groups.",
+          ? 'Menampilkan identitas tim yang solid dalam satu wadah portofolio digital yang dinamis.'
+          : 'Showcasing a cohesive team identity within a single, dynamic digital portfolio.',
         solution: isId
-          ? "Rancangan antarmuka yang memusatkan penjadwalan serta sistem pelaporan terintegrasi."
-          : "Designed a centralized hub for scheduling and automated reporting systems.",
+          ? 'Sistem grid modern dengan balutan animasi guna menghantarkan informasi secara estetik.'
+          : 'Implemented a modern bento-grid system with animejs for flow and elegance.',
       },
     },
     {
-      name: "empEDU",
-      category: isId ? "Desain Aplikasi Mobile" : "Mobile App Design",
-      bg: "#2a4a3a",
-      image: "/images/projects/Empedu/empedu.webp",
-      filterType: "app",
-      liveLink: "https://youtu.be/4qN5RWZo9Nw?si=mdo5mKqoznMrGAgz",
-      githubLink: "https://github.com/MyusiZ3/Creative_Portfolio",
+      name: 'Arch',
+      category: isId ? 'Desain Web Portofolio Pribadi' : 'Personal Portfolio Web Design',
+      bg: '#7c3aed',
+      image: '/images/projects/Arch/arch.webp',
+      filterType: 'web',
+      liveLink: 'https://arch.vercel.app',
       caseStudy: {
         challenge: isId
-          ? "Meningkatkan daya pikat materi pembelajaran melalui ragam rancangan aplikasi interaktif."
-          : "Boosting engagement for educational content through interactive mobile designs.",
+          ? 'Rancangan tata letak minimalis namun mampu mewakili ragam keahlian teknis secara utuh.'
+          : 'Designing a minimalist layout that adequately Represents a wide technical skill set.',
         solution: isId
-          ? "Penggunaan prinsip gamifikasi dan tata letak yang ramah bagi pengguna awam."
-          : "Applied gamification principles and UX patterns tailored for accessible learning.",
+          ? 'Eksperimen tipografi tebal dan pemanfaatan ruang kosong (white space) yang seimbang.'
+          : 'Experimented with bold typography and strategic white space utilization.',
       },
     },
     {
-      name: "IUDEX",
-      category: isId
-        ? "Desain Web Portofolio Tim"
-        : "Team Portfolio Web Design",
-      bg: "#6a5acd",
-      image: "/images/projects/Iudex/iudex.webp",
-      filterType: "web",
-      liveLink: "https://iudex-portfolio.vercel.app/",
-      githubLink: "https://github.com/MyusiZ3/Creative_Portfolio",
+      name: 'Merch',
+      category: isId ? 'Desain Merchandise untuk Acara' : 'Merch design for Event',
+      bg: '#8b5cf6',
+      image: '/images/projects/merch.webp',
+      filterType: 'web',
       caseStudy: {
         challenge: isId
-          ? "Menampilkan identitas tim yang solid dalam satu wadah portofolio digital yang dinamis."
-          : "Showcasing a cohesive team identity within a single, dynamic digital portfolio.",
+          ? 'Penyesuaian identitas acara ke dalam obyek fisik tanpa menghilangkan kesan modernitas.'
+          : 'Translating event branding into physical objects while maintaining a modern vibe.',
         solution: isId
-          ? "Sistem grid modern dengan balutan animasi guna menghantarkan informasi secara estetik."
-          : "Implemented a modern bento-grid system with animejs for flow and elegance.",
+          ? 'Eksplorasi material dan teknik cetak guna menonjolkan aset grafis berkualitas tinggi.'
+          : 'Explored materials and printing techniques to emphasize high-quality graphic assets.',
       },
     },
-    {
-      name: "Arch",
-      category: isId
-        ? "Desain Web Portofolio Pribadi"
-        : "Personal Portfolio Web Design",
-      bg: "#7c3aed",
-      image: "/images/projects/Arch/arch.webp",
-      filterType: "web",
-      liveLink: "https://arch.vercel.app",
-      caseStudy: {
-        challenge: isId
-          ? "Rancangan tata letak minimalis namun mampu mewakili ragam keahlian teknis secara utuh."
-          : "Designing a minimalist layout that adequately Represents a wide technical skill set.",
-        solution: isId
-          ? "Eksperimen tipografi tebal dan pemanfaatan ruang kosong (white space) yang seimbang."
-          : "Experimented with bold typography and strategic white space utilization.",
-      },
-    },
-    {
-      name: "Merch",
-      category: isId
-        ? "Desain Merchandise untuk Acara"
-        : "Merch design for Event",
-      bg: "#8b5cf6",
-      image: "/images/projects/merch.webp",
-      filterType: "web",
-      caseStudy: {
-        challenge: isId
-          ? "Penyesuaian identitas acara ke dalam obyek fisik tanpa menghilangkan kesan modernitas."
-          : "Translating event branding into physical objects while maintaining a modern vibe.",
-        solution: isId
-          ? "Eksplorasi material dan teknik cetak guna menonjolkan aset grafis berkualitas tinggi."
-          : "Explored materials and printing techniques to emphasize high-quality graphic assets.",
-      },
-    },
-  ];
-});
+  ]
+})
 </script>
 
 <style scoped>

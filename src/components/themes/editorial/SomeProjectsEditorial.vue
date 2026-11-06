@@ -154,7 +154,7 @@
       <transition name="case-study-fade">
         <div
           v-if="selectedProject"
-          class="fixed inset-0 z-[9995] flex items-center justify-center p-4 lg:p-6"
+          class="fixed inset-0 z-9995 flex items-center justify-center p-4 lg:p-6"
         >
           <!-- Backdrop -->
           <div
@@ -176,7 +176,7 @@
 
             <!-- Left side: Visual -->
             <div
-              class="w-full lg:w-1/2 min-h-[240px] lg:min-h-full bg-[#121214] p-6 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 relative overflow-hidden group"
+              class="w-full lg:w-1/2 min-h-60 lg:min-h-full bg-[#121214] p-6 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 relative overflow-hidden group"
             >
               <div
                 class="relative z-10 w-full h-full flex items-center justify-center"
@@ -184,14 +184,14 @@
                 <iframe
                   v-if="isPlayingVideo && selectedProject.videoEmbedId"
                   :src="`https://www.youtube-nocookie.com/embed/${selectedProject.videoEmbedId}?autoplay=1&rel=0`"
-                  class="w-full h-full min-h-[240px] lg:min-h-[300px] rounded-xl border-0 aspect-video shadow-2xl"
+                  class="w-full h-full min-h-60 lg:min-h-75 rounded-xl border-0 aspect-video shadow-2xl"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
                 ></iframe>
                 <iframe
                   v-else-if="isPlayingFlipbook && selectedProject.flipbookUrl"
                   :src="selectedProject.flipbookUrl"
-                  class="w-full h-full min-h-[280px] lg:min-h-[360px] rounded-xl border-0 shadow-2xl bg-black"
+                  class="w-full h-full min-h-70 lg:min-h-90 rounded-xl border-0 shadow-2xl bg-black"
                   allow="autoplay; fullscreen; clipboard-write"
                   allowfullscreen
                   scrolling="no"
@@ -280,7 +280,7 @@
 
                 <!-- Results/Tech Specs Bar -->
                 <div
-                  class="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 flex flex-wrap items-center justify-between gap-4 text-xs font-mono"
+                  class="p-3.5 rounded-xl bg-white/2 border border-white/5 flex flex-wrap items-center justify-between gap-4 text-xs font-mono"
                 >
                   <div>
                     <span
@@ -315,7 +315,7 @@
                 <button
                   v-if="selectedProject.videoEmbedId && !isPlayingVideo"
                   @click="isPlayingVideo = true"
-                  class="flex-1 min-w-[140px] px-4 py-2.5 rounded-xl bg-red-600 text-white font-['Poppins'] font-semibold text-xs flex items-center justify-center gap-2 hover:bg-red-500 transition-all shadow-md shadow-red-600/20 cursor-pointer"
+                  class="flex-1 min-w-35 px-4 py-2.5 rounded-xl bg-red-600 text-white font-['Poppins'] font-semibold text-xs flex items-center justify-center gap-2 hover:bg-red-500 transition-all shadow-md shadow-red-600/20 cursor-pointer"
                 >
                   <i class="bi bi-play-circle-fill text-sm"></i>
                   <span>{{
@@ -327,7 +327,7 @@
                   v-if="selectedProject.flipbookUrl"
                   type="button"
                   @click="isPlayingFlipbook = !isPlayingFlipbook; if (isPlayingFlipbook) isPlayingVideo = false"
-                  class="flex-1 min-w-[140px] px-4 py-2.5 rounded-xl border font-['Poppins'] font-semibold text-xs flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer"
+                  class="flex-1 min-w-35 px-4 py-2.5 rounded-xl border font-['Poppins'] font-semibold text-xs flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer"
                   :class="
                     isPlayingFlipbook
                       ? 'bg-violet-600 text-white border-violet-500 shadow-violet-600/30'
@@ -348,7 +348,7 @@
                   :href="selectedProject.appUrl"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="flex-1 min-w-[140px] px-4 py-2.5 rounded-xl bg-white text-zinc-900 font-['Poppins'] font-semibold text-xs flex items-center justify-center gap-2 hover:bg-zinc-200 transition-all shadow-md shadow-white/10"
+                  class="flex-1 min-w-35 px-4 py-2.5 rounded-xl bg-white text-zinc-900 font-['Poppins'] font-semibold text-xs flex items-center justify-center gap-2 hover:bg-zinc-200 transition-all shadow-md shadow-white/10"
                 >
                   <img src="/images/tools/google-drive.svg" alt="Google Drive" class="w-3.5 h-3.5 object-contain" />
                   <span>{{
@@ -470,7 +470,7 @@ const projects = computed(() => {
         ? "Pelacak Lamaran Kerja & Sistem Karier"
         : "Job Tracker & Career System",
       bg: "#0284c7",
-      image: "/images/projects/AppliQ/appliq_logo.png",
+      image: "/images/projects/AppliQ/appliq_mockup.webp",
       filterType: "app",
       liveLink: "https://myusiz3.github.io/AppliQ/",
       githubLink: "https://github.com/MyusiZ3/AppliQ",

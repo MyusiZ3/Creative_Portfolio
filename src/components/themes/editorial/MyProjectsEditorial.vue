@@ -3,7 +3,7 @@
     id="my-projects"
     class="bg-[#171717] py-24 px-6 md:px-12 lg:px-20 xl:px-32 relative overflow-x-hidden font-['Roboto']"
   >
-    <div class="max-w-[1600px] mx-auto relative z-10">
+    <div class="max-w-400 mx-auto relative z-10">
       <!-- Minimalist Editorial Section Header -->
       <div
         v-motion
@@ -63,7 +63,7 @@
                 <!-- LAYOUT 1 (Index % 4 === 0): SunMonster 3D Overlapping Stack Collage -->
                 <div
                   v-if="index % 4 === 0"
-                  class="relative w-full min-h-[320px] sm:min-h-[400px] md:min-h-[440px] flex items-center justify-center select-none"
+                  class="relative w-full min-h-80 sm:min-h-100 md:min-h-110 flex items-center justify-center select-none"
                 >
                   <!-- Main Hero Central Card -->
                   <div
@@ -91,7 +91,7 @@
 
                   <!-- Top-Right Angled Card -->
                   <div
-                    class="absolute top-[2%] right-[0%] z-30 w-[46%] sm:w-[40%] aspect-4/5 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.9)] border border-white/20 transition-all duration-500 transform rotate-[6deg] hover:rotate-0 hover:scale-108 hover:z-50 cursor-pointer group/card2 bg-[#18181c]"
+                    class="absolute top-[2%] right-[0%] z-30 w-[46%] sm:w-[40%] aspect-4/5 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.9)] border border-white/20 transition-all duration-500 transform rotate-6 hover:rotate-0 hover:scale-108 hover:z-50 cursor-pointer group/card2 bg-[#18181c]"
                     @click="openLightbox(index, project.images.length > 1 ? 1 : 0)"
                   >
                     <img
@@ -136,7 +136,7 @@
                 <!-- LAYOUT 2 (Index % 4 === 1): Overlapping Editorial Collage (Varied Portrait & Square Stack) -->
                 <div
                   v-else-if="index % 4 === 1"
-                  class="relative w-full min-h-[320px] sm:min-h-[400px] md:min-h-[440px] flex items-center justify-center select-none"
+                  class="relative w-full min-h-80 sm:min-h-100 md:min-h-110 flex items-center justify-center select-none"
                 >
                   <!-- Main Hero Central Card (Landscape 16:10) -->
                   <div
@@ -190,62 +190,113 @@
                   </div>
                 </div>
 
-                <!-- LAYOUT 3 (Index % 4 === 2): Multi-Column Fashion Grid -->
+                <!-- LAYOUT 3 (Index % 4 === 2): Landscape Showcase & Inverted Diagonal Collage -->
                 <div
                   v-else-if="index % 4 === 2"
-                  class="relative w-full min-h-[320px] sm:min-h-[400px] md:min-h-[440px] grid grid-cols-12 gap-3 items-center select-none"
+                  class="relative w-full min-h-80 sm:min-h-100 md:min-h-110 flex items-center justify-center select-none"
                 >
-                  <!-- Column 1: Left Portrait Card -->
+                  <!-- Main Hero Central Card (Landscape 16:10) -->
                   <div
-                    class="col-span-5 relative aspect-9/16 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/20 transition-all duration-500 hover:scale-[1.04] hover:z-40 cursor-pointer group/c1"
+                    class="relative z-20 w-[82%] sm:w-[74%] aspect-16/10 rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.85)] border border-white/20 transition-all duration-500 hover:scale-[1.03] hover:z-40 cursor-pointer group/hero bg-[#141418]"
                     @click="openLightbox(index, 0)"
                   >
-                    <img
+                    <video
+                      v-if="isVideo(project.images[0])"
                       :src="project.images[0]"
-                      :alt="`${project.name} column 1`"
-                      class="w-full h-full object-cover transition-transform duration-700 group-hover/c1:scale-105"
+                      autoplay
+                      loop
+                      muted
+                      playsinline
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover/hero:scale-105"
+                    ></video>
+                    <img
+                      v-else
+                      :src="project.images[0]"
+                      :alt="`${project.name} main view`"
+                      loading="lazy"
+                      decoding="async"
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover/hero:scale-105"
                     />
                     <div
-                      class="absolute inset-0 bg-black/15 group-hover/c1:bg-transparent transition-colors"
+                      class="absolute inset-0 bg-black/10 group-hover/hero:bg-transparent transition-colors pointer-events-none"
+                    ></div>
+                    <div
+                      class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/70 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover/hero:opacity-100 transition-opacity pointer-events-none"
+                    >
+                      <i class="bi bi-arrows-fullscreen text-xs"></i>
+                    </div>
+                  </div>
+
+                  <!-- Top Left Overlapping Card (Floating Animated Video / Badge Square) -->
+                  <div
+                    class="absolute top-[0%] left-[0%] z-30 w-[36%] sm:w-[30%] aspect-square rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.9)] border border-white/20 transition-all duration-500 transform -rotate-[7deg] hover:rotate-0 hover:scale-110 hover:z-50 cursor-pointer group/card2 bg-[#18181c]"
+                    @click="openLightbox(index, project.images.length > 2 ? 2 : project.images.length > 1 ? 1 : 0)"
+                  >
+                    <video
+                      v-if="isVideo(project.images.length > 2 ? project.images[2] : (project.images[1] || project.images[0]))"
+                      :src="project.images.length > 2 ? project.images[2] : (project.images[1] || project.images[0])"
+                      autoplay
+                      loop
+                      muted
+                      playsinline
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover/card2:scale-110"
+                    ></video>
+                    <img
+                      v-else
+                      :src="project.images.length > 2 ? project.images[2] : (project.images[1] || project.images[0])"
+                      :alt="`${project.name} stack 2`"
+                      loading="lazy"
+                      decoding="async"
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover/card2:scale-110"
+                    />
+                    <div
+                      class="absolute inset-0 bg-black/15 group-hover/card2:bg-transparent transition-colors pointer-events-none"
                     ></div>
                   </div>
 
-                  <!-- Column 2: Right Stack (2 Cards) -->
-                  <div class="col-span-7 flex flex-col gap-3">
+                  <!-- Bottom Right Overlapping Card (Big Prominent Wide 16:10 Web/Dashboard Screen) -->
+                  <div
+                    v-if="project.images.length > 1"
+                    class="absolute bottom-[-2%] right-[-2%] z-30 w-[54%] sm:w-[48%] aspect-16/10 rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.92)] border border-white/25 transition-all duration-500 transform rotate-[5deg] hover:rotate-0 hover:scale-105 hover:z-50 cursor-pointer group/card3 bg-[#1a1a22]"
+                    @click="openLightbox(index, 1)"
+                  >
+                    <video
+                      v-if="isVideo(project.images[1])"
+                      :src="project.images[1]"
+                      autoplay
+                      loop
+                      muted
+                      playsinline
+                      class="w-full h-full object-cover rounded-xl transition-transform duration-700 group-hover/card3:scale-105"
+                    ></video>
+                    <img
+                      v-else
+                      :src="project.images[1]"
+                      :alt="`${project.name} stack 3`"
+                      loading="lazy"
+                      decoding="async"
+                      class="w-full h-full object-cover rounded-xl transition-transform duration-700 group-hover/card3:scale-105"
+                    />
                     <div
-                      class="relative aspect-16/10 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/20 transition-all duration-500 hover:scale-[1.04] hover:z-40 cursor-pointer group/c2a"
-                      @click="openLightbox(index, project.images.length > 1 ? 1 : 0)"
-                    >
-                      <img
-                        :src="project.images[1] || project.images[0]"
-                        :alt="`${project.name} column 2 top`"
-                        class="w-full h-full object-cover transition-transform duration-700 group-hover/c2a:scale-105"
-                      />
-                      <div
-                        class="absolute inset-0 bg-black/15 group-hover/c2a:bg-transparent transition-colors"
-                      ></div>
-                    </div>
+                      class="absolute inset-0 bg-black/15 group-hover/card3:bg-transparent transition-colors rounded-xl pointer-events-none"
+                    ></div>
+                  </div>
 
-                    <div
-                      class="relative aspect-16/9 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/20 transition-all duration-500 hover:scale-[1.04] hover:z-40 cursor-pointer group/c2b"
-                      @click="openLightbox(index, project.images.length > 2 ? 2 : 0)"
-                    >
-                      <img
-                        :src="project.images[2] || project.images[0]"
-                        :alt="`${project.name} column 2 bottom`"
-                        class="w-full h-full object-cover transition-transform duration-700 group-hover/c2b:scale-105"
-                      />
-                      <div
-                        class="absolute inset-0 bg-black/15 group-hover/c2b:bg-transparent transition-colors"
-                      ></div>
-                    </div>
+                  <!-- More Photos Badge (if images > 3) -->
+                  <div
+                    v-if="project.images.length > 3"
+                    @click="openLightbox(index, 3)"
+                    class="absolute bottom-1 left-2 z-30 px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-white text-xs font-mono font-medium flex items-center gap-1.5 cursor-pointer hover:bg-violet-600 transition-colors shadow-lg"
+                  >
+                    <i class="bi bi-images text-xs"></i>
+                    <span>+{{ project.images.length - 3 }} {{ lang === 'ID' ? 'Foto' : 'More' }}</span>
                   </div>
                 </div>
 
                 <!-- LAYOUT 4 (Index % 4 === 3): Wide Banner + Corner Overlap Multi-Card Collage -->
                 <div
                   v-else
-                  class="relative w-full min-h-[320px] sm:min-h-[400px] md:min-h-[440px] flex items-center justify-center select-none"
+                  class="relative w-full min-h-80 sm:min-h-100 md:min-h-110 flex items-center justify-center select-none"
                 >
                   <!-- Center Hero Wide Banner -->
                   <div
@@ -345,7 +396,7 @@
                     <div
                       v-for="tool in project.toolIcons"
                       :key="tool.name"
-                      class="relative group/tool flex items-center justify-center w-8 h-8 rounded-lg bg-white/[0.04] border border-white/10 hover:border-violet-500/50 hover:bg-white/[0.08] transition-all duration-200 cursor-pointer shadow-sm hover:scale-105"
+                      class="relative group/tool flex items-center justify-center w-8 h-8 rounded-lg bg-white/4 border border-white/10 hover:border-violet-500/50 hover:bg-white/8 transition-all duration-200 cursor-pointer shadow-sm hover:scale-105"
                     >
                       <img
                         :src="tool.icon"
@@ -414,8 +465,8 @@
                     class="inline-flex items-center justify-between gap-3 px-6 py-2.5 rounded-full border font-['Poppins'] font-medium text-xs tracking-wider uppercase transition-all duration-300 group cursor-pointer shadow-sm select-none"
                     :class="
                       activeDropdown === index && getProjectActions(project, index).length > 1
-                        ? 'bg-white !text-zinc-950 border-white shadow-lg shadow-white/10'
-                        : 'border-white/30 text-white hover:bg-white hover:!text-zinc-950 hover:border-white'
+                        ? 'bg-white text-zinc-950! border-white shadow-lg shadow-white/10'
+                        : 'border-white/30 text-white hover:bg-white hover:text-zinc-950! hover:border-white'
                     "
                     :title="
                       getProjectActions(project, index).length > 1
@@ -561,13 +612,13 @@
               <tr
                 class="border-b border-white/15 text-xs font-['Poppins'] font-semibold text-zinc-400"
               >
-                <th class="py-3 px-3 w-[10%] min-w-[80px]">{{ lang === 'ID' ? 'Tahun' : 'Year' }}</th>
-                <th class="py-3 px-3 w-[32%] min-w-[200px]">
+                <th class="py-3 px-3 w-[10%] min-w-20">{{ lang === 'ID' ? 'Tahun' : 'Year' }}</th>
+                <th class="py-3 px-3 w-[32%] min-w-50">
                   {{ lang === 'ID' ? 'Proyek & Peran' : 'Project & Role' }}
                 </th>
-                <th class="py-3 px-3 w-[20%] min-w-[150px]">{{ lang === 'ID' ? 'Kategori' : 'Category' }}</th>
-                <th class="py-3 px-3 w-[24%] min-w-[160px]">{{ lang === 'ID' ? 'Teknologi' : 'Tech Stack' }}</th>
-                <th class="py-3 px-3 w-[14%] min-w-[140px] text-right">
+                <th class="py-3 px-3 w-[20%] min-w-37.5">{{ lang === 'ID' ? 'Kategori' : 'Category' }}</th>
+                <th class="py-3 px-3 w-[24%] min-w-40">{{ lang === 'ID' ? 'Teknologi' : 'Tech Stack' }}</th>
+                <th class="py-3 px-3 w-[14%] min-w-35 text-right">
                   {{ lang === 'ID' ? 'Tautan' : 'Link' }}
                 </th>
               </tr>
@@ -579,7 +630,7 @@
               <tr
                 v-for="(item, aIdx) in paginatedArchivedProjects"
                 :key="item.name"
-                class="group hover:bg-white/[0.04] transition-colors cursor-pointer"
+                class="group hover:bg-white/4 transition-colors cursor-pointer"
                 @click="openLightbox(getArchiveGlobalIndex(aIdx), 0)"
                 @mouseenter="onArchiveRowEnter(item, $event)"
                 @mousemove="onArchiveRowMove($event)"
@@ -662,7 +713,7 @@
           <div
             v-for="(item, aIdx) in paginatedArchivedProjects"
             :key="'mob-' + item.name"
-            class="p-4 rounded-xl border border-white/10 bg-white/[0.02] space-y-1.5 cursor-pointer hover:border-violet-500/30 transition-all"
+            class="p-4 rounded-xl border border-white/10 bg-white/2 space-y-1.5 cursor-pointer hover:border-violet-500/30 transition-all"
             @click="openLightbox(getArchiveGlobalIndex(aIdx), 0)"
           >
             <div class="flex items-center justify-between text-xs text-zinc-400">
@@ -841,8 +892,20 @@
             :name="lightbox.dir === 'prev' ? 'lb-slide-prev' : 'lb-slide-next'"
             mode="out-in"
           >
+            <video
+              v-if="isVideo(lightboxImages[lightbox.slideIdx])"
+              :key="'lb-vid-' + lightboxImages[lightbox.slideIdx]"
+              :src="lightboxImages[lightbox.slideIdx]"
+              autoplay
+              loop
+              muted
+              playsinline
+              controls
+              class="max-w-full max-h-[85vh] w-auto h-auto object-contain rounded-xl mx-auto block shadow-2xl bg-black/40"
+            ></video>
             <img
-              :key="lightboxImages[lightbox.slideIdx]"
+              v-else
+              :key="'lb-img-' + lightboxImages[lightbox.slideIdx]"
               :src="lightboxImages[lightbox.slideIdx]"
               :alt="`Lightbox image ${lightbox.slideIdx + 1}`"
               loading="lazy"
@@ -904,7 +967,7 @@
 
         <!-- Tech Chamfered Dialog Box (Image 2 Silhouette) -->
         <div
-          class="relative z-10 w-full max-w-4xl p-[1px] bg-gradient-to-br from-white/25 via-white/10 to-white/20 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)]"
+          class="relative z-10 w-full max-w-4xl p-px bg-linear-to-br from-white/25 via-white/10 to-white/20 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)]"
           style="clip-path: polygon(0 0, 100% 0, 100% 100%, 36px 100%, 0 calc(100% - 36px));"
           @click.stop
         >
@@ -915,7 +978,7 @@
           >
             <!-- Top Bar -->
             <div
-              class="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-white/[0.08] bg-[#121215]"
+              class="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-white/8 bg-[#121215]"
             >
               <div class="flex items-center gap-2.5 min-w-0 pr-4">
                 <h4
@@ -994,7 +1057,7 @@
 
         <!-- Tech Chamfered Dialog Box -->
         <div
-          class="relative z-10 w-full max-w-5xl p-[1px] bg-gradient-to-br from-white/20 via-white/5 to-white/10 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.95)]"
+          class="relative z-10 w-full max-w-5xl p-px bg-linear-to-br from-white/20 via-white/5 to-white/10 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.95)]"
           style="clip-path: polygon(0 0, 100% 0, 100% 100%, 36px 100%, 0 calc(100% - 36px));"
           @click.stop
         >
@@ -1005,7 +1068,7 @@
           >
             <!-- Top Bar -->
             <div
-              class="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-white/[0.08] bg-[#121215]"
+              class="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-white/8 bg-[#121215]"
             >
               <div class="flex items-center gap-2.5 min-w-0 pr-4">
                 <h4
@@ -1049,7 +1112,7 @@
               <iframe
                 v-if="flipbookModal.url"
                 :src="flipbookModal.url"
-                class="w-full h-[460px] sm:h-[540px] lg:h-[600px] border-0"
+                class="w-full h-115 sm:h-135 lg:h-150 border-0"
                 allow="autoplay; fullscreen; clipboard-write"
                 allowfullscreen
                 scrolling="no"
@@ -1073,7 +1136,7 @@
     >
       <div
         v-if="hoverPreview.show && hoverPreview.image"
-        class="fixed z-[9999] pointer-events-none select-none transition-transform duration-75 ease-out"
+        class="fixed z-9999 pointer-events-none select-none transition-transform duration-75 ease-out"
         :style="{
           left: `${hoverPreview.x}px`,
           top: `${hoverPreview.y}px`,
@@ -1082,7 +1145,7 @@
       >
         <!-- Chamfer Outer Chassis with Glow Border -->
         <div
-          class="relative w-64 sm:w-72 p-[1.5px] bg-gradient-to-br from-violet-500 via-white/20 to-violet-400 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_35px_rgba(139,92,246,0.3)] filter backdrop-blur-md"
+          class="relative w-64 sm:w-72 p-[1.5px] bg-linear-to-br from-violet-500 via-white/20 to-violet-400 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_35px_rgba(139,92,246,0.3)] filter backdrop-blur-md"
           style="clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));"
         >
           <!-- Inner Chassis Panel -->
@@ -1099,20 +1162,20 @@
             />
             <!-- Dark Gradient Vignette Overlay -->
             <div
-              class="absolute inset-0 bg-gradient-to-t from-[#09090c] via-[#09090c]/60 to-black/30 pointer-events-none"
+              class="absolute inset-0 bg-linear-to-t from-[#09090c] via-[#09090c]/60 to-black/30 pointer-events-none"
             ></div>
 
             <!-- Top-Right Chamfer Corner Accent Wedge -->
             <div class="absolute top-0 right-0 w-8 h-8 pointer-events-none overflow-hidden z-20">
               <div
-                class="absolute top-0 right-0 w-4 h-4 bg-gradient-to-br from-violet-400 to-violet-600 transform rotate-45 translate-x-2 -translate-y-2 shadow-sm"
+                class="absolute top-0 right-0 w-4 h-4 bg-linear-to-br from-violet-400 to-violet-600 transform rotate-45 translate-x-2 -translate-y-2 shadow-sm"
               ></div>
             </div>
 
             <!-- Bottom-Left Chamfer Corner Accent Wedge -->
             <div class="absolute bottom-0 left-0 w-8 h-8 pointer-events-none overflow-hidden z-20">
               <div
-                class="absolute bottom-0 left-0 w-4 h-4 bg-gradient-to-br from-violet-600 to-violet-400 transform rotate-45 -translate-x-2 translate-y-2 shadow-sm"
+                class="absolute bottom-0 left-0 w-4 h-4 bg-linear-to-br from-violet-600 to-violet-400 transform rotate-45 -translate-x-2 translate-y-2 shadow-sm"
               ></div>
             </div>
 
@@ -1130,7 +1193,7 @@
             <div class="relative z-10 px-4 pt-3 flex items-center justify-between gap-2">
               <div
                 v-if="hoverPreview.platform"
-                class="inline-flex items-center gap-1.5 px-2 py-0.5 bg-black/70 backdrop-blur-md border-l-2 border-violet-500 text-[10px] font-['Poppins'] font-semibold text-zinc-200 uppercase tracking-wider truncate max-w-[170px]"
+                class="inline-flex items-center gap-1.5 px-2 py-0.5 bg-black/70 backdrop-blur-md border-l-2 border-violet-500 text-[10px] font-['Poppins'] font-semibold text-zinc-200 uppercase tracking-wider truncate max-w-42.5"
               >
                 <span>{{ hoverPreview.platform }}</span>
               </div>
@@ -1143,7 +1206,7 @@
             </div>
 
             <!-- Bottom Caption: Title & Role -->
-            <div class="relative z-10 px-4 pb-3.5 pt-6 bg-gradient-to-t from-[#09090c] via-[#09090c]/90 to-transparent">
+            <div class="relative z-10 px-4 pb-3.5 pt-6 bg-linear-to-t from-[#09090c] via-[#09090c]/90 to-transparent">
               <div class="font-['Poppins'] font-bold text-white text-sm tracking-wide truncate drop-shadow">
                 {{ hoverPreview.title }}
               </div>
@@ -1284,6 +1347,11 @@ const currentLightboxProject = computed(() => {
   }
   return null
 })
+
+const isVideo = (url) => {
+  if (typeof url !== 'string') return false
+  return /\.(webm|mp4|ogg)(\?.*)?$/i.test(url)
+}
 
 // === Video Modal state (On-demand streaming without initial load) ===
 const videoModal = reactive({
@@ -1433,13 +1501,32 @@ const getProjectActions = (project, index) => {
     })
   }
 
+  // 4b. Web Landing Page / App Download Portal
+  if (project.landingUrl) {
+    actions.push({
+      id: 'landing',
+      type: 'landing',
+      icon: 'bi-globe2',
+      iconColor: 'text-sky-400',
+      brandColor: 'text-sky-400 group-hover/icon:text-sky-500',
+      label: project.landingLabel
+        ? (isId ? project.landingLabel.id || project.landingLabel : project.landingLabel.en || project.landingLabel)
+        : (isId ? 'Web Portal & Unduh APK' : 'Web Portal & APK Download'),
+      sub: isId ? 'Portal web & unduh file APK' : 'Web portal & APK download',
+      badge: isId ? 'Portal Web' : 'Web Portal',
+      badgeStyle: 'bg-sky-500/10 text-sky-300 border-sky-500/20',
+      url: project.landingUrl,
+    })
+  }
+
   // 5. GitHub or Figma or External project link
   if (
     project.link &&
     project.link !== '#' &&
     project.link !== project.appUrl &&
     project.link !== project.flipbookUrl &&
-    project.link !== project.demoUrl
+    project.link !== project.demoUrl &&
+    project.link !== project.landingUrl
   ) {
     const isGithub = project.link.includes('github.com')
     const isFigma = project.link.includes('figma.com')
@@ -1813,10 +1900,12 @@ const projects = computed(() => {
       platform: isId ? 'Aplikasi Mobile (Flutter)' : 'Mobile Application (Flutter)',
       bg: '#0284c7',
       images: [
-        '/images/projects/AppliQ/appliq_element.png',
-        '/images/projects/AppliQ/appliq_logo.png',
+        '/images/projects/AppliQ/appliq_mockup.webp',
+        '/images/projects/AppliQ/appliq_web_mockup.webp',
+        '/images/projects/AppliQ/logo_cat_anim.webm',
       ],
-      link: 'https://myusiz3.github.io/AppliQ/',
+      landingUrl: 'https://myusiz3.github.io/AppliQ/',
+      link: 'https://github.com/MyusiZ3/AppliQ',
       _dir: 'next',
     },
     {
