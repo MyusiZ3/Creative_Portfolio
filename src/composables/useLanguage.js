@@ -54,8 +54,8 @@ const translations = {
     skills_tech_desc: 'Web & App Development • Game Development • AR Development',
     skills_process_title: 'Process',
     skills_process_desc: 'Creative Thinking • Problem Solving',
-    stat_years: 'Years of Hands-On Experience',
-    stat_projects: 'Personal & Collaborative Projects',
+    stat_years: 'Years of Practical & Lab Experience',
+    stat_projects: 'Web, Mobile & Interactive Projects',
     lang_title: 'Language',
     lang_id_title: 'Indonesian',
     lang_id_desc: 'Native',
@@ -66,13 +66,13 @@ const translations = {
     // Experience
     exp_title: 'Experience',
     exp_desc:
-      'A collection of experiences across design, technology, and interactive projects, shaped through academic, professional, and collaborative work.',
+      'Track record across enterprise IT internship, university laboratory instruction, and end-to-end software project delivery.',
     exp_work_org: 'Work & Organizational Experience',
     // Work items
     exp_w1_title: 'IT Support & Web Developer',
     exp_w1_sub: 'Intern | PT Jasa dan Kepariwisataan Jabar (Perseroda)',
     exp_w1_desc:
-      'Executed a dual-responsibility role as primary IT Support and Web Developer. Handled daily hardware/software troubleshooting, office network maintenance, and IT systems reliability. Simultaneously contributed to UI/UX interface design and responsive web feature development for internal and public-facing operational platforms.',
+      'Supported daily IT operations and web development at a regional state-owned enterprise (BUMD). Handled hardware/software troubleshooting, office network maintenance, and user technical support, while contributing to UI/UX refinement, localization, and responsive web updates on company platforms.',
     exp_w2_title: 'Laboratory Teaching Assistant',
     exp_w2_sub: 'School of Applied Science | Telkom University',
     exp_w2_desc:
@@ -80,7 +80,7 @@ const translations = {
     exp_w3_title: 'Brand & Visual Identity Designer',
     exp_w3_sub: 'MAPS 2023 Event | Telkom University',
     exp_w3_desc:
-      'Crafted the comprehensive visual identity for the annual MAPS 2023 event, including committee apparel, official credentials, certificates, and promotional merchandise. Designed digital marketing assets and promotional social media frames while coordinating visual coverage guidelines.',
+      'Designed the visual identity system for the annual MAPS 2023 event, covering committee apparel, ID credentials, official certificates, and event merchandise. Produced digital marketing assets and social media templates while maintaining visual publication standards.',
     exp_w4_title: 'Creative Media & Video Production Crew',
     exp_w4_sub: 'SMKN 1 Belitang III (Early Experience)',
     exp_w4_desc:
@@ -96,7 +96,7 @@ const translations = {
     additional_projects_title: 'Additional Projects',
     show_additional_projects: 'Show Earlier Projects (2024 – 2025)',
     hide_additional_projects: 'Hide Earlier Projects',
-    exp_p7_title: 'Project Creator, Lead Dev & Main UI Designer',
+    exp_p7_title: 'Lead Game Developer & UI/UX Designer',
     exp_p7_sub: 'Mathmagic',
     exp_p7_desc:
       'Developed an interactive educational math game in Unity 6 (C#) integrated with Firebase and a Vite Web Admin Dashboard for real-time student learning telemetry.',
@@ -109,7 +109,7 @@ const translations = {
     exp_p1_title: 'Project Manager & Game Dev',
     exp_p1_sub: 'RideXP',
     exp_p1_desc:
-      'Led a team in developing a Unity-based arcade game, handling project planning, game development, UI design, branding, and exhibition preparation.',
+      'Led a 10-person cross-functional team to develop a Unity 3D arcade cycling game connected to an ESP32-equipped stationary bike. Built the local JSON leaderboard and waypoint AI NPC systems, designed the end-to-end UI/UX flow in Figma, and produced the physical arcade booth graphics.',
     exp_p1_tech: 'Unity · ESP32 · JSON',
     exp_p9_title: 'Lead AR Developer & Designer',
     exp_p9_sub: 'Djaswita AR',
@@ -264,8 +264,8 @@ const translations = {
     skills_tech_desc: 'Web & App Development • Game Development • AR Development',
     skills_process_title: 'Proses',
     skills_process_desc: 'Berpikir Kreatif • Problem Solving',
-    stat_years: 'Tahun Berkarya',
-    stat_projects: 'Proyek Personal & Tim',
+    stat_years: 'Tahun Pengalaman Praktis & Lab',
+    stat_projects: 'Proyek Web, Mobile & Interaktif',
     lang_title: 'Bahasa',
     lang_id_title: 'Bahasa Indonesia',
     lang_id_desc: 'Native Speaker',
@@ -276,13 +276,13 @@ const translations = {
     // Experience
     exp_title: 'Pengalaman',
     exp_desc:
-      'Kumpulan pengalaman di bidang desain, teknologi, dan proyek interaktif, terbentuk melalui kegiatan akademik, profesional, dan kolaboratif.',
+      'Rekam jejak profesional mencakup magang TI di BUMD, pengajaran laboratorium universitas, serta pengembangan proyek perangkat lunak end-to-end.',
     exp_work_org: 'Pengalaman Kerja & Organisasi',
     // Work items
     exp_w1_title: 'IT Support & Web Developer',
     exp_w1_sub: 'Intern | PT Jasa dan Kepariwisataan Jabar (Perseroda)',
     exp_w1_desc:
-      'Menjalankan peran ganda sebagai IT Support utama dan Web Developer. Bertanggung jawab atas troubleshooting perangkat keras/lunak, pemeliharaan infrastruktur jaringan kantor, serta stabilitas sistem TI. Turut berkontribusi dalam perancangan antarmuka (UI/UX) dan pengembangan modul web responsif untuk platform digital operasional perusahaan.',
+      'Mendukung operasional TI harian dan pengembangan web di lingkungan BUMD. Menangani troubleshooting perangkat keras/lunak, pemeliharaan jaringan kantor, serta dukungan teknis karyawan, sekaligus berkontribusi pada penyempurnaan UI/UX, lokalisasi bahasa, dan pembaruan fitur web responsif pada platform perusahaan.',
     exp_w2_title: 'Asisten Praktikum Laboratorium',
     exp_w2_sub: 'Fakultas Ilmu Terapan | Universitas Telkom',
     exp_w2_desc:
@@ -290,7 +290,7 @@ const translations = {
     exp_w3_title: 'Desainer Identitas Visual & Publikasi Kreatif',
     exp_w3_sub: 'Event MAPS 2023 | Universitas Telkom',
     exp_w3_desc:
-      'Merancang sistem identitas visual menyeluruh untuk acara tahunan MAPS 2023, mencakup ID card, seragam kepanitiaan, sertifikat resmi, dan merchandise eksklusif. Memproduksi materi promosi media sosial dan frame digital serta menyusun standar visual publikasi.',
+      'Merancang sistem identitas visual untuk acara tahunan MAPS 2023, mencakup seragam kepanitiaan, ID card, sertifikat resmi, dan merchandise acara. Memproduksi aset publikasi media sosial serta menyusun panduan standar visual kepanitiaan.',
     exp_w4_title: 'Kru Produksi Multimedia & Dokumentasi',
     exp_w4_sub: 'SMKN 1 Belitang III (Pengalaman Awal)',
     exp_w4_desc:
@@ -306,7 +306,7 @@ const translations = {
     additional_projects_title: 'Proyek Tambahan',
     show_additional_projects: 'Lihat Proyek Lainnya (2024 – 2025)',
     hide_additional_projects: 'Sembunyikan Proyek Lainnya',
-    exp_p7_title: 'Project Creator, Lead Dev & Main UI Designer',
+    exp_p7_title: 'Lead Game Developer & UI/UX Designer',
     exp_p7_sub: 'Mathmagic',
     exp_p7_desc:
       'Mengembangkan game edukasi matematika interaktif Unity 6 (C#) yang terintegrasi dengan Firebase dan Web Admin Dashboard (Vite) untuk pemantauan telemetri belajar siswa secara real-time.',
@@ -319,7 +319,7 @@ const translations = {
     exp_p1_title: 'Project Manager & Game Dev',
     exp_p1_sub: 'RideXP',
     exp_p1_desc:
-      'Memimpin tim dalam mengembangkan game arcade berbasis Unity, menangani perencanaan proyek, pengembangan game, desain UI, branding, dan persiapan pameran.',
+      'Memimpin tim lintas divisi beranggotakan 10 orang dalam pengembangan game sepeda arkade 3D berbasis Unity yang terhubung ke sepeda statis ber-sensor ESP32. Membangun sistem leaderboard lokal (JSON) dan navigasi AI NPC berbasis waypoint, merancang alur UI/UX di Figma, serta mendesain grafis booth pameran.',
     exp_p1_tech: 'Unity · ESP32 · JSON',
     exp_p9_title: 'Lead AR Developer & Designer',
     exp_p9_sub: 'Djaswita AR',

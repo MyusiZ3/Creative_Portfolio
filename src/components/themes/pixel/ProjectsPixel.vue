@@ -463,7 +463,7 @@ const projects = [
     ],
     platform: "Arcade Desktop App",
     role: "Project Manager & Lead Dev",
-    timeline: "Jan – Jun 2025",
+    timeline: "Jan – Jun 2025 (Tim 10 Orang)",
     techStack: ["Unity", "C#", "ESP32 IoT", "Figma", "JSON"],
     demoUrl: "https://youtube.com/preview",
     githubUrl: "https://github.com/MyusiZ3/Creative_Portfolio",

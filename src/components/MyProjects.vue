@@ -789,7 +789,7 @@ const projects = computed(() => {
       role: isId
         ? 'Manajer Proyek, Pengembang Game, Desainer UI/UX'
         : 'Project Manager, Game Developer, UI/UX Designer',
-      teamInfo: isId ? 'Proyek Tim | Jan – Jun 2025' : 'Team Project | Jan – Jun 2025',
+      teamInfo: isId ? 'Proyek Tim (10 Orang) | Jan – Jun 2025' : '10-Person Team Project | Jan – Jun 2025',
       tools: 'Unity, Figma, ESP32, JSON',
       overview: isId
         ? 'RideXP adalah game balap arkade di mana pemain mengendalikan sepeda dalam game dengan mengayuh sepeda statis fisik yang terhubung via ESP32. Dibangun di Unity, game ini menggabungkan IoT, pengembangan game, dan desain UI/UX.'

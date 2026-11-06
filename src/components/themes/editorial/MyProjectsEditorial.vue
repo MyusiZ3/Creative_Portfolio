@@ -1913,7 +1913,7 @@ const projects = computed(() => {
       name: 'RideXP - Arcade Game Project',
       icon: 'bi-bicycle',
       role: 'Project Manager, Game Developer, UI/UX Designer',
-      teamInfo: isId ? 'Proyek Tim | Jan – Jun 2025' : 'Team Project | Jan – Jun 2025',
+      teamInfo: isId ? 'Proyek Tim (10 Orang) | Jan – Jun 2025' : '10-Person Team Project | Jan – Jun 2025',
       tools: 'Unity, Figma, ESP32, JSON',
       toolIcons: [
         {
