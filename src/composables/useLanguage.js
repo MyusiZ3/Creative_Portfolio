@@ -186,10 +186,10 @@ const translations = {
     cta_dismiss: 'Maybe later',
 
     // Skills Section
-    skills_badge: 'MY APPS',
-    skills_heading: 'SOME SOFTWARE THAT I USE',
+    skills_badge: 'TECH & DESIGN STACK',
+    skills_heading: 'SOFTWARE & TECH STACK',
     skills_sub:
-      'A versatile toolkit that supports my workflow across UI/UX, game development, and interactive media, spanning wireframes and design assets to real-time prototypes and immersive experiences.',
+      'The core software and engineering stack behind my daily workflow, covering UI/UX prototyping, web and mobile development, 3D/AR interactive systems, and cloud backend integration.',
 
     // Some Projects
     project_tag: 'Works',
@@ -396,10 +396,10 @@ const translations = {
     cta_dismiss: 'Lain kali',
 
     // Skills Section
-    skills_badge: 'MY APPS',
-    skills_heading: 'SOME SOFTWARE THAT I USE',
+    skills_badge: 'TEKNOLOGI & PERANGKAT',
+    skills_heading: 'SOFTWARE & TECH STACK',
     skills_sub:
-      'Tools yang saya pakai sehari-hari untuk desain UI/UX, game dev, dan konten digital, dari wireframe dan aset visual sampai prototipe interaktif.',
+      'Perangkat lunak dan teknologi utama yang mendukung alur kerja saya, mencakup perancangan UI/UX, pengembangan aplikasi web dan mobile, sistem interaktif 3D/AR, hingga integrasi backend cloud.',
 
     // Some Projects
     project_tag: 'Portofolio Terpilih',

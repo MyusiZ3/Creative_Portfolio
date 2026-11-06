@@ -22,7 +22,7 @@
             ✦ STAGE 03 // HERO SKILLSET & ARSENAL
           </span>
           <h2 class="text-2xl sm:text-4xl font-extrabold uppercase mt-2 font-pixel leading-tight">
-            SOME SOFTWARE <span class="text-[#00ff66]">THAT I USE</span>
+            SOFTWARE &amp; <span class="text-[#00ff66]">TECH STACK</span>
           </h2>
           <p class="text-xs sm:text-sm text-[#8b949e] max-w-2xl mt-3 leading-relaxed">
             {{ t('skills_sub') }}

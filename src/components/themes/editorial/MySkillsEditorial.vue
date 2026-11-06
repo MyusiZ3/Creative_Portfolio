@@ -2,7 +2,70 @@
 import GithubCalendar from '@/components/GithubCalendar.vue'
 import { useLanguage } from '@/composables/useLanguage'
 
-const { t } = useLanguage()
+const { t, lang } = useLanguage()
+
+const row1Tools = [
+  {
+    name: 'Unity',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg',
+    invert: true,
+    delay: 0,
+  },
+  {
+    name: 'Flutter',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg',
+    delay: 60,
+  },
+  {
+    name: 'Vue.js',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg',
+    delay: 120,
+  },
+  {
+    name: 'Supabase',
+    icon: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/supabase.webp',
+    delay: 180,
+  },
+  {
+    name: 'Firebase',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg',
+    delay: 240,
+  },
+  {
+    name: 'GitHub',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg',
+    invert: true,
+    delay: 300,
+  },
+]
+
+const row2Tools = [
+  {
+    name: 'Google Antigravity',
+    icon: 'https://cdn.jsdelivr.net/gh/selfhst/icons/webp/google-antigravity.webp',
+    delay: 360,
+  },
+  {
+    name: 'Figma',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg',
+    delay: 420,
+  },
+  {
+    name: 'Adobe Illustrator',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-original.svg',
+    delay: 480,
+  },
+  {
+    name: 'Adobe Photoshop',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-original.svg',
+    delay: 540,
+  },
+  {
+    name: 'Canva',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/canva/canva-original.svg',
+    delay: 600,
+  },
+]
 
 function scrollToSection(sectionId) {
   const section = document.getElementById(sectionId)
@@ -69,7 +132,7 @@ function scrollToSection(sectionId) {
         {{ t('skills_sub') }}
       </p>
 
-      <!-- Divider with Dot Matrices -->
+      <!-- Section Divider -->
       <div
         v-motion
         :initial="{ opacity: 0, scaleX: 0 }"
@@ -78,56 +141,20 @@ function scrollToSection(sectionId) {
           scaleX: 1,
           transition: { duration: 800, delay: 300, ease: 'easeOut' },
         }"
-        class="relative w-full max-w-8xl mx-auto mb-16"
+        class="w-full max-w-4xl mx-auto mb-14"
       >
-        <!-- The horizontal line -->
-        <div class="h-px w-full bg-gray-700"></div>
-
-        <!-- Left Dot Matrix (4x3) -->
-        <div
-          class="absolute -top-4 lg:top-8 -left-2 lg:-left-6 grid grid-cols-4 gap-1 lg:gap-1.5 opacity-40"
-        >
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-        </div>
-
-        <!-- Right Dot Matrix (4x3) -->
-        <div
-          class="absolute -top-4 lg:top-12 -right-2 lg:-right-6 grid grid-cols-4 gap-1 lg:gap-1.5 opacity-40"
-        >
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-          <div class="w-1 lg:w-1.5 h-1 lg:h-1.5 bg-white rounded-full"></div>
-        </div>
+        <div class="h-px w-full bg-white/10"></div>
       </div>
 
       <!-- Icons Grid -->
       <div
-        class="flex flex-col items-center gap-6 lg:gap-8 mb-12 lg:mb-16 max-w-4xl mx-auto scale-110 md:scale-[1.15] lg:scale-[1.2] origin-top"
+        class="flex flex-col items-center gap-4 sm:gap-6 lg:gap-8 mb-12 lg:mb-14 max-w-4xl mx-auto"
       >
-        <!-- Row 1 -->
+        <!-- Row 1: Engineering & Cloud Stack (6 items) -->
         <div class="flex flex-nowrap justify-center gap-2 sm:gap-4 lg:gap-6">
-          <!-- Unity -->
           <div
+            v-for="tool in row1Tools"
+            :key="tool.name"
             v-motion
             :initial="{ opacity: 0, scale: 0.5, y: 20 }"
             :visible="{
@@ -136,121 +163,39 @@ function scrollToSection(sectionId) {
               y: 0,
               transition: {
                 duration: 500,
+                delay: tool.delay,
                 type: 'spring',
                 stiffness: 250,
                 damping: 15,
               },
             }"
-            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[8px] sm:rounded-[12px] lg:rounded-[18px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
+            class="group relative w-[12.5vw] h-[12.5vw] max-w-16 max-h-16 min-w-10 min-h-10 sm:w-16 sm:h-16 lg:w-24 lg:h-24 bg-[#1D1D1D] border border-white/5 hover:border-violet-500/40 rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center hover:scale-110 transition-all shadow-xl p-2 sm:p-3"
           >
             <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg"
-              alt="Unity"
-              class="w-6 sm:w-10 lg:w-12 h-6 sm:h-10 lg:h-12 brightness-0 invert"
+              :src="tool.icon"
+              :alt="tool.name"
+              loading="lazy"
+              decoding="async"
+              class="w-6 sm:w-10 lg:w-13 h-6 sm:h-10 lg:h-13 object-contain"
+              :class="tool.invert ? 'brightness-0 invert' : ''"
             />
-          </div>
-          <!-- Firebase -->
-          <div
-            v-motion
-            :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-            :visible="{
-              opacity: 1,
-              scale: 1,
-              y: 0,
-              transition: {
-                duration: 500,
-                delay: 80,
-                type: 'spring',
-                stiffness: 250,
-                damping: 15,
-              },
-            }"
-            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[8px] sm:rounded-[12px] lg:rounded-[18px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
-          >
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg"
-              alt="Firebase"
-              class="w-6 sm:w-10 lg:w-12 h-6 sm:h-10 lg:h-12"
-            />
-          </div>
-          <!-- Supabase -->
-          <div
-            v-motion
-            :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-            :visible="{
-              opacity: 1,
-              scale: 1,
-              y: 0,
-              transition: {
-                duration: 500,
-                delay: 160,
-                type: 'spring',
-                stiffness: 250,
-                damping: 15,
-              },
-            }"
-            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[8px] sm:rounded-[12px] lg:rounded-[18px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl overflow-hidden p-2 sm:p-3"
-          >
-            <img
-              src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/webp/supabase.webp"
-              alt="Supabase"
-              class="w-6 sm:w-10 lg:w-12 h-6 sm:h-10 lg:h-12 object-contain"
-            />
-          </div>
-          <!-- Antigravity -->
-          <div
-            v-motion
-            :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-            :visible="{
-              opacity: 1,
-              scale: 1,
-              y: 0,
-              transition: {
-                duration: 500,
-                delay: 240,
-                type: 'spring',
-                stiffness: 250,
-                damping: 15,
-              },
-            }"
-            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[8px] sm:rounded-[12px] lg:rounded-[18px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl overflow-hidden p-2 sm:p-3"
-          >
-            <img
-              src="https://cdn.jsdelivr.net/gh/selfhst/icons/webp/google-antigravity.webp"
-              alt="Antigravity"
-              class="w-6 sm:w-10 lg:w-14 h-6 sm:h-10 lg:h-14 object-contain"
-            />
-          </div>
-          <!-- GitHub -->
-          <div
-            v-motion
-            :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-            :visible="{
-              opacity: 1,
-              scale: 1,
-              y: 0,
-              transition: {
-                duration: 500,
-                delay: 320,
-                type: 'spring',
-                stiffness: 250,
-                damping: 15,
-              },
-            }"
-            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[8px] sm:rounded-[12px] lg:rounded-[18px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
-          >
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
-              alt="GitHub"
-              class="w-6 sm:w-10 lg:w-12 h-6 sm:h-10 lg:h-12 brightness-0 invert"
-            />
+            <!-- Tooltip on hover -->
+            <div
+              class="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 -translate-y-1 group-hover:translate-y-0 transition-all duration-150 py-1 px-2.5 rounded-lg bg-zinc-900/95 border border-white/15 text-[11px] font-['Poppins'] font-medium text-zinc-100 whitespace-nowrap z-50 shadow-xl backdrop-blur-sm"
+            >
+              {{ tool.name }}
+              <div
+                class="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-zinc-900/95"
+              ></div>
+            </div>
           </div>
         </div>
 
-        <!-- Row 2 -->
-        <div class="flex flex-nowrap justify-center gap-2 sm:gap-4 lg:gap-6 mt-2">
-          <!-- Ai -->
+        <!-- Row 2: AI & Design Tooling (5 items) -->
+        <div class="flex flex-nowrap justify-center gap-2 sm:gap-4 lg:gap-6">
           <div
+            v-for="tool in row2Tools"
+            :key="tool.name"
             v-motion
             :initial="{ opacity: 0, scale: 0.5, y: 20 }"
             :visible="{
@@ -259,87 +204,34 @@ function scrollToSection(sectionId) {
               y: 0,
               transition: {
                 duration: 500,
-                delay: 400,
+                delay: tool.delay,
                 type: 'spring',
                 stiffness: 250,
                 damping: 15,
               },
             }"
-            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#330000] text-[#FF9A00] text-lg sm:text-3xl lg:text-[40px] font-bold font-['Roboto'] rounded-[8px] sm:rounded-[12px] lg:rounded-[18px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
-          >
-            Ai
-          </div>
-          <!-- Ps -->
-          <div
-            v-motion
-            :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-            :visible="{
-              opacity: 1,
-              scale: 1,
-              y: 0,
-              transition: {
-                duration: 500,
-                delay: 480,
-                type: 'spring',
-                stiffness: 250,
-                damping: 15,
-              },
-            }"
-            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#001E36] text-[#31A8FF] text-lg sm:text-3xl lg:text-[40px] font-bold font-['Roboto'] rounded-[8px] sm:rounded-[12px] lg:rounded-[18px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
-          >
-            Ps
-          </div>
-          <!-- Figma -->
-          <div
-            v-motion
-            :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-            :visible="{
-              opacity: 1,
-              scale: 1,
-              y: 0,
-              transition: {
-                duration: 500,
-                delay: 560,
-                type: 'spring',
-                stiffness: 250,
-                damping: 15,
-              },
-            }"
-            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-[#1D1D1D] rounded-[8px] sm:rounded-[12px] lg:rounded-[18px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl"
+            class="group relative w-[12.5vw] h-[12.5vw] max-w-16 max-h-16 min-w-10 min-h-10 sm:w-16 sm:h-16 lg:w-24 lg:h-24 bg-[#1D1D1D] border border-white/5 hover:border-violet-500/40 rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center hover:scale-110 transition-all shadow-xl p-2 sm:p-3"
           >
             <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
-              alt="Figma"
-              class="w-6 sm:w-10 lg:w-12 h-6 sm:h-10 lg:h-12"
+              :src="tool.icon"
+              :alt="tool.name"
+              loading="lazy"
+              decoding="async"
+              class="w-6 sm:w-10 lg:w-13 h-6 sm:h-10 lg:h-13 object-contain"
+              :class="tool.invert ? 'brightness-0 invert' : ''"
             />
-          </div>
-          <!-- Canva -->
-          <div
-            v-motion
-            :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-            :visible="{
-              opacity: 1,
-              scale: 1,
-              y: 0,
-              transition: {
-                duration: 500,
-                delay: 640,
-                type: 'spring',
-                stiffness: 250,
-                damping: 15,
-              },
-            }"
-            class="w-[13.5vw] h-[13.5vw] max-w-[64px] max-h-[64px] min-w-[44px] min-h-[44px] lg:w-[85px] lg:h-[85px] bg-linear-to-tr from-[#00C4CC] to-[#7D2AE8] rounded-[8px] sm:rounded-[12px] lg:rounded-[18px] flex items-center justify-center hover:scale-110 transition-transform shadow-xl overflow-hidden"
-          >
-            <span
-              class="text-white font-bold italic text-[9px] sm:text-lg lg:text-[22px] font-['Poppins']"
-              >Canva</span
+            <!-- Tooltip on hover -->
+            <div
+              class="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 -translate-y-1 group-hover:translate-y-0 transition-all duration-150 py-1 px-2.5 rounded-lg bg-zinc-900/95 border border-white/15 text-[11px] font-['Poppins'] font-medium text-zinc-100 whitespace-nowrap z-50 shadow-xl backdrop-blur-sm"
             >
+              {{ tool.name }}
+              <div
+                class="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-zinc-900/95"
+              ></div>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Pagination & Arrow Down -->
 
       <!-- Text Subtitle List -->
       <p
@@ -350,11 +242,14 @@ function scrollToSection(sectionId) {
           y: 0,
           transition: { duration: 600, delay: 400, ease: 'easeOut' },
         }"
-        class="pt-8 text-[11px] lg:text-[16px] text-[#ffffff] font-['Roboto'] font-medium max-w-4xl mx-auto leading-loose lg:leading-loose"
+        class="pt-4 text-[11px] lg:text-[15px] text-zinc-200 font-['Roboto'] font-medium max-w-3xl mx-auto leading-loose lg:leading-loose text-balance"
       >
-        Unity &bull; Firebase &bull; Supabase &bull; Antigravity &bull; Github &bull; Adobe
-        Illustrator &bull; Adobe Photoshop &bull; Figma &bull; Canva <br class="hidden lg:block" />
-        <span class="lg:hidden"> &bull; </span>and more
+        Unity &bull; Flutter &bull; Vue.js &bull; Vite &bull; Supabase &bull; PostgreSQL &bull;
+        Firebase &bull; GitHub
+        <br class="hidden lg:block" />
+        <span class="lg:hidden"> &bull; </span>Antigravity &bull; Figma &bull; Adobe Illustrator
+        &bull; Adobe Photoshop &bull; Canva &bull;
+        <span class="text-zinc-400">{{ lang === 'ID' ? 'dan lainnya' : 'and more' }}</span>
       </p>
 
       <!-- GitHub Contributions -->
@@ -371,8 +266,9 @@ function scrollToSection(sectionId) {
         <GithubCalendar />
       </div>
 
-      <!-- Pagination & Arrow Down -->
-      <div
+      <!-- Scroll to Process Section -->
+      <button
+        type="button"
         @click="scrollToSection('process')"
         v-motion
         :initial="{ opacity: 0, y: 15 }"
@@ -381,19 +277,11 @@ function scrollToSection(sectionId) {
           y: 0,
           transition: { duration: 500, delay: 500, ease: 'easeOut' },
         }"
-        class="flex flex-col items-center gap-6 pb-4"
+        class="inline-flex items-center justify-center p-2 pb-4 text-zinc-400 hover:text-white hover:translate-y-1 transition-all cursor-pointer"
+        :aria-label="lang === 'ID' ? 'Gulir ke bagian Proses' : 'Scroll to Process section'"
       >
-        <div class="flex gap-2.5">
-          <div class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-transparent"></div>
-          <div class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-transparent"></div>
-          <div class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-gray-500"></div>
-          <div class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-transparent"></div>
-          <div class="w-4 lg:w-5 h-[3px] rounded-full border border-gray-500 bg-transparent"></div>
-        </div>
-        <i
-          class="bi bi-caret-down-fill text-white text-3xl opacity-80 hover:opacity-100 hover:translate-y-1 transition-all cursor-pointer"
-        ></i>
-      </div>
+        <i class="bi bi-caret-down-fill text-2xl"></i>
+      </button>
     </div>
   </section>
 </template>

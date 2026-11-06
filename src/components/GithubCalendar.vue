@@ -1,54 +1,76 @@
 <template>
   <div
-    class="w-full relative transition-all duration-500 overflow-hidden"
+    ref="cardRef"
+    class="w-full relative transition-colors duration-300"
     :class="
       isPixel
         ? 'bg-transparent text-[#f0f6fc] font-mono'
-        : 'bg-[#18181b] backdrop-blur-md rounded-xl p-6 lg:p-8 border border-white/[0.08] shadow-xl relative'
+        : 'max-w-[828px] mx-auto bg-transparent border-y border-white/12 py-6'
     "
   >
     <div class="relative z-10">
-      <!-- Header: Title and Total -->
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-        <div>
+      <!-- Header: Title and Year Selector (Flush with Heatmap Edges) -->
+      <div
+        class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-5 gap-3"
+        :class="isPixel ? 'pb-4 border-b border-[#30363d]' : ''"
+      >
+        <div class="flex items-baseline gap-3">
           <h3
-            class="font-semibold text-lg md:text-xl tracking-tight"
+            class="tracking-tight text-left"
             :class="
               isPixel
-                ? 'text-[#00ff66] font-silkscreen text-xs sm:text-sm uppercase tracking-wider'
-                : 'text-white font-[\'Poppins\']'
+                ? 'text-[#00ff66] font-silkscreen text-xs sm:text-sm uppercase tracking-wider font-semibold'
+                : 'text-zinc-100 font-[\'Poppins\'] text-sm sm:text-base font-semibold'
             "
           >
-            {{ selectedYearTotal.toLocaleString() }} Contributions in {{ selectedYear }}
+            <template v-if="lang === 'ID'">
+              <span class="font-mono font-bold text-white">{{
+                selectedYearTotal.toLocaleString('id-ID')
+              }}</span>
+              <span class="text-zinc-400 font-normal ml-1.5"
+                >kontribusi pada {{ selectedYear }}</span
+              >
+            </template>
+            <template v-else>
+              <span class="font-mono font-bold text-white">{{
+                selectedYearTotal.toLocaleString('en-US')
+              }}</span>
+              <span class="text-zinc-400 font-normal ml-1.5"
+                >contributions in {{ selectedYear }}</span
+              >
+            </template>
           </h3>
         </div>
 
-        <!-- Year Tabs -->
+        <!-- Year Selector: Sharp Editorial Tabs (No Puffy Pill) -->
         <div
           v-if="availableYears.length > 0"
-          class="flex gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide"
+          class="flex overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0 scrollbar-hide"
         >
           <div
             :class="
               isPixel
                 ? 'flex gap-2'
-                : 'bg-black/40 border border-white/10 p-1 rounded-lg flex gap-1'
+                : 'flex items-center gap-1 border-b border-white/10'
             "
           >
             <button
               v-for="year in availableYears"
               :key="year.year"
+              type="button"
               @click="selectYear(year.year)"
-              class="px-3.5 py-1 transition-all duration-200 whitespace-nowrap text-xs font-semibold tracking-wide"
+              class="transition-all duration-150 whitespace-nowrap text-xs tracking-wider cursor-pointer"
               :class="[
-                isPixel ? 'font-silkscreen' : 'rounded-md',
+                isPixel
+                  ? 'font-silkscreen px-3 py-1 font-medium'
+                  : 'font-mono px-2.5 py-1.5 -mb-px border-b-2',
                 selectedYear === year.year
                   ? isPixel
                     ? 'bg-[#00ff66] text-black font-bold border-2 border-black shadow-[2px_2px_0px_#000000]'
-                    : 'bg-white text-black font-bold shadow-sm'
+                    : 'border-violet-400 text-white font-bold'
                   : isPixel
                     ? 'bg-[#0d1117] text-[#8b949e] border border-[#30363d] hover:text-[#00ff66] hover:border-[#00ff66]'
-                    : 'bg-transparent text-white/50 hover:text-white hover:bg-white/[0.06]',
+                    : 'border-transparent text-zinc-500 hover:text-zinc-200',
               ]"
             >
               {{ year.year }}
@@ -58,69 +80,75 @@
       </div>
 
       <!-- Loading State -->
-      <div v-if="loading" class="w-full h-[180px] flex items-center justify-center">
+      <div
+        v-if="loading"
+        class="w-full h-36 flex flex-col items-center justify-center gap-2.5 text-xs"
+        :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-zinc-400 font-[\'Roboto\']'"
+      >
         <div
-          class="w-8 h-8 border-2 rounded-full animate-spin"
+          class="w-6 h-6 border-2 rounded-full animate-spin"
           :class="
-            isPixel ? 'border-[#00ff66]/20 border-t-[#00ff66]' : 'border-white/20 border-t-white'
+            isPixel
+              ? 'border-[#00ff66]/20 border-t-[#00ff66]'
+              : 'border-violet-400/20 border-t-violet-400'
           "
         ></div>
+        <span>
+          {{
+            lang === 'ID'
+              ? 'Memuat riwayat kontribusi GitHub...'
+              : 'Loading GitHub contribution history...'
+          }}
+        </span>
       </div>
 
       <!-- Calendar Grid Wrapper -->
-      <div v-else-if="currentYearData.length > 0" class="flex flex-col gap-3">
+      <div v-else-if="currentYearData.length > 0" class="flex flex-col gap-4">
         <!-- Calendar Scroll Area -->
-        <div class="w-full overflow-x-auto scrollbar-hide pb-3 px-1 relative">
-          <div class="min-w-[800px] flex gap-2">
+        <div class="w-full overflow-x-auto scrollbar-hide pb-1">
+          <div class="inline-flex items-start gap-2.5 min-w-max">
             <!-- Day Labels -->
             <div
-              class="flex flex-col justify-between pt-[22px] pb-[4px] text-[10px] pr-2 shrink-0 h-[108px]"
-              :class="
-                isPixel
-                  ? 'text-[#8b949e] font-silkscreen'
-                  : 'text-white/40 font-[\'Roboto\'] font-medium'
-              "
+              class="flex flex-col justify-between pt-5.5 pb-0.5 text-[10px] w-7 shrink-0 h-31.5 select-none text-left font-mono"
+              :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-zinc-500'"
             >
-              <span class="h-[12px] leading-[12px]">Mon</span>
-              <span class="h-[12px] leading-[12px]">Wed</span>
-              <span class="h-[12px] leading-[12px]">Fri</span>
+              <span class="h-[12px] leading-[12px]">{{ lang === 'ID' ? 'Sen' : 'Mon' }}</span>
+              <span class="h-[12px] leading-[12px]">{{ lang === 'ID' ? 'Rab' : 'Wed' }}</span>
+              <span class="h-[12px] leading-[12px]">{{ lang === 'ID' ? 'Jum' : 'Fri' }}</span>
             </div>
 
-            <!-- The Grid -->
-            <div class="relative w-full">
-              <!-- Month Labels -->
+            <!-- The Grid & Week-Aligned Month Labels -->
+            <div class="relative">
+              <!-- Month Labels Positioned by Week Column Index (12px cell + 3px gap = 15px/col) -->
               <div
-                class="flex justify-between text-[10px] mb-2 px-1"
-                :class="
-                  isPixel
-                    ? 'text-[#8b949e] font-silkscreen'
-                    : 'text-white/40 font-[\'Roboto\'] font-medium'
-                "
+                class="relative h-4 mb-1.5 select-none text-[10px] font-mono"
+                :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-zinc-500'"
               >
-                <span>Jan</span>
-                <span>Feb</span>
-                <span>Mar</span>
-                <span>Apr</span>
-                <span>May</span>
-                <span>Jun</span>
-                <span>Jul</span>
-                <span>Aug</span>
-                <span>Sep</span>
-                <span>Oct</span>
-                <span>Nov</span>
-                <span>Dec</span>
+                <span
+                  v-for="m in monthMarkers"
+                  :key="m.label"
+                  class="absolute top-0 whitespace-nowrap"
+                  :style="{ left: `${m.weekIndex * 15}px` }"
+                >
+                  {{ m.label }}
+                </span>
               </div>
 
               <!-- Heatmap -->
-              <div class="grid grid-flow-col grid-rows-7 gap-[4px] w-max">
+              <div class="grid grid-flow-col grid-rows-7 gap-[3px] w-max">
                 <!-- Padded empty days for start of year -->
-                <div v-for="n in paddingDays" :key="'pad-' + n" class="w-[12px] h-[12px]"></div>
+                <div
+                  v-for="n in paddingDays"
+                  :key="'pad-' + n"
+                  class="w-[12px] h-[12px] bg-transparent"
+                ></div>
 
                 <!-- Actual days -->
                 <div
                   v-for="day in currentYearData"
                   :key="day.date"
-                  class="w-[12px] h-[12px] transition-all duration-200 cursor-pointer relative group rounded-[2.5px]"
+                  class="w-[12px] h-[12px] transition-transform duration-150 hover:scale-125 cursor-pointer relative"
+                  :class="isPixel ? 'rounded-none' : 'rounded-[1.5px]'"
                   :style="{
                     backgroundColor: getIntensityColor(day.intensity),
                   }"
@@ -132,36 +160,43 @@
           </div>
         </div>
 
-        <!-- Custom Tooltip -->
+        <!-- Custom Unclipped Tooltip -->
         <div
           v-if="tooltipVisible"
-          class="absolute z-50 bg-[#18181b] border border-white/10 backdrop-blur-md px-3 py-1.5 rounded-md text-white pointer-events-none shadow-xl transition-all duration-75 flex flex-col gap-0.5"
+          class="absolute z-50 bg-zinc-950 border border-white/15 px-3 py-1.5 rounded-sm text-white pointer-events-none shadow-2xl transition-all duration-75 flex flex-col gap-0.5 whitespace-nowrap"
           :style="{ left: `${tooltipX}px`, top: `${tooltipY}px` }"
         >
-          <span class="font-semibold text-white text-[11px] font-['Roboto']">
-            {{ tooltipCount === 0 ? 'No' : tooltipCount }}
-            {{ tooltipCount === 1 ? 'contribution' : 'contributions' }}
+          <span class="font-semibold text-zinc-100 text-[11px] font-mono">
+            {{ formatTooltipCount(tooltipCount) }}
           </span>
-          <span class="text-white/40 text-[9px] font-['Roboto']">{{ tooltipDate }}</span>
+          <span class="text-zinc-400 text-[10px] font-['Roboto']">{{ tooltipDate }}</span>
         </div>
 
-        <!-- Footer Row: Github Link on left, Legend on right -->
-        <div class="flex justify-between items-center mt-2 w-full">
-          <!-- Github Link Badge -->
+        <!-- Footer Row: GitHub Profile Link on left, Legend on right -->
+        <div
+          class="flex flex-wrap justify-between items-center gap-3 pt-1 w-full"
+          :class="isPixel ? 'pt-3 border-t border-[#30363d]' : ''"
+        >
+          <!-- GitHub Link -->
           <div>
             <a
               v-if="!isPixel"
               :href="`https://github.com/${username}`"
               target="_blank"
-              class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white/[0.05] border border-white/10 text-[11px] text-white/70 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all font-mono font-medium tracking-wider uppercase"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-xs text-zinc-400 hover:text-white transition-colors font-mono group"
             >
-              <i class="bi bi-github"></i>
-              github.com/{{ username }}
+              <i class="bi bi-github text-zinc-300 group-hover:text-white"></i>
+              <span class="underline-offset-4 group-hover:underline">github.com/{{ username }}</span>
+              <i
+                class="bi bi-arrow-up-right text-[10px] text-zinc-500 group-hover:text-violet-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+              ></i>
             </a>
             <a
               v-else
               :href="`https://github.com/${username}`"
               target="_blank"
+              rel="noopener noreferrer"
               class="text-[#8b949e] hover:text-[#00ff66] text-xs font-mono transition-colors"
             >
               github.com/{{ username }}
@@ -169,53 +204,27 @@
           </div>
 
           <!-- Legend -->
-          <div class="flex items-center gap-2">
+          <div class="flex items-center gap-2 select-none font-mono">
             <span
-              class="text-[10px]"
-              :class="
-                isPixel
-                  ? 'text-[#8b949e] font-silkscreen'
-                  : 'text-white/40 font-medium font-[\'Roboto\']'
-              "
+              class="text-[10px] uppercase tracking-wider"
+              :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-zinc-500'"
             >
-              Less
+              {{ lang === 'ID' ? 'Sedikit' : 'Less' }}
             </span>
-            <div class="flex gap-[4.5px]">
+            <div class="flex gap-[3px]">
               <div
-                class="w-[11px] h-[11px] rounded-[2.5px]"
-                :class="isPixel ? 'rounded-none' : ''"
-                :style="{ backgroundColor: getIntensityColor(0) }"
-              ></div>
-              <div
-                class="w-[11px] h-[11px] rounded-[2.5px]"
-                :class="isPixel ? 'rounded-none' : ''"
-                :style="{ backgroundColor: getIntensityColor(1) }"
-              ></div>
-              <div
-                class="w-[11px] h-[11px] rounded-[2.5px]"
-                :class="isPixel ? 'rounded-none' : ''"
-                :style="{ backgroundColor: getIntensityColor(2) }"
-              ></div>
-              <div
-                class="w-[11px] h-[11px] rounded-[2.5px]"
-                :class="isPixel ? 'rounded-none' : ''"
-                :style="{ backgroundColor: getIntensityColor(3) }"
-              ></div>
-              <div
-                class="w-[11px] h-[11px] rounded-[2.5px]"
-                :class="isPixel ? 'rounded-none' : ''"
-                :style="{ backgroundColor: getIntensityColor(4) }"
+                v-for="lvl in [0, 1, 2, 3, 4]"
+                :key="lvl"
+                class="w-[11px] h-[11px]"
+                :class="isPixel ? 'rounded-none' : 'rounded-[1.5px]'"
+                :style="{ backgroundColor: getIntensityColor(lvl) }"
               ></div>
             </div>
             <span
-              class="text-[10px]"
-              :class="
-                isPixel
-                  ? 'text-[#8b949e] font-silkscreen'
-                  : 'text-white/40 font-medium font-[\'Roboto\']'
-              "
+              class="text-[10px] uppercase tracking-wider"
+              :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-zinc-500'"
             >
-              More
+              {{ lang === 'ID' ? 'Banyak' : 'More' }}
             </span>
           </div>
         </div>
@@ -224,21 +233,29 @@
       <!-- Error / Empty State Fallback -->
       <div
         v-else
-        class="w-full h-[160px] flex flex-col items-center justify-center gap-2 text-xs"
-        :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-white/50'"
+        class="w-full h-36 flex flex-col items-center justify-center gap-2 text-xs"
+        :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-zinc-400 font-[\'Roboto\']'"
       >
-        <i class="bi bi-exclamation-triangle-fill text-amber-400 text-2xl"></i>
-        <span>Gagal memuat data kontribusi GitHub (Network Timeout/CORS).</span>
+        <i class="bi bi-exclamation-triangle text-amber-400 text-xl"></i>
+        <span>
+          {{
+            lang === 'ID'
+              ? 'Gagal memuat data kontribusi GitHub. Periksa koneksi lalu coba kembali.'
+              : 'Unable to load GitHub contribution data. Check your connection and retry.'
+          }}
+        </span>
         <button
-          @click="fetchGitHubData"
-          class="px-4 py-1.5 font-semibold text-xs transition-all duration-200 mt-2 flex items-center gap-2"
+          type="button"
+          @click="fetchGitHubData(true)"
+          class="px-4 py-1.5 font-semibold text-xs transition-all duration-200 mt-1 flex items-center gap-2 cursor-pointer"
           :class="
             isPixel
               ? 'bg-[#00ff66] hover:bg-[#00cc52] text-black font-silkscreen font-bold border border-black shadow-[2px_2px_0px_#000000]'
-              : 'bg-white text-black hover:bg-neutral-200 rounded-md font-medium'
+              : 'border border-white/20 text-white hover:bg-white/10 font-mono'
           "
         >
-          <i class="bi bi-arrow-clockwise"></i> Coba Lagi
+          <i class="bi bi-arrow-clockwise"></i>
+          <span>{{ lang === 'ID' ? 'Coba Lagi' : 'Retry' }}</span>
         </button>
       </div>
     </div>
@@ -248,6 +265,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useTheme } from '@/composables/useTheme'
+import { useLanguage } from '@/composables/useLanguage'
 
 const props = defineProps({
   theme: {
@@ -257,11 +275,16 @@ const props = defineProps({
 })
 
 const { currentTheme } = useTheme()
+const { lang } = useLanguage()
 
 const activeTheme = computed(() => props.theme || currentTheme.value || 'editorial')
 const isPixel = computed(() => activeTheme.value === 'pixel')
 
 const username = 'MyusiZ3'
+const CACHE_KEY = `gh_contribs_${username}_v2`
+const CACHE_TTL_MS = 30 * 60 * 1000 // 30 minutes
+
+const cardRef = ref(null)
 const loading = ref(true)
 const githubData = ref({ years: [], contributions: [] })
 const selectedYear = ref(new Date().getFullYear().toString())
@@ -273,12 +296,20 @@ const tooltipDate = ref('')
 const tooltipX = ref(0)
 const tooltipY = ref(0)
 
+const parseLocalDate = (dateString) => {
+  const parts = (dateString || '').split('-').map(Number)
+  if (parts.length === 3 && !Number.isNaN(parts[0])) {
+    return new Date(parts[0], parts[1] - 1, parts[2])
+  }
+  return new Date(dateString)
+}
+
 const parseResponse = (data) => {
   let normalizedYears = []
   let normalizedContribs = []
 
   if (data.total && typeof data.total === 'object') {
-    const yearsList = Object.keys(data.total).sort((a, b) => b - a)
+    const yearsList = Object.keys(data.total).sort((a, b) => Number(b) - Number(a))
     normalizedYears = yearsList.map((y) => ({
       year: y.toString(),
       total: data.total[y],
@@ -289,10 +320,12 @@ const parseResponse = (data) => {
       intensity: c.level !== undefined ? c.level : c.intensity || 0,
     }))
   } else if (data.years && Array.isArray(data.years)) {
-    normalizedYears = data.years.map((y) => ({
-      year: y.year.toString(),
-      total: y.total,
-    }))
+    normalizedYears = [...data.years]
+      .sort((a, b) => Number(b.year) - Number(a.year))
+      .map((y) => ({
+        year: y.year.toString(),
+        total: y.total,
+      }))
     normalizedContribs = (data.contributions || []).map((c) => ({
       date: c.date,
       count: c.count || 0,
@@ -303,18 +336,45 @@ const parseResponse = (data) => {
   return { years: normalizedYears, contributions: normalizedContribs }
 }
 
-const fetchGitHubData = async () => {
+const applyNormalizedData = (normalized) => {
+  githubData.value = normalized
+  const latestWithActivity = normalized.years.find((y) => y.total > 0)
+  selectedYear.value = (latestWithActivity || normalized.years[0]).year
+}
+
+const fetchGitHubData = async (forceRefresh = false) => {
   loading.value = true
+
+  if (!forceRefresh) {
+    try {
+      const rawCache = sessionStorage.getItem(CACHE_KEY)
+      if (rawCache) {
+        const parsed = JSON.parse(rawCache)
+        if (
+          parsed &&
+          parsed.timestamp &&
+          Date.now() - parsed.timestamp < CACHE_TTL_MS &&
+          parsed.data?.years?.length > 0
+        ) {
+          applyNormalizedData(parsed.data)
+          loading.value = false
+          return
+        }
+      }
+    } catch {
+      // Ignore storage access errors
+    }
+  }
+
   const endpoints = [
     `https://github-contributions-api.jogruber.de/v4/${username}`,
     `https://github-contributions.vercel.app/api/v1/${username}`,
-    `https://api.codetabs.com/v1/proxy?quest=https://github-contributions.vercel.app/api/v1/${username}`,
   ]
 
   for (const url of endpoints) {
     try {
       const controller = new AbortController()
-      const timeoutId = setTimeout(() => controller.abort(), 4000)
+      const timeoutId = setTimeout(() => controller.abort(), 4500)
 
       const res = await fetch(url, { signal: controller.signal })
       clearTimeout(timeoutId)
@@ -324,8 +384,15 @@ const fetchGitHubData = async () => {
       const normalized = parseResponse(data)
 
       if (normalized.years.length > 0) {
-        githubData.value = normalized
-        selectedYear.value = normalized.years[0].year
+        applyNormalizedData(normalized)
+        try {
+          sessionStorage.setItem(
+            CACHE_KEY,
+            JSON.stringify({ timestamp: Date.now(), data: normalized }),
+          )
+        } catch {
+          // Ignore quota errors
+        }
         loading.value = false
         return
       }
@@ -342,7 +409,7 @@ onMounted(() => {
 })
 
 const availableYears = computed(() => {
-  return githubData.value.years ? [...githubData.value.years].slice(0, 5).reverse() : []
+  return githubData.value.years ? [...githubData.value.years].slice(0, 5) : []
 })
 
 const selectedYearTotal = computed(() => {
@@ -359,11 +426,47 @@ const currentYearData = computed(() => {
 
 const paddingDays = computed(() => {
   if (currentYearData.value.length === 0) return 0
-  return new Date(currentYearData.value[0].date).getDay()
+  return parseLocalDate(currentYearData.value[0].date).getDay()
+})
+
+const monthMarkers = computed(() => {
+  const namesEn = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  const namesId = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des']
+  const names = lang.value === 'ID' ? namesId : namesEn
+
+  const markers = []
+  let lastMonth = -1
+  let lastWeekIdx = -3
+
+  currentYearData.value.forEach((day, idx) => {
+    const d = parseLocalDate(day.date)
+    const m = d.getMonth()
+    if (m !== lastMonth) {
+      const weekIndex = Math.floor((idx + paddingDays.value) / 7)
+      if (weekIndex - lastWeekIdx >= 2) {
+        markers.push({
+          label: names[m],
+          weekIndex,
+        })
+        lastWeekIdx = weekIndex
+      }
+      lastMonth = m
+    }
+  })
+
+  return markers
 })
 
 const selectYear = (year) => {
   selectedYear.value = year.toString()
+}
+
+const formatTooltipCount = (count) => {
+  if (lang.value === 'ID') {
+    return count === 0 ? 'Tidak ada kontribusi' : `${count} kontribusi`
+  }
+  if (count === 0) return 'No contributions'
+  return count === 1 ? '1 contribution' : `${count} contributions`
 }
 
 const showTooltip = (event, day) => {
@@ -371,15 +474,16 @@ const showTooltip = (event, day) => {
   tooltipDate.value = formatDate(day.date)
 
   const cell = event.currentTarget
-  const container = cell.closest('.w-full.relative')
+  const container = cardRef.value
   if (!container) return
 
   const cellRect = cell.getBoundingClientRect()
   const containerRect = container.getBoundingClientRect()
 
-  // Position tooltip horizontally centered above the cell
-  tooltipX.value = cellRect.left - containerRect.left - 50 + cellRect.width / 2
-  tooltipY.value = cellRect.top - containerRect.top - 45
+  const rawX = cellRect.left - containerRect.left - 60 + cellRect.width / 2
+  const maxLeft = Math.max(4, containerRect.width - 155)
+  tooltipX.value = Math.min(Math.max(4, rawX), maxLeft)
+  tooltipY.value = Math.max(0, cellRect.top - containerRect.top - 46)
   tooltipVisible.value = true
 }
 
@@ -397,36 +501,20 @@ const getIntensityColor = (intensity) => {
       4: '#00ff66',
     }
     return pixelIntensities[intensity] || pixelIntensities[0]
-  } else {
-    const editorialIntensities = {
-      0: 'rgba(255, 255, 255, 0.04)',
-      1: 'rgba(16, 185, 129, 0.3)', // Clean Emerald
-      2: 'rgba(16, 185, 129, 0.55)',
-      3: 'rgba(16, 185, 129, 0.8)',
-      4: '#10b981',
-    }
-    return editorialIntensities[intensity] || editorialIntensities[0]
   }
-}
-
-const getIntensityGlow = (intensity) => {
-  if (isPixel.value) {
-    const pixelGlows = {
-      3: 'rgba(0, 255, 102, 0.3)',
-      4: 'rgba(0, 255, 102, 0.6)',
-    }
-    return pixelGlows[intensity] || 'transparent'
-  } else {
-    const editorialGlows = {
-      3: 'rgba(139, 92, 246, 0.3)',
-      4: 'rgba(139, 92, 246, 0.6)',
-    }
-    return editorialGlows[intensity] || 'transparent'
+  const editorialIntensities = {
+    0: 'rgba(255, 255, 255, 0.06)',
+    1: 'rgba(139, 92, 246, 0.30)',
+    2: 'rgba(139, 92, 246, 0.55)',
+    3: 'rgba(139, 92, 246, 0.80)',
+    4: '#a78bfa',
   }
+  return editorialIntensities[intensity] || editorialIntensities[0]
 }
 
 const formatDate = (dateString) => {
-  return new Date(dateString).toLocaleDateString('en-US', {
+  const dateObj = parseLocalDate(dateString)
+  return dateObj.toLocaleDateString(lang.value === 'ID' ? 'id-ID' : 'en-US', {
     month: 'short',
     day: 'numeric',
     year: 'numeric',
