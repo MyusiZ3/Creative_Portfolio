@@ -146,7 +146,7 @@ const translations = {
     ach_title_1: 'Achievements &',
     ach_title_2: 'Certificates',
     ach_desc:
-      'Selected achievements and certifications throughout my creative journey, reflecting key milestones that shaped my expertise in multimedia and digital design.',
+      'Verified intellectual property registrations, national competency certifications, and academic appointments across software development, interactive media, and digital design.',
 
     // Contact
     contact_title_1: 'Contact &',
@@ -356,7 +356,7 @@ const translations = {
     ach_title_1: 'Pencapaian &',
     ach_title_2: 'Sertifikat',
     ach_desc:
-      'Beberapa pencapaian dan sertifikasi selama perjalanan kreatif saya yang ikut membentuk keahlian di bidang multimedia dan desain digital.',
+      'Daftar registrasi Hak Kekayaan Intelektual (HKI), sertifikasi kompetensi nasional, serta penugasan akademik di bidang pengembangan perangkat lunak, media interaktif, dan desain digital.',
 
     // Contact
     contact_title_1: 'Kontak &',
