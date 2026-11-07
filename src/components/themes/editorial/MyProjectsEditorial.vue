@@ -665,27 +665,29 @@
                   </span>
                 </td>
 
-                <!-- Action / Link -->
+                <!-- Action / Link (Single Unified Action per Row) -->
                 <td class="py-3.5 px-3 text-right">
-                  <div class="inline-flex items-center justify-end gap-2 w-full whitespace-nowrap">
+                  <div class="inline-flex items-center justify-end w-full whitespace-nowrap">
                     <button
                       v-if="item.videoEmbedId"
+                      type="button"
                       @click.stop="openVideoModal(item.videoEmbedId, item.name)"
-                      class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-500/15 hover:bg-red-500 text-red-400 hover:text-white border border-red-500/30 hover:border-red-500 text-[11px] font-['Poppins'] font-medium transition-all group/stream cursor-pointer shadow-sm hover:shadow-red-500/25 shrink-0"
+                      class="inline-flex items-center gap-1 text-xs text-violet-400 hover:text-white transition-colors group/link cursor-pointer shrink-0"
                       :title="lang === 'ID' ? 'Putar Video Langsung di Web' : 'Stream Video on Web'"
                     >
-                      <i
-                        class="bi bi-play-circle-fill text-xs text-red-400 group-hover/stream:text-white transition-colors"
-                      ></i>
                       <span>Stream</span>
+                      <i
+                        class="bi bi-play-fill text-xs group-hover/link:translate-x-0.5 transition-transform"
+                      ></i>
                     </button>
 
                     <a
-                      v-if="item.link && item.link !== '#'"
+                      v-else-if="item.link && item.link !== '#'"
                       :href="item.link"
                       target="_blank"
+                      rel="noopener noreferrer"
                       @click.stop
-                      class="inline-flex items-center gap-1 text-xs text-violet-400 hover:text-violet-300 transition-colors group/link shrink-0"
+                      class="inline-flex items-center gap-1 text-xs text-violet-400 hover:text-white transition-colors group/link shrink-0"
                       :title="lang === 'ID' ? 'Buka Tautan Eksternal' : 'Open External Link'"
                     >
                       <span>{{ lang === 'ID' ? 'Buka' : 'Visit' }}</span>
@@ -693,10 +695,12 @@
                         class="bi bi-arrow-up-right text-[10px] group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform"
                       ></i>
                     </a>
+
                     <button
                       v-else
+                      type="button"
                       @click.stop="openLightbox(getArchiveGlobalIndex(aIdx), 0)"
-                      class="inline-flex items-center gap-1 text-xs text-zinc-400 hover:text-zinc-200 transition-colors cursor-pointer shrink-0"
+                      class="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-zinc-200 transition-colors cursor-pointer shrink-0"
                     >
                       <span>{{ lang === 'ID' ? 'Lihat' : 'View' }}</span>
                       <i class="bi bi-eye text-[11px]"></i>
@@ -716,27 +720,36 @@
             class="p-4 rounded-xl border border-white/10 bg-white/2 space-y-1.5 cursor-pointer hover:border-violet-500/30 transition-all"
             @click="openLightbox(getArchiveGlobalIndex(aIdx), 0)"
           >
-            <div class="flex items-center justify-between text-xs text-zinc-400">
-              <span>{{ item.year }} • {{ item.platform }}</span>
-              <div class="flex items-center gap-2">
+            <div class="flex items-center justify-between gap-2 text-xs text-zinc-400">
+              <span class="truncate">{{ item.year }} • {{ item.platform }}</span>
+              <div class="shrink-0">
                 <button
                   v-if="item.videoEmbedId"
+                  type="button"
                   @click.stop="openVideoModal(item.videoEmbedId, item.name)"
-                  class="text-red-400 hover:text-white hover:bg-red-500 text-[11px] inline-flex items-center gap-1 bg-red-500/15 px-2.5 py-0.5 rounded-full border border-red-500/30 font-medium transition-all cursor-pointer"
+                  class="text-violet-400 hover:text-white text-xs inline-flex items-center gap-1 transition-colors cursor-pointer"
                 >
-                  <i class="bi bi-play-circle-fill text-[11px]"></i>
                   <span>Stream</span>
+                  <i class="bi bi-play-fill text-xs"></i>
                 </button>
                 <a
-                  v-if="item.link && item.link !== '#'"
+                  v-else-if="item.link && item.link !== '#'"
                   :href="item.link"
                   target="_blank"
+                  rel="noopener noreferrer"
                   @click.stop
-                  class="text-violet-400 text-xs inline-flex items-center gap-1 hover:underline"
+                  class="text-violet-400 hover:text-white text-xs inline-flex items-center gap-1 hover:underline"
                 >
                   <span>{{ lang === 'ID' ? 'Buka' : 'Visit' }}</span>
                   <i class="bi bi-arrow-up-right text-[10px]"></i>
                 </a>
+                <span
+                  v-else
+                  class="text-zinc-400 text-xs inline-flex items-center gap-1"
+                >
+                  <span>{{ lang === 'ID' ? 'Lihat' : 'View' }}</span>
+                  <i class="bi bi-eye text-[11px]"></i>
+                </span>
               </div>
             </div>
             <div class="font-['Poppins'] font-semibold text-white text-sm">
