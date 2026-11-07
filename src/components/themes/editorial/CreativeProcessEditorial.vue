@@ -27,28 +27,28 @@
           v-motion
           :initial="{ opacity: 0, y: 30 }"
           :visible-once="{ opacity: 1, y: 0, transition: { duration: 700, delay: 100 } }"
-          class="text-4xl lg:text-[56px] font-bold font-['Poppins'] text-[#1e293b] leading-tight mb-5"
+          class="text-4xl lg:text-[56px] font-bold font-['Poppins'] text-[#0f172a] leading-tight mb-5"
         >
-          <template v-if="lang === 'ID'"> Dari Konsep<br />Hingga Hasil Akhir </template>
-          <template v-else> How I Bring<br />Concepts to Life </template>
+          <template v-if="lang === 'ID'"> Alur Kerja &amp;<br />Proses Pengembangan </template>
+          <template v-else> Engineering &amp;<br />Design Workflow </template>
         </h2>
 
         <p
           v-motion
           :initial="{ opacity: 0, y: 30 }"
           :visible-once="{ opacity: 1, y: 0, transition: { duration: 700, delay: 200 } }"
-          class="text-[#475569] font-['Roboto'] text-sm lg:text-[16px] leading-relaxed max-w-2xl"
+          class="text-[#334155] font-['Roboto'] text-sm lg:text-[16px] leading-relaxed max-w-2xl"
         >
           {{
             lang === 'ID'
-              ? 'Setiap proyek dirancang dengan alur kerja terarah dan pendekatan Agile. Mengutamakan riset kebutuhan, pembuatan prototipe cepat untuk memvalidasi ide, pengembangan bertahap, hingga pengujian menyeluruh agar hasil akhir siap pakai.'
-              : 'Every project follows a thoughtful path and an adaptive Agile approach—prioritizing requirement research, rapid prototyping to validate ideas early, iterative development, and thorough testing for production-ready quality.'
+              ? 'Alur kerja terstruktur yang menggabungkan analisis kebutuhan sistem, pembuatan prototipe interaktif di Figma, pengembangan kode modular, hingga pengujian kualitas terukur sebelum rilis produksi.'
+              : 'A structured workflow combining requirement analysis, interactive Figma prototyping, modular full-stack development, and systematic quality assurance before production release.'
           }}
         </p>
       </div>
 
-      <!-- 4-Stage Chamfered Process Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8 relative z-10">
+      <!-- 4-Stage Editorial Architectural Process Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-7 relative z-10">
         <div
           v-for="(stage, idx) in stages"
           :key="stage.id"
@@ -59,60 +59,50 @@
             y: 0,
             transition: { duration: 550, delay: 90 * (idx + 1) },
           }"
-          class="group relative p-[1.5px] transition-all duration-300 hover:-translate-y-1.5"
-          style="clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));"
+          class="group relative bg-white border border-slate-200/90 hover:border-violet-500/40 border-t-2 border-t-[#0f172a] hover:border-t-violet-600 p-7 lg:p-8 flex flex-col justify-between shadow-[0_4px_20px_rgba(15,23,42,0.04)] hover:shadow-[0_16px_36px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 text-left"
         >
-          <!-- Outer Chamfer Border Gradient (Slate to Violet Accent on Hover) -->
-          <div
-            class="absolute inset-0 bg-gradient-to-br from-slate-200 via-slate-300 to-slate-200 group-hover:from-violet-500 group-hover:via-slate-800 group-hover:to-slate-600 transition-colors duration-400"
-          ></div>
-
-          <!-- Inner Chassis Panel -->
-          <div
-            class="relative w-full h-full bg-white p-7 lg:p-8 flex flex-col justify-between shadow-[0_4px_20px_rgba(0,0,0,0.03)] group-hover:shadow-[0_16px_36px_rgba(0,0,0,0.08)] transition-shadow duration-300"
-            style="clip-path: polygon(0 0, calc(100% - 23px) 0, 100% 23px, 100% 100%, 23px 100%, 0 calc(100% - 23px));"
-          >
-            <!-- Top Content -->
-            <div>
-              <!-- Index & Phase Label -->
-              <div class="flex items-baseline justify-between mb-5 pb-4 border-b border-slate-100">
-                <span
-                  class="text-3xl lg:text-4xl font-bold font-['Poppins'] text-slate-300 group-hover:text-violet-600 transition-colors"
-                >
-                  0{{ idx + 1 }}
-                </span>
-                <span class="text-xs font-bold font-['Poppins'] tracking-wider uppercase text-slate-400">
-                  {{ lang === 'ID' ? stage.phaseID : stage.phaseEN }}
-                </span>
-              </div>
-
-              <!-- Title -->
-              <h3 class="text-lg lg:text-xl font-bold font-['Poppins'] text-[#1e293b] mb-3 leading-snug">
-                {{ lang === 'ID' ? stage.titleID : stage.titleEN }}
-              </h3>
-
-              <!-- Description -->
-              <p class="text-[13.5px] text-[#475569] font-['Roboto'] leading-relaxed mb-6">
-                {{ lang === 'ID' ? stage.descID : stage.descEN }}
-              </p>
+          <!-- Top Content -->
+          <div>
+            <!-- Index & Domain Tag (High Contrast, Non-Redundant) -->
+            <div class="flex items-center justify-between gap-2 mb-5 pb-4 border-b border-slate-200/80">
+              <span
+                class="text-2xl lg:text-3xl font-bold font-mono text-[#0f172a] group-hover:text-violet-600 transition-colors"
+              >
+                0{{ idx + 1 }}
+              </span>
+              <span
+                class="text-[11px] font-mono font-semibold tracking-wider uppercase text-[#475569] bg-slate-100 group-hover:bg-violet-50 group-hover:text-violet-700 px-2.5 py-1 rounded-xs transition-colors"
+              >
+                {{ lang === 'ID' ? stage.domainID : stage.domainEN }}
+              </span>
             </div>
 
-            <!-- Bottom: Key Outputs (Clean Text List, Consistent with Portfolio Theme) -->
-            <div class="pt-5 border-t border-slate-100">
-              <h4 class="text-[11px] font-bold font-['Poppins'] uppercase tracking-wider text-slate-400 mb-3">
-                {{ lang === 'ID' ? 'Fokus & Hasil Utama' : 'Key Outputs & Focus' }}
-              </h4>
-              <ul class="space-y-2">
-                <li
-                  v-for="(item, iIdx) in (lang === 'ID' ? stage.outputsID : stage.outputsEN)"
-                  :key="iIdx"
-                  class="text-[13px] text-[#334155] font-['Roboto'] flex items-start gap-2"
-                >
-                  <span class="text-violet-500 select-none font-bold mt-0.5">•</span>
-                  <span class="leading-snug">{{ item }}</span>
-                </li>
-              </ul>
-            </div>
+            <!-- Title -->
+            <h3 class="text-lg lg:text-xl font-bold font-['Poppins'] text-[#0f172a] mb-3 leading-snug">
+              {{ lang === 'ID' ? stage.titleID : stage.titleEN }}
+            </h3>
+
+            <!-- Description -->
+            <p class="text-[13.5px] text-[#334155] font-['Roboto'] leading-relaxed mb-6">
+              {{ lang === 'ID' ? stage.descID : stage.descEN }}
+            </p>
+          </div>
+
+          <!-- Bottom: Key Deliverables -->
+          <div class="pt-5 border-t border-slate-200/80">
+            <h4 class="text-[11px] font-bold font-mono uppercase tracking-wider text-[#475569] mb-3">
+              {{ lang === 'ID' ? 'Fokus & Hasil Utama' : 'Deliverables & Focus' }}
+            </h4>
+            <ul class="space-y-2">
+              <li
+                v-for="(item, iIdx) in lang === 'ID' ? stage.outputsID : stage.outputsEN"
+                :key="iIdx"
+                class="text-[13px] text-[#1e293b] font-['Roboto'] flex items-start gap-2"
+              >
+                <span class="text-violet-600 select-none font-bold mt-0.5">•</span>
+                <span class="leading-snug">{{ item }}</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -128,86 +118,86 @@ const { lang } = useLanguage()
 const stages = [
   {
     id: 'discovery-planning',
-    phaseEN: 'Phase 01',
-    phaseID: 'Fase 01',
-    titleEN: 'Discovery & Planning',
-    titleID: 'Eksplorasi & Perencanaan',
+    domainEN: 'Architecture & Scope',
+    domainID: 'Arsitektur & Cakupan',
+    titleEN: 'Discovery & System Design',
+    titleID: 'Analisis & Perancangan Sistem',
     descEN:
-      'Understanding the project scope, breaking down requirements into manageable tasks, and mapping user journeys to ensure a clear direction before building.',
+      'Defining functional requirements, mapping user flows, and structuring relational or NoSQL database schemas (PostgreSQL, Firestore) before writing code.',
     descID:
-      'Memahami tujuan dan cakupan proyek, memecah kebutuhan fitur menjadi tugas-tugas terarah, serta memetakan alur interaksi sebelum mulai produksi.',
+      'Merumuskan spesifikasi kebutuhan fungsional, memetakan alur interaksi pengguna, serta merancang struktur skema basis data (PostgreSQL, Firestore) sebelum masuk ke tahap produksi.',
     outputsEN: [
-      'Scope & Requirement Analysis',
-      'User Journey & Flow Mapping',
-      'Sprint Backlog & Task Breakdown',
+      'System & Requirement Specification',
+      'User Flow & Architecture Diagram',
+      'Database Schema & Sprint Backlog',
     ],
     outputsID: [
-      'Analisis Kebutuhan & Cakupan Proyek',
-      'Pemetaan Alur Interaksi Pengguna',
-      'Perencanaan Backlog & Milestone',
+      'Spesifikasi Kebutuhan & Ruang Lingkup',
+      'Pemetaan Alur & Arsitektur Sistem',
+      'Skema Basis Data & Rencana Sprint',
     ],
   },
   {
     id: 'design-prototyping',
-    phaseEN: 'Phase 02',
-    phaseID: 'Fase 02',
-    titleEN: 'Design & Prototyping',
-    titleID: 'Desain & Prototipe',
+    domainEN: 'UI/UX & Assets',
+    domainID: 'UI/UX & Aset Visual',
+    titleEN: 'Design & Interactive Prototyping',
+    titleID: 'Desain & Prototipe Interaktif',
     descEN:
-      'Translating concepts into visual layouts, design systems, and interactive Figma prototypes to validate the user experience with the team early.',
+      'Translating system flows into responsive layouts, reusable component tokens, custom 2D/3D visual assets, and interactive high-fidelity Figma prototypes.',
     descID:
-      'Menerjemahkan ide ke tata letak visual, sistem desain, dan prototipe interaktif di Figma untuk menguji pengalaman pengguna bersama tim lebih awal.',
+      'Menerjemahkan alur sistem ke tata letak responsif, komponen desain yang konsisten, aset visual 2D/3D kustom, serta prototipe interaktif high-fidelity di Figma.',
     outputsEN: [
-      'Wireframes & Visual Direction',
-      'Interactive Figma Prototypes',
-      'UI Assets & Design Tokens',
+      'Wireframes & Design System Tokens',
+      'High-Fidelity Figma Prototypes',
+      'Production-Ready 2D/3D & UI Assets',
     ],
     outputsID: [
-      'Wireframe & Eksplorasi Visual',
-      'Prototipe Interaktif Figma',
-      'Sistem Desain & Aset UI',
+      'Wireframe & Sistem Desain Komponen',
+      'Prototipe Interaktif High-Fidelity',
+      'Aset Visual 2D/3D & Antarmuka Siap Pakai',
     ],
   },
   {
     id: 'agile-development',
-    phaseEN: 'Phase 03',
-    phaseID: 'Fase 03',
-    titleEN: 'Agile Development',
-    titleID: 'Pengembangan Bertahap',
+    domainEN: 'Full-Stack & 3D/AR',
+    domainID: 'Pengembangan Sistem',
+    titleEN: 'Modular Engineering & Integration',
+    titleID: 'Implementasi & Integrasi Modular',
     descEN:
-      'Building features iteratively in focused sprint cycles. Writing clean, component-driven code across web frameworks or game engines, with regular progress demos.',
+      'Developing maintainable applications across Vue.js, Vite, Flutter, and Unity (C#), integrated with cloud backends (Supabase, Firebase) or IoT hardware.',
     descID:
-      'Mengembangkan fitur secara bertahap dalam siklus sprint teratur. Menulis kode modular berbasis komponen di web maupun engine game, lengkap dengan evaluasi berkala.',
+      'Membangun aplikasi secara modular menggunakan Vue.js, Vite, Flutter, dan Unity (C#), lengkap dengan integrasi layanan backend cloud (Supabase, Firebase) maupun sensor IoT.',
     outputsEN: [
-      'Modular Component-Driven Code',
-      'Feature Integration & Logic',
-      'Regular Milestone Demos',
+      'Web, Mobile & 3D/AR Application Code',
+      'Cloud Backend, Auth & RLS Integration',
+      'Iterative Milestone Builds & Reviews',
     ],
     outputsID: [
-      'Kode Modular Berbasis Komponen',
-      'Integrasi Logika & Fitur Utama',
-      'Demo Progres Fitur Terjadwal',
+      'Kode Aplikasi Web, Mobile & 3D/AR',
+      'Integrasi Cloud Backend, Auth & RLS',
+      'Evaluasi Build Bertahap per Milestone',
     ],
   },
   {
     id: 'testing-delivery',
-    phaseEN: 'Phase 04',
-    phaseID: 'Fase 04',
-    titleEN: 'Testing & Delivery',
-    titleID: 'Pengujian & Rilis Akhir',
+    domainEN: 'QA & Deployment',
+    domainID: 'Pengujian & Rilis',
+    titleEN: 'Validation & Production Release',
+    titleID: 'Pengujian Kualitas & Rilis',
     descEN:
-      'Conducting thorough testing across devices and browsers, fixing bugs, fine-tuning responsiveness and performance, and ensuring the final build is ready for launch.',
+      'Validating functional reliability through scenario-based Black-Box testing, measuring user experience via System Usability Scale (SUS) evaluations, and optimizing builds for release.',
     descID:
-      'Melakukan pengujian menyeluruh di berbagai perangkat dan browser, memperbaiki kendala teknis, mengoptimasi performa dan responsivitas, hingga proyek siap dirilis.',
+      'Memvalidasi keandalan fungsi melalui pengujian Black-Box berbasis skenario, mengukur kenyamanan pengguna dengan evaluasi System Usability Scale (SUS), serta mengoptimasi performa sebelum rilis.',
     outputsEN: [
-      'Cross-Device & Browser Testing',
-      'Bug Fixing & Performance Tuning',
-      'Final Production Polish & Launch',
+      'Scenario-Based Black-Box Testing',
+      'Usability Evaluation (SUS) & Profiling',
+      'Cross-Device Optimization & Release',
     ],
     outputsID: [
-      'Pengujian Lintas Alat & Browser',
-      'Perbaikan Bug & Optimasi Performa',
-      'Polesan Akhir Siap Rilis',
+      'Pengujian Fungsional Black-Box',
+      'Evaluasi Usability (SUS) & Optimasi',
+      'Deployment & Rilis Siap Produksi',
     ],
   },
 ]
