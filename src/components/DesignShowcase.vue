@@ -3,7 +3,7 @@
     <div
       v-motion
       :initial="{ opacity: 0, y: 40 }"
-      :visible="{ opacity: 1, y: 0, transition: { duration: 800 } }"
+      :visible-once="{ opacity: 1, y: 0, transition: { duration: 800 } }"
       class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center"
     >
       <!-- Left Column: Editorial Info & Balanced Grid -->

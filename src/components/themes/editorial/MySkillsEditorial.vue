@@ -94,7 +94,7 @@ function scrollToSection(sectionId) {
       <div
         v-motion
         :initial="{ opacity: 0, scale: 0.85, y: -10 }"
-        :visible="{ opacity: 1, scale: 1, y: 0, transition: { duration: 500 } }"
+        :visible-once="{ opacity: 1, scale: 1, y: 0, transition: { duration: 500 } }"
         class="text-center"
       >
         <span
@@ -108,7 +108,7 @@ function scrollToSection(sectionId) {
       <h2
         v-motion
         :initial="{ opacity: 0, y: 30 }"
-        :visible="{
+        :visible-once="{
           opacity: 1,
           y: 0,
           transition: { duration: 600, delay: 100 },
@@ -122,7 +122,7 @@ function scrollToSection(sectionId) {
       <p
         v-motion
         :initial="{ opacity: 0, y: 25 }"
-        :visible="{
+        :visible-once="{
           opacity: 1,
           y: 0,
           transition: { duration: 600, delay: 200 },
@@ -136,7 +136,7 @@ function scrollToSection(sectionId) {
       <div
         v-motion
         :initial="{ opacity: 0, scaleX: 0 }"
-        :visible="{
+        :visible-once="{
           opacity: 1,
           scaleX: 1,
           transition: { duration: 800, delay: 300, ease: 'easeOut' },
@@ -157,7 +157,7 @@ function scrollToSection(sectionId) {
             :key="tool.name"
             v-motion
             :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-            :visible="{
+            :visible-once="{
               opacity: 1,
               scale: 1,
               y: 0,
@@ -198,7 +198,7 @@ function scrollToSection(sectionId) {
             :key="tool.name"
             v-motion
             :initial="{ opacity: 0, scale: 0.5, y: 20 }"
-            :visible="{
+            :visible-once="{
               opacity: 1,
               scale: 1,
               y: 0,
@@ -237,7 +237,7 @@ function scrollToSection(sectionId) {
       <p
         v-motion
         :initial="{ opacity: 0, y: 20 }"
-        :visible="{
+        :visible-once="{
           opacity: 1,
           y: 0,
           transition: { duration: 600, delay: 400, ease: 'easeOut' },
@@ -256,7 +256,7 @@ function scrollToSection(sectionId) {
       <div
         v-motion
         :initial="{ opacity: 0, y: 20 }"
-        :visible="{
+        :visible-once="{
           opacity: 1,
           y: 0,
           transition: { duration: 600, delay: 500, ease: 'easeOut' },
@@ -272,7 +272,7 @@ function scrollToSection(sectionId) {
         @click="scrollToSection('process')"
         v-motion
         :initial="{ opacity: 0, y: 15 }"
-        :visible="{
+        :visible-once="{
           opacity: 1,
           y: 0,
           transition: { duration: 500, delay: 500, ease: 'easeOut' },

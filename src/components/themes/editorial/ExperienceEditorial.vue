@@ -41,7 +41,7 @@
         <h2
           v-motion
           :initial="{ opacity: 0, y: 40 }"
-          :visible="{
+          :visible-once="{
             opacity: 1,
             y: 0,
             transition: { duration: 700, ease: 'easeOut' },
@@ -53,7 +53,7 @@
         <div
           v-motion
           :initial="{ opacity: 0, y: 30 }"
-          :visible="{
+          :visible-once="{
             opacity: 1,
             y: 0,
             transition: { duration: 700, delay: 150, ease: 'easeOut' },
@@ -69,7 +69,7 @@
           <h3
             v-motion
             :initial="{ opacity: 0, x: -40 }"
-            :visible="{
+            :visible-once="{
               opacity: 1,
               x: 0,
               transition: { duration: 600, ease: 'easeOut' },
@@ -83,7 +83,7 @@
           <div
             v-motion
             :initial="{ opacity: 0, scale: 0.95 }"
-            :visible="{
+            :visible-once="{
               opacity: 1,
               scale: 1,
               transition: { duration: 600, delay: 100 },
@@ -123,7 +123,7 @@
           <div
             v-motion
             :initial="{ opacity: 0, scaleX: 0 }"
-            :visible="{
+            :visible-once="{
               opacity: 1,
               scaleX: 1,
               transition: { duration: 1000, delay: 100, ease: 'easeOut' },
@@ -136,7 +136,7 @@
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{
+              :visible-once="{
                 opacity: 1,
                 y: 0,
                 transition: { duration: 600, ease: 'easeOut' },
@@ -152,7 +152,7 @@
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{
+                  :visible-once="{
                     opacity: 1,
                     scale: 1,
                     transition: {
@@ -211,7 +211,7 @@
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{
+              :visible-once="{
                 opacity: 1,
                 y: 0,
                 transition: { duration: 600, delay: 150, ease: 'easeOut' },
@@ -227,7 +227,7 @@
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{
+                  :visible-once="{
                     opacity: 1,
                     scale: 1,
                     transition: {
@@ -286,7 +286,7 @@
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{
+              :visible-once="{
                 opacity: 1,
                 y: 0,
                 transition: { duration: 600, delay: 300, ease: 'easeOut' },
@@ -302,7 +302,7 @@
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{
+                  :visible-once="{
                     opacity: 1,
                     scale: 1,
                     transition: {
@@ -388,7 +388,7 @@
             <div
               v-motion
               :initial="{ opacity: 0, scaleX: 0 }"
-              :visible="{
+              :visible-once="{
                 opacity: 1,
                 scaleX: 1,
                 transition: { duration: 1000, delay: 100, ease: 'easeOut' },
@@ -401,7 +401,7 @@
               <div
                 v-motion
                 :initial="{ opacity: 0, y: 50 }"
-                :visible="{
+                :visible-once="{
                   opacity: 1,
                   y: 0,
                   transition: { duration: 600, ease: 'easeOut' },
@@ -417,7 +417,7 @@
                   <div
                     v-motion
                     :initial="{ opacity: 0, scale: 0 }"
-                    :visible="{
+                    :visible-once="{
                       opacity: 1,
                       scale: 1,
                       transition: {
@@ -477,7 +477,7 @@
               <div
                 v-motion
                 :initial="{ opacity: 0, y: 50 }"
-                :visible="{
+                :visible-once="{
                   opacity: 1,
                   y: 0,
                   transition: { duration: 600, ease: 'easeOut' },
@@ -493,7 +493,7 @@
                   <div
                     v-motion
                     :initial="{ opacity: 0, scale: 0 }"
-                    :visible="{
+                    :visible-once="{
                       opacity: 1,
                       scale: 1,
                       transition: {
@@ -556,7 +556,7 @@
         <h3
           v-motion
           :initial="{ opacity: 0, x: -40 }"
-          :visible="{
+          :visible-once="{
             opacity: 1,
             x: 0,
             transition: { duration: 600, ease: 'easeOut' },
@@ -571,7 +571,7 @@
           <div
             v-motion
             :initial="{ opacity: 0, scaleX: 0 }"
-            :visible="{
+            :visible-once="{
               opacity: 1,
               scaleX: 1,
               transition: { duration: 1000, delay: 100, ease: 'easeOut' },
@@ -584,7 +584,7 @@
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{
+              :visible-once="{
                 opacity: 1,
                 y: 0,
                 transition: { duration: 600, ease: 'easeOut' },
@@ -600,7 +600,7 @@
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{
+                  :visible-once="{
                     opacity: 1,
                     scale: 1,
                     transition: {
@@ -670,7 +670,7 @@
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{
+              :visible-once="{
                 opacity: 1,
                 y: 0,
                 transition: { duration: 600, delay: 150, ease: 'easeOut' },
@@ -686,7 +686,7 @@
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{
+                  :visible-once="{
                     opacity: 1,
                     scale: 1,
                     transition: {
@@ -764,7 +764,7 @@
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{
+              :visible-once="{
                 opacity: 1,
                 y: 0,
                 transition: { duration: 600, delay: 300, ease: 'easeOut' },
@@ -780,7 +780,7 @@
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{
+                  :visible-once="{
                     opacity: 1,
                     scale: 1,
                     transition: {
@@ -854,7 +854,7 @@
           <div
             v-motion
             :initial="{ opacity: 0, scaleX: 0 }"
-            :visible="{
+            :visible-once="{
               opacity: 1,
               scaleX: 1,
               transition: { duration: 1000, delay: 100, ease: 'easeOut' },
@@ -867,7 +867,7 @@
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{
+              :visible-once="{
                 opacity: 1,
                 y: 0,
                 transition: { duration: 600, ease: 'easeOut' },
@@ -883,7 +883,7 @@
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{
+                  :visible-once="{
                     opacity: 1,
                     scale: 1,
                     transition: {
@@ -953,7 +953,7 @@
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{
+              :visible-once="{
                 opacity: 1,
                 y: 0,
                 transition: { duration: 600, delay: 150, ease: 'easeOut' },
@@ -969,7 +969,7 @@
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{
+                  :visible-once="{
                     opacity: 1,
                     scale: 1,
                     transition: {
@@ -1039,7 +1039,7 @@
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{
+              :visible-once="{
                 opacity: 1,
                 y: 0,
                 transition: { duration: 600, delay: 300, ease: 'easeOut' },
@@ -1055,7 +1055,7 @@
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{
+                  :visible-once="{
                     opacity: 1,
                     scale: 1,
                     transition: {
@@ -1129,7 +1129,7 @@
           <div
             v-motion
             :initial="{ opacity: 0, scaleX: 0 }"
-            :visible="{
+            :visible-once="{
               opacity: 1,
               scaleX: 1,
               transition: { duration: 1000, delay: 100, ease: 'easeOut' },
@@ -1142,7 +1142,7 @@
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{
+              :visible-once="{
                 opacity: 1,
                 y: 0,
                 transition: { duration: 600, ease: 'easeOut' },
@@ -1158,7 +1158,7 @@
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{
+                  :visible-once="{
                     opacity: 1,
                     scale: 1,
                     transition: {
@@ -1228,7 +1228,7 @@
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{
+              :visible-once="{
                 opacity: 1,
                 y: 0,
                 transition: { duration: 600, delay: 150, ease: 'easeOut' },
@@ -1244,7 +1244,7 @@
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{
+                  :visible-once="{
                     opacity: 1,
                     scale: 1,
                     transition: {
@@ -1314,7 +1314,7 @@
             <div
               v-motion
               :initial="{ opacity: 0, y: 50 }"
-              :visible="{
+              :visible-once="{
                 opacity: 1,
                 y: 0,
                 transition: { duration: 600, delay: 300, ease: 'easeOut' },
@@ -1330,7 +1330,7 @@
                 <div
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible="{
+                  :visible-once="{
                     opacity: 1,
                     scale: 1,
                     transition: {
