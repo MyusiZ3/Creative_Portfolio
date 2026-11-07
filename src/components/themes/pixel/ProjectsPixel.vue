@@ -415,7 +415,7 @@ const projects = [
     category: "app",
     shortDesc:
       "Aplikasi keuangan pribadi dengan Archen AI Advisor, pemindai struk Google ML Kit OCR, dan dompet kolaborasi bersama.",
-    images: ["/images/projects/MyDuitGweh/logo_app.png"],
+    images: ["/images/projects/MyDuitGweh/myduitgweh_mobile_mockup.webp"],
     platform: "Android Mobile App",
     role: "Mobile Dev & Cloud Architect",
     timeline: "Mar – Sep 2026",

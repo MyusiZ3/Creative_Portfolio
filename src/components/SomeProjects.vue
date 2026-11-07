@@ -16,7 +16,7 @@
         <div
           v-motion
           :initial="{ opacity: 0, x: -50 }"
-          :visible="{ opacity: 1, x: 0, transition: { duration: 800 } }"
+          :visible-once="{ opacity: 1, x: 0, transition: { duration: 800 } }"
           class="text-left"
         >
           <div
@@ -42,7 +42,7 @@
         <div
           v-motion
           :initial="{ opacity: 0, x: 30 }"
-          :visible="{
+          :visible-once="{
             opacity: 1,
             x: 0,
             transition: { duration: 600, delay: 200 },
@@ -72,7 +72,7 @@
           :key="project.name"
           v-motion
           :initial="{ opacity: 0, y: 40, scale: 0.97 }"
-          :visible="{
+          :visible-once="{
             opacity: 1,
             y: 0,
             scale: 1,
@@ -433,7 +433,7 @@ const projects = computed(() => {
         ? 'Smart Financial Tracker & AI Advisor'
         : 'Smart Financial Tracker & AI Advisor',
       bg: '#10b981',
-      image: '/images/projects/MyDuitGweh/logo_app.png',
+      image: '/images/projects/MyDuitGweh/myduitgweh_mobile_mockup.webp',
       filterType: 'app',
       liveLink: 'https://myduitgweh.firebaseapp.com/',
       githubLink: 'https://github.com/MyusiZ3/MyDuitGweh',

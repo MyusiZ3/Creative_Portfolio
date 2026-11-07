@@ -8,7 +8,7 @@
       <div
         v-motion
         :initial="{ opacity: 0, scale: 0.3, y: -20 }"
-        :visible="{
+        :visible-once="{
           opacity: 1,
           scale: 1,
           y: 0,
@@ -33,7 +33,7 @@
       <h2
         v-motion
         :initial="{ opacity: 0, y: 60, scale: 0.9 }"
-        :visible="{
+        :visible-once="{
           opacity: 1,
           y: 0,
           scale: 1,
@@ -53,7 +53,7 @@
       <p
         v-motion
         :initial="{ opacity: 0, y: 25 }"
-        :visible="{
+        :visible-once="{
           opacity: 1,
           y: 0,
           transition: { duration: 800, delay: 350, ease: 'easeOut' },
@@ -67,7 +67,7 @@
       <div
         v-motion
         :initial="{ opacity: 0, scaleX: 0 }"
-        :visible="{
+        :visible-once="{
           opacity: 1,
           scaleX: 1,
           transition: { duration: 1000, delay: 450, ease: 'easeOut' },
@@ -83,7 +83,7 @@
           :id="'my-project-' + index"
           v-motion
           :initial="{ opacity: 0, y: 50 }"
-          :visible="{
+          :visible-once="{
             opacity: 1,
             y: 0,
             transition: { type: 'spring', stiffness: 80, damping: 18, mass: 1 },
@@ -321,7 +321,7 @@
         v-if="projects.length > 4"
         v-motion
         :initial="{ opacity: 0, y: 20 }"
-        :visible="{ opacity: 1, y: 0, transition: { delay: 300 } }"
+        :visible-once="{ opacity: 1, y: 0, transition: { delay: 300 } }"
         class="mt-16 lg:mt-20 text-center"
       >
         <button
@@ -749,7 +749,7 @@ const projects = computed(() => {
           ],
       platform: isId ? 'Aplikasi Mobile Android (Flutter)' : 'Android Mobile App (Flutter)',
       bg: '#10b981',
-      images: ['/images/projects/MyDuitGweh/logo_app.png'],
+      images: ['/images/projects/MyDuitGweh/myduitgweh_mobile_mockup.webp'],
       link: 'https://myduitgweh.firebaseapp.com/',
       _dir: 'next',
     },

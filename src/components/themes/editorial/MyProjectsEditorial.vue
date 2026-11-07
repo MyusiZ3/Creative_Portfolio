@@ -8,7 +8,7 @@
       <div
         v-motion
         :initial="{ opacity: 0, y: -20 }"
-        :visible="{ opacity: 1, y: 0, transition: { duration: 600 } }"
+        :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }"
         class="text-center mb-16 lg:mb-24"
       >
         <div class="flex justify-center mb-4">
@@ -45,7 +45,7 @@
           :id="'my-project-' + index"
           v-motion
           :initial="{ opacity: 0, y: 60 }"
-          :visible="{
+          :visible-once="{
             opacity: 1,
             y: 0,
             transition: { duration: 800, delay: 100 },
@@ -586,7 +586,7 @@
         id="project-archive-section"
         v-motion
         :initial="{ opacity: 0, y: 30 }"
-        :visible="{ opacity: 1, y: 0, transition: { duration: 700 } }"
+        :visible-once="{ opacity: 1, y: 0, transition: { duration: 700 } }"
         class="mt-32 lg:mt-40 pt-16 border-t border-white/10"
       >
         <!-- Archive Header -->
@@ -2098,7 +2098,7 @@ const projects = computed(() => {
           ],
       platform: isId ? 'Aplikasi Mobile Android (Flutter)' : 'Android Mobile App (Flutter)',
       bg: '#10b981',
-      images: ['/images/projects/MyDuitGweh/logo_app.png'],
+      images: ['/images/projects/MyDuitGweh/myduitgweh_mobile_mockup.webp'],
       link: 'https://myduitgweh.firebaseapp.com/',
       _dir: 'next',
     },
