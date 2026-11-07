@@ -223,6 +223,17 @@ const actions = computed(() => {
     },
   ]
 
+  // Direct Download CV Button (points to Developer CV on Google Drive)
+  allActions.push({
+    id: 'resume_direct',
+    label: t('fab_cv'),
+    icon: 'bi bi-file-earmark-arrow-down',
+    href: 'https://drive.google.com/file/d/1vJV1-Fg-yQBTy2pEQAf9TykozAsRmHnC/view?usp=sharing',
+    external: true,
+    action: handleItemClick,
+  })
+
+  /* Disabled 2-capsule CV toggle & sub-items (kept for reference):
   // CV Toggle Button
   allActions.push({
     id: 'resume_toggle',
@@ -282,6 +293,7 @@ const actions = computed(() => {
       },
     )
   }
+  */
 
   return [
     ...allActions,

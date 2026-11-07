@@ -223,7 +223,8 @@
             <div class="text-xs font-bold text-[#00f0ff] uppercase mb-2 font-silkscreen">
               DOWNLOAD LOOT / RESUME:
             </div>
-            <div class="grid grid-cols-2 gap-2">
+            <div class="grid grid-cols-1 gap-2">
+              <!-- Disabled Designer CV option (kept for reference):
               <a
                 href="/doc/CV_Muhamad Sidik_Graphic Designer_Intern_2025.pdf"
                 download
@@ -232,14 +233,15 @@
                 <i class="bi bi-palette text-xs text-[#ff0055]"></i>
                 <span>DESIGN CV</span>
               </a>
+              -->
               <a
                 href="https://drive.google.com/file/d/1vJV1-Fg-yQBTy2pEQAf9TykozAsRmHnC/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="p-2.5 bg-[#0d1117] border-2 border-black text-[#f0f6fc] hover:text-[#00f0ff] hover:border-[#00f0ff] text-[10px] font-bold font-silkscreen text-center flex items-center justify-center gap-1.5 transition-all shadow-[2px_2px_0px_#000]"
               >
-                <i class="bi bi-code-slash text-xs text-[#00f0ff]"></i>
-                <span>DEV CV</span>
+                <i class="bi bi-file-earmark-arrow-down text-xs text-[#00f0ff]"></i>
+                <span>DOWNLOAD CV</span>
               </a>
             </div>
           </div>

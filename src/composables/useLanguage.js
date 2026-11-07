@@ -156,7 +156,7 @@ const translations = {
     contact_email: 'Email',
     contact_addr: 'Address',
     contact_socmed: 'Social Media',
-    contact_btn: 'DOWNLOAD',
+    contact_btn: 'DOWNLOAD CV',
     contact_footer: 'All rights reserved.',
     contact_views: 'Total Views',
 
@@ -366,7 +366,7 @@ const translations = {
     contact_email: 'Email',
     contact_addr: 'Alamat',
     contact_socmed: 'Media Sosial',
-    contact_btn: 'UNDUH',
+    contact_btn: 'UNDUH CV',
     contact_footer: 'Hak cipta dilindungi.',
     contact_views: 'Total Kunjungan',
 

@@ -3,12 +3,12 @@
     id="contact"
     class="bg-[#171717] py-16 lg:py-24 pl-6 md:pl-10 lg:pl-16 xl:pl-24 pr-6 md:pr-10 lg:pr-16 xl:pr-24 relative overflow-hidden"
   >
-    <div class="w-full max-w-[1600px] mx-auto relative z-10">
+    <div class="w-full max-w-400 mx-auto relative z-10">
       <div class="flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-12">
         <div
           v-motion
           :initial="{ opacity: 0, x: -50 }"
-          :visible="{ opacity: 1, x: 0, transition: { duration: 800 } }"
+          :visible-once="{ opacity: 1, x: 0, transition: { duration: 800 } }"
           class="w-full md:w-5/12 lg:w-4/12 space-y-7 flex flex-col items-center md:items-start text-center md:text-left shrink-0"
         >
           <h2 class="text-3xl lg:text-5xl font-bold font-['Poppins'] text-white leading-tight">
@@ -84,7 +84,7 @@
             </div>
           </div>
 
-          <div class="space-y-3 flex flex-col items-center lg:items-start">
+          <div class="space-y-3 flex flex-col items-center md:items-start">
             <p class="text-gray-300 text-sm">{{ t('contact_socmed') }}</p>
             <div class="flex gap-3">
               <a
@@ -127,7 +127,20 @@
             </div>
           </div>
 
-          <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+          <div class="pt-2 flex flex-wrap items-center justify-center md:justify-start gap-4">
+            <a
+              href="https://drive.google.com/file/d/1vJV1-Fg-yQBTy2pEQAf9TykozAsRmHnC/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2 px-6 py-2 rounded-full border border-gray-400 text-sm font-medium text-white hover:bg-white hover:text-black transition-all duration-300 group"
+            >
+              {{ t('contact_btn') }}
+              <i
+                class="bi bi-arrow-up-right text-xs transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              ></i>
+            </a>
+
+            <!-- Disabled 2-capsule CV options (kept for reference):
             <button
               @click="showCVOptions = !showCVOptions"
               class="flex items-center gap-2 px-6 py-2 rounded-full border border-gray-400 text-sm font-medium transition-all duration-300 group"
@@ -196,6 +209,7 @@
                 }}
               </a>
             </div>
+            -->
 
             <!-- Designed with Figma Badge -->
             <a
@@ -223,7 +237,7 @@
           </div>
 
           <div
-            class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4 w-full"
+            class="pt-4 flex flex-wrap items-center justify-center md:justify-start gap-4 w-full"
           >
             <div class="flex items-center gap-3">
               <img
@@ -241,7 +255,7 @@
             <div
               v-motion
               :initial="{ opacity: 0, y: 10 }"
-              :visible="{
+              :visible-once="{
                 opacity: 1,
                 y: 0,
                 transition: { duration: 600, delay: 400 },
@@ -262,7 +276,7 @@
         <div
           v-motion
           :initial="{ opacity: 0, y: 30 }"
-          :visible="{ opacity: 1, y: 0, transition: { duration: 800, delay: 200 } }"
+          :visible-once="{ opacity: 1, y: 0, transition: { duration: 800, delay: 200 } }"
           class="w-full md:w-6/12 lg:w-6/12"
         >
           <div class="w-full">
@@ -403,15 +417,25 @@
           >
             CREATIVE TECHNOLOGIST <span class="text-zinc-600">//</span>
             <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]"
-              >INTERACTIVE DESIGNER</span
+              >FULL-STACK DEVELOPER</span
             >
-            <span class="text-zinc-600">//</span> RAPID PROTOTYPER
+            <span class="text-zinc-600">//</span> INTERACTIVE 3D &amp; AR
+            <span class="text-zinc-600">//</span>
+            <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]"
+              >UI/UX DESIGNER</span
+            >
+            <span class="text-zinc-600">//</span> IT SUPPORT ENGINEER
             <span class="text-zinc-600">//</span>&nbsp; CREATIVE TECHNOLOGIST
             <span class="text-zinc-600">//</span>
             <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]"
-              >INTERACTIVE DESIGNER</span
+              >FULL-STACK DEVELOPER</span
             >
-            <span class="text-zinc-600">//</span> RAPID PROTOTYPER
+            <span class="text-zinc-600">//</span> INTERACTIVE 3D &amp; AR
+            <span class="text-zinc-600">//</span>
+            <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]"
+              >UI/UX DESIGNER</span
+            >
+            <span class="text-zinc-600">//</span> IT SUPPORT ENGINEER
             <span class="text-zinc-600">//</span>&nbsp;
           </div>
           <div
@@ -419,15 +443,25 @@
           >
             CREATIVE TECHNOLOGIST <span class="text-zinc-600">//</span>
             <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]"
-              >INTERACTIVE DESIGNER</span
+              >FULL-STACK DEVELOPER</span
             >
-            <span class="text-zinc-600">//</span> RAPID PROTOTYPER
+            <span class="text-zinc-600">//</span> INTERACTIVE 3D &amp; AR
+            <span class="text-zinc-600">//</span>
+            <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]"
+              >UI/UX DESIGNER</span
+            >
+            <span class="text-zinc-600">//</span> IT SUPPORT ENGINEER
             <span class="text-zinc-600">//</span>&nbsp; CREATIVE TECHNOLOGIST
             <span class="text-zinc-600">//</span>
             <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]"
-              >INTERACTIVE DESIGNER</span
+              >FULL-STACK DEVELOPER</span
             >
-            <span class="text-zinc-600">//</span> RAPID PROTOTYPER
+            <span class="text-zinc-600">//</span> INTERACTIVE 3D &amp; AR
+            <span class="text-zinc-600">//</span>
+            <span class="text-transparent [-webkit-text-stroke:1px_rgba(161,161,170,0.8)]"
+              >UI/UX DESIGNER</span
+            >
+            <span class="text-zinc-600">//</span> IT SUPPORT ENGINEER
             <span class="text-zinc-600">//</span>&nbsp;
           </div>
         </div>
@@ -436,7 +470,7 @@
           <p
             v-motion
             :initial="{ opacity: 0, scale: 0.9 }"
-            :visible="{
+            :visible-once="{
               opacity: 1,
               scale: 1,
               transition: { duration: 800, delay: 200 },
