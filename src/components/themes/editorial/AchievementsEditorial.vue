@@ -13,7 +13,7 @@
       <div
         v-motion
         :initial="{ opacity: 0, x: -50 }"
-        :visible="{ opacity: 1, x: 0, transition: { duration: 800 } }"
+        :visible-once="{ opacity: 1, x: 0, transition: { duration: 800 } }"
         class="mb-12 text-left"
       >
         <h2
@@ -30,88 +30,49 @@
         <div class="h-px w-full bg-slate-200 mt-8"></div>
       </div>
 
-      <!-- Achievements Grid (Editorial Credential Cards) -->
+      <!-- Achievements Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-10 mb-12">
         <article
           v-for="(item, index) in achievements"
           :key="index"
           v-motion
           :initial="{ opacity: 0, y: 30 }"
-          :visible="{
+          :visible-once="{
             opacity: 1,
             y: 0,
             transition: { duration: 600, delay: index * 90 },
           }"
-          class="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:border-slate-900/40 hover:shadow-[0_16px_36px_rgba(15,23,42,0.08)] transition-all duration-300 flex flex-col justify-between group cursor-pointer text-left h-full"
+          class="bg-white border border-slate-200 rounded-xl p-4 sm:p-5 hover:border-slate-400 transition-colors duration-200 flex flex-col justify-between group cursor-pointer text-left h-full"
           @click="openImageModal(item)"
         >
           <div>
-            <!-- Certificate Thumbnail Container -->
+            <!-- Certificate Thumbnail (Unobstructed, No Floating Badges) -->
             <div
-              class="relative w-full aspect-4/3 rounded-xl overflow-hidden mb-4 bg-slate-100 border border-slate-200/70"
+              class="relative w-full aspect-4/3 rounded-lg overflow-hidden mb-4 bg-slate-100 border border-slate-200/60"
             >
-              <!-- Year Tag -->
-              <span
-                class="absolute top-3 left-3 bg-white/95 text-[#0f172a] text-[11px] font-mono font-bold tracking-wider px-3 py-1 rounded-md shadow-xs z-20 border border-slate-200/90"
-              >
-                {{ item.year }}
-              </span>
-
-              <!-- Multi-Page Indicator (e.g. LKS 2 Pages) -->
-              <span
-                v-if="item.gallery && item.gallery.length > 1"
-                class="absolute top-3 right-3 bg-slate-900/85 text-white text-[10px] font-mono font-semibold tracking-wider px-2.5 py-1 rounded-md z-20 backdrop-blur-xs border border-white/15"
-              >
-                {{ item.gallery.length }} {{ lang === 'ID' ? 'Halaman' : 'Pages' }}
-              </span>
-
               <ProjectImage
                 :src="getCardImage(item)"
                 :alt="item.title"
-                cssClass="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                cssClass="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
               />
-
-              <!-- Hover Overlay with Preview Cue -->
-              <div
-                class="absolute inset-0 bg-slate-950/45 opacity-0 group-hover:opacity-100 transition-opacity duration-250 flex items-center justify-center"
-              >
-                <span
-                  class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-[#0f172a] font-['Poppins'] text-xs font-semibold shadow-lg transform translate-y-1 group-hover:translate-y-0 transition-transform duration-250"
-                >
-                  <i class="bi bi-arrows-fullscreen text-[11px]"></i>
-                  <span>{{ lang === 'ID' ? 'Perbesar Sertifikat' : 'Preview Certificate' }}</span>
-                </span>
-              </div>
             </div>
 
-            <!-- Issuer Label -->
-            <div class="text-[11px] font-mono font-semibold uppercase tracking-wider text-violet-700 mb-1.5">
-              {{ item.issuer }}
-            </div>
-
-            <!-- Credential Title -->
+            <!-- Title -->
             <h3
-              class="text-[#0f172a] font-['Poppins'] font-bold text-base lg:text-[17px] leading-snug mb-2 group-hover:text-violet-700 transition-colors"
+              class="text-[#0f172a] font-['Poppins'] font-bold text-base lg:text-[17px] leading-snug mb-1.5 group-hover:text-violet-600 transition-colors"
             >
               {{ item.title }}
             </h3>
 
-            <!-- Full Concise Description (No Artificial Truncation) -->
-            <p class="text-[#334155] font-['Roboto'] text-[13px] leading-relaxed">
+            <!-- Concise Description -->
+            <p class="text-slate-600 font-['Roboto'] text-xs lg:text-[13px] leading-relaxed">
               {{ item.description }}
             </p>
           </div>
 
-          <!-- Editorial Action Footer (Preview Image vs. Official Document PDF) -->
-          <div class="pt-4 mt-5 border-t border-slate-100 flex items-center justify-between gap-3">
-            <button
-              type="button"
-              @click.stop="openImageModal(item)"
-              class="inline-flex items-center gap-1.5 text-xs font-['Poppins'] font-medium text-[#475569] hover:text-[#0f172a] transition-colors cursor-pointer"
-            >
-              <i class="bi bi-eye text-xs"></i>
-              <span>{{ lang === 'ID' ? 'Pratinjau' : 'Preview' }}</span>
-            </button>
+          <!-- Simple Footer: Year & Direct Document Link -->
+          <div class="pt-3.5 mt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+            <span class="font-mono text-slate-400">{{ item.year }}</span>
 
             <a
               v-if="item.pdfUrl"
@@ -119,9 +80,9 @@
               target="_blank"
               rel="noopener noreferrer"
               @click.stop
-              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-violet-600 text-white text-xs font-['Poppins'] font-medium tracking-wide transition-colors"
+              class="inline-flex items-center gap-1 font-['Poppins'] font-medium text-slate-700 hover:text-violet-600 transition-colors"
             >
-              <span>{{ lang === 'ID' ? 'Dokumen Resmi' : 'Verify Document' }}</span>
+              <span>{{ lang === 'ID' ? 'Lihat Dokumen' : 'View Document' }}</span>
               <i class="bi bi-arrow-up-right text-[10px]"></i>
             </a>
           </div>
@@ -129,89 +90,49 @@
       </div>
     </div>
 
-    <!-- Certificate Lightbox Modal (Supports Multi-Page Gallery & Direct PDF Link) -->
+    <!-- Simple Certificate Lightbox Modal -->
     <Teleport to="body">
       <transition name="fade">
         <div
           v-if="selectedItem"
-          class="fixed inset-0 z-10000 flex items-center justify-center pt-16 pb-28 sm:pt-20 sm:pb-32 px-4 bg-black/90 backdrop-blur-md"
+          class="fixed inset-0 z-10000 flex items-center justify-center p-4 bg-black/85 backdrop-blur-xs"
           @click="closeImageModal"
         >
-          <!-- Top Bar: Counter / Title & Close Button -->
           <div
-            class="absolute top-4 left-4 sm:top-5 sm:left-1/2 sm:-translate-x-1/2 z-50 flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-zinc-900/85 border border-white/10 text-zinc-300 font-['Roboto'] text-xs sm:text-sm max-w-[calc(100vw-5.5rem)]"
+            class="relative max-w-4xl w-full flex flex-col items-center"
             @click.stop
           >
-            <span class="font-mono text-white/90 shrink-0">
-              {{ activeIndex + 1 }} / {{ selectedImages.length }}
-            </span>
-            <span class="w-px h-3.5 bg-white/15 shrink-0"></span>
-            <span class="truncate text-zinc-300 font-['Poppins'] text-xs">
-              {{ selectedItem.title }}
-            </span>
-          </div>
+            <button
+              type="button"
+              @click="closeImageModal"
+              class="absolute -top-11 right-0 text-white/70 hover:text-white text-2xl transition-colors cursor-pointer"
+              :aria-label="lang === 'ID' ? 'Tutup' : 'Close'"
+            >
+              <i class="bi bi-x-lg"></i>
+            </button>
 
-          <button
-            type="button"
-            @click="closeImageModal"
-            class="absolute top-4 right-4 sm:top-5 sm:right-6 z-50 w-10 h-10 rounded-full bg-zinc-900/85 border border-white/10 text-zinc-200 flex items-center justify-center hover:bg-white/15 hover:text-white transition-colors cursor-pointer"
-            :aria-label="lang === 'ID' ? 'Tutup pratinjau' : 'Close preview'"
-          >
-            <i class="bi bi-x-lg text-base"></i>
-          </button>
-
-          <!-- Certificate Image -->
-          <div
-            class="relative max-w-4xl w-full flex flex-col items-center justify-center"
-            @click.stop
-          >
             <ProjectImage
               :src="selectedImages[activeIndex]"
               :alt="selectedItem.title"
-              cssClass="max-w-full max-h-[65vh] sm:max-h-[70vh] rounded-xl shadow-2xl !object-contain mx-auto"
+              cssClass="max-w-full max-h-[80vh] rounded-lg shadow-2xl !object-contain mx-auto"
             />
-          </div>
 
-          <!-- Bottom Dock: Multi-Page Thumbnails & Official PDF Action -->
-          <div
-            class="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center gap-3 w-max max-w-[94vw]"
-            @click.stop
-          >
-            <!-- Multi-Image Thumbnails Bar (e.g. LKS Page 1 & 2) -->
-            <div v-if="selectedImages.length > 1" class="flex items-center gap-2.5">
+            <!-- Multi-Image Thumbnails (Only shown when certificate has >1 page) -->
+            <div v-if="selectedImages.length > 1" class="flex gap-3 mt-4">
               <button
                 v-for="(img, idx) in selectedImages"
                 :key="idx"
                 type="button"
                 @click="activeIndex = idx"
-                class="w-14 h-10 rounded-md overflow-hidden border-2 transition-all cursor-pointer"
+                class="w-16 h-12 rounded-md overflow-hidden border-2 transition-all cursor-pointer"
                 :class="
                   activeIndex === idx
-                    ? 'border-violet-400 scale-105 shadow-md'
-                    : 'border-white/25 opacity-60 hover:opacity-100'
+                    ? 'border-violet-500 scale-105'
+                    : 'border-white/20 opacity-50 hover:opacity-80'
                 "
               >
                 <img :src="img" :alt="`Page ${idx + 1}`" class="w-full h-full object-cover" />
               </button>
-            </div>
-
-            <!-- Official PDF Link in Lightbox Dock -->
-            <div
-              v-if="selectedItem.pdfUrl"
-              class="flex items-center p-1 rounded-full bg-zinc-900/90 border border-white/15 shadow-2xl"
-            >
-              <a
-                :href="selectedItem.pdfUrl"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-zinc-200 hover:text-white hover:bg-white/10 font-['Poppins'] text-xs font-medium tracking-wide transition-colors whitespace-nowrap"
-              >
-                <i class="bi bi-file-earmark-pdf text-violet-400 text-xs"></i>
-                <span>{{
-                  lang === 'ID' ? 'Buka Dokumen Resmi (Google Drive)' : 'Open Official Document (PDF)'
-                }}</span>
-                <i class="bi bi-arrow-up-right text-[10px] text-zinc-400"></i>
-              </a>
             </div>
           </div>
         </div>

@@ -5,7 +5,7 @@
     :class="
       isPixel
         ? 'bg-transparent text-[#f0f6fc] font-mono'
-        : 'max-w-[828px] mx-auto bg-transparent border-y border-white/12 py-6'
+        : 'max-w-207 mx-auto bg-transparent border-y border-white/12 py-6'
     "
   >
     <div class="relative z-10">
@@ -112,9 +112,9 @@
               class="flex flex-col justify-between pt-5.5 pb-0.5 text-[10px] w-7 shrink-0 h-31.5 select-none text-left font-mono"
               :class="isPixel ? 'text-[#8b949e] font-silkscreen' : 'text-zinc-500'"
             >
-              <span class="h-[12px] leading-[12px]">{{ lang === 'ID' ? 'Sen' : 'Mon' }}</span>
-              <span class="h-[12px] leading-[12px]">{{ lang === 'ID' ? 'Rab' : 'Wed' }}</span>
-              <span class="h-[12px] leading-[12px]">{{ lang === 'ID' ? 'Jum' : 'Fri' }}</span>
+              <span class="h-3 leading-3">{{ lang === 'ID' ? 'Sen' : 'Mon' }}</span>
+              <span class="h-3 leading-3">{{ lang === 'ID' ? 'Rab' : 'Wed' }}</span>
+              <span class="h-3 leading-3">{{ lang === 'ID' ? 'Jum' : 'Fri' }}</span>
             </div>
 
             <!-- The Grid & Week-Aligned Month Labels -->
@@ -135,19 +135,19 @@
               </div>
 
               <!-- Heatmap -->
-              <div class="grid grid-flow-col grid-rows-7 gap-[3px] w-max">
+              <div class="grid grid-flow-col grid-rows-7 gap-0.75 w-max">
                 <!-- Padded empty days for start of year -->
                 <div
                   v-for="n in paddingDays"
                   :key="'pad-' + n"
-                  class="w-[12px] h-[12px] bg-transparent"
+                  class="w-3 h-3 bg-transparent"
                 ></div>
 
                 <!-- Actual days -->
                 <div
                   v-for="day in currentYearData"
                   :key="day.date"
-                  class="w-[12px] h-[12px] transition-transform duration-150 hover:scale-125 cursor-pointer relative"
+                  class="w-3 h-3 transition-transform duration-150 hover:scale-125 cursor-pointer relative"
                   :class="isPixel ? 'rounded-none' : 'rounded-[1.5px]'"
                   :style="{
                     backgroundColor: getIntensityColor(day.intensity),
@@ -211,11 +211,11 @@
             >
               {{ lang === 'ID' ? 'Sedikit' : 'Less' }}
             </span>
-            <div class="flex gap-[3px]">
+            <div class="flex gap-0.75">
               <div
                 v-for="lvl in [0, 1, 2, 3, 4]"
                 :key="lvl"
-                class="w-[11px] h-[11px]"
+                class="w-2.75 h-2.75"
                 :class="isPixel ? 'rounded-none' : 'rounded-[1.5px]'"
                 :style="{ backgroundColor: getIntensityColor(lvl) }"
               ></div>

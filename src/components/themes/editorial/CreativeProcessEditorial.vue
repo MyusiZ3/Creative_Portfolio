@@ -20,7 +20,7 @@
       class="absolute -bottom-1 left-0 w-32 md:w-52 lg:w-72 xl:w-200 pointer-events-none transform rotate-180 z-0"
     />
 
-    <div class="container mx-auto relative z-10 max-w-[1550px]">
+    <div class="container mx-auto relative z-10 max-w-387.5">
       <!-- Section Header -->
       <div class="max-w-3xl mb-12 lg:mb-16 text-left">
         <h2
