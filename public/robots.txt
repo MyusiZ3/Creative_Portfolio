@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap Location
-Sitemap: https://creative-portfolio-theta-rosy.vercel.app/sitemap.xml
+Sitemap: https://imycreative.vercel.app/sitemap.xml
